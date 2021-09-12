@@ -39,12 +39,16 @@ export default function App({ Component, pageProps }) {
 
       <AppWrapper>
         <Navbar
-          className={router.asPath === '/' ? `text-white` : `border-black`}
-          logo={
-            router.asPath === '/'
+          className={`${
+            router.asPath === '/' || router.asPath === '/under_construction'
+              ? `text-white`
+              : `border-black`
+          }`}
+          logo={`${
+            router.asPath === '/' || router.asPath === '/under_construction'
               ? `/locavore-white.png`
               : `/locavore-black.png`
-          }
+          }`}
         />
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.asPath} />

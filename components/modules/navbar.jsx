@@ -4,12 +4,12 @@ import Container from '@/components/modules/container'
 export default function Navbar({ className, logo }) {
   return (
     <header
-      className={`py-2 fixed top-0 left-0 right-0 w-full px-6 z-50 border-b ${className}`}
+      className={`py-2 fixed top-0 left-0 right-0 w-full z-50 border-b ${className}`}
       data-scroll
       data-scroll-sticky
       data-scroll-target="#scroll-container"
     >
-      <Container className="max-w-none">
+      <Container>
         <div className="flex flex-wrap">
           <FancyLink
             destination="/"
@@ -21,21 +21,21 @@ export default function Navbar({ className, logo }) {
 
           <nav className="ml-auto flex space-x-7 w-full text-sm md:text-base md:w-auto">
             <FancyLink
-              destination="/"
+              destination="/editorial"
               a11yText="Navigate to the editorial page"
               className="p-2"
             >
               Editorial
             </FancyLink>
             <FancyLink
-              destination="/about"
+              destination="/under_construction"
               a11yText="Navigate to the about page"
               className="p-2"
             >
               Under Construction
             </FancyLink>
             <FancyLink
-              destination="/about"
+              destination="/family"
               a11yText="Navigate to the about page"
               className="p-2"
             >

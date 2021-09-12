@@ -6,12 +6,10 @@ export default function FancyLink({
   className = '',
   children,
   blank = false,
-  button = false,
   onClick,
   ...others
 }) {
-
-  return button ? (
+  return !destination ? (
     <button
       aria-label={a11yText}
       className={`pointer-events-auto ${className}`}

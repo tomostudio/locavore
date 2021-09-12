@@ -15,7 +15,7 @@
 
 /* Simple defaults */
 body {
-  @apply font-default font-normal antialiased text-black bg-white;
+  @apply font-default tracking-wide font-normal antialiased text-black bg-white;
 }
 
 .setflex-center {
@@ -41,6 +41,27 @@ body {
   }
 }
 
-.headergap {
-  height: 58px;
+#card-search {
+  & > div {
+    width: calc((100% / 3) - 1.5rem);
+    height: 500px;
+  }
+}
+
+#family-button {
+  & > button {
+    width: calc(100% / 3);
+  }
+}
+
+#family-image {
+  & > div {
+    width: calc(100% / 5);
+  }
+}
+
+#editorial-slider {
+  & > div {
+    width: calc(100% / 4);
+  }
 }
