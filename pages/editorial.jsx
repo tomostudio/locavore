@@ -13,6 +13,7 @@ import HeaderGap from '@/components/modules/headerGap'
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
 import PillButton from '@/components/utils/pillButton'
 import FancyLink from '@/components/utils/fancyLink'
+import ButtonFixed from '@/components/utils/buttonFixed'
 
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
@@ -55,8 +56,7 @@ export default function Editorial() {
                       </div>
                       {/* Card */}
                       <div className="relative w-full h-full space-y-10">
-
-                      <div className="relative w-full h-30rem bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
+                        <div className="relative w-full h-30rem bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
                           <div className="text-center w-full py-3">
                             <span>ISSUE 5</span>
                           </div>
@@ -72,7 +72,9 @@ export default function Editorial() {
                               />
                             </div>
                             <div className="relative z-10 w-full h-full flex flex-col justify-between text-white p-8">
-                              <h1 className="font-title font-normal">Metamorphosis</h1>
+                              <h1 className="font-title font-normal">
+                                Metamorphosis
+                              </h1>
                               <div className="w-full flex justify-between">
                                 <div className="w-4/5 flex flex-col">
                                   <p className="w-96">
@@ -114,7 +116,9 @@ export default function Editorial() {
                               />
                             </div>
                             <div className="relative z-10 w-full h-full flex flex-col justify-between text-white p-8">
-                              <h1 className="font-title font-normal">Metamorphosis</h1>
+                              <h1 className="font-title font-normal">
+                                Metamorphosis
+                              </h1>
                               <div className="w-full flex justify-between">
                                 <div className="w-4/5 flex flex-col">
                                   <p className="w-96">
@@ -156,7 +160,9 @@ export default function Editorial() {
                               />
                             </div>
                             <div className="relative z-10 w-full h-full flex flex-col justify-between text-white p-8">
-                              <h1 className="font-title font-normal">Metamorphosis</h1>
+                              <h1 className="font-title font-normal">
+                                Metamorphosis
+                              </h1>
                               <div className="w-full flex justify-between">
                                 <div className="w-4/5 flex flex-col">
                                   <p className="w-96">
@@ -198,7 +204,9 @@ export default function Editorial() {
                               />
                             </div>
                             <div className="relative z-10 w-full h-full flex flex-col justify-between text-white p-8">
-                              <h1 className="font-title font-normal">Metamorphosis</h1>
+                              <h1 className="font-title font-normal">
+                                Metamorphosis
+                              </h1>
                               <div className="w-full flex justify-between">
                                 <div className="w-4/5 flex flex-col">
                                   <p className="w-96">
@@ -234,17 +242,9 @@ export default function Editorial() {
           </div>
         </div>
         {/* Button Fixed */}
-        <div className="fixed bottom-0 left-0 w-full">
-          <div className="setflex-center mb-6">
-            <PillButton
-              destination="/search"
-              arrow="right"
-              className="uppercase bg-white flex items-center"
-            >
-              SEARCH ALL ARTICLES
-            </PillButton>
-          </div>
-        </div>
+        <ButtonFixed destination="/search" arrow="right">
+          SEARCH ALL ARTICLES
+        </ButtonFixed>
       </LocomotiveScrollProvider>
     </Layout>
   )

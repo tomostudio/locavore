@@ -14,6 +14,7 @@ import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
 import PillButton from '@/components/utils/pillButton'
 import Arrow from '@/components/utils/arrow'
 import CardPortrait from '@/components/utils/cardPortrait'
+import ButtonFixed from '@/components/utils/buttonFixed'
 
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
@@ -163,17 +164,9 @@ export default function Search() {
           </div>
         </div>
         {/* Button Fixed */}
-        <div className="fixed bottom-0 left-0 w-full">
-          <div className="setflex-center mb-6">
-            <PillButton
-              destination="/editorial"
-              arrow="left"
-              className="uppercase bg-white flex items-center"
-            >
-              BROWSE ALL ISSUES
-            </PillButton>
-          </div>
-        </div>
+        <ButtonFixed destination="/editorial" arrow="left">
+          Browse all issues
+        </ButtonFixed>
       </LocomotiveScrollProvider>
     </Layout>
   )
