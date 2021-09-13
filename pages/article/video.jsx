@@ -106,7 +106,7 @@ export default function Video() {
                       </div>
                       <div className="relative w-full mb-14 h-96 setflex-center">
                         <CardPortrait
-                          className="rotate-6 bg-food"
+                          className="rotate-6 bg-food w-72"
                           title="5. Ulekan"
                           category="Culture"
                           timeRead="20 min read"

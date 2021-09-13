@@ -44,25 +44,25 @@ export default function Metamorphosis() {
                       id="editorial-slider"
                     >
                       <CardPortrait
-                        className="bg-events"
+                        className="bg-events w-72"
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"
                       />
                       <CardPortrait
-                        className="bg-infographic"
+                        className="bg-infographic w-72"
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"
                       />
                       <CardPortrait
-                        className="bg-interview"
+                        className="bg-interview w-72"
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"
                       />
                       <CardPortrait
-                        className="bg-food"
+                        className="bg-food w-72"
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"

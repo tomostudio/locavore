@@ -310,7 +310,7 @@ export default function Full() {
                       </div>
                       <div className="relative w-full h-96 setflex-center">
                         <CardPortrait
-                          className="rotate-6 bg-food"
+                          className="rotate-6 bg-food w-72"
                           title="5. Ulekan"
                           category="Culture"
                           timeRead="20 min read"

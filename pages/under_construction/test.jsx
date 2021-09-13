@@ -46,25 +46,25 @@ export default function Test() {
                       id="editorial-slider"
                     >
                       <CardPortrait
-                        className="bg-white border border-black"
+                        className="bg-white border border-black w-72"
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"
                       />
                       <CardPortrait
-                        className="bg-white border border-black"
+                        className="bg-white border border-black w-72"
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"
                       />
                       <CardPortrait
-                        className="bg-white border border-black"
+                        className="bg-white border border-black w-72"
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"
                       />
                       <CardPortrait
-                        className="bg-white border border-black"
+                        className="bg-white border border-black w-72"
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"

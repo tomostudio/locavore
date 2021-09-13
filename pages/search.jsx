@@ -13,6 +13,7 @@ import FancyLink from '@/components/utils/fancyLink'
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
 import PillButton from '@/components/utils/pillButton'
 import Arrow from '@/components/utils/arrow'
+import CardPortrait from '@/components/utils/cardPortrait'
 
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
@@ -79,44 +80,74 @@ export default function Search() {
                         </span>
                         {/* Card */}
                         <div
-                          className="w-full h-auto flex gap-6 flex-wrap"
+                          className="w-full h-auto flex gap-8 flex-wrap"
                           id="card-search"
                         >
-                          <div className="relative w-full bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
+                          <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
+                            <div className="text-center w-full py-3">
+                              <span>ISSUE 1</span>
+                            </div>
+                            <CardPortrait
+                              className="bg-culture w-full"
+                              title="7. Facial Expressions"
+                              category="Culture"
+                              timeRead="20 min read"
+                            />
+                          </div>
+                          <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
+                            <div className="text-center w-full py-3">
+                              <span>ISSUE 1</span>
+                            </div>
+                            <CardPortrait
+                              className="bg-white border border-black w-full"
+                              title="16. Making Statements"
+                              category="Culture"
+                              timeRead="20 min read"
+                            />
+                          </div>
+                          <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
+                            <div className="text-center w-full py-3">
+                              <span>ISSUE 1</span>
+                            </div>
+                            <CardPortrait
+                              className="bg-events w-full"
+                              title="8. Semata Wayang"
+                              category="Events"
+                              timeRead="20 min read"
+                            />
+                          </div>
+                          <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
                             <div className="text-center w-full py-3">
                               <span>ISSUE 5</span>
                             </div>
-                            <div className="relative bg-gray-500 w-full h-full rounded-2xl"></div>
+                            <CardPortrait
+                              className="bg-food w-full"
+                              title="11. Some Like It Hot"
+                              category="Culture  •  Food"
+                              timeRead="20 min read"
+                            />
+                          </div>
+                          <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
+                            <div className="text-center w-full py-3">
+                              <span>ISSUE 8</span>
+                            </div>
+                            <CardPortrait
+                              className="bg-interview w-full"
+                              title="14. Eelke Says"
+                              category="Culture"
+                              timeRead="20 min read"
+                            />
                           </div>
                           <div className="relative w-full bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
                             <div className="text-center w-full py-3">
-                              <span>ISSUE 5</span>
+                              <span>ISSUE 0</span>
                             </div>
-                            <div className="relative bg-gray-500 w-full h-full rounded-2xl"></div>
-                          </div>
-                          <div className="relative w-full bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
-                            <div className="text-center w-full py-3">
-                              <span>ISSUE 5</span>
-                            </div>
-                            <div className="relative bg-gray-500 w-full h-full rounded-2xl"></div>
-                          </div>
-                          <div className="relative w-full bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
-                            <div className="text-center w-full py-3">
-                              <span>ISSUE 5</span>
-                            </div>
-                            <div className="relative bg-gray-500 w-full h-full rounded-2xl"></div>
-                          </div>
-                          <div className="relative w-full bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
-                            <div className="text-center w-full py-3">
-                              <span>ISSUE 5</span>
-                            </div>
-                            <div className="relative bg-gray-500 w-full h-full rounded-2xl"></div>
-                          </div>
-                          <div className="relative w-full bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
-                            <div className="text-center w-full py-3">
-                              <span>ISSUE 5</span>
-                            </div>
-                            <div className="relative bg-gray-500 w-full h-full rounded-2xl"></div>
+                            <CardPortrait
+                              className="bg-white border border-black w-full"
+                              title="16. Wall of Fame"
+                              category="Culture"
+                              timeRead="20 min read"
+                            />
                           </div>
                         </div>
                         <FancyLink className="mt-14 py-4 px-6 text-xs tracking-widest opacity-80 border border-grayBorder rounded-xl">
