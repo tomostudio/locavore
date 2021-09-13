@@ -35,15 +35,17 @@ module.exports = {
         '80vh': '80vh',
         '32px': '32px',
         '24px': '24px',
+        '30rem': '30rem',
+        '36rem': '36rem',
+        '56rem': '56rem',
+        '60rem': '60rem',
       },
       width: {
         '24px': '24px',
         '32px': '32px',
         '36rem': '36rem',
         '56rem': '56rem',
-        '60rem': '60rem',
-        'familyButton': 'calc((100% / 3) + 1.75rem)',
-        'firstFamilyButton': 'calc(100% / 3)'
+        '60rem': '60rem'
       },
       colors: {
         culture: '#D66A51',
