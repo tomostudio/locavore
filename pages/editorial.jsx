@@ -13,7 +13,7 @@ import HeaderGap from '@/components/modules/headerGap'
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
 import PillButton from '@/components/utils/pillButton'
 import FancyLink from '@/components/utils/fancyLink'
-import ButtonFixed from '@/components/utils/buttonFixed'
+import FixedButton from '@/components/utils/fixedButton'
 
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
@@ -242,9 +242,9 @@ export default function Editorial() {
           </div>
         </div>
         {/* Button Fixed */}
-        <ButtonFixed destination="/search" arrow="right">
+        <FixedButton destination="/search" arrow="right">
           SEARCH ALL ARTICLES
-        </ButtonFixed>
+        </FixedButton>
       </LocomotiveScrollProvider>
     </Layout>
   )

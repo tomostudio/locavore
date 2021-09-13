@@ -13,7 +13,7 @@ import HeaderGap from '@/components/modules/headerGap'
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
 import PillButton from '@/components/utils/pillButton'
 import CardPortrait from '@/components/utils/cardPortrait'
-import ButtonFixed from '@/components/utils/buttonFixed'
+import FixedButton from '@/components/utils/fixedButton'
 
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
@@ -134,9 +134,9 @@ export default function Gallery() {
           </div>
         </div>
         {/* Button Fixed */}
-        <ButtonFixed destination="/editorial/metamorphosis" arrow="left">
+        <FixedButton destination="/editorial/metamorphosis" arrow="left">
           ISSUE 1
-        </ButtonFixed>
+        </FixedButton>
       </LocomotiveScrollProvider>
     </Layout>
   )

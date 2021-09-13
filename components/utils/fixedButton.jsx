@@ -1,6 +1,6 @@
 import PillButton from "./pillButton"
 
-const ButtonFixed = ({ destination, arrow, children }) => {
+const FixedButton = ({ destination, arrow, children }) => {
   return (
     <div className="fixed bottom-0 left-0 w-full">
       <div className="setflex-center mb-6">
@@ -16,4 +16,4 @@ const ButtonFixed = ({ destination, arrow, children }) => {
   )
 }
 
-export default ButtonFixed
+export default FixedButton

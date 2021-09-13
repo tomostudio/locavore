@@ -14,7 +14,7 @@ import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
 import PillButton from '@/components/utils/pillButton'
 import Arrow from '@/components/utils/arrow'
 import CardPortrait from '@/components/utils/cardPortrait'
-import ButtonFixed from '@/components/utils/buttonFixed'
+import FixedButton from '@/components/utils/fixedButton'
 
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
@@ -164,9 +164,9 @@ export default function Search() {
           </div>
         </div>
         {/* Button Fixed */}
-        <ButtonFixed destination="/editorial" arrow="left">
+        <FixedButton destination="/editorial" arrow="left">
           Browse all issues
-        </ButtonFixed>
+        </FixedButton>
       </LocomotiveScrollProvider>
     </Layout>
   )
