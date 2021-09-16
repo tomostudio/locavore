@@ -4,6 +4,7 @@ import { NextSeo } from 'next-seo'
 import Marquee from 'react-fast-marquee'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Pagination } from 'swiper'
+import Image from 'next/image'
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -93,8 +94,16 @@ export default function Caroussel() {
                       </p>
                       <div className="relative w-full flex flex-col space-y-3">
                         {/* Gallery */}
-                        <div className="relative w-full h-96">
-                          <div className="w-full h-full bg-culture" />
+                        <div className="relative w-full h-30rem">
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                              alt={'Locavore'}
+                              layout="fill"
+                              objectFit="cover"
+                              objectPosition="center"
+                            />
+                          </div>
                           <div className="absolute top-0 left-0 h-full w-full flex items-center justify-between px-6">
                             <Arrow
                               position="left"
@@ -120,45 +129,126 @@ export default function Caroussel() {
                               id="swipe-caroussel"
                             >
                               <SwiperSlide>
-                                <div className="w-full h-full rounded-2xl bg-culture" />
+                                <div className="relative w-full h-full">
+                                  <Image
+                                    src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                                    alt={'Locavore'}
+                                    className="rounded-2xl"
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                  />
+                                </div>
                               </SwiperSlide>
                               <SwiperSlide>
-                                <div className="w-full h-full rounded-2xl bg-culture" />
+                                <div className="relative w-full h-full">
+                                  <Image
+                                    src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                                    alt={'Locavore'}
+                                    className="rounded-2xl"
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                  />
+                                </div>
                               </SwiperSlide>
                               <SwiperSlide>
-                                <div className="w-full h-full rounded-2xl bg-culture" />
+                                <div className="relative w-full h-full">
+                                  <Image
+                                    src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                                    alt={'Locavore'}
+                                    className="rounded-2xl"
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                  />
+                                </div>
                               </SwiperSlide>
                               <SwiperSlide>
-                                <div className="w-full h-full rounded-2xl bg-culture" />
+                                <div className="relative w-full h-full">
+                                  <Image
+                                    src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                                    alt={'Locavore'}
+                                    className="rounded-2xl"
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                  />
+                                </div>
                               </SwiperSlide>
                               <SwiperSlide>
-                                <div className="w-full h-full rounded-2xl bg-culture" />
+                                <div className="relative w-full h-full">
+                                  <Image
+                                    src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                                    alt={'Locavore'}
+                                    className="rounded-2xl"
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                  />
+                                </div>
                               </SwiperSlide>
                               <SwiperSlide>
-                                <div className="w-full h-full rounded-2xl bg-culture" />
+                                <div className="relative w-full h-full">
+                                  <Image
+                                    src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                                    alt={'Locavore'}
+                                    className="rounded-2xl"
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                  />
+                                </div>
                               </SwiperSlide>
                               <SwiperSlide>
-                                <div className="w-full h-full rounded-2xl bg-culture" />
+                                <div className="relative w-full h-full">
+                                  <Image
+                                    src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                                    alt={'Locavore'}
+                                    className="rounded-2xl"
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                  />
+                                </div>
                               </SwiperSlide>
                               <SwiperSlide>
-                                <div className="w-full h-full rounded-2xl bg-culture" />
+                                <div className="relative w-full h-full">
+                                  <Image
+                                    src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                                    alt={'Locavore'}
+                                    className="rounded-2xl"
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                  />
+                                </div>
                               </SwiperSlide>
                               <SwiperSlide>
-                                <div className="w-full h-full rounded-2xl bg-culture" />
+                                <div className="relative w-full h-full">
+                                  <Image
+                                    src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                                    alt={'Locavore'}
+                                    className="rounded-2xl"
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                  />
+                                </div>
                               </SwiperSlide>
                               <SwiperSlide>
-                                <div className="w-full h-full rounded-2xl bg-culture" />
+                                <div className="relative w-full h-full">
+                                  <Image
+                                    src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                                    alt={'Locavore'}
+                                    className="rounded-2xl"
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                  />
+                                </div>
                               </SwiperSlide>
                             </Swiper>
-                            {/* <div className="w-48 h-full rounded-2xl bg-culture" />
-                            <div className="w-48 h-full rounded-2xl bg-culture" />
-                            <div className="w-48 h-full rounded-2xl bg-culture" />
-                            <div className="w-48 h-full rounded-2xl bg-culture" />
-                            <div className="w-48 h-full rounded-2xl bg-culture" />
-                            <div className="w-48 h-full rounded-2xl bg-culture" />
-                            <div className="w-48 h-full rounded-2xl bg-culture" />
-                            <div className="w-48 h-full rounded-2xl bg-culture" />
-                            <div className="w-48 h-full rounded-2xl bg-culture" /> */}
                           </div>
                         </div>
                       </div>

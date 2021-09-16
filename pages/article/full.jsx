@@ -256,9 +256,6 @@ export default function Full() {
                           Lorem Ipsum is not simply random text.
                         </p>
                       </div>
-                      {/* Quote */}
-                      {/* <div className="max-w-xl flex flex-col my-8">
-                      </div> */}
                     </div>
                     {/* Image Full */}
                     <div className="w-full setflex-center">

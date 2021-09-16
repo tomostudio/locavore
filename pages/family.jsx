@@ -372,26 +372,6 @@ export default function Family() {
                                   </div>
                                 </SwiperSlide>
                               </Swiper>
-                              {/* <div className="relative w-52 h-full">
-                                <Image
-                                  src={`/placeholder/NightRooster-Cocktail-2020-45.jpg`}
-                                  alt={'Locavore'}
-                                  className="rounded-2xl"
-                                  layout="fill"
-                                  objectFit="cover"
-                                  objectPosition="center"
-                                />
-                              </div>
-                              <div className="relative w-52 h-full">
-                                <Image
-                                  src={`/placeholder/NightRooster-Cocktail-2020-12.jpg`}
-                                  alt={'Locavore'}
-                                  className="rounded-2xl"
-                                  layout="fill"
-                                  objectFit="cover"
-                                  objectPosition="center"
-                                />
-                              </div> */}
                             </div>
                             <div className="w-full flex justify-between mt-5">
                               <div className="flex space-x-5">

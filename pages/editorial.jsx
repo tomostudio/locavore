@@ -244,9 +244,9 @@ export default function Editorial() {
         </div>
         <Link />
         {/* Button Fixed */}
-        {/* <FixedButton destination="/search" arrow="right">
+        <FixedButton destination="/search" arrow="right">
           SEARCH ALL ARTICLES
-        </FixedButton> */}
+        </FixedButton>
       </LocomotiveScrollProvider>
     </Layout>
   )

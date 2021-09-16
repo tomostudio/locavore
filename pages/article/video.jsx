@@ -88,7 +88,7 @@ export default function Video() {
                       </p>
                       {/* Video */}
                       <div className="relative w-full flex flex-col space-y-3">
-                        <div className="relative w-full h-96">
+                        <div className="relative w-full h-30rem">
                           <div className="w-full h-full bg-culture" />
                           <div className="absolute top-0 left-0 h-full w-full setflex-center">
                             <FancyLink

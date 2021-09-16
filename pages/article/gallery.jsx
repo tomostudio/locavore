@@ -88,7 +88,7 @@ export default function Gallery() {
                       </p>
                       {/* Image */}
                       <div className="w-full flex flex-col space-y-3">
-                        <div className="relative w-full h-36rem">
+                        <div className="relative w-full h-30rem">
                           <Image
                             src={`/placeholder/locavore-rintik-crop-18.jpg`}
                             alt={'Locavore'}
@@ -118,7 +118,7 @@ export default function Gallery() {
                           </div>
                         </div>
                         <div className="w-full setflex-center">
-                          <div className="relative w-full h-36rem">
+                          <div className="relative w-full h-30rem">
                             <Image
                               src={`/placeholder/locavore-rintik-crop-18.jpg`}
                               alt={'Locavore'}
