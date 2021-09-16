@@ -7,7 +7,7 @@ const PillButton = ({ className, destination, arrow, children, onClick }) => {
       {destination ? (
         <FancyLink
           destination={destination}
-          className={`text-xs py-2 px-4 opacity-80 border border-grayBorder rounded-full ${className}`}
+          className={`text-xs py-2 px-4 border border-grayBorder rounded-full ${className}`}
         >
           {arrow === 'left' ? (
             <>
@@ -26,7 +26,7 @@ const PillButton = ({ className, destination, arrow, children, onClick }) => {
       ) : (
         <FancyLink
           onClick={onClick}
-          className={`text-xs py-2 px-4 opacity-80 border border-grayBorder rounded-full ${className}`}
+          className={`text-xs py-2 px-4 border border-grayBorder rounded-full ${className}`}
         >
           {arrow === 'left' ? (
             <>

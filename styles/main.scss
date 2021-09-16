@@ -56,12 +56,82 @@ body {
 
 #family-image {
   & > div {
+    position: relative;
     width: calc(100% / 5);
+    &::after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
   }
 }
 
 #editorial-slider {
-  & > div {
-    width: calc(100% / 4);
+  .editorialCard {
+    position: relative;
+    width: calc(100% / 5);
+    &::after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
+}
+
+#link {
+  @apply cursor-pointer px-3 rounded-full bg-grayDarkerCard;
+  position: fixed;
+  bottom: 3%;
+  left: 3%;
+  z-index: 100000;
+
+  a {
+    @apply py-2;
+    display: block;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+      .dropdown-content {
+        display: block;
+      }
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 12px 16px;
+      z-index: 1;
+    }
+  }
+}
+
+.swiper-pagination-bullets {
+  display: none;
+}
+
+#swipe-family {
+  .swiper-slide {
+    @apply w-52 #{!important};
+  }
+}
+
+#swipe-editorial {
+  .swiper-slide {
+    @apply w-72 #{!important};
+  }
+}
+
+#swipe-caroussel {
+  .swiper-slide {
+    @apply w-64 #{!important};
   }
 }

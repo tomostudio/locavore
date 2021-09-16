@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import { AppWrapper } from '../context/state.jsx'
 import Navbar from '@/components/modules/navbar'
+import 'swiper/swiper.scss'
+import 'swiper/components/pagination/pagination.min.css'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
@@ -42,7 +44,7 @@ export default function App({ Component, pageProps }) {
           className={`${
             router.asPath === '/' || router.asPath === '/under_construction'
               ? `text-white`
-              : `border-black`
+              : `border-black bg-white`
           }`}
           logo={`${
             router.asPath === '/' || router.asPath === '/under_construction'

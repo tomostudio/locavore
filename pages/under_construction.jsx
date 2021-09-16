@@ -15,90 +15,9 @@ import FancyLink from '@/components/utils/fancyLink'
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
 import preference from '@/helpers/preset/scrollPreference'
+import Link from '@/components/utils/link'
 
 export default function UnderConstruction() {
-  const containerRef = useRef(null)
-  const [animationObj, setAnimObj] = useState([])
-
-  useEffect(() => {
-    setAnimObj({
-      all: [
-        () => {
-          const id = 'issue1'
-          const elem = '.fixed-issue > h1'
-
-          const settings = {
-            scrollTrigger: {
-              id: id,
-              trigger: '.ending-issue', // which page section will be tracked as the scroll trigger
-              scroller: '#scroll-container', // id of scroll container
-              scrub: true,
-              start: 'top bottom',
-              end: 'bottom top',
-            },
-          }
-          const animation = [
-            {
-              set: [elem, { y: 0 }],
-            },
-            {
-              to: [elem, { y: '80vh', fontSize: '100px' }],
-            },
-          ]
-          return { id, elem, settings, animation }
-        },
-        () => {
-          const id = 'issue2'
-          const elem = '.title-issue'
-
-          const settings = {
-            scrollTrigger: {
-              id: id,
-              trigger: '.ending-issue', // which page section will be tracked as the scroll trigger
-              scroller: '#scroll-container', // id of scroll container
-              scrub: true,
-              start: 'top bottom',
-              end: 'bottom bottom',
-            },
-          }
-          const animation = [
-            {
-              set: [elem, { opacity: 0 }],
-            },
-            {
-              to: [elem, { opacity: 1, fontSize: '3.75rem' }],
-            },
-          ]
-          return { id, elem, settings, animation }
-        },
-        () => {
-          const id = 'issue4'
-          const elem = '.content-issue'
-
-          const settings = {
-            scrollTrigger: {
-              id: id,
-              trigger: '.ending-issue', // which page section will be tracked as the scroll trigger
-              scroller: '#scroll-container', // id of scroll container
-              scrub: true,
-              start: 'top bottom',
-              end: 'bottom bottom',
-            },
-          }
-          const animation = [
-            {
-              set: [elem, { opacity: 0 }],
-            },
-            {
-              to: [elem, { opacity: 1 }],
-            },
-          ]
-          return { id, elem, settings, animation }
-        },
-      ],
-    })
-    return () => {}
-  }, [])
 
   return (
     <Layout>
@@ -106,7 +25,6 @@ export default function UnderConstruction() {
 
       <LocomotiveScrollProvider
         options={preference}
-        containerRef={containerRef}
         watch={[]}
       >
         <PushScrollGlobal />
@@ -130,7 +48,6 @@ export default function UnderConstruction() {
               </h2>
               <h1
                 className="title-issue font-title text-white font-normal opacity-0"
-                style={{ fontSize: '0px' }}
               >
                 Under Construction
               </h1>
@@ -159,9 +76,9 @@ export default function UnderConstruction() {
             </span>
           </div>
         </div>
-        <div data-scroll-container ref={containerRef} id="scroll-container">
+        <div data-scroll-container id="scroll-container">
           <div data-scroll-section>
-            <ScrollTriggerWrapper animation={animationObj}>
+            <ScrollTriggerWrapper>
               <LazyMotion features={domAnimation}>
                 <m.main className="relative p-0 m-0" id="parallax-issue">
                   <Container>
@@ -177,6 +94,7 @@ export default function UnderConstruction() {
             </ScrollTriggerWrapper>
           </div>
         </div>
+        <Link />
       </LocomotiveScrollProvider>
     </Layout>
   )

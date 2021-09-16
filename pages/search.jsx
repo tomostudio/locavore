@@ -19,6 +19,7 @@ import FixedButton from '@/components/utils/fixedButton'
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
 import preference from '@/helpers/preset/scrollPreference'
+import Link from '@/components/utils/link'
 
 export default function Search() {
   return (
@@ -47,8 +48,8 @@ export default function Search() {
                           Articles
                         </h1>
                         {/* Form Search */}
-                        <div className="mt-10 mb-8">
-                          <form className="flex w-36rem h-full flex-col justify-between">
+                        <div className="w-46rem mt-10 mb-8 px-paddingContainer">
+                          <form className="mb-8 flex w-full h-full flex-col justify-between">
                             <div className="relative w-full">
                               <input
                                 className="w-full text-xs pb-3 tracking-wide placeholder-black border-black border-b outline-none bg-transparent"
@@ -62,15 +63,17 @@ export default function Search() {
                               />
                             </div>
                           </form>
+                          <div className="w-full h-auto opacity-80 flex items-start space-x-4">
+                            <span className="text-xs">CATEGORY</span>
+                            <PillButton className="text-xs">Food</PillButton>
+                            <PillButton className="text-xs">Culture</PillButton>
+                            <PillButton className="text-xs">
+                              Features
+                            </PillButton>
+                            <PillButton className="text-xs">...</PillButton>
+                          </div>
                         </div>
                         {/* Category */}
-                        <div className="w-36rem h-auto mb-8 opacity-80 flex items-start space-x-4">
-                          <span className="text-xs">CATEGORY</span>
-                          <PillButton className="text-xs">Food</PillButton>
-                          <PillButton className="text-xs">Culture</PillButton>
-                          <PillButton className="text-xs">Features</PillButton>
-                          <PillButton className="text-xs">...</PillButton>
-                        </div>
                       </div>
                       <div className="relative w-full h-auto setflex-center">
                         <span className="font-bold mt-10 mb-14">
@@ -93,6 +96,8 @@ export default function Search() {
                               title="7. Facial Expressions"
                               category="Culture"
                               timeRead="20 min read"
+                              src="/placeholder/locavore-rintik-crop-11.jpg"
+                              alt="Locavore"
                             />
                           </div>
                           <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
@@ -104,6 +109,8 @@ export default function Search() {
                               title="16. Making Statements"
                               category="Culture"
                               timeRead="20 min read"
+                              src="/placeholder/locavore-rintik-crop-11.jpg"
+                              alt="Locavore"
                             />
                           </div>
                           <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
@@ -115,6 +122,8 @@ export default function Search() {
                               title="8. Semata Wayang"
                               category="Events"
                               timeRead="20 min read"
+                              src="/placeholder/locavore-rintik-crop-11.jpg"
+                              alt="Locavore"
                             />
                           </div>
                           <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
@@ -126,6 +135,8 @@ export default function Search() {
                               title="11. Some Like It Hot"
                               category="Culture  •  Food"
                               timeRead="20 min read"
+                              src="/placeholder/locavore-rintik-crop-11.jpg"
+                              alt="Locavore"
                             />
                           </div>
                           <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
@@ -137,6 +148,8 @@ export default function Search() {
                               title="14. Eelke Says"
                               category="Culture"
                               timeRead="20 min read"
+                              src="/placeholder/locavore-rintik-crop-11.jpg"
+                              alt="Locavore"
                             />
                           </div>
                           <div className="relative w-full bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
@@ -148,6 +161,8 @@ export default function Search() {
                               title="16. Wall of Fame"
                               category="Culture"
                               timeRead="20 min read"
+                              src="/placeholder/locavore-rintik-crop-11.jpg"
+                              alt="Locavore"
                             />
                           </div>
                         </div>
@@ -163,6 +178,7 @@ export default function Search() {
             </ScrollTriggerWrapper>
           </div>
         </div>
+        <Link />
         {/* Button Fixed */}
         <FixedButton destination="/editorial" arrow="left">
           Browse all issues

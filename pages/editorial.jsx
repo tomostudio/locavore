@@ -18,6 +18,7 @@ import FixedButton from '@/components/utils/fixedButton'
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
 import preference from '@/helpers/preset/scrollPreference'
+import Link from '@/components/utils/link'
 
 export default function Editorial() {
   return (
@@ -241,10 +242,11 @@ export default function Editorial() {
             </ScrollTriggerWrapper>
           </div>
         </div>
+        <Link />
         {/* Button Fixed */}
-        <FixedButton destination="/search" arrow="right">
+        {/* <FixedButton destination="/search" arrow="right">
           SEARCH ALL ARTICLES
-        </FixedButton>
+        </FixedButton> */}
       </LocomotiveScrollProvider>
     </Layout>
   )

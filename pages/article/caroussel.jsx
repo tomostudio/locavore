@@ -2,6 +2,8 @@ import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Marquee from 'react-fast-marquee'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, { Pagination } from 'swiper'
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -19,6 +21,10 @@ import FixedButton from '@/components/utils/fixedButton'
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
 import preference from '@/helpers/preset/scrollPreference'
+import Link from '@/components/utils/link'
+
+// install Swiper modules
+SwiperCore.use([Pagination])
 
 export default function Caroussel() {
   return (
@@ -105,6 +111,46 @@ export default function Caroussel() {
                         {/* List Gallery */}
                         <div className="relative w-full h-44">
                           <div className="absolute left-0 w-full h-full flex space-x-3">
+                            <Swiper
+                              slidesPerView="auto"
+                              spaceBetween={20}
+                              pagination={{
+                                clickable: true,
+                              }}
+                              id="swipe-caroussel"
+                            >
+                              <SwiperSlide>
+                                <div className="w-full h-full rounded-2xl bg-culture" />
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <div className="w-full h-full rounded-2xl bg-culture" />
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <div className="w-full h-full rounded-2xl bg-culture" />
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <div className="w-full h-full rounded-2xl bg-culture" />
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <div className="w-full h-full rounded-2xl bg-culture" />
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <div className="w-full h-full rounded-2xl bg-culture" />
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <div className="w-full h-full rounded-2xl bg-culture" />
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <div className="w-full h-full rounded-2xl bg-culture" />
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <div className="w-full h-full rounded-2xl bg-culture" />
+                              </SwiperSlide>
+                              <SwiperSlide>
+                                <div className="w-full h-full rounded-2xl bg-culture" />
+                              </SwiperSlide>
+                            </Swiper>
+                            {/* <div className="w-48 h-full rounded-2xl bg-culture" />
                             <div className="w-48 h-full rounded-2xl bg-culture" />
                             <div className="w-48 h-full rounded-2xl bg-culture" />
                             <div className="w-48 h-full rounded-2xl bg-culture" />
@@ -112,9 +158,7 @@ export default function Caroussel() {
                             <div className="w-48 h-full rounded-2xl bg-culture" />
                             <div className="w-48 h-full rounded-2xl bg-culture" />
                             <div className="w-48 h-full rounded-2xl bg-culture" />
-                            <div className="w-48 h-full rounded-2xl bg-culture" />
-                            <div className="w-48 h-full rounded-2xl bg-culture" />
-                            <div className="w-48 h-full rounded-2xl bg-culture" />
+                            <div className="w-48 h-full rounded-2xl bg-culture" /> */}
                           </div>
                         </div>
                       </div>
@@ -130,10 +174,14 @@ export default function Caroussel() {
                           title="5. Ulekan"
                           category="Culture"
                           timeRead="20 min read"
+                          src="/placeholder/locavore-rintik-crop-11.jpg"
+                          alt="Locavore"
                         />
                         <div className="absolute top-0 left-0 h-full w-full setflex-center z-min1">
-                          <Marquee>
-                            <h1>Next Article • Next Article • Next Article</h1>
+                          <Marquee gradient={false}>
+                            <h1 className="font-title font-normal h-28">
+                              Next Article • Next Article • Next Article
+                            </h1>
                           </Marquee>
                         </div>
                       </div>
@@ -145,6 +193,7 @@ export default function Caroussel() {
             </ScrollTriggerWrapper>
           </div>
         </div>
+        <Link />
         {/* Button Fixed */}
         <FixedButton destination="/editorial/metamorphosis" arrow="left">
           ISSUE 1

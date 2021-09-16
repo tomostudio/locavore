@@ -37,6 +37,7 @@ module.exports = {
         '24px': '24px',
         '30rem': '30rem',
         '36rem': '36rem',
+        '46rem': '46rem',
         '56rem': '56rem',
         '60rem': '60rem',
       },
@@ -44,6 +45,7 @@ module.exports = {
         '24px': '24px',
         '32px': '32px',
         '36rem': '36rem',
+        '46rem': '46rem',
         '56rem': '56rem',
         '60rem': '60rem'
       },
@@ -62,6 +64,7 @@ module.exports = {
         grayBorder: '#676767',
         grayCard: '#F0F0F0',
         grayDarkerCard: '#DEDCDA',
+        grayFont: "#676767"
       },
       inset: {
         '-0.5': '-0.5px',
@@ -72,6 +75,9 @@ module.exports = {
       borderRadius: {
         '50%': '50%',
       },
+      spacing: {
+        paddingContainer: "5rem"
+      }
     },
   },
   variants: {

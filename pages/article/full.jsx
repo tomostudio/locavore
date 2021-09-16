@@ -19,6 +19,7 @@ import FixedButton from '@/components/utils/fixedButton'
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
 import preference from '@/helpers/preset/scrollPreference'
+import Link from '@/components/utils/link'
 
 export default function Full() {
   return (
@@ -116,13 +117,13 @@ export default function Full() {
                     {/* Orange Component */}
                     <div className="w-full h-auto bg-culture px-8 py-5">
                       <div className="w-full h-full bg-white rounded-2xl py-14 setflex-center">
-                        <div className="max-w-xl space-y-10">
+                        <div className="w-46rem space-y-10">
                           {/* Title */}
                           <div className="font-subtitle text-center font-bold">
                             <span className="block italic">Part 1</span>
                             Tools of The Trade
                           </div>
-                          <p>
+                          <p className="px-paddingContainer">
                             Lorem Ipsum is simply dummy text of the printing and
                             typesetting industry. Lorem Ipsum has been the
                             industry's standard dummy text ever since the 1500s,
@@ -146,12 +147,12 @@ export default function Full() {
                             and Evil) by Cicero, written in 45 BC. Letraset
                             sheets containing Lorem Ipsum passages.
                           </p>
-                          <p className="font-title font-bold uppercase">
+                          <p className="font-title font-bold uppercase px-paddingContainer">
                             It has roots in a piece of classical west Latin
                             literature from 45 BC, making it over 2000 years old
                             ever since.
                           </p>
-                          <p>
+                          <p className="px-paddingContainer">
                             Lorem Ipsum is simply dummy text of the printing and
                             typesetting industry. Lorem Ipsum has been the
                             industry's standard dummy text ever since the 1500s,
@@ -166,8 +167,16 @@ export default function Full() {
                             Lorem Ipsum.
                           </p>
                           {/* Image */}
-                          <div className="w-full h-auto">
-                            <div className="w-full h-64 bg-culture"></div>
+                          <div className="w-full h-auto px-paddingContainer">
+                            <div className="relative w-full h-80">
+                              <Image
+                                src={`/placeholder/Content 3.png`}
+                                alt={'Locavore'}
+                                layout="fill"
+                                objectFit="cover"
+                                objectPosition="center"
+                              />
+                            </div>
                             <div className="flex items-end w-full mt-3">
                               <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
                               <span className="w-full font-subtitle text-sm font-bold">
@@ -176,7 +185,7 @@ export default function Full() {
                               </span>
                             </div>
                           </div>
-                          <p>
+                          <p className="px-paddingContainer">
                             Contrary to popular belief, Lorem Ipsum is not
                             simply random text. It has roots in a piece of
                             classical Latin literature from 45 BC, making it
@@ -187,13 +196,13 @@ export default function Full() {
                     </div>
                     {/* White Component */}
                     <div className="w-full h-auto px-8 py-14 setflex-center">
-                      <div className="max-w-xl space-y-10">
+                      <div className="w-46rem space-y-10">
                         {/* Title */}
                         <div className="font-subtitle text-center font-bold">
                           <span className="block italic">Part 2</span>
                           Evolution of The Food Industry
                         </div>
-                        <p>
+                        <p className="px-paddingContainer">
                           Lorem Ipsum is simply dummy text of the printing and
                           typesetting industry. Lorem Ipsum has been the
                           industry's standard dummy text ever since the 1500s,
@@ -219,9 +228,6 @@ export default function Full() {
                         <div className="h-40 setflex-center w-full">
                           <hr className="bg-culture border border-culture h-full w-px" />
                         </div>
-                      </div>
-                      {/* Quote */}
-                      <div className="max-w-3xl flex flex-col my-8">
                         <div className="relative h-32px w-32px mb-3">
                           <Image
                             src={`/quote.png`}
@@ -239,9 +245,7 @@ export default function Full() {
                           passage of Lorem Ipsum, you need to be sure there
                           isn't anything hidden in the middle of text.
                         </p>
-                      </div>
-                      <div className="max-w-xl space-y-10">
-                        <p>
+                        <p className="px-paddingContainer">
                           It has survived not only five centuries, but also the
                           leap into electronic typesetting, remaining
                           essentially unchanged. It was popularised in the 1960s
@@ -252,11 +256,23 @@ export default function Full() {
                           Lorem Ipsum is not simply random text.
                         </p>
                       </div>
+                      {/* Quote */}
+                      {/* <div className="max-w-xl flex flex-col my-8">
+                      </div> */}
                     </div>
                     {/* Image Full */}
                     <div className="w-full setflex-center">
-                      <div className="w-full h-96 bg-culture rounded-xl" />
-                      <div className="flex items-end mt-3">
+                      <div className="relative w-full h-36rem">
+                        <Image
+                          src={`/placeholder/locavore-rintik-crop-11.jpg`}
+                          alt={'Locavore'}
+                          className="rounded-xl"
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="center"
+                        />
+                      </div>
+                      <div className="w-46rem px-paddingContainer flex items-end mt-3">
                         <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
                         <span className="w-full font-subtitle text-sm font-bold">
                           Lorem Ipsum is simply dummy text of the printing and
@@ -266,8 +282,17 @@ export default function Full() {
                     </div>
                     {/* Image */}
                     <div className="w-full h-auto setflex-center my-14">
-                      <div className="w-36rem">
-                        <div className="w-full h-48 bg-culture rounded-xl" />
+                      <div className="relative w-46rem px-paddingContainer">
+                        <div className="relative w-full h-72">
+                          <Image
+                            src={`/placeholder/Content 2.png`}
+                            alt={'Locavore'}
+                            className="rounded-xl"
+                            layout="fill"
+                            objectFit="cover"
+                            objectPosition="center"
+                          />
+                        </div>
                         <div className="flex items-end mt-3">
                           <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
                           <span className="w-full font-subtitle text-sm font-bold">
@@ -280,12 +305,12 @@ export default function Full() {
                     {/* Orange Component */}
                     <div className="w-full h-auto bg-culture px-8 py-5">
                       <div className="w-full h-full bg-white rounded-2xl py-14 setflex-center">
-                        <div className="max-w-xl space-y-10">
+                        <div className="w-46rem space-y-10">
                           <div className="font-subtitle text-center font-bold">
                             <span className="block italic">Part 3</span>
                             You Are What You Eat
                           </div>
-                          <p>
+                          <p className="px-paddingContainer">
                             It was popularised in the 1960s with the release of
                             Letraset sheets containing Lorem Ipsum passages, and
                             more recently with desktop publishing software like
@@ -300,7 +325,17 @@ export default function Full() {
                             material.
                           </p>
                           {/* Image */}
-                          <div className="w-full h-56 bg-culture" />
+                          <div className="w-full h-auto px-paddingContainer">
+                            <div className="relative w-full h-64">
+                              <Image
+                                src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                                alt={'Locavore'}
+                                layout="fill"
+                                objectFit="cover"
+                                objectPosition="center"
+                              />
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -311,14 +346,18 @@ export default function Full() {
                       </div>
                       <div className="relative w-full h-96 setflex-center">
                         <CardPortrait
-                          className="rotate-6 bg-food w-72"
+                          className="rotate-6 bg-food w-64 mx-4"
                           title="5. Ulekan"
                           category="Culture"
                           timeRead="20 min read"
+                          src="/placeholder/locavore-rintik-crop-11.jpg"
+                          alt="Locavore"
                         />
                         <div className="absolute top-0 left-0 h-full w-full setflex-center z-min1">
-                          <Marquee>
-                            <h1>Next Article • Next Article • Next Article</h1>
+                          <Marquee gradient={false}>
+                            <h1 className="font-title font-normal h-28">
+                              Next Article • Next Article • Next Article
+                            </h1>
                           </Marquee>
                         </div>
                       </div>
@@ -330,6 +369,7 @@ export default function Full() {
             </ScrollTriggerWrapper>
           </div>
         </div>
+        <Link />
         {/* Button Fixed */}
         <FixedButton destination="/editorial/metamorphosis" arrow="left">
           ISSUE 1

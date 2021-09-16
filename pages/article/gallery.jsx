@@ -2,6 +2,7 @@ import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Marquee from 'react-fast-marquee'
+import Image from 'next/image'
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -18,6 +19,7 @@ import FixedButton from '@/components/utils/fixedButton'
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
 import preference from '@/helpers/preset/scrollPreference'
+import Link from '@/components/utils/link'
 
 export default function Gallery() {
   return (
@@ -86,13 +88,45 @@ export default function Gallery() {
                       </p>
                       {/* Image */}
                       <div className="w-full flex flex-col space-y-3">
-                        <div className="w-full h-96 bg-culture" />
-                        <div className="w-full h-96 flex space-x-3">
-                          <div className="w-full h-full bg-culture" />
-                          <div className="w-full h-full bg-culture" />
+                        <div className="relative w-full h-36rem">
+                          <Image
+                            src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                            alt={'Locavore'}
+                            layout="fill"
+                            objectFit="cover"
+                            objectPosition="center"
+                          />
+                        </div>
+                        <div className="w-full h-30rem flex space-x-3">
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                              alt={'Locavore'}
+                              layout="fill"
+                              objectFit="cover"
+                              objectPosition="center"
+                            />
+                          </div>
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                              alt={'Locavore'}
+                              layout="fill"
+                              objectFit="cover"
+                              objectPosition="center"
+                            />
+                          </div>
                         </div>
                         <div className="w-full setflex-center">
-                          <div className="w-full h-96 bg-culture" />
+                          <div className="relative w-full h-36rem">
+                            <Image
+                              src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                              alt={'Locavore'}
+                              layout="fill"
+                              objectFit="cover"
+                              objectPosition="center"
+                            />
+                          </div>
                           <div className="flex items-end mt-3">
                             <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
                             <span className="w-full font-subtitle text-sm font-bold">
@@ -103,8 +137,24 @@ export default function Gallery() {
                         </div>
                       </div>
                       <div className="w-full flex space-x-3">
-                        <div className="w-full h-96 bg-culture" />
-                        <div className="w-full h-96 bg-culture" />
+                        <div className="relative w-full h-96">
+                          <Image
+                            src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                            alt={'Locavore'}
+                            layout="fill"
+                            objectFit="cover"
+                            objectPosition="center"
+                          />
+                        </div>
+                        <div className="relative w-full h-96">
+                          <Image
+                            src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                            alt={'Locavore'}
+                            layout="fill"
+                            objectFit="cover"
+                            objectPosition="center"
+                          />
+                        </div>
                       </div>
                     </Container>
                     {/* Card Next Article */}
@@ -118,10 +168,14 @@ export default function Gallery() {
                           title="5. Ulekan"
                           category="Culture"
                           timeRead="20 min read"
+                          src="/placeholder/locavore-rintik-crop-11.jpg"
+                          alt="Locavore"
                         />
                         <div className="absolute top-0 left-0 h-full w-full setflex-center z-min1">
-                          <Marquee>
-                            <h1>Next Article • Next Article • Next Article</h1>
+                          <Marquee gradient={false}>
+                            <h1 className="font-title font-normal h-28">
+                              Next Article • Next Article • Next Article
+                            </h1>
                           </Marquee>
                         </div>
                       </div>
@@ -133,6 +187,7 @@ export default function Gallery() {
             </ScrollTriggerWrapper>
           </div>
         </div>
+        <Link />
         {/* Button Fixed */}
         <FixedButton destination="/editorial/metamorphosis" arrow="left">
           ISSUE 1

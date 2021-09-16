@@ -14,6 +14,7 @@ import CardPortrait from '@/components/utils/cardPortrait'
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
 import preference from '@/helpers/preset/scrollPreference'
+import Link from '@/components/utils/link'
 
 export default function Test() {
   return (
@@ -50,24 +51,32 @@ export default function Test() {
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"
+                        src="/placeholder/locavore-rintik-crop-11.jpg"
+                        alt="Locavore"
                       />
                       <CardPortrait
                         className="bg-white border border-black w-72"
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"
+                        src="/placeholder/locavore-rintik-crop-11.jpg"
+                        alt="Locavore"
                       />
                       <CardPortrait
                         className="bg-white border border-black w-72"
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"
+                        src="/placeholder/locavore-rintik-crop-11.jpg"
+                        alt="Locavore"
                       />
                       <CardPortrait
                         className="bg-white border border-black w-72"
                         title="5. Ulekan"
                         category="Culture"
                         timeRead="20 min read"
+                        src="/placeholder/locavore-rintik-crop-11.jpg"
+                        alt="Locavore"
                       />
                     </div>
                     <div className="w-full setflex-center">
@@ -92,6 +101,7 @@ export default function Test() {
             </ScrollTriggerWrapper>
           </div>
         </div>
+        <Link />
       </LocomotiveScrollProvider>
     </Layout>
   )

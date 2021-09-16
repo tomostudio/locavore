@@ -19,6 +19,7 @@ import FixedButton from '@/components/utils/fixedButton'
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
 import preference from '@/helpers/preset/scrollPreference'
+import Link from '@/components/utils/link'
 
 export default function Video() {
   return (
@@ -111,10 +112,12 @@ export default function Video() {
                           title="5. Ulekan"
                           category="Culture"
                           timeRead="20 min read"
+                          src="/placeholder/locavore-rintik-crop-11.jpg"
+                          alt="Locavore"
                         />
                         <div className="absolute top-0 left-0 h-full w-full setflex-center z-min1">
-                          <Marquee>
-                            <h1>Next Article • Next Article • Next Article</h1>
+                          <Marquee gradient={false}>
+                            <h1 className="font-title font-normal h-28">Next Article • Next Article • Next Article</h1>
                           </Marquee>
                         </div>
                       </div>
@@ -126,6 +129,7 @@ export default function Video() {
             </ScrollTriggerWrapper>
           </div>
         </div>
+        <Link />
         {/* Button Fixed */}
         <FixedButton destination="/editorial/metamorphosis" arrow="left">
           ISSUE 1

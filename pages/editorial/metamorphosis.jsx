@@ -1,6 +1,8 @@
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, { Pagination } from 'swiper'
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -14,6 +16,10 @@ import PillButton from '@/components/utils/pillButton'
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
 import preference from '@/helpers/preset/scrollPreference'
+import Link from '@/components/utils/link'
+
+// install Swiper modules
+SwiperCore.use([Pagination])
 
 export default function Metamorphosis() {
   return (
@@ -39,34 +45,66 @@ export default function Metamorphosis() {
                       <h1 className=" font-title font-normal">Metamorphosis</h1>
                     </div>
                     {/* Card */}
-                    <div
-                      className="w-full h-96 flex space-x-4"
-                      id="editorial-slider"
-                    >
-                      <CardPortrait
-                        className="bg-events w-72"
-                        title="5. Ulekan"
-                        category="Culture"
-                        timeRead="20 min read"
-                      />
-                      <CardPortrait
-                        className="bg-infographic w-72"
-                        title="5. Ulekan"
-                        category="Culture"
-                        timeRead="20 min read"
-                      />
-                      <CardPortrait
-                        className="bg-interview w-72"
-                        title="5. Ulekan"
-                        category="Culture"
-                        timeRead="20 min read"
-                      />
-                      <CardPortrait
-                        className="bg-food w-72"
-                        title="5. Ulekan"
-                        category="Culture"
-                        timeRead="20 min read"
-                      />
+                    <div className="w-full h-96 flex" id="editorial-slider">
+                      <Swiper
+                        slidesPerView="auto"
+                        spaceBetween={20}
+                        pagination={{
+                          clickable: true,
+                        }}
+                        id="swipe-editorial"
+                      >
+                        <SwiperSlide>
+                          <CardPortrait
+                            className="bg-events w-full h-96"
+                            title="5. Ulekan"
+                            category="Culture"
+                            timeRead="20 min read"
+                            src="/placeholder/locavore-rintik-crop-11.jpg"
+                            alt="Locavore"
+                          />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <CardPortrait
+                            className="bg-events w-full h-96"
+                            title="5. Ulekan"
+                            category="Culture"
+                            timeRead="20 min read"
+                            src="/placeholder/locavore-rintik-crop-11.jpg"
+                            alt="Locavore"
+                          />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <CardPortrait
+                            className="bg-events w-full h-96"
+                            title="5. Ulekan"
+                            category="Culture"
+                            timeRead="20 min read"
+                            src="/placeholder/locavore-rintik-crop-11.jpg"
+                            alt="Locavore"
+                          />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <CardPortrait
+                            className="bg-events w-full h-96"
+                            title="5. Ulekan"
+                            category="Culture"
+                            timeRead="20 min read"
+                            src="/placeholder/locavore-rintik-crop-11.jpg"
+                            alt="Locavore"
+                          />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <CardPortrait
+                            className="bg-events w-full h-96"
+                            title="5. Ulekan"
+                            category="Culture"
+                            timeRead="20 min read"
+                            src="/placeholder/locavore-rintik-crop-11.jpg"
+                            alt="Locavore"
+                          />
+                        </SwiperSlide>
+                      </Swiper>
                     </div>
                     <div className="w-full setflex-center">
                       <div className="mb-5 text-xs">
@@ -90,6 +128,7 @@ export default function Metamorphosis() {
             </ScrollTriggerWrapper>
           </div>
         </div>
+        <Link />
       </LocomotiveScrollProvider>
     </Layout>
   )
