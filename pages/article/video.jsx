@@ -2,6 +2,7 @@ import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Marquee from 'react-fast-marquee'
+import Image from 'next/image'
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -89,7 +90,15 @@ export default function Video() {
                       {/* Video */}
                       <div className="relative w-full flex flex-col space-y-3">
                         <div className="relative w-full h-30rem">
-                          <div className="w-full h-full bg-culture" />
+                          <div className="relative w-full h-full">
+                            <Image
+                              src={`/placeholder/locavore-rintik-crop-18.jpg`}
+                              alt={'Locavore'}
+                              layout="fill"
+                              objectFit="cover"
+                              objectPosition="center"
+                            />
+                          </div>
                           <div className="absolute top-0 left-0 h-full w-full setflex-center">
                             <FancyLink
                               destination="/"
@@ -117,7 +126,9 @@ export default function Video() {
                         />
                         <div className="absolute top-0 left-0 h-full w-full setflex-center z-min1">
                           <Marquee gradient={false}>
-                            <h1 className="font-title font-normal h-28">Next Article • Next Article • Next Article</h1>
+                            <h1 className="font-title font-normal h-28">
+                              Next Article • Next Article • Next Article
+                            </h1>
                           </Marquee>
                         </div>
                       </div>
