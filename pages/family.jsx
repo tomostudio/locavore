@@ -519,7 +519,10 @@ export default function Family() {
                         <button className="relative left-6 bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full">
                           locavore
                         </button>
-                        <button className="relative z-10 bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full">
+                        <button
+                          onClick={() => handleClick('the-night-rooster')}
+                          className="relative z-10 bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
+                        >
                           THE NIGHT ROOSTER
                         </button>
                         <button className="relative right-6 z-20 bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full">
