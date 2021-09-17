@@ -60,10 +60,33 @@ export default function Caroussel() {
                 </div>
                 {/* Social Media */}
                 <div className="w-full space-x-4 flex justify-end">
-                  <div className="w-4 h-4 bg-black" />
-                  <div className="w-4 h-4 bg-black" />
-                  <div className="w-4 h-4 bg-black" />
-                  <div className="w-4 h-4 bg-black" />
+                  <div className="relative w-16px h-16px">
+                    <Image
+                      src={`/facebook.png`}
+                      alt={'Locavore'}
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
+                    />
+                  </div>
+                  <div className="relative w-16px h-16px">
+                    <Image
+                      src={`/twitter.png`}
+                      alt={'Locavore'}
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
+                    />
+                  </div>
+                  <div className="relative w-16px h-16px">
+                    <Image
+                      src={`/mail.png`}
+                      alt={'Locavore'}
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
+                    />
+                  </div>
                 </div>
               </div>
               {/* Description */}

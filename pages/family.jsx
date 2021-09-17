@@ -54,9 +54,9 @@ export default function Family() {
   }
 
   const handleClick = (data) =>
-    appContext.scrollState.scrollTo(
-      document.querySelectorAll(`[data-slug*="${data}"]`)[0],
-    )
+    document.querySelectorAll(`[data-slug*="${data}"]`)[0].scrollIntoView({
+      behavior: 'smooth',
+    })
 
   return (
     <Layout>
@@ -445,8 +445,16 @@ export default function Family() {
                       </Swiper>
                     </div>
                     <div className="w-full flex justify-between mt-5">
-                      <div className="flex space-x-5">
-                        <div className="w-24px h-24px bg-black" />
+                      <div className="flex items-center space-x-5">
+                        <div className="relative w-16px h-16px">
+                          <Image
+                            src={`/instagram.png`}
+                            alt={'Locavore'}
+                            layout="fill"
+                            objectFit="contain"
+                            objectPosition="center"
+                          />
+                        </div>
                         <span className="font-subtitle font-bold">
                           @thenightrooster
                         </span>
@@ -468,8 +476,24 @@ export default function Family() {
                     </div>
                     <div className="flex items-center space-x-6">
                       <span>Share</span>
-                      <div className="w-24px h-24px bg-black" />
-                      <div className="w-24px h-24px bg-black" />
+                      <div className="relative w-16px h-16px">
+                        <Image
+                          src={`/instagram.png`}
+                          alt={'Locavore'}
+                          layout="fill"
+                          objectFit="contain"
+                          objectPosition="center"
+                        />
+                      </div>
+                      <div className="relative w-16px h-16px">
+                        <Image
+                          src={`/facebook.png`}
+                          alt={'Locavore'}
+                          layout="fill"
+                          objectFit="contain"
+                          objectPosition="center"
+                        />
+                      </div>
                     </div>
                   </div>
                   <div className="w-full h-full flex justify-end">

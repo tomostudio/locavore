@@ -1,5 +1,6 @@
 import Arrow from '../utils/arrow'
 import Container from './container'
+import Image from 'next/image'
 
 const Footer = () => {
   return (
@@ -35,10 +36,42 @@ const Footer = () => {
         </div>
         <div className="w-full h-full flex flex-col justify-between">
           <div className="w-auto h-full space-x-6 flex justify-end">
-            <div className="w-4 h-4 bg-white" />
-            <div className="w-4 h-4 bg-white" />
-            <div className="w-4 h-4 bg-white" />
-            <div className="w-4 h-4 bg-white" />
+            <div className="relative w-16px h-16px">
+              <Image
+                src={`/instagram-white.png`}
+                alt={'Locavore'}
+                layout="fill"
+                objectFit="contain"
+                objectPosition="center"
+              />
+            </div>
+            <div className="relative w-16px h-16px">
+              <Image
+                src={`/facebook-white.png`}
+                alt={'Locavore'}
+                layout="fill"
+                objectFit="contain"
+                objectPosition="center"
+              />
+            </div>
+            <div className="relative w-16px h-16px">
+              <Image
+                src={`/youtube-white.png`}
+                alt={'Locavore'}
+                layout="fill"
+                objectFit="contain"
+                objectPosition="center"
+              />
+            </div>
+            <div className="relative w-16px h-16px">
+              <Image
+                src={`/linkedin-white.png`}
+                alt={'Locavore'}
+                layout="fill"
+                objectFit="contain"
+                objectPosition="center"
+              />
+            </div>
           </div>
           <div className="w-full h-full space-x-6 flex justify-end items-end">
             <span className="text-sm">
