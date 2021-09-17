@@ -38,16 +38,24 @@ export default function Family() {
       'black'
     const image = document.getElementById('family-image')
     for (let i = 0; i < image.children.length; i++) {
-      if (image.children[i].getAttribute('data-slug') === slug) {
-        console.log('hello')
+      if (image.children[i].getAttribute('data-image') === slug) {
+        image.children[i].children[1].style.opacity = 1
       }
     }
   }
 
-  const onMouseLeave = (id) =>
+  const onMouseLeave = (id) => {
     document
       .getElementById('family-button')
       .children[id].removeAttribute('style')
+
+    const image = document.getElementById('family-image')
+    for (let i = 0; i < image.children.length; i++) {
+      if (image.children[i].hasAttribute('data-image')) {
+        image.children[i].children[1].style.opacity = 0
+      }
+    }
+  }
 
   const handleClick = (data) =>
     appContext.scrollState.scrollTo(
@@ -91,11 +99,7 @@ export default function Family() {
                       >
                         <button
                           onMouseEnter={() =>
-                            onMouseEnter(
-                              0,
-                              colors.locavore,
-                              'the-night-rooster',
-                            )
+                            onMouseEnter(0, colors.locavore, 'locavore')
                           }
                           onMouseLeave={() => onMouseLeave(0)}
                           className="relative left-6 uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
@@ -114,17 +118,11 @@ export default function Family() {
                           onMouseLeave={() => onMouseLeave(1)}
                           className="relative z-10 uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
                         >
-                          {/* <div className="absolute w-full h-full top-0 left-0 bg-locavore">
-                            </div> */}
                           THE NIGHT ROOSTER
                         </button>
                         <button
                           onMouseEnter={() =>
-                            onMouseEnter(
-                              2,
-                              colors.nusantara,
-                              'the-night-rooster',
-                            )
+                            onMouseEnter(2, colors.nusantara, 'nusantara')
                           }
                           onMouseLeave={() => onMouseLeave(2)}
                           className="relative right-6 z-20 uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
@@ -133,7 +131,7 @@ export default function Family() {
                         </button>
                         <button
                           onMouseEnter={() =>
-                            onMouseEnter(3, colors.localab, 'the-night-rooster')
+                            onMouseEnter(3, colors.localab, 'localab')
                           }
                           onMouseLeave={() => onMouseLeave(3)}
                           className="relative -top-px left-6 uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
@@ -142,11 +140,7 @@ export default function Family() {
                         </button>
                         <button
                           onMouseEnter={() =>
-                            onMouseEnter(
-                              4,
-                              colors.localparts,
-                              'the-night-rooster',
-                            )
+                            onMouseEnter(4, colors.localparts, 'local-parts')
                           }
                           onMouseLeave={() => onMouseLeave(4)}
                           className="relative -top-px z-10 uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
@@ -155,7 +149,7 @@ export default function Family() {
                         </button>
                         <button
                           onMouseEnter={() =>
-                            onMouseEnter(5, colors.togo, 'the-night-rooster')
+                            onMouseEnter(5, colors.togo, 'locavore-togo')
                           }
                           onMouseLeave={() => onMouseLeave(5)}
                           className="relative -top-px right-6 z-20 uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
@@ -177,7 +171,7 @@ export default function Family() {
                           objectPosition="top"
                         />
                       </div>
-                      <div>
+                      <div data-image="locavore">
                         <Image
                           src={`/placeholder/Additional-Locavore-2.jpg`}
                           alt={'Locavore'}
@@ -185,6 +179,15 @@ export default function Family() {
                           objectFit="cover"
                           objectPosition="top"
                         />
+                        <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-locavore bg-opacity-75 flex flex-col items-center justify-between py-4">
+                          <span className="font-subtitle font-semibold">
+                            Eelke Plasmeijer
+                          </span>
+                          <span className="font-bold text-lg">LOCAVORE</span>
+                          <span className="font-subtitle font-semibold">
+                            Executive Chef
+                          </span>
+                        </div>
                       </div>
                       <div>
                         <Image
@@ -204,7 +207,7 @@ export default function Family() {
                           objectPosition="top"
                         />
                       </div>
-                      <div>
+                      <div data-image="locavore-togo">
                         <Image
                           src={`/placeholder/Additional-Locavore-5.jpg`}
                           alt={'Locavore'}
@@ -212,6 +215,17 @@ export default function Family() {
                           objectFit="cover"
                           objectPosition="top"
                         />
+                        <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-togo bg-opacity-75 flex flex-col items-center justify-between py-4">
+                          <span className="font-subtitle font-semibold">
+                            Eelke Plasmeijer
+                          </span>
+                          <span className="font-bold text-lg">
+                            LOCAVORE TO-GO
+                          </span>
+                          <span className="font-subtitle font-semibold">
+                            Executive Chef
+                          </span>
+                        </div>
                       </div>
                       <div>
                         <Image
@@ -240,7 +254,7 @@ export default function Family() {
                           objectPosition="top"
                         />
                       </div>
-                      <div>
+                      <div data-image="the-night-rooster">
                         <Image
                           src={`/placeholder/Additional-Locavore-9.jpg`}
                           alt={'Locavore'}
@@ -248,6 +262,17 @@ export default function Family() {
                           objectFit="cover"
                           objectPosition="top"
                         />
+                        <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-nightrooster bg-opacity-75 flex flex-col items-center justify-between py-4">
+                          <span className="font-subtitle font-semibold">
+                            John Doe
+                          </span>
+                          <span className="font-bold text-lg">
+                            THE NIGHT ROOSTER
+                          </span>
+                          <span className="font-subtitle font-semibold">
+                            Mixologist
+                          </span>
+                        </div>
                       </div>
                       <div>
                         <Image
@@ -258,7 +283,7 @@ export default function Family() {
                           objectPosition="top"
                         />
                       </div>
-                      <div>
+                      <div data-image="nusantara">
                         <Image
                           src={`/placeholder/Additional-Locavore-11.jpg`}
                           alt={'Locavore'}
@@ -266,6 +291,15 @@ export default function Family() {
                           objectFit="cover"
                           objectPosition="top"
                         />
+                        <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-nusantara bg-opacity-75 flex flex-col items-center justify-between py-4">
+                          <span className="font-subtitle font-semibold">
+                            John Doe
+                          </span>
+                          <span className="font-bold text-lg">NUSANTARA</span>
+                          <span className="font-subtitle font-semibold">
+                            Marketing
+                          </span>
+                        </div>
                       </div>
                       <div>
                         <Image
@@ -297,6 +331,69 @@ export default function Family() {
                       <div>
                         <Image
                           src={`/placeholder/Locavore-Headshot-2.jpg`}
+                          alt={'Locavore'}
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="top"
+                        />
+                      </div>
+                      <div>
+                        <Image
+                          src={`/placeholder/Locavore-Headshot-3.jpg`}
+                          alt={'Locavore'}
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="top"
+                        />
+                      </div>
+                      <div data-image="local-parts">
+                        <Image
+                          src={`/placeholder/Locavore-Headshot-4.jpg`}
+                          alt={'Locavore'}
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="top"
+                        />
+                        <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-localparts bg-opacity-75 flex flex-col items-center justify-between py-4">
+                          <span className="font-subtitle font-semibold">
+                            Andrew Doe
+                          </span>
+                          <span className="font-bold text-lg">LOCAL PARTS</span>
+                          <span className="font-subtitle font-semibold">
+                            Food Scientist
+                          </span>
+                        </div>
+                      </div>
+                      <div>
+                        <Image
+                          src={`/placeholder/Locavore-Headshot-5.jpg`}
+                          alt={'Locavore'}
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="top"
+                        />
+                      </div>
+                      <div data-image="localab">
+                        <Image
+                          src={`/placeholder/Locavore-Headshot-6.jpg`}
+                          alt={'Locavore'}
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="top"
+                        />
+                        <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-localab bg-opacity-75 flex flex-col items-center justify-between py-4">
+                          <span className="font-subtitle font-semibold">
+                            Andrew Doe
+                          </span>
+                          <span className="font-bold text-lg">LOCALAB</span>
+                          <span className="font-subtitle font-semibold">
+                            Food Scientist
+                          </span>
+                        </div>
+                      </div>
+                      <div>
+                        <Image
+                          src={`/placeholder/Locavore-Headshot-7.jpg`}
                           alt={'Locavore'}
                           layout="fill"
                           objectFit="cover"
