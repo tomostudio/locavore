@@ -1,6 +1,8 @@
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, { Pagination } from 'swiper'
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -8,13 +10,16 @@ import HeaderGap from '@/components/modules/headerGap'
 
 // Components
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
-import PillButton from '@/components/utils/pillButton'
 import CardPortrait from '@/components/utils/cardPortrait'
+import PillButton from '@/components/utils/pillButton'
 
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
 import preference from '@/helpers/preset/scrollPreference'
 import Link from '@/components/utils/link'
+
+// install Swiper modules
+SwiperCore.use([Pagination])
 
 export default function Test() {
   return (
@@ -35,53 +40,77 @@ export default function Test() {
                     {/* Title */}
                     <div className="w-full h-full setflex-center">
                       <span className="font-subtitle italic text-xl">
-                        Issue 0 — March 2021
+                        Issue O — March 2021
                       </span>
                       <h1 className=" font-title font-normal">
                         Under Construction
                       </h1>
                     </div>
                     {/* Card */}
-                    <div
-                      className="w-full h-96 flex space-x-4"
-                      id="editorial-slider"
-                    >
-                      <CardPortrait
-                        className="bg-white border border-black w-72"
-                        title="5. Ulekan"
-                        category="Culture"
-                        timeRead="20 min read"
-                        src="/placeholder/locavore-rintik-crop-11.jpg"
-                        alt="Locavore"
-                      />
-                      <CardPortrait
-                        className="bg-white border border-black w-72"
-                        title="5. Ulekan"
-                        category="Culture"
-                        timeRead="20 min read"
-                        src="/placeholder/locavore-rintik-crop-11.jpg"
-                        alt="Locavore"
-                      />
-                      <CardPortrait
-                        className="bg-white border border-black w-72"
-                        title="5. Ulekan"
-                        category="Culture"
-                        timeRead="20 min read"
-                        src="/placeholder/locavore-rintik-crop-11.jpg"
-                        alt="Locavore"
-                      />
-                      <CardPortrait
-                        className="bg-white border border-black w-72"
-                        title="5. Ulekan"
-                        category="Culture"
-                        timeRead="20 min read"
-                        src="/placeholder/locavore-rintik-crop-11.jpg"
-                        alt="Locavore"
-                      />
+                    <div className="w-full h-96 flex" id="editorial-slider">
+                      <Swiper
+                        slidesPerView="auto"
+                        spaceBetween={20}
+                        pagination={{
+                          clickable: true,
+                        }}
+                        id="swipe-editorial"
+                      >
+                        <SwiperSlide>
+                          <CardPortrait
+                            className="border border-black w-full h-96"
+                            title="5. Ulekan"
+                            category="Culture"
+                            timeRead="20 min read"
+                            src="/placeholder/content 16(5).png"
+                            alt="Locavore"
+                          />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <CardPortrait
+                            className="border border-black w-full h-96"
+                            title="5. Ulekan"
+                            category="Culture"
+                            timeRead="20 min read"
+                            src="/placeholder/content 16(5).png"
+                            alt="Locavore"
+                          />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <CardPortrait
+                            className="border border-black w-full h-96"
+                            title="5. Ulekan"
+                            category="Culture"
+                            timeRead="20 min read"
+                            src="/placeholder/content 16(5).png"
+                            alt="Locavore"
+                          />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <CardPortrait
+                            className="border border-black w-full h-96"
+                            title="5. Ulekan"
+                            category="Culture"
+                            timeRead="20 min read"
+                            src="/placeholder/content 16(5).png"
+                            alt="Locavore"
+                          />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                          <CardPortrait
+                            className="border border-black w-full h-96"
+                            title="5. Ulekan"
+                            category="Culture"
+                            timeRead="20 min read"
+                            src="/placeholder/content 16(5).png"
+                            alt="Locavore"
+                          />
+                        </SwiperSlide>
+                      </Swiper>
                     </div>
                     <div className="w-full setflex-center">
                       <div className="mb-5 text-xs">
-                        <span className="font-bold">16</span>-<span>23</span>
+                        <span className="font-bold">1</span>-<span>15</span>
                       </div>
                       <div className="relative w-full setflex-center">
                         <div className="relative border-b w-48 h-px border-black">
