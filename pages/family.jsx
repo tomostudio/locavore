@@ -1,4 +1,3 @@
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
@@ -11,13 +10,10 @@ import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
 
 // Components
-import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
 import Arrow from '@/components/utils/arrow'
 import FancyLink from '@/components/utils/fancyLink'
 
 // Helpers
-import preference from '@/helpers/preset/scrollPreference'
-import PushScrollGlobal from '@/helpers/globalscroll'
 import Link from '@/components/utils/link'
 import colors from '@/helpers/preset/colors'
 import { useAppContext } from 'context/state'

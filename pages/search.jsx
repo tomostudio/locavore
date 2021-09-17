@@ -1,5 +1,4 @@
 import { NextSeo } from 'next-seo'
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 
 // Layout
@@ -10,15 +9,12 @@ import HeaderGap from '@/components/modules/headerGap'
 
 // Components
 import FancyLink from '@/components/utils/fancyLink'
-import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
 import PillButton from '@/components/utils/pillButton'
 import Arrow from '@/components/utils/arrow'
 import CardPortrait from '@/components/utils/cardPortrait'
 import FixedButton from '@/components/utils/fixedButton'
 
 // Helpers
-import PushScrollGlobal from '@/helpers/globalscroll'
-import preference from '@/helpers/preset/scrollPreference'
 import Link from '@/components/utils/link'
 
 export default function Search() {
