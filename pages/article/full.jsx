@@ -117,13 +117,13 @@ export default function Full() {
                     {/* Orange Component */}
                     <div className="w-full h-auto bg-culture px-8 py-5">
                       <div className="w-full h-full bg-white rounded-2xl py-14 setflex-center">
-                        <div className="w-46rem space-y-10">
+                        <div className="w-content space-y-10">
                           {/* Title */}
                           <div className="font-subtitle text-center font-bold">
                             <span className="block italic">Part 1</span>
                             Tools of The Trade
                           </div>
-                          <p className="px-paddingContainer">
+                          <p className="px-paddingContent">
                             Lorem Ipsum is simply dummy text of the printing and
                             typesetting industry. Lorem Ipsum has been the
                             industry's standard dummy text ever since the 1500s,
@@ -147,12 +147,12 @@ export default function Full() {
                             and Evil) by Cicero, written in 45 BC. Letraset
                             sheets containing Lorem Ipsum passages.
                           </p>
-                          <p className="font-title font-bold uppercase px-paddingContainer">
+                          <p className="font-title font-bold uppercase px-paddingContent">
                             It has roots in a piece of classical west Latin
                             literature from 45 BC, making it over 2000 years old
                             ever since.
                           </p>
-                          <p className="px-paddingContainer">
+                          <p className="px-paddingContent">
                             Lorem Ipsum is simply dummy text of the printing and
                             typesetting industry. Lorem Ipsum has been the
                             industry's standard dummy text ever since the 1500s,
@@ -167,7 +167,7 @@ export default function Full() {
                             Lorem Ipsum.
                           </p>
                           {/* Image */}
-                          <div className="w-full h-auto px-paddingContainer">
+                          <div className="w-full h-auto px-paddingContent">
                             <div className="relative w-full h-80">
                               <Image
                                 src={`/placeholder/Content 3.png`}
@@ -185,7 +185,7 @@ export default function Full() {
                               </span>
                             </div>
                           </div>
-                          <p className="px-paddingContainer">
+                          <p className="px-paddingContent">
                             Contrary to popular belief, Lorem Ipsum is not
                             simply random text. It has roots in a piece of
                             classical Latin literature from 45 BC, making it
@@ -196,13 +196,13 @@ export default function Full() {
                     </div>
                     {/* White Component */}
                     <div className="w-full h-auto px-8 py-14 setflex-center">
-                      <div className="w-46rem space-y-10">
+                      <div className="w-content space-y-10">
                         {/* Title */}
                         <div className="font-subtitle text-center font-bold">
                           <span className="block italic">Part 2</span>
                           Evolution of The Food Industry
                         </div>
-                        <p className="px-paddingContainer">
+                        <p className="px-paddingContent">
                           Lorem Ipsum is simply dummy text of the printing and
                           typesetting industry. Lorem Ipsum has been the
                           industry's standard dummy text ever since the 1500s,
@@ -245,7 +245,7 @@ export default function Full() {
                           passage of Lorem Ipsum, you need to be sure there
                           isn't anything hidden in the middle of text.
                         </p>
-                        <p className="px-paddingContainer">
+                        <p className="px-paddingContent">
                           It has survived not only five centuries, but also the
                           leap into electronic typesetting, remaining
                           essentially unchanged. It was popularised in the 1960s
@@ -269,7 +269,7 @@ export default function Full() {
                           objectPosition="center"
                         />
                       </div>
-                      <div className="w-46rem px-paddingContainer flex items-end mt-3">
+                      <div className="w-content px-paddingContent flex items-end mt-3">
                         <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
                         <span className="w-full font-subtitle text-sm font-bold">
                           Lorem Ipsum is simply dummy text of the printing and
@@ -279,7 +279,7 @@ export default function Full() {
                     </div>
                     {/* Image */}
                     <div className="w-full h-auto setflex-center my-14">
-                      <div className="relative w-46rem px-paddingContainer">
+                      <div className="relative w-content px-paddingContent">
                         <div className="relative w-full h-72">
                           <Image
                             src={`/placeholder/Content 2.png`}
@@ -302,12 +302,12 @@ export default function Full() {
                     {/* Orange Component */}
                     <div className="w-full h-auto bg-culture px-8 py-5">
                       <div className="w-full h-full bg-white rounded-2xl py-14 setflex-center">
-                        <div className="w-46rem space-y-10">
+                        <div className="w-content space-y-10">
                           <div className="font-subtitle text-center font-bold">
                             <span className="block italic">Part 3</span>
                             You Are What You Eat
                           </div>
-                          <p className="px-paddingContainer">
+                          <p className="px-paddingContent">
                             It was popularised in the 1960s with the release of
                             Letraset sheets containing Lorem Ipsum passages, and
                             more recently with desktop publishing software like
@@ -322,7 +322,7 @@ export default function Full() {
                             material.
                           </p>
                           {/* Image */}
-                          <div className="w-full h-auto px-paddingContainer">
+                          <div className="w-full h-auto px-paddingContent">
                             <div className="relative w-full h-64">
                               <Image
                                 src={`/placeholder/locavore-rintik-crop-18.jpg`}

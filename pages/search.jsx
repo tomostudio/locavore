@@ -48,7 +48,7 @@ export default function Search() {
                           Articles
                         </h1>
                         {/* Form Search */}
-                        <div className="w-46rem mt-10 mb-8 px-paddingContainer">
+                        <div className="w-content mt-10 mb-8 px-paddingContent">
                           <form className="mb-8 flex w-full h-full flex-col justify-between">
                             <div className="relative w-full">
                               <input

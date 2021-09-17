@@ -78,7 +78,7 @@ export default function Family() {
                         </h2>
                         Locavore
                       </h1>
-                      <p className="mt-14 w-46rem px-paddingContainer">
+                      <p className="mt-14 w-content px-paddingContent">
                         Lorem Ipsum is simply dummy text of the printing and
                         typesetting industry. Lorem Ipsum has been the
                         industry's standard dummy text ever since the 1500s,
@@ -309,7 +309,7 @@ export default function Family() {
                       className="w-full rounded-t-2xl setflex-center bg-nightrooster"
                       id="rooster"
                     >
-                      <div className="w-46rem px-paddingContainer mb-14 pb-14 border-b border-black setflex-center">
+                      <div className="w-content px-paddingContent mb-14 pb-14 border-b border-black setflex-center">
                         <div className="w-full setflex-center">
                           <span className="text-center py-3">
                             THE NIGHT ROOSTER

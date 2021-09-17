@@ -47,7 +47,8 @@ module.exports = {
         '36rem': '36rem',
         '46rem': '46rem',
         '56rem': '56rem',
-        '60rem': '60rem'
+        '60rem': '60rem',
+        'content': '46rem',
       },
       colors: {
         culture: '#D66A51',
@@ -76,7 +77,7 @@ module.exports = {
         '50%': '50%',
       },
       spacing: {
-        paddingContainer: "5rem"
+        paddingContent: "5rem"
       }
     },
   },

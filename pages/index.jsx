@@ -48,7 +48,7 @@ export default function Home() {
               <span className="content-issue w-full h-20vh setflex-center opacity-0">
                 MARCH 2021 • 15 ARTICLES
               </span>
-              <p className="content-issue w-46rem px-paddingContainer text-center opacity-0">
+              <p className="content-issue w-content px-paddingContent text-center opacity-0">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s.
