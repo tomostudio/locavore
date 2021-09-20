@@ -74,7 +74,10 @@ export default function Search() {
                   className="w-full h-auto flex gap-8 flex-wrap"
                   id="card-search"
                 >
-                  <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
+                  <FancyLink
+                    destination="/article/full"
+                    className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col"
+                  >
                     <div className="text-center w-full py-3">
                       <span>ISSUE 1</span>
                     </div>
@@ -86,72 +89,87 @@ export default function Search() {
                       src="/placeholder/locavore-rintik-crop-11.jpg"
                       alt="Locavore"
                     />
-                  </div>
-                  <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
+                  </FancyLink>
+                  <FancyLink
+                    destination="/article/full"
+                    className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col"
+                  >
                     <div className="text-center w-full py-3">
                       <span>ISSUE 1</span>
                     </div>
                     <CardPortrait
-                      className="bg-white border border-black w-full"
-                      title="16. Making Statements"
+                      className="bg-culture w-full"
+                      title="7. Facial Expressions"
                       category="Culture"
                       timeRead="20 min read"
                       src="/placeholder/locavore-rintik-crop-11.jpg"
                       alt="Locavore"
                     />
-                  </div>
-                  <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
+                  </FancyLink>
+                  <FancyLink
+                    destination="/article/full"
+                    className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col"
+                  >
                     <div className="text-center w-full py-3">
                       <span>ISSUE 1</span>
                     </div>
                     <CardPortrait
-                      className="bg-events w-full"
-                      title="8. Semata Wayang"
-                      category="Events"
-                      timeRead="20 min read"
-                      src="/placeholder/locavore-rintik-crop-11.jpg"
-                      alt="Locavore"
-                    />
-                  </div>
-                  <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
-                    <div className="text-center w-full py-3">
-                      <span>ISSUE 5</span>
-                    </div>
-                    <CardPortrait
-                      className="bg-food w-full"
-                      title="11. Some Like It Hot"
-                      category="Culture  •  Food"
-                      timeRead="20 min read"
-                      src="/placeholder/locavore-rintik-crop-11.jpg"
-                      alt="Locavore"
-                    />
-                  </div>
-                  <div className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col">
-                    <div className="text-center w-full py-3">
-                      <span>ISSUE 8</span>
-                    </div>
-                    <CardPortrait
-                      className="bg-interview w-full"
-                      title="14. Eelke Says"
+                      className="bg-culture w-full"
+                      title="7. Facial Expressions"
                       category="Culture"
                       timeRead="20 min read"
                       src="/placeholder/locavore-rintik-crop-11.jpg"
                       alt="Locavore"
                     />
-                  </div>
-                  <div className="relative w-full bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
+                  </FancyLink>
+                  <FancyLink
+                    destination="/article/full"
+                    className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col"
+                  >
                     <div className="text-center w-full py-3">
-                      <span>ISSUE 0</span>
+                      <span>ISSUE 1</span>
                     </div>
                     <CardPortrait
-                      className="bg-white border border-black w-full"
-                      title="16. Wall of Fame"
+                      className="bg-culture w-full"
+                      title="7. Facial Expressions"
                       category="Culture"
                       timeRead="20 min read"
                       src="/placeholder/locavore-rintik-crop-11.jpg"
                       alt="Locavore"
                     />
-                  </div>
+                  </FancyLink>
+                  <FancyLink
+                    destination="/article/full"
+                    className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col"
+                  >
+                    <div className="text-center w-full py-3">
+                      <span>ISSUE 1</span>
+                    </div>
+                    <CardPortrait
+                      className="bg-culture w-full"
+                      title="7. Facial Expressions"
+                      category="Culture"
+                      timeRead="20 min read"
+                      src="/placeholder/locavore-rintik-crop-11.jpg"
+                      alt="Locavore"
+                    />
+                  </FancyLink>
+                  <FancyLink
+                    destination="/article/full"
+                    className="relative w-full bg-grayCard rounded-2xl px-5 pb-5 flex flex-col"
+                  >
+                    <div className="text-center w-full py-3">
+                      <span>ISSUE 1</span>
+                    </div>
+                    <CardPortrait
+                      className="bg-culture w-full"
+                      title="7. Facial Expressions"
+                      category="Culture"
+                      timeRead="20 min read"
+                      src="/placeholder/locavore-rintik-crop-11.jpg"
+                      alt="Locavore"
+                    />
+                  </FancyLink>
                 </div>
                 <FancyLink className="mt-14 py-4 px-6 text-xs tracking-widest opacity-80 border border-grayBorder rounded-xl">
                   LOAD MORE
