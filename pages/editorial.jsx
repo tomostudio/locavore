@@ -79,7 +79,7 @@ export default function Editorial() {
                         </div>
                         <div className="flex items-end">
                           <FancyLink
-                            destination="/"
+                            destination="/editorial/metamorphosis"
                             className="px-10 py-7 border border-white rounded-50% text-white"
                           >
                             READ ISSUE
@@ -120,7 +120,7 @@ export default function Editorial() {
                         </div>
                         <div className="flex items-end">
                           <FancyLink
-                            destination="/"
+                            destination="/editorial/metamorphosis"
                             className="px-10 py-7 border border-white rounded-50% text-white"
                           >
                             READ ISSUE
@@ -161,7 +161,7 @@ export default function Editorial() {
                         </div>
                         <div className="flex items-end">
                           <FancyLink
-                            destination="/"
+                            destination="/editorial/metamorphosis"
                             className="px-10 py-7 border border-white rounded-50% text-white"
                           >
                             READ ISSUE
@@ -202,7 +202,7 @@ export default function Editorial() {
                         </div>
                         <div className="flex items-end">
                           <FancyLink
-                            destination="/"
+                            destination="/editorial/metamorphosis"
                             className="px-10 py-7 border border-white rounded-50% text-white"
                           >
                             READ ISSUE
