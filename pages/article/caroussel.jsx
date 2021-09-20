@@ -130,7 +130,7 @@ export default function Caroussel() {
                   </div>
                 </div>
                 {/* List Gallery */}
-                <div className="relative w-full h-44">
+                <div className="relative w-full h-36">
                   <div className="absolute left-0 w-full h-full flex space-x-3">
                     <Swiper
                       slidesPerView="auto"
