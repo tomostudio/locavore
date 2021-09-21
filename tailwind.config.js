@@ -67,7 +67,8 @@ module.exports = {
         grayBorder: '#676767',
         grayCard: '#F0F0F0',
         grayDarkerCard: '#DEDCDA',
-        grayFont: "#676767"
+        grayFont: "#676767",
+        blackFooter: "#181818"
       },
       inset: {
         '-0.5': '-0.5px',

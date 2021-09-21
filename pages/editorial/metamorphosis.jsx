@@ -6,6 +6,7 @@ import SwiperCore, { Pagination } from 'swiper'
 // Layout
 import Layout from '@/components/modules/layout'
 import HeaderGap from '@/components/modules/headerGap'
+import Footer from '@/components/modules/footer'
 
 // Components
 import CardPortrait from '@/components/utils/cardPortrait'
@@ -13,6 +14,7 @@ import PillButton from '@/components/utils/pillButton'
 
 // Helpers
 import Link from '@/components/utils/link'
+import StickyButton from '@/components/utils/stickyButton'
 
 // install Swiper modules
 SwiperCore.use([Pagination])
@@ -106,13 +108,12 @@ export default function Metamorphosis() {
                 </div>
               </div>
             </div>
-            {/* Button */}
-            <div className="w-full setflex-center">
-              <PillButton destination="/editorial" arrow="left">
-                ISSUE INDEX
-              </PillButton>
-            </div>
           </section>
+          {/* Button Sticky */}
+          <StickyButton destination="/editorial" arrow="left">
+            ISSUE INDEX
+          </StickyButton>
+          <Footer />
         </m.main>
       </LazyMotion>
       <Link />

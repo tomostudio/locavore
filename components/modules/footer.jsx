@@ -4,10 +4,10 @@ import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <section className="w-full h-52 flex bg-black text-white">
-      <Container className="flex my-8">
+    <section className="w-full h-52 max-md:h-full flex bg-blackFooter text-white">
+      <Container className="flex max-md:flex-col my-8">
         <div className="w-full h-full">
-          <div className="h-full w-80 flex flex-col">
+          <div className="h-full max-md:space-y-10 w-80 max-md:w-full flex flex-col">
             <div className="w-full h-full">
               <span className="text-sm">UBUD 15:46</span>
             </div>
@@ -34,8 +34,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-full flex flex-col justify-between">
-          <div className="w-auto h-full space-x-6 flex justify-end">
+        <div className="w-full h-full max-md:mt-10 max-md:space-y-10 flex flex-col justify-between">
+          <div className="w-auto h-full space-x-6 flex justify-end max-md:justify-start">
             <div className="relative w-16px h-16px">
               <Image
                 src={`/instagram-white.png`}
@@ -73,7 +73,7 @@ const Footer = () => {
               />
             </div>
           </div>
-          <div className="w-full h-full space-x-6 flex justify-end items-end">
+          <div className="w-full h-full">
             <span className="text-sm">
               © 2021 Locavore. All Rights Reserved.
             </span>

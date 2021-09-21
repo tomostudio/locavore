@@ -12,7 +12,7 @@ import HeaderGap from '@/components/modules/headerGap'
 // Components
 import PillButton from '@/components/utils/pillButton'
 import CardPortrait from '@/components/utils/cardPortrait'
-import FixedButton from '@/components/utils/fixedButton'
+import StickyButton from '@/components/utils/stickyButton'
 
 // Helpers
 import Link from '@/components/utils/link'
@@ -27,8 +27,8 @@ export default function Full() {
           {/* Header Gap */}
           <HeaderGap />
           {/* Untuk Content */}
-          <section className="pt-10 pb-24 w-full h-full flex flex-col">
-            <Container className="pb-14 space-y-10">
+          <section className="pt-10 pb-20 w-full h-full flex flex-col">
+            <Container className="mb-14 space-y-10">
               {/* Title */}
               <h1 className="m-0 font-title font-normal">
                 In Search of Regional Specialties Articles
@@ -334,8 +334,8 @@ export default function Full() {
               </div>
             </div>
             {/* Card Next Article */}
-            <div className="w-full setflex-center">
-              <div className="h-40 my-14 setflex-center w-full">
+            <div className="w-full setflex-center mt-14 space-y-14">
+              <div className="h-40 setflex-center w-full">
                 <hr className="bg-black border border-black h-full w-px" />
               </div>
               <div className="relative w-full h-96 setflex-center">
@@ -357,14 +357,14 @@ export default function Full() {
               </div>
             </div>
           </section>
+          {/* Button Sticky */}
+          <StickyButton destination="/editorial/metamorphosis" arrow="left">
+            ISSUE 1
+          </StickyButton>
           <Footer />
         </m.main>
       </LazyMotion>
       <Link />
-      {/* Button Fixed */}
-      <FixedButton destination="/editorial/metamorphosis" arrow="left">
-        ISSUE 1
-      </FixedButton>
     </Layout>
   )
 }

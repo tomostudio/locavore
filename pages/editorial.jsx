@@ -11,7 +11,7 @@ import HeaderGap from '@/components/modules/headerGap'
 // Components
 import PillButton from '@/components/utils/pillButton'
 import FancyLink from '@/components/utils/fancyLink'
-import FixedButton from '@/components/utils/fixedButton'
+import StickyButton from '@/components/utils/stickyButton'
 
 // Helpers
 import Link from '@/components/utils/link'
@@ -26,7 +26,7 @@ export default function Editorial() {
           {/* Header Gap */}
           <HeaderGap />
           {/* Untuk Content */}
-          <section className="pt-10 pb-14 w-full h-full flex flex-col">
+          <section className="pt-10 pb-10 w-full h-full flex flex-col">
             <Container>
               <div className="w-full h-full setflex-center">
                 {/* Title */}
@@ -215,14 +215,14 @@ export default function Editorial() {
               </div>
             </Container>
           </section>
+          {/* Button Sticky */}
+          <StickyButton destination="/search" arrow="right">
+            SEARCH ALL ARTICLES
+          </StickyButton>
           <Footer />
         </m.main>
       </LazyMotion>
       <Link />
-      {/* Button Fixed */}
-      <FixedButton destination="/search" arrow="right">
-        SEARCH ALL ARTICLES
-      </FixedButton>
     </Layout>
   )
 }

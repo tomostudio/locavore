@@ -15,7 +15,7 @@ import Footer from '@/components/modules/footer'
 import PillButton from '@/components/utils/pillButton'
 import Arrow from '@/components/utils/arrow'
 import CardPortrait from '@/components/utils/cardPortrait'
-import FixedButton from '@/components/utils/fixedButton'
+import StickyButton from '@/components/utils/stickyButton'
 
 // Helpers
 import Link from '@/components/utils/link'
@@ -33,8 +33,8 @@ export default function Caroussel() {
           {/* Header Gap */}
           <HeaderGap />
           {/* Untuk Content */}
-          <section className="py-10 w-full h-full flex flex-col">
-            <Container className="pb-14 space-y-10">
+          <section className="pt-10 pb-20 w-full h-full flex flex-col">
+            <Container className="mb-14 space-y-10">
               {/* Title */}
               <h1 className="m-0 font-title font-normal">
                 In Search of Regional Specialties Articles
@@ -266,13 +266,13 @@ export default function Caroussel() {
               </div>
             </Container>
             {/* Card Next Article */}
-            <div className="w-full setflex-center space-y-14 mb-14">
+            <div className="w-full setflex-center space-y-14">
               <div className="h-40 setflex-center w-full">
                 <hr className="bg-black border border-black h-full w-px" />
               </div>
-              <div className="relative w-full mb-14 h-96 setflex-center">
+              <div className="relative w-full h-96 setflex-center">
                 <CardPortrait
-                  className="rotate-6 bg-food w-72"
+                  className="rotate-6 bg-food w-64 mx-4"
                   title="5. Ulekan"
                   category="Culture"
                   timeRead="20 min read"
@@ -289,14 +289,14 @@ export default function Caroussel() {
               </div>
             </div>
           </section>
+          {/* Button Sticky */}
+          <StickyButton destination="/editorial/metamorphosis" arrow="left">
+            ISSUE 1
+          </StickyButton>
           <Footer />
         </m.main>
       </LazyMotion>
       <Link />
-      {/* Button Fixed */}
-      <FixedButton destination="/editorial/metamorphosis" arrow="left">
-        ISSUE 1
-      </FixedButton>
     </Layout>
   )
 }

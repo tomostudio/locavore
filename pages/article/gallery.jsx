@@ -12,7 +12,7 @@ import HeaderGap from '@/components/modules/headerGap'
 // Components
 import PillButton from '@/components/utils/pillButton'
 import CardPortrait from '@/components/utils/cardPortrait'
-import FixedButton from '@/components/utils/fixedButton'
+import StickyButton from '@/components/utils/stickyButton'
 
 // Helpers
 import Link from '@/components/utils/link'
@@ -27,77 +27,80 @@ export default function Gallery() {
           {/* Header Gap */}
           <HeaderGap />
           {/* Untuk Content */}
-          <section className="py-10 w-full h-full flex flex-col">
-            <Container className="pb-14 space-y-10">
-              {/* Title */}
-              <h1 className="m-0 font-title font-normal">
-                In Search of Regional Specialties Articles
-              </h1>
-              <div className="w-full flex items-center justify-between">
-                {/* Category */}
-                <div className="w-full space-x-4">
-                  <PillButton
-                    destination="/"
-                    className="text-xs opacity-100 border-black"
-                  >
-                    Food
-                  </PillButton>
-                  <PillButton
-                    destination="/"
-                    className="text-xs opacity-100 border-black"
-                  >
-                    Culture
-                  </PillButton>
-                  <span className="ml-2 font-subtitle italic font-bold">
-                    March 2021
-                  </span>
+          <section className="pt-10 pb-14 w-full h-full flex flex-col">
+            <Container className="mb-14">
+              <div className="w-full space-y-10 mb-14">
+                {/* Title */}
+                <h1 className="m-0 font-title font-normal">
+                  In Search of Regional Specialties Articles
+                </h1>
+                <div className="w-full flex items-center justify-between">
+                  {/* Category */}
+                  <div className="w-full space-x-4">
+                    <PillButton
+                      destination="/"
+                      className="text-xs opacity-100 border-black"
+                    >
+                      Food
+                    </PillButton>
+                    <PillButton
+                      destination="/"
+                      className="text-xs opacity-100 border-black"
+                    >
+                      Culture
+                    </PillButton>
+                    <span className="ml-2 font-subtitle italic font-bold">
+                      March 2021
+                    </span>
+                  </div>
+                  {/* Social Media */}
+                  <div className="w-full space-x-4 flex justify-end">
+                    <div className="relative w-16px h-16px">
+                      <Image
+                        src={`/facebook.png`}
+                        alt={'Locavore'}
+                        layout="fill"
+                        objectFit="contain"
+                        objectPosition="center"
+                      />
+                    </div>
+                    <div className="relative w-16px h-16px">
+                      <Image
+                        src={`/twitter.png`}
+                        alt={'Locavore'}
+                        layout="fill"
+                        objectFit="contain"
+                        objectPosition="center"
+                      />
+                    </div>
+                    <div className="relative w-16px h-16px">
+                      <Image
+                        src={`/mail.png`}
+                        alt={'Locavore'}
+                        layout="fill"
+                        objectFit="contain"
+                        objectPosition="center"
+                      />
+                    </div>
+                  </div>
                 </div>
-                {/* Social Media */}
-                <div className="w-full space-x-4 flex justify-end">
-                  <div className="relative w-16px h-16px">
-                    <Image
-                      src={`/facebook.png`}
-                      alt={'Locavore'}
-                      layout="fill"
-                      objectFit="contain"
-                      objectPosition="center"
-                    />
-                  </div>
-                  <div className="relative w-16px h-16px">
-                    <Image
-                      src={`/twitter.png`}
-                      alt={'Locavore'}
-                      layout="fill"
-                      objectFit="contain"
-                      objectPosition="center"
-                    />
-                  </div>
-                  <div className="relative w-16px h-16px">
-                    <Image
-                      src={`/mail.png`}
-                      alt={'Locavore'}
-                      layout="fill"
-                      objectFit="contain"
-                      objectPosition="center"
-                    />
-                  </div>
-                </div>
+                {/* Description */}
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. Lorem Ipsum is simply dummy text of the
+                  printing and typesetting industry. Lorem Ipsum has been the
+                  industry's standard dummy text ever since the 1500s, when an
+                  unknown printer took a galley of type and scrambled it to make
+                  a type specimen book. It has survived not only five centuries,
+                  but also the leap into electronic typesetting, remaining
+                  essentially unchanged.
+                </p>
               </div>
-              {/* Description */}
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. Lorem
-                Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged.
-              </p>
               {/* Image */}
               <div className="w-full flex flex-col space-y-3">
                 <div className="relative w-full h-30rem">
@@ -148,7 +151,7 @@ export default function Gallery() {
                   </div>
                 </div>
               </div>
-              <div className="w-full flex space-x-3">
+              <div className="w-full mt-14 flex space-x-3">
                 <div className="relative w-full h-96">
                   <Image
                     src={`/placeholder/locavore-rintik-crop-18.jpg`}
@@ -170,13 +173,13 @@ export default function Gallery() {
               </div>
             </Container>
             {/* Card Next Article */}
-            <div className="w-full setflex-center space-y-14 mb-14">
+            <div className="w-full setflex-center space-y-14">
               <div className="h-40 setflex-center w-full">
                 <hr className="bg-black border border-black h-full w-px" />
               </div>
-              <div className="relative w-full mb-14 h-96 setflex-center">
+              <div className="relative w-full h-96 setflex-center">
                 <CardPortrait
-                  className="rotate-6 bg-food w-72"
+                  className="rotate-6 bg-food w-64 mx-4"
                   title="5. Ulekan"
                   category="Culture"
                   timeRead="20 min read"
@@ -193,14 +196,14 @@ export default function Gallery() {
               </div>
             </div>
           </section>
+          {/* Button Sticky */}
+          <StickyButton destination="/editorial/metamorphosis" arrow="left">
+            ISSUE 1
+          </StickyButton>
           <Footer />
         </m.main>
       </LazyMotion>
       <Link />
-      {/* Button Fixed */}
-      <FixedButton destination="/editorial/metamorphosis" arrow="left">
-        ISSUE 1
-      </FixedButton>
     </Layout>
   )
 }

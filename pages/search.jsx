@@ -12,7 +12,7 @@ import FancyLink from '@/components/utils/fancyLink'
 import PillButton from '@/components/utils/pillButton'
 import Arrow from '@/components/utils/arrow'
 import CardPortrait from '@/components/utils/cardPortrait'
-import FixedButton from '@/components/utils/fixedButton'
+import StickyButton from '@/components/utils/stickyButton'
 
 // Helpers
 import Link from '@/components/utils/link'
@@ -27,11 +27,11 @@ export default function Search() {
           {/* Header Gap */}
           <HeaderGap />
           {/* Untuk Content */}
-          <section className="pt-10 pb-14 w-full h-full flex flex-col">
+          <section className="pt-10 pb-10 w-full h-full flex flex-col">
             <Container>
               <div className="w-full h-full setflex-center">
                 {/* Title */}
-                <h1 className="m-0 flex justify-center items-center font-title font-normal">
+                <h1 className="m-0 flex justify-center items-center font-title font-normal max-md:text-4xl">
                   Search
                   <h2 className="my-0 mx-4 h-full font-subtitle italic font-normal">
                     All
@@ -39,7 +39,7 @@ export default function Search() {
                   Articles
                 </h1>
                 {/* Form Search */}
-                <div className="w-content mt-10 mb-8 px-paddingContent">
+                {/* <div className="w-content mt-10 mb-8 px-paddingContent">
                   <form className="mb-8 flex w-full h-full flex-col justify-between">
                     <div className="relative w-full">
                       <input
@@ -61,7 +61,7 @@ export default function Search() {
                     <PillButton className="text-xs">Features</PillButton>
                     <PillButton className="text-xs">...</PillButton>
                   </div>
-                </div>
+                </div> */}
                 {/* Category */}
               </div>
               <div className="relative w-full h-auto setflex-center">
@@ -71,7 +71,7 @@ export default function Search() {
                 </span>
                 {/* Card */}
                 <div
-                  className="w-full h-auto flex gap-8 flex-wrap"
+                  className="w-full h-auto flex max-md:flex-col gap-8 flex-wrap"
                   id="card-search"
                 >
                   <FancyLink
@@ -177,14 +177,14 @@ export default function Search() {
               </div>
             </Container>
           </section>
+          {/* Button Sticky */}
+          <StickyButton destination="/editorial" arrow="left">
+            Browse all issues
+          </StickyButton>
           <Footer />
         </m.main>
       </LazyMotion>
       <Link />
-      {/* Button Fixed */}
-      <FixedButton destination="/editorial" arrow="left">
-        Browse all issues
-      </FixedButton>
     </Layout>
   )
 }

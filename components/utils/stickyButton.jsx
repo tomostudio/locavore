@@ -1,9 +1,9 @@
 import PillButton from "./pillButton"
 
-const FixedButton = ({ destination, arrow, children }) => {
+const StickyButton = ({ destination, arrow, children }) => {
   return (
-    <div className="fixed bottom-0 left-0 w-full z-50">
-      <div className="setflex-center mb-6">
+    <div className="sticky bottom-6 mb-10 left-0 w-full z-50">
+      <div className="setflex-center">
         <PillButton
           destination={destination}
           arrow={arrow}
@@ -16,4 +16,4 @@ const FixedButton = ({ destination, arrow, children }) => {
   )
 }
 
-export default FixedButton
+export default StickyButton
