@@ -22,21 +22,21 @@ const Rooster = () => {
       <motion.section
         className="w-full setflex-center bg-nightrooster"
         id="rooster"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {
-            position: 'fixed',
-            transform: 'translateY(100%)',
-          },
-          visible: {
-            position: 'relative',
-            transform: 'translateY(0%)',
-            transition: {
-              duration: 1.5,
-            },
-          },
-        }}
+        // initial="hidden"
+        // animate="visible"
+        // variants={{
+        //   hidden: {
+        //     position: 'fixed',
+        //     transform: 'translateY(100%)',
+        //   },
+        //   visible: {
+        //     position: 'relative',
+        //     transform: 'translateY(0%)',
+        //     transition: {
+        //       duration: 1.5,
+        //     },
+        //   },
+        // }}
       >
         <div className="w-content px-paddingContent mb-14 pb-14 border-b border-black setflex-center">
           <div className="w-full setflex-center">
@@ -166,27 +166,42 @@ const Rooster = () => {
           className="relative w-56rem mb-24 flex flex-wrap"
           id="family-button"
         >
-          <button className="relative left-6 bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full">
+          <FancyLink
+            destination="/family/locavore"
+            className="relative left-6 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
+          >
             locavore
-          </button>
-          <button
-            onClick={() => handleClick('the-night-rooster')}
-            className="relative z-10 bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
+          </FancyLink>
+          <FancyLink
+            destination="/family/rooster"
+            className="relative z-10 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
           >
             THE NIGHT ROOSTER
-          </button>
-          <button className="relative right-6 z-20 bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full">
+          </FancyLink>
+          <FancyLink
+            destination="/family/nusantara"
+            className="relative right-6 z-20 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
+          >
             NUSANTARA
-          </button>
-          <button className="relative -top-px left-6 bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full">
+          </FancyLink>
+          <FancyLink
+            destination="/family/localab"
+            className="relative -top-px left-6 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
+          >
             LOCAVORE LAB
-          </button>
-          <button className="relative -top-px z-10 bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full">
+          </FancyLink>
+          <FancyLink
+            destination="/family/locaparts"
+            className="relative -top-px z-10 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
+          >
             LOCAL PARTS
-          </button>
-          <button className="relative -top-px right-6 z-20 bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full">
+          </FancyLink>
+          <FancyLink
+            destination="/family/togo"
+            className="relative -top-px right-6 z-20 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
+          >
             LOCAVORE TO-GO
-          </button>
+          </FancyLink>
         </div>
       </motion.section>
     </Layout>

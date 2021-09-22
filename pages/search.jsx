@@ -31,7 +31,7 @@ export default function Search() {
             <Container>
               <div className="w-full h-full setflex-center">
                 {/* Title */}
-                <h1 className="m-0 flex justify-center items-center font-title font-normal max-md:text-4xl">
+                <h1 className="m-0 flex max-md:flex-wrap justify-center items-center max-md:items-end font-title font-normal">
                   Search
                   <h2 className="my-0 mx-4 h-full font-subtitle italic font-normal">
                     All
@@ -39,7 +39,7 @@ export default function Search() {
                   Articles
                 </h1>
                 {/* Form Search */}
-                {/* <div className="w-content mt-10 mb-8 px-paddingContent">
+                <div className="w-content max-md:w-full max-md:p-0 mt-10 mb-8 px-paddingContent">
                   <form className="mb-8 flex w-full h-full flex-col justify-between">
                     <div className="relative w-full">
                       <input
@@ -54,14 +54,14 @@ export default function Search() {
                       />
                     </div>
                   </form>
-                  <div className="w-full h-auto opacity-80 flex items-start space-x-4">
+                  <div className="w-full h-auto opacity-80 flex max-md:flex-wrap items-start space-x-4 max-md:gap-3 max-md:space-x-0">
                     <span className="text-xs">CATEGORY</span>
-                    <PillButton className="text-xs">Food</PillButton>
-                    <PillButton className="text-xs">Culture</PillButton>
-                    <PillButton className="text-xs">Features</PillButton>
-                    <PillButton className="text-xs">...</PillButton>
+                    <PillButton className="text-xs max-md:py-1 px-3">Food</PillButton>
+                    <PillButton className="text-xs max-md:py-1 px-3">Culture</PillButton>
+                    <PillButton className="text-xs max-md:py-1 px-3">Features</PillButton>
+                    <PillButton className="text-xs max-md:py-1 px-3">...</PillButton>
                   </div>
-                </div> */}
+                </div>
                 {/* Category */}
               </div>
               <div className="relative w-full h-auto setflex-center">

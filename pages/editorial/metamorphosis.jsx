@@ -15,6 +15,7 @@ import PillButton from '@/components/utils/pillButton'
 // Helpers
 import Link from '@/components/utils/link'
 import StickyButton from '@/components/utils/stickyButton'
+import Container from '@/components/modules/container'
 
 // install Swiper modules
 SwiperCore.use([Pagination])
@@ -30,12 +31,16 @@ export default function Metamorphosis() {
           {/* Untuk Content */}
           <section className="py-10 w-full h-full flex flex-col space-y-10">
             {/* Title */}
-            <div className="w-full h-full setflex-center">
-              <span className="font-subtitle italic text-xl">
-                Issue 1 — March 2021
-              </span>
-              <h1 className=" font-title font-normal">Metamorphosis</h1>
-            </div>
+            <Container>
+              <div className="w-full h-full setflex-center">
+                <span className="font-subtitle italic text-xl">
+                  Issue 1 — March 2021
+                </span>
+                <h1 className=" font-title font-normal max-md:break-all max-md:text-center">
+                  Metamorphosis
+                </h1>
+              </div>
+            </Container>
             {/* Card */}
             <div className="w-full h-96 flex" id="editorial-slider">
               <Swiper
@@ -98,16 +103,18 @@ export default function Metamorphosis() {
                 </SwiperSlide>
               </Swiper>
             </div>
-            <div className="w-full setflex-center">
-              <div className="mb-5 text-xs">
-                <span className="font-bold">1</span>-<span>15</span>
-              </div>
-              <div className="relative w-full setflex-center">
-                <div className="relative border-b w-48 h-px border-black">
-                  <div className="absolute left-4 w-8 h-1 -top-px border border-black bg-black" />
+            <Container>
+              <div className="w-full setflex-center">
+                <div className="mb-5 text-xs">
+                  <span className="font-bold">1</span>-<span>15</span>
+                </div>
+                <div className="relative w-full setflex-center">
+                  <div className="relative border-b w-48 max-md:w-full h-px border-black">
+                    <div className="absolute left-4 w-8 h-1 -top-px border border-black bg-black" />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Container>
           </section>
           {/* Button Sticky */}
           <StickyButton destination="/editorial" arrow="left">
