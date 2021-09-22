@@ -16,8 +16,15 @@ import StickyButton from '@/components/utils/stickyButton'
 
 // Helpers
 import Link from '@/components/utils/link'
+import FancyLink from '@/components/utils/fancyLink'
 
 export default function Full() {
+  const onMouseClick = (slug) => {
+    document.querySelectorAll(`[data-slug*="${slug}"]`)[0].scrollIntoView({
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <Layout>
       <NextSeo title="Full" />
@@ -102,28 +109,44 @@ export default function Full() {
               <div className="flex flex-col space-y-4 text-culture">
                 <div>
                   <span className="block font-subtitle italic">Part 1</span>
-                  <span className="font-bold font-subtitle border-culture border-b">
+                  <FancyLink
+                    onClick={() => onMouseClick('tools-of-trade')}
+                    className="font-bold font-subtitle border-culture border-b"
+                  >
                     Tools of The Trade
-                  </span>
+                  </FancyLink>
                 </div>
                 <div>
                   <span className="block font-subtitle italic">Part 2</span>
-                  <span className="font-bold font-subtitle border-culture border-b">
-                    Evolution of Food Industry
-                  </span>
+                  <FancyLink
+                    onClick={() =>
+                      onMouseClick('evolution-of-the-food-industry')
+                    }
+                    className="font-bold font-subtitle border-culture border-b"
+                  >
+                    Evolution of The Food Industry
+                  </FancyLink>
                 </div>
                 <div>
                   <span className="block font-subtitle italic text-culture">
                     Part 3
                   </span>
-                  <span className="font-bold font-subtitle border-culture border-b">
+                  <FancyLink
+                    onClick={() =>
+                      onMouseClick('you-are-what-you-eat')
+                    }
+                    className="font-bold font-subtitle border-culture border-b"
+                  >
                     You Are What You Eat
-                  </span>
+                  </FancyLink>
                 </div>
               </div>
             </Container>
             {/* Orange Component */}
-            <div className="w-full h-auto bg-culture px-8 py-5">
+            <div
+              data-slug="tools-of-trade"
+              className="w-full h-auto bg-culture px-8 py-5"
+            >
               <div className="w-full h-full bg-white rounded-2xl py-14 setflex-center">
                 <div className="w-content space-y-10">
                   {/* Title */}
@@ -198,7 +221,10 @@ export default function Full() {
               </div>
             </div>
             {/* White Component */}
-            <div className="w-full h-auto px-8 py-14 setflex-center">
+            <div
+              data-slug="evolution-of-the-food-industry"
+              className="w-full h-auto px-8 py-14 setflex-center"
+            >
               <div className="w-content space-y-10">
                 {/* Title */}
                 <div className="font-subtitle text-center font-bold">
@@ -299,7 +325,7 @@ export default function Full() {
               </div>
             </div>
             {/* Orange Component */}
-            <div className="w-full h-auto bg-culture px-8 py-5">
+            <div data-slug="you-are-what-you-eat" className="w-full h-auto bg-culture px-8 py-5">
               <div className="w-full h-full bg-white rounded-2xl py-14 setflex-center">
                 <div className="w-content space-y-10">
                   <div className="font-subtitle text-center font-bold">

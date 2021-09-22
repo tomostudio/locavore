@@ -56,11 +56,15 @@ export default function Editorial() {
                       />
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col justify-between text-white p-8">
-                      <div className="w-full flex justify-between text-xs">
-                        <span>MARCH 2021</span>
-                        <span>15 ARTICLES</span>
-                      </div>
-                      <h1 className="font-title font-normal break-all">Metamorphosis</h1>
+                      {useMediaQuery('(max-width: 768px)') && (
+                        <div className="w-full flex justify-between text-xs">
+                          <span>MARCH 2021</span>
+                          <span>15 ARTICLES</span>
+                        </div>
+                      )}
+                      <h1 className="font-title font-normal break-all">
+                        Metamorphosis
+                      </h1>
                       <div className="w-full flex justify-between max-md:justify-center">
                         {!useMediaQuery('(max-width: 768px)') && (
                           <div className="w-4/5 flex flex-col max-md:hidden">
@@ -104,10 +108,12 @@ export default function Editorial() {
                       />
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col justify-between text-white p-8">
-                      <div className="w-full flex justify-between text-xs">
-                        <span>MARCH 2021</span>
-                        <span>15 ARTICLES</span>
-                      </div>
+                      {useMediaQuery('(max-width: 768px)') && (
+                        <div className="w-full flex justify-between text-xs">
+                          <span>MARCH 2021</span>
+                          <span>15 ARTICLES</span>
+                        </div>
+                      )}
                       <h1 className="font-title font-normal">Rempah Rempah</h1>
                       <div className="w-full flex justify-between max-md:justify-center">
                         {!useMediaQuery('(max-width: 768px)') && (
@@ -152,10 +158,12 @@ export default function Editorial() {
                       />
                     </div>
                     <div className="relative z-10 w-full h-full flex flex-col justify-between text-white p-8">
-                      <div className="w-full flex justify-between text-xs">
-                        <span>MARCH 2021</span>
-                        <span>15 ARTICLES</span>
-                      </div>
+                      {useMediaQuery('(max-width: 768px)') && (
+                        <div className="w-full flex justify-between text-xs">
+                          <span>MARCH 2021</span>
+                          <span>15 ARTICLES</span>
+                        </div>
+                      )}
                       <h1 className="font-title font-normal">Rempah Rempah</h1>
                       <div className="w-full flex justify-between max-md:justify-center">
                         {!useMediaQuery('(max-width: 768px)') && (
