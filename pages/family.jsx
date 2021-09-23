@@ -120,10 +120,9 @@ export default function Family() {
           LOCAVORE TO-GO
         </FancyLink>
       </div>
-      {/* <div className="sticky top-14 w-full bg-red-700 h-56" /> */}
       <section className="pt-10 w-full h-full flex flex-col">
         <div
-          className="relative w-full h-auto flex flex-wrap mt-14 mb-10"
+          className="relative w-full h-auto flex flex-wrap mt-14"
           id="family-image"
         >
           <div data-image="locavore">
