@@ -46,12 +46,6 @@ export default function Caroussel() {
     refSlide.current.swiper.slideTo(refList.current.swiper.realIndex + 1)
   }
 
-  const params = {
-    loop: true,
-    effect: 'fade',
-    speed: 0,
-  }
-
   return (
     <Layout>
       <NextSeo title="Caroussel" />
@@ -60,7 +54,7 @@ export default function Caroussel() {
       <HeaderGap />
       {/* Untuk Content */}
       <section className="pt-10 pb-20 w-full h-full flex flex-col">
-        <Container className="mb-3 space-y-10">
+        <Container className="mb-14 space-y-10">
           {/* Title */}
           <h1 className="m-0 font-title font-normal">
             In Search of Regional Specialties Articles
@@ -129,15 +123,18 @@ export default function Caroussel() {
             specimen book. It has survived not only five centuries, but also the
             leap into electronic typesetting, remaining essentially unchanged.
           </p>
+        </Container>
+        <Container className="mb-14 space-y-3">
           {/* Gallery */}
           <div className="relative w-full h-30rem">
             <Swiper
-              {...params}
+              loop={true}
               ref={refSlide}
+              speed={0}
               slidesPerView={1}
               loopedSlides={1}
               allowTouchMove={false}
-              className="relative w-full h-30rem"
+              className="w-full h-full"
             >
               <SwiperSlide>
                 <div className="relative w-full h-full">
@@ -219,19 +216,19 @@ export default function Caroussel() {
               </FancyLink>
             </div>
           </div>
-        </Container>
-        {/* List Gallery */}
-        <div className="w-full pl-10 mb-14">
+          {/* List Gallery */}
           <div className="relative w-full h-36">
             <div className="absolute left-0 w-full h-full flex space-x-3">
               <Swiper
                 slidesPerView="auto"
+                loop={true}
                 spaceBetween={20}
                 allowTouchMove={false}
                 ref={refList}
                 loop={true}
                 slideToClickedSlide={true}
                 // loopedSlides={2}
+                centeredSlides={true}
                 onSlideChange={onListChange}
                 id="swipe-caroussel"
               >
@@ -310,7 +307,7 @@ export default function Caroussel() {
               </Swiper>
             </div>
           </div>
-        </div>
+        </Container>
         {/* Card Next Article */}
         <div className="w-full setflex-center space-y-14">
           <div className="h-40 setflex-center w-full">
