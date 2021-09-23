@@ -73,7 +73,7 @@ const Footer = () => {
               />
             </div>
           </div>
-          <div className="w-full h-full">
+          <div className="w-full h-full flex justify-end max-md:justify-start items-end max-md:items-start">
             <span className="text-sm">
               © 2021 Locavore. All Rights Reserved.
             </span>
