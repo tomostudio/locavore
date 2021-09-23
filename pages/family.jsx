@@ -1,4 +1,3 @@
-import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 
@@ -8,17 +7,13 @@ import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
 
 // Components
-import Arrow from '@/components/utils/arrow'
 import FancyLink from '@/components/utils/fancyLink'
 
 // Helpers
 import Link from '@/components/utils/link'
 import colors from '@/helpers/preset/colors'
-import { useAppContext } from 'context/state'
 
 export default function Family() {
-  const appContext = useAppContext()
-
   const onMouseEnter = (id, color, slug) => {
     document.getElementById('family-button').children[
       id
@@ -131,7 +126,7 @@ export default function Family() {
           className="relative w-full h-auto flex flex-wrap mt-14 mb-10"
           id="family-image"
         >
-          <div>
+          <div data-image="locavore">
             <Image
               src={`/placeholder/Additional-Locavore.jpg`}
               alt={'Locavore'}
@@ -139,6 +134,15 @@ export default function Family() {
               objectFit="cover"
               objectPosition="top"
             />
+            <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-locavore bg-opacity-75 flex flex-col items-center justify-between py-4">
+              <span className="font-subtitle font-semibold">
+                Eelke Plasmeijer
+              </span>
+              <span className="font-bold text-lg">LOCAVORE</span>
+              <span className="font-subtitle font-semibold">
+                Executive Chef
+              </span>
+            </div>
           </div>
           <div data-image="locavore">
             <Image

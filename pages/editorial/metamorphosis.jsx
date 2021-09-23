@@ -1,4 +1,3 @@
-import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Pagination } from 'swiper'
@@ -10,7 +9,6 @@ import Footer from '@/components/modules/footer'
 
 // Components
 import CardPortrait from '@/components/utils/cardPortrait'
-import PillButton from '@/components/utils/pillButton'
 
 // Helpers
 import Link from '@/components/utils/link'
@@ -24,105 +22,101 @@ export default function Metamorphosis() {
   return (
     <Layout>
       <NextSeo title="Metamorphosis" />
-      <LazyMotion features={domAnimation}>
-        <m.main className="p-0 m-0">
-          {/* Header Gap */}
-          <HeaderGap />
-          {/* Untuk Content */}
-          <section className="py-10 w-full h-full flex flex-col space-y-10">
-            {/* Title */}
-            <Container>
-              <div className="w-full h-full setflex-center">
-                <span className="font-subtitle italic text-xl">
-                  Issue 1 — March 2021
-                </span>
-                <h1 className=" font-title font-normal max-md:break-all max-md:text-center">
-                  Metamorphosis
-                </h1>
-              </div>
-            </Container>
-            {/* Card */}
-            <div className="w-full h-96 flex" id="editorial-slider">
-              <Swiper
-                slidesPerView="auto"
-                spaceBetween={20}
-                pagination={{
-                  clickable: true,
-                }}
-                id="swipe-editorial"
-              >
-                <SwiperSlide>
-                  <CardPortrait
-                    className="bg-events w-full h-96"
-                    title="5. Ulekan"
-                    category="Culture"
-                    timeRead="20 min read"
-                    src="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <CardPortrait
-                    className="bg-events w-full h-96"
-                    title="5. Ulekan"
-                    category="Culture"
-                    timeRead="20 min read"
-                    src="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <CardPortrait
-                    className="bg-events w-full h-96"
-                    title="5. Ulekan"
-                    category="Culture"
-                    timeRead="20 min read"
-                    src="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <CardPortrait
-                    className="bg-events w-full h-96"
-                    title="5. Ulekan"
-                    category="Culture"
-                    timeRead="20 min read"
-                    src="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <CardPortrait
-                    className="bg-events w-full h-96"
-                    title="5. Ulekan"
-                    category="Culture"
-                    timeRead="20 min read"
-                    src="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                </SwiperSlide>
-              </Swiper>
+      {/* Header Gap */}
+      <HeaderGap />
+      {/* Untuk Content */}
+      <section className="py-10 w-full h-full flex flex-col space-y-10">
+        {/* Title */}
+        <Container>
+          <div className="w-full h-full setflex-center">
+            <span className="font-subtitle italic text-xl">
+              Issue 1 — March 2021
+            </span>
+            <h1 className=" font-title font-normal max-md:break-all max-md:text-center">
+              Metamorphosis
+            </h1>
+          </div>
+        </Container>
+        {/* Card */}
+        <div className="w-full h-96 flex" id="editorial-slider">
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={20}
+            pagination={{
+              clickable: true,
+            }}
+            id="swipe-editorial"
+          >
+            <SwiperSlide>
+              <CardPortrait
+                className="bg-events w-full h-96"
+                title="5. Ulekan"
+                category="Culture"
+                timeRead="20 min read"
+                src="/placeholder/locavore-rintik-crop-11.jpg"
+                alt="Locavore"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CardPortrait
+                className="bg-events w-full h-96"
+                title="5. Ulekan"
+                category="Culture"
+                timeRead="20 min read"
+                src="/placeholder/locavore-rintik-crop-11.jpg"
+                alt="Locavore"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CardPortrait
+                className="bg-events w-full h-96"
+                title="5. Ulekan"
+                category="Culture"
+                timeRead="20 min read"
+                src="/placeholder/locavore-rintik-crop-11.jpg"
+                alt="Locavore"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CardPortrait
+                className="bg-events w-full h-96"
+                title="5. Ulekan"
+                category="Culture"
+                timeRead="20 min read"
+                src="/placeholder/locavore-rintik-crop-11.jpg"
+                alt="Locavore"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <CardPortrait
+                className="bg-events w-full h-96"
+                title="5. Ulekan"
+                category="Culture"
+                timeRead="20 min read"
+                src="/placeholder/locavore-rintik-crop-11.jpg"
+                alt="Locavore"
+              />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <Container>
+          <div className="w-full setflex-center">
+            <div className="mb-5 text-xs">
+              <span className="font-bold">1</span>-<span>15</span>
             </div>
-            <Container>
-              <div className="w-full setflex-center">
-                <div className="mb-5 text-xs">
-                  <span className="font-bold">1</span>-<span>15</span>
-                </div>
-                <div className="relative w-full setflex-center">
-                  <div className="relative border-b w-48 max-md:w-full h-px border-black">
-                    <div className="absolute left-4 w-8 h-1 -top-px border border-black bg-black" />
-                  </div>
-                </div>
+            <div className="relative w-full setflex-center">
+              <div className="relative border-b w-48 max-md:w-full h-px border-black">
+                <div className="absolute left-4 w-8 h-1 -top-px border border-black bg-black" />
               </div>
-            </Container>
-          </section>
-          {/* Button Sticky */}
-          <StickyButton destination="/editorial" arrow="left">
-            ISSUE INDEX
-          </StickyButton>
-          <Footer />
-        </m.main>
-      </LazyMotion>
+            </div>
+          </div>
+        </Container>
+      </section>
+      {/* Button Sticky */}
+      <StickyButton destination="/editorial" arrow="left">
+        ISSUE INDEX
+      </StickyButton>
+      <Footer />
       <Link />
     </Layout>
   )

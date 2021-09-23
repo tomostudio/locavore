@@ -1,4 +1,3 @@
-import { useRef, useEffect, useState } from 'react'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'

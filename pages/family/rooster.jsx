@@ -2,13 +2,18 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Pagination } from 'swiper'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { NextSeo } from 'next-seo'
+
+// Layout
+import Layout from '@/components/modules/layout'
+import HeaderGap from '@/components/modules/headerGap'
 
 // Components
 import Arrow from '@/components/utils/arrow'
 import FancyLink from '@/components/utils/fancyLink'
-import Layout from '@/components/modules/layout'
-import { NextSeo } from 'next-seo'
-import HeaderGap from '@/components/modules/headerGap'
+
+// Helpers
+import colors from '@/helpers/preset/colors'
 
 // install Swiper modules
 SwiperCore.use([Pagination])
