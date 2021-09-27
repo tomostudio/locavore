@@ -7,6 +7,7 @@ import Layout from '@/components/modules/layout'
 import Container from '@/components/modules/container'
 import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
+import Navbar from '@/components/modules/navbar'
 
 // Components
 import PillButton from '@/components/utils/pillButton'
@@ -27,126 +28,132 @@ export default function Full() {
   return (
     <Layout>
       <NextSeo title="Full" />
+      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
 
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
       <section className="pt-10 pb-20 w-full h-full flex flex-col">
-        <Container className="mb-14 space-y-10">
+        <Container className="mb-14 space-y-10 max-md:px-6">
           {/* Title */}
           <h1 className="m-0 font-title font-normal">
             In Search of Regional Specialties Articles
           </h1>
-          <div className="w-full flex items-center justify-between">
+          <div className="w-full flex max-md:flex-col items-center max-md:items-start justify-between">
             {/* Category */}
-            <div className="w-full space-x-4">
+            <div className="w-auto space-x-4">
               <PillButton
                 destination="/"
-                className="text-xs opacity-100 border-black"
+                className="text-xs max-md:py-1 max-md:px-2 opacity-100 border-black"
               >
                 Food
               </PillButton>
               <PillButton
                 destination="/"
-                className="text-xs opacity-100 border-black"
+                className="text-xs max-md:py-1 max-md:px-2 opacity-100 border-black"
               >
                 Culture
               </PillButton>
-              <span className="ml-2 font-subtitle italic font-bold">
-                March 2021
-              </span>
             </div>
             {/* Social Media */}
-            <div className="w-full space-x-4 flex justify-end">
-              <div className="relative w-16px h-16px">
-                <Image
-                  src={`/facebook.png`}
-                  alt={'Locavore'}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
-              </div>
-              <div className="relative w-16px h-16px">
-                <Image
-                  src={`/twitter.png`}
-                  alt={'Locavore'}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
-              </div>
-              <div className="relative w-16px h-16px">
-                <Image
-                  src={`/mail.png`}
-                  alt={'Locavore'}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
+            <div className="w-full max-md:mt-7 flex max-md:flex-row-reverse justify-between">
+              <span className="ml-4 max-md:m-0 font-subtitle italic font-bold">
+                March 2021
+              </span>
+              <div className="flex space-x-7">
+                <div className="relative w-16px h-16px">
+                  <Image
+                    src={`/facebook.png`}
+                    alt={'Locavore'}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </div>
+                <div className="relative w-16px h-16px">
+                  <Image
+                    src={`/twitter.png`}
+                    alt={'Locavore'}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </div>
+                <div className="relative w-16px h-16px">
+                  <Image
+                    src={`/mail.png`}
+                    alt={'Locavore'}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </div>
               </div>
             </div>
           </div>
-          {/* Description */}
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. Lorem Ipsum is simply dummy text of
-            the printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type
-            specimen book. It has survived not only five centuries, but also the
-            leap into electronic typesetting, remaining essentially unchanged.
-          </p>
-          {/* List */}
-          <div className="flex flex-col space-y-4 text-culture">
-            <div>
-              <span className="block font-subtitle italic">Part 1</span>
-              <FancyLink
-                onClick={() => onMouseClick('tools-of-trade')}
-                className="font-bold font-subtitle border-culture border-b"
-              >
-                Tools of The Trade
-              </FancyLink>
-            </div>
-            <div>
-              <span className="block font-subtitle italic">Part 2</span>
-              <FancyLink
-                onClick={() => onMouseClick('evolution-of-the-food-industry')}
-                className="font-bold font-subtitle border-culture border-b"
-              >
-                Evolution of The Food Industry
-              </FancyLink>
-            </div>
-            <div>
-              <span className="block font-subtitle italic text-culture">
-                Part 3
-              </span>
-              <FancyLink
-                onClick={() => onMouseClick('you-are-what-you-eat')}
-                className="font-bold font-subtitle border-culture border-b"
-              >
-                You Are What You Eat
-              </FancyLink>
+          <div className="w-full h-full">
+            {/* Description */}
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged. Lorem
+              Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it to make a type specimen book. It has
+              survived not only five centuries, but also the leap into
+              electronic typesetting, remaining essentially unchanged.
+            </p>
+            {/* List */}
+            <div className="flex flex-col space-y-1 mt-10 max-md:mt-5 text-culture">
+              <div>
+                <span className="block font-subtitle italic">Part 1</span>
+                <FancyLink
+                  onClick={() => onMouseClick('tools-of-trade')}
+                  className="font-bold font-subtitle border-culture border-b"
+                >
+                  Tools of The Trade
+                </FancyLink>
+              </div>
+              <div>
+                <span className="block font-subtitle italic">Part 2</span>
+                <FancyLink
+                  onClick={() => onMouseClick('evolution-of-the-food-industry')}
+                  className="font-bold font-subtitle border-culture border-b"
+                >
+                  Evolution of The Food Industry
+                </FancyLink>
+              </div>
+              <div>
+                <span className="block font-subtitle italic text-culture">
+                  Part 3
+                </span>
+                <FancyLink
+                  onClick={() => onMouseClick('you-are-what-you-eat')}
+                  className="font-bold font-subtitle border-culture border-b"
+                >
+                  You Are What You Eat
+                </FancyLink>
+              </div>
             </div>
           </div>
         </Container>
         {/* Orange Component */}
         <div
           data-slug="tools-of-trade"
-          className="w-full h-auto bg-culture px-8 py-5"
+          className="w-full h-auto bg-culture px-8 py-5 max-md:p-2"
         >
-          <div className="w-full h-full bg-white rounded-2xl py-14 setflex-center">
-            <div className="w-content space-y-10">
+          <div className="w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center">
+            <div className="w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10">
               {/* Title */}
               <div className="font-subtitle text-center font-bold">
                 <span className="block italic">Part 1</span>
                 Tools of The Trade
               </div>
-              <p className="px-paddingContent">
+              <p className="px-paddingContent max-md:p-0">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
@@ -166,11 +173,11 @@ export default function Full() {
                 (The Extremes of Good and Evil) by Cicero, written in 45 BC.
                 Letraset sheets containing Lorem Ipsum passages.
               </p>
-              <p className="font-title font-bold uppercase px-paddingContent">
+              <p className="font-title font-bold uppercase px-paddingContent max-md:p-0">
                 It has roots in a piece of classical west Latin literature from
                 45 BC, making it over 2000 years old ever since.
               </p>
-              <p className="px-paddingContent">
+              <p className="px-paddingContent max-md:p-0">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
@@ -183,7 +190,7 @@ export default function Full() {
                 Lorem Ipsum.
               </p>
               {/* Image */}
-              <div className="w-full h-auto px-paddingContent">
+              <div className="w-full h-auto px-paddingContent max-md:p-0">
                 <div className="relative w-full h-80">
                   <Image
                     src={`/placeholder/Content 3.png`}
@@ -193,7 +200,7 @@ export default function Full() {
                     objectPosition="center"
                   />
                 </div>
-                <div className="flex items-end w-full mt-3">
+                <div className="flex items-end max-md:items-start w-full mt-3">
                   <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
                   <span className="w-full font-subtitle text-sm font-bold">
                     Lorem Ipsum is simply dummy text of the printing and
@@ -201,7 +208,7 @@ export default function Full() {
                   </span>
                 </div>
               </div>
-              <p className="px-paddingContent">
+              <p className="px-paddingContent max-md:p-0">
                 Contrary to popular belief, Lorem Ipsum is not simply random
                 text. It has roots in a piece of classical Latin literature from
                 45 BC, making it over 2000 years old. Richard McClintock.
@@ -212,15 +219,15 @@ export default function Full() {
         {/* White Component */}
         <div
           data-slug="evolution-of-the-food-industry"
-          className="w-full h-auto px-8 py-14 setflex-center"
+          className="w-full h-auto px-8 max-md:px-6 py-14 setflex-center"
         >
-          <div className="w-content space-y-10">
+          <div className="w-content max-md:w-full space-y-10 max-md:space-y-7">
             {/* Title */}
             <div className="font-subtitle text-center font-bold">
               <span className="block italic">Part 2</span>
               Evolution of The Food Industry
             </div>
-            <p className="px-paddingContent">
+            <p className="px-paddingContent max-md:p-0">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
               ever since the 1500s, when an unknown printer took a galley of
@@ -251,14 +258,14 @@ export default function Full() {
                 objectPosition="center"
               />
             </div>
-            <p className="font-title font-bold text-3xl">
+            <p className="font-title font-bold text-3xl max-md:text-2xl">
               There are many variations of passages of Lorem Ipsum available,
               but the majority have suffered alteration in some form, or
               randomised words which don't look even slightly believable. If you
               are going to use a passage of Lorem Ipsum, you need to be sure
               there isn't anything hidden in the middle of text.
             </p>
-            <p className="px-paddingContent">
+            <p className="px-paddingContent max-md:p-0">
               It has survived not only five centuries, but also the leap into
               electronic typesetting, remaining essentially unchanged. It was
               popularised in the 1960s with the release of Letraset sheets
@@ -281,7 +288,7 @@ export default function Full() {
               objectPosition="center"
             />
           </div>
-          <div className="w-content px-paddingContent flex items-end mt-3">
+          <div className="w-content max-md:w-full px-paddingContent max-md:px-6 flex items-end max-md:items-start mt-3">
             <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
             <span className="w-full font-subtitle text-sm font-bold">
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -291,7 +298,7 @@ export default function Full() {
         </div>
         {/* Image */}
         <div className="w-full h-auto setflex-center my-14">
-          <div className="relative w-content px-paddingContent">
+          <div className="relative w-content max-md:w-full px-paddingContent max-md:px-6">
             <div className="relative w-full h-72">
               <Image
                 src={`/placeholder/Content 2.png`}
@@ -302,7 +309,7 @@ export default function Full() {
                 objectPosition="center"
               />
             </div>
-            <div className="flex items-end mt-3">
+            <div className="flex items-end max-md:items-start mt-3">
               <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
               <span className="w-full font-subtitle text-sm font-bold">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -314,15 +321,15 @@ export default function Full() {
         {/* Orange Component */}
         <div
           data-slug="you-are-what-you-eat"
-          className="w-full h-auto bg-culture px-8 py-5"
+          className="w-full h-auto bg-culture px-8 py-5 max-md:p-2"
         >
-          <div className="w-full h-full bg-white rounded-2xl py-14 setflex-center">
-            <div className="w-content space-y-10">
+          <div className="w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center">
+            <div className="w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10">
               <div className="font-subtitle text-center font-bold">
                 <span className="block italic">Part 3</span>
                 You Are What You Eat
               </div>
-              <p className="px-paddingContent">
+              <p className="px-paddingContent max-md:p-0">
                 It was popularised in the 1960s with the release of Letraset
                 sheets containing Lorem Ipsum passages, and more recently with
                 desktop publishing software like Aldus PageMaker including
@@ -334,7 +341,7 @@ export default function Full() {
                 discovered the undoubtable source of material.
               </p>
               {/* Image */}
-              <div className="w-full h-auto px-paddingContent">
+              <div className="w-full h-auto px-paddingContent max-md:p-0">
                 <div className="relative w-full h-64">
                   <Image
                     src={`/placeholder/locavore-rintik-crop-18.jpg`}

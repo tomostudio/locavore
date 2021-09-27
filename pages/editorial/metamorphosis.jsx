@@ -6,6 +6,7 @@ import SwiperCore, { Pagination } from 'swiper'
 import Layout from '@/components/modules/layout'
 import HeaderGap from '@/components/modules/headerGap'
 import Footer from '@/components/modules/footer'
+import Navbar from '@/components/modules/navbar'
 
 // Components
 import CardPortrait from '@/components/utils/cardPortrait'
@@ -22,12 +23,14 @@ export default function Metamorphosis() {
   return (
     <Layout>
       <NextSeo title="Metamorphosis" />
+      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
+
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
       <section className="py-10 w-full h-full flex flex-col space-y-10">
         {/* Title */}
-        <Container>
+        <Container className="max-md:px-6">
           <div className="w-full h-full setflex-center">
             <span className="font-subtitle italic text-xl">
               Issue 1 — March 2021
@@ -45,6 +48,8 @@ export default function Metamorphosis() {
             pagination={{
               clickable: true,
             }}
+            loop={true}
+            centeredSlides={true}
             id="swipe-editorial"
           >
             <SwiperSlide>
@@ -99,7 +104,7 @@ export default function Metamorphosis() {
             </SwiperSlide>
           </Swiper>
         </div>
-        <Container>
+        <Container className="max-md:px-6">
           <div className="w-full setflex-center">
             <div className="mb-5 text-xs">
               <span className="font-bold">1</span>-<span>15</span>

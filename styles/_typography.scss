@@ -38,13 +38,13 @@ h3,
 h1,
 .h1 {
   @apply font-default p-0 mt-0 mb-4 text-8xl;
-  @apply max-md:text-6xl;
+  @apply max-md:text-5xl;
   @apply select-text;
 }
 
 h2,
 .h2 {
   @apply font-default p-0 mt-0 mb-4 text-6xl;
-  @apply max-md:text-4xl;
+  @apply max-md:text-3xl;
   @apply select-text;
 }

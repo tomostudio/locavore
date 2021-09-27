@@ -5,15 +5,17 @@ import Image from 'next/image'
 import Layout from '@/components/modules/layout'
 import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
+import Navbar from '@/components/modules/navbar'
 
 // Components
 import FancyLink from '@/components/utils/fancyLink'
+import Link from '@/components/utils/link'
 
 // Helpers
-import Link from '@/components/utils/link'
 import colors from '@/helpers/preset/colors'
 
 export default function Family() {
+
   const onMouseEnter = (id, color, slug) => {
     document.getElementById('family-button').children[
       id
@@ -46,6 +48,8 @@ export default function Family() {
   return (
     <Layout>
       <NextSeo title="Family" />
+      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
+
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
@@ -88,7 +92,7 @@ export default function Family() {
           THE NIGHT ROOSTER
         </FancyLink>
         <FancyLink
-          destination="/family/rooster"
+          destination="/family/nusantara"
           onMouseEnter={() => onMouseEnter(2, colors.nusantara, 'nusantara')}
           onMouseLeave={() => onMouseLeave(2)}
           className="relative right-6 z-20 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"

@@ -40,7 +40,7 @@ export default function App({ Component, pageProps }) {
       />
 
       <AppWrapper>
-        <Navbar
+        {/* <Navbar
           className={`${
             router.asPath === '/' || router.asPath === '/under_construction'
               ? `text-white`
@@ -51,7 +51,7 @@ export default function App({ Component, pageProps }) {
               ? `/locavore-white.png`
               : `/locavore-black.png`
           }`}
-        />
+        /> */}
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.asPath} />
         </AnimatePresence>

@@ -128,5 +128,21 @@ body {
 #swipe-caroussel {
   .swiper-slide {
     @apply w-56 #{!important};
+
+    @include mobile {
+      @apply w-36 #{!important};
+    }
+  }
+}
+
+#social {
+  & > a {
+    position: relative;
+    width: 100%;
+    &::after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
   }
 }

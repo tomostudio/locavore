@@ -5,6 +5,7 @@ import Layout from '@/components/modules/layout'
 import Container from '@/components/modules/container'
 import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
+import Navbar from '@/components/modules/navbar'
 
 // Components
 import FancyLink from '@/components/utils/fancyLink'
@@ -20,12 +21,13 @@ export default function Search() {
   return (
     <Layout>
       <NextSeo title="Search" />
+      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
 
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
       <section className="pt-10 pb-10 w-full h-full flex flex-col">
-        <Container>
+        <Container className="max-md:px-6">
           <div className="w-full h-full setflex-center">
             {/* Title */}
             <h1 className="m-0 flex max-md:flex-wrap justify-center items-center max-md:items-end font-title font-normal">

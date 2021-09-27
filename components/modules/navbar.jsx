@@ -10,7 +10,7 @@ export default function Navbar({ className, logo }) {
       data-scroll-sticky
       data-scroll-target="#scroll-container"
     >
-      <Container>
+      <Container className="max-md:px-6">
         <div className="flex flex-wrap max-md:flex-nowrap max-md:items-center max-md:pt-10">
           <FancyLink
             destination="/"
