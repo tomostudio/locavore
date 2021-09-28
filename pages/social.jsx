@@ -11,7 +11,7 @@ import HeaderGap from '@/components/modules/headerGap'
 import FancyLink from '@/components/utils/fancyLink'
 import PillButton from '@/components/utils/pillButton'
 import Arrow from '@/components/utils/arrow'
-import CardPortrait from '@/components/utils/cardPortrait'
+import CardPortrait from '@/components/utils/articleCard'
 import StickyButton from '@/components/utils/stickyButton'
 
 // Helpers

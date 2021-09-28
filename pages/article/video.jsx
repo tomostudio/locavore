@@ -12,7 +12,7 @@ import Navbar from '@/components/modules/navbar'
 // Components
 import FancyLink from '@/components/utils/fancyLink'
 import PillButton from '@/components/utils/pillButton'
-import CardPortrait from '@/components/utils/cardPortrait'
+import ArticleCard from '@/components/utils/articleCard'
 import StickyButton from '@/components/utils/stickyButton'
 
 // Helpers
@@ -22,8 +22,6 @@ export default function Video() {
   return (
     <Layout>
       <NextSeo title="Video" />
-      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
-
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
@@ -31,7 +29,7 @@ export default function Video() {
         <Container className="max-md:px-6">
           <div className="w-full mb-14 space-y-10">
             {/* Title */}
-            <h1 className="m-0 font-title font-normal">
+            <h1 className="m-0 font-sans font-normal">
               In Search of Regional Specialties Articles
             </h1>
             <div className="w-full flex max-md:flex-col items-center max-md:items-start justify-between">
@@ -52,7 +50,7 @@ export default function Video() {
               </div>
               {/* Social Media */}
               <div className="w-full max-md:mt-7 flex max-md:flex-row-reverse justify-between">
-                <span className="ml-4 max-md:m-0 font-subtitle italic font-bold">
+                <span className="ml-4 max-md:m-0 font-serif italic font-bold">
                   March 2021
                 </span>
                 <div className="flex space-x-7">
@@ -133,7 +131,7 @@ export default function Video() {
             <hr className="bg-black border border-black h-full w-px" />
           </div>
           <div className="relative w-full h-96 setflex-center">
-            <CardPortrait
+            <ArticleCard
               className="rotate-6 bg-food w-64 mx-4"
               title="5. Ulekan"
               category="Culture"
@@ -143,7 +141,7 @@ export default function Video() {
             />
             <div className="absolute top-0 left-0 h-full w-full setflex-center z-min1">
               <Marquee gradient={false}>
-                <h1 className="font-title font-normal h-28">
+                <h1 className="font-sans font-normal h-28">
                   Next Article • Next Article • Next Article
                 </h1>
               </Marquee>

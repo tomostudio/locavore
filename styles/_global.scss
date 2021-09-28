@@ -1,0 +1,36 @@
+@import '_utils.scss';
+
+.stickyButton {
+  & .pillbutton {
+    & .arrow * {
+      fill: $gray;
+      @apply transition-all;
+    }
+    &:hover {
+      & .arrow * {
+        fill: white !important;
+      }
+    }
+  }
+}
+
+h1.titlestyle {
+  @apply m-0 flex max-md:flex-wrap justify-center items-start max-md:items-end font-sans font-normal;
+  & .sub {
+    @apply text-6xl mt-2.5 mb-0 mx-4 font-serif italic font-normal;
+  }
+}
+
+$card-width: 360px;
+.article-card {
+  max-width: $card-width;
+  aspect-ratio: 18 / 25;
+}
+
+$issuecard-width: $card-width + 40px;
+$issuecardgap: 40px;
+#search-results {
+  @apply grid grid-flow-row grid-cols-3 grid-rows-none;
+  grid-gap: $issuecardgap;
+  max-width: $issuecard-width * 3 + $issuecardgap * 2;
+}

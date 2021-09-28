@@ -11,7 +11,7 @@ import Navbar from '@/components/modules/navbar'
 
 // Components
 import PillButton from '@/components/utils/pillButton'
-import CardPortrait from '@/components/utils/cardPortrait'
+import ArticleCard from '@/components/utils/articleCard'
 import StickyButton from '@/components/utils/stickyButton'
 
 // Helpers
@@ -28,7 +28,7 @@ export default function Full() {
   return (
     <Layout>
       <NextSeo title="Full" />
-      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
+      <Navbar className="border-black" defaultStyle logo="/locavore-black.png" />
 
       {/* Header Gap */}
       <HeaderGap />
@@ -36,7 +36,7 @@ export default function Full() {
       <section className="pt-10 pb-20 w-full h-full flex flex-col">
         <Container className="mb-14 space-y-10 max-md:px-6">
           {/* Title */}
-          <h1 className="m-0 font-title font-normal">
+          <h1 className="m-0 font-sans font-normal">
             In Search of Regional Specialties Articles
           </h1>
           <div className="w-full flex max-md:flex-col items-center max-md:items-start justify-between">
@@ -57,7 +57,7 @@ export default function Full() {
             </div>
             {/* Social Media */}
             <div className="w-full max-md:mt-7 flex max-md:flex-row-reverse justify-between">
-              <span className="ml-4 max-md:m-0 font-subtitle italic font-bold">
+              <span className="ml-4 max-md:m-0 font-serif italic font-bold">
                 March 2021
               </span>
               <div className="flex space-x-7">
@@ -110,30 +110,30 @@ export default function Full() {
             {/* List */}
             <div className="flex flex-col space-y-1 mt-10 max-md:mt-5 text-culture">
               <div>
-                <span className="block font-subtitle italic">Part 1</span>
+                <span className="block font-serif italic">Part 1</span>
                 <FancyLink
                   onClick={() => onMouseClick('tools-of-trade')}
-                  className="font-bold font-subtitle border-culture border-b"
+                  className="font-bold font-serif border-culture border-b"
                 >
                   Tools of The Trade
                 </FancyLink>
               </div>
               <div>
-                <span className="block font-subtitle italic">Part 2</span>
+                <span className="block font-serif italic">Part 2</span>
                 <FancyLink
                   onClick={() => onMouseClick('evolution-of-the-food-industry')}
-                  className="font-bold font-subtitle border-culture border-b"
+                  className="font-bold font-serif border-culture border-b"
                 >
                   Evolution of The Food Industry
                 </FancyLink>
               </div>
               <div>
-                <span className="block font-subtitle italic text-culture">
+                <span className="block font-serif italic text-culture">
                   Part 3
                 </span>
                 <FancyLink
                   onClick={() => onMouseClick('you-are-what-you-eat')}
-                  className="font-bold font-subtitle border-culture border-b"
+                  className="font-bold font-serif border-culture border-b"
                 >
                   You Are What You Eat
                 </FancyLink>
@@ -149,7 +149,7 @@ export default function Full() {
           <div className="w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center">
             <div className="w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10">
               {/* Title */}
-              <div className="font-subtitle text-center font-bold">
+              <div className="font-serif text-center font-bold">
                 <span className="block italic">Part 1</span>
                 Tools of The Trade
               </div>
@@ -173,7 +173,7 @@ export default function Full() {
                 (The Extremes of Good and Evil) by Cicero, written in 45 BC.
                 Letraset sheets containing Lorem Ipsum passages.
               </p>
-              <p className="font-title font-bold uppercase px-paddingContent max-md:p-0">
+              <p className="font-sans font-bold uppercase px-paddingContent max-md:p-0">
                 It has roots in a piece of classical west Latin literature from
                 45 BC, making it over 2000 years old ever since.
               </p>
@@ -202,7 +202,7 @@ export default function Full() {
                 </div>
                 <div className="flex items-end max-md:items-start w-full mt-3">
                   <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
-                  <span className="w-full font-subtitle text-sm font-bold">
+                  <span className="w-full font-serif text-sm font-bold">
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry
                   </span>
@@ -223,7 +223,7 @@ export default function Full() {
         >
           <div className="w-content max-md:w-full space-y-10 max-md:space-y-7">
             {/* Title */}
-            <div className="font-subtitle text-center font-bold">
+            <div className="font-serif text-center font-bold">
               <span className="block italic">Part 2</span>
               Evolution of The Food Industry
             </div>
@@ -258,7 +258,7 @@ export default function Full() {
                 objectPosition="center"
               />
             </div>
-            <p className="font-title font-bold text-3xl max-md:text-2xl">
+            <p className="font-sans font-bold text-3xl max-md:text-2xl">
               There are many variations of passages of Lorem Ipsum available,
               but the majority have suffered alteration in some form, or
               randomised words which don't look even slightly believable. If you
@@ -290,7 +290,7 @@ export default function Full() {
           </div>
           <div className="w-content max-md:w-full px-paddingContent max-md:px-6 flex items-end max-md:items-start mt-3">
             <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
-            <span className="w-full font-subtitle text-sm font-bold">
+            <span className="w-full font-serif text-sm font-bold">
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry
             </span>
@@ -311,7 +311,7 @@ export default function Full() {
             </div>
             <div className="flex items-end max-md:items-start mt-3">
               <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
-              <span className="w-full font-subtitle text-sm font-bold">
+              <span className="w-full font-serif text-sm font-bold">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry
               </span>
@@ -325,7 +325,7 @@ export default function Full() {
         >
           <div className="w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center">
             <div className="w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10">
-              <div className="font-subtitle text-center font-bold">
+              <div className="font-serif text-center font-bold">
                 <span className="block italic">Part 3</span>
                 You Are What You Eat
               </div>
@@ -361,7 +361,7 @@ export default function Full() {
             <hr className="bg-black border border-black h-full w-px" />
           </div>
           <div className="relative w-full h-96 setflex-center">
-            <CardPortrait
+            <ArticleCard
               className="rotate-6 bg-food w-64 mx-4"
               title="5. Ulekan"
               category="Culture"
@@ -371,7 +371,7 @@ export default function Full() {
             />
             <div className="absolute top-0 left-0 h-full w-full setflex-center z-min1">
               <Marquee gradient={false}>
-                <h1 className="font-title font-normal h-28">
+                <h1 className="font-sans font-normal h-28">
                   Next Article • Next Article • Next Article
                 </h1>
               </Marquee>

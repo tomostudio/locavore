@@ -9,7 +9,7 @@ import Footer from '@/components/modules/footer'
 import Navbar from '@/components/modules/navbar'
 
 // Components
-import CardPortrait from '@/components/utils/cardPortrait'
+import ArticleCard from '@/components/utils/articleCard'
 
 // Helpers
 import Link from '@/components/utils/link'
@@ -19,11 +19,10 @@ import Container from '@/components/modules/container'
 // install Swiper modules
 SwiperCore.use([Pagination])
 
-export default function Metamorphosis() {
+export default function Issue() {
   return (
     <Layout>
       <NextSeo title="Metamorphosis" />
-      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
 
       {/* Header Gap */}
       <HeaderGap />
@@ -32,10 +31,10 @@ export default function Metamorphosis() {
         {/* Title */}
         <Container className="max-md:px-6">
           <div className="w-full h-full setflex-center">
-            <span className="font-subtitle italic text-xl">
+            <span className="font-serif italic text-xl">
               Issue 1 — March 2021
             </span>
-            <h1 className=" font-title font-normal max-md:break-all max-md:text-center">
+            <h1 className=" font-sans font-normal max-md:break-all max-md:text-center">
               Metamorphosis
             </h1>
           </div>
@@ -53,7 +52,7 @@ export default function Metamorphosis() {
             id="swipe-editorial"
           >
             <SwiperSlide>
-              <CardPortrait
+              <ArticleCard
                 className="bg-events w-full h-96"
                 title="5. Ulekan"
                 category="Culture"
@@ -63,7 +62,7 @@ export default function Metamorphosis() {
               />
             </SwiperSlide>
             <SwiperSlide>
-              <CardPortrait
+              <ArticleCard
                 className="bg-events w-full h-96"
                 title="5. Ulekan"
                 category="Culture"
@@ -73,7 +72,7 @@ export default function Metamorphosis() {
               />
             </SwiperSlide>
             <SwiperSlide>
-              <CardPortrait
+              <ArticleCard
                 className="bg-events w-full h-96"
                 title="5. Ulekan"
                 category="Culture"
@@ -83,7 +82,7 @@ export default function Metamorphosis() {
               />
             </SwiperSlide>
             <SwiperSlide>
-              <CardPortrait
+              <ArticleCard
                 className="bg-events w-full h-96"
                 title="5. Ulekan"
                 category="Culture"
@@ -93,7 +92,7 @@ export default function Metamorphosis() {
               />
             </SwiperSlide>
             <SwiperSlide>
-              <CardPortrait
+              <ArticleCard
                 className="bg-events w-full h-96"
                 title="5. Ulekan"
                 category="Culture"

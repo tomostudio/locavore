@@ -1,5 +1,5 @@
 const preference = {
-  smooth: true,
+  smooth: false,
   lerp: 0.075,
 }
 export default preference

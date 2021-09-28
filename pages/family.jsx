@@ -48,16 +48,16 @@ export default function Family() {
   return (
     <Layout>
       <NextSeo title="Family" />
-      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
+      <Navbar className="border-black " defaultStyle logo="/locavore-black.png" />
 
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
       <div className="w-full h-full setflex-center">
         {/* Title */}
-        <h1 className="m-0 flex justify-center items-center font-title font-normal">
+        <h1 className="m-0 flex justify-center items-center font-sans font-normal">
           Family
-          <h2 className="my-0 mx-4 h-full font-subtitle italic font-normal">
+          <h2 className="my-0 mx-4 h-full font-serif italic font-normal">
             of
           </h2>
           Locavore
@@ -138,11 +138,11 @@ export default function Family() {
               objectPosition="top"
             />
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-locavore bg-opacity-75 flex flex-col items-center justify-between py-4">
-              <span className="font-subtitle font-semibold">
+              <span className="font-serif font-semibold">
                 Eelke Plasmeijer
               </span>
               <span className="font-bold text-lg">LOCAVORE</span>
-              <span className="font-subtitle font-semibold">
+              <span className="font-serif font-semibold">
                 Executive Chef
               </span>
             </div>
@@ -156,11 +156,11 @@ export default function Family() {
               objectPosition="top"
             />
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-locavore bg-opacity-75 flex flex-col items-center justify-between py-4">
-              <span className="font-subtitle font-semibold">
+              <span className="font-serif font-semibold">
                 Eelke Plasmeijer
               </span>
               <span className="font-bold text-lg">LOCAVORE</span>
-              <span className="font-subtitle font-semibold">
+              <span className="font-serif font-semibold">
                 Executive Chef
               </span>
             </div>
@@ -192,11 +192,11 @@ export default function Family() {
               objectPosition="top"
             />
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-togo bg-opacity-75 flex flex-col items-center justify-between py-4">
-              <span className="font-subtitle font-semibold">
+              <span className="font-serif font-semibold">
                 Eelke Plasmeijer
               </span>
               <span className="font-bold text-lg">LOCAVORE TO-GO</span>
-              <span className="font-subtitle font-semibold">
+              <span className="font-serif font-semibold">
                 Executive Chef
               </span>
             </div>
@@ -237,9 +237,9 @@ export default function Family() {
               objectPosition="top"
             />
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-nightrooster bg-opacity-75 flex flex-col items-center justify-between py-4">
-              <span className="font-subtitle font-semibold">John Doe</span>
+              <span className="font-serif font-semibold">John Doe</span>
               <span className="font-bold text-lg">THE NIGHT ROOSTER</span>
-              <span className="font-subtitle font-semibold">Mixologist</span>
+              <span className="font-serif font-semibold">Mixologist</span>
             </div>
           </div>
           <div>
@@ -260,9 +260,9 @@ export default function Family() {
               objectPosition="top"
             />
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-nusantara bg-opacity-75 flex flex-col items-center justify-between py-4">
-              <span className="font-subtitle font-semibold">John Doe</span>
+              <span className="font-serif font-semibold">John Doe</span>
               <span className="font-bold text-lg">NUSANTARA</span>
-              <span className="font-subtitle font-semibold">Marketing</span>
+              <span className="font-serif font-semibold">Marketing</span>
             </div>
           </div>
           <div>
@@ -319,9 +319,9 @@ export default function Family() {
               objectPosition="top"
             />
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-localparts bg-opacity-75 flex flex-col items-center justify-between py-4">
-              <span className="font-subtitle font-semibold">Andrew Doe</span>
+              <span className="font-serif font-semibold">Andrew Doe</span>
               <span className="font-bold text-lg">LOCAL PARTS</span>
-              <span className="font-subtitle font-semibold">
+              <span className="font-serif font-semibold">
                 Food Scientist
               </span>
             </div>
@@ -344,9 +344,9 @@ export default function Family() {
               objectPosition="top"
             />
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-localab bg-opacity-75 flex flex-col items-center justify-between py-4">
-              <span className="font-subtitle font-semibold">Andrew Doe</span>
+              <span className="font-serif font-semibold">Andrew Doe</span>
               <span className="font-bold text-lg">LOCALAB</span>
-              <span className="font-subtitle font-semibold">
+              <span className="font-serif font-semibold">
                 Food Scientist
               </span>
             </div>

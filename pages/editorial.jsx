@@ -1,206 +1,108 @@
-import { NextSeo } from 'next-seo'
-import Image from 'next/image'
+import { useEffect } from 'react';
+import { NextSeo } from 'next-seo';
+
+import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { fade } from '@/helpers/preset/transitions';
 
 // Layout
-import Layout from '@/components/modules/layout'
-import Container from '@/components/modules/container'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
-import Navbar from '@/components/modules/navbar'
+import Layout from '@/components/modules/layout';
+import Container from '@/components/modules/container';
+import Footer from '@/components/modules/footer';
+import HeaderGap from '@/components/modules/headerGap';
+import Navbar from '@/components/modules/navbar';
+import EditorialIssueCard from '@/components/utils/editorialIssueCard';
 
 // Components
-import FancyLink from '@/components/utils/fancyLink'
-import StickyButton from '@/components/utils/stickyButton'
-import Link from '@/components/utils/link'
+import StickyButton from '@/components/utils/stickyButton';
+import Link from '@/components/utils/link';
 
 // Helpers
-import { useMediaQuery } from '@/helpers/functional/checkMedia'
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
 
 export default function Editorial() {
+  useEffect(() => {
+    window.scroll(0, 0);
+    return () => {};
+  }, []);
   return (
     <Layout>
-      <NextSeo title="Editorial" />
-      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
+      <NextSeo title='Editorial' />
 
-      {/* Header Gap */}
-      <HeaderGap />
-      {/* Untuk Content */}
-      <section className="pt-10 pb-10 w-full h-full flex flex-col">
-        <Container className="max-md:px-6">
-          <div className="w-full h-full setflex-center">
-            {/* Title */}
-            <h1 className="m-0 flex max-md:flex-wrap max-md:text-4xl justify-center items-center max-md:items-end font-title font-normal">
-              Editorial
-              <h2 className="my-0 mx-4 h-full font-subtitle italic font-normal">
-                Issue
-              </h2>
-              Index
-            </h1>
-          </div>
-          {/* Card */}
-          <div className="relative mt-14 w-full h-full space-y-10">
-            <div className="relative w-full h-30rem bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
-              <div className="text-center w-full py-3">
-                <span>ISSUE 5</span>
+      <LazyMotion features={domAnimation}>
+        <m.main initial='initial' animate='enter' exit='exit' variants={fade}>
+          {/* Header Gap */}
+          <HeaderGap />
+          {/* Untuk Content */}
+          <section className='pt-10 pb-10 w-full h-full flex flex-col'>
+            <Container className='max-md:px-6'>
+              <div className='w-full h-full setflex-center'>
+                {/* Title */}
+
+                <h1 className='titlestyle'>
+                  Editorial
+                  <span className='sub'>Issues</span>Index
+                </h1>
               </div>
-              <div className="relative w-full h-full rounded-2xl">
-                <div className="absolute w-full h-full top-0 left-0 bg-black rounded-2xl">
-                  <Image
-                    src={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
-                    alt={'Locavore'}
-                    className="opacity-70 rounded-2xl"
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center"
-                  />
-                </div>
-                <div className="relative z-10 w-full h-full flex flex-col justify-between text-white p-8">
-                  {useMediaQuery('(max-width: 768px)') && (
-                    <div className="w-full flex justify-between text-xs">
-                      <span>MARCH 2021</span>
-                      <span>15 ARTICLES</span>
-                    </div>
-                  )}
-                  <h1 className="font-title font-normal break-all">
-                    Metamorphosis
-                  </h1>
-                  <div className="w-full flex justify-between max-md:justify-center">
-                    {!useMediaQuery('(max-width: 768px)') && (
-                      <div className="w-full flex flex-col max-md:hidden">
-                        <p className="w-96">
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s.
-                        </p>
-                        <div className="flex space-x-16 border-t border-white w-full pt-6 mt-6 text-xs">
-                          <span>MARCH 2021</span>
-                          <span>15 ARTICLES</span>
-                        </div>
-                      </div>
-                    )}
-                    <div className="flex w-96 max-md:w-auto items-end justify-end">
-                      <FancyLink
-                        destination="/editorial/metamorphosis"
-                        className="px-10 py-7 border border-white rounded-50% text-white"
-                      >
-                        READ ISSUE
-                      </FancyLink>
-                    </div>
-                  </div>
-                </div>
+              {/* Card */}
+              <div
+                id='edtiroalIssues'
+                className='relative mt-14 w-full h-full space-y-10 '
+              >
+                <EditorialIssueCard
+                  issueNo={5}
+                  title={'Metamorphosis'}
+                  date='MARCH 2021'
+                  totalArticles={15}
+                  destination={'/editorial/metamorphosis-landing'}
+                  imageThumbnail={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
+                  descriptions={
+                    <p>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s.
+                    </p>
+                  }
+                />
+                <EditorialIssueCard
+                  issueNo={4}
+                  title={'Metamorphosis'}
+                  date='MARCH 2021'
+                  totalArticles={15}
+                  destination={'/editorial/metamorphosis-landing'}
+                  imageThumbnail={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
+                  descriptions={
+                    <p>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s.
+                    </p>
+                  }
+                />
+                <EditorialIssueCard
+                  issueNo={3}
+                  title={'Metamorphosis'}
+                  date='MARCH 2021'
+                  totalArticles={15}
+                  destination={'/editorial/metamorphosis-landing'}
+                  imageThumbnail={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
+                  descriptions={
+                    <p>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s.
+                    </p>
+                  }
+                />
               </div>
-            </div>
-            <div className="relative w-full h-30rem bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
-              <div className="text-center w-full py-3">
-                <span>ISSUE 5</span>
-              </div>
-              <div className="relative w-full h-full rounded-2xl">
-                <div className="absolute w-full h-full top-0 left-0 bg-black rounded-2xl">
-                  <Image
-                    src={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
-                    alt={'Locavore'}
-                    className="opacity-70 rounded-2xl"
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center"
-                  />
-                </div>
-                <div className="relative z-10 w-full h-full flex flex-col justify-between text-white p-8">
-                  {useMediaQuery('(max-width: 768px)') && (
-                    <div className="w-full flex justify-between text-xs">
-                      <span>MARCH 2021</span>
-                      <span>15 ARTICLES</span>
-                    </div>
-                  )}
-                  <h1 className="font-title font-normal break-all">
-                    Metamorphosis
-                  </h1>
-                  <div className="w-full flex justify-between max-md:justify-center">
-                    {!useMediaQuery('(max-width: 768px)') && (
-                      <div className="w-full flex flex-col max-md:hidden">
-                        <p className="w-96">
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s.
-                        </p>
-                        <div className="flex space-x-16 border-t border-white w-full pt-6 mt-6 text-xs">
-                          <span>MARCH 2021</span>
-                          <span>15 ARTICLES</span>
-                        </div>
-                      </div>
-                    )}
-                    <div className="flex w-96 max-md:w-auto items-end justify-end">
-                      <FancyLink
-                        destination="/editorial/metamorphosis"
-                        className="px-10 py-7 border border-white rounded-50% text-white"
-                      >
-                        READ ISSUE
-                      </FancyLink>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="relative w-full h-30rem bg-grayDarkerCard rounded-2xl px-5 pb-5 flex flex-col">
-              <div className="text-center w-full py-3">
-                <span>ISSUE 5</span>
-              </div>
-              <div className="relative w-full h-full rounded-2xl">
-                <div className="absolute w-full h-full top-0 left-0 bg-black rounded-2xl">
-                  <Image
-                    src={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
-                    alt={'Locavore'}
-                    className="opacity-70 rounded-2xl"
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center"
-                  />
-                </div>
-                <div className="relative z-10 w-full h-full flex flex-col justify-between text-white p-8">
-                  {useMediaQuery('(max-width: 768px)') && (
-                    <div className="w-full flex justify-between text-xs">
-                      <span>MARCH 2021</span>
-                      <span>15 ARTICLES</span>
-                    </div>
-                  )}
-                  <h1 className="font-title font-normal break-all">
-                    Metamorphosis
-                  </h1>
-                  <div className="w-full flex justify-between max-md:justify-center">
-                    {!useMediaQuery('(max-width: 768px)') && (
-                      <div className="w-full flex flex-col max-md:hidden">
-                        <p className="w-96">
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s.
-                        </p>
-                        <div className="flex space-x-16 border-t border-white w-full pt-6 mt-6 text-xs">
-                          <span>MARCH 2021</span>
-                          <span>15 ARTICLES</span>
-                        </div>
-                      </div>
-                    )}
-                    <div className="flex w-96 max-md:w-auto items-end justify-end">
-                      <FancyLink
-                        destination="/editorial/metamorphosis"
-                        className="px-10 py-7 border border-white rounded-50% text-white"
-                      >
-                        READ ISSUE
-                      </FancyLink>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-      {/* Button Sticky */}
-      <StickyButton destination="/search" arrow="right">
-        SEARCH ALL ARTICLES
-      </StickyButton>
-      <Footer />
-      <Link />
+            </Container>
+          </section>
+          {/* Button Sticky */}
+          <StickyButton destination='/editorial/search' arrow='right'>
+            SEARCH ALL ARTICLES
+          </StickyButton>
+          <Footer />
+        </m.main>
+      </LazyMotion>
     </Layout>
-  )
+  );
 }

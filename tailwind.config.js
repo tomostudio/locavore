@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   mode: 'jit',
@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     fontFamily: {
       default: ['Favorit Pro', 'sans-serif'],
-      title: ['Whyte Inktrap', 'sans-serif'],
-      subtitle: ['Alegreya', 'serif'],
+      sans: ['Whyte Inktrap', 'sans-serif'],
+      serif: ['Alegreya', 'serif'],
     },
     // custom screens
     screens: {
@@ -19,12 +19,15 @@ module.exports = {
       ...defaultTheme.screens,
     },
     flexGrow: {
-      '1': 1,
-      '2': 1,
+      1: 1,
+      2: 1,
     },
     extend: {
       spacing: {
         '10px': '10px',
+      },
+      boxShadow: {
+        darker: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)',
       },
       height: {
         'screen-1/2': '50vh',
@@ -46,7 +49,7 @@ module.exports = {
         '46rem': '46rem',
         '56rem': '56rem',
         '60rem': '60rem',
-        'header': '60px',
+        header: '60px',
       },
       width: {
         '16px': '16px',
@@ -72,11 +75,9 @@ module.exports = {
         localab: '#BC9EDF',
         togo: '#C2D09A',
         gray: '#676767',
-        grayBorder: '#676767',
-        grayCard: '#F0F0F0',
-        grayDarkerCard: '#DEDCDA',
-        grayFont: '#676767',
-        blackFooter: '#181818',
+        lighterGray: '#F0F0F0',
+        lightGray: '#DEDCDA',
+        offBlack: '#181818',
       },
       inset: {
         '-0.5': '-0.5px',
@@ -86,6 +87,9 @@ module.exports = {
       },
       borderRadius: {
         '50%': '50%',
+      },
+      maxWidth: {
+        issueCard: '400px'
       },
       spacing: {
         paddingContent: '5rem',
@@ -100,4 +104,4 @@ module.exports = {
     require('tailwindcss-padding-safe'),
     require('@tailwindcss/aspect-ratio'),
   ],
-}
+};

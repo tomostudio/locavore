@@ -1,14 +1,15 @@
-import '@/styles/main.scss'
-import { AnimatePresence } from 'framer-motion'
-import { useRouter } from 'next/router'
-import { DefaultSeo } from 'next-seo'
-import { AppWrapper } from '../context/state.jsx'
-import Navbar from '@/components/modules/navbar'
-import 'swiper/swiper.scss'
-import 'swiper/components/pagination/pagination.min.css'
+import '@/styles/main.scss';
+import { AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
+import { DefaultSeo } from 'next-seo';
+import { AppWrapper } from '../context/state.jsx';
+import Link from '@/components/utils/link';
+import 'swiper/swiper.scss';
+import 'swiper/components/pagination/pagination.min.css';
+import Navbar from '@/components/modules/navbar.jsx';
 
 export default function App({ Component, pageProps }) {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <>
@@ -16,9 +17,9 @@ export default function App({ Component, pageProps }) {
         // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
         noindex={true}
         // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
-        titleTemplate="%s | Locavore"
-        defaultTitle="Locavore"
-        description="Description"
+        titleTemplate='%s | Locavore'
+        defaultTitle='Locavore'
+        description='Description'
         openGraph={{
           type: 'website',
           locale: 'en_ID',
@@ -52,10 +53,12 @@ export default function App({ Component, pageProps }) {
               : `/locavore-black.png`
           }`}
         /> */}
+        <Navbar />
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.asPath} />
         </AnimatePresence>
+        <Link />
       </AppWrapper>
     </>
-  )
+  );
 }
