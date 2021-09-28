@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { NextSeo } from 'next-seo';
@@ -19,6 +19,7 @@ import Link from '@/components/utils/link';
 import { useAppContext } from 'context/state';
 
 export default function IssueLanding() {
+  const containerRef = useRef(null);
   const appContext = useAppContext();
   useEffect(() => {
     appContext.setHeader({ headerStyle: 'white' });
@@ -27,24 +28,63 @@ export default function IssueLanding() {
       appContext.setHeader({ headerStyle: 'default' });
     };
   }, []);
+
+  const animationObj = [
+    () => {
+      const id = 'si01';
+      const elem = '.scrollmove';
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: '#trigger1', // which page section will be tracked as the scroll trigger
+          scroller: '#scroll-container', // id of scroll container
+          scrub: true,
+          start: 'top 0%',
+          end: 'bottom 50%',
+          onUpdate: (e) => {
+            console.log('1', Math.round(e.progress * 100));
+          },
+        },
+      };
+
+      // Input Animation
+      const animation = [
+        {
+          to: [
+            elem,
+            {
+              opacity: '0',
+              ease: 'none',
+            },
+          ],
+        },
+      ];
+
+      return { id, elem, settings, animation };
+    },
+  ];
   return (
     <Layout>
       <NextSeo title='Test' />
 
-      <LocomotiveScrollProvider options={preference} watch={[]}>
+      <LocomotiveScrollProvider
+        options={{ smooth: false, lerp: 0.05 }}
+        containerRef={containerRef}
+        watch={[]}
+      >
         <PushScrollGlobal />
         {/* Untuk Background */}
         <div
-          className='fixed  z-40 pointer-events-none w-full h-screen top-0 left-0 flex items-end '
+          className='fixed z-0 pointer-events-none w-full h-screen top-0 left-0 flex items-end'
           id='background-issue'
         >
-          <Image
+          {/* <Image
             src={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
             alt={'Locavore'}
             layout='fill'
             objectFit='cover'
             objectPosition='center'
-          />
+          /> */}
           <div className='absolute top-0 left-0 w-full h-full bg-black z-10' />
           <div className='fixed w-full top-0 left-0 setflex-center z-20'>
             <div className='h-screen setflex-center top-0 left-0 right-0 w-full relative text-white'>
@@ -73,26 +113,34 @@ export default function IssueLanding() {
               <h1 className='text-white font-normal'>ISSUE 1</h1>
             </div>
           </div>
-          <div className='relative w-full h-20 setflex-center z-20'>
+
+          <div className='relative w-full h-20 setflex-center z-20 scrollmove'>
             <span className='text-white font-light text-xs tracking-widest'>
               SCROLL
             </span>
           </div>
         </div>
-        <div data-scroll-container id='scroll-container'>
+        <div data-scroll-container ref={containerRef} id='scroll-container'>
           <div data-scroll-section>
-            <ScrollTriggerWrapper>
+            <ScrollTriggerWrapper animation={animationObj}>
               <LazyMotion features={domAnimation}>
-                <m.main className='relative p-0 m-0' id='parallax-issue'>
-                  <Container className='max-md:px-6'>
-                    {/* Untuk Content */}
-                    <section className=' relative z-20'>
-                      <div className='w-full h-screen border-solid border border-red-900' />
-                      <div className='w-full h-screen  border-solid border border-red-900' />
-                      <div className='ending-issue w-full h-screen setflex-center text-white'></div>
-                    </section>
-                  </Container>
-                </m.main>
+                <main className='relative p-0 m-0' id='parallax-issue'>
+                  {/* Untuk Content */}
+                  <section className=' relative z-20'>
+                    <div
+                      id='trigger1'
+                      className='w-full h-screen border-solid border-4 border-red-800'
+                    />
+                    <div
+                      id='trigger2'
+                      className='w-full h-screen border-solid border-4 border-red-800'
+                    />
+                    <div
+                      id='trigger3'
+                      className='ending-issue w-full h-screen setflex-center text-white'
+                    ></div>
+                  </section>
+                </main>
               </LazyMotion>
             </ScrollTriggerWrapper>
           </div>
