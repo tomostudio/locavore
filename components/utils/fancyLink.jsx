@@ -12,7 +12,7 @@ export default function FancyLink({
   return !destination ? (
     <button
       aria-label={a11yText}
-      className={`pointer-events-auto ${className}`}
+      className={`cursor-pointer ${className}`}
       onClick={onClick}
     >
       {children}
@@ -21,7 +21,7 @@ export default function FancyLink({
     <Link href={destination} scroll={false}>
       <a
         aria-label={a11yText}
-        className={`pointer-events-auto ${className}`}
+        className={`${className}`}
         {...others}
       >
         {children}

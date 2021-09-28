@@ -53,6 +53,9 @@ body {
   & > div {
     position: relative;
     width: calc(100% / 5);
+    @include mobile {
+      width: calc(100% / 3);
+    }
     &::after {
       content: '';
       display: block;

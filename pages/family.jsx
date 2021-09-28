@@ -53,16 +53,16 @@ export default function Family() {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <div className="w-full h-full setflex-center">
+      <div className="w-full h-full pt-10 setflex-center">
         {/* Title */}
-        <h1 className="m-0 flex justify-center items-center font-title font-normal">
+        <h1 className="m-0 flex max-md:flex-wrap justify-center items-center max-md:items-end font-title font-normal">
           Family
           <h2 className="my-0 mx-4 h-full font-subtitle italic font-normal">
             of
           </h2>
           Locavore
         </h1>
-        <p className="mt-14 text-center w-content px-paddingContent">
+        <p className="mt-14 text-center w-content max-md:w-full px-paddingContent max-md:px-0">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type.
@@ -70,7 +70,7 @@ export default function Family() {
       </div>
       {/* Family Button */}
       <div
-        className="sticky top-20 z-50 w-56rem mx-auto flex flex-wrap mt-14"
+        className="sticky max-md:hidden top-20 z-50 w-56rem mx-auto flex flex-wrap mt-14"
         id="family-button"
       >
         <FancyLink
@@ -126,7 +126,7 @@ export default function Family() {
       </div>
       <section className="pt-10 w-full h-full flex flex-col">
         <div
-          className="relative w-full h-auto flex flex-wrap mt-14"
+          className="relative w-full h-auto flex flex-wrap mt-14 max-md:mt-0"
           id="family-image"
         >
           <div data-image="locavore">

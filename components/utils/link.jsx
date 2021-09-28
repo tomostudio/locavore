@@ -20,6 +20,7 @@ const Link = () => {
           </FancyLink>
           <FancyLink destination="/article/gallery">Article Gallery</FancyLink>
           <FancyLink destination="/article/video">Article Video</FancyLink>
+          <FancyLink destination="/social">Social</FancyLink>
         </div>
       </div>
     </div>

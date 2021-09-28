@@ -1,21 +1,38 @@
 import FancyLink from '@/components/utils/fancyLink'
 import Container from '@/components/modules/container'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
+import Image from 'next/image'
+import { useState } from 'react'
 
 export default function Navbar({ className, logo }) {
+  const [menu, setMenu] = useState(false)
+
   return (
     <header
-      className={`py-2 fixed top-0 left-0 right-0 w-full z-50 border-b ${className}`}
+      className="fixed top-0 left-0 right-0 w-full h-full z-50 pointer-events-none"
       data-scroll
       data-scroll-sticky
       data-scroll-target="#scroll-container"
     >
-      <Container className="max-md:px-6">
+      <Container
+        className={`max-md:px-6 py-2 border-b pointer-events-auto ${className}`}
+      >
         <div className="flex flex-wrap max-md:flex-nowrap max-md:items-center max-md:pt-10">
+          <FancyLink
+            onClick={() => {
+              setMenu(!menu)
+            }}
+            className="hidden max-md:block"
+          >
+            <svg width="25" height="9" viewBox="0 0 25 9" fill="none">
+              <line y1="1" x2="25" y2="1" stroke="black" />
+              <line y1="8" x2="25" y2="8" stroke="black" strokeWidth="2" />
+            </svg>
+          </FancyLink>
           <FancyLink
             destination="/"
             a11yText="Navigate to the home page"
-            className="mb-1 md:mb-0 py-2 max-md:p-0"
+            className="mb-1 max-md:ml-3 max-md:mb-0 py-2 max-md:p-0"
           >
             <img src={logo} />
           </FancyLink>
@@ -64,6 +81,69 @@ export default function Navbar({ className, logo }) {
           </nav>
         </div>
       </Container>
+      <div
+        className={`relative hidden max-md:block z-0 w-full h-full bg-white ${
+          menu
+            ? 'opacity-1 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className="w-full py-8 border-b flex justify-center border-black  text-4xl">
+          <FancyLink destination="/editorial">Editorial</FancyLink>
+        </div>
+        <div className="w-full py-8 border-b flex justify-center border-black text-4xl">
+          <FancyLink destination="/under_construction">
+            Under Construction
+          </FancyLink>
+        </div>
+        <div className="w-full py-8 border-b flex justify-center border-black text-4xl">
+          <FancyLink destination="/family">Family</FancyLink>
+        </div>
+        <div className="w-full py-8 border-b flex justify-center border-black text-4xl">
+          <FancyLink destination="/booking">Booking</FancyLink>
+        </div>
+        <div className="w-full py-8 border-b flex justify-center border-black space-x-12">
+          <FancyLink className="relative w-16px h-16px">
+            <Image
+              src={`/instagram.png`}
+              alt={'Locavore'}
+              layout="fill"
+              objectFit="contain"
+              objectPosition="center"
+            />
+          </FancyLink>
+          <FancyLink className="relative w-16px h-16px">
+            <Image
+              src={`/facebook.png`}
+              alt={'Locavore'}
+              layout="fill"
+              objectFit="contain"
+              objectPosition="center"
+            />
+          </FancyLink>
+          <FancyLink className="relative w-16px h-16px">
+            <Image
+              src={`/Youtube.png`}
+              alt={'Locavore'}
+              layout="fill"
+              objectFit="contain"
+              objectPosition="center"
+            />
+          </FancyLink>
+          <FancyLink className="relative w-16px h-16px">
+            <Image
+              src={`/Linkedin.png`}
+              alt={'Locavore'}
+              layout="fill"
+              objectFit="contain"
+              objectPosition="center"
+            />
+          </FancyLink>
+        </div>
+        <div className="w-full pt-4 flex justify-center">
+          <FancyLink onClick={() => setMenu(false)}>Close</FancyLink>
+        </div>
+      </div>
     </header>
   )
 }
