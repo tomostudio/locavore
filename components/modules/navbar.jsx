@@ -1,69 +1,59 @@
-import FancyLink from '@/components/utils/fancyLink'
-import Container from '@/components/modules/container'
-import { useMediaQuery } from '@/helpers/functional/checkMedia'
+import FancyLink from '@/components/utils/fancyLink';
+import Container from '@/components/modules/container';
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
 
 export default function Navbar({ className, logo }) {
   return (
-    <header
-      className={`py-2 fixed top-0 left-0 right-0 w-full z-50 border-b ${className}`}
-      data-scroll
-      data-scroll-sticky
-      data-scroll-target="#scroll-container"
-    >
-      <Container>
-        <div className="flex flex-wrap max-md:flex-nowrap max-md:items-center max-md:pt-10">
-          <FancyLink
-            destination="/"
-            a11yText="Navigate to the home page"
-            className="mb-1 md:mb-0 py-2 max-md:p-0"
-          >
-            <img src={logo} />
-          </FancyLink>
+    <header className={`fixed top-0 left-0 right-0 w-full z-50 ${className}`}>
+      <Container className='h-header relative flex flex-wrap max-md:flex-nowrap max-md:items-center max-md:pt-10'>
+        <FancyLink
+          destination='/'
+          a11yText='Navigate to the home page'
+          className='mb-1 md:mb-0 setflex-center max-md:p-0'
+        >
+          <img src={logo} />
+        </FancyLink>
 
-          <nav className="ml-auto flex max-md:justify-end space-x-7 w-full text-sm md:text-base md:w-auto">
-            {useMediaQuery('(max-width: 768px)') ? (
+        <nav className='ml-auto setflex-center max-md:justify-end space-x-6 w-full text-sm md:text-sm md:w-auto'>
+          {useMediaQuery('(max-width: 768px)') ? (
+            <FancyLink
+              destination='/about'
+              a11yText='Navigate to the about page'
+              className='font-bold'
+            >
+              BOOKING
+            </FancyLink>
+          ) : (
+            <>
               <FancyLink
-                destination="/about"
-                a11yText="Navigate to the about page"
-                className="p-2 font-bold max-md:p-0"
+                destination='/editorial'
+                a11yText='Navigate to the editorial page'
+              >
+                Editorial
+              </FancyLink>
+              <FancyLink
+                destination='/under_construction'
+                a11yText='Navigate to the about page'
+              >
+                Under Construction
+              </FancyLink>
+              <FancyLink
+                destination='/family'
+                a11yText='Navigate to the about page'
+              >
+                Family
+              </FancyLink>
+              <FancyLink
+                destination='/about'
+                a11yText='Navigate to the about page'
+                className='font-bold'
               >
                 BOOKING
               </FancyLink>
-            ) : (
-              <>
-                <FancyLink
-                  destination="/editorial"
-                  a11yText="Navigate to the editorial page"
-                  className="p-2"
-                >
-                  Editorial
-                </FancyLink>
-                <FancyLink
-                  destination="/under_construction"
-                  a11yText="Navigate to the about page"
-                  className="p-2"
-                >
-                  Under Construction
-                </FancyLink>
-                <FancyLink
-                  destination="/family"
-                  a11yText="Navigate to the about page"
-                  className="p-2"
-                >
-                  Family
-                </FancyLink>
-                <FancyLink
-                  destination="/about"
-                  a11yText="Navigate to the about page"
-                  className="p-2 font-bold"
-                >
-                  BOOKING
-                </FancyLink>
-              </>
-            )}
-          </nav>
-        </div>
+            </>
+          )}
+        </nav>
       </Container>
     </header>
-  )
+  );
 }

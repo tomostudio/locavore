@@ -23,6 +23,9 @@ module.exports = {
       '2': 1,
     },
     extend: {
+      spacing: {
+        '10px': '10px',
+      },
       height: {
         'screen-1/2': '50vh',
         '10vh': '10vh',
@@ -41,6 +44,7 @@ module.exports = {
         '46rem': '46rem',
         '56rem': '56rem',
         '60rem': '60rem',
+        'header': '60px',
       },
       width: {
         '16px': '16px',
@@ -64,6 +68,7 @@ module.exports = {
         nusantara: '#E18065',
         localab: '#BC9EDF',
         togo: '#C2D09A',
+        gray: '#676767',
         grayBorder: '#676767',
         grayCard: '#F0F0F0',
         grayDarkerCard: '#DEDCDA',

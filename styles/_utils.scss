@@ -7,8 +7,18 @@ $desktop-width: 1024px;
   }
 }
 
+@mixin tablet {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
 @mixin mobile {
   @media (max-width: #{$mobile-width}) {
     @content;
   }
+}
+
+.setflex-center {
+  @apply flex flex-row justify-center items-center content-center;
 }

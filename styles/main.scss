@@ -13,13 +13,19 @@
 /* Tailwind Utilities */
 @import 'tailwindcss/utilities';
 
+// Borders
+
+.container {
+  // border: solid 1px black;
+}
+
+header{
+  border-bottom: solid 1px black;
+}
 /* Simple defaults */
 body {
   @apply font-default tracking-wide font-normal antialiased text-black bg-white;
-}
-
-.setflex-center {
-  @apply flex flex-col justify-center items-center content-center;
+  font-size: 14px;
 }
 
 /* Trigger Animation  */
