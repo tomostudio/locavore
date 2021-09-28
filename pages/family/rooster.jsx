@@ -7,6 +7,7 @@ import { NextSeo } from 'next-seo'
 // Layout
 import Layout from '@/components/modules/layout'
 import HeaderGap from '@/components/modules/headerGap'
+import Navbar from '@/components/modules/navbar'
 
 // Components
 import Arrow from '@/components/utils/arrow'
@@ -19,9 +20,27 @@ import colors from '@/helpers/preset/colors'
 SwiperCore.use([Pagination])
 
 const Rooster = () => {
+  const onMouseEnter = (id, color, slug) => {
+    document.getElementById('family-button').children[
+      id
+    ].style.background = color
+    document.getElementById('family-button').children[id].style.fontWeight = 800
+    document.getElementById('family-button').children[id].style.color = 'black'
+    document.getElementById('family-button').children[id].style.borderColor =
+      'black'
+  }
+
+  const onMouseLeave = (id) => {
+    document
+      .getElementById('family-button')
+      .children[id].removeAttribute('style')
+  }
+
   return (
     <Layout>
       <NextSeo title="The Night Rooster" />
+      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
+
       {/* Header Gap */}
       <HeaderGap />
       <motion.section
@@ -173,36 +192,48 @@ const Rooster = () => {
         >
           <FancyLink
             destination="/family/locavore"
+            onMouseEnter={() => onMouseEnter(0, colors.locavore)}
+            onMouseLeave={() => onMouseLeave(0)}
             className="relative left-6 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
           >
             locavore
           </FancyLink>
           <FancyLink
             destination="/family/rooster"
+            onMouseEnter={() => onMouseEnter(1, colors.nightrooster)}
+            onMouseLeave={() => onMouseLeave(1)}
             className="relative z-10 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
           >
             THE NIGHT ROOSTER
           </FancyLink>
           <FancyLink
             destination="/family/nusantara"
+            onMouseEnter={() => onMouseEnter(2, colors.nusantara)}
+            onMouseLeave={() => onMouseLeave(2)}
             className="relative right-6 z-20 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
           >
             NUSANTARA
           </FancyLink>
           <FancyLink
             destination="/family/localab"
+            onMouseEnter={() => onMouseEnter(3, colors.localab)}
+            onMouseLeave={() => onMouseLeave(3)}
             className="relative -top-px left-6 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
           >
             LOCAVORE LAB
           </FancyLink>
           <FancyLink
             destination="/family/locaparts"
+            onMouseEnter={() => onMouseEnter(4, colors.localparts)}
+            onMouseLeave={() => onMouseLeave(4)}
             className="relative -top-px z-10 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
           >
             LOCAL PARTS
           </FancyLink>
           <FancyLink
             destination="/family/togo"
+            onMouseEnter={() => onMouseEnter(5, colors.togo)}
+            onMouseLeave={() => onMouseLeave(5)}
             className="relative -top-px right-6 z-20 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
           >
             LOCAVORE TO-GO

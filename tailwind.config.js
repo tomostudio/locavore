@@ -39,6 +39,8 @@ module.exports = {
         '32px': '32px',
         '24px': '24px',
         '16px': '16px',
+        '15rem': '15rem',
+        '20rem': '20rem',
         '30rem': '30rem',
         '36rem': '36rem',
         '46rem': '46rem',
@@ -50,11 +52,12 @@ module.exports = {
         '16px': '16px',
         '24px': '24px',
         '32px': '32px',
+        '30rem': '30rem',
         '36rem': '36rem',
         '46rem': '46rem',
         '56rem': '56rem',
         '60rem': '60rem',
-        'content': '46rem',
+        content: '46rem',
       },
       colors: {
         culture: '#D66A51',
@@ -72,8 +75,8 @@ module.exports = {
         grayBorder: '#676767',
         grayCard: '#F0F0F0',
         grayDarkerCard: '#DEDCDA',
-        grayFont: "#676767",
-        blackFooter: "#181818"
+        grayFont: '#676767',
+        blackFooter: '#181818',
       },
       inset: {
         '-0.5': '-0.5px',
@@ -85,13 +88,16 @@ module.exports = {
         '50%': '50%',
       },
       spacing: {
-        paddingContent: "5rem"
-      }
+        paddingContent: '5rem',
+      },
     },
   },
   variants: {
     extend: {},
     margin: ['responsive', 'hover', 'first'],
   },
-  plugins: [require('tailwindcss-padding-safe')()],
+  plugins: [
+    require('tailwindcss-padding-safe'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 }

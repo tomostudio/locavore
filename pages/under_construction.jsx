@@ -6,6 +6,7 @@ import Image from 'next/image'
 // Layout
 import Layout from '@/components/modules/layout'
 import Container from '@/components/modules/container'
+import Navbar from '@/components/modules/navbar'
 
 // Components
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
@@ -21,6 +22,7 @@ export default function UnderConstruction() {
   return (
     <Layout>
       <NextSeo title="Test" />
+      <Navbar className="text-white" logo="/locavore-white.png" />
 
       <LocomotiveScrollProvider
         options={preference}
@@ -80,7 +82,7 @@ export default function UnderConstruction() {
             <ScrollTriggerWrapper>
               <LazyMotion features={domAnimation}>
                 <m.main className="relative p-0 m-0" id="parallax-issue">
-                  <Container>
+                  <Container className="max-md:px-6">
                     {/* Untuk Content */}
                     <section className=" relative z-20">
                       <div className="w-full h-screen" />

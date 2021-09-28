@@ -5,6 +5,7 @@ import SwiperCore, { Pagination } from 'swiper'
 // Layout
 import Layout from '@/components/modules/layout'
 import HeaderGap from '@/components/modules/headerGap'
+import Navbar from '@/components/modules/navbar'
 
 // Components
 import CardPortrait from '@/components/utils/cardPortrait'
@@ -20,6 +21,8 @@ export default function Test() {
   return (
     <Layout>
       <NextSeo title="Test" />
+      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
+
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}

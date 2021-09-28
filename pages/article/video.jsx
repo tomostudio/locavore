@@ -7,6 +7,7 @@ import Layout from '@/components/modules/layout'
 import Container from '@/components/modules/container'
 import HeaderGap from '@/components/modules/headerGap'
 import Footer from '@/components/modules/footer'
+import Navbar from '@/components/modules/navbar'
 
 // Components
 import FancyLink from '@/components/utils/fancyLink'
@@ -21,64 +22,67 @@ export default function Video() {
   return (
     <Layout>
       <NextSeo title="Video" />
+      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
 
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
       <section className="pt-10 pb-20 w-full h-full flex flex-col">
-        <Container className="mb-14">
+        <Container className="max-md:px-6">
           <div className="w-full mb-14 space-y-10">
             {/* Title */}
             <h1 className="m-0 font-title font-normal">
               In Search of Regional Specialties Articles
             </h1>
-            <div className="w-full flex items-center justify-between">
+            <div className="w-full flex max-md:flex-col items-center max-md:items-start justify-between">
               {/* Category */}
-              <div className="w-full space-x-4">
+              <div className="w-auto space-x-4">
                 <PillButton
                   destination="/"
-                  className="text-xs opacity-100 border-black"
+                  className="text-xs max-md:py-1 max-md:px-2 opacity-100 border-black"
                 >
                   Food
                 </PillButton>
                 <PillButton
                   destination="/"
-                  className="text-xs opacity-100 border-black"
+                  className="text-xs max-md:py-1 max-md:px-2 opacity-100 border-black"
                 >
                   Culture
                 </PillButton>
-                <span className="ml-2 font-subtitle italic font-bold">
-                  March 2021
-                </span>
               </div>
               {/* Social Media */}
-              <div className="w-full space-x-4 flex justify-end">
-                <div className="relative w-16px h-16px">
-                  <Image
-                    src={`/facebook.png`}
-                    alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
-                  />
-                </div>
-                <div className="relative w-16px h-16px">
-                  <Image
-                    src={`/twitter.png`}
-                    alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
-                  />
-                </div>
-                <div className="relative w-16px h-16px">
-                  <Image
-                    src={`/mail.png`}
-                    alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
-                  />
+              <div className="w-full max-md:mt-7 flex max-md:flex-row-reverse justify-between">
+                <span className="ml-4 max-md:m-0 font-subtitle italic font-bold">
+                  March 2021
+                </span>
+                <div className="flex space-x-7">
+                  <div className="relative w-16px h-16px">
+                    <Image
+                      src={`/facebook.png`}
+                      alt={'Locavore'}
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
+                    />
+                  </div>
+                  <div className="relative w-16px h-16px">
+                    <Image
+                      src={`/twitter.png`}
+                      alt={'Locavore'}
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
+                    />
+                  </div>
+                  <div className="relative w-16px h-16px">
+                    <Image
+                      src={`/mail.png`}
+                      alt={'Locavore'}
+                      layout="fill"
+                      objectFit="contain"
+                      objectPosition="center"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -98,6 +102,8 @@ export default function Video() {
               electronic typesetting, remaining essentially unchanged.
             </p>
           </div>
+        </Container>
+        <Container className="mb-14 max-md:px-0">
           {/* Video */}
           <div className="relative w-full flex flex-col space-y-3">
             <div className="relative w-full h-30rem">
