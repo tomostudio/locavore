@@ -19,7 +19,7 @@ import Container from '@/components/modules/container'
 // install Swiper modules
 SwiperCore.use([Pagination])
 
-export default function Issue() {
+export default function Index() {
   return (
     <Layout>
       <NextSeo title="Metamorphosis" />

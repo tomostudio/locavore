@@ -41,10 +41,10 @@ export default function Home() {
           <div className="fixed-background absolute top-0 left-0 w-full h-full bg-black opacity-80 z-10" />
           <div className="fixed w-full top-0 left-0 setflex-center z-20">
             <div className="h-screen setflex-center top-0 left-0 right-0 w-full relative text-white">
-              <h2 className="content-issue font-subtitle font-normal italic py-1 opacity-0">
+              <h2 className="content-issue font-serif font-normal italic py-1 opacity-0">
                 Issue 1
               </h2>
-              <h1 className="title-issue font-title text-white font-normal opacity-0">
+              <h1 className="title-issue font-sans text-white font-normal opacity-0">
                 Metamorphosis
               </h1>
               <span className="content-issue w-full h-20vh setflex-center opacity-0">

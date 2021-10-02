@@ -1,8 +1,20 @@
 $mobile-width: 768px;
 $desktop-width: 1024px;
 
+// Color
+$lightergrey: #F0F0F0;
+$lightgrey: #DEDCDA;
+$gray: #676767;
+$offBlack: #181818;
+
 @mixin desktop {
   @media (min-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$mobile-width}) {
     @content;
   }
 }
@@ -11,4 +23,12 @@ $desktop-width: 1024px;
   @media (max-width: #{$mobile-width}) {
     @content;
   }
+}
+
+.setflex-center {
+  @apply flex flex-col justify-center items-center content-center;
+}
+
+.setflex-center-row {
+  @apply flex flex-row justify-center items-center content-center;
 }

@@ -13,13 +13,22 @@
 /* Tailwind Utilities */
 @import 'tailwindcss/utilities';
 
+/* Other Styling */
+@import '_global.scss';
+
+/* Borders */
+.container {
+  // border: solid 1px blue;
+}
+
+header > div:first-child{
+  // border-bottom: solid 1px black;
+}
+
 /* Simple defaults */
 body {
   @apply font-default tracking-wide font-normal antialiased text-black bg-white;
-}
-
-.setflex-center {
-  @apply flex flex-col justify-center items-center content-center;
+  overscroll-behavior: none;
 }
 
 /* Trigger Animation  */
@@ -33,15 +42,6 @@ body {
   }
 }
 
-#card-search {
-  & > a {
-    width: calc((100% / 3) - 1.5rem);
-    @include mobile {
-      width: 100%;
-    }
-    height: 500px;
-  }
-}
 
 #family-button {
   & > a {
@@ -77,10 +77,11 @@ body {
 }
 
 #link {
-  @apply cursor-pointer px-3 rounded-full bg-grayDarkerCard;
+  @apply cursor-pointer px-3 bg-lightGray bg-opacity-70;
+  border-top-right-radius: 5px;
   position: fixed;
-  bottom: 3%;
-  left: 3%;
+  bottom: 0;
+  left: 0;
   z-index: 100000;
 
   a {
@@ -99,6 +100,7 @@ body {
     }
 
     .dropdown-content {
+      margin-left: -0.75rem;
       display: none;
       position: absolute;
       bottom: 100%;

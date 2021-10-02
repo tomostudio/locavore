@@ -39,7 +39,7 @@ const Rooster = () => {
   return (
     <Layout>
       <NextSeo title="The Night Rooster" />
-      <Navbar className="border-black bg-white" logo="/locavore-black.png" />
+      <Navbar className="border-black bg-nightrooster" logo="/locavore-black.png" />
 
       {/* Header Gap */}
       <HeaderGap />
@@ -134,7 +134,7 @@ const Rooster = () => {
                       objectPosition="center"
                     />
                   </div>
-                  <span className="font-subtitle font-bold">
+                  <span className="font-serif font-bold">
                     @thenightrooster
                   </span>
                 </div>

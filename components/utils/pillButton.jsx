@@ -1,50 +1,28 @@
-import FancyLink from './fancyLink'
-import Arrow from './arrow'
+import FancyLink from './fancyLink';
+import Arrow from './arrow';
 
-const PillButton = ({ className, destination, arrow, children, onClick }) => {
+const PillButton = ({ className, destination, arrow, children, onClick, defaultHover = true }) => {
   return (
     <>
-      {destination ? (
-        <FancyLink
-          destination={destination}
-          className={`text-xs py-2 px-4 border border-grayBorder rounded-full ${className}`}
-        >
-          {arrow === 'left' ? (
-            <>
-              <Arrow position={arrow} className="mr-2 inline" />
-              {children}
-            </>
-          ) : arrow === 'right' ? (
-            <>
-              {children}
-              <Arrow position={arrow} className="ml-2 inline" />
-            </>
-          ) : (
-            children
-          )}
-        </FancyLink>
-      ) : (
-        <FancyLink
-          onClick={onClick}
-          className={`text-xs py-2 px-4 border border-grayBorder rounded-full ${className}`}
-        >
-          {arrow === 'left' ? (
-            <>
-              <Arrow position={arrow} className="mr-2 inline" />
-              {children}
-            </>
-          ) : arrow === 'right' ? (
-            <>
-              {children}
-              <Arrow position={arrow} className="ml-2 inline" />
-            </>
-          ) : (
-            children
-          )}
-        </FancyLink>
-      )}
+      <FancyLink
+        destination={destination ? destination : false}
+        onClick={!destination ? onClick : false}
+        className={`pillbutton text-xs px-6 py-2 border border-gray text-gray rounded-3xl transition-all ease-linear setflex-center-row ${className} ${defaultHover ? 'hover:bg-gray hover:text-white' : ''}`}
+      >
+        {arrow === 'left' ? (
+          <Arrow position={arrow} className='mr-2 block' />
+        ) : (
+          ''
+        )}
+        <span className='pt-px'>{children}</span>
+        {arrow === 'right' ? (
+          <Arrow position={arrow} className='ml-2 block' />
+        ) : (
+          ''
+        )}
+      </FancyLink>
     </>
-  )
-}
+  );
+};
 
-export default PillButton
+export default PillButton;

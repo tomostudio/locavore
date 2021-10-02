@@ -18,7 +18,7 @@ import StickyButton from '@/components/utils/stickyButton'
 import Link from '@/components/utils/link'
 import FancyLink from '@/components/utils/fancyLink'
 
-export default function Full() {
+export default function ArticleSlug() {
   const onMouseClick = (slug) => {
     document.querySelectorAll(`[data-slug*="${slug}"]`)[0].scrollIntoView({
       behavior: 'smooth',
@@ -28,7 +28,11 @@ export default function Full() {
   return (
     <Layout>
       <NextSeo title="Full" />
-      <Navbar className="border-black" defaultStyle logo="/locavore-black.png" />
+      <Navbar
+        className="border-black"
+        defaultStyle
+        logo="/locavore-black.png"
+      />
 
       {/* Header Gap */}
       <HeaderGap />

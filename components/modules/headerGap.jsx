@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HeaderGap = ({className = ''}) => {
-  return <div className={`w-full h-14 ${className}`} />;
+  return <div className={`w-full h-header ${className}`} />;
 };
 
 export default HeaderGap;
