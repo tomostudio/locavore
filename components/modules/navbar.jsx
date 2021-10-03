@@ -116,168 +116,179 @@ export default function Navbar({ className = '' }) {
           )}
         </nav>
       </Container>
-      <div
-        className={`relative hidden max-md:block z-0 w-full h-screen ${
-          menu
-            ? 'opacity-1 pointer-events-auto'
-            : 'opacity-0 pointer-events-none'
-        } ${
-          headerStyle.toLowerCase() === 'default'
-            ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm'
-            : headerStyle.toLowerCase() === 'white'
-            ? 'bg-black bg-opacity-75 backdrop-filter backdrop-blur-sm'
-            : ''
-        }`}
-      >
+      {useMediaQuery('(max-width: 768px)') && (
         <div
-          className={`w-full py-8 border-b flex justify-center text-4xl ${
+          className={`z-0 w-full h-screen ${
+            menu
+              ? 'relative opacity-1 pointer-events-auto'
+              : 'absolute opacity-0 pointer-events-none'
+          } ${
             headerStyle.toLowerCase() === 'default'
-              ? 'border-black'
+              ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm'
               : headerStyle.toLowerCase() === 'white'
-              ? 'border-white text-white'
+              ? 'bg-black bg-opacity-75 backdrop-filter backdrop-blur-sm'
               : ''
           }`}
         >
-          <FancyLink destination="/editorial" className="text-center">Editorial</FancyLink>
+          <div
+            className={`w-full py-8 border-b flex justify-center text-4xl ${
+              headerStyle.toLowerCase() === 'default'
+                ? 'border-black'
+                : headerStyle.toLowerCase() === 'white'
+                ? 'border-white text-white'
+                : ''
+            }`}
+          >
+            <FancyLink destination="/editorial" className="text-center">
+              Editorial
+            </FancyLink>
+          </div>
+          <div
+            className={`w-full py-8 border-b flex justify-center text-4xl ${
+              headerStyle.toLowerCase() === 'default'
+                ? 'border-black'
+                : headerStyle.toLowerCase() === 'white'
+                ? 'border-white text-white'
+                : ''
+            }`}
+          >
+            <FancyLink
+              destination="/under_construction"
+              className="text-center"
+            >
+              Under Construction
+            </FancyLink>
+          </div>
+          <div
+            className={`w-full py-8 border-b flex justify-center text-4xl ${
+              headerStyle.toLowerCase() === 'default'
+                ? 'border-black'
+                : headerStyle.toLowerCase() === 'white'
+                ? 'border-white text-white'
+                : ''
+            }`}
+          >
+            <FancyLink destination="/family" className="text-center">
+              Family
+            </FancyLink>
+          </div>
+          <div
+            className={`w-full py-8 border-b flex justify-center text-4xl ${
+              headerStyle.toLowerCase() === 'default'
+                ? 'border-black'
+                : headerStyle.toLowerCase() === 'white'
+                ? 'border-white text-white'
+                : ''
+            }`}
+          >
+            <FancyLink destination="/booking" className="text-center">
+              Booking
+            </FancyLink>
+          </div>
+          <div
+            className={`w-full py-8 border-b flex justify-center space-x-12 ${
+              headerStyle.toLowerCase() === 'default'
+                ? 'border-black'
+                : headerStyle.toLowerCase() === 'white'
+                ? 'border-white'
+                : ''
+            }`}
+          >
+            {headerStyle.toLowerCase() === 'default' ? (
+              <>
+                <FancyLink className="relative w-16px h-16px">
+                  <Image
+                    src={`/instagram.png`}
+                    alt={'Locavore'}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </FancyLink>
+                <FancyLink className="relative w-16px h-16px">
+                  <Image
+                    src={`/facebook.png`}
+                    alt={'Locavore'}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </FancyLink>
+                <FancyLink className="relative w-16px h-16px">
+                  <Image
+                    src={`/Youtube.png`}
+                    alt={'Locavore'}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </FancyLink>
+                <FancyLink className="relative w-16px h-16px">
+                  <Image
+                    src={`/Linkedin.png`}
+                    alt={'Locavore'}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </FancyLink>
+              </>
+            ) : headerStyle.toLowerCase() === 'white' ? (
+              <>
+                <FancyLink className="relative w-16px h-16px">
+                  <Image
+                    src={`/instagram-white.png`}
+                    alt={'Locavore'}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </FancyLink>
+                <FancyLink className="relative w-16px h-16px">
+                  <Image
+                    src={`/facebook-white.png`}
+                    alt={'Locavore'}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </FancyLink>
+                <FancyLink className="relative w-16px h-16px">
+                  <Image
+                    src={`/Youtube-white.png`}
+                    alt={'Locavore'}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </FancyLink>
+                <FancyLink className="relative w-16px h-16px">
+                  <Image
+                    src={`/Linkedin-white.png`}
+                    alt={'Locavore'}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                  />
+                </FancyLink>
+              </>
+            ) : (
+              ''
+            )}
+          </div>
+          <div
+            className={`w-full pt-7 flex justify-center ${
+              headerStyle.toLowerCase() === 'default'
+                ? 'text-black'
+                : headerStyle.toLowerCase() === 'white'
+                ? 'text-white'
+                : ''
+            }`}
+          >
+            <FancyLink onClick={() => setMenu(false)}>Close</FancyLink>
+          </div>
         </div>
-        <div
-          className={`w-full py-8 border-b flex justify-center text-4xl ${
-            headerStyle.toLowerCase() === 'default'
-              ? 'border-black'
-              : headerStyle.toLowerCase() === 'white'
-              ? 'border-white text-white'
-              : ''
-          }`}
-        >
-          <FancyLink destination="/under_construction" className="text-center">
-            Under Construction
-          </FancyLink>
-        </div>
-        <div
-          className={`w-full py-8 border-b flex justify-center text-4xl ${
-            headerStyle.toLowerCase() === 'default'
-              ? 'border-black'
-              : headerStyle.toLowerCase() === 'white'
-              ? 'border-white text-white'
-              : ''
-          }`}
-        >
-          <FancyLink destination="/family" className="text-center">Family</FancyLink>
-        </div>
-        <div
-          className={`w-full py-8 border-b flex justify-center text-4xl ${
-            headerStyle.toLowerCase() === 'default'
-              ? 'border-black'
-              : headerStyle.toLowerCase() === 'white'
-              ? 'border-white text-white'
-              : ''
-          }`}
-        >
-          <FancyLink destination="/booking" className="text-center">Booking</FancyLink>
-        </div>
-        <div
-          className={`w-full py-8 border-b flex justify-center space-x-12 ${
-            headerStyle.toLowerCase() === 'default'
-              ? 'border-black'
-              : headerStyle.toLowerCase() === 'white'
-              ? 'border-white'
-              : ''
-          }`}
-        >
-          {headerStyle.toLowerCase() === 'default' ? (
-            <>
-              <FancyLink className="relative w-16px h-16px">
-                <Image
-                  src={`/instagram.png`}
-                  alt={'Locavore'}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
-              </FancyLink>
-              <FancyLink className="relative w-16px h-16px">
-                <Image
-                  src={`/facebook.png`}
-                  alt={'Locavore'}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
-              </FancyLink>
-              <FancyLink className="relative w-16px h-16px">
-                <Image
-                  src={`/Youtube.png`}
-                  alt={'Locavore'}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
-              </FancyLink>
-              <FancyLink className="relative w-16px h-16px">
-                <Image
-                  src={`/Linkedin.png`}
-                  alt={'Locavore'}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
-              </FancyLink>
-            </>
-          ) : headerStyle.toLowerCase() === 'white' ? (
-            <>
-              <FancyLink className="relative w-16px h-16px">
-                <Image
-                  src={`/instagram-white.png`}
-                  alt={'Locavore'}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
-              </FancyLink>
-              <FancyLink className="relative w-16px h-16px">
-                <Image
-                  src={`/facebook-white.png`}
-                  alt={'Locavore'}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
-              </FancyLink>
-              <FancyLink className="relative w-16px h-16px">
-                <Image
-                  src={`/Youtube-white.png`}
-                  alt={'Locavore'}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
-              </FancyLink>
-              <FancyLink className="relative w-16px h-16px">
-                <Image
-                  src={`/Linkedin-white.png`}
-                  alt={'Locavore'}
-                  layout="fill"
-                  objectFit="contain"
-                  objectPosition="center"
-                />
-              </FancyLink>
-            </>
-          ) : (
-            ''
-          )}
-        </div>
-        <div
-          className={`w-full pt-7 flex justify-center ${
-            headerStyle.toLowerCase() === 'default'
-              ? 'text-black'
-              : headerStyle.toLowerCase() === 'white'
-              ? 'text-white'
-              : ''
-          }`}
-        >
-          <FancyLink onClick={() => setMenu(false)}>Close</FancyLink>
-        </div>
-      </div>
+      )}
     </header>
   )
 }

@@ -21,7 +21,7 @@
   // border: solid 1px blue;
 }
 
-header > div:first-child{
+header > div:first-child {
   // border-bottom: solid 1px black;
 }
 
@@ -42,7 +42,6 @@ body {
   }
 }
 
-
 #family-button {
   & > a {
     width: calc(100% / 3);
@@ -62,6 +61,10 @@ body {
       padding-bottom: 100%;
     }
   }
+}
+
+#family-logo {
+  aspect-ratio: 1;
 }
 
 #editorial-slider {
