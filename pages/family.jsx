@@ -353,7 +353,7 @@ export default function Family() {
             />
           </div>
         </div>
-        <div className="w-full">
+        <div className="hidden max-md:block w-full">
           <Arrow className="mt-12 mx-auto" position="top" />
         </div>
       </section>

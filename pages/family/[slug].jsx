@@ -8,6 +8,7 @@ import { NextSeo } from 'next-seo'
 import Layout from '@/components/modules/layout'
 import HeaderGap from '@/components/modules/headerGap'
 import Navbar from '@/components/modules/navbar'
+import Footer from '@/components/modules/footer'
 
 // Components
 import Arrow from '@/components/utils/arrow'
@@ -65,7 +66,7 @@ const FamilySlug = () => {
         //   },
         // }}
       >
-        <div className="w-content max-md:w-full px-paddingContent max-md:px-5 mb-14 pb-14 border-b border-black setflex-center">
+        <div className="w-content max-md:w-full px-paddingContent max-md:px-5 mb-14 max-md:mb-0 pb-14 max-md:pb-0 border-b max-md:border-none border-black setflex-center">
           <div className="w-full setflex-center">
             <span className="text-center py-3">THE NIGHT ROOSTER</span>
             <div className="border-b border-black h-px w-full" />
@@ -78,7 +79,7 @@ const FamilySlug = () => {
               ambiance is enhanced with recycled wood, including a magnificent
               ironwood floor in the friendly 40-seat bar.
             </p>
-            <div className="flex flex-col w-full mt-20 mb-10">
+            <div className="flex flex-col w-full mt-20 mb-10 max-md:border-b max-md:pb-6">
               <div className="flex w-full h-52">
                 <Swiper
                   slidesPerView="auto"
@@ -146,7 +147,7 @@ const FamilySlug = () => {
             </div>
           </div>
           <div className="w-full flex">
-            <div className="flex w-1/2 flex-col justify-between text-xs pr-14 border-r">
+            <div className="flex w-1/2 flex-col justify-between text-xs pr-14 max-md:pr-8 border-r">
               <p>10B Jalan Dewi Sita, Ubud, Bali, Indonesia 80571 • Map</p>
               <div className="w-full flex flex-col">
                 <span>+621(0) 3619 777 33</span>
@@ -175,7 +176,10 @@ const FamilySlug = () => {
               </div>
             </div>
             <div className="w-1/2 h-full flex justify-end">
-              <div className="relative w-44 h-full" id="family-logo">
+              <div
+                className="relative w-36 max-md:w-10/12 h-full"
+                id="family-logo"
+              >
                 <Image
                   src={`/placeholder/NightRooster-Cocktail-2020-45.jpg`}
                   alt={'Locavore'}
@@ -249,7 +253,52 @@ const FamilySlug = () => {
             LOCAVORE TO-GO
           </FancyLink>
         </div>
+        <div className="hidden max-md:block w-full mt-12">
+          <Arrow className="mx-auto" position="top" />
+        </div>
+        <section
+          className="sticky bottom-0 left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center"
+          id="btnMobile"
+        >
+          <FancyLink
+            destination="article/locavore"
+            className="relative -bottom-14 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-4 font-bold uppercase"
+          >
+            Locavore
+          </FancyLink>
+          <FancyLink
+            destination="article/rooster"
+            className="relative z-2 -bottom-12 text-center w-full rounded-t-2xl bg-nightrooster pt-2 pb-4 font-bold uppercase"
+          >
+            the night rooster
+          </FancyLink>
+          <FancyLink
+            destination="article/locaparts"
+            className="relative z-3 -bottom-9 text-center w-full rounded-t-2xl bg-localparts pt-2 pb-4 font-bold uppercase"
+          >
+            locaparts
+          </FancyLink>
+          <FancyLink
+            destination="article/nusantara"
+            className="relative z-4 -bottom-6 text-center w-full rounded-t-2xl bg-nusantara pt-2 pb-4 font-bold uppercase"
+          >
+            nusantara
+          </FancyLink>
+          <FancyLink
+            destination="article/localab"
+            className="relative z-5 -bottom-3 text-center w-full rounded-t-2xl bg-localab pt-2 pb-4 font-bold uppercase"
+          >
+            localab
+          </FancyLink>
+          <FancyLink
+            destination="article/togo"
+            className="relative z-6 text-center w-full rounded-t-2xl bg-togo pt-2 pb-4 font-bold uppercase"
+          >
+            locavore to-go
+          </FancyLink>
+        </section>
       </motion.section>
+      <Footer />
     </Layout>
   )
 }
