@@ -21,6 +21,9 @@
   // border: solid 1px blue;
 }
 
+.bi {
+  border: solid 1px blue;
+}
 header {
   border-bottom: solid 1px black;
 }
@@ -42,6 +45,31 @@ body {
   }
 }
 
+// Editorial
+
+#scrollIndicator {
+  & > * {
+    animation: scrollmove 1.5s linear infinite;
+  }
+}
+
+@keyframes scrollmove {
+  0%,
+  10% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  40%,
+  60% {
+    opacity: 1;
+  }
+  90%,100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+// Family
 
 #family-button {
   & > a {
@@ -116,7 +144,7 @@ body {
 }
 
 #swipe-family {
-  .swiper-slide {
+  & .swiper-slide {
     @apply w-52 #{!important};
   }
 }

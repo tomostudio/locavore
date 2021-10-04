@@ -14,6 +14,8 @@ export default function Navbar({ className = '' }) {
           ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm border-black'
           : headerStyle.toLowerCase() === 'white'
           ? 'border-white'
+          : headerStyle.toLowerCase() === 'black'
+          ? 'border-black'
           : ''
       }`}
     >
@@ -25,7 +27,7 @@ export default function Navbar({ className = '' }) {
         >
           <img
             src={
-              headerStyle.toLowerCase() === 'default'
+              headerStyle.toLowerCase() === 'default' || headerStyle.toLowerCase() === 'black'
                 ? '/locavore-black.png'
                 : headerStyle.toLowerCase() === 'white'
                 ? '/locavore-white.png'
@@ -36,22 +38,14 @@ export default function Navbar({ className = '' }) {
 
         <nav
           className={`ml-auto setflex-center-row max-md:justify-end space-x-6 w-full text-sm md:text-sm md:w-auto transition-colors duration-300 ease-linear ${
-            headerStyle.toLowerCase() === 'default'
+            headerStyle.toLowerCase() === 'default' || headerStyle.toLowerCase() === 'black'
               ? 'text-black'
               : headerStyle.toLowerCase() === 'white'
               ? 'text-white'
               : ''
           }`}
         >
-          {useMediaQuery('(max-width: 768px)') ? (
-            <FancyLink
-              destination='/about'
-              a11yText='Navigate to the about page'
-              className='font-bold hover:opacity-60 transition-opacity ease-linear'
-            >
-              BOOKING
-            </FancyLink>
-          ) : (
+          {useMediaQuery('(min-width: 768px)') && (
             <>
               <FancyLink
                 destination='/editorial'
@@ -74,15 +68,15 @@ export default function Navbar({ className = '' }) {
               >
                 Family
               </FancyLink>
-              <FancyLink
-                destination='/about'
-                a11yText='Navigate to the about page'
-                className='font-bold hover:opacity-60 transition-opacity ease-linear'
-              >
-                BOOKING
-              </FancyLink>
             </>
           )}
+          <FancyLink
+            destination='/about'
+            a11yText='Navigate to the about page'
+            className='font-bold hover:opacity-60 transition-opacity ease-linear'
+          >
+            BOOKING
+          </FancyLink>
         </nav>
       </Container>
     </header>
