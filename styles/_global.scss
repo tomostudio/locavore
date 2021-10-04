@@ -68,12 +68,12 @@ h1.titlestyle {
 }
 
 $card-width: 360px;
-$card-height: 500px;
+$card-height: 480px;
 .article-card {
   // max-width: $card-width;
   width: $card-width;
   height: $card-height;
-  aspect-ratio: 18 / 25;
+  aspect-ratio: 18 / 24;
 }
 
 $issuecard-width: $card-width + 40px;
