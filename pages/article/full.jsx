@@ -41,7 +41,7 @@ export default function Full() {
           </h1>
           <div className="w-full flex max-md:flex-col items-center max-md:items-start justify-between">
             {/* Category */}
-            <div className="w-auto space-x-4">
+            <div className="w-auto space-x-4 flex ">
               <PillButton
                 destination="/"
                 className="text-xs max-md:py-1 max-md:px-2 opacity-100 border-black"

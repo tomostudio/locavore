@@ -331,7 +331,7 @@ export default function IssueLanding() {
                           industry's standard dummy text ever since the 1500s.
                         </p>
                         <FancyLink
-                          destination='/editorial/issue-list'
+                          destination='/editorial/issue-index'
                           className={`content-issue mt-12 py-4 px-6 text-xs tracking-widest transition-all ease-linear ${
                             dark
                               ? 'hover:bg-white border hover:text-black border-white rounded-xl'

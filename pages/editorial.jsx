@@ -49,42 +49,59 @@ export default function Editorial() {
                 className='relative mt-14 w-full h-full space-y-10 '
               >
                 <EditorialIssueCard
-                  issueNo={5}
-                  title={'Metamorphosis'}
-                  date='MARCH 2021'
-                  totalArticles={15}
-                  destination={'/editorial/metamorphosis-landing'}
-                  imageThumbnail={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
-                  descriptions={
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s.
-                    </p>
-                  }
-                />
-                <EditorialIssueCard
-                  issueNo={4}
-                  title={'Metamorphosis'}
-                  date='MARCH 2021'
-                  totalArticles={15}
-                  destination={'/editorial/metamorphosis-landing'}
-                  imageThumbnail={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
-                  descriptions={
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s.
-                    </p>
-                  }
-                />
-                <EditorialIssueCard
                   issueNo={3}
                   title={'Metamorphosis'}
                   date='MARCH 2021'
                   totalArticles={15}
-                  destination={'/editorial/metamorphosis-landing'}
+                  destination={'/editorial/metamorphosis'}
                   imageThumbnail={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
+                  descriptions={
+                    <p>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s.
+                    </p>
+                  }
+                />
+                <EditorialIssueCard
+                  issueNo={2}
+                  title={'Metamorphosis'}
+                  date='MARCH 2021'
+                  totalArticles={15}
+                  destination={'/editorial/metamorphosis'}
+                  imageThumbnail={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
+                  descriptions={
+                    <p>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s.
+                    </p>
+                  }
+                />
+                <EditorialIssueCard
+                  issueNo={1}
+                  title={'Metamorphosis'}
+                  date='MARCH 2021'
+                  totalArticles={15}
+                  destination={'/editorial/metamorphosis'}
+                  bgColor='#BC9EDF'
+                  dark={false}
+                  descriptions={
+                    <p>
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the industry's
+                      standard dummy text ever since the 1500s.
+                    </p>
+                  }
+                />
+                <EditorialIssueCard
+                  issueNo={0}
+                  title={'Under Construction'}
+                  date='FEBRUARY 2021'
+                  totalArticles={12}
+                  destination={'/editorial/uc'}
+                  dark={false}
+                  imageThumbnail={`/placeholder/dossier-lab-2-3-8.jpg`}
                   descriptions={
                     <p>
                       Lorem Ipsum is simply dummy text of the printing and

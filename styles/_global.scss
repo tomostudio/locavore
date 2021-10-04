@@ -1,5 +1,51 @@
 @import '_utils.scss';
 
+#link {
+  @apply cursor-pointer px-3 bg-lightGray bg-opacity-70;
+  border-top-right-radius: 5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100000;
+
+  a {
+    @apply py-2;
+    display: block;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+      .dropdown-content {
+        display: block;
+      }
+    }
+
+    .dropdown-content {
+      margin-left: -0.75rem;
+      display: none;
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      padding: 12px 16px;
+      z-index: 1;
+    }
+  }
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .stickyButton {
   & .pillbutton {
     & .arrow * {
@@ -22,8 +68,11 @@ h1.titlestyle {
 }
 
 $card-width: 360px;
+$card-height: 500px;
 .article-card {
-  max-width: $card-width;
+  // max-width: $card-width;
+  width: $card-width;
+  height: $card-height;
   aspect-ratio: 18 / 25;
 }
 

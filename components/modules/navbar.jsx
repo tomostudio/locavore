@@ -16,9 +16,9 @@ export default function Navbar({ className = '' }) {
         headerStyle.toLowerCase() === 'default'
           ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm border-black'
           : headerStyle.toLowerCase() === 'white'
-          ? 'border-white'
+          ? ''
           : headerStyle.toLowerCase() === 'black'
-          ? 'border-black'
+          ? ''
           : ''
       }`}
     >
@@ -92,7 +92,7 @@ export default function Navbar({ className = '' }) {
                 Editorial
               </FancyLink>
               <FancyLink
-                destination="/under_construction"
+                destination="/uc"
                 a11yText="Navigate to the about page"
                 className="hover:opacity-60 transition-opacity ease-linear"
               >
