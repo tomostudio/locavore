@@ -17,7 +17,7 @@
 h1.titlestyle {
   @apply m-0 flex max-md:flex-wrap justify-center items-start max-md:items-end font-sans font-normal;
   & .sub {
-    @apply text-6xl mt-2.5 mb-0 mx-4 font-serif italic font-normal;
+    @apply text-6xl max-md:text-3xl mt-2.5 mb-0 mx-4 font-serif italic font-normal;
   }
 }
 
@@ -30,7 +30,7 @@ $card-width: 360px;
 $issuecard-width: $card-width + 40px;
 $issuecardgap: 40px;
 #search-results {
-  @apply grid grid-flow-row grid-cols-3 grid-rows-none;
+  @apply grid grid-flow-row grid-cols-3 grid-rows-none max-md:grid-cols-1;
   grid-gap: $issuecardgap;
   max-width: $issuecard-width * 3 + $issuecardgap * 2;
 }

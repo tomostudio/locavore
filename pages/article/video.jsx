@@ -104,8 +104,8 @@ export default function Video() {
         <Container className="mb-14 max-md:px-0">
           {/* Video */}
           <div className="relative w-full flex flex-col space-y-3">
-            <div className="relative w-full h-30rem">
-              <div className="relative w-full h-full">
+            <div className="relative w-full">
+              <div className="relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1">
                 <Image
                   src={`/placeholder/locavore-rintik-crop-18.jpg`}
                   alt={'Locavore'}

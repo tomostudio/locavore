@@ -63,7 +63,8 @@ body {
   60% {
     opacity: 1;
   }
-  90%,100% {
+  90%,
+  100% {
     opacity: 0;
     transform: translateY(20px);
   }
@@ -81,12 +82,19 @@ body {
   & > div {
     position: relative;
     width: calc(100% / 5);
+    @include mobile {
+      width: calc(100% / 3);
+    }
     &::after {
       content: '';
       display: block;
       padding-bottom: 100%;
     }
   }
+}
+
+#family-logo {
+  aspect-ratio: 1;
 }
 
 #editorial-slider {

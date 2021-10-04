@@ -26,7 +26,7 @@ export default function Gallery() {
       <HeaderGap />
       {/* Untuk Content */}
       <section className='pt-10 pb-14 w-full h-full flex flex-col'>
-        <Container className='mb-14 max-md:px-6'>
+        <Container className='mb-14'>
           <div className='w-full space-y-10'>
             {/* Title */}
             <h1 className='m-0 font-sans font-normal'>
@@ -103,8 +103,8 @@ export default function Gallery() {
         </Container>
         <Container className='mb-14 max-md:px-0'>
           {/* Image */}
-          <div className='w-full flex flex-col space-y-3 max-md:space-y-2'>
-            <div className='relative w-full h-30rem aspect-w-1 aspect-h-1'>
+          <div className="w-full flex flex-col space-y-3 max-md:space-y-2">
+            <div className="relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1">
               <Image
                 src={`/placeholder/locavore-rintik-crop-18.jpg`}
                 alt={'Locavore'}
@@ -113,7 +113,7 @@ export default function Gallery() {
                 objectPosition='center'
               />
             </div>
-            <div className='w-full h-30rem max-md:h-56 max-md:px-2 flex space-x-3 max-md:space-x-2'>
+            <div className='w-full h-30rem max-md:h-56 flex space-x-3 max-md:space-x-2'>
               <div className='relative w-full h-full'>
                 <Image
                   src={`/placeholder/locavore-rintik-crop-18.jpg`}
@@ -133,8 +133,8 @@ export default function Gallery() {
                 />
               </div>
             </div>
-            <div className='w-full setflex-center max-md:px-2'>
-              <div className='relative w-full h-30rem'>
+            <div className="w-full setflex-center">
+              <div className="relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1">
                 <Image
                   src={`/placeholder/locavore-rintik-crop-18.jpg`}
                   alt={'Locavore'}

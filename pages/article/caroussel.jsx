@@ -317,7 +317,7 @@ export default function Caroussel() {
             </div>
           </div>
         </Container>
-        <hr className="hidden max-md:block bg-black mt-3 mb-14 mx-6" />
+        <hr className="hidden max-md:block border-gray mt-3 mb-14 mx-6" />
         {/* Card Next Article */}
         <div className="w-full setflex-center space-y-14">
           <div className="h-40 setflex-center w-full">

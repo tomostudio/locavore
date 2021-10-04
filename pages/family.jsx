@@ -13,9 +13,9 @@ import Link from '@/components/utils/link'
 
 // Helpers
 import colors from '@/helpers/preset/colors'
+import Arrow from '@/components/utils/arrow'
 
 export default function Family() {
-
   const onMouseEnter = (id, color, slug) => {
     document.getElementById('family-button').children[
       id
@@ -48,21 +48,29 @@ export default function Family() {
   return (
     <Layout>
       <NextSeo title="Family" />
-      <Navbar className="border-black " defaultStyle logo="/locavore-black.png" />
-
+      <Navbar
+        className="border-black "
+        defaultStyle
+        logo="/locavore-black.png"
+      />
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <div className="w-full h-full setflex-center">
+      <div className="w-full h-full pt-10 setflex-center">
         {/* Title */}
-        <h1 className="m-0 flex justify-center items-center font-sans font-normal">
+        {/* <h1 className="m-0 flex justify-center items-center font-sans font-normal">
           Family
           <h2 className="my-0 mx-4 h-full font-serif italic font-normal">
             of
           </h2>
           Locavore
+        </h1> */}
+
+        <h1 className="titlestyle">
+          Family
+          <span className="sub">of</span>Locavore
         </h1>
-        <p className="mt-14 text-center w-content px-paddingContent">
+        <p className="mt-14 text-center w-content max-md:w-full px-paddingContent max-md:px-0">
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type.
@@ -70,7 +78,7 @@ export default function Family() {
       </div>
       {/* Family Button */}
       <div
-        className="sticky top-20 z-50 w-56rem mx-auto flex flex-wrap mt-14"
+        className="sticky max-md:hidden top-20 z-50 w-56rem mx-auto flex flex-wrap mt-14"
         id="family-button"
       >
         <FancyLink
@@ -126,7 +134,7 @@ export default function Family() {
       </div>
       <section className="pt-10 w-full h-full flex flex-col">
         <div
-          className="relative w-full h-auto flex flex-wrap mt-14"
+          className="relative w-full h-auto flex flex-wrap mt-14 max-md:mt-0"
           id="family-image"
         >
           <div data-image="locavore">
@@ -138,13 +146,9 @@ export default function Family() {
               objectPosition="top"
             />
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-locavore bg-opacity-75 flex flex-col items-center justify-between py-4">
-              <span className="font-serif font-semibold">
-                Eelke Plasmeijer
-              </span>
+              <span className="font-serif font-semibold">Eelke Plasmeijer</span>
               <span className="font-bold text-lg">LOCAVORE</span>
-              <span className="font-serif font-semibold">
-                Executive Chef
-              </span>
+              <span className="font-serif font-semibold">Executive Chef</span>
             </div>
           </div>
           <div data-image="locavore">
@@ -156,13 +160,9 @@ export default function Family() {
               objectPosition="top"
             />
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-locavore bg-opacity-75 flex flex-col items-center justify-between py-4">
-              <span className="font-serif font-semibold">
-                Eelke Plasmeijer
-              </span>
+              <span className="font-serif font-semibold">Eelke Plasmeijer</span>
               <span className="font-bold text-lg">LOCAVORE</span>
-              <span className="font-serif font-semibold">
-                Executive Chef
-              </span>
+              <span className="font-serif font-semibold">Executive Chef</span>
             </div>
           </div>
           <div>
@@ -192,13 +192,9 @@ export default function Family() {
               objectPosition="top"
             />
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-togo bg-opacity-75 flex flex-col items-center justify-between py-4">
-              <span className="font-serif font-semibold">
-                Eelke Plasmeijer
-              </span>
+              <span className="font-serif font-semibold">Eelke Plasmeijer</span>
               <span className="font-bold text-lg">LOCAVORE TO-GO</span>
-              <span className="font-serif font-semibold">
-                Executive Chef
-              </span>
+              <span className="font-serif font-semibold">Executive Chef</span>
             </div>
           </div>
           <div>
@@ -321,9 +317,7 @@ export default function Family() {
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-localparts bg-opacity-75 flex flex-col items-center justify-between py-4">
               <span className="font-serif font-semibold">Andrew Doe</span>
               <span className="font-bold text-lg">LOCAL PARTS</span>
-              <span className="font-serif font-semibold">
-                Food Scientist
-              </span>
+              <span className="font-serif font-semibold">Food Scientist</span>
             </div>
           </div>
           <div>
@@ -346,9 +340,7 @@ export default function Family() {
             <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-localab bg-opacity-75 flex flex-col items-center justify-between py-4">
               <span className="font-serif font-semibold">Andrew Doe</span>
               <span className="font-bold text-lg">LOCALAB</span>
-              <span className="font-serif font-semibold">
-                Food Scientist
-              </span>
+              <span className="font-serif font-semibold">Food Scientist</span>
             </div>
           </div>
           <div>
@@ -361,6 +353,50 @@ export default function Family() {
             />
           </div>
         </div>
+        <div className="w-full">
+          <Arrow className="mt-12 mx-auto" position="top" />
+        </div>
+      </section>
+      <section
+        className="sticky bottom-0 left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center"
+        id="btnMobile"
+      >
+        <FancyLink
+          destination="article/locavore"
+          className="relative -bottom-14 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-4 font-bold uppercase"
+        >
+          Locavore
+        </FancyLink>
+        <FancyLink
+          destination="article/rooster"
+          className="relative z-2 -bottom-12 text-center w-full rounded-t-2xl bg-nightrooster pt-2 pb-4 font-bold uppercase"
+        >
+          the night rooster
+        </FancyLink>
+        <FancyLink
+          destination="article/locaparts"
+          className="relative z-3 -bottom-9 text-center w-full rounded-t-2xl bg-localparts pt-2 pb-4 font-bold uppercase"
+        >
+          locaparts
+        </FancyLink>
+        <FancyLink
+          destination="article/nusantara"
+          className="relative z-4 -bottom-6 text-center w-full rounded-t-2xl bg-nusantara pt-2 pb-4 font-bold uppercase"
+        >
+          nusantara
+        </FancyLink>
+        <FancyLink
+          destination="article/localab"
+          className="relative z-5 -bottom-3 text-center w-full rounded-t-2xl bg-localab pt-2 pb-4 font-bold uppercase"
+        >
+          localab
+        </FancyLink>
+        <FancyLink
+          destination="article/togo"
+          className="relative z-6 text-center w-full rounded-t-2xl bg-togo pt-2 pb-4 font-bold uppercase"
+        >
+          locavore to-go
+        </FancyLink>
       </section>
       <Footer />
       <Link />

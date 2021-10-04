@@ -19,7 +19,7 @@ import colors from '@/helpers/preset/colors'
 // install Swiper modules
 SwiperCore.use([Pagination])
 
-const Rooster = () => {
+const FamilySlug = () => {
   const onMouseEnter = (id, color, slug) => {
     document.getElementById('family-button').children[
       id
@@ -39,7 +39,10 @@ const Rooster = () => {
   return (
     <Layout>
       <NextSeo title="The Night Rooster" />
-      <Navbar className="border-black bg-nightrooster" logo="/locavore-black.png" />
+      <Navbar
+        className="border-black bg-nightrooster"
+        logo="/locavore-black.png"
+      />
 
       {/* Header Gap */}
       <HeaderGap />
@@ -62,7 +65,7 @@ const Rooster = () => {
         //   },
         // }}
       >
-        <div className="w-content px-paddingContent mb-14 pb-14 border-b border-black setflex-center">
+        <div className="w-content max-md:w-full px-paddingContent max-md:px-5 mb-14 pb-14 border-b border-black setflex-center">
           <div className="w-full setflex-center">
             <span className="text-center py-3">THE NIGHT ROOSTER</span>
             <div className="border-b border-black h-px w-full" />
@@ -134,9 +137,7 @@ const Rooster = () => {
                       objectPosition="center"
                     />
                   </div>
-                  <span className="font-serif font-bold">
-                    @thenightrooster
-                  </span>
+                  <span className="font-serif font-bold">@thenightrooster</span>
                 </div>
                 <div>
                   <Arrow position="right" fill="black" />
@@ -145,7 +146,7 @@ const Rooster = () => {
             </div>
           </div>
           <div className="w-full flex">
-            <div className="flex flex-col space-y-6 text-xs pr-14">
+            <div className="flex w-1/2 flex-col justify-between text-xs pr-14 border-r">
               <p>10B Jalan Dewi Sita, Ubud, Bali, Indonesia 80571 • Map</p>
               <div className="w-full flex flex-col">
                 <span>+621(0) 3619 777 33</span>
@@ -173,8 +174,17 @@ const Rooster = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full h-full flex justify-end">
-              <div className="w-44 h-full bg-black" />
+            <div className="w-1/2 h-full flex justify-end">
+              <div className="relative w-44 h-full" id="family-logo">
+                <Image
+                  src={`/placeholder/NightRooster-Cocktail-2020-45.jpg`}
+                  alt={'Locavore'}
+                  className="rounded-2xl"
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+              </div>
             </div>
           </div>
           <div className="w-full setflex-center">
@@ -187,7 +197,7 @@ const Rooster = () => {
           </div>
         </div>
         <div
-          className="relative w-56rem mb-24 flex flex-wrap"
+          className="relative max-md:hidden w-56rem mb-24 flex flex-wrap"
           id="family-button"
         >
           <FancyLink
@@ -244,4 +254,4 @@ const Rooster = () => {
   )
 }
 
-export default Rooster
+export default FamilySlug
