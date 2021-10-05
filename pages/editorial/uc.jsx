@@ -232,7 +232,7 @@ export default function IssueLanding() {
                 dark ? 'text-white' : 'text-black'
               }`}
             >
-              ISSUE 1
+              ISSUE 0
             </span>
           </Container>
         </div>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { NextSeo } from 'next-seo';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination } from 'swiper';
@@ -19,6 +20,9 @@ import Container from '@/components/modules/container';
 SwiperCore.use([Pagination]);
 
 export default function Issue() {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   return (
     <Layout>
       <NextSeo title='Metamorphosis' />

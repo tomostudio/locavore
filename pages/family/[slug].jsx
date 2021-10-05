@@ -70,9 +70,9 @@ const FamilySlug = () => {
           },
         }}
       >
-        <div className='w-content max-md:w-full px-paddingContent max-md:px-5 mb-14 pb-14 border-b border-black setflex-center '>
+        <div className=' w-56rem max-md:w-full px-paddingContent max-md:px-5 mb-14 pb-14 border-b border-black setflex-center '>
           <div className='w-full setflex-center'>
-            <span className='text-center py-3'>THE NIGHT ROOSTER</span>
+            <span className='text-center py-3 font-bold'>THE NIGHT ROOSTER</span>
             <div className='border-b border-black h-px w-full' />
           </div>
           <div className='w-full my-10'>
@@ -101,6 +101,36 @@ const FamilySlug = () => {
                     alt={'Locavore'}
                     className='rounded-2xl '
                     layout='fill'
+                  />
+                </div>
+                <div className='w-72 h-72 relative flex-shrink-0'>
+                  <Image
+                    src={`/placeholder/NightRoosterArtwork-5.jpg`}
+                    alt={'Locavore'}
+                    className='rounded-2xl '
+                    layout='fill'
+                    objectFit='cover'
+                    objectPosition='center'
+                  />
+                </div>
+                <div className='w-72 h-72 relative flex-shrink-0'>
+                  <Image
+                    src={`/placeholder/NightRoosterArtwork-5.jpg`}
+                    alt={'Locavore'}
+                    className='rounded-2xl '
+                    layout='fill'
+                    objectFit='cover'
+                    objectPosition='center'
+                  />
+                </div>
+                <div className='w-72 h-72 relative flex-shrink-0'>
+                  <Image
+                    src={`/placeholder/NightRoosterArtwork-5.jpg`}
+                    alt={'Locavore'}
+                    className='rounded-2xl '
+                    layout='fill'
+                    objectFit='cover'
+                    objectPosition='center'
                   />
                 </div>
                 <div className='w-72 h-72 relative flex-shrink-0'>
@@ -170,7 +200,7 @@ const FamilySlug = () => {
                       objectPosition='center'
                     />
                   </div>
-                  <span className='font-serif font-bold'>@thenightrooster</span>
+                  <span className=' text-base '>@thenightrooster</span>
                 </div>
                 <div>
                   <Arrow position='right' fill='black' />
@@ -179,14 +209,14 @@ const FamilySlug = () => {
             </div>
           </div>
           <div className='w-full flex'>
-            <div className='flex w-1/2 flex-col justify-between text-xs pr-14 border-r'>
+            <div className='flex w-1/2 flex-col justify-between text-base pr-14 border-r'>
               <p>10B Jalan Dewi Sita, Ubud, Bali, Indonesia 80571 • Map</p>
               <div className='w-full flex flex-col'>
                 <span>+621(0) 3619 777 33</span>
                 <span>email@gmail.com</span>
               </div>
               <div className='flex items-center space-x-6'>
-                <span>Share</span>
+                <span className="text-sm">Share</span>
                 <div className='relative w-16px h-16px'>
                   <Image
                     src={`/instagram.png`}
@@ -223,7 +253,7 @@ const FamilySlug = () => {
           <div className='w-full setflex-center'>
             <FancyLink
               destination='/'
-              className='mt-16 py-3 px-4 text-xs tracking-widest border border-black font-bold rounded-xl'
+              className='mt-16 py-3 px-4 text-base font-bold tracking-widest border border-black font-bold rounded-xl'
             >
               BOOK NOW
             </FancyLink>

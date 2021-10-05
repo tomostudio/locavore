@@ -10,9 +10,6 @@ export default function Home() {
       location.replace('/editorial/metamorphosis');
     }
   }, []);
-  if (!loaded) {
-    return <div></div>; //show nothing or a loader
-  }
   return (
     <>
       <NextSeo title='Home' />

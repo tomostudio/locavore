@@ -95,7 +95,7 @@ export default function Navbar({ className = '' }) {
                 Editorial
               </FancyLink>
               <FancyLink
-                destination='/uc'
+                destination='/editorial/uc'
                 a11yText='Navigate to the about page'
                 className='hover:opacity-60 transition-opacity ease-linear'
               >
