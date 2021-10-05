@@ -14,7 +14,7 @@ import EditorialIssueCard from '@/components/utils/editorialIssueCard';
 
 // Components
 import StickyButton from '@/components/utils/stickyButton';
-import Link from '@/components/utils/link';
+import Link from '@/components/utils/shortcutLinks';
 
 // Helpers
 import { useMediaQuery } from '@/helpers/functional/checkMedia';

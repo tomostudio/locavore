@@ -11,18 +11,28 @@ import Navbar from '@/components/modules/navbar';
 
 // Components
 import PillButton from '@/components/utils/pillButton';
-import ArticleCard from '@/components/utils/articleCard';
+import OpeningArticle from '@/components/utils/openingArticle';
 import StickyButton from '@/components/utils/stickyButton';
+import NextArticle from '@/components/utils/nextArticle';
 
 // Helpers
-import Link from '@/components/utils/link';
 import FancyLink from '@/components/utils/fancyLink';
 
 export default function Full() {
-  const onMouseClick = (slug) => {
-    document.querySelectorAll(`[data-slug*="${slug}"]`)[0].scrollIntoView({
+  const scrolltoview = (slug) => {
+    const element = document.querySelector(`[data-slug*="${slug}"]`);
+    const headerOffset = 60;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
       behavior: 'smooth',
     });
+
+    // document.querySelectorAll(`[data-slug*="${slug}"]`)[0].scrollIntoView({
+    //   behavior: 'smooth',
+    // });
   };
 
   return (
@@ -36,87 +46,18 @@ export default function Full() {
 
       {/* Header Gap */}
       <HeaderGap />
+
       {/* Untuk Content */}
-      <section className='pt-10 w-full h-full'>
-        <Container className='mb-14 space-y-10 max-md:px-6'>
-          {/* Title */}
-          <h1 className='m-0 font-sans font-normal'>
-            In Search of Regional Specialties Articles
-          </h1>
-          <div className='w-full flex max-md:flex-col items-center max-md:items-start justify-between'>
-            {/* Category */}
-            <div className='w-auto space-x-4 flex '>
-              <PillButton
-                destination='/'
-                className='text-xs max-md:py-1 max-md:px-2 opacity-100 border-black'
-              >
-                Food
-              </PillButton>
-              <PillButton
-                destination='/'
-                className='text-xs max-md:py-1 max-md:px-2 opacity-100 border-black'
-              >
-                Culture
-              </PillButton>
-            </div>
-            {/* Social Media */}
-            <div className='w-full max-md:mt-7 flex max-md:flex-row-reverse justify-between'>
-              <span className='ml-4 max-md:m-0 font-serif italic font-bold'>
-                March 2021
-              </span>
-              <div className='flex space-x-7'>
-                <div className='relative w-16px h-16px'>
-                  <Image
-                    src={`/facebook.png`}
-                    alt={'Locavore'}
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='center'
-                  />
-                </div>
-                <div className='relative w-16px h-16px'>
-                  <Image
-                    src={`/twitter.png`}
-                    alt={'Locavore'}
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='center'
-                  />
-                </div>
-                <div className='relative w-16px h-16px'>
-                  <Image
-                    src={`/mail.png`}
-                    alt={'Locavore'}
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='center'
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='w-full h-full'>
-            {/* Description */}
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. Lorem
-              Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged.
-            </p>
-            {/* List */}
-            <div className='flex flex-col space-y-1 mt-10 max-md:mt-5 text-culture'>
+      <OpeningArticle />
+
+      <section className=''>
+        <Container>
+          <div>
+            <div className='flex flex-col space-y-1 max-md:mt-5 text-culture'>
               <div>
                 <span className='block font-serif italic'>Part 1</span>
                 <FancyLink
-                  onClick={() => onMouseClick('tools-of-trade')}
+                  onClick={() => scrolltoview('tools-of-trade')}
                   className='font-bold font-serif border-culture border-b'
                 >
                   Tools of The Trade
@@ -125,7 +66,7 @@ export default function Full() {
               <div>
                 <span className='block font-serif italic'>Part 2</span>
                 <FancyLink
-                  onClick={() => onMouseClick('evolution-of-the-food-industry')}
+                  onClick={() => scrolltoview('evolution-of-the-food-industry')}
                   className='font-bold font-serif border-culture border-b'
                 >
                   Evolution of The Food Industry
@@ -136,7 +77,7 @@ export default function Full() {
                   Part 3
                 </span>
                 <FancyLink
-                  onClick={() => onMouseClick('you-are-what-you-eat')}
+                  onClick={() => scrolltoview('you-are-what-you-eat')}
                   className='font-bold font-serif border-culture border-b'
                 >
                   You Are What You Eat
@@ -146,11 +87,12 @@ export default function Full() {
           </div>
         </Container>
       </section>
-      <section className=' w-full h-full'>
+      <section className='mt-14 w-full h-full'>
         {/* Orange Component */}
         <div
           data-slug='tools-of-trade'
-          className='w-full h-auto bg-culture px-8 py-5 max-md:p-2'
+          className='w-full h-auto px-8 py-4 max-md:p-2'
+          style={{ background: '#D66A51' }}
         >
           <div className='w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center'>
             <div className='w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10'>
@@ -327,7 +269,8 @@ export default function Full() {
         {/* Orange Component */}
         <div
           data-slug='you-are-what-you-eat'
-          className='w-full h-auto bg-culture px-8 py-5 max-md:p-2'
+          className='w-full h-auto px-8 py-4 max-md:p-2'
+          style={{ background: '#D66A51' }}
         >
           <div className='w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center'>
             <div className='w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10'>
@@ -363,39 +306,20 @@ export default function Full() {
         </div>
       </section>
       {/* Card Next Article */}
-      <section className='pb-20 w-full h-full'>
-        <div className='w-full setflex-center mt-14 space-y-14'>
-          <div className='h-40 setflex-center w-full'>
-            <hr className='bg-black border border-black h-full w-px' />
-          </div>
-          <div className='relative w-full  setflex-center'>
-            <FancyLink destination={'/article/gallery'} className={`group`}>
-              <ArticleCard
-                className='rotate-6 group-hover:-rotate-2 group-hover:-translate-y-2'
-                bgColor={'#C9C8BF'}
-                title='5. Ulekan'
-                category='Culture'
-                timeRead='20 min read'
-                src='/placeholder/locavore-rintik-crop-11.jpg'
-                alt='Locavore'
-              />
-            </FancyLink>
-            <div className='absolute top-0 left-0 h-full w-full setflex-center z-min1'>
-              <Marquee gradient={false}>
-                <h1 className='font-sans font-normal h-28'>
-                  Next Article • Next Article • Next Article
-                </h1>
-              </Marquee>
-            </div>
-          </div>
-        </div>
-      </section>
+      <NextArticle
+        bgColor={'#C9C8BF'}
+        title='5. Ulekan'
+        category='Culture'
+        timeRead='20 min read'
+        thumbnail='/placeholder/locavore-rintik-crop-11.jpg'
+        alt='Locavore'
+        destination={'/article/gallery'}
+      />
       {/* Button Sticky */}
       <StickyButton destination='/editorial/metamorphosis' arrow='left'>
         ISSUE 1
       </StickyButton>
       <Footer />
-      <Link />
     </Layout>
   );
 }

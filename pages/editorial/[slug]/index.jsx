@@ -12,7 +12,7 @@ import Navbar from '@/components/modules/navbar'
 import ArticleCard from '@/components/utils/articleCard'
 
 // Helpers
-import Link from '@/components/utils/link'
+import Link from '@/components/utils/shortcutLinks'
 import StickyButton from '@/components/utils/stickyButton'
 import Container from '@/components/modules/container'
 

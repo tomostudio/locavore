@@ -7,8 +7,9 @@ const Link = () => {
         <span className='content'>Link</span>
 
         <div className='dropdown-content'>
-          <FancyLink destination='/editorial/issue-index'>
-            Issue - Index
+          <FancyLink destination='/editorial'>Editorial - Index</FancyLink>
+          <FancyLink destination='/editorial/search'>
+            Editorial - Search
           </FancyLink>
           <FancyLink destination='/editorial/metamorphosis-landing'>
             Issue - Metamorphosis (Landing)
@@ -16,17 +17,19 @@ const Link = () => {
           <FancyLink destination='/editorial/uc'>
             Issue - Under Construction (Landing)
           </FancyLink>
-          <FancyLink destination='/editorial'>Editorial Index</FancyLink>
-          <FancyLink destination='/editorial/search'>
-            Editorial Search
+          <FancyLink destination='/editorial/issue-index'>
+            Issue - Index
           </FancyLink>
-          <FancyLink destination='/article/full'>Article Full</FancyLink>
+          <FancyLink destination='/article/blog'>Article - Blog</FancyLink>
           <FancyLink destination='/article/caroussel'>
-            Article Caroussel
+            Article - Caroussel
           </FancyLink>
-          <FancyLink destination='/article/gallery'>Article Gallery</FancyLink>
-          <FancyLink destination='/article/video'>Article Video</FancyLink>
+          <FancyLink destination='/article/gallery'>Article - Gallery</FancyLink>
+          <FancyLink destination='/article/video'>Article - Video</FancyLink>
           <FancyLink destination='/family'>Family</FancyLink>
+          <FancyLink destination='/family/rooster'>
+            Family - Night Rooster
+          </FancyLink>
           <FancyLink destination='/social'>Social</FancyLink>
         </div>
       </div>

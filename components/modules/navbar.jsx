@@ -1,23 +1,24 @@
-import FancyLink from '@/components/utils/fancyLink'
-import Container from '@/components/modules/container'
-import { useMediaQuery } from '@/helpers/functional/checkMedia'
-import { useAppContext } from 'context/state'
-import { useState } from 'react'
-import Image from 'next/image'
+import FancyLink from '@/components/utils/fancyLink';
+import Container from '@/components/modules/container';
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
+import { useAppContext } from 'context/state';
+import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Navbar({ className = '' }) {
-  const appContext = useAppContext()
-  const { headerStyle } = appContext.headerVar
-  const [menu, setMenu] = useState(false)
+  const appContext = useAppContext();
+  const { headerStyle } = appContext.headerVar;
+  const [menu, setMenu] = useState(false);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 w-full z-50  transition-all duration-150 ease-linear ${className} ${
         headerStyle.toLowerCase() === 'default'
           ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm border-black'
-          : headerStyle.toLowerCase() === 'white'
-          ? ''
-          : headerStyle.toLowerCase() === 'black'
+          : headerStyle.toLowerCase() === 'hidden'
+          ? 'hidden'
+          : headerStyle.toLowerCase() === 'white' ||
+            headerStyle.toLowerCase() === 'black'
           ? ''
           : ''
       }`}
@@ -34,38 +35,39 @@ export default function Navbar({ className = '' }) {
         {headerStyle.toLowerCase() === 'default' ? (
           <FancyLink
             onClick={() => {
-              setMenu(!menu)
+              setMenu(!menu);
             }}
-            className="hidden max-md:block"
+            className='hidden max-md:block'
           >
-            <svg width="25" height="9" viewBox="0 0 25 9" fill="none">
-              <line y1="1" x2="25" y2="1" stroke="black" />
-              <line y1="8" x2="25" y2="8" stroke="black" strokeWidth="2" />
+            <svg width='25' height='9' viewBox='0 0 25 9' fill='none'>
+              <line y1='1' x2='25' y2='1' stroke='black' />
+              <line y1='8' x2='25' y2='8' stroke='black' strokeWidth='2' />
             </svg>
           </FancyLink>
         ) : headerStyle.toLowerCase() === 'white' ? (
           <FancyLink
             onClick={() => {
-              setMenu(!menu)
+              setMenu(!menu);
             }}
-            className="hidden max-md:block"
+            className='hidden max-md:block'
           >
-            <svg width="25" height="9" viewBox="0 0 25 9" fill="none">
-              <line y1="1" x2="25" y2="1" stroke="white" />
-              <line y1="8" x2="25" y2="8" stroke="white" strokeWidth="2" />
+            <svg width='25' height='9' viewBox='0 0 25 9' fill='none'>
+              <line y1='1' x2='25' y2='1' stroke='white' />
+              <line y1='8' x2='25' y2='8' stroke='white' strokeWidth='2' />
             </svg>
           </FancyLink>
         ) : (
           ''
         )}
         <FancyLink
-          destination="/"
-          a11yText="Navigate to the home page"
-          className="mb-1 max-md:mb-0 max-md:ml-3 setflex-center max-md:p-0"
+          destination='/'
+          a11yText='Navigate to the home page'
+          className='mb-1 max-md:mb-0 max-md:ml-3 setflex-center max-md:p-0'
         >
           <img
             src={
-              headerStyle.toLowerCase() === 'default' || headerStyle.toLowerCase() === 'black'
+              headerStyle.toLowerCase() === 'default' ||
+              headerStyle.toLowerCase() === 'black'
                 ? '/locavore-black.png'
                 : headerStyle.toLowerCase() === 'white'
                 ? '/locavore-white.png'
@@ -75,7 +77,8 @@ export default function Navbar({ className = '' }) {
         </FancyLink>
         <nav
           className={`ml-auto setflex-center-row max-md:justify-end space-x-6 w-full text-sm md:text-sm md:w-auto transition-colors duration-300 ease-linear ${
-            headerStyle.toLowerCase() === 'default' || headerStyle.toLowerCase() === 'black'
+            headerStyle.toLowerCase() === 'default' ||
+            headerStyle.toLowerCase() === 'black'
               ? 'text-black'
               : headerStyle.toLowerCase() === 'white'
               ? 'text-white'
@@ -85,23 +88,23 @@ export default function Navbar({ className = '' }) {
           {useMediaQuery('(min-width: 768px)') && (
             <>
               <FancyLink
-                destination="/editorial"
-                a11yText="Navigate to the editorial page"
-                className="hover:opacity-60 transition-opacity ease-linear"
+                destination='/editorial'
+                a11yText='Navigate to the editorial page'
+                className='hover:opacity-60 transition-opacity ease-linear'
               >
                 Editorial
               </FancyLink>
               <FancyLink
-                destination="/uc"
-                a11yText="Navigate to the about page"
-                className="hover:opacity-60 transition-opacity ease-linear"
+                destination='/uc'
+                a11yText='Navigate to the about page'
+                className='hover:opacity-60 transition-opacity ease-linear'
               >
                 Under Construction
               </FancyLink>
               <FancyLink
-                destination="/family"
-                a11yText="Navigate to the about page"
-                className="hover:opacity-60 transition-opacity ease-linear"
+                destination='/family'
+                a11yText='Navigate to the about page'
+                className='hover:opacity-60 transition-opacity ease-linear'
               >
                 Family
               </FancyLink>
@@ -139,7 +142,7 @@ export default function Navbar({ className = '' }) {
                 : ''
             }`}
           >
-            <FancyLink destination="/editorial" className="text-center">
+            <FancyLink destination='/editorial' className='text-center'>
               Editorial
             </FancyLink>
           </div>
@@ -153,8 +156,8 @@ export default function Navbar({ className = '' }) {
             }`}
           >
             <FancyLink
-              destination="/under_construction"
-              className="text-center"
+              destination='/under_construction'
+              className='text-center'
             >
               Under Construction
             </FancyLink>
@@ -168,7 +171,7 @@ export default function Navbar({ className = '' }) {
                 : ''
             }`}
           >
-            <FancyLink destination="/family" className="text-center">
+            <FancyLink destination='/family' className='text-center'>
               Family
             </FancyLink>
           </div>
@@ -181,7 +184,7 @@ export default function Navbar({ className = '' }) {
                 : ''
             }`}
           >
-            <FancyLink destination="/booking" className="text-center">
+            <FancyLink destination='/booking' className='text-center'>
               Booking
             </FancyLink>
           </div>
@@ -196,79 +199,79 @@ export default function Navbar({ className = '' }) {
           >
             {headerStyle.toLowerCase() === 'default' ? (
               <>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/instagram.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/facebook.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/Youtube.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/Linkedin.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
               </>
             ) : headerStyle.toLowerCase() === 'white' ? (
               <>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/instagram-white.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/facebook-white.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/Youtube-white.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/Linkedin-white.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
               </>
@@ -290,5 +293,5 @@ export default function Navbar({ className = '' }) {
         </div>
       )}
     </header>
-  )
+  );
 }

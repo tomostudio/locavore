@@ -11,7 +11,6 @@ import Footer from '@/components/modules/footer';
 import ArticleCard from '@/components/utils/articleCard';
 
 // Helpers
-import Link from '@/components/utils/link';
 import FancyLink from '@/components/utils/fancyLink';
 import StickyButton from '@/components/utils/stickyButton';
 import Container from '@/components/modules/container';
@@ -192,7 +191,6 @@ export default function Issue() {
         EDITORIAL INDEX
       </StickyButton>
       <Footer />
-      <Link />
     </Layout>
   );
 }
