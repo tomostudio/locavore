@@ -12,7 +12,7 @@ const SEO = ({ seo }) => {
     webTitle,
     meta_keywords,
   } = seo
-  const pagetitle = title && webTitle ? `${title} | ${webTitle}` : `Locavore`
+  const pagetitle = title && webTitle ? `${title} - ${webTitle}` : `Locavore`
   const canonicalLink = `https://website.site${
     pagelink ? `${pagelink.startsWith('/') ? '' : '/'}${pagelink}` : ''
   }`

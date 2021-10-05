@@ -18,7 +18,7 @@ import Link from '@/components/utils/link';
 import { useAppContext } from 'context/state';
 
 export default function IssueLanding() {
-  const dark = true;
+  const dark = false;
   const containerRef = useRef(null);
   const appContext = useAppContext();
   useEffect(() => {
@@ -199,7 +199,7 @@ export default function IssueLanding() {
 
   return (
     <Layout>
-      <NextSeo title='Metamorphosis' />
+      <NextSeo title='Under Construction' />
 
       {/* Issue Title */}
       <div>
@@ -214,10 +214,10 @@ export default function IssueLanding() {
               id='issueNoInside'
               className='content-issue font-serif font-normal italic text-5xl'
             >
-              Issue 1
+              Issue 0
             </span>
             <h1 className='title-issue font-sans font-normal text-8xl'>
-              Metamorphosis
+              Under Construction
             </h1>
           </Container>
         </div>
@@ -265,7 +265,7 @@ export default function IssueLanding() {
           />
 
           <Image
-            src={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
+            src={`/placeholder/dossier-lab-2-3-8.jpg`}
             alt={'Locavore'}
             layout='fill'
             objectFit='cover'
@@ -281,12 +281,12 @@ export default function IssueLanding() {
           }`}
         >
           {/* Plain Background  */}
-          {/* <div
-          className='absolute h-full w-full top-0 left-0 z-20'
-          style={{ background: 'rgba(50,50,50,1' }}
-        /> */}
-          {/* Image  */}
           <div
+            className='absolute h-full w-full top-0 left-0 z-20'
+            style={{ background: 'rgba(255,255,255,1' }}
+          />
+          {/* Image  */}
+          {/* <div
             className={`absolute  h-full w-full top-0 left-0 z-10  ${
               dark ? 'bg-black opacity-40' : 'bg-white opacity-25'
             }`}
@@ -298,7 +298,7 @@ export default function IssueLanding() {
             layout='fill'
             objectFit='cover'
             objectPosition='center'
-          />
+          /> */}
         </div>
       </div>
       <LocomotiveScrollProvider

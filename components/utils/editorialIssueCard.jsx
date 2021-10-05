@@ -10,7 +10,9 @@ export default function EditorialIssueCard({
   totalArticles,
   descriptions,
   destination,
-  imageThumbnail,
+  dark = true,
+  bgColor = '#000000',
+  imageThumbnail = '',
 }) {
   return (
     <FancyLink
@@ -21,18 +23,42 @@ export default function EditorialIssueCard({
         <span>ISSUE {issueNo}</span>
       </div>
       <div className='relative w-full h-full rounded-2xl'>
-        <div className='absolute w-full h-full top-0 left-0 rounded-2xl'>
-          <div className='imageCover bg-black w-full h-full absolute top-0 left-0 z-10 transition-all duration-300 opacity-40 group-hover:opacity-50' />
-          <Image
-            src={imageThumbnail}
-            alt={'Locavore'}
-            className='rounded-2xl'
-            layout='fill'
-            objectFit='cover'
-            objectPosition='center'
-          />
+        <div
+          className={`absolute w-full h-full top-0 left-0 rounded-2xl overflow-hidden ${
+            dark ? 'bg-black' : 'bg-white'
+          }`}
+        >
+          {imageThumbnail ? (
+            <>
+              {/* Image */}
+              <div
+                className={`imageCover w-full h-full absolute top-0 left-0 z-10 transition-all duration-300  ${
+                  dark ? 'bg-black  opacity-25' : 'bg-white  opacity-25'
+                } group-hover:opacity-40`}
+              />
+              <Image
+                src={imageThumbnail}
+                alt={'Locavore'}
+                layout='fill'
+                objectFit='cover'
+                objectPosition='center'
+              />
+            </>
+          ) : (
+            <>
+              {/* Plain BG */}
+              <div
+                className='w-full h-full absolute top-0'
+                style={{ background: bgColor }}
+              />
+            </>
+          )}
         </div>
-        <div className='relative z-10 w-full h-full flex flex-col justify-between text-white p-8'>
+        <div
+          className={`relative z-10 w-full h-full flex flex-col justify-between p-8 ${
+            dark ? 'text-white ' : 'text-black'
+          }`}
+        >
           {useMediaQuery('(max-width: 768px)') && (
             <div className='w-full flex justify-between text-xs'>
               <span>{date}</span>
@@ -44,14 +70,24 @@ export default function EditorialIssueCard({
             {!useMediaQuery('(max-width: 768px)') && (
               <div className='w-full flex flex-col max-md:hidden'>
                 <div className='w-96'>{descriptions}</div>
-                <div className='flex space-x-16 border-t border-white w-full pt-6 mt-6 text-xs'>
+                <div
+                  className={`flex space-x-16 border-t w-full pt-6 mt-6 text-xs ${
+                    dark ? 'border-white' : 'border-black'
+                  }`}
+                >
                   <span>MARCH 2021</span>
                   <span>15 ARTICLES</span>
                 </div>
               </div>
             )}
             <div className='flex w-96 max-md:w-auto items-end justify-end'>
-              <div className='px-10 py-7 border border-white rounded-50% text-white'>
+              <div
+                className={`px-10 py-7 border  rounded-50%  transition-all duration-300 ${
+                  dark
+                    ? 'border-white text-white group-hover:text-black group-hover:bg-white'
+                    : 'border-black text-black group-hover:text-white group-hover:bg-black'
+                }`}
+              >
                 READ ISSUE
               </div>
             </div>

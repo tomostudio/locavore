@@ -21,8 +21,8 @@
   // border: solid 1px blue;
 }
 
-header > div:first-child {
-  // border-bottom: solid 1px black;
+.bi {
+  border: solid 1px blue;
 }
 
 /* Simple defaults */
@@ -41,6 +41,33 @@ body {
     @apply bg-red-300;
   }
 }
+
+// Editorial
+
+#scrollIndicator {
+  & > * {
+    animation: scrollmove 1.5s linear infinite;
+  }
+}
+
+@keyframes scrollmove {
+  0%,
+  10% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  40%,
+  60% {
+    opacity: 1;
+  }
+  90%,
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+// Family
 
 #family-button {
   & > a {
@@ -79,40 +106,26 @@ body {
   }
 }
 
-#link {
-  @apply cursor-pointer px-3 bg-lightGray bg-opacity-70;
-  border-top-right-radius: 5px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 100000;
-
-  a {
-    @apply py-2;
-    display: block;
-  }
-
-  .dropdown {
-    position: relative;
-    display: inline-block;
-
-    &:hover {
-      .dropdown-content {
-        display: block;
+#swipe-editorial {
+  .swiper-slide {
+    width: 384px;
+    & .article_wrapper {
+      @apply px-3 py-6;
+      & > a {
+        @apply transition-transform duration-300 block relative;
       }
-    }
-
-    .dropdown-content {
-      margin-left: -0.75rem;
-      display: none;
-      position: absolute;
-      bottom: 100%;
-      left: 0;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      padding: 12px 16px;
-      z-index: 1;
+      &.prev-2 > a {
+        transform: rotateZ(-4deg) translate(0, 20px);
+      }
+      &.prev-1 > a {
+        transform: rotateZ(-2.5deg) translate(0, 5px);
+      }
+      &.next-1 > a {
+        transform: rotateZ(2.5deg) translate(0, 5px);
+      }
+      &.next-2 > a {
+        transform: rotateZ(4deg) translate(0, 20px);
+      }
     }
   }
 }
@@ -122,24 +135,19 @@ body {
 }
 
 #swipe-family {
-  .swiper-slide {
-    @apply w-52 #{!important};
+  & .swiper-slide {
+    // @apply w-52 #{!important};
   }
 }
 
 #swipe-editorial {
   .swiper-slide {
-    @apply w-72 #{!important};
+    width: 384px;
   }
 }
 
 #swipe-caroussel {
   .swiper-slide {
-    @apply w-56 #{!important};
-
-    @include mobile {
-      @apply w-36 #{!important};
-    }
   }
 }
 

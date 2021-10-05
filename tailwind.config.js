@@ -5,6 +5,22 @@ module.exports = {
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false,
   theme: {
+    zIndex: {
+      '-1': '-1',
+      '-10': '-10',
+      0: 0,
+      1: 1,
+      10: 10,
+      20: 20,
+      30: 30,
+      40: 40,
+      50: 50,
+      25: 25,
+      50: 50,
+      75: 75,
+      100: 100,
+      auto: 'auto',
+    },
     fontFamily: {
       default: ['Favorit Pro', 'sans-serif'],
       sans: ['Whyte Inktrap', 'sans-serif'],
@@ -27,10 +43,17 @@ module.exports = {
         '10px': '10px',
       },
       boxShadow: {
-        darker: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)',
+        darker:
+          '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)',
       },
       height: {
         'screen-1/2': '50vh',
+        's-30': '30vh',
+        's-40': '40vh',
+        's-50': '50vh',
+        's-100': '100vh',
+        's-150': '150vh',
+        's-200': '200vh',
         '10vh': '10vh',
         '15vh': '15vh',
         '20vh': '20vh',
@@ -98,7 +121,7 @@ module.exports = {
         '50%': '50%',
       },
       maxWidth: {
-        issueCard: '400px'
+        issueCard: '400px',
       },
       spacing: {
         paddingContent: '5rem',
