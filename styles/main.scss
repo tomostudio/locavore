@@ -78,7 +78,7 @@ body {
 #family-image {
   & > div {
     position: relative;
-    width: calc(100% / 5);
+    width: calc(100% / 8);
     @include mobile {
       width: calc(100% / 3);
     }
@@ -148,6 +148,11 @@ body {
 
 #swipe-caroussel {
   .swiper-slide {
+    @apply w-56 #{!important};
+
+    @include mobile {
+      @apply w-36 #{!important};
+    }
   }
 }
 

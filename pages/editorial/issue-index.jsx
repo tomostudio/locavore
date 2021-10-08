@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { NextSeo } from 'next-seo';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination } from 'swiper';
@@ -11,7 +12,6 @@ import Footer from '@/components/modules/footer';
 import ArticleCard from '@/components/utils/articleCard';
 
 // Helpers
-import Link from '@/components/utils/link';
 import FancyLink from '@/components/utils/fancyLink';
 import StickyButton from '@/components/utils/stickyButton';
 import Container from '@/components/modules/container';
@@ -20,6 +20,9 @@ import Container from '@/components/modules/container';
 SwiperCore.use([Pagination]);
 
 export default function Issue() {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   return (
     <Layout>
       <NextSeo title='Metamorphosis' />
@@ -192,7 +195,6 @@ export default function Issue() {
         EDITORIAL INDEX
       </StickyButton>
       <Footer />
-      <Link />
     </Layout>
   );
 }

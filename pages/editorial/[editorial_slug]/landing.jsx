@@ -14,7 +14,6 @@ import FancyLink from '@/components/utils/fancyLink';
 
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll';
-import Link from '@/components/utils/link';
 import { useAppContext } from 'context/state';
 
 export default function IssueLanding() {
@@ -348,7 +347,6 @@ export default function IssueLanding() {
             </ScrollTriggerWrapper>
           </div>
         </div>
-        <Link />
       </LocomotiveScrollProvider>
     </Layout>
   );

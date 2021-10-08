@@ -15,7 +15,6 @@ import ArticleCard from '@/components/utils/articleCard'
 import StickyButton from '@/components/utils/stickyButton'
 
 // Helpers
-import Link from '@/components/utils/link'
 import FancyLink from '@/components/utils/fancyLink'
 
 export default function ArticleSlug() {
@@ -388,7 +387,6 @@ export default function ArticleSlug() {
         ISSUE 1
       </StickyButton>
       <Footer />
-      <Link />
     </Layout>
   )
 }
