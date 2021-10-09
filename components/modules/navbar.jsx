@@ -12,21 +12,22 @@ export default function Navbar({ className = '' }) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 w-full z-50  transition-all duration-150 ease-linear ${className} ${
+      className={`fixed top-0 left-0 right-0 w-full z-50  transition-all duration-150 ease-linear border-b ${className} ${
         headerStyle.toLowerCase() === 'default'
           ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm border-black'
           : headerStyle.toLowerCase() === 'hidden'
           ? 'hidden'
-          : headerStyle.toLowerCase() === 'white' ||
-            headerStyle.toLowerCase() === 'black'
-          ? ''
+          : headerStyle.toLowerCase() === 'white'
+          ? 'border-white'
+          : headerStyle.toLowerCase() === 'black'
+          ? 'border-black'
           : ''
       }`}
     >
       <Container
-        className={`h-header relative pointer-events-auto flex flex-wrap max-md:flex-nowrap max-md:pb-5 max-md:items-center max-md:pt-10 border-b ${
+        className={`h-header relative pointer-events-auto flex flex-wrap max-md:flex-nowrap max-md:pb-5 max-md:items-center max-md:pt-10  ${
           headerStyle.toLowerCase() === 'default'
-            ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm border-black'
+            ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm '
             : headerStyle.toLowerCase() === 'white'
             ? 'border-white'
             : ''

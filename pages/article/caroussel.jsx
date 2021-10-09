@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { NextSeo } from 'next-seo';
 import Marquee from 'react-fast-marquee';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -46,6 +47,11 @@ export default function Caroussel() {
   const onListChange = () => {
     refSlide.current.swiper.slideTo(refList.current.swiper.realIndex + 1);
   };
+  useEffect(() => {
+    window.scroll(0, 0);
+    return () => {
+    };
+  }, []);
 
   return (
     <Layout>
