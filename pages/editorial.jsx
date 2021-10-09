@@ -9,15 +9,11 @@ import Layout from '@/components/modules/layout';
 import Container from '@/components/modules/container';
 import Footer from '@/components/modules/footer';
 import HeaderGap from '@/components/modules/headerGap';
-import Navbar from '@/components/modules/navbar';
 import EditorialIssueCard from '@/components/utils/editorialIssueCard';
 
 // Components
 import StickyButton from '@/components/utils/stickyButton';
-import Link from '@/components/utils/shortcutLinks';
 
-// Helpers
-import { useMediaQuery } from '@/helpers/functional/checkMedia';
 
 export default function Editorial() {
   useEffect(() => {
