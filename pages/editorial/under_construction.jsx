@@ -11,7 +11,6 @@ import Footer from '@/components/modules/footer'
 import ArticleCard from '@/components/utils/articleCard'
 
 // Helpers
-import Link from '@/components/utils/link'
 import StickyButton from '@/components/utils/stickyButton'
 import Container from '@/components/modules/container'
 
@@ -120,7 +119,6 @@ export default function UnderConstruction() {
         ISSUE INDEX
       </StickyButton>
       <Footer />
-      <Link />
     </Layout>
   )
 }

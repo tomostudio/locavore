@@ -253,7 +253,7 @@ const FamilySlug = () => {
           <div className='w-full setflex-center'>
             <FancyLink
               destination='/'
-              className='mt-16 py-3 px-4 text-base font-bold tracking-widest border border-black font-bold rounded-xl'
+              className='mt-16 py-3 px-4 text-base tracking-widest border border-black font-bold rounded-xl'
             >
               BOOK NOW
             </FancyLink>

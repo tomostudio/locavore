@@ -60,8 +60,8 @@ export default function Caroussel() {
       <HeaderGap />
       {/* Untuk Content */}
       <OpeningArticle />
-      <section className='pb-20 w-full h-full flex flex-col'>
-        <Container className='mb-14 max-md:mb-5 space-y-3 max-md:space-y-5 max-md:px-0'>
+      <section className='w-full h-full flex flex-col'>
+        <Container className='max-md:mb-5 space-y-3 max-md:space-y-5 max-md:px-0'>
           {/* Gallery */}
           <div className='relative w-full h-full'>
             <Swiper
