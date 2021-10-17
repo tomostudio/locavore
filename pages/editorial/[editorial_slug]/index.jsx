@@ -1,127 +1,383 @@
+import { useEffect, useRef } from 'react'
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { NextSeo } from 'next-seo'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { Pagination } from 'swiper'
+import Image from 'next/image'
 
 // Layout
 import Layout from '@/components/modules/layout'
-import HeaderGap from '@/components/modules/headerGap'
-import Footer from '@/components/modules/footer'
-import Navbar from '@/components/modules/navbar'
-
-// Components
-import ArticleCard from '@/components/utils/articleCard'
-
-// Helpers
-import Link from '@/components/utils/shortcutLinks'
-import StickyButton from '@/components/utils/stickyButton'
 import Container from '@/components/modules/container'
 
-// install Swiper modules
-SwiperCore.use([Pagination])
+// Components
+import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
+import FancyLink from '@/components/utils/fancyLink'
 
-export default function Index() {
+// Helpers
+import PushScrollGlobal from '@/helpers/globalscroll'
+import { useAppContext } from 'context/state'
+import client from '@/helpers/sanity/client'
+import urlFor from '@/helpers/sanity/urlFor'
+import { toPlainText } from '@/helpers/functional/toPlainText'
+import checkMonth from '@/helpers/functional/checkMonth'
+
+export default function Index({ issueAPI }) {
+  const [issue] = issueAPI
+  const dark = issue.title.toLowerCase() === 'under construction' ? false : true
+  const containerRef = useRef(null)
+  const appContext = useAppContext()
+
+  useEffect(() => {
+    appContext.setHeader({ headerStyle: dark ? 'white' : 'black' })
+    window.scroll(0, 0)
+    return () => {
+      appContext.setHeader({ headerStyle: 'default' })
+    }
+  }, [])
+
+  const animationObj = [
+    () => {
+      // Issue No Animation
+      const id = 'issueNo'
+      const elem = '#issueNo'
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: '#trigger1', // which section will be tracked as the scroll trigger
+          scroller: '#scroll-container', // id of scroll container
+          scrub: true,
+          start: 'top 0%',
+          end: 'bottom -0%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          to: [
+            elem,
+            {
+              y: '100%',
+              scale: 2.5,
+              ease: 'none',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    () => {
+      // Start Background
+      const id = 'First BG'
+      const elem = '#firstBG'
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: '#trigger1', // which section will be tracked as the scroll trigger
+          scroller: '#scroll-container', // id of scroll container
+          scrub: true,
+          start: 'top 0%',
+          end: 'bottom 0%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          to: [
+            elem,
+            {
+              opacity: 0,
+              scale: 1.25,
+              ease: 'none',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    () => {
+      // Start Background
+      const id = 'End BG'
+      const elem = '#endBg'
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: '#trigger1', // which section will be tracked as the scroll trigger
+          scroller: '#scroll-container', // id of scroll container
+          scrub: true,
+          start: 'top 0%',
+          end: 'bottom 0%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          to: [
+            elem,
+            {
+              scale: 1.1,
+              ease: 'none',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    () => {
+      // Scroller Dissapear
+      const id = 'scrollIndicator'
+      const elem = '#scrollIndicator'
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: '#trigger1', // which section will be tracked as the scroll trigger
+          scroller: '#scroll-container', // id of scroll container
+          scrub: true,
+          start: 'top -10%',
+          end: 'bottom 50%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          to: [
+            elem,
+            {
+              opacity: 0,
+              ease: 'none',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    () => {
+      // Issue No Animation
+      const id = 'Issue Title'
+      const elem = '#issueTitle'
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: '#trigger1', // which section will be tracked as the scroll trigger
+          scroller: '#scroll-container', // id of scroll container
+          scrub: true,
+          start: 'top 0%',
+          end: 'bottom 0%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              scale: '0.75',
+              opacity: 0,
+              y: 50,
+              ease: 'none',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              scale: '1',
+              opacity: 1,
+              y: 0,
+              ease: 'none',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+  ]
+
   return (
     <Layout>
-      <NextSeo title="Metamorphosis" />
+      <NextSeo title={issue.title} />
 
-      {/* Header Gap */}
-      <HeaderGap />
-      {/* Untuk Content */}
-      <section className="py-10 w-full h-full flex flex-col space-y-10">
-        {/* Title */}
-        <Container className="max-md:px-6">
-          <div className="w-full h-full setflex-center">
-            <span className="font-serif italic text-xl">
-              Issue 1 — March 2021
+      {/* Issue Title */}
+      <div>
+        <div
+          id="issueTitle"
+          className={`h-s-50 pb-20 top-0 left-0 right-0 w-screen flex items-center content-center flex-col justify-end fixed z-10 pointer-events-none  opacity-0 ${
+            dark ? 'text-white' : 'text-black'
+          }`}
+        >
+          <Container className="max-md:px-6 text-center setflex-center ">
+            <span
+              id="issueNoInside"
+              className="content-issue font-serif font-normal italic text-5xl"
+            >
+              Issue {issue.order}
             </span>
-            <h1 className=" font-sans font-normal max-md:break-all max-md:text-center">
-              Metamorphosis
+            <h1 className="title-issue font-sans font-normal text-8xl">
+              {issue.title}
             </h1>
-          </div>
-        </Container>
-        {/* Card */}
-        <div className="w-full h-96 flex" id="editorial-slider">
-          <Swiper
-            slidesPerView="auto"
-            spaceBetween={20}
-            pagination={{
-              clickable: true,
-            }}
-            loop={true}
-            centeredSlides={true}
-            id="swipe-editorial"
-          >
-            <SwiperSlide>
-              <ArticleCard
-                className="bg-events w-full h-96"
-                title="5. Ulekan"
-                category="Culture"
-                timeRead="20 min read"
-                src="/placeholder/locavore-rintik-crop-11.jpg"
-                alt="Locavore"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ArticleCard
-                className="bg-events w-full h-96"
-                title="5. Ulekan"
-                category="Culture"
-                timeRead="20 min read"
-                src="/placeholder/locavore-rintik-crop-11.jpg"
-                alt="Locavore"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ArticleCard
-                className="bg-events w-full h-96"
-                title="5. Ulekan"
-                category="Culture"
-                timeRead="20 min read"
-                src="/placeholder/locavore-rintik-crop-11.jpg"
-                alt="Locavore"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ArticleCard
-                className="bg-events w-full h-96"
-                title="5. Ulekan"
-                category="Culture"
-                timeRead="20 min read"
-                src="/placeholder/locavore-rintik-crop-11.jpg"
-                alt="Locavore"
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <ArticleCard
-                className="bg-events w-full h-96"
-                title="5. Ulekan"
-                category="Culture"
-                timeRead="20 min read"
-                src="/placeholder/locavore-rintik-crop-11.jpg"
-                alt="Locavore"
-              />
-            </SwiperSlide>
-          </Swiper>
+          </Container>
         </div>
-        <Container className="max-md:px-6">
-          <div className="w-full setflex-center">
-            <div className="mb-5 text-xs">
-              <span className="font-bold">1</span>-<span>15</span>
-            </div>
-            <div className="relative w-full setflex-center">
-              <div className="relative border-b w-48 max-md:w-full h-px border-black">
-                <div className="absolute left-4 w-8 h-1 -top-px border border-black bg-black" />
-              </div>
-            </div>
+        {/* Issue Number */}
+        <div
+          id="issueNo"
+          className="h-screen top-0 left-0 right-0  setflex-center w-screen fixed z-10 pointer-events-none"
+        >
+          <Container className="max-md:px-6 text-center ">
+            <span
+              className={` font-normal text-8xl ${
+                dark ? 'text-white' : 'text-black'
+              }`}
+            >
+              ISSUE {issue.order}
+            </span>
+          </Container>
+        </div>
+        {/* Scroll Inidicator */}
+        <div
+          id="scrollIndicator"
+          className="fixed z-20 bottom-10 left-0 w-full setflex-center pointer-events-none"
+        >
+          <span
+            className={`font-light text-xs tracking-widest  ${
+              dark ? 'text-white' : 'text-black'
+            }`}
+          >
+            SCROLL
+          </span>
+        </div>
+
+        {/* First Background */}
+        <div
+          id="firstBG"
+          className={`fixed setflex-center h-screen w-screen top-0 left-0 -z-1 pointer-events-none ${
+            dark ? 'bg-black ' : 'bg-white'
+          }`}
+        >
+          {/* Image  */}
+          <div
+            className={`absolute h-full w-full top-0 left-0  z-10 ${
+              dark ? 'bg-black opacity-40' : 'bg-white opacity-25'
+            }`}
+          />
+
+          <Image
+            src={urlFor(issue.image).url()}
+            alt={issue.image.name}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </div>
+
+        {/* End Background */}
+        <div
+          id="endBg"
+          className={`fixed setflex-center h-screen w-screen top-0 left-0 -z-10 pointer-events-none ${
+            dark ? 'bg-black ' : 'bg-white'
+          }`}
+        >
+          {/* Plain Background  */}
+          {/* <div
+          className='absolute h-full w-full top-0 left-0 z-20'
+          style={{ background: 'rgba(50,50,50,1' }}
+        /> */}
+          {/* Image  */}
+          <div
+            className={`absolute  h-full w-full top-0 left-0 z-10  ${
+              dark ? 'bg-black opacity-40' : 'bg-white opacity-25'
+            }`}
+          />
+
+          <Image
+            src={`/placeholder/dossier-lab-2-3-8.jpg`}
+            alt={'Locavore'}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </div>
+      </div>
+      <LocomotiveScrollProvider
+        options={{ smooth: false, lerp: 0.05 }}
+        containerRef={containerRef}
+        watch={[]}
+      >
+        <PushScrollGlobal />
+        <div data-scroll-container ref={containerRef} id="scroll-container">
+          <div data-scroll-section>
+            <ScrollTriggerWrapper animation={animationObj}>
+              <LazyMotion features={domAnimation}>
+                <main className="relative p-0 m-0">
+                  <div id="trigger1" className="w-full h-s-150 " />
+                  <div id="trigger2" className="w-full min-h-screen ">
+                    <div className="h-s-50 w-full" />
+                    <section className="w-full ">
+                      <Container
+                        className={`max-md:px-6 pb-16 flex flex-col justify-start content-center items-center ${
+                          dark ? 'text-white' : 'text-black'
+                        }`}
+                      >
+                        <span className="content-issue w-full text-center">
+                          {checkMonth(new Date(issue.date).getMonth())}{' '}
+                          {new Date(issue.date).getFullYear()}
+                          <span className="mx-4 inline-block">•</span>8 ARTICLES
+                        </span>
+                        <p className="content-issue max-w-md text-center mt-12">
+                          {toPlainText(issue.description)}
+                        </p>
+                        <FancyLink
+                          destination={`${issue.slug.current}/list`}
+                          className={`content-issue mt-12 py-4 px-6 text-xs tracking-widest transition-all ease-linear ${
+                            dark
+                              ? 'hover:bg-white border hover:text-black border-white rounded-xl'
+                              : 'hover:bg-black border hover:text-white border-black rounded-xl'
+                          }`}
+                        >
+                          READ ISSUE
+                        </FancyLink>
+                      </Container>
+                    </section>
+                  </div>
+                </main>
+              </LazyMotion>
+            </ScrollTriggerWrapper>
           </div>
-        </Container>
-      </section>
-      {/* Button Sticky */}
-      <StickyButton destination="/editorial" arrow="left">
-        ISSUE INDEX
-      </StickyButton>
-      <Footer />
-      <Link />
+        </div>
+      </LocomotiveScrollProvider>
     </Layout>
   )
+}
+
+export async function getStaticPaths() {
+  const res = await client.fetch(`
+      *[_type == "issue"]
+    `)
+
+  const paths = res.map((data) => ({
+    params: { editorial_slug: data.slug.current.toString() },
+  }))
+
+  return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params }) {
+  const issueAPI = await client.fetch(
+    `
+      *[_type == "issue" && slug.current == "${params.editorial_slug}"] 
+    `,
+  )
+  return {
+    props: {
+      issueAPI,
+    },
+  }
 }

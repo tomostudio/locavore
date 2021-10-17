@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-const ArticleCard = ({ className, title, category, timeRead, src, alt, bgColor = '#ffffff', border = '' }) => {
+const ArticleCard = ({ className, title, category, timeRead, src, alt, bgColor = '#ffffff', border }) => {
   return (
     <div
       className={`article-card rounded-xl w-full p-5 flex flex-col transition-all motion-safe:hover:shadow-lg motion-safe:hover:-translate-y-1 duration-300 ${className}`}

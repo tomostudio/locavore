@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { NextSeo } from 'next-seo';
 import Router from 'next/router';
 

@@ -4,6 +4,7 @@ import SwiperCore, { Pagination } from 'swiper';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 // Layout
 import Layout from '@/components/modules/layout';
@@ -84,7 +85,7 @@ const FamilySlug = () => {
               ironwood floor in the friendly 40-seat bar.
             </p>
             <div className='flex flex-col w-full mt-20 mb-10 '>
-              <div className='flex space-x-4 flex-nowrap overflow-x-scroll hide-scrollbar'>
+              <ScrollContainer className='flex space-x-4 flex-nowrap overflow-x-scroll hide-scrollbar' horizontal={true}>
                 <div className='w-72 h-72 relative flex-shrink-0'>
                   <Image
                     src={`/placeholder/NightRooster-Cocktail-2020-45.jpg`}
@@ -188,7 +189,7 @@ const FamilySlug = () => {
                     </div>
                   </SwiperSlide>
                 </Swiper> */}
-              </div>
+              </ScrollContainer>
               <div className='w-full flex justify-between mt-5'>
                 <div className='flex items-center space-x-5'>
                   <div className='relative w-16px h-16px'>

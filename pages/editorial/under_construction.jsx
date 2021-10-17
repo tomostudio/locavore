@@ -1,6 +1,9 @@
+import { useEffect, useState } from 'react'
 import { NextSeo } from 'next-seo'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Pagination } from 'swiper'
+import useInfiniteScroll from 'react-infinite-scroll-hook'
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -11,6 +14,7 @@ import Footer from '@/components/modules/footer'
 import ArticleCard from '@/components/utils/articleCard'
 
 // Helpers
+import FancyLink from '@/components/utils/fancyLink'
 import StickyButton from '@/components/utils/stickyButton'
 import Container from '@/components/modules/container'
 
@@ -18,6 +22,9 @@ import Container from '@/components/modules/container'
 SwiperCore.use([Pagination])
 
 export default function UnderConstruction() {
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [])
   return (
     <Layout>
       <NextSeo title="Under Construction" />
@@ -37,70 +44,127 @@ export default function UnderConstruction() {
             </h1>
           </div>
         </Container>
-        {/* Card */}
-        <div className="w-full h-96 flex" id="editorial-slider">
+        {/* Card
+         */}
+        <div className="w-full flex" id="editorial-slider">
           <Swiper
             slidesPerView="auto"
-            spaceBetween={20}
+            spaceBetween={0}
             pagination={{
               clickable: true,
             }}
-            loop={true}
+            preloadImages={true}
             centeredSlides={true}
+            centerInsufficientSlides={true}
+            autoHeight={true}
+            setWrapperSize={true}
             id="swipe-editorial"
+            onSwiper={(swiper) => {
+              console.log(swiper.activeIndex)
+              swiper.slides.forEach((slide, id) => {
+                // print slides accoridng to position
+                const articleCard = slide.querySelector('.article_wrapper')
+                const curNumber = id - swiper.activeIndex
+                const id_name =
+                  curNumber !== 0
+                    ? `${
+                        curNumber > 0 ? 'next' : curNumber < 0 ? 'prev' : ''
+                      }-${Math.abs(curNumber)} `
+                    : 'center'
+                articleCard.setAttribute('class', `article_wrapper ${id_name}`)
+                console.log(articleCard, curNumber)
+              })
+            }}
+            onSlideChange={(swiper) => {
+              console.log(swiper.activeIndex)
+              swiper.slides.forEach((slide, id) => {
+                // print slides accoridng to position
+                const articleCard = slide.querySelector('.article_wrapper')
+                const curNumber = id - swiper.activeIndex
+                const id_name =
+                  curNumber !== 0
+                    ? `${
+                        curNumber > 0 ? 'next' : curNumber < 0 ? 'prev' : ''
+                      }-${Math.abs(curNumber)} `
+                    : 'center'
+                articleCard.setAttribute('class', `article_wrapper ${id_name}`)
+                console.log(articleCard, curNumber)
+              })
+            }}
           >
             <SwiperSlide>
-              <ArticleCard
-                className="border border-black w-full h-96"
-                title="5. Ulekan"
-                category="Culture"
-                timeRead="20 min read"
-                src="/placeholder/content 16(5).png"
-                alt="Locavore"
-              />
+              <div className="article_wrapper">
+                <FancyLink destination={'/article/full'} className={`group`}>
+                  <ArticleCard
+                    className="border border-black w-full h-96"
+                    title="5. Ulekan"
+                    category="Culture"
+                    timeRead="20 min read"
+                    src="/placeholder/content 16(5).png"
+                    alt="Locavore"
+                  />
+                </FancyLink>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-              <ArticleCard
-                className="border border-black w-full h-96"
-                title="5. Ulekan"
-                category="Culture"
-                timeRead="20 min read"
-                src="/placeholder/content 16(5).png"
-                alt="Locavore"
-              />
+              <div className="article_wrapper">
+                <FancyLink destination={'/article/full'} className={`group`}>
+                  <ArticleCard
+                    className="border border-black w-full h-96"
+                    title="5. Ulekan"
+                    category="Culture"
+                    timeRead="20 min read"
+                    src="/placeholder/content 16(5).png"
+                    alt="Locavore"
+                  />
+                </FancyLink>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-              <ArticleCard
-                className="border border-black w-full h-96"
-                title="5. Ulekan"
-                category="Culture"
-                timeRead="20 min read"
-                src="/placeholder/content 16(5).png"
-                alt="Locavore"
-              />
+              <div className="article_wrapper">
+                <FancyLink destination={'/article/full'} className={`group`}>
+                  <ArticleCard
+                    className="border border-black w-full h-96"
+                    title="5. Ulekan"
+                    category="Culture"
+                    timeRead="20 min read"
+                    src="/placeholder/content 16(5).png"
+                    alt="Locavore"
+                  />
+                </FancyLink>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-              <ArticleCard
-                className="border border-black w-full h-96"
-                title="5. Ulekan"
-                category="Culture"
-                timeRead="20 min read"
-                src="/placeholder/content 16(5).png"
-                alt="Locavore"
-              />
+              <div className="article_wrapper">
+                <FancyLink destination={'/article/full'} className={`group`}>
+                  <ArticleCard
+                    className="border border-black w-full h-96"
+                    title="5. Ulekan"
+                    category="Culture"
+                    timeRead="20 min read"
+                    src="/placeholder/content 16(5).png"
+                    alt="Locavore"
+                  />
+                </FancyLink>
+              </div>
             </SwiperSlide>
             <SwiperSlide>
-              <ArticleCard
-                className="border border-black w-full h-96"
-                title="5. Ulekan"
-                category="Culture"
-                timeRead="20 min read"
-                src="/placeholder/content 16(5).png"
-                alt="Locavore"
-              />
+              <div className="article_wrapper">
+                <FancyLink destination={'/article/full'} className={`group`}>
+                  <ArticleCard
+                    className="border border-black w-full h-96"
+                    title="5. Ulekan"
+                    category="Culture"
+                    timeRead="20 min read"
+                    src="/placeholder/content 16(5).png"
+                    alt="Locavore"
+                  />
+                </FancyLink>
+              </div>
             </SwiperSlide>
           </Swiper>
         </div>
+        {/* CHANGE */}
         <Container className="max-md:px-6">
           <div className="w-full setflex-center">
             <div className="mb-5 text-xs">
@@ -116,7 +180,7 @@ export default function UnderConstruction() {
       </section>
       {/* Button Sticky */}
       <StickyButton destination="/editorial" arrow="left">
-        ISSUE INDEX
+        EDITORIAL INDEX
       </StickyButton>
       <Footer />
     </Layout>

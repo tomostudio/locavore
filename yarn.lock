@@ -1833,6 +1833,11 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
+fuse.js@^6.4.6:
+  version "6.4.6"
+  resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-6.4.6.tgz#62f216c110e5aa22486aff20be7896d19a059b79"
+  integrity sha512-/gYxR/0VpXmWSfZOIPS3rWwU8SHgsRTwWuXhyb2O6s7aRuVtHtxCkR33bNYu3wyLyNx/Wpv0vU7FZy8Vj53VNw==
+
 get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
@@ -3887,7 +3892,7 @@ progress-stream@^2.0.0:
     speedometer "~1.0.0"
     through2 "~2.0.3"
 
-prop-types@15.7.2, prop-types@^15.5.8, prop-types@^15.6.2:
+prop-types@15.7.2, prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -4035,19 +4040,17 @@ react-indiana-drag-scroll@^2.0.1:
     debounce "^1.2.0"
     easy-bem "^1.1.1"
 
-react-infinite-scroll-component@^6.1.0:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/react-infinite-scroll-component/-/react-infinite-scroll-component-6.1.0.tgz#7e511e7aa0f728ac3e51f64a38a6079ac522407f"
-  integrity sha512-SQu5nCqy8DxQWpnUVLx7V7b7LcA37aM7tvoWjTLZp1dk6EJibM5/4EJKzOnl07/BsM1Y40sKLuqjCwwH/xV0TQ==
+react-infinite-scroll-hook@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-infinite-scroll-hook/-/react-infinite-scroll-hook-4.0.1.tgz#0fea9de7a84764975aad1209baeff286681d83b9"
+  integrity sha512-UzRt1TPLnWV8TZ6Yw2k5vuVZX/d/gOm2NB1hrp48iTcVwV/4dSsUFDsnwrdTqioSl2n6wz2kfo8BowOczsaJRw==
   dependencies:
-    throttle-debounce "^2.1.0"
+    react-intersection-observer-hook "^2.0.3"
 
-react-infinite-scroller@^1.2.4:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/react-infinite-scroller/-/react-infinite-scroller-1.2.4.tgz#f67eaec4940a4ce6417bebdd6e3433bfc38826e9"
-  integrity sha512-/oOa0QhZjXPqaD6sictN2edFMsd3kkMiE19Vcz5JDgHpzEJVqYcmq+V3mkwO88087kvKGe1URNksHEOt839Ubw==
-  dependencies:
-    prop-types "^15.5.8"
+react-intersection-observer-hook@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer-hook/-/react-intersection-observer-hook-2.0.3.tgz#de6a1fb00ffac1acee651e908e7e17e0eff1e8b6"
+  integrity sha512-6LcrY/oUtZqn7HbwLTgSk43/KdZD5LZJsWUOwQB11aMPi3OkjyDcm2dwAQ1ydlbrSDlL4fHUNXisNt4B470UJg==
 
 react-is@17.0.2:
   version "17.0.2"
@@ -4816,11 +4819,6 @@ tailwindcss@^2.2.7:
     reduce-css-calc "^2.1.8"
     resolve "^1.20.0"
     tmp "^0.2.1"
-
-throttle-debounce@^2.1.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.3.0.tgz#fd31865e66502071e411817e241465b3e9c372e2"
-  integrity sha512-H7oLPV0P7+jgvrk+6mwwwBDmxTaxnu9HMXmloNLXwnNO0ZxZ31Orah2n8lU1eMPvsaowP2CX+USCgyovXfdOFQ==
 
 through2-filter@^3.0.0:
   version "3.0.0"
