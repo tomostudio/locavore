@@ -122,10 +122,10 @@ export default function Issue({ issueAPI }) {
         </Container>
         {/* Card
          */}
-        <div className="w-full flex" id="editorial-slider" ref={sentryRef}>
+        <div className="w-full flex" id="editorial-slider">
           <ScrollContainer className="flex w-full space-x-7 px-7" horizontal={true}>
             {item.map((item, id) => (
-              <div className="article_wrapper" key={id}>
+              <div className="article_wrapper" key={id} ref={sentryRef}>
                 <FancyLink destination={'/article/full'} className={`group`}>
                   <ArticleCard
                     bgColor={'#E9C4DD'}
