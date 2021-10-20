@@ -94,6 +94,21 @@ body {
   aspect-ratio: 1;
 }
 
+// Editorial
+.comingsoonSticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  bottom: auto;
+  & + .stickySpacer {
+    height: 315px;
+  }
+}
+
+.comingsoonAdj {
+  margin-top: -315px;
+}
+
 #editorial-slider {
   .editorialCard {
     position: relative;

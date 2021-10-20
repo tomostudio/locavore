@@ -64,14 +64,14 @@ const FamilySlug = () => {
         animate='enter'
         exit='exit'
         variants={{
-          initial: { y: '100%' },
+          initial: { y: '100vh' },
           enter: {
             y: '0%',
             transition: { duration: 2, ease: [0.83, 0, 0.17, 1], delay: 0 },
           },
         }}
       >
-        <div className=' w-56rem max-md:w-full px-paddingContent max-md:px-5 mb-14 pb-14 border-b border-black setflex-center '>
+        <div className='w-52rem max-md:w-full px-paddingContent max-md:px-5 mb-14 pb-14 border-b border-black setflex-center '>
           <div className='w-full setflex-center'>
             <span className='text-center py-3 font-bold'>THE NIGHT ROOSTER</span>
             <div className='border-b border-black h-px w-full' />
@@ -254,7 +254,7 @@ const FamilySlug = () => {
           <div className='w-full setflex-center'>
             <FancyLink
               destination='/'
-              className='mt-16 py-3 px-4 text-base tracking-widest border border-black font-bold rounded-xl'
+              className='mt-16 py-3 px-6 text-base font-bold tracking-widest border border-black font-bold rounded-xl'
             >
               BOOK NOW
             </FancyLink>
