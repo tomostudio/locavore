@@ -1,21 +1,16 @@
-import React from 'react'
-import { NextSeo } from 'next-seo'
+import React from 'react';
+import { NextSeo } from 'next-seo';
 import Head from 'next/head'
 
 const SEO = ({ seo }) => {
-  const {
-    title,
-    description,
-    pagelink,
-    image,
-    image_alt,
-    webTitle,
-    meta_keywords,
-  } = seo
-  const pagetitle = title && webTitle ? `${title} - ${webTitle}` : `Locavore`
+  const { title, description, pagelink, image, image_alt, webTitle, meta_keywords } = seo;
+  const pagetitle =
+    title && webTitle
+      ? `${title} | ${webTitle}`
+      : `Locavore`;
   const canonicalLink = `https://website.site${
     pagelink ? `${pagelink.startsWith('/') ? '' : '/'}${pagelink}` : ''
-  }`
+  }`;
 
   return (
     <>
@@ -44,7 +39,7 @@ const SEO = ({ seo }) => {
         <meta name="keywords" content={meta_keywords} />
       </Head>
     </>
-  )
-}
+  );
+};
 
-export default SEO
+export default SEO;

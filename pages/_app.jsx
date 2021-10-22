@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }) {
         // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
         noindex={true}
         // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
-        titleTemplate='%s | Locavore'
+        // titleTemplate='%s | Locavore'
         defaultTitle='Locavore'
         description='Description'
         openGraph={{

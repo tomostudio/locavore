@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
-import { NextSeo } from 'next-seo'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -11,6 +11,7 @@ import Container from '@/components/modules/container'
 // Components
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
 import FancyLink from '@/components/utils/fancyLink'
+import SEO from '@/components/utils/seo'
 
 // Helpers
 import PushScrollGlobal from '@/helpers/globalscroll'
@@ -20,7 +21,9 @@ import urlFor from '@/helpers/sanity/urlFor'
 import { toPlainText } from '@/helpers/functional/toPlainText'
 import checkMonth from '@/helpers/functional/checkMonth'
 
-export default function Index({ issueAPI }) {
+export default function Index({ issueAPI, seoAPI }) {
+  const router = useRouter()
+  const [seo] = seoAPI
   const [issue] = issueAPI
   const dark = issue.title.toLowerCase() === 'under construction' ? false : true
   const containerRef = useRef(null)
@@ -204,8 +207,55 @@ export default function Index({ issueAPI }) {
 
   return (
     <Layout>
-      <NextSeo title={issue.title} />
-
+      <SEO
+        seo={{
+          title: issue.title,
+          webTitle:
+            typeof seo !== 'undefined' && seo.webTitle ? seo.webTitle : '',
+          pagelink: router.pathname,
+          description:
+            typeof issue.seo !== 'undefined' &&
+            typeof issue.seo.seo_description !== 'undefined' &&
+            issue.seo.seo_description
+              ? issue.seo.seo_description
+              : typeof seo.seo !== 'undefined' &&
+                typeof seo.seo.seo_description !== 'undefined' &&
+                seo.seo.seo_description
+              ? seo.seo.seo_description
+              : '',
+          meta_keywords:
+            typeof issue.seo !== 'undefined' &&
+            typeof issue.seo.seo_keywords !== 'undefined' &&
+            issue.seo.seo_keywords
+              ? issue.seo.seo_keywords
+              : typeof seo.seo !== 'undefined' &&
+                typeof seo.seo.seo_keywords !== 'undefined' &&
+                seo.seo.seo_keywords
+              ? seo.seo.seo_keywords
+              : '',
+          image:
+            typeof issue.seo !== 'undefined' &&
+            typeof issue.seo.seo_image !== 'undefined' &&
+            issue.seo.seo_image
+              ? urlFor(issue.seo.seo_image).url()
+              : typeof seo.seo !== 'undefined' &&
+                typeof seo.seo.seo_image !== 'undefined' &&
+                seo.seo.seo_image
+              ? urlFor(seo.seo.seo_image).url()
+              : '',
+          image_alt:
+            typeof issue.seo !== 'undefined' &&
+            typeof issue.seo.seo_image !== 'undefined' &&
+            typeof issue.seo.seo_image.name !== 'undefined' &&
+            issue.seo.seo_image.name
+              ? issue.seo.seo_image.name
+              : typeof seo.seo !== 'undefined' &&
+                typeof seo.seo.seo_image !== 'undefined' &&
+                seo.seo.seo_image.name
+              ? seo.seo.seo_image.name
+              : '',
+        }}
+      />
       {/* Issue Title */}
       <div>
         <div
@@ -297,13 +347,15 @@ export default function Index({ issueAPI }) {
             }`}
           />
 
-          <Image
-            src={`/placeholder/dossier-lab-2-3-8.jpg`}
-            alt={'Locavore'}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-          />
+          {issue.background2 && (
+            <Image
+              src={urlFor(issue.background2).url()}
+              alt={issue.background2.name}
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+            />
+          )}
         </div>
       </div>
       <LocomotiveScrollProvider
@@ -335,7 +387,7 @@ export default function Index({ issueAPI }) {
                           {toPlainText(issue.description)}
                         </p>
                         <FancyLink
-                          destination={`${issue.slug.current}/list`}
+                          destination={`/editorial/${issue.slug.current}/list`}
                           className={`content-issue mt-12 py-4 px-6 text-xs tracking-widest transition-all ease-linear ${
                             dark
                               ? 'hover:bg-white border hover:text-black border-white rounded-xl'
@@ -375,9 +427,13 @@ export async function getStaticProps({ params }) {
       *[_type == "issue" && slug.current == "${params.editorial_slug}"] 
     `,
   )
+  const seoAPI = await client.fetch(`
+  *[_type == "settings"]
+  `)
   return {
     props: {
       issueAPI,
+      seoAPI,
     },
   }
 }

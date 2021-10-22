@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
-import { NextSeo } from 'next-seo'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { Pagination } from 'swiper'
 import useInfiniteScroll from 'react-infinite-scroll-hook'
 import ScrollContainer from 'react-indiana-drag-scroll'
+import { useRouter } from 'next/router'
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -12,20 +11,24 @@ import Footer from '@/components/modules/footer'
 
 // Components
 import ArticleCard from '@/components/utils/articleCard'
-
-// Helpers
+import SEO from '@/components/utils/seo'
 import FancyLink from '@/components/utils/fancyLink'
 import StickyButton from '@/components/utils/stickyButton'
 import Container from '@/components/modules/container'
+
+// Helpers
 import client from '@/helpers/sanity/client'
 import checkMonth from '@/helpers/functional/checkMonth'
 import { checkText } from '@/helpers/functional/checkText'
+import urlFor from '@/helpers/sanity/urlFor'
 
 // install Swiper modules
 SwiperCore.use([Pagination])
 
-export default function Issue({ issueAPI }) {
+export default function Issue({ issueAPI, seoAPI }) {
+  const router = useRouter()
   const [issue] = issueAPI
+  const [seo] = seoAPI
   const dataArticle = [
     {
       bgColor: '#E9C4DD',
@@ -94,8 +97,55 @@ export default function Issue({ issueAPI }) {
   }, [])
   return (
     <Layout>
-      <NextSeo title={issue.title} />
-
+      <SEO
+        seo={{
+          title: issue.title,
+          webTitle:
+            typeof seo !== 'undefined' && seo.webTitle ? seo.webTitle : '',
+          pagelink: router.pathname,
+          description:
+            typeof issue.seo !== 'undefined' &&
+            typeof issue.seo.seo_description !== 'undefined' &&
+            issue.seo.seo_description
+              ? issue.seo.seo_description
+              : typeof seo.seo !== 'undefined' &&
+                typeof seo.seo.seo_description !== 'undefined' &&
+                seo.seo.seo_description
+              ? seo.seo.seo_description
+              : '',
+          meta_keywords:
+            typeof issue.seo !== 'undefined' &&
+            typeof issue.seo.seo_keywords !== 'undefined' &&
+            issue.seo.seo_keywords
+              ? issue.seo.seo_keywords
+              : typeof seo.seo !== 'undefined' &&
+                typeof seo.seo.seo_keywords !== 'undefined' &&
+                seo.seo.seo_keywords
+              ? seo.seo.seo_keywords
+              : '',
+          image:
+            typeof issue.seo !== 'undefined' &&
+            typeof issue.seo.seo_image !== 'undefined' &&
+            issue.seo.seo_image
+              ? urlFor(issue.seo.seo_image).url()
+              : typeof seo.seo !== 'undefined' &&
+                typeof seo.seo.seo_image !== 'undefined' &&
+                seo.seo.seo_image
+              ? urlFor(seo.seo.seo_image).url()
+              : '',
+          image_alt:
+            typeof issue.seo !== 'undefined' &&
+            typeof issue.seo.seo_image !== 'undefined' &&
+            typeof issue.seo.seo_image.name !== 'undefined' &&
+            issue.seo.seo_image.name
+              ? issue.seo.seo_image.name
+              : typeof seo.seo !== 'undefined' &&
+                typeof seo.seo.seo_image !== 'undefined' &&
+                seo.seo.seo_image.name
+              ? seo.seo.seo_image.name
+              : '',
+        }}
+      />
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
@@ -123,7 +173,10 @@ export default function Issue({ issueAPI }) {
         {/* Card
          */}
         <div className="w-full flex" id="editorial-slider">
-          <ScrollContainer className="flex w-full space-x-7 px-7" horizontal={true}>
+          <ScrollContainer
+            className="flex w-full space-x-7 px-7"
+            horizontal={true}
+          >
             {item.map((item, id) => (
               <div className="article_wrapper" key={id} ref={sentryRef}>
                 <FancyLink destination={'/article/full'} className={`group`}>
@@ -181,9 +234,13 @@ export async function getStaticProps({ params }) {
         *[_type == "issue" && slug.current == "${params.editorial_slug}"] 
       `,
   )
+  const seoAPI = await client.fetch(`
+  *[_type == "settings"]
+  `)
   return {
     props: {
       issueAPI,
+      seoAPI,
     },
   }
 }

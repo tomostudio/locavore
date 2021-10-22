@@ -4,7 +4,7 @@ const familyImage = ({
   title,
   name,
   position,
-  background,
+  background = false,
   bgColor,
   dataImage,
   src,

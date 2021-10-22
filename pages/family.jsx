@@ -10,14 +10,17 @@ import { fade } from '@/helpers/preset/transitions'
 
 // Components
 import FancyLink from '@/components/utils/fancyLink'
-import Link from '@/components/utils/shortcutLinks'
+import FamilyImage from '@/components/utils/familyImage'
+import SEO from '@/components/utils/seo'
 
 // Helpers
 import colors from '@/helpers/preset/colors'
-import Arrow from '@/components/utils/arrow'
-import FamilyImage from '@/components/utils/familyImage'
+import urlFor from '@/helpers/sanity/urlFor'
+import client from '@/helpers/sanity/client'
 
-export default function Family() {
+export default function Family({ seoAPI, familyAPI }) {
+  const [seo] = seoAPI
+  const [family] = familyAPI
   const onMouseEnter = (id, color, slug) => {
     document.getElementById('family-button').children[
       id
@@ -53,7 +56,48 @@ export default function Family() {
 
   return (
     <Layout>
-      <NextSeo title="Family" />
+      <SEO
+        seo={{
+          title: 'Family',
+          webTitle:
+            typeof seo !== 'undefined' && seo.webTitle ? seo.webTitle : '',
+          description:
+            typeof family !== 'undefined' &&
+            typeof family.seo.seo_description !== 'undefined' &&
+            family.seo.seo_description
+              ? family.seo.seo_description
+              : typeof seo !== 'undefined' && seo.seo.seo_description
+              ? seo.seo.seo_description
+              : '',
+          meta_keywords:
+            typeof family !== 'undefined' &&
+            typeof family.seo.seo_keywords !== 'undefined' &&
+            family.seo.seo_keywords
+              ? family.seo.seo_keywords
+              : typeof seo !== 'undefined' && seo.seo.seo_keywords
+              ? seo.seo.seo_keywords
+              : '',
+          image:
+            typeof family !== 'undefined' &&
+            typeof family.seo.seo_image !== 'undefined' &&
+            family.seo.seo_image
+              ? urlFor(family.seo.seo_image).url()
+              : typeof seo !== 'undefined' && seo.seo.seo_image
+              ? urlFor(seo.seo.seo_image).url()
+              : '',
+          image_alt:
+            typeof family !== 'undefined' &&
+            typeof family.seo.seo_image !== 'undefined' &&
+            typeof family.seo.seo_image.name !== 'undefined' &&
+            family.seo.seo_image.name
+              ? family.seo.seo_image.name
+              : typeof seo !== 'undefined' &&
+                seo.seo.seo_image &&
+                seo.seo.seo_image.name
+              ? seo.seo.seo_image.name
+              : '',
+        }}
+      />
       <motion.main
         initial="initial"
         animate="enter"
@@ -141,7 +185,7 @@ export default function Family() {
             className="relative w-full h-auto flex flex-wrap  "
             id="family-image"
           >
-            <familyImage
+            <FamilyImage
               background={true}
               title="LOCAVORE"
               position="Executive Chef"
@@ -201,7 +245,7 @@ export default function Family() {
               src="/placeholder/Additional-Locavore-10.jpg"
               alt="Locavore"
             />
-            <familyImage
+            <FamilyImage
               background={true}
               title="LOCAVORE"
               position="Executive Chef"
@@ -261,7 +305,7 @@ export default function Family() {
               src="/placeholder/Additional-Locavore-10.jpg"
               alt="Locavore"
             />
-            <familyImage
+            <FamilyImage
               background={true}
               title="LOCAVORE"
               position="Executive Chef"
@@ -321,7 +365,7 @@ export default function Family() {
               src="/placeholder/Additional-Locavore-10.jpg"
               alt="Locavore"
             />
-            <familyImage
+            <FamilyImage
               background={true}
               title="LOCAVORE"
               position="Executive Chef"
@@ -381,7 +425,7 @@ export default function Family() {
               src="/placeholder/Additional-Locavore-10.jpg"
               alt="Locavore"
             />
-            <familyImage
+            <FamilyImage
               background={true}
               title="LOCAVORE"
               position="Executive Chef"
@@ -448,37 +492,37 @@ export default function Family() {
           id="btnMobile"
         >
           <FancyLink
-            destination="article/locavore"
+            destination="/article/locavore"
             className="relative -bottom-14 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-4 font-bold uppercase"
           >
             Locavore
           </FancyLink>
           <FancyLink
-            destination="article/rooster"
+            destination="/article/rooster"
             className="relative z-2 -bottom-12 text-center w-full rounded-t-2xl bg-nightrooster pt-2 pb-4 font-bold uppercase"
           >
             the night rooster
           </FancyLink>
           <FancyLink
-            destination="article/locaparts"
+            destination="/article/locaparts"
             className="relative z-3 -bottom-9 text-center w-full rounded-t-2xl bg-localparts pt-2 pb-4 font-bold uppercase"
           >
             locaparts
           </FancyLink>
           <FancyLink
-            destination="article/nusantara"
+            destination="/article/nusantara"
             className="relative z-4 -bottom-6 text-center w-full rounded-t-2xl bg-nusantara pt-2 pb-4 font-bold uppercase"
           >
             nusantara
           </FancyLink>
           <FancyLink
-            destination="article/localab"
+            destination="/article/localab"
             className="relative z-5 -bottom-3 text-center w-full rounded-t-2xl bg-localab pt-2 pb-4 font-bold uppercase"
           >
             localab
           </FancyLink>
           <FancyLink
-            destination="article/togo"
+            destination="/article/togo"
             className="relative z-6 text-center w-full rounded-t-2xl bg-togo pt-2 pb-4 font-bold uppercase"
           >
             locavore to-go
@@ -488,4 +532,19 @@ export default function Family() {
       </motion.main>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const seoAPI = await client.fetch(`
+  *[_type == "settings"]
+  `)
+  const familyAPI = await client.fetch(`
+  *[_type == "family"]
+  `)
+  return {
+    props: {
+      seoAPI,
+      familyAPI,
+    },
+  }
 }

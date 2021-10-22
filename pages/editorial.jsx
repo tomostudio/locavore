@@ -9,10 +9,11 @@ import Layout from '@/components/modules/layout'
 import Container from '@/components/modules/container'
 import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
-import EditorialIssueCard from '@/components/utils/editorialIssueCard'
 
 // Components
 import StickyButton from '@/components/utils/stickyButton'
+import SEO from '@/components/utils/seo'
+import EditorialIssueCard from '@/components/utils/editorialIssueCard'
 
 // Helpers
 import client from '@/helpers/sanity/client'
@@ -20,8 +21,10 @@ import { toPlainText } from '@/helpers/functional/toPlainText'
 import urlFor from '@/helpers/sanity/urlFor'
 import { checkText } from '@/helpers/functional/checkText'
 
-export default function Editorial({ issueAPI }) {
+export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
   const [windowWidth, setWidth] = useState()
+  const [seo] = seoAPI
+  const [editorial] = editorialAPI
 
   useEffect(() => {
     setWidth(window.innerWidth)
@@ -35,7 +38,48 @@ export default function Editorial({ issueAPI }) {
 
   return (
     <Layout>
-      <NextSeo title="Editorial" />
+      <SEO
+        seo={{
+          title: 'Editorial',
+          webTitle:
+            typeof seo !== 'undefined' && seo.webTitle ? seo.webTitle : '',
+          description:
+            typeof editorial !== 'undefined' &&
+            typeof editorial.seo.seo_description !== 'undefined' &&
+            editorial.seo.seo_description
+              ? editorial.seo.seo_description
+              : typeof seo !== 'undefined' && seo.seo.seo_description
+              ? seo.seo.seo_description
+              : '',
+          meta_keywords:
+            typeof editorial !== 'undefined' &&
+            typeof editorial.seo.seo_keywords !== 'undefined' &&
+            editorial.seo.seo_keywords
+              ? editorial.seo.seo_keywords
+              : typeof seo !== 'undefined' && seo.seo.seo_keywords
+              ? seo.seo.seo_keywords
+              : '',
+          image:
+            typeof editorial !== 'undefined' &&
+            typeof editorial.seo.seo_image !== 'undefined' &&
+            editorial.seo.seo_image
+              ? urlFor(editorial.seo.seo_image).url()
+              : typeof seo !== 'undefined' && seo.seo.seo_image
+              ? urlFor(seo.seo.seo_image).url()
+              : '',
+          image_alt:
+            typeof editorial !== 'undefined' &&
+            typeof editorial.seo.seo_image !== 'undefined' &&
+            typeof editorial.seo.seo_image.name !== 'undefined' &&
+            editorial.seo.seo_image.name
+              ? editorial.seo.seo_image.name
+              : typeof seo !== 'undefined' &&
+                seo.seo.seo_image &&
+                seo.seo.seo_image.name
+              ? seo.seo.seo_image.name
+              : '',
+        }}
+      />
 
       <LazyMotion features={domAnimation}>
         <m.main initial="initial" animate="enter" exit="exit" variants={fade}>
@@ -126,53 +170,6 @@ export default function Editorial({ issueAPI }) {
                     />
                   ),
                 )}
-                {/* <EditorialIssueCard
-                  issueNo={2}
-                  title={'Metamorphosis'}
-                  date="MARCH 2021"
-                  totalArticles={15}
-                  destination={'/editorial/metamorphosis'}
-                  imageThumbnail={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
-                  descriptions={
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s.
-                    </p>
-                  }
-                />
-                <EditorialIssueCard
-                  issueNo={1}
-                  title={'Metamorphosis'}
-                  date="MARCH 2021"
-                  totalArticles={15}
-                  destination={'/editorial/metamorphosis'}
-                  bgColor="#BC9EDF"
-                  dark={false}
-                  descriptions={
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s.
-                    </p>
-                  }
-                />
-                <EditorialIssueCard
-                  issueNo={0}
-                  title={'Under Construction'}
-                  date="FEBRUARY 2021"
-                  totalArticles={12}
-                  destination={'/editorial/uc'}
-                  dark={false}
-                  imageThumbnail={`/placeholder/dossier-lab-2-3-8.jpg`}
-                  descriptions={
-                    <p>
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s.
-                    </p>
-                  }
-                /> */}
               </div>
             </Container>
           </section>
@@ -191,9 +188,17 @@ export async function getStaticProps() {
   const issueAPI = await client.fetch(`
                     *[_type == "issue"]
                     `)
+  const seoAPI = await client.fetch(`
+                    *[_type == "settings"]
+                    `)
+  const editorialAPI = await client.fetch(`
+                    *[_type == "editorial"]
+                    `)
   return {
     props: {
       issueAPI,
+      seoAPI,
+      editorialAPI,
     },
   }
 }
