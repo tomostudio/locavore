@@ -41,41 +41,33 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
       <SEO
         seo={{
           title: 'Editorial',
-          webTitle:
-            typeof seo !== 'undefined' && seo.webTitle ? seo.webTitle : '',
+          webTitle: typeof seo !== 'undefined' ? seo.webTitle : '',
           description:
             typeof editorial !== 'undefined' &&
-            typeof editorial.seo.seo_description !== 'undefined' &&
-            editorial.seo.seo_description
+            typeof editorial.seo !== 'undefined'
               ? editorial.seo.seo_description
-              : typeof seo !== 'undefined' && seo.seo.seo_description
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? seo.seo.seo_description
               : '',
           meta_keywords:
             typeof editorial !== 'undefined' &&
-            typeof editorial.seo.seo_keywords !== 'undefined' &&
-            editorial.seo.seo_keywords
+            typeof editorial.seo !== 'undefined'
               ? editorial.seo.seo_keywords
-              : typeof seo !== 'undefined' && seo.seo.seo_keywords
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? seo.seo.seo_keywords
               : '',
           image:
             typeof editorial !== 'undefined' &&
-            typeof editorial.seo.seo_image !== 'undefined' &&
-            editorial.seo.seo_image
+            typeof editorial.seo !== 'undefined'
               ? urlFor(editorial.seo.seo_image).url()
-              : typeof seo !== 'undefined' && seo.seo.seo_image
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? urlFor(seo.seo.seo_image).url()
               : '',
           image_alt:
             typeof editorial !== 'undefined' &&
-            typeof editorial.seo.seo_image !== 'undefined' &&
-            typeof editorial.seo.seo_image.name !== 'undefined' &&
-            editorial.seo.seo_image.name
+            typeof editorial.seo !== 'undefined'
               ? editorial.seo.seo_image.name
-              : typeof seo !== 'undefined' &&
-                seo.seo.seo_image &&
-                seo.seo.seo_image.name
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? seo.seo.seo_image.name
               : '',
         }}

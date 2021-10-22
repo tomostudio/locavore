@@ -30,41 +30,29 @@ export default function Social({ seoAPI, socialAPI }) {
       <SEO
         seo={{
           title: 'Social',
-          webTitle:
-            typeof seo !== 'undefined' && seo.webTitle ? seo.webTitle : '',
+          webTitle: typeof seo !== 'undefined' ? seo.webTitle : '',
           description:
-            typeof social !== 'undefined' &&
-            typeof social.seo.seo_description !== 'undefined' &&
-            social.seo.seo_description
+            typeof social !== 'undefined' && typeof social.seo !== 'undefined'
               ? social.seo.seo_description
-              : typeof seo !== 'undefined' && seo.seo.seo_description
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? seo.seo.seo_description
               : '',
           meta_keywords:
-            typeof social !== 'undefined' &&
-            typeof social.seo.seo_keywords !== 'undefined' &&
-            social.seo.seo_keywords
+            typeof social !== 'undefined' && typeof social.seo !== 'undefined'
               ? social.seo.seo_keywords
-              : typeof seo !== 'undefined' && seo.seo.seo_keywords
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? seo.seo.seo_keywords
               : '',
           image:
-            typeof social !== 'undefined' &&
-            typeof social.seo.seo_image !== 'undefined' &&
-            social.seo.seo_image
+            typeof social !== 'undefined' && typeof social.seo !== 'undefined'
               ? urlFor(social.seo.seo_image).url()
-              : typeof seo !== 'undefined' && seo.seo.seo_image
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? urlFor(seo.seo.seo_image).url()
               : '',
           image_alt:
-            typeof social !== 'undefined' &&
-            typeof social.seo.seo_image !== 'undefined' &&
-            typeof social.seo.seo_image.name !== 'undefined' &&
-            social.seo.seo_image.name
+            typeof social !== 'undefined' && typeof social.seo !== 'undefined'
               ? social.seo.seo_image.name
-              : typeof seo !== 'undefined' &&
-                seo.seo.seo_image &&
-                seo.seo.seo_image.name
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? seo.seo.seo_image.name
               : '',
         }}

@@ -59,41 +59,29 @@ export default function Family({ seoAPI, familyAPI }) {
       <SEO
         seo={{
           title: 'Family',
-          webTitle:
-            typeof seo !== 'undefined' && seo.webTitle ? seo.webTitle : '',
+          webTitle: typeof seo !== 'undefined' ? seo.webTitle : '',
           description:
-            typeof family !== 'undefined' &&
-            typeof family.seo.seo_description !== 'undefined' &&
-            family.seo.seo_description
+            typeof family !== 'undefined' && typeof family.seo !== 'undefined'
               ? family.seo.seo_description
-              : typeof seo !== 'undefined' && seo.seo.seo_description
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? seo.seo.seo_description
               : '',
           meta_keywords:
-            typeof family !== 'undefined' &&
-            typeof family.seo.seo_keywords !== 'undefined' &&
-            family.seo.seo_keywords
+            typeof family !== 'undefined' && typeof family.seo !== 'undefined'
               ? family.seo.seo_keywords
-              : typeof seo !== 'undefined' && seo.seo.seo_keywords
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? seo.seo.seo_keywords
               : '',
           image:
-            typeof family !== 'undefined' &&
-            typeof family.seo.seo_image !== 'undefined' &&
-            family.seo.seo_image
+            typeof family !== 'undefined' && typeof family.seo !== 'undefined'
               ? urlFor(family.seo.seo_image).url()
-              : typeof seo !== 'undefined' && seo.seo.seo_image
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? urlFor(seo.seo.seo_image).url()
               : '',
           image_alt:
-            typeof family !== 'undefined' &&
-            typeof family.seo.seo_image !== 'undefined' &&
-            typeof family.seo.seo_image.name !== 'undefined' &&
-            family.seo.seo_image.name
+            typeof family !== 'undefined' && typeof family.seo !== 'undefined'
               ? family.seo.seo_image.name
-              : typeof seo !== 'undefined' &&
-                seo.seo.seo_image &&
-                seo.seo.seo_image.name
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
               ? seo.seo.seo_image.name
               : '',
         }}
