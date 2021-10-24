@@ -73,21 +73,13 @@ export default function Issue({ issueAPI, seoAPI }) {
   ]
   const [windowWidth, setWidth] = useState()
   const [item, setItem] = useState(dataArticle)
-  const [hasNextPage, setHasNextPage] = useState(true)
-
   const fetchMoreData = () => {
-    setHasNextPage(true)
-    setTimeout(() => {
-      setItem(item.concat(dataArticle))
-      setHasNextPage(false)
-      console.log(hasNextPage)
-    }, 200)
+    setItem(item.concat(dataArticle))
   }
 
   const [sentryRef] = useInfiniteScroll({
     hasNextPage: true,
     onLoadMore: fetchMoreData,
-    delayInMs: 400,
   })
 
   useEffect(() => {
