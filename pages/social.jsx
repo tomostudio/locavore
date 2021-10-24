@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
-import { NextSeo } from 'next-seo'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import useInfiniteScroll from 'react-infinite-scroll-hook'
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -18,6 +18,21 @@ export default function Social({ seoAPI, socialAPI }) {
   const [seo] = seoAPI
   const [social] = socialAPI
   const appContext = useAppContext()
+  const [postNum, setPostNum] = useState(12)
+  const [hasNextPage, setHasNextPage] = useState(true)
+
+  const fetchMoreData = () => {
+    setPostNum((prevPostNum) => prevPostNum + 12)
+    if (postNum >= social.content.length) {
+      setHasNextPage(false)
+    }
+  }
+
+  const [sentryRef] = useInfiniteScroll({
+    hasNextPage: hasNextPage,
+    onLoadMore: fetchMoreData,
+  })
+
   useEffect(() => {
     appContext.setHeader({ headerStyle: 'hidden' })
     window.scroll(0, 0)
@@ -76,7 +91,9 @@ export default function Social({ seoAPI, socialAPI }) {
                 objectPosition="center"
               />
             </div>
-            <span className="pl-3 text-sm">LOCAVORE</span>
+            <span className="pl-3 text-sm">
+              {seo.webTitle ? seo.webTitle : 'Locavore'}
+            </span>
           </header>
         </FancyLink>
         <div className="w-full mx-auto mb-14">
@@ -87,186 +104,22 @@ export default function Social({ seoAPI, socialAPI }) {
             className="w-56rem max-md:w-full mx-auto grid auto-rows-auto grid-cols-3	gap-2 max-md:px-1"
             id="social"
           >
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/locavore-rintik-crop-18.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/locavore-rintik-crop-16.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/locavore-rintik-crop-11.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/NightRoosterArtwork-5.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/NightRoosterArtwork-deggeha-2.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/NightRooster-Cocktail-2020-12.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/NightRooster-Cocktail-2020-24.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/NightRooster-Cocktail-2020-45.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/NightRooster-Cocktail-2020-46.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/NightRooster-Cocktail-2020-47.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/story-garum.jpg`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/content 11(2).png`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/content 11.png`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
-            <FancyLink
-              destination="https://instagram.com/restaurantlocavore"
-              blank={true}
-            >
-              <Image
-                src={`/placeholder/content 12(1).png`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
-            </FancyLink>
+            {social.content.slice(0, postNum).map((data, id) => (
+              <FancyLink
+                destination={data.link}
+                blank={true}
+                key={id}
+                ref={sentryRef}
+              >
+                <Image
+                  src={urlFor(data.image).url()}
+                  alt={data.title}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                />
+              </FancyLink>
+            ))}
           </div>
         </div>
       </section>
