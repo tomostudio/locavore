@@ -82,16 +82,27 @@ export default function Social({ seoAPI, socialAPI }) {
         >
           <header className="py-2 w-full flex items-center justify-center border-b border-black bg-white">
             <div className="relative w-10 h-10">
-              <Image
-                src={`/placeholder/NightRooster-Cocktail-2020-45.jpg`}
-                alt={'Locavore'}
-                className="rounded-full"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-              />
+              {seo.logo ? (
+                <Image
+                  src={urlFor(seo.logo).url()}
+                  alt={seo.webTitle ? seo.webTitle : 'Locavore'}
+                  className="rounded-full"
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="center"
+                />
+              ) : (
+                <Image
+                  src={`/locavore-black.png`}
+                  alt={seo.webTitle ? seo.webTitle : 'Locavore'}
+                  className="rounded-full"
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="center"
+                />
+              )}
             </div>
-            <span className="pl-3 text-sm">
+            <span className="pl-3 text-sm uppercase">
               {seo.webTitle ? seo.webTitle : 'Locavore'}
             </span>
           </header>
