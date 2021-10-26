@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Marquee from 'react-fast-marquee';
@@ -34,6 +35,12 @@ export default function Full() {
     //   behavior: 'smooth',
     // });
   };
+
+  useEffect(() => {
+    window.scroll(0, 0);
+    return () => {
+    };
+  }, []);
 
   return (
     <Layout>

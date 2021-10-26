@@ -49,6 +49,7 @@ export default function Family({ seoAPI, familyAPI }) {
       }
     }
   }
+
   useEffect(() => {
     window.scroll(0, 0)
     return () => {}
