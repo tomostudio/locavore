@@ -1,23 +1,23 @@
-import { useEffect } from 'react'
-import { NextSeo } from 'next-seo'
-import Router from 'next/router'
+import { useEffect } from 'react';
+import { NextSeo } from 'next-seo';
+import Router from 'next/router';
 
 // Components
-import SEO from '@/components/utils/seo'
+import SEO from '@/components/utils/seo';
 
 // Helpers
-import client from '@/helpers/sanity/client'
-import urlFor from '@/helpers/sanity/urlFor'
+import client from '@/helpers/sanity/client';
+import urlFor from '@/helpers/sanity/urlFor';
 
 export default function Home({ seoAPI }) {
-  const [seo] = seoAPI
+  const [seo] = seoAPI;
   useEffect(() => {
-    const { pathname } = Router
-    if (pathname == '/') {
-      // Router.push('/editorial/metamorphosis');
-      location.replace('/editorial/metamorphosis')
-    }
-  }, [])
+    // const { pathname } = Router;
+    // if (pathname == '/') {
+    //   // Router.push('/editorial/metamorphosis');
+    //   location.replace('/editorial/metamorphosis');
+    // }
+  }, []);
 
   return (
     <>
@@ -48,16 +48,25 @@ export default function Home({ seoAPI }) {
         }}
       />
     </>
-  )
+  );
 }
 
 export async function getStaticProps() {
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `)
+  `);
+
+  //redirect test
+  return {
+    redirect: {
+      destination: '/editorial/metamorphosis',
+      permanent: false,
+    },
+  };
+
   return {
     props: {
       seoAPI,
     },
-  }
+  };
 }
