@@ -144,51 +144,6 @@ const FamilySlug = () => {
                     objectPosition='center'
                   />
                 </div>
-                {/* <Swiper
-                  slidesPerView='auto'
-                  spaceBetween={12}
-                  pagination={{
-                    clickable: true,
-                  }}
-                  id='swipe-family'
-                >
-                  <SwiperSlide>
-                    <div className='relative w-52 h-full'>
-                      <Image
-                        src={`/placeholder/NightRooster-Cocktail-2020-45.jpg`}
-                        alt={'Locavore'}
-                        className='rounded-2xl'
-                        layout='fill'
-                        objectFit='cover'
-                        objectPosition='center'
-                      />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className='relative w-52 h-full'>
-                      <Image
-                        src={`/placeholder/NightRooster-Cocktail-2020-45.jpg`}
-                        alt={'Locavore'}
-                        className='rounded-2xl'
-                        layout='fill'
-                        objectFit='cover'
-                        objectPosition='center'
-                      />
-                    </div>
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <div className='relative w-52 h-full'>
-                      <Image
-                        src={`/placeholder/NightRooster-Cocktail-2020-45.jpg`}
-                        alt={'Locavore'}
-                        className='rounded-2xl'
-                        layout='fill'
-                        objectFit='cover'
-                        objectPosition='center'
-                      />
-                    </div>
-                  </SwiperSlide>
-                </Swiper> */}
               </ScrollContainer>
               <div className='w-full flex justify-between mt-5'>
                 <div className='flex items-center space-x-5'>
@@ -254,7 +209,7 @@ const FamilySlug = () => {
           <div className='w-full setflex-center'>
             <FancyLink
               destination='/'
-              className='mt-16 py-3 px-6 text-base font-bold tracking-widest border border-black font-bold rounded-xl'
+              className='mt-16 py-3 px-6 text-base tracking-widest border border-black font-bold rounded-xl'
             >
               BOOK NOW
             </FancyLink>

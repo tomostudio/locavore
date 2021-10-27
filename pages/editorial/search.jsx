@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { NextSeo } from 'next-seo'
-
+import ScrollContainer from 'react-indiana-drag-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
-import { fade } from '@/helpers/preset/transitions'
+import Fuse from 'fuse.js'
+
 // Layout
 import Layout from '@/components/modules/layout'
 import Container from '@/components/modules/container'
@@ -16,10 +17,265 @@ import Arrow from '@/components/utils/arrow'
 import StickyButton from '@/components/utils/stickyButton'
 import IssueCard from '@/components/utils/issueCard'
 
+// Helpers
+import { fade } from '@/helpers/preset/transitions'
+
 export default function Search() {
-  const [search, setSearch] = useState('');
-  const [postNum, setPostNum] = useState(6);
-  const [searchResult, setsearchResult] = useState([]);
+  const dataCategory = [
+    {
+      category: 'Food',
+    },
+    {
+      category: 'Culture',
+    },
+    {
+      category: 'Features',
+    },
+    {
+      category: 'Food',
+    },
+    {
+      category: 'Culture',
+    },
+    {
+      category: 'Features',
+    },
+    {
+      category: 'Food',
+    },
+    {
+      category: 'Culture',
+    },
+    {
+      category: 'Features',
+    },
+  ]
+  const dataSearch = [
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#DEFE71',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#9FF7CD',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#D66A51',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#9FF7CD',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#D66A51',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#C9C8BF',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#BC9EDF',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#DEFE71',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#9FF7CD',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#D66A51',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#9FF7CD',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#D66A51',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#C9C8BF',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#BC9EDF',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#DEFE71',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#9FF7CD',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#D66A51',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#9FF7CD',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#D66A51',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#C9C8BF',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+    {
+      destination: '/article/full',
+      articleClassName: 'bg-culture w-full',
+      title: '7. Facial Expressions',
+      category: 'Culture',
+      timeRead: '20 min read',
+      bgColor: '#BC9EDF',
+      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
+      alt: 'Locavore',
+    },
+  ]
+  const [postNumCategory, setPostNumCategory] = useState(3)
+  const [postNum, setPostNum] = useState(6)
+  const [search, setSearch] = useState('')
+  const [searchResult, setsearchResult] = useState([])
+  const [searchData, setSearchData] = useState(new Array())
+  const [itemsToDisplay, setitemsToDisplay] = useState('none')
+
+  const handleLoadMoreCategory = () => {
+    setPostNumCategory((prevPostNum) => prevPostNum + 3)
+  }
+
+  const handleLoadMore = () => {
+    setPostNum((prevPostNum) => prevPostNum + 6)
+  }
 
   // Search
   const handleSearch = ({ target }) => {
@@ -30,33 +286,28 @@ export default function Search() {
     // Inisialiasi fuzzy search dengan fuse.js
     // inisialisasi data object dan key yang ingin dicari
     const fuse = new Fuse(searchData, {
-      keys: ['name', 'title', 'cat_name', 'event_start', 'event_end'],
+      keys: ['title', 'category', 'timeRead'],
     })
     setsearchResult(fuse.search(value).map((result) => result.item))
-    clearTimeout(delay)
-    clearTimeout(delay2)
   }
 
-  const handleFilter = (val) => {
-    setPostNum(6)
-
-    functionContainerRef.current.classList.add('hide')
-    resultContainerRef.current.classList.remove('active')
-    setFilter(val)
-  }
-
-  const filteredItems = () => {
+  const handleCategory = (value) => {
     const fuse = new Fuse(searchData, {
-      keys: ['name', 'title', 'cat_name', 'event_start', 'event_end'],
+      keys: ['category'],
     })
-    let fuseData = fuse.search(search).map((result) => result.item)
-    return fuseData.filter((item) => item.cat_slug.includes(filter))
+    setsearchResult(fuse.search(value).map((result) => result.item))
   }
 
   useEffect(() => {
+    setitemsToDisplay(searchResult.length > 0 ? searchResult : [])
+    if (searchData) {
+      if (!searchData.length) {
+        setSearchData((prevArray) => [...prevArray, ...dataSearch])
+      }
+    }
     window.scroll(0, 0)
     return () => {}
-  }, [])
+  }, [search])
 
   return (
     <Layout>
@@ -79,147 +330,101 @@ export default function Search() {
                   <form className="mb-8 flex w-full h-full flex-col justify-between">
                     <div className="relative w-full  border-black pb-2.5 border-b">
                       <input
-                        className="w-full text-xs tracking-wide placeholder-black bg-transparent"
+                        onChange={handleSearch}
+                        className="w-full text-xs tracking-wide placeholder-black bg-transparent outline-none"
                         type="text"
                         placeholder="ENTER A KEYWORD"
                       />
                       <Arrow
                         position="right"
-                        className="absolute right-0 top-2"
+                        className="absolute right-0 top-2 cursor-pointer"
                         fill="black"
                       />
                     </div>
                   </form>
-                  <div className="w-full h-auto opacity-80 flex max-md:flex-wrap items-center space-x-4 max-md:gap-3 max-md:space-x-0">
+                  <ScrollContainer
+                    className="w-full h-auto opacity-80 flex max-md:flex-wrap items-center space-x-4 max-md:gap-3 max-md:space-x-0 overflow-x-scroll hide-scrollbar"
+                    horizontal={true}
+                  >
                     <span className="block text-xs pt-px">CATEGORY</span>
-                    <PillButton className="text-xs uppercase max-md:py-1 px-3">
-                      Food
-                    </PillButton>
-                    <PillButton className="text-xs uppercase max-md:py-1 px-3">
-                      Culture
-                    </PillButton>
-                    <PillButton className="text-xs  uppercase max-md:py-1 px-3">
-                      Features
-                    </PillButton>
-                    <PillButton className="text-xs uppercase max-md:py-1 px-3">
-                      ...
-                    </PillButton>
-                  </div>
+                    {dataCategory.slice(0, postNumCategory).map((data, id) => (
+                      <PillButton
+                        onClick={() => handleCategory(data.category)}
+                        className="text-xs uppercase max-md:py-1 px-3"
+                        key={id}
+                      >
+                        {data.category}
+                      </PillButton>
+                    ))}
+                    {!(postNumCategory >= dataCategory.length) && (
+                      <PillButton
+                        className="text-xs uppercase max-md:py-1 px-3"
+                        onClick={handleLoadMoreCategory}
+                      >
+                        ...
+                      </PillButton>
+                    )}
+                  </ScrollContainer>
                 </div>
                 {/* Category */}
               </div>
               <div className="relative w-full h-auto setflex-center">
                 <span className="font-bold mt-12 mb-10 text-lg">
                   We found &nbsp;
-                  <span className="border-black border-b">8 Articles</span>
+                  <span className="border-black border-b">
+                    {search ? itemsToDisplay.length : dataSearch.length}{' '}
+                    Articles
+                  </span>
                 </span>
                 {/* Card */}
                 <div
                   className="w-full h-auto gap-8 flex-wrap"
                   id="search-results"
                 >
-                  <IssueCard
-                    issueNo={1}
-                    destination="/article/full"
-                    articleClassName="bg-culture w-full"
-                    title="7. Facial Expressions"
-                    category="Culture"
-                    timeRead="20 min read"
-                    bgColor="##DEFE71"
-                    borderColor=""
-                    thumbnail="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                  <IssueCard
-                    issueNo={1}
-                    destination="/article/full"
-                    articleClassName="bg-culture w-full"
-                    title="7. Facial Expressions"
-                    category="Culture"
-                    timeRead="20 min read"
-                    bgColor="#9FF7CD"
-                    borderColor=""
-                    thumbnail="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                  <IssueCard
-                    issueNo={1}
-                    destination="/article/full"
-                    articleClassName="bg-culture w-full"
-                    title="7. Facial Expressions"
-                    category="Culture"
-                    timeRead="20 min read"
-                    bgColor="#D66A51"
-                    borderColor=""
-                    thumbnail="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                  <IssueCard
-                    issueNo={1}
-                    destination="/article/full"
-                    articleClassName="bg-culture w-full"
-                    title="7. Facial Expressions"
-                    category="Culture"
-                    timeRead="20 min read"
-                    bgColor="#9FF7CD"
-                    borderColor=""
-                    thumbnail="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                  <IssueCard
-                    issueNo={1}
-                    destination="/article/full"
-                    articleClassName="bg-culture w-full"
-                    title="7. Facial Expressions"
-                    category="Culture"
-                    timeRead="20 min read"
-                    bgColor="#D66A51"
-                    borderColor=""
-                    thumbnail="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                  <IssueCard
-                    issueNo={1}
-                    destination="/article/full"
-                    articleClassName="bg-culture w-full"
-                    title="7. Facial Expressions"
-                    category="Culture"
-                    timeRead="20 min read"
-                    bgColor="#C9C8BF"
-                    borderColor=""
-                    thumbnail="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                  <IssueCard
-                    issueNo={1}
-                    destination="/article/full"
-                    articleClassName="bg-culture w-full"
-                    title="7. Facial Expressions"
-                    category="Culture"
-                    timeRead="20 min read"
-                    bgColor="#DEFE71"
-                    borderColor=""
-                    thumbnail="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
-                  <IssueCard
-                    issueNo={1}
-                    destination="/article/full"
-                    articleClassName="bg-culture w-full"
-                    title="7. Facial Expressions"
-                    category="Culture"
-                    timeRead="20 min read"
-                    bgColor="#BC9EDF"
-                    borderColor=""
-                    thumbnail="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
-                  />
+                  {search
+                    ? itemsToDisplay
+                        .slice(0, postNum)
+                        .map((data, id) => (
+                          <IssueCard
+                            key={id}
+                            issueNo={1}
+                            destination={data.destination}
+                            articleClassName="bg-culture w-full"
+                            title={data.title}
+                            category={data.category}
+                            timeRead={data.timeRead}
+                            bgColor={data.bgColor}
+                            borderColor=""
+                            thumbnail={data.thumbnail}
+                            alt={data.alt}
+                          />
+                        ))
+                    : dataSearch.map((data, id) => (
+                        <IssueCard
+                          key={id}
+                          issueNo={1}
+                          destination={data.destination}
+                          articleClassName="bg-culture w-full"
+                          title={data.title}
+                          category={data.category}
+                          timeRead={data.timeRead}
+                          bgColor={data.bgColor}
+                          borderColor=""
+                          thumbnail={data.thumbnail}
+                          alt={data.alt}
+                        />
+                      ))}
                 </div>
-                <div className="flex mt-10">
-                  <FancyLink className="py-4 px-5 text-xs text-gray tracking-widest transition-all ease-linear hover:text-white hover:bg-gray border border-gray rounded-xl">
-                    LOAD MORE
-                  </FancyLink>
-                </div>
+                {!(postNum >= dataSearch.length) && (
+                  <div className="flex mt-10">
+                    <FancyLink
+                      onClick={handleLoadMore}
+                      className="py-4 px-5 text-xs text-gray tracking-widest transition-all ease-linear hover:text-white hover:bg-gray border border-gray rounded-xl"
+                    >
+                      LOAD MORE
+                    </FancyLink>
+                  </div>
+                )}
               </div>
             </Container>
           </section>
