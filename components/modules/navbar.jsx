@@ -14,7 +14,7 @@ export default function Navbar({ className = '' }) {
     <header
       className={`fixed top-0 left-0 right-0 w-full z-50  transition-all duration-150 ease-linear border-b ${className} ${
         headerStyle.toLowerCase() === 'default'
-          ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm border-black'
+          ? 'border-black'
           : headerStyle.toLowerCase() === 'hidden'
           ? 'hidden'
           : headerStyle.toLowerCase() === 'white'
@@ -26,10 +26,12 @@ export default function Navbar({ className = '' }) {
     >
       <Container
         className={`h-header relative pointer-events-auto flex flex-wrap max-md:flex-nowrap max-md:pb-5 max-md:items-center max-md:pt-10  ${
-          headerStyle.toLowerCase() === 'default'
+          headerStyle.toLowerCase() === 'default' 
             ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm '
             : headerStyle.toLowerCase() === 'white'
-            ? 'border-white'
+            ? 'bg-black bg-opacity-10 backdrop-filter backdrop-blur-sm '
+            : headerStyle.toLowerCase() === 'black'
+            ? 'bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm '
             : ''
         }`}
       >
@@ -63,7 +65,7 @@ export default function Navbar({ className = '' }) {
         <FancyLink
           destination='/'
           a11yText='Navigate to the home page'
-          className='mb-1 max-md:mb-0 max-md:ml-3 setflex-center max-md:p-0'
+          className='max-md:ml-3 setflex-center max-md:p-0'
         >
           <img
             src={

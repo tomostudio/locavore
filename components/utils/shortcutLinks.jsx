@@ -11,7 +11,7 @@ const Link = () => {
           <FancyLink destination='/editorial/search'>
             Editorial - Search
           </FancyLink>
-          <FancyLink destination='/editorial/metamorphosis-landing'>
+          <FancyLink destination='/editorial/metamorphosis'>
             Issue - Metamorphosis (Landing)
           </FancyLink>
           <FancyLink destination='/editorial/uc'>

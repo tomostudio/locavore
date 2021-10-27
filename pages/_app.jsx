@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import { AppWrapper } from '../context/state.jsx';
 import Link from '@/components/utils/shortcutLinks';
-import 'swiper/swiper.scss';
-import 'swiper/components/pagination/pagination.min.css';
+import 'swiper/css';
+import 'swiper/css/pagination';
 import Navbar from '@/components/modules/navbar.jsx';
 
 export default function App({ Component, pageProps }) {
