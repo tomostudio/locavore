@@ -20,6 +20,7 @@ import VideoComponent from '@/components/utils/videoComponent'
 import NextArticle from '@/components/utils/nextArticle'
 
 export default function Video() {
+  const [video, setVideo] = useState(false)
   return (
     <Layout>
       <NextSeo title="Video" />
@@ -31,7 +32,7 @@ export default function Video() {
         <Container className="max-md:px-0">
           {/* Video */}
           <div className="relative w-full flex flex-col space-y-3">
-            <VideoComponent />
+            <VideoComponent setVideo={setVideo} video={video}/>
           </div>
         </Container>
       </section>

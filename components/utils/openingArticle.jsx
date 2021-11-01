@@ -1,70 +1,78 @@
-import React from 'react';
-import Container from '../modules/container';
-import FancyLink from './fancyLink';
-import PillButton from './pillButton';
-import Image from 'next/image';
+import React from 'react'
+import Container from '../modules/container'
+import FancyLink from './fancyLink'
+import PillButton from './pillButton'
+import Image from 'next/image'
+import { useAppContext } from 'context/state'
 
 export default function OpeningArticle() {
+  const appContext = useAppContext()
   return (
-    <section className='pt-10 pb-12 w-full h-full'>
-      <Container className='space-y-10 max-md:px-6'>
+    <section className="pt-10 pb-12 w-full h-full">
+      <Container className="space-y-10 max-md:px-6">
         {/* Title */}
-        <h1 className='m-0 font-sans font-normal'>
+        <h1 className="m-0 font-sans font-normal">
           In Search of Regional Specialties Articles
         </h1>
-        <div className='w-full flex max-md:flex-col items-center max-md:items-start justify-between'>
+        <div className="w-full flex max-md:flex-col items-center max-md:items-start justify-between">
           {/* Category */}
-          <div className='w-auto space-x-4 flex '>
+          <div className="w-auto space-x-4 flex ">
             <PillButton
-              destination='/'
-              className='text-xs max-md:py-1 max-md:px-2 opacity-100 border-black'
+              destination="/editorial/search"
+              onClick={() => {
+                appContext.setCategory('Food')
+              }}
+              className="text-xs max-md:py-1 max-md:px-2 opacity-100 border-black"
             >
               Food
             </PillButton>
             <PillButton
-              destination='/'
-              className='text-xs max-md:py-1 max-md:px-2 opacity-100 border-black'
+              destination="/editorial/search"
+              onClick={() => {
+                appContext.setCategory('Culture')
+              }}
+              className="text-xs max-md:py-1 max-md:px-2 opacity-100 border-black"
             >
               Culture
             </PillButton>
           </div>
           {/* Social Media */}
-          <div className='w-full max-md:mt-7 flex max-md:flex-row-reverse justify-between'>
-            <span className='ml-4 max-md:m-0 font-serif italic font-bold'>
+          <div className="w-full max-md:mt-7 flex max-md:flex-row-reverse justify-between">
+            <span className="ml-4 max-md:m-0 font-serif italic font-bold">
               March 2021
             </span>
-            <div className='flex space-x-7'>
-              <div className='relative w-16px h-16px'>
+            <div className="flex space-x-7">
+              <div className="relative w-16px h-16px">
                 <Image
                   src={`/facebook.png`}
                   alt={'Locavore'}
-                  layout='fill'
-                  objectFit='contain'
-                  objectPosition='center'
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="center"
                 />
               </div>
-              <div className='relative w-16px h-16px'>
+              <div className="relative w-16px h-16px">
                 <Image
                   src={`/twitter.png`}
                   alt={'Locavore'}
-                  layout='fill'
-                  objectFit='contain'
-                  objectPosition='center'
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="center"
                 />
               </div>
-              <div className='relative w-16px h-16px'>
+              <div className="relative w-16px h-16px">
                 <Image
                   src={`/mail.png`}
                   alt={'Locavore'}
-                  layout='fill'
-                  objectFit='contain'
-                  objectPosition='center'
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="center"
                 />
               </div>
             </div>
           </div>
         </div>
-        <div className='w-full h-full'>
+        <div className="w-full h-full">
           {/* Description */}
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -82,5 +90,5 @@ export default function OpeningArticle() {
         </div>
       </Container>
     </section>
-  );
+  )
 }

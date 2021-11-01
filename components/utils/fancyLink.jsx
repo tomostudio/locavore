@@ -30,6 +30,7 @@ const FancyLink = forwardRef(
           aria-label={a11yText}
           className={`${className}`}
           ref={ref}
+          onClick={onClick}
           {...others}
         >
           {children}

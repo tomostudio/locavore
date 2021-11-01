@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { NextSeo } from 'next-seo'
 
 // Layout
@@ -21,6 +21,309 @@ import client from '@/helpers/sanity/client'
 export default function Family({ seoAPI, familyAPI }) {
   const [seo] = seoAPI
   const [family] = familyAPI
+  const [dataFix, setDataFix] = useState([])
+  const dataFamilyImage = [
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      dataImage: 'locavore',
+      bgColor: '#789578',
+      src: '/placeholder/Additional-Locavore.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      bgColor: '#789578',
+      dataImage: 'locavore',
+      src: '/placeholder/Additional-Locavore-2.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-3.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-4.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      bgColor: '#C2D09A',
+      dataImage: 'locavore-togo',
+      src: '/placeholder/Additional-Locavore-5.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-6.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-7.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-8.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'THE NIGHT ROOSTER',
+      position: 'Mixologist',
+      name: 'John Doe',
+      bgColor: '#91C1E4',
+      dataImage: 'the-night-rooster',
+      src: '/placeholder/Additional-Locavore-10.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      dataImage: 'locavore',
+      bgColor: '#789578',
+      src: '/placeholder/Additional-Locavore.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      bgColor: '#789578',
+      dataImage: 'locavore',
+      src: '/placeholder/Additional-Locavore-2.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-3.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-4.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      bgColor: '#C2D09A',
+      dataImage: 'locavore-togo',
+      src: '/placeholder/Additional-Locavore-5.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-6.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-7.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-8.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'THE NIGHT ROOSTER',
+      position: 'Mixologist',
+      name: 'John Doe',
+      bgColor: '#91C1E4',
+      dataImage: 'the-night-rooster',
+      src: '/placeholder/Additional-Locavore-10.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      dataImage: 'locavore',
+      bgColor: '#789578',
+      src: '/placeholder/Additional-Locavore.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      bgColor: '#789578',
+      dataImage: 'locavore',
+      src: '/placeholder/Additional-Locavore-2.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-3.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-4.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      bgColor: '#C2D09A',
+      dataImage: 'locavore-togo',
+      src: '/placeholder/Additional-Locavore-5.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-6.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-7.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-8.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'THE NIGHT ROOSTER',
+      position: 'Mixologist',
+      name: 'John Doe',
+      bgColor: '#91C1E4',
+      dataImage: 'the-night-rooster',
+      src: '/placeholder/Additional-Locavore-10.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      dataImage: 'locavore',
+      bgColor: '#789578',
+      src: '/placeholder/Additional-Locavore.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      bgColor: '#789578',
+      dataImage: 'locavore',
+      src: '/placeholder/Additional-Locavore-2.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-3.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-4.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      bgColor: '#C2D09A',
+      dataImage: 'locavore-togo',
+      src: '/placeholder/Additional-Locavore-5.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-6.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-7.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-8.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'THE NIGHT ROOSTER',
+      position: 'Mixologist',
+      name: 'John Doe',
+      bgColor: '#91C1E4',
+      dataImage: 'the-night-rooster',
+      src: '/placeholder/Additional-Locavore-10.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      dataImage: 'locavore',
+      bgColor: '#789578',
+      src: '/placeholder/Additional-Locavore.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      bgColor: '#789578',
+      dataImage: 'locavore',
+      src: '/placeholder/Additional-Locavore-2.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-3.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-4.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'LOCAVORE',
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
+      bgColor: '#C2D09A',
+      dataImage: 'locavore-togo',
+      src: '/placeholder/Additional-Locavore-5.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-6.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-7.jpg',
+      alt: 'Locavore',
+    },
+    {
+      src: '/placeholder/Additional-Locavore-8.jpg',
+      alt: 'Locavore',
+    },
+    {
+      background: true,
+      title: 'THE NIGHT ROOSTER',
+      position: 'Mixologist',
+      name: 'John Doe',
+      bgColor: '#91C1E4',
+      dataImage: 'the-night-rooster',
+      src: '/placeholder/Additional-Locavore-10.jpg',
+      alt: 'Locavore',
+    },
+  ]
   const onMouseEnter = (id, color, slug) => {
     document.getElementById('family-button').children[
       id
@@ -32,7 +335,9 @@ export default function Family({ seoAPI, familyAPI }) {
     const image = document.getElementById('family-image')
     for (let i = 0; i < image.children.length; i++) {
       if (image.children[i].getAttribute('data-image') === slug) {
-        image.children[i].children[1].style.opacity = 1
+        image.children[i].children[0].children[0].classList.add('actveBlur')
+        image.children[i].children[1].classList.add('active')
+        image.children[i].children[2].classList.add('activeBackground')
       }
     }
   }
@@ -45,12 +350,73 @@ export default function Family({ seoAPI, familyAPI }) {
     const image = document.getElementById('family-image')
     for (let i = 0; i < image.children.length; i++) {
       if (image.children[i].hasAttribute('data-image')) {
-        image.children[i].children[1].style.opacity = 0
+        image.children[i].children[0].children[0].classList.remove('actveBlur')
+        image.children[i].children[1].classList.remove('active')
+        image.children[i].children[2].classList.remove('activeBackground')
       }
     }
   }
 
+  const shuffle = (array) => {
+    let currentIndex = array.length,
+      randomIndex
+
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex)
+      currentIndex--
+
+      // And swap it with the current element.
+      ;[array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ]
+    }
+
+    return array
+  }
+
   useEffect(() => {
+    shuffle(dataFamilyImage)
+    setDataFix(dataFamilyImage)
+    if (window.innerWidth < 768) {
+      let arrayImage = dataFamilyImage
+      if (3 - (dataFamilyImage.length % 3) !== 3) {
+        const data = 3 - (dataFamilyImage.length % 3)
+        for (let i = 0; i <= data - 1; i++) {
+          arrayImage.push(dataFamilyImage[i])
+        }
+      }
+      setDataFix(arrayImage)
+    } else {
+      let arrayImage = dataFamilyImage
+      if (8 - (dataFamilyImage.length % 8) !== 8) {
+        const data = 8 - (dataFamilyImage.length % 8)
+        for (let i = 0; i <= data - 1; i++) {
+          arrayImage.push(dataFamilyImage[i])
+        }
+      }
+      setDataFix(arrayImage)
+    }
+    window.addEventListener('resize', () => {
+      setDataFix(dataFamilyImage)
+      if (window.innerWidth < 768) {
+        if (3 - (dataFamilyImage.length % 3) !== 3) {
+          const data = 3 - (dataFamilyImage.length % 3)
+          for (let i = 0; i <= data - 1; i++) {
+            setDataFix.push(dataFamilyImage[i])
+          }
+        }
+      } else {
+        if (8 - (dataFamilyImage.length % 8) !== 8) {
+          const data = 8 - (dataFamilyImage.length % 8)
+          for (let i = 0; i <= data - 1; i++) {
+            dataFamilyImage.push(dataFamilyImage[i])
+          }
+        }
+      }
+    })
     window.scroll(0, 0)
     return () => {}
   }, [])
@@ -174,306 +540,19 @@ export default function Family({ seoAPI, familyAPI }) {
             className="relative w-full h-auto flex flex-wrap  "
             id="family-image"
           >
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              dataImage="locavore"
-              bgColor="#789578"
-              src="/placeholder/Additional-Locavore.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              bgColor="#789578"
-              dataImage="locavore"
-              src="/placeholder/Additional-Locavore-2.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-3.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-4.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              bgColor="#C2D09A"
-              dataImage="locavore-togo"
-              src="/placeholder/Additional-Locavore-5.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-6.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-7.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-8.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="THE NIGHT ROOSTER"
-              position="Mixologist"
-              name="John Doe"
-              bgColor="#91C1E4"
-              dataImage="the-night-rooster"
-              src="/placeholder/Additional-Locavore-10.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              dataImage="locavore"
-              bgColor="#789578"
-              src="/placeholder/Additional-Locavore.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              bgColor="#789578"
-              dataImage="locavore"
-              src="/placeholder/Additional-Locavore-2.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-3.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-4.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              bgColor="#C2D09A"
-              dataImage="locavore-togo"
-              src="/placeholder/Additional-Locavore-5.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-6.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-7.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-8.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="THE NIGHT ROOSTER"
-              position="Mixologist"
-              name="John Doe"
-              bgColor="#91C1E4"
-              dataImage="the-night-rooster"
-              src="/placeholder/Additional-Locavore-10.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              dataImage="locavore"
-              bgColor="#789578"
-              src="/placeholder/Additional-Locavore.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              bgColor="#789578"
-              dataImage="locavore"
-              src="/placeholder/Additional-Locavore-2.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-3.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-4.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              bgColor="#C2D09A"
-              dataImage="locavore-togo"
-              src="/placeholder/Additional-Locavore-5.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-6.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-7.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-8.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="THE NIGHT ROOSTER"
-              position="Mixologist"
-              name="John Doe"
-              bgColor="#91C1E4"
-              dataImage="the-night-rooster"
-              src="/placeholder/Additional-Locavore-10.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              dataImage="locavore"
-              bgColor="#789578"
-              src="/placeholder/Additional-Locavore.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              bgColor="#789578"
-              dataImage="locavore"
-              src="/placeholder/Additional-Locavore-2.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-3.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-4.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              bgColor="#C2D09A"
-              dataImage="locavore-togo"
-              src="/placeholder/Additional-Locavore-5.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-6.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-7.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-8.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="THE NIGHT ROOSTER"
-              position="Mixologist"
-              name="John Doe"
-              bgColor="#91C1E4"
-              dataImage="the-night-rooster"
-              src="/placeholder/Additional-Locavore-10.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              dataImage="locavore"
-              bgColor="#789578"
-              src="/placeholder/Additional-Locavore.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              bgColor="#789578"
-              dataImage="locavore"
-              src="/placeholder/Additional-Locavore-2.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-3.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-4.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="LOCAVORE"
-              position="Executive Chef"
-              name="Eelke Plasmeijer"
-              bgColor="#C2D09A"
-              dataImage="locavore-togo"
-              src="/placeholder/Additional-Locavore-5.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-6.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-7.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              src="/placeholder/Additional-Locavore-8.jpg"
-              alt="Locavore"
-            />
-            <FamilyImage
-              background={true}
-              title="THE NIGHT ROOSTER"
-              position="Mixologist"
-              name="John Doe"
-              bgColor="#91C1E4"
-              dataImage="the-night-rooster"
-              src="/placeholder/Additional-Locavore-10.jpg"
-              alt="Locavore"
-            />
+            {dataFix.map((data, id) => (
+              <FamilyImage
+                key={id}
+                background={data.background}
+                title={data.title}
+                position={data.position}
+                name={data.name}
+                dataImage={data.dataImage}
+                bgColor={data.bgColor}
+                src={data.src}
+                alt={data.alt}
+              />
+            ))}
           </div>
         </section>
         <section

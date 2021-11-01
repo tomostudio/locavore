@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination } from 'swiper';
 import { motion } from 'framer-motion';
 import Image from 'next/image';

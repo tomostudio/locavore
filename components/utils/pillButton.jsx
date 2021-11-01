@@ -5,8 +5,8 @@ const PillButton = ({ className, destination, arrow, children, onClick, defaultH
   return (
     <>
       <FancyLink
-        destination={destination ? destination : false}
-        onClick={!destination ? onClick : false}
+        destination={destination}
+        onClick={onClick}
         className={`pillbutton text-xs px-6 py-2 border border-gray text-gray rounded-3xl transition-all ease-linear setflex-center-row ${className} ${defaultHover ? 'hover:bg-gray hover:text-white' : ''}`}
       >
         {arrow === 'left' ? (

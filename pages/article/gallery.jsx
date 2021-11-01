@@ -14,8 +14,11 @@ import VideoComponent from '@/components/utils/videoComponent'
 
 // Helpers
 import NextArticle from '@/components/utils/nextArticle'
+import { useState } from 'react'
 
 export default function Gallery() {
+  const [video, setVideo] = useState(false)
+
   return (
     <Layout>
       <NextSeo title="Gallery" />
@@ -75,7 +78,7 @@ export default function Gallery() {
               </div>
             </div>
             <div className="w-full mt-3 max-md:mt-2">
-              <VideoComponent />
+              <VideoComponent setVideo={setVideo} video={video} />
             </div>
           </div>
         </Container>

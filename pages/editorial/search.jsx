@@ -16,11 +16,18 @@ import PillButton from '@/components/utils/pillButton'
 import Arrow from '@/components/utils/arrow'
 import StickyButton from '@/components/utils/stickyButton'
 import IssueCard from '@/components/utils/issueCard'
+import SEO from '@/components/utils/seo'
 
 // Helpers
 import { fade } from '@/helpers/preset/transitions'
+import client from '@/helpers/sanity/client'
+import urlFor from '@/helpers/sanity/urlFor'
+import { useAppContext } from 'context/state'
 
-export default function Search() {
+export default function Search({ seoAPI, searchAPI }) {
+  const [seo] = seoAPI
+  const [APISearch] = searchAPI
+  const appContext = useAppContext()
   const dataCategory = [
     {
       category: 'Food',
@@ -267,7 +274,7 @@ export default function Search() {
   const [search, setSearch] = useState('')
   const [searchResult, setsearchResult] = useState([])
   const [searchData, setSearchData] = useState(new Array())
-  const [itemsToDisplay, setitemsToDisplay] = useState('none')
+  const [itemsToDisplay, setitemsToDisplay] = useState([])
 
   const handleLoadMoreCategory = () => {
     setPostNumCategory((prevPostNum) => prevPostNum + 3)
@@ -282,6 +289,7 @@ export default function Search() {
     const { value } = target
     // set value untuk search
     setSearch(value)
+    setPostNum(6)
 
     // Inisialiasi fuzzy search dengan fuse.js
     // inisialisasi data object dan key yang ingin dicari
@@ -292,14 +300,18 @@ export default function Search() {
   }
 
   const handleCategory = (value) => {
-    const fuse = new Fuse(searchData, {
+    const fuse = new Fuse(dataSearch, {
       keys: ['category'],
     })
     setsearchResult(fuse.search(value).map((result) => result.item))
+    setitemsToDisplay(fuse.search(value).map((result) => result.item))
   }
 
   useEffect(() => {
-    setitemsToDisplay(searchResult.length > 0 ? searchResult : [])
+    if (appContext.category) {
+      handleCategory(appContext.category)
+    }
+    // setitemsToDisplay(searchResult.length > 0 ? searchResult : [])
     if (searchData) {
       if (!searchData.length) {
         setSearchData((prevArray) => [...prevArray, ...dataSearch])
@@ -311,7 +323,40 @@ export default function Search() {
 
   return (
     <Layout>
-      <NextSeo title="Search" />
+      <SEO
+        seo={{
+          title: 'Search',
+          webTitle: typeof seo !== 'undefined' ? seo.webTitle : '',
+          description:
+            typeof APISearch !== 'undefined' &&
+            typeof APISearch.seo !== 'undefined'
+              ? APISearch.seo.seo_description
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
+              ? seo.seo.seo_description
+              : '',
+          meta_keywords:
+            typeof APISearch !== 'undefined' &&
+            typeof APISearch.seo !== 'undefined'
+              ? APISearch.seo.seo_keywords
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
+              ? seo.seo.seo_keywords
+              : '',
+          image:
+            typeof APISearch !== 'undefined' &&
+            typeof APISearch.seo !== 'undefined'
+              ? urlFor(APISearch.seo.seo_image).url()
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
+              ? urlFor(seo.seo.seo_image).url()
+              : '',
+          image_alt:
+            typeof APISearch !== 'undefined' &&
+            typeof APISearch.seo !== 'undefined'
+              ? APISearch.seo.seo_image.name
+              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
+              ? seo.seo.seo_image.name
+              : '',
+        }}
+      />
       <LazyMotion features={domAnimation}>
         <m.main initial="initial" animate="enter" exit="exit" variants={fade}>
           {/* Header Gap */}
@@ -381,7 +426,10 @@ export default function Search() {
                   className="w-full h-auto gap-8 flex-wrap"
                   id="search-results"
                 >
-                  {search
+                  {
+                    console.log(itemsToDisplay)
+                  }
+                  {search || appContext.category
                     ? itemsToDisplay
                         .slice(0, postNum)
                         .map((data, id) => (
@@ -399,21 +447,23 @@ export default function Search() {
                             alt={data.alt}
                           />
                         ))
-                    : dataSearch.map((data, id) => (
-                        <IssueCard
-                          key={id}
-                          issueNo={1}
-                          destination={data.destination}
-                          articleClassName="bg-culture w-full"
-                          title={data.title}
-                          category={data.category}
-                          timeRead={data.timeRead}
-                          bgColor={data.bgColor}
-                          borderColor=""
-                          thumbnail={data.thumbnail}
-                          alt={data.alt}
-                        />
-                      ))}
+                    : dataSearch
+                        .slice(0, postNum)
+                        .map((data, id) => (
+                          <IssueCard
+                            key={id}
+                            issueNo={1}
+                            destination={data.destination}
+                            articleClassName="bg-culture w-full"
+                            title={data.title}
+                            category={data.category}
+                            timeRead={data.timeRead}
+                            bgColor={data.bgColor}
+                            borderColor=""
+                            thumbnail={data.thumbnail}
+                            alt={data.alt}
+                          />
+                        ))}
                 </div>
                 {!(postNum >= dataSearch.length) && (
                   <div className="flex mt-10">
@@ -437,4 +487,19 @@ export default function Search() {
       </LazyMotion>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const seoAPI = await client.fetch(`
+                    *[_type == "settings"]
+                    `)
+  const searchAPI = await client.fetch(`
+                    *[_type == "search"]
+                    `)
+  return {
+    props: {
+      seoAPI,
+      searchAPI,
+    },
+  }
 }

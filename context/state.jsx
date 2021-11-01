@@ -5,7 +5,7 @@ const AppContext = createContext()
 export function AppWrapper({ children }) {
   const [scrollState, setScrollState] = useState(null)
   const [headerVar, setHeader] = useState({ headerStyle: 'default' })
-  const [playVideo, setPlayVideo] = useState(false)
+  const [category, setCategory] = useState('')
 
   return (
     <AppContext.Provider
@@ -14,8 +14,8 @@ export function AppWrapper({ children }) {
         setScrollState,
         headerVar,
         setHeader,
-        playVideo,
-        setPlayVideo,
+        category,
+        setCategory,
       }}
     >
       {children}
