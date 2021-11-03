@@ -193,6 +193,11 @@ body {
   transition: opacity 0.5s;
 }
 
+.inActiveFamilyButton {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
 .activeBackground {
   opacity: 0.75;
   transition: opacity 0.5s;
@@ -201,4 +206,8 @@ body {
 .actveBlur {
   filter: blur(4px);
   transition: filter 0.5s;
+}
+
+.activeCategory {
+  @apply bg-gray text-white #{!important};
 }

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { NextSeo } from 'next-seo'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import Fuse from 'fuse.js'
@@ -112,7 +111,7 @@ export default function Search({ seoAPI, searchAPI }) {
       destination: '/article/full',
       articleClassName: 'bg-culture w-full',
       title: '7. Facial Expressions',
-      category: 'Culture',
+      category: 'Food',
       timeRead: '20 min read',
       bgColor: '#C9C8BF',
       thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
@@ -121,8 +120,8 @@ export default function Search({ seoAPI, searchAPI }) {
     {
       destination: '/article/full',
       articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
+      title: '7. Tes',
+      category: 'Food',
       timeRead: '20 min read',
       bgColor: '#BC9EDF',
       thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
@@ -132,7 +131,7 @@ export default function Search({ seoAPI, searchAPI }) {
       destination: '/article/full',
       articleClassName: 'bg-culture w-full',
       title: '7. Facial Expressions',
-      category: 'Culture',
+      category: 'Food',
       timeRead: '20 min read',
       bgColor: '#DEFE71',
       thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
@@ -272,9 +271,7 @@ export default function Search({ seoAPI, searchAPI }) {
   const [postNumCategory, setPostNumCategory] = useState(3)
   const [postNum, setPostNum] = useState(6)
   const [search, setSearch] = useState('')
-  const [searchResult, setsearchResult] = useState([])
-  const [searchData, setSearchData] = useState(new Array())
-  const [itemsToDisplay, setitemsToDisplay] = useState([])
+  const [itemsToDisplay, setitemsToDisplay] = useState(dataSearch)
 
   const handleLoadMoreCategory = () => {
     setPostNumCategory((prevPostNum) => prevPostNum + 3)
@@ -290,36 +287,61 @@ export default function Search({ seoAPI, searchAPI }) {
     // set value untuk search
     setSearch(value)
     setPostNum(6)
+    console.log(value)
 
-    // Inisialiasi fuzzy search dengan fuse.js
-    // inisialisasi data object dan key yang ingin dicari
-    const fuse = new Fuse(searchData, {
-      keys: ['title', 'category', 'timeRead'],
-    })
-    setsearchResult(fuse.search(value).map((result) => result.item))
+    if (appContext.category) {
+      const fuseCategory = new Fuse(dataSearch, {
+        keys: ['category'],
+        useExtendedSearch: true,
+      })
+      let cat = fuseCategory
+        .search(`=${appContext.category}`)
+        .map((result) => result.item)
+
+      const fuseSearchCategory = new Fuse(cat, {
+        keys: ['title', 'timeRead'],
+      })
+      const data = fuseSearchCategory.search(value).map((result) => result.item)
+      console.log(data)
+      setitemsToDisplay(value ? data : cat)
+    } else {
+      const fuse = new Fuse(dataSearch, {
+        keys: ['title', 'category', 'timeRead'],
+      })
+      const data = fuse.search(value).map((result) => result.item)
+      setitemsToDisplay(value ? data : dataSearch)
+    }
   }
 
   const handleCategory = (value) => {
-    const fuse = new Fuse(dataSearch, {
-      keys: ['category'],
-    })
-    setsearchResult(fuse.search(value).map((result) => result.item))
-    setitemsToDisplay(fuse.search(value).map((result) => result.item))
+    setPostNum(6)
+    appContext.setCategory(value)
+    console.log(search)
+    if (search) {
+      const fuse = new Fuse(dataSearch, {
+        keys: ['title', 'category', 'timeRead'],
+      })
+      const data = fuse.search(search).map((result) => result.item)
+      setitemsToDisplay(data)
+    } else {
+      const fuse = new Fuse(dataSearch, {
+        keys: ['category'],
+        useExtendedSearch: true,
+      })
+      let cat = fuse.search(`=${value}`).map((result) => result.item)
+      setitemsToDisplay(value ? cat : dataSearch)
+    }
   }
 
   useEffect(() => {
     if (appContext.category) {
       handleCategory(appContext.category)
     }
-    // setitemsToDisplay(searchResult.length > 0 ? searchResult : [])
-    if (searchData) {
-      if (!searchData.length) {
-        setSearchData((prevArray) => [...prevArray, ...dataSearch])
-      }
-    }
     window.scroll(0, 0)
-    return () => {}
-  }, [search])
+    return () => {
+      appContext.setCategory('')
+    }
+  }, [])
 
   return (
     <Layout>
@@ -372,7 +394,7 @@ export default function Search({ seoAPI, searchAPI }) {
                 </h1>
                 {/* Form Search */}
                 <div className="w-content max-md:w-full max-md:p-0 mt-10 px-paddingContent">
-                  <form className="mb-8 flex w-full h-full flex-col justify-between">
+                  <form className="mb-6 flex w-full h-full flex-col justify-between">
                     <div className="relative w-full  border-black pb-2.5 border-b">
                       <input
                         onChange={handleSearch}
@@ -387,15 +409,23 @@ export default function Search({ seoAPI, searchAPI }) {
                       />
                     </div>
                   </form>
-                  <ScrollContainer
-                    className="w-full h-auto opacity-80 flex max-md:flex-wrap items-center space-x-4 max-md:gap-3 max-md:space-x-0 overflow-x-scroll hide-scrollbar"
-                    horizontal={true}
-                  >
+                  <div className="w-full h-auto opacity-80 flex flex-wrap items-center space-x-2 space-y-2 max-md:space-x-0">
                     <span className="block text-xs pt-px">CATEGORY</span>
                     {dataCategory.slice(0, postNumCategory).map((data, id) => (
                       <PillButton
-                        onClick={() => handleCategory(data.category)}
-                        className="text-xs uppercase max-md:py-1 px-3"
+                        onClick={() =>
+                          handleCategory(
+                            appContext.category === `${data.category}`
+                              ? ''
+                              : `${data.category}`,
+                          )
+                        }
+                        className={`text-xs uppercase max-md:py-1 px-4 ${
+                          appContext.category.toLowerCase() ===
+                          data.category.toLocaleLowerCase()
+                            ? 'activeCategory'
+                            : ''
+                        }`}
                         key={id}
                       >
                         {data.category}
@@ -403,13 +433,14 @@ export default function Search({ seoAPI, searchAPI }) {
                     ))}
                     {!(postNumCategory >= dataCategory.length) && (
                       <PillButton
-                        className="text-xs uppercase max-md:py-1 px-3"
+                        className="text-xs uppercase max-md:py-1 px-4"
                         onClick={handleLoadMoreCategory}
+                        loadMore={true}
                       >
                         ...
                       </PillButton>
                     )}
-                  </ScrollContainer>
+                  </div>
                 </div>
                 {/* Category */}
               </div>
@@ -417,8 +448,7 @@ export default function Search({ seoAPI, searchAPI }) {
                 <span className="font-bold mt-12 mb-10 text-lg">
                   We found &nbsp;
                   <span className="border-black border-b">
-                    {search ? itemsToDisplay.length : dataSearch.length}{' '}
-                    Articles
+                    {itemsToDisplay.length} Articles
                   </span>
                 </span>
                 {/* Card */}
@@ -426,55 +456,43 @@ export default function Search({ seoAPI, searchAPI }) {
                   className="w-full h-auto gap-8 flex-wrap"
                   id="search-results"
                 >
-                  {
-                    console.log(itemsToDisplay)
-                  }
-                  {search || appContext.category
-                    ? itemsToDisplay
-                        .slice(0, postNum)
-                        .map((data, id) => (
-                          <IssueCard
-                            key={id}
-                            issueNo={1}
-                            destination={data.destination}
-                            articleClassName="bg-culture w-full"
-                            title={data.title}
-                            category={data.category}
-                            timeRead={data.timeRead}
-                            bgColor={data.bgColor}
-                            borderColor=""
-                            thumbnail={data.thumbnail}
-                            alt={data.alt}
-                          />
-                        ))
-                    : dataSearch
-                        .slice(0, postNum)
-                        .map((data, id) => (
-                          <IssueCard
-                            key={id}
-                            issueNo={1}
-                            destination={data.destination}
-                            articleClassName="bg-culture w-full"
-                            title={data.title}
-                            category={data.category}
-                            timeRead={data.timeRead}
-                            bgColor={data.bgColor}
-                            borderColor=""
-                            thumbnail={data.thumbnail}
-                            alt={data.alt}
-                          />
-                        ))}
+                  {itemsToDisplay.slice(0, postNum).map((data, id) => (
+                    <IssueCard
+                      key={id}
+                      issueNo={1}
+                      destination={data.destination}
+                      articleClassName="bg-culture w-full"
+                      title={data.title}
+                      category={data.category}
+                      timeRead={data.timeRead}
+                      bgColor={data.bgColor}
+                      borderColor=""
+                      thumbnail={data.thumbnail}
+                      alt={data.alt}
+                    />
+                  ))}
                 </div>
-                {!(postNum >= dataSearch.length) && (
-                  <div className="flex mt-10">
-                    <FancyLink
-                      onClick={handleLoadMore}
-                      className="py-4 px-5 text-xs text-gray tracking-widest transition-all ease-linear hover:text-white hover:bg-gray border border-gray rounded-xl"
-                    >
-                      LOAD MORE
-                    </FancyLink>
-                  </div>
-                )}
+                {search || appContext.category
+                  ? !(postNum >= itemsToDisplay.length) && (
+                      <div className="flex mt-10">
+                        <FancyLink
+                          onClick={handleLoadMore}
+                          className="py-4 px-5 text-xs text-gray tracking-widest transition-all ease-linear hover:text-white hover:bg-gray border border-gray rounded-xl"
+                        >
+                          LOAD MORE
+                        </FancyLink>
+                      </div>
+                    )
+                  : !(postNum >= dataSearch.length) && (
+                      <div className="flex mt-10">
+                        <FancyLink
+                          onClick={handleLoadMore}
+                          className="py-4 px-5 text-xs text-gray tracking-widest transition-all ease-linear hover:text-white hover:bg-gray border border-gray rounded-xl"
+                        >
+                          LOAD MORE
+                        </FancyLink>
+                      </div>
+                    )}
               </div>
             </Container>
           </section>

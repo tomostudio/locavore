@@ -325,13 +325,12 @@ export default function Family({ seoAPI, familyAPI }) {
     },
   ]
   const onMouseEnter = (id, color, slug) => {
+    document
+      .getElementById('family-button')
+      .children[id].children[0].classList.add('inActiveFamilyButton')
     document.getElementById('family-button').children[
       id
     ].style.background = color
-    document.getElementById('family-button').children[id].style.fontWeight = 800
-    document.getElementById('family-button').children[id].style.color = 'black'
-    document.getElementById('family-button').children[id].style.borderColor =
-      'black'
     const image = document.getElementById('family-image')
     for (let i = 0; i < image.children.length; i++) {
       if (image.children[i].getAttribute('data-image') === slug) {
@@ -343,6 +342,9 @@ export default function Family({ seoAPI, familyAPI }) {
   }
 
   const onMouseLeave = (id) => {
+    document
+      .getElementById('family-button')
+      .children[id].children[0].classList.remove('inActiveFamilyButton')
     document
       .getElementById('family-button')
       .children[id].removeAttribute('style')
@@ -488,7 +490,7 @@ export default function Family({ seoAPI, familyAPI }) {
             onMouseLeave={() => onMouseLeave(0)}
             className="relative left-6 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
           >
-            locavore
+            <span>locavore</span>
           </FancyLink>
           <FancyLink
             destination="/family/rooster"
@@ -498,7 +500,7 @@ export default function Family({ seoAPI, familyAPI }) {
             onMouseLeave={() => onMouseLeave(1)}
             className="relative z-10 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
           >
-            THE NIGHT ROOSTER
+            <span>THE NIGHT ROOSTER</span>
           </FancyLink>
           <FancyLink
             destination="/family/nusantara"
@@ -506,7 +508,7 @@ export default function Family({ seoAPI, familyAPI }) {
             onMouseLeave={() => onMouseLeave(2)}
             className="relative right-6 z-20 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
           >
-            NUSANTARA
+            <span>NUSANTARA</span>
           </FancyLink>
           <FancyLink
             destination="/family/localab"
@@ -514,7 +516,7 @@ export default function Family({ seoAPI, familyAPI }) {
             onMouseLeave={() => onMouseLeave(3)}
             className="relative -top-px left-6 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
           >
-            LOCAVORE LAB
+            <span>LOCAVORE LAB</span>
           </FancyLink>
           <FancyLink
             destination="/family/locaparts"
@@ -524,7 +526,7 @@ export default function Family({ seoAPI, familyAPI }) {
             onMouseLeave={() => onMouseLeave(4)}
             className="relative -top-px z-10 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
           >
-            LOCAL PARTS
+            <span>LOCAL PARTS</span>
           </FancyLink>
           <FancyLink
             destination="/family/togo"
@@ -532,7 +534,7 @@ export default function Family({ seoAPI, familyAPI }) {
             onMouseLeave={() => onMouseLeave(5)}
             className="relative -top-px right-6 z-20 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
           >
-            LOCAVORE TO-GO
+            <span>LOCAVORE TO-GO</span>
           </FancyLink>
         </div>
         <section className="w-full h-full flex flex-col relative mt-12 max-md:mt-0">
