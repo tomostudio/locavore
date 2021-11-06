@@ -287,7 +287,6 @@ export default function Search({ seoAPI, searchAPI }) {
     // set value untuk search
     setSearch(value)
     setPostNum(6)
-    console.log(value)
 
     if (appContext.category) {
       const fuseCategory = new Fuse(dataSearch, {
@@ -302,7 +301,6 @@ export default function Search({ seoAPI, searchAPI }) {
         keys: ['title', 'timeRead'],
       })
       const data = fuseSearchCategory.search(value).map((result) => result.item)
-      console.log(data)
       setitemsToDisplay(value ? data : cat)
     } else {
       const fuse = new Fuse(dataSearch, {
@@ -316,7 +314,6 @@ export default function Search({ seoAPI, searchAPI }) {
   const handleCategory = (value) => {
     setPostNum(6)
     appContext.setCategory(value)
-    console.log(search)
     if (search) {
       const fuse = new Fuse(dataSearch, {
         keys: ['title', 'category', 'timeRead'],
