@@ -14,26 +14,22 @@ export default function Navbar({ className = '' }) {
     <header
       className={`fixed top-0 left-0 right-0 w-full z-50  transition-all duration-150 ease-linear border-b ${className} ${
         headerStyle.toLowerCase() === 'default'
-          ? 'border-black'
+          ? 'border-black bg-white'
           : headerStyle.toLowerCase() === 'hidden'
           ? 'hidden'
           : headerStyle.toLowerCase() === 'white'
-          ? 'border-white'
+          ? 'border-white bg-black'
           : headerStyle.toLowerCase() === 'black'
-          ? 'border-black'
-          : ''
+          ? 'border-black bg-white '
+          : headerStyle.toLowerCase() === 'blur-black'
+          ? 'border-black bg-white bg-opacity-50 backdrop-filter backdrop-blur-sm'
+          : headerStyle.toLowerCase() === 'blur-white'
+          ? 'border-white bg-black bg-opacity-50 backdrop-filter backdrop-blur-sm'
+          : 'border-black bg-white'
       }`}
     >
       <Container
-        className={`h-header relative pointer-events-auto flex flex-wrap max-md:flex-nowrap max-md:pb-5 max-md:items-center max-md:pt-10  ${
-          headerStyle.toLowerCase() === 'default' 
-            ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm '
-            : headerStyle.toLowerCase() === 'white'
-            ? 'bg-black bg-opacity-10 backdrop-filter backdrop-blur-sm '
-            : headerStyle.toLowerCase() === 'black'
-            ? 'bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm '
-            : ''
-        }`}
+        className={`h-header relative pointer-events-auto flex flex-wrap max-md:flex-nowrap max-md:pb-5 max-md:items-center max-md:pt-10 `}
       >
         {headerStyle.toLowerCase() === 'default' ? (
           <FancyLink
@@ -70,20 +66,20 @@ export default function Navbar({ className = '' }) {
           <img
             src={
               headerStyle.toLowerCase() === 'default' ||
-              headerStyle.toLowerCase() === 'black'
+              headerStyle.toLowerCase().includes('black')
                 ? '/locavore-black.png'
-                : headerStyle.toLowerCase() === 'white'
+                : headerStyle.toLowerCase().includes('white')
                 ? '/locavore-white.png'
-                : ''
+                : '/locavore-black.png'
             }
           />
         </FancyLink>
         <nav
           className={`ml-auto setflex-center-row max-md:justify-end space-x-6 w-full text-sm md:text-sm md:w-auto transition-colors duration-300 ease-linear ${
             headerStyle.toLowerCase() === 'default' ||
-            headerStyle.toLowerCase() === 'black'
+            headerStyle.toLowerCase().includes('black')
               ? 'text-black'
-              : headerStyle.toLowerCase() === 'white'
+              : headerStyle.toLowerCase().includes('white')
               ? 'text-white'
               : ''
           }`}

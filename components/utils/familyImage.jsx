@@ -1,39 +1,72 @@
-import Image from 'next/image'
+import { useRef } from 'react';
+import Image from 'next/image';
+import FancyLink from '@/components/utils/fancyLink';
 
-const familyImage = ({
-  title,
-  name,
-  position,
-  background = false,
-  bgColor,
-  dataImage,
-  src,
-  alt,
-}) => {
+const familyImage = ({ store, src, alt, position = '', name = '' }) => {
+  const { slug, title, colour = '#FFFFFF' } = store;
+
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result
+      ? [
+          parseInt(result[1], 16),
+          parseInt(result[2], 16),
+          parseInt(result[3], 16),
+        ]
+      : null;
+  }
+
+  const familyRef = useRef(null);
+
   return (
-    <div data-image={dataImage}>
+    <FancyLink
+      data-store={slug}
+      destination={`/family/${slug}`}
+      className='family-card'
+      ref={familyRef}
+      onMouseEnter={(e) => {
+        familyRef.current.classList.add('show');
+      }}
+      onMouseLeave={(e) => {
+        familyRef.current.classList.remove('show');
+      }}
+    >
       <Image
         src={src}
         alt={alt}
-        layout="fill"
-        objectFit="cover"
-        objectPosition="top"
+        layout='fill'
+        loading="eager"
+        priority={true}
+        objectFit='cover'
+        objectPosition='top'
       />
-      {background && bgColor && (
-        <>
-          <div className="absolute w-full h-full top-0 left-0 opacity-0 bg-opacity-75 flex flex-col items-center justify-between py-4 z-1">
-            <span className="font-serif font-semibold">{name}</span>
-            <span className="font-bold text-lg text-center">{title}</span>
-            <span className="font-serif font-semibold">{position}</span>
-          </div>
-          <div
-            className="absolute w-full h-full top-0 left-0 opacity-0"
-            style={{ backgroundColor: bgColor }}
-          />
-        </>
-      )}
-    </div>
-  )
-}
+      <div className='absolute w-full h-full top-0 left-0 flex flex-col items-center  text-center justify-center p-4 z-1'>
+        {position !== '' && name !== '' ? (
+          <span className='relative z-1 mb-auto font-serif text-sm font-bold'>
+            {name}
+          </span>
+        ) : (
+          ''
+        )}
+        <span className='font-bold text-lg leading-none text-center relative z-2'>
+          {title}
+        </span>
+        {position !== '' && name !== '' ? (
+          <span className='relative z-1 mt-auto font-serif text-sm '>
+            {position}
+          </span>
+        ) : (
+          ''
+        )}
+        <div
+          className='absolute w-full h-full top-0 left-0 z-0 '
+          style={{
+            backgroundColor: `rgba(${hexToRgb(colour)}, .9)`,
+          }}
+        />
+      </div>
+    </FancyLink>
+  );
+};
 
-export default familyImage
+export default familyImage;

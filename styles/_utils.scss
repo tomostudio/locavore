@@ -1,5 +1,5 @@
 $mobile-width: 768px;
-$desktop-width: 1024px;
+$tablet-width: 1150px;
 
 // Color
 $lightergrey: #F0F0F0;
@@ -8,13 +8,13 @@ $gray: #676767;
 $offBlack: #181818;
 
 @mixin desktop {
-  @media (min-width: #{$mobile-width}) {
+  @media (min-width: #{$tablet-width}) {
     @content;
   }
 }
 
 @mixin tablet {
-  @media (max-width: #{$mobile-width}) {
+  @media (max-width: #{$tablet-width}) {
     @content;
   }
 }
