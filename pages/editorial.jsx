@@ -26,6 +26,18 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
   const [seo] = seoAPI
   const [editorial] = editorialAPI
 
+  const checkClosest = () => {
+    const today = new Date()
+
+    const closest = issueAPI.reduce((a, b) => {
+      const adiff = new Date(a.date) - today
+      // console.log(adiff > 0 && adiff < new Date(b.date) - today ? a : b)
+      return adiff > 0 && adiff < new Date(b.date) - today ? a : b
+    })
+
+    return closest
+  }
+
   useEffect(() => {
     setWidth(window.innerWidth)
     window.scroll(0, 0)
@@ -83,7 +95,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
               <div className={`relative w-full`}>
                 <div
                   className={`w-full setflex-center  pt-10 ${
-                    comingsoon && 'comingsoonSticky'
+                    new Date(checkClosest().date) > new Date() && 'comingsoonSticky'
                   }`}
                 >
                   <HeaderGap />
@@ -94,34 +106,31 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                       <span className="sub">Issues</span>Index
                     </h1>
                   </div>
-                  {comingsoon && (
+                  {new Date(checkClosest().date) > new Date() && (
                     <EditorialIssueCard
                       comingsoon={true}
-                      title={'Coming Soon'}
-                      date="MARCH 2021"
+                      title={checkClosest().title}
+                      date={checkClosest().date}
                       totalArticles={15}
                       className="mb-10"
-                      destination={'/editorial/metamorphosis'}
-                      imageThumbnail={`/placeholder/dossier-lab-2-3cascara-1.jpg`}
+                      destination={`/editorial/${checkClosest().slug.current}`}
+                      imageThumbnail={urlFor(checkClosest().image).url()}
                       descriptions={
-                        <p>
-                          Lorem Ipsum is simply dummy text of the printing and
-                          typesetting industry. Lorem Ipsum has been the
-                          industry's standard dummy text ever since the 1500s.
-                        </p>
+                        <p>{toPlainText(checkClosest().description)}</p>
                       }
                     />
                   )}
                 </div>
                 {/* Spacer */}
-
-                {comingsoon && <div className={`stickySpacer`} />}
+                {new Date(checkClosest().date) > new Date() && (
+                  <div className={`stickySpacer`} />
+                )}
               </div>
               {/* Card */}
               <div
                 id="editorialIssuesList"
                 className={`relative w-full h-full space-y-10 ${
-                  comingsoon && 'comingsoonAdj'
+                  new Date(checkClosest().date) > new Date() && 'comingsoonAdj'
                 }`}
               >
                 {issueAPI.map((data, id) =>
