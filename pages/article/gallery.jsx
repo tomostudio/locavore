@@ -8,12 +8,12 @@ import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
 
 // Components
-import StickyButton from '@/components/utils/stickyButton'
-import OpeningArticle from '@/components/utils/openingArticle'
-import VideoComponent from '@/components/utils/videoComponent'
+import StickyButton from '@/components/modules/stickyButton'
+import OpeningArticle from '@/components/modules/editorial/openingArticle'
+import VideoComponent from '@/components/modules/editorial/videoComponent'
 
 // Helpers
-import NextArticle from '@/components/utils/nextArticle'
+import NextArticle from '@/components/modules/editorial/nextArticle'
 import { useState } from 'react'
 
 export default function Gallery() {

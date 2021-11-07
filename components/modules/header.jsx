@@ -5,7 +5,7 @@ import { useAppContext } from 'context/state';
 import { useState } from 'react';
 import Image from 'next/image';
 
-export default function Navbar({ className = '' }) {
+export default function Header({ className = '' }) {
   const appContext = useAppContext();
   const { headerStyle } = appContext.headerVar;
   const [menu, setMenu] = useState(false);

@@ -1,5 +1,5 @@
 import React from 'react';
-import FancyLink from './fancyLink';
+import FancyLink from '../../utils/fancyLink';
 import ArticleCard from './articleCard';
 
 const IssueCard = ({

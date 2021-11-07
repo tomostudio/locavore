@@ -1,7 +1,7 @@
 import React from 'react'
-import Container from '../modules/container'
-import FancyLink from './fancyLink'
-import PillButton from './pillButton'
+import Container from '../container'
+import FancyLink from '../../utils/fancyLink'
+import PillButton from '../pillButton'
 import Image from 'next/image'
 import { useAppContext } from 'context/state'
 

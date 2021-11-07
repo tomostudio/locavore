@@ -10,12 +10,12 @@ import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
 
 // Components
+import PillButton from '@/components/modules/pillButton'
+import StickyButton from '@/components/modules/stickyButton'
+import IssueCard from '@/components/modules/editorial/issueCard'
 import FancyLink from '@/components/utils/fancyLink'
-import PillButton from '@/components/utils/pillButton'
 import Arrow from '@/components/utils/arrow'
-import StickyButton from '@/components/utils/stickyButton'
-import IssueCard from '@/components/utils/issueCard'
-import SEO from '@/components/utils/seo'
+import SEO from '@/comp@/components/modules/editorial/issueCard'
 
 // Helpers
 import { fade } from '@/helpers/preset/transitions'

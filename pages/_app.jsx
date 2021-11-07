@@ -6,7 +6,7 @@ import { AppWrapper } from '../context/state.jsx';
 import Link from '@/components/utils/shortcutLinks';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import Navbar from '@/components/modules/navbar.jsx';
+import Header from '@/components/modules/header.jsx';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -41,7 +41,7 @@ export default function App({ Component, pageProps }) {
       />
 
       <AppWrapper>
-        {/* <Navbar
+        {/* <Header
           className={`${
             router.asPath === '/' || router.asPath === '/under_construction'
               ? `text-white`
@@ -53,7 +53,7 @@ export default function App({ Component, pageProps }) {
               : `/locavore-black.png`
           }`}
         /> */}
-        <Navbar />
+        <Header />
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.asPath} />
         </AnimatePresence>

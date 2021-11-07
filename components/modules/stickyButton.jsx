@@ -1,4 +1,4 @@
-import PillButton from './pillButton';
+import PillButton from '../../utils/pillButton';
 
 const StickyButton = ({ destination, arrow, children }) => {
   return (

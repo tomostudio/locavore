@@ -156,5 +156,17 @@ $issuecardgap: 40px;
   aspect-ratio: 1;
 }
 
-#family-button-mobile {
+
+// UTILS
+
+#social {
+  & > a {
+    position: relative;
+    width: 100%;
+    &::after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
 }

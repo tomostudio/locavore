@@ -132,7 +132,7 @@ module.exports = {
   },
   variants: {
     extend: {},
-    margin: ['responsive', 'hover', 'first'],
+    margin: ['responsive', 'hover', 'first', 'last'],
   },
   plugins: [
     require('tailwindcss-padding-safe'),

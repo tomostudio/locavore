@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import FancyLink from './fancyLink'
+import FancyLink from '../../utils/fancyLink'
 
 const VideoComponent = ({ dark = true, setVideo, video }) => {
   return (

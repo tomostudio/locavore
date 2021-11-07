@@ -1,17 +1,15 @@
+/* Tailwind base/components */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 /* Webfonts */
 @import '_fonts.scss';
 @import '_utils.scss';
 
-/* Tailwind base/components */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-
 /* Custom Style Imports */
 @import '_typography.scss';
 @import '_locomotive.scss';
-
-/* Tailwind Utilities */
-@import 'tailwindcss/utilities';
 
 /* Other Styling */
 @import '_global.scss';
@@ -120,6 +118,7 @@ body {
   }
 }
 
+// SWIPER
 .swiper-pagination-bullets {
   display: none;
 }
@@ -136,24 +135,14 @@ body {
   }
 }
 
-#swipe-caroussel {
-  .swiper-slide {
-    @apply w-56 #{!important};
+@layer components {
+  #swipe-caroussel {
+    .swiper-slide {
+      @apply w-56 #{!important};
 
-    @include mobile {
-      @apply w-36 #{!important};
-    }
-  }
-}
-
-#social {
-  & > a {
-    position: relative;
-    width: 100%;
-    &::after {
-      content: '';
-      display: block;
-      padding-bottom: 100%;
+      @include mobile {
+        @apply w-36 #{!important};
+      }
     }
   }
 }

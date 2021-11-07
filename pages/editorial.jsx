@@ -11,9 +11,9 @@ import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
 
 // Components
-import StickyButton from '@/components/utils/stickyButton'
+import StickyButton from '@/components/modules/stickyButton'
 import SEO from '@/components/utils/seo'
-import EditorialIssueCard from '@/components/utils/editorialIssueCard'
+import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard'
 
 // Helpers
 import client from '@/helpers/sanity/client'

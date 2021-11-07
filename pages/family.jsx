@@ -1,30 +1,28 @@
 import { useEffect, useState } from 'react';
-import { NextSeo } from 'next-seo';
 
 // Layout
 import Layout from '@/components/modules/layout';
 import Footer from '@/components/modules/footer';
 import HeaderGap from '@/components/modules/headerGap';
 import { motion } from 'framer-motion';
-import { fade } from '@/helpers/preset/transitions';
 
 // Components
 import FancyLink from '@/components/utils/fancyLink';
-import FamilyImage from '@/components/utils/familyImage';
+import FamilyImage from '@/components/modules/family/familyImage';
 import SEO from '@/components/utils/seo';
 
 // Helpers
-import { useAppContext } from 'context/state';
+// import { useAppContext } from 'context/state';
+import { bp, isMobile } from '@/helpers/preset/breakpoints';
 import urlFor from '@/helpers/sanity/urlFor';
+import { fade } from '@/helpers/preset/transitions';
 import client from '@/helpers/sanity/client';
 
 export default function Family({ seoAPI, familyAPI }) {
-  const appContext = useAppContext();
   const [seo] = seoAPI;
   const [family] = familyAPI;
 
   // TEST DATA
-
   const dataFamilyButtons = [
     {
       slug: 'locavore',
@@ -175,7 +173,7 @@ export default function Family({ seoAPI, familyAPI }) {
     let columnCount = 8;
     let minRow = 3;
 
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < bp.mobile) {
       // Mobile
       if (onWindow !== 'mobile') {
         onWindow = 'mobile';
@@ -183,7 +181,10 @@ export default function Family({ seoAPI, familyAPI }) {
         columnCount = 3;
         minRow = 5;
       }
-    } else if (window.innerWidth > 768 && window.innerWidth < 1200) {
+    } else if (
+      window.innerWidth >= bp.mobile &&
+      window.innerWidth < bp.tablet
+    ) {
       // Tablet
       if (onWindow !== 'tablet') {
         onWindow = 'tablet';
@@ -321,58 +322,23 @@ export default function Family({ seoAPI, familyAPI }) {
             ))}
           </div>
         </section>
-        <section
-          className='sticky bottom-0 left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center mt-10'
-          id='family-button-mobile'
-        >
-          {dataFamilyButtons.map((familydata, id) => (
-            <FancyLink
-              key={id}
-              destination={`/family/${familydata.slug}`}
-              className='relative -mb-4 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-5 font-bold uppercase last:mb-0'
-              style={{ backgroundColor: familydata.colour }}
-            >
-              {familydata.title}
-            </FancyLink>
-          ))}
-
-          {/* //   <FancyLink
-        //     destination='/article/locavore'
-        //     className='relative -bottom-14 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-4 font-bold uppercase'
-        //   >
-        //     Locavore
-        //   </FancyLink>
-        //   <FancyLink
-        //     destination='/article/rooster'
-        //     className='relative z-2 -bottom-12 text-center w-full rounded-t-2xl bg-nightrooster pt-2 pb-4 font-bold uppercase'
-        //   >
-        //     the night rooster
-        //   </FancyLink>
-        //   <FancyLink
-        //     destination='/article/locaparts'
-        //     className='relative z-3 -bottom-9 text-center w-full rounded-t-2xl bg-localparts pt-2 pb-4 font-bold uppercase'
-        //   >
-        //     locaparts
-        //   </FancyLink>
-        //   <FancyLink
-        //     destination='/article/nusantara'
-        //     className='relative z-4 -bottom-6 text-center w-full rounded-t-2xl bg-nusantara pt-2 pb-4 font-bold uppercase'
-        //   >
-        //     nusantara
-        //   </FancyLink>
-        //   <FancyLink
-        //     destination='/article/localab'
-        //     className='relative z-5 -bottom-3 text-center w-full rounded-t-2xl bg-localab pt-2 pb-4 font-bold uppercase'
-        //   >
-        //     localab
-        //   </FancyLink>
-        //   <FancyLink
-        //     destination='/article/togo'
-        //     className='relative z-6 text-center w-full rounded-t-2xl bg-togo pt-2 pb-4 font-bold uppercase'
-        //   >
-        //     locavore to-go
-        //   </FancyLink> */}
-        </section>
+        {isMobile && (
+          <section
+            className='sticky bottom-0 left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center mt-10'
+            id='family-button-mobile'
+          >
+            {dataFamilyButtons.map((familydata, id) => (
+              <FancyLink
+                key={id}
+                destination={`/family/${familydata.slug}`}
+                className='relative -mb-4 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-5 font-bold uppercase last:mb-0'
+                style={{ backgroundColor: familydata.colour }}
+              >
+                {familydata.title}
+              </FancyLink>
+            ))}
+          </section>
+        )}
         <Footer />
       </motion.main>
     </Layout>
