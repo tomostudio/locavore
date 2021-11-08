@@ -1,5 +1,5 @@
-import FancyLink from './fancyLink'
-import Arrow from './arrow'
+import FancyLink from '../utils/fancyLink'
+import Arrow from '../utils/arrow'
 
 const PillButton = ({
   className,

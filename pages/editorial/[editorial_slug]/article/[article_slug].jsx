@@ -7,12 +7,12 @@ import Layout from '@/components/modules/layout'
 import Container from '@/components/modules/container'
 import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
-import Navbar from '@/components/modules/navbar'
+import Navbar from '@/components/modules/header'
 
 // Components
-import PillButton from '@/components/utils/pillButton'
-import ArticleCard from '@/components/utils/articleCard'
-import StickyButton from '@/components/utils/stickyButton'
+import PillButton from '@/components/modules/pillButton'
+import ArticleCard from '@/components/modules/editorial/articleCard'
+import StickyButton from '@/components/modules/stickyButton'
 
 // Helpers
 import FancyLink from '@/components/utils/fancyLink'

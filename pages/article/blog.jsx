@@ -8,13 +8,13 @@ import Layout from '@/components/modules/layout';
 import Container from '@/components/modules/container';
 import Footer from '@/components/modules/footer';
 import HeaderGap from '@/components/modules/headerGap';
-import Navbar from '@/components/modules/navbar';
+import Navbar from '@/components/modules/header';
 
 // Components
-import PillButton from '@/components/utils/pillButton';
-import OpeningArticle from '@/components/utils/openingArticle';
-import StickyButton from '@/components/utils/stickyButton';
-import NextArticle from '@/components/utils/nextArticle';
+import PillButton from '@/components/modules/pillButton';
+import OpeningArticle from '@/components/modules/editorial/openingArticle';
+import StickyButton from '@/components/modules/stickyButton';
+import NextArticle from '@/components/modules/editorial/nextArticle';
 
 // Helpers
 import FancyLink from '@/components/utils/fancyLink';

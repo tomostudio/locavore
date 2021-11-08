@@ -46,6 +46,15 @@
   }
 }
 
+main {
+  @apply flex;
+  min-height: 100vh;
+  flex-flow: column;
+  & footer {
+    margin-top: auto;
+  }
+}
+
 .stickyButton {
   & .pillbutton {
     & .arrow * {
@@ -61,12 +70,14 @@
 }
 
 h1.titlestyle {
-  @apply m-0 flex max-md:flex-wrap justify-center items-start max-md:items-end font-sans font-normal;
+  @apply m-0 flex max-md:flex-wrap justify-center items-start max-md:items-end font-sans font-normal flex-wrap;
   margin-bottom: 1px;
   & .sub {
     @apply text-6xl max-md:text-3xl mt-2.5 mb-0 mx-4 font-serif italic font-normal;
   }
 }
+
+// Issue
 
 $card-width: 360px;
 $card-height: 480px;
@@ -83,4 +94,79 @@ $issuecardgap: 40px;
   @apply grid grid-flow-row grid-cols-3 grid-rows-none max-md:grid-cols-1;
   grid-gap: $issuecardgap;
   max-width: $issuecard-width * 3 + $issuecardgap * 2;
+}
+
+// Family
+
+.family-card {
+  @apply block;
+  position: relative;
+  width: calc(100% / 8);
+  @include tablet {
+    width: calc(100% / 5);
+  }
+  @include mobile {
+    width: calc(100% / 3);
+  }
+  &::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+  & > div:last-child {
+    @apply transition-all duration-300;
+    opacity: 0;
+  }
+  &.show {
+    & > div:last-child {
+      opacity: 1;
+    }
+  }
+}
+
+#family-button {
+  & > a {
+    display: block;
+    flex-grow: 1;
+    min-width: calc(100% / 3);
+    max-width: calc(100% - 48px);
+    margin-top: -1px;
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      margin-top: 0px;
+    }
+    &:nth-child(1),
+    &:nth-child(3n - 2) {
+      left: 24px;
+    }
+    &:nth-child(3n + 2) {
+      // right: 24px;
+    }
+    &:nth-child(3n) {
+      right: 24px;
+    }
+    &:last-child:nth-child(3n + 2) {
+      right: 24px;
+    }
+  }
+}
+
+#family-logo {
+  aspect-ratio: 1;
+}
+
+
+// UTILS
+
+#social {
+  & > a {
+    position: relative;
+    width: 100%;
+    &::after {
+      content: '';
+      display: block;
+      padding-bottom: 100%;
+    }
+  }
 }

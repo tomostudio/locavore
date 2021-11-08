@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  mode: 'jit',
+  // mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false,
   theme: {
@@ -30,7 +30,7 @@ module.exports = {
     screens: {
       'max-sm': { max: '550px' },
       'max-md': { max: '768px' },
-      'max-lg': { max: '1024px' },
+      'max-lg': { max: '1150px' },
       'max-xl': { max: '1280px' },
       ...defaultTheme.screens,
     },
@@ -132,7 +132,7 @@ module.exports = {
   },
   variants: {
     extend: {},
-    margin: ['responsive', 'hover', 'first'],
+    margin: ['responsive', 'hover', 'first', 'last'],
   },
   plugins: [
     require('tailwindcss-padding-safe'),

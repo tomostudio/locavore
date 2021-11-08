@@ -8,16 +8,16 @@ import Layout from '@/components/modules/layout'
 import Container from '@/components/modules/container'
 import HeaderGap from '@/components/modules/headerGap'
 import Footer from '@/components/modules/footer'
-import Navbar from '@/components/modules/navbar'
+import Navbar from '@/components/modules/header'
 
 // Components
 import FancyLink from '@/components/utils/fancyLink'
-import OpeningArticle from '@/components/utils/openingArticle'
-import StickyButton from '@/components/utils/stickyButton'
-import VideoComponent from '@/components/utils/videoComponent'
+import OpeningArticle from '@/components/modules/editorial/openingArticle'
+import StickyButton from '@/components/modules/stickyButton'
+import VideoComponent from '@/components/modules/editorial/videoComponent'
 
 // Helpers
-import NextArticle from '@/components/utils/nextArticle'
+import NextArticle from '@/components/modules/editorial/nextArticle'
 
 export default function Video() {
   const [video, setVideo] = useState(false)

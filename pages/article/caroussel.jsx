@@ -12,16 +12,16 @@ import Layout from '@/components/modules/layout'
 import Container from '@/components/modules/container'
 import HeaderGap from '@/components/modules/headerGap'
 import Footer from '@/components/modules/footer'
-import Navbar from '@/components/modules/navbar'
+import Navbar from '@/components/modules/header'
 
 // Components
-import PillButton from '@/components/utils/pillButton'
+import PillButton from '@/components/modules/pillButton'
 import Arrow from '@/components/utils/arrow'
-import OpeningArticle from '@/components/utils/openingArticle'
-import StickyButton from '@/components/utils/stickyButton'
+import OpeningArticle from '@/components/modules/editorial/openingArticle'
+import StickyButton from '@/components/modules/stickyButton'
 
 // Helpers
-import NextArticle from '@/components/utils/nextArticle'
+import NextArticle from '@/components/modules/editorial/nextArticle'
 import FancyLink from '@/components/utils/fancyLink'
 import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'

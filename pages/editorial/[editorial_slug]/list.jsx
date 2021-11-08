@@ -10,10 +10,10 @@ import HeaderGap from '@/components/modules/headerGap'
 import Footer from '@/components/modules/footer'
 
 // Components
-import ArticleCard from '@/components/utils/articleCard'
+import ArticleCard from '@/components/modules/editorial/articleCard'
 import SEO from '@/components/utils/seo'
 import FancyLink from '@/components/utils/fancyLink'
-import StickyButton from '@/components/utils/stickyButton'
+import StickyButton from '@/components/modules/stickyButton'
 import Container from '@/components/modules/container'
 
 // Helpers

@@ -1,427 +1,242 @@
-import { useEffect, useState } from 'react'
-import { NextSeo } from 'next-seo'
+import { useEffect, useState } from 'react';
 
 // Layout
-import Layout from '@/components/modules/layout'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
-import { LazyMotion, domAnimation, motion } from 'framer-motion'
-import { fade } from '@/helpers/preset/transitions'
+import Layout from '@/components/modules/layout';
+import Footer from '@/components/modules/footer';
+import HeaderGap from '@/components/modules/headerGap';
+import { motion } from 'framer-motion';
 
 // Components
-import FancyLink from '@/components/utils/fancyLink'
-import FamilyImage from '@/components/utils/familyImage'
-import SEO from '@/components/utils/seo'
+import FancyLink from '@/components/utils/fancyLink';
+import FamilyImage from '@/components/modules/family/familyImage';
+import SEO from '@/components/utils/seo';
 
 // Helpers
-import colors from '@/helpers/preset/colors'
-import urlFor from '@/helpers/sanity/urlFor'
-import client from '@/helpers/sanity/client'
+// import { useAppContext } from 'context/state';
+import { bp, isMobile } from '@/helpers/preset/breakpoints';
+import urlFor from '@/helpers/sanity/urlFor';
+import { fade } from '@/helpers/preset/transitions';
+import client from '@/helpers/sanity/client';
 
 export default function Family({ seoAPI, familyAPI }) {
-  const [seo] = seoAPI
-  const [family] = familyAPI
-  const [dataFix, setDataFix] = useState([])
+  const [seo] = seoAPI;
+  const [family] = familyAPI;
+
+  // TEST DATA
+  const dataFamilyButtons = [
+    {
+      slug: 'locavore',
+      title: 'LOCAVORE',
+      colour: '#789578',
+    },
+    {
+      slug: 'night-rooster',
+      title: 'THE NIGHT ROOSTER',
+      colour: '#91C1E4',
+    },
+    {
+      slug: 'localparts',
+      title: 'LOCAL PARTS',
+      colour: '#C06467',
+    },
+    {
+      slug: 'nusantara',
+      title: 'NUSANTARA',
+      colour: '#E18065',
+    },
+    {
+      slug: 'localab',
+      title: 'LOCAVORE LAB',
+      colour: '#BC9EDF',
+    },
+    {
+      slug: 'togo',
+      title: 'LOCAVORE TO-GO',
+      colour: '#C2D09A',
+    },
+  ];
+
   const dataFamilyImage = [
     {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      dataImage: 'locavore',
-      bgColor: '#789578',
+      storeID: 2,
       src: '/placeholder/Additional-Locavore.jpg',
       alt: 'Locavore',
     },
     {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      bgColor: '#789578',
-      dataImage: 'locavore',
+      storeID: 2,
       src: '/placeholder/Additional-Locavore-2.jpg',
-      alt: 'Locavore',
+      alt: 'Locavore Staff',
     },
     {
+      storeID: 1,
       src: '/placeholder/Additional-Locavore-3.jpg',
       alt: 'Locavore',
     },
     {
+      storeID: 1,
       src: '/placeholder/Additional-Locavore-4.jpg',
       alt: 'Locavore',
     },
     {
-      background: true,
-      title: 'LOCAVORE',
+      storeID: 0,
       position: 'Executive Chef',
       name: 'Eelke Plasmeijer',
-      bgColor: '#C2D09A',
-      dataImage: 'locavore-togo',
       src: '/placeholder/Additional-Locavore-5.jpg',
       alt: 'Locavore',
     },
     {
+      storeID: 0,
+      position: 'Executive Chef',
+      name: 'Eelke Plasmeijer',
       src: '/placeholder/Additional-Locavore-6.jpg',
       alt: 'Locavore',
     },
     {
+      storeID: 3,
       src: '/placeholder/Additional-Locavore-7.jpg',
       alt: 'Locavore',
     },
     {
+      storeID: 3,
       src: '/placeholder/Additional-Locavore-8.jpg',
       alt: 'Locavore',
     },
     {
-      background: true,
-      title: 'THE NIGHT ROOSTER',
-      position: 'Mixologist',
-      name: 'John Doe',
-      bgColor: '#91C1E4',
-      dataImage: 'the-night-rooster',
+      storeID: 4,
+      src: '/placeholder/Additional-Locavore-9.jpg',
+      alt: 'Locavore',
+    },
+    {
+      storeID: 4,
       src: '/placeholder/Additional-Locavore-10.jpg',
       alt: 'Locavore',
     },
     {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      dataImage: 'locavore',
-      bgColor: '#789578',
-      src: '/placeholder/Additional-Locavore.jpg',
+      storeID: 5,
+      src: '/placeholder/Additional-Locavore-11.jpg',
       alt: 'Locavore',
     },
     {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      bgColor: '#789578',
-      dataImage: 'locavore',
-      src: '/placeholder/Additional-Locavore-2.jpg',
+      storeID: 5,
+      src: '/placeholder/Additional-Locavore-12.jpg',
       alt: 'Locavore',
     },
     {
-      src: '/placeholder/Additional-Locavore-3.jpg',
+      storeID: 5,
+      src: '/placeholder/Additional-Locavore-13.jpg',
       alt: 'Locavore',
     },
-    {
-      src: '/placeholder/Additional-Locavore-4.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      bgColor: '#C2D09A',
-      dataImage: 'locavore-togo',
-      src: '/placeholder/Additional-Locavore-5.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-6.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-7.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-8.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'THE NIGHT ROOSTER',
-      position: 'Mixologist',
-      name: 'John Doe',
-      bgColor: '#91C1E4',
-      dataImage: 'the-night-rooster',
-      src: '/placeholder/Additional-Locavore-10.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      dataImage: 'locavore',
-      bgColor: '#789578',
-      src: '/placeholder/Additional-Locavore.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      bgColor: '#789578',
-      dataImage: 'locavore',
-      src: '/placeholder/Additional-Locavore-2.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-3.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-4.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      bgColor: '#C2D09A',
-      dataImage: 'locavore-togo',
-      src: '/placeholder/Additional-Locavore-5.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-6.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-7.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-8.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'THE NIGHT ROOSTER',
-      position: 'Mixologist',
-      name: 'John Doe',
-      bgColor: '#91C1E4',
-      dataImage: 'the-night-rooster',
-      src: '/placeholder/Additional-Locavore-10.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      dataImage: 'locavore',
-      bgColor: '#789578',
-      src: '/placeholder/Additional-Locavore.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      bgColor: '#789578',
-      dataImage: 'locavore',
-      src: '/placeholder/Additional-Locavore-2.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-3.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-4.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      bgColor: '#C2D09A',
-      dataImage: 'locavore-togo',
-      src: '/placeholder/Additional-Locavore-5.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-6.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-7.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-8.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'THE NIGHT ROOSTER',
-      position: 'Mixologist',
-      name: 'John Doe',
-      bgColor: '#91C1E4',
-      dataImage: 'the-night-rooster',
-      src: '/placeholder/Additional-Locavore-10.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      dataImage: 'locavore',
-      bgColor: '#789578',
-      src: '/placeholder/Additional-Locavore.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      bgColor: '#789578',
-      dataImage: 'locavore',
-      src: '/placeholder/Additional-Locavore-2.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-3.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-4.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'LOCAVORE',
-      position: 'Executive Chef',
-      name: 'Eelke Plasmeijer',
-      bgColor: '#C2D09A',
-      dataImage: 'locavore-togo',
-      src: '/placeholder/Additional-Locavore-5.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-6.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-7.jpg',
-      alt: 'Locavore',
-    },
-    {
-      src: '/placeholder/Additional-Locavore-8.jpg',
-      alt: 'Locavore',
-    },
-    {
-      background: true,
-      title: 'THE NIGHT ROOSTER',
-      position: 'Mixologist',
-      name: 'John Doe',
-      bgColor: '#91C1E4',
-      dataImage: 'the-night-rooster',
-      src: '/placeholder/Additional-Locavore-10.jpg',
-      alt: 'Locavore',
-    },
-  ]
-  const onMouseEnter = (id, color, slug) => {
-    document
-      .getElementById('family-button')
-      .children[id].children[0].classList.add('inActiveFamilyButton')
-    document.getElementById('family-button').children[
-      id
-    ].style.background = color
-    const image = document.getElementById('family-image')
-    for (let i = 0; i < image.children.length; i++) {
-      if (image.children[i].getAttribute('data-image') === slug) {
-        image.children[i].children[0].children[0].classList.add('actveBlur')
-        image.children[i].children[1].classList.add('active')
-        image.children[i].children[2].classList.add('activeBackground')
-      }
-    }
-  }
-
-  const onMouseLeave = (id) => {
-    document
-      .getElementById('family-button')
-      .children[id].children[0].classList.remove('inActiveFamilyButton')
-    document
-      .getElementById('family-button')
-      .children[id].removeAttribute('style')
-
-    const image = document.getElementById('family-image')
-    for (let i = 0; i < image.children.length; i++) {
-      if (image.children[i].hasAttribute('data-image')) {
-        image.children[i].children[0].children[0].classList.remove('actveBlur')
-        image.children[i].children[1].classList.remove('active')
-        image.children[i].children[2].classList.remove('activeBackground')
-      }
-    }
-  }
+  ];
 
   const shuffle = (array) => {
     let currentIndex = array.length,
-      randomIndex
+      randomIndex;
 
     // While there remain elements to shuffle...
     while (currentIndex != 0) {
       // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex)
-      currentIndex--
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
 
       // And swap it with the current element.
-      ;[array[currentIndex], array[randomIndex]] = [
+      [array[currentIndex], array[randomIndex]] = [
         array[randomIndex],
         array[currentIndex],
-      ]
+      ];
     }
 
-    return array
-  }
+    return array;
+  };
+
+  const [familyDataFixed, setFamilyData] = useState([]);
+
+  // Mouse Leave & Enter for Family Button
+  const familybutton_enter = (slug) => {
+    const familyCards = document.querySelectorAll('.family-card');
+    familyCards.forEach((card, id) => {
+      if (card.getAttribute('data-store') === slug) {
+        card.classList.add('show');
+      }
+    });
+  };
+
+  const familybutton_leave = (id) => {
+    const familyCards = document.querySelectorAll('.family-card');
+    familyCards.forEach((card, id) => {
+      card.classList.remove('show');
+    });
+  };
+
+  let onWindow = 'none';
+  const resetData = () => {
+    let triggerChange = false;
+    let columnCount = 8;
+    let minRow = 3;
+
+    if (window.innerWidth < bp.mobile) {
+      // Mobile
+      if (onWindow !== 'mobile') {
+        onWindow = 'mobile';
+        triggerChange = true;
+        columnCount = 3;
+        minRow = 5;
+      }
+    } else if (
+      window.innerWidth >= bp.mobile &&
+      window.innerWidth < bp.tablet
+    ) {
+      // Tablet
+      if (onWindow !== 'tablet') {
+        onWindow = 'tablet';
+        columnCount = 5;
+        minRow = 3;
+        triggerChange = true;
+      }
+    } else {
+      // Desktop
+      if (onWindow !== 'desktop') {
+        onWindow = 'desktop';
+        columnCount = 8;
+        minRow = 3;
+        triggerChange = true;
+      }
+    }
+
+    if (triggerChange) {
+      triggerChange = false;
+
+      let _a = [...dataFamilyImage]; // placeholder array
+
+      let minData = columnCount * minRow; // get min data based on row and column
+
+      if (
+        _a.length <= minData || // check if is within minimum
+        _a.length % columnCount !== 0 // check data is divisable by column
+      ) {
+        // set remaining
+        let addData = minData - _a.length;
+        if (_a.length >= minData) {
+          addData =
+            Math.ceil(_a.length / columnCount) * columnCount - _a.length;
+        }
+
+        // add new data;
+        for (let i = 0; i <= addData - 1; i++) {
+          _a.push(dataFamilyImage[i]);
+        }
+      }
+      setFamilyData(shuffle(_a)); // apply data and shuffle
+    }
+  };
 
   useEffect(() => {
-    shuffle(dataFamilyImage)
-    setDataFix(dataFamilyImage)
-    if (window.innerWidth < 768) {
-      let arrayImage = dataFamilyImage
-      if (3 - (dataFamilyImage.length % 3) !== 3) {
-        const data = 3 - (dataFamilyImage.length % 3)
-        for (let i = 0; i <= data - 1; i++) {
-          arrayImage.push(dataFamilyImage[i])
-        }
-      }
-      setDataFix(arrayImage)
-    } else {
-      let arrayImage = dataFamilyImage
-      if (8 - (dataFamilyImage.length % 8) !== 8) {
-        const data = 8 - (dataFamilyImage.length % 8)
-        for (let i = 0; i <= data - 1; i++) {
-          arrayImage.push(dataFamilyImage[i])
-        }
-      }
-      setDataFix(arrayImage)
-    }
-    window.addEventListener('resize', () => {
-      setDataFix(dataFamilyImage)
-      if (window.innerWidth < 768) {
-        if (3 - (dataFamilyImage.length % 3) !== 3) {
-          const data = 3 - (dataFamilyImage.length % 3)
-          for (let i = 0; i <= data - 1; i++) {
-            setDataFix.push(dataFamilyImage[i])
-          }
-        }
-      } else {
-        if (8 - (dataFamilyImage.length % 8) !== 8) {
-          const data = 8 - (dataFamilyImage.length % 8)
-          for (let i = 0; i <= data - 1; i++) {
-            dataFamilyImage.push(dataFamilyImage[i])
-          }
-        }
-      }
-    })
-    window.scroll(0, 0)
-    return () => {}
-  }, [])
+    resetData();
+    window.addEventListener('resize', resetData);
+    window.scroll(0, 0);
+    return () => {
+      window.removeEventListener('resize', resetData);
+    };
+  }, []);
 
   return (
     <Layout>
@@ -456,165 +271,91 @@ export default function Family({ seoAPI, familyAPI }) {
         }}
       />
       <motion.main
-        initial="initial"
-        animate="enter"
-        exit="exit"
+        initial='initial'
+        animate='enter'
+        exit='exit'
         variants={fade}
       >
         {/* Header Gap */}
         <HeaderGap />
-        {/* Untuk Content */}
-        <div className="w-full h-full pt-10 setflex-center">
-          {/* Title */}
-          {/* <h1 className="m-0 flex justify-center items-center font-sans font-normal">
-          Family
-          <h2 className="my-0 mx-4 h-full font-serif italic font-normal">
-            of
-          </h2>
-          Locavore
-        </h1> */}
-
-          <h1 className="titlestyle">
+        <div className='w-full h-full pt-10 setflex-center px-4'>
+          <h1 className='titlestyle'>
             Family
-            <span className="sub">of</span>Locavore
+            <span className='sub'>of</span>Locavore
           </h1>
         </div>
         {/* Family Button */}
         <div
-          className="sticky max-md:hidden top-20 z-50 w-56rem mx-auto flex flex-wrap mt-14"
-          id="family-button"
+          className='sticky max-md:hidden top-20 z-50 max-w-5xl mx-auto flex flex-wrap mt-14 items-stretch'
+          id='family-button'
         >
-          <FancyLink
-            destination="/family/locavore"
-            onMouseEnter={() => onMouseEnter(0, colors.locavore, 'locavore')}
-            onMouseLeave={() => onMouseLeave(0)}
-            className="relative left-6 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
-          >
-            <span>locavore</span>
-          </FancyLink>
-          <FancyLink
-            destination="/family/rooster"
-            onMouseEnter={() =>
-              onMouseEnter(1, colors.nightrooster, 'the-night-rooster')
-            }
-            onMouseLeave={() => onMouseLeave(1)}
-            className="relative z-10 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
-          >
-            <span>THE NIGHT ROOSTER</span>
-          </FancyLink>
-          <FancyLink
-            destination="/family/nusantara"
-            onMouseEnter={() => onMouseEnter(2, colors.nusantara, 'nusantara')}
-            onMouseLeave={() => onMouseLeave(2)}
-            className="relative right-6 z-20 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
-          >
-            <span>NUSANTARA</span>
-          </FancyLink>
-          <FancyLink
-            destination="/family/localab"
-            onMouseEnter={() => onMouseEnter(3, colors.localab, 'localab')}
-            onMouseLeave={() => onMouseLeave(3)}
-            className="relative -top-px left-6 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
-          >
-            <span>LOCAVORE LAB</span>
-          </FancyLink>
-          <FancyLink
-            destination="/family/locaparts"
-            onMouseEnter={() =>
-              onMouseEnter(4, colors.localparts, 'local-parts')
-            }
-            onMouseLeave={() => onMouseLeave(4)}
-            className="relative -top-px z-10 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
-          >
-            <span>LOCAL PARTS</span>
-          </FancyLink>
-          <FancyLink
-            destination="/family/togo"
-            onMouseEnter={() => onMouseEnter(5, colors.togo, 'locavore-togo')}
-            onMouseLeave={() => onMouseLeave(5)}
-            className="relative -top-px right-6 z-20 text-center uppercase bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
-          >
-            <span>LOCAVORE TO-GO</span>
-          </FancyLink>
+          {dataFamilyButtons.map((familydata, id) => (
+            <FancyLink
+              key={id}
+              destination={`/family/${familydata.slug}`}
+              onMouseEnter={() => familybutton_enter(familydata.slug)}
+              onMouseLeave={() => familybutton_leave(0)}
+              className='group relative text-center uppercase overflow-hidden bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full'
+            >
+              <div className='relative z-2'>{familydata.title}</div>
+              <div
+                className='absolute top-0 left-0 w-full h-full z-0 opacity-0 group-hover:opacity-100'
+                style={{ backgroundColor: familydata.colour }}
+              />
+            </FancyLink>
+          ))}
         </div>
-        <section className="w-full h-full flex flex-col relative mt-12 max-md:mt-0">
+        <section className='w-full h-full flex flex-col relative mt-12 '>
           <div
-            className="relative w-full h-auto flex flex-wrap  "
-            id="family-image"
+            className='relative w-full h-auto flex flex-wrap  '
+            id='family-image'
           >
-            {dataFix.map((data, id) => (
+            {familyDataFixed.map((data, id) => (
               <FamilyImage
                 key={id}
-                background={data.background}
-                title={data.title}
-                position={data.position}
-                name={data.name}
-                dataImage={data.dataImage}
-                bgColor={data.bgColor}
+                store={dataFamilyButtons[data.storeID]}
+                position={data.position || ''}
+                name={data.name || ''}
                 src={data.src}
                 alt={data.alt}
               />
             ))}
           </div>
         </section>
-        <section
-          className="sticky bottom-0 left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center"
-          id="btnMobile"
-        >
-          <FancyLink
-            destination="/article/locavore"
-            className="relative -bottom-14 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-4 font-bold uppercase"
+        {isMobile && (
+          <section
+            className='sticky bottom-0 left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center mt-10'
+            id='family-button-mobile'
           >
-            Locavore
-          </FancyLink>
-          <FancyLink
-            destination="/article/rooster"
-            className="relative z-2 -bottom-12 text-center w-full rounded-t-2xl bg-nightrooster pt-2 pb-4 font-bold uppercase"
-          >
-            the night rooster
-          </FancyLink>
-          <FancyLink
-            destination="/article/locaparts"
-            className="relative z-3 -bottom-9 text-center w-full rounded-t-2xl bg-localparts pt-2 pb-4 font-bold uppercase"
-          >
-            locaparts
-          </FancyLink>
-          <FancyLink
-            destination="/article/nusantara"
-            className="relative z-4 -bottom-6 text-center w-full rounded-t-2xl bg-nusantara pt-2 pb-4 font-bold uppercase"
-          >
-            nusantara
-          </FancyLink>
-          <FancyLink
-            destination="/article/localab"
-            className="relative z-5 -bottom-3 text-center w-full rounded-t-2xl bg-localab pt-2 pb-4 font-bold uppercase"
-          >
-            localab
-          </FancyLink>
-          <FancyLink
-            destination="/article/togo"
-            className="relative z-6 text-center w-full rounded-t-2xl bg-togo pt-2 pb-4 font-bold uppercase"
-          >
-            locavore to-go
-          </FancyLink>
-        </section>
+            {dataFamilyButtons.map((familydata, id) => (
+              <FancyLink
+                key={id}
+                destination={`/family/${familydata.slug}`}
+                className='relative -mb-4 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-5 font-bold uppercase last:mb-0'
+                style={{ backgroundColor: familydata.colour }}
+              >
+                {familydata.title}
+              </FancyLink>
+            ))}
+          </section>
+        )}
         <Footer />
       </motion.main>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `)
+  `);
   const familyAPI = await client.fetch(`
   *[_type == "family"]
-  `)
+  `);
   return {
     props: {
       seoAPI,
       familyAPI,
     },
-  }
+  };
 }
