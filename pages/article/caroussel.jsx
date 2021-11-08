@@ -23,11 +23,15 @@ import StickyButton from '@/components/utils/stickyButton'
 // Helpers
 import NextArticle from '@/components/utils/nextArticle'
 import FancyLink from '@/components/utils/fancyLink'
+import client from '@/helpers/sanity/client'
+import urlFor from '@/helpers/sanity/urlFor'
+import { toPlainText } from '@/helpers/functional/toPlainText'
 
 // install Swiper modules
 SwiperCore.use([EffectFade, Navigation])
 
-export default function Caroussel() {
+export default function Caroussel({ articleAPI, seoAPI }) {
+  const [article] = articleAPI
   const refSlide = useRef(null)
   const refList = useRef(null)
 
@@ -102,12 +106,12 @@ export default function Caroussel() {
                 prevEl: '.prevCaroussel',
               }}
             >
-              {dataCaroussel.map((data, id) => (
+              {article.image_caroussel.map((data, id) => (
                 <SwiperSlide key={id}>
                   <div className="relative w-full aspect-w-16 max-md:aspect-w-1 aspect-h-9 max-md:aspect-h-1">
                     <Image
-                      src={data.image}
-                      alt={data.alt}
+                      src={urlFor(data).url()}
+                      alt={data.name}
                       layout="fill"
                       objectFit="cover"
                       objectPosition="center"
@@ -159,78 +163,20 @@ export default function Caroussel() {
                 onSlideChange={onListChange}
                 id="swipe-caroussel"
               >
-                <SwiperSlide>
-                  <div className="cursor-pointer relative w-full h-full">
-                    <Image
-                      src={`/placeholder/locavore-rintik-crop-18.jpg`}
-                      alt={'Locavore'}
-                      className="rounded-2xl"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="cursor-pointer relative w-full h-full">
-                    <Image
-                      src={`/placeholder/locavore-rintik-crop-16.jpg`}
-                      alt={'Locavore'}
-                      className="rounded-2xl"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="cursor-pointer relative w-full h-full">
-                    <Image
-                      src={`/placeholder/locavore-rintik-crop-11.jpg`}
-                      alt={'Locavore'}
-                      className="rounded-2xl"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="cursor-pointer relative w-full h-full">
-                    <Image
-                      src={`/placeholder/NightRoosterArtwork-5.jpg`}
-                      alt={'Locavore'}
-                      className="rounded-2xl"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="cursor-pointer relative w-full h-full">
-                    <Image
-                      src={`/placeholder/NightRoosterArtwork-deggeha-2.jpg`}
-                      alt={'Locavore'}
-                      className="rounded-2xl"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                    />
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <div className="cursor-pointer relative w-full h-full">
-                    <Image
-                      src={`/placeholder/NightRooster-Cocktail-2020-12.jpg`}
-                      alt={'Locavore'}
-                      className="rounded-2xl"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                    />
-                  </div>
-                </SwiperSlide>
+                {article.image_caroussel.map((data, id) => (
+                  <SwiperSlide key={id}>
+                    <div className="cursor-pointer relative w-full h-full">
+                      <Image
+                        src={urlFor(data).url()}
+                        alt={data.name}
+                        className="rounded-2xl"
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="center"
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
           </div>
@@ -253,4 +199,21 @@ export default function Caroussel() {
       <Footer />
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const articleAPI = await client.fetch(
+    `
+      *[_type == "caroussel" && slug.current == "tes"] 
+    `,
+  )
+  const seoAPI = await client.fetch(`
+  *[_type == "settings"]
+  `)
+  return {
+    props: {
+      articleAPI,
+      seoAPI,
+    },
+  }
 }
