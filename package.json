@@ -45,9 +45,11 @@
     "react-infinite-scroll-hook": "^4.0.1",
     "react-locomotive-scroll": "^0.2.0",
     "react-responsive": "^9.0.0-beta.4",
+    "read-time-estimate": "^0.0.3",
     "sass": "^1.43.3",
     "swiper": "^7.1.0",
-    "tailwindcss-padding-safe": "^1.0.5"
+    "tailwindcss-padding-safe": "^1.0.5",
+    "use-reading-time": "^0.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.7",

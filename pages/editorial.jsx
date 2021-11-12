@@ -31,7 +31,6 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
 
     const closest = issueAPI.reduce((a, b) => {
       const adiff = new Date(a.date) - today
-      // console.log(adiff > 0 && adiff < new Date(b.date) - today ? a : b)
       return adiff > 0 && adiff < new Date(b.date) - today ? a : b
     })
 
@@ -95,7 +94,8 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
               <div className={`relative w-full`}>
                 <div
                   className={`w-full setflex-center  pt-10 ${
-                    new Date(checkClosest().date) > new Date() && 'comingsoonSticky'
+                    new Date(checkClosest().date) > new Date() &&
+                    'comingsoonSticky'
                   }`}
                 >
                   <HeaderGap />
@@ -133,43 +133,46 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                   new Date(checkClosest().date) > new Date() && 'comingsoonAdj'
                 }`}
               >
-                {issueAPI.map((data, id) =>
-                  data.title.toLowerCase() === 'under construction' ? (
-                    <EditorialIssueCard
-                      key={id}
-                      issueNo={id}
-                      title={data.title}
-                      date={data.date}
-                      dark={false}
-                      totalArticles={15}
-                      destination={`/editorial/${data.slug.current}`}
-                      imageThumbnail={urlFor(data.image).url()}
-                      styleTitle={{
-                        fontSize:
-                          checkText(data.title, '3rem Whyte Inktrap') >
-                            windowWidth - 144 && '29px',
-                      }}
-                      descriptions={<p>{toPlainText(data.description)}</p>}
-                    />
-                  ) : (
-                    <EditorialIssueCard
-                      key={id}
-                      issueNo={id}
-                      title={data.title}
-                      date={data.date}
-                      dark={true}
-                      bgColor={data.bgColor ? data.bgColor : '#fff'}
-                      totalArticles={15}
-                      destination={`/editorial/${data.slug.current}`}
-                      imageThumbnail={urlFor(data.image).url()}
-                      styleTitle={{
-                        fontSize:
-                          checkText(data.title, '3rem Whyte Inktrap') >
-                            windowWidth - 144 && '29px',
-                      }}
-                      descriptions={<p>{toPlainText(data.description)}</p>}
-                    />
-                  ),
+                {issueAPI.map(
+                  (data, id) =>
+                    new Date(checkClosest().date) > new Date() &&
+                    !(checkClosest().slug.current === data.slug.current) &&
+                    (data.title.toLowerCase() === 'under construction' ? (
+                      <EditorialIssueCard
+                        key={id}
+                        issueNo={id}
+                        title={data.title}
+                        date={data.date}
+                        dark={false}
+                        totalArticles={15}
+                        destination={`/editorial/${data.slug.current}`}
+                        imageThumbnail={urlFor(data.image).url()}
+                        styleTitle={{
+                          fontSize:
+                            checkText(data.title, '3rem Whyte Inktrap') >
+                              windowWidth - 144 && '29px',
+                        }}
+                        descriptions={<p>{toPlainText(data.description)}</p>}
+                      />
+                    ) : (
+                      <EditorialIssueCard
+                        key={id}
+                        issueNo={id}
+                        title={data.title}
+                        date={data.date}
+                        dark={true}
+                        bgColor={data.bgColor ? data.bgColor : '#fff'}
+                        totalArticles={15}
+                        destination={`/editorial/${data.slug.current}`}
+                        imageThumbnail={urlFor(data.image).url()}
+                        styleTitle={{
+                          fontSize:
+                            checkText(data.title, '3rem Whyte Inktrap') >
+                              windowWidth - 144 && '29px',
+                        }}
+                        descriptions={<p>{toPlainText(data.description)}</p>}
+                      />
+                    )),
                 )}
               </div>
             </Container>

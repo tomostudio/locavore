@@ -2833,6 +2833,11 @@ read-cache@^1.0.0:
   dependencies:
     pify "^2.3.0"
 
+read-time-estimate@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/read-time-estimate/-/read-time-estimate-0.0.3.tgz#3791c6715b0625252f491f74851a12a8dfc2055a"
+  integrity sha512-TF87eHTuEyRtu/mwnQE8FoZYHpsN1Oj+U/oROL5nrsoEWsh/iGhBzkV50N6DdPEqZ9Jh2PSZk1ZA7KMucgb+ng==
+
 readable-stream@^2.0.0, readable-stream@~2.3.6:
   version "2.3.7"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.7.tgz#1eca1cf711aef814c04f62252a36a62f6cb23b57"
@@ -3390,6 +3395,11 @@ use-debounce@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/use-debounce/-/use-debounce-6.0.1.tgz#ed1eb2b30189408fb9792ea2887f4c6c3cb401a3"
   integrity sha512-kpvIxpa0vOLz/2I2sfNJ72mUeaT2CMNCu5BT1f2HkV9qZK27UVSOFf1sSSu+wjJE4TcR2VTXS2SM569+m3TN7Q==
+
+use-reading-time@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/use-reading-time/-/use-reading-time-0.2.0.tgz#4a0134e079eb6696fe072b007a05fd06466b3489"
+  integrity sha512-zOsfzN1BanIYUcavnTrOPuCJpliAdX8zRkW3TH4gpHrWVxZy9zX5JszZhea631mv9QnmJxy7dB6FOvDjE9kLFQ==
 
 use-resize-observer@6.1.0:
   version "6.1.0"
