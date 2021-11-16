@@ -199,16 +199,6 @@ export default function Caroussel({ articleAPI, seoAPI }) {
 
   return (
     <Layout>
-      {
-        (console.log(humanizedDuration),
-        console.log(duration),
-        console.log(totalWords),
-        console.log(wordTime),
-        console.log(totalImages),
-        console.log(imageTime),
-        console.log(otherLanguageTimeCharacters),
-        console.log(otherLanguageTime))
-      }
       <NextSeo title="Caroussel" />
       <Navbar
         className="border-black"

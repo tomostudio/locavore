@@ -15,7 +15,7 @@ import StickyButton from '@/components/modules/stickyButton'
 import IssueCard from '@/components/modules/editorial/issueCard'
 import FancyLink from '@/components/utils/fancyLink'
 import Arrow from '@/components/utils/arrow'
-import SEO from '@/comp@/components/modules/editorial/issueCard'
+import SEO from '@/components/utils/seo'
 
 // Helpers
 import { fade } from '@/helpers/preset/transitions'
@@ -23,7 +23,7 @@ import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'
 import { useAppContext } from 'context/state'
 
-export default function Search({ seoAPI, searchAPI }) {
+export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
   const [seo] = seoAPI
   const [APISearch] = searchAPI
   const appContext = useAppContext()
@@ -271,7 +271,7 @@ export default function Search({ seoAPI, searchAPI }) {
   const [postNumCategory, setPostNumCategory] = useState(3)
   const [postNum, setPostNum] = useState(6)
   const [search, setSearch] = useState('')
-  const [itemsToDisplay, setitemsToDisplay] = useState(dataSearch)
+  const [itemsToDisplay, setitemsToDisplay] = useState(articleAPI)
 
   const handleLoadMoreCategory = () => {
     setPostNumCategory((prevPostNum) => prevPostNum + 3)
@@ -289,7 +289,7 @@ export default function Search({ seoAPI, searchAPI }) {
     setPostNum(6)
 
     if (appContext.category) {
-      const fuseCategory = new Fuse(dataSearch, {
+      const fuseCategory = new Fuse(articleAPI, {
         keys: ['category'],
         useExtendedSearch: true,
       })
@@ -303,11 +303,11 @@ export default function Search({ seoAPI, searchAPI }) {
       const data = fuseSearchCategory.search(value).map((result) => result.item)
       setitemsToDisplay(value ? data : cat)
     } else {
-      const fuse = new Fuse(dataSearch, {
+      const fuse = new Fuse(articleAPI, {
         keys: ['title', 'category', 'timeRead'],
       })
       const data = fuse.search(value).map((result) => result.item)
-      setitemsToDisplay(value ? data : dataSearch)
+      setitemsToDisplay(value ? data : articleAPI)
     }
   }
 
@@ -315,18 +315,18 @@ export default function Search({ seoAPI, searchAPI }) {
     setPostNum(6)
     appContext.setCategory(value)
     if (search) {
-      const fuse = new Fuse(dataSearch, {
+      const fuse = new Fuse(articleAPI, {
         keys: ['title', 'category', 'timeRead'],
       })
       const data = fuse.search(search).map((result) => result.item)
       setitemsToDisplay(data)
     } else {
-      const fuse = new Fuse(dataSearch, {
+      const fuse = new Fuse(articleAPI, {
         keys: ['category'],
         useExtendedSearch: true,
       })
       let cat = fuse.search(`=${value}`).map((result) => result.item)
-      setitemsToDisplay(value ? cat : dataSearch)
+      setitemsToDisplay(value ? cat : articleAPI)
     }
   }
 
@@ -408,27 +408,27 @@ export default function Search({ seoAPI, searchAPI }) {
                   </form>
                   <div className="w-full h-auto opacity-80 flex flex-wrap items-center space-x-2 space-y-2 max-md:space-x-0">
                     <span className="block text-xs pt-px">CATEGORY</span>
-                    {dataCategory.slice(0, postNumCategory).map((data, id) => (
+                    {categoryAPI.slice(0, postNumCategory).map((data, id) => (
                       <PillButton
                         onClick={() =>
                           handleCategory(
-                            appContext.category === `${data.category}`
+                            appContext.category === `${data.title}`
                               ? ''
-                              : `${data.category}`,
+                              : `${data.title}`,
                           )
                         }
                         className={`text-xs uppercase max-md:py-1 px-4 ${
                           appContext.category.toLowerCase() ===
-                          data.category.toLocaleLowerCase()
+                          data.title.toLocaleLowerCase()
                             ? 'activeCategory'
                             : ''
                         }`}
                         key={id}
                       >
-                        {data.category}
+                        {data.title}
                       </PillButton>
                     ))}
-                    {!(postNumCategory >= dataCategory.length) && (
+                    {!(postNumCategory >= categoryAPI.length) && (
                       <PillButton
                         className="text-xs uppercase max-md:py-1 px-4"
                         onClick={handleLoadMoreCategory}
@@ -456,16 +456,16 @@ export default function Search({ seoAPI, searchAPI }) {
                   {itemsToDisplay.slice(0, postNum).map((data, id) => (
                     <IssueCard
                       key={id}
-                      issueNo={1}
-                      destination={data.destination}
+                      issueNo={data.issue.order + 1}
+                      destination={`editorial/${data.issue.slug.current}/article/${data.slug.current}`}
                       articleClassName="bg-culture w-full"
                       title={data.title}
-                      category={data.category}
-                      timeRead={data.timeRead}
-                      bgColor={data.bgColor}
+                      category={data.category[0].title}
+                      // timeRead={data.timeRead}
+                      bgColor={data.category[0].color.hex}
                       borderColor=""
-                      thumbnail={data.thumbnail}
-                      alt={data.alt}
+                      thumbnail={urlFor(data.thumbnail).url()}
+                      alt={data.thumbnail.name}
                     />
                   ))}
                 </div>
@@ -511,10 +511,22 @@ export async function getStaticProps() {
   const searchAPI = await client.fetch(`
                     *[_type == "search"]
                     `)
+  const categoryAPI = await client.fetch(`
+                    *[_type == "category"]
+                    `)
+  const articleAPI = await client.fetch(`
+                                      *[_type == "article"] {
+                                        ...,
+                                        issue->,
+                                        category[]->,
+                                      }
+                                      `)
   return {
     props: {
       seoAPI,
       searchAPI,
+      categoryAPI,
+      articleAPI,
     },
   }
 }
