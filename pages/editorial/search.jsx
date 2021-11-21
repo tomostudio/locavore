@@ -27,247 +27,6 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
   const [seo] = seoAPI
   const [APISearch] = searchAPI
   const appContext = useAppContext()
-  const dataCategory = [
-    {
-      category: 'Food',
-    },
-    {
-      category: 'Culture',
-    },
-    {
-      category: 'Features',
-    },
-    {
-      category: 'Food',
-    },
-    {
-      category: 'Culture',
-    },
-    {
-      category: 'Features',
-    },
-    {
-      category: 'Food',
-    },
-    {
-      category: 'Culture',
-    },
-    {
-      category: 'Features',
-    },
-  ]
-  const dataSearch = [
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#DEFE71',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#9FF7CD',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#D66A51',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#9FF7CD',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#D66A51',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Food',
-      timeRead: '20 min read',
-      bgColor: '#C9C8BF',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Tes',
-      category: 'Food',
-      timeRead: '20 min read',
-      bgColor: '#BC9EDF',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Food',
-      timeRead: '20 min read',
-      bgColor: '#DEFE71',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#9FF7CD',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#D66A51',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#9FF7CD',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#D66A51',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#C9C8BF',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#BC9EDF',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#DEFE71',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#9FF7CD',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#D66A51',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#9FF7CD',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#D66A51',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#C9C8BF',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      destination: '/article/full',
-      articleClassName: 'bg-culture w-full',
-      title: '7. Facial Expressions',
-      category: 'Culture',
-      timeRead: '20 min read',
-      bgColor: '#BC9EDF',
-      thumbnail: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-  ]
   const [postNumCategory, setPostNumCategory] = useState(3)
   const [postNum, setPostNum] = useState(6)
   const [search, setSearch] = useState('')
@@ -290,7 +49,7 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
 
     if (appContext.category) {
       const fuseCategory = new Fuse(articleAPI, {
-        keys: ['category'],
+        keys: ['category.title'],
         useExtendedSearch: true,
       })
       let cat = fuseCategory
@@ -298,13 +57,13 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
         .map((result) => result.item)
 
       const fuseSearchCategory = new Fuse(cat, {
-        keys: ['title', 'timeRead'],
+        keys: ['title'],
       })
       const data = fuseSearchCategory.search(value).map((result) => result.item)
       setitemsToDisplay(value ? data : cat)
     } else {
       const fuse = new Fuse(articleAPI, {
-        keys: ['title', 'category', 'timeRead'],
+        keys: ['title', 'category.title'],
       })
       const data = fuse.search(value).map((result) => result.item)
       setitemsToDisplay(value ? data : articleAPI)
@@ -316,13 +75,18 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
     appContext.setCategory(value)
     if (search) {
       const fuse = new Fuse(articleAPI, {
-        keys: ['title', 'category', 'timeRead'],
+        keys: ['title', 'category.title'],
       })
       const data = fuse.search(search).map((result) => result.item)
-      setitemsToDisplay(data)
+      if(value) {
+        const dataFilter = data.filter((item) => item.category.title === value)
+        setitemsToDisplay(dataFilter)
+      }else {
+        setitemsToDisplay(data)
+      }
     } else {
       const fuse = new Fuse(articleAPI, {
-        keys: ['category'],
+        keys: ['category.title'],
         useExtendedSearch: true,
       })
       let cat = fuse.search(`=${value}`).map((result) => result.item)
@@ -339,6 +103,19 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
       appContext.setCategory('')
     }
   }, [])
+
+  function timeConvert(n) {
+    var num = n
+    var hours = num / 60
+    var rhours = Math.floor(hours)
+    var minutes = (hours - rhours) * 60
+    var rminutes = Math.round(minutes)
+    if (rhours === 0) {
+      return rminutes + ' min read'
+    } else {
+      return rhours + ' hour and ' + rminutes + ' min read'
+    }
+  }
 
   return (
     <Layout>
@@ -456,13 +233,15 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
                   {itemsToDisplay.slice(0, postNum).map((data, id) => (
                     <IssueCard
                       key={id}
-                      issueNo={data.issue.order + 1}
-                      destination={`editorial/${data.issue.slug.current}/article/${data.slug.current}`}
+                      issueNo={data.issue.order}
+                      destination={`${data.issue.slug.current}/article/${data.slug.current}`}
                       articleClassName="bg-culture w-full"
-                      title={data.title}
-                      category={data.category[0].title}
-                      // timeRead={data.timeRead}
-                      bgColor={data.category[0].color.hex}
+                      title={`${data.order}. ${data.title}`}
+                      category={data.category.title}
+                      timeRead={timeConvert(
+                        data.timeReadBlog ? data.timeReadBlog : data.timeRead,
+                      )}
+                      bgColor={data.category.color.hex}
                       borderColor=""
                       thumbnail={urlFor(data.thumbnail).url()}
                       alt={data.thumbnail.name}
@@ -480,7 +259,7 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
                         </FancyLink>
                       </div>
                     )
-                  : !(postNum >= dataSearch.length) && (
+                  : !(postNum >= articleAPI.length) && (
                       <div className="flex mt-10">
                         <FancyLink
                           onClick={handleLoadMore}
@@ -514,13 +293,15 @@ export async function getStaticProps() {
   const categoryAPI = await client.fetch(`
                     *[_type == "category"]
                     `)
-  const articleAPI = await client.fetch(`
-                                      *[_type == "article"] {
-                                        ...,
-                                        issue->,
-                                        category[]->,
-                                      }
-                                      `)
+  const articleAPI = await client.fetch(`*[
+    _type == "article"
+  ]{
+    ...,
+    issue->,
+    category->,
+    "timeRead": round(length(pt::text(description)) / 5 / 180 ),
+    "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
+  }`)
   return {
     props: {
       seoAPI,

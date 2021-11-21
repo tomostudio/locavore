@@ -144,7 +144,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                         title={data.title}
                         date={data.date}
                         dark={false}
-                        totalArticles={15}
+                        totalArticles={data.articleCount}
                         destination={`/editorial/${data.slug.current}`}
                         imageThumbnail={urlFor(data.image).url()}
                         styleTitle={{
@@ -162,7 +162,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                         date={data.date}
                         dark={true}
                         bgColor={data.bgColor ? data.bgColor : '#fff'}
-                        totalArticles={15}
+                        totalArticles={data.articleCount}
                         destination={`/editorial/${data.slug.current}`}
                         imageThumbnail={urlFor(data.image).url()}
                         styleTitle={{
@@ -190,7 +190,10 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
 
 export async function getStaticProps() {
   const issueAPI = await client.fetch(`
-                    *[_type == "issue"]
+                    *[_type == "issue"] {
+                      ...,
+                      "articleCount": count(*[_type=='article' && references(^._id)])
+                    }
                     `)
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
