@@ -18,7 +18,7 @@ import urlFor from '@/helpers/sanity/urlFor';
 import { fade } from '@/helpers/preset/transitions';
 import client from '@/helpers/sanity/client';
 
-export default function Family({ seoAPI, familyAPI }) {
+export default function Family({ seoAPI, familyAPI, familyListAPI }) {
   const [seo] = seoAPI;
   const [family] = familyAPI;
 
@@ -289,18 +289,18 @@ export default function Family({ seoAPI, familyAPI }) {
           className='sticky max-md:hidden top-20 z-50 max-w-5xl mx-auto flex flex-wrap mt-14 items-stretch'
           id='family-button'
         >
-          {dataFamilyButtons.map((familydata, id) => (
+          {familyListAPI.map((familydata, id) => (
             <FancyLink
               key={id}
-              destination={`/family/${familydata.slug}`}
-              onMouseEnter={() => familybutton_enter(familydata.slug)}
+              destination={`/family/${familydata.slug.current}`}
+              onMouseEnter={() => familybutton_enter(familydata.slug.current)}
               onMouseLeave={() => familybutton_leave(0)}
               className='group relative text-center uppercase overflow-hidden bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full'
             >
               <div className='relative z-2'>{familydata.title}</div>
               <div
                 className='absolute top-0 left-0 w-full h-full z-0 opacity-0 group-hover:opacity-100'
-                style={{ backgroundColor: familydata.colour }}
+                style={{ backgroundColor: familydata.bgColor.hex }}
               />
             </FancyLink>
           ))}
@@ -352,10 +352,14 @@ export async function getStaticProps() {
   const familyAPI = await client.fetch(`
   *[_type == "family"]
   `);
+  const familyListAPI = await client.fetch(`
+  *[_type == "family_list"]
+  `);
   return {
     props: {
       seoAPI,
       familyAPI,
+      familyListAPI,
     },
   };
 }

@@ -22,6 +22,7 @@ import { fade } from '@/helpers/preset/transitions'
 import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'
 import { useAppContext } from 'context/state'
+import timeConvert from '@/helpers/functional/timeConvert'
 
 export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
   const [seo] = seoAPI
@@ -103,19 +104,6 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
       appContext.setCategory('')
     }
   }, [])
-
-  function timeConvert(n) {
-    var num = n
-    var hours = num / 60
-    var rhours = Math.floor(hours)
-    var minutes = (hours - rhours) * 60
-    var rminutes = Math.round(minutes)
-    if (rhours === 0) {
-      return rminutes + ' min read'
-    } else {
-      return rhours + ' hour and ' + rminutes + ' min read'
-    }
-  }
 
   return (
     <Layout>
