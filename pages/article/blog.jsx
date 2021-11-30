@@ -55,7 +55,7 @@ export default function Full() {
       <HeaderGap />
 
       {/* Untuk Content */}
-      <OpeningArticle />
+      {/* <OpeningArticle /> */}
 
       <section className=''>
         <Container>

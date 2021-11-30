@@ -27,7 +27,7 @@ export default function Video() {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <OpeningArticle />
+      {/* <OpeningArticle /> */}
       <section className="w-full h-full flex flex-col">
         <Container className="max-md:px-0">
           {/* Video */}

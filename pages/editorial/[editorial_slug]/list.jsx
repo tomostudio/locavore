@@ -21,6 +21,7 @@ import client from '@/helpers/sanity/client'
 import checkMonth from '@/helpers/functional/checkMonth'
 import { checkText } from '@/helpers/functional/checkText'
 import urlFor from '@/helpers/sanity/urlFor'
+import timeConvert from '@/helpers/functional/timeConvert'
 
 // install Swiper modules
 SwiperCore.use([Pagination])
@@ -29,52 +30,10 @@ export default function Issue({ issueAPI, seoAPI }) {
   const router = useRouter()
   const [issue] = issueAPI
   const [seo] = seoAPI
-  const dataArticle = [
-    {
-      bgColor: '#E9C4DD',
-      title: '5. Ulekan',
-      category: 'Culture',
-      timeRead: '20 min read',
-      src: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      bgColor: '#E9C4DD',
-      title: '5. Ulekan',
-      category: 'Culture',
-      timeRead: '20 min read',
-      src: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      bgColor: '#E9C4DD',
-      title: '5. Ulekan',
-      category: 'Culture',
-      timeRead: '20 min read',
-      src: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      bgColor: '#E9C4DD',
-      title: '5. Ulekan',
-      category: 'Culture',
-      timeRead: '20 min read',
-      src: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-    {
-      bgColor: '#E9C4DD',
-      title: '5. Ulekan',
-      category: 'Culture',
-      timeRead: '20 min read',
-      src: '/placeholder/locavore-rintik-crop-11.jpg',
-      alt: 'Locavore',
-    },
-  ]
   const [windowWidth, setWidth] = useState()
-  const [item, setItem] = useState(dataArticle)
+  const [item, setItem] = useState(issue.article)
   const fetchMoreData = () => {
-    setItem(item.concat(dataArticle))
+    setItem(item.concat(issue.article))
   }
 
   const [sentryRef] = useInfiniteScroll({
@@ -169,16 +128,21 @@ export default function Issue({ issueAPI, seoAPI }) {
             className="flex w-full space-x-7 px-7"
             horizontal={true}
           >
-            {item.map((item, id) => (
+            {item.map((data, id) => (
               <div className="article_wrapper" key={id} ref={sentryRef}>
-                <FancyLink destination={'/article/full'} className={`group`}>
+                <FancyLink
+                  destination={`/editorial/${issue.slug.current}/article/${data.slug.current}`}
+                  className={`group`}
+                >
                   <ArticleCard
-                    bgColor={'#E9C4DD'}
-                    title="5. Ulekan"
-                    category="Culture"
-                    timeRead="20 min read"
-                    src="/placeholder/locavore-rintik-crop-11.jpg"
-                    alt="Locavore"
+                    bgColor={data.category.color.hex}
+                    title={`${data.order}. ${data.title}`}
+                    category={data.category.title}
+                    timeRead={timeConvert(
+                      data.timeReadBlog ? data.timeReadBlog : data.timeRead,
+                    )}
+                    src={urlFor(data.thumbnail).url()}
+                    alt={data.thumbnail.name}
                   />
                 </FancyLink>
               </div>
@@ -223,7 +187,15 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const issueAPI = await client.fetch(
     `
-        *[_type == "issue" && slug.current == "${params.editorial_slug}"] 
+        *[_type == "issue" && slug.current == "${params.editorial_slug}"] {
+          ...,
+          "article": *[_type=='article' && references(^._id)] {
+            ...,
+            category->,
+            "timeRead": round(length(pt::text(description)) / 5 / 180 ),
+            "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
+          }
+        }
       `,
   )
   const seoAPI = await client.fetch(`

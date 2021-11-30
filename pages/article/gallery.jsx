@@ -25,7 +25,7 @@ export default function Gallery() {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <OpeningArticle />
+      {/* <OpeningArticle /> */}
       <section className="w-full h-full flex flex-col">
         <Container className="max-md:px-0">
           {/* Image */}
@@ -78,7 +78,7 @@ export default function Gallery() {
               </div>
             </div>
             <div className="w-full mt-3 max-md:mt-2">
-              <VideoComponent setVideo={setVideo} video={video} />
+              {/* <VideoComponent setVideo={setVideo} video={video} /> */}
             </div>
           </div>
         </Container>

@@ -25,7 +25,7 @@ import { toPlainText } from '@/helpers/functional/toPlainText'
 // install Swiper modules
 SwiperCore.use([Pagination])
 
-const FamilySlug = ({ familyAPI, seoAPI }) => {
+const FamilySlug = ({ familyAPI, seoAPI, familyListAPI }) => {
   const router = useRouter()
   const [seo] = seoAPI
   const [family] = familyAPI
@@ -112,7 +112,7 @@ const FamilySlug = ({ familyAPI, seoAPI }) => {
       <motion.section
         className="w-full setflex-center rounded-t-2xl"
         style={{
-          backgroundColor: family.bgColor ? family.bgColor : "#fff"
+          backgroundColor: family.bgColor.hex ? family.bgColor.hex : "#fff"
         }}
         id="rooster"
         initial="initial"
@@ -136,7 +136,7 @@ const FamilySlug = ({ familyAPI, seoAPI }) => {
           <div className="w-full my-10">
             <p>{toPlainText(family.description)}</p>
             <div className="flex flex-col w-full mt-20 mb-10 ">
-              <ScrollContainer
+              {/* <ScrollContainer
                 className="flex space-x-4 flex-nowrap overflow-x-scroll hide-scrollbar"
                 horizontal={true}
               >
@@ -157,7 +157,7 @@ const FamilySlug = ({ familyAPI, seoAPI }) => {
                     />
                   </FancyLink>
                 ))}
-              </ScrollContainer>
+              </ScrollContainer> */}
               <FancyLink
                 destination={family.instagram.link}
                 blank={true}
@@ -223,8 +223,8 @@ const FamilySlug = ({ familyAPI, seoAPI }) => {
             <div className="w-1/2 h-full flex justify-end">
               <div className="relative w-44 h-full" id="family-logo">
                 <Image
-                  src={`/placeholder/NightRooster-Cocktail-2020-45.jpg`}
-                  alt={'Locavore'}
+                  src={urlFor(family.logo).url()}
+                  alt={family.logo.name}
                   className="rounded-2xl"
                   layout="fill"
                   objectFit="cover"
@@ -246,54 +246,18 @@ const FamilySlug = ({ familyAPI, seoAPI }) => {
           className="relative max-md:hidden w-56rem mb-24 flex flex-wrap"
           id="family-button"
         >
-          <FancyLink
-            destination="/family/locavore"
-            onMouseEnter={() => onMouseEnter(0, colors.locavore)}
-            onMouseLeave={() => onMouseLeave(0)}
-            className="relative left-6 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
-          >
-            locavore
-          </FancyLink>
-          <FancyLink
-            destination="/family/rooster"
-            onMouseEnter={() => onMouseEnter(1, colors.nightrooster)}
-            onMouseLeave={() => onMouseLeave(1)}
-            className="relative z-10 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
-          >
-            THE NIGHT ROOSTER
-          </FancyLink>
-          <FancyLink
-            destination="/family/nusantara"
-            onMouseEnter={() => onMouseEnter(2, colors.nusantara)}
-            onMouseLeave={() => onMouseLeave(2)}
-            className="relative right-6 z-20 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
-          >
-            NUSANTARA
-          </FancyLink>
-          <FancyLink
-            destination="/family/localab"
-            onMouseEnter={() => onMouseEnter(3, colors.localab)}
-            onMouseLeave={() => onMouseLeave(3)}
-            className="relative -top-px left-6 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
-          >
-            LOCAVORE LAB
-          </FancyLink>
-          <FancyLink
-            destination="/family/locaparts"
-            onMouseEnter={() => onMouseEnter(4, colors.localparts)}
-            onMouseLeave={() => onMouseLeave(4)}
-            className="relative -top-px z-10 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
-          >
-            LOCAL PARTS
-          </FancyLink>
-          <FancyLink
-            destination="/family/togo"
-            onMouseEnter={() => onMouseEnter(5, colors.togo)}
-            onMouseLeave={() => onMouseLeave(5)}
-            className="relative -top-px right-6 z-20 text-center bg-nightrooster uppercase font-bold text-sm py-1 px-4 border border-black rounded-full"
-          >
-            LOCAVORE TO-GO
-          </FancyLink>
+          {
+            familyListAPI.map((familydata, id) => (
+              <FancyLink
+                key={id}
+                destination={`/family/${familydata.slug.current}`}
+                className="group relative text-center uppercase overflow-hidden bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
+                style={{ backgroundColor: family.bgColor.hex }}
+              >
+                <div className="relative z-2">{familydata.title}</div>
+              </FancyLink>
+            ))
+          }
         </div>
         <div className="hidden max-md:block w-full mt-12">
           <Arrow className="mx-auto" position="top" />
@@ -363,6 +327,9 @@ export async function getStaticProps({ params }) {
       *[_type == "family_list" && slug.current == "${params.slug}"] 
     `,
   )
+  const familyListAPI = await client.fetch(`
+  *[_type == "family_list"]
+  `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)
@@ -370,6 +337,7 @@ export async function getStaticProps({ params }) {
     props: {
       familyAPI,
       seoAPI,
+      familyListAPI,
     },
   }
 }

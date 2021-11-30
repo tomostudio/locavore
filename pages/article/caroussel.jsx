@@ -209,7 +209,7 @@ export default function Caroussel({ articleAPI, seoAPI }) {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <OpeningArticle />
+      {/* <OpeningArticle /> */}
       <section className="w-full h-full flex flex-col">
         <Container className="max-md:mb-5 space-y-3 max-md:space-y-5 max-md:px-0">
           {/* Gallery */}
