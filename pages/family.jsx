@@ -168,10 +168,17 @@ export default function Family({ seoAPI, familyAPI }) {
   };
 
   let onWindow = 'none';
+
+  const row_data = {
+    mobile: 5,
+    tablet: 4,
+    desktop: 5,
+  };
   const resetData = () => {
     let triggerChange = false;
     let columnCount = 8;
-    let minRow = 3;
+    console.log(row_data);
+    let minRow = row_data.desktop;
 
     if (window.innerWidth < bp.mobile) {
       // Mobile
@@ -179,7 +186,7 @@ export default function Family({ seoAPI, familyAPI }) {
         onWindow = 'mobile';
         triggerChange = true;
         columnCount = 3;
-        minRow = 5;
+        minRow = row_data.mobile;
       }
     } else if (
       window.innerWidth >= bp.mobile &&
@@ -189,7 +196,7 @@ export default function Family({ seoAPI, familyAPI }) {
       if (onWindow !== 'tablet') {
         onWindow = 'tablet';
         columnCount = 5;
-        minRow = 3;
+        minRow = row_data.tablet;
         triggerChange = true;
       }
     } else {
@@ -197,7 +204,7 @@ export default function Family({ seoAPI, familyAPI }) {
       if (onWindow !== 'desktop') {
         onWindow = 'desktop';
         columnCount = 8;
-        minRow = 3;
+        minRow = row_data.desktop;
         triggerChange = true;
       }
     }
@@ -219,10 +226,14 @@ export default function Family({ seoAPI, familyAPI }) {
           addData =
             Math.ceil(_a.length / columnCount) * columnCount - _a.length;
         }
-
         // add new data;
         for (let i = 0; i <= addData - 1; i++) {
-          _a.push(dataFamilyImage[i]);
+          let dataIndex = i;
+          let multipler = Math.floor(i / (dataFamilyImage.length));
+          if (dataIndex >= dataFamilyImage.length) {
+            dataIndex = i - dataFamilyImage.length * multipler;
+          }
+          _a.push(dataFamilyImage[dataIndex]);
         }
       }
       setFamilyData(shuffle(_a)); // apply data and shuffle
@@ -310,16 +321,19 @@ export default function Family({ seoAPI, familyAPI }) {
             className='relative w-full h-auto flex flex-wrap  '
             id='family-image'
           >
-            {familyDataFixed.map((data, id) => (
-              <FamilyImage
-                key={id}
-                store={dataFamilyButtons[data.storeID]}
-                position={data.position || ''}
-                name={data.name || ''}
-                src={data.src}
-                alt={data.alt}
-              />
-            ))}
+            {familyDataFixed !== [] &&
+              familyDataFixed.map((data, id) => {
+                return (
+                  <FamilyImage
+                    key={id}
+                    store={dataFamilyButtons[data.storeID]}
+                    position={data.position || ''}
+                    name={data.name || ''}
+                    src={data.src}
+                    alt={data.alt}
+                  />
+                );
+              })}
           </div>
         </section>
         {isMobile && (
