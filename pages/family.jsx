@@ -1,26 +1,27 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 // Layout
-import Layout from '@/components/modules/layout'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
-import { motion } from 'framer-motion'
+import Layout from '@/components/modules/layout';
+import Footer from '@/components/modules/footer';
+import HeaderGap from '@/components/modules/headerGap';
+import { motion } from 'framer-motion';
 
 // Components
-import FancyLink from '@/components/utils/fancyLink'
-import FamilyImage from '@/components/modules/family/familyImage'
-import SEO from '@/components/utils/seo'
+import FancyLink from '@/components/utils/fancyLink';
+import FamilyImage from '@/components/modules/family/familyImage';
+import SEO from '@/components/utils/seo';
 
 // Helpers
 // import { useAppContext } from 'context/state';
-import { bp, isMobile } from '@/helpers/preset/breakpoints'
-import urlFor from '@/helpers/sanity/urlFor'
-import { fade } from '@/helpers/preset/transitions'
-import client from '@/helpers/sanity/client'
+import { bp, isMobile } from '@/helpers/preset/breakpoints';
+import urlFor from '@/helpers/sanity/urlFor';
+import { fade } from '@/helpers/preset/transitions';
+import client from '@/helpers/sanity/client';
+import familyImage from '@/components/modules/family/familyImage';
 
 export default function Family({ seoAPI, familyAPI, familyListAPI }) {
-  const [seo] = seoAPI
-  const [family] = familyAPI
+  const [seo] = seoAPI;
+  const [family] = familyAPI;
 
   // TEST DATA
   const dataFamilyButtons = [
@@ -54,9 +55,9 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
       title: 'LOCAVORE TO-GO',
       colour: '#C2D09A',
     },
-  ]
+  ];
 
-  // const dataFamilyImage = [
+  // const familyImageData = [
   //   {
   //     storeID: 2,
   //     src: '/placeholder/Additional-Locavore.jpg',
@@ -127,68 +128,70 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
   //     alt: 'Locavore',
   //   },
   // ];
-  let dataFamilyImage = []
-  familyListAPI.map((item, id) => {
-    item.member.map((data) => {
-      dataFamilyImage.push({
-        ...data,
+
+  let familyImageData = [];
+  
+  familyListAPI.map((family, id) => {
+    family.member.map((memberData) => {
+      familyImageData.push({
+        ...memberData,
         storeID: id,
-      })
-    })
-  })
+      });
+    });
+  });
 
   const shuffle = (array) => {
     let currentIndex = array.length,
-      randomIndex
+      randomIndex;
 
     // While there remain elements to shuffle...
     while (currentIndex != 0) {
       // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex)
-      currentIndex--
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
 
       // And swap it with the current element.
-      ;[array[currentIndex], array[randomIndex]] = [
+      [array[currentIndex], array[randomIndex]] = [
         array[randomIndex],
         array[currentIndex],
-      ]
+      ];
     }
 
-    return array
-  }
+    return array;
+  };
 
-  const [familyDataFixed, setFamilyData] = useState([])
+  const [familyDataFixed, setFamilyData] = useState(familyImageData);
 
   // Mouse Leave & Enter for Family Button
   const familybutton_enter = (slug) => {
-    const familyCards = document.querySelectorAll('.family-card')
+    const familyCards = document.querySelectorAll('.family-card');
     familyCards.forEach((card, id) => {
       if (card.getAttribute('data-store') === slug) {
-        card.classList.add('show')
+        card.classList.add('show');
       }
-    })
-  }
+    });
+  };
 
   const familybutton_leave = (id) => {
-    const familyCards = document.querySelectorAll('.family-card')
+    const familyCards = document.querySelectorAll('.family-card');
     familyCards.forEach((card, id) => {
-      card.classList.remove('show')
-    })
-  }
+      card.classList.remove('show');
+    });
+  };
 
-  let onWindow = 'none'
+  let onWindow = 'none';
   const resetData = () => {
-    let triggerChange = false
-    let columnCount = 8
-    let minRow = 3
+    let triggerChange = false;
+    let columnCount = 8;
+    let minRow = 3;
 
     if (window.innerWidth < bp.mobile) {
       // Mobile
       if (onWindow !== 'mobile') {
-        onWindow = 'mobile'
-        triggerChange = true
-        columnCount = 3
-        minRow = 5
+        onWindow = 'mobile';
+        triggerChange = true;
+        columnCount = 3;
+        minRow = 5;
       }
     } else if (
       window.innerWidth >= bp.mobile &&
@@ -196,55 +199,57 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
     ) {
       // Tablet
       if (onWindow !== 'tablet') {
-        onWindow = 'tablet'
-        columnCount = 5
-        minRow = 3
-        triggerChange = true
+        onWindow = 'tablet';
+        columnCount = 5;
+        minRow = 3;
+        triggerChange = true;
       }
     } else {
       // Desktop
       if (onWindow !== 'desktop') {
-        onWindow = 'desktop'
-        columnCount = 8
-        minRow = 3
-        triggerChange = true
+        onWindow = 'desktop';
+        columnCount = 8;
+        minRow = 3;
+        triggerChange = true;
       }
     }
 
     if (triggerChange) {
-      triggerChange = false
+      triggerChange = false;
 
-      let _a = [...dataFamilyImage] // placeholder array
+      let _a = [...familyImageData]; // placeholder array
 
-      let minData = columnCount * minRow // get min data based on row and column
+      let minData = columnCount * minRow; // get min data based on row and column
 
       if (
         _a.length <= minData || // check if is within minimum
         _a.length % columnCount !== 0 // check data is divisable by column
       ) {
         // set remaining
-        let addData = minData - _a.length
+        let addData = minData - _a.length;
         if (_a.length >= minData) {
-          addData = Math.ceil(_a.length / columnCount) * columnCount - _a.length
+          addData =
+            Math.ceil(_a.length / columnCount) * columnCount - _a.length;
         }
 
         // add new data;
         for (let i = 0; i <= addData - 1; i++) {
-          _a.push(dataFamilyImage[i])
+          _a.push(familyImageData[i]);
         }
       }
-      setFamilyData(shuffle(_a)) // apply data and shuffle
+      setFamilyData(shuffle(_a)); // apply data and shuffle
     }
-  }
+  };
 
   useEffect(() => {
-    resetData()
-    window.addEventListener('resize', resetData)
-    window.scroll(0, 0)
+    resetData();
+    window.addEventListener('resize', resetData);
+    window.scroll(0, 0);
+    console.log(familyImageData);
     return () => {
-      window.removeEventListener('resize', resetData)
-    }
-  }, [])
+      window.removeEventListener('resize', resetData);
+    };
+  }, []);
 
   return (
     <Layout>
@@ -279,23 +284,23 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
         }}
       />
       <motion.main
-        initial="initial"
-        animate="enter"
-        exit="exit"
+        initial='initial'
+        animate='enter'
+        exit='exit'
         variants={fade}
       >
         {/* Header Gap */}
         <HeaderGap />
-        <div className="w-full h-full pt-10 setflex-center px-4">
-          <h1 className="titlestyle">
+        <div className='w-full h-full pt-10 setflex-center px-4'>
+          <h1 className='titlestyle'>
             Family
-            <span className="sub">of</span>Locavore
+            <span className='sub'>of</span>Locavore
           </h1>
         </div>
         {/* Family Button */}
         <div
-          className="sticky max-md:hidden top-20 z-50 max-w-5xl mx-auto flex flex-wrap mt-14 items-stretch"
-          id="family-button"
+          className='sticky max-md:hidden top-20 z-50 max-w-5xl mx-auto flex flex-wrap mt-14 items-stretch'
+          id='family-button'
         >
           {familyListAPI.map((familydata, id) => (
             <FancyLink
@@ -303,22 +308,22 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
               destination={`/family/${familydata.slug.current}`}
               onMouseEnter={() => familybutton_enter(familydata.slug.current)}
               onMouseLeave={() => familybutton_leave(0)}
-              className="group relative text-center uppercase overflow-hidden bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full"
+              className='group relative text-center uppercase overflow-hidden bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full'
             >
-              <div className="relative z-2">{familydata.title}</div>
+              <div className='relative z-2'>{familydata.title}</div>
               <div
-                className="absolute top-0 left-0 w-full h-full z-0 opacity-0 group-hover:opacity-100"
+                className='absolute top-0 left-0 w-full h-full z-0 opacity-0 group-hover:opacity-100'
                 style={{ backgroundColor: familydata.bgColor.hex }}
               />
             </FancyLink>
           ))}
         </div>
-        <section className="w-full h-full flex flex-col relative mt-12 ">
+        <section className='w-full h-full flex flex-col relative mt-12 '>
           <div
-            className="relative w-full h-auto flex flex-wrap  "
-            id="family-image"
+            className='relative w-full h-auto flex flex-wrap  '
+            id='family-image'
           >
-            {dataFamilyImage.map((data, id) => (
+            {familyDataFixed.map((data, id) => (
               <FamilyImage
                 key={id}
                 store={familyListAPI[data.storeID]}
@@ -332,14 +337,14 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
         </section>
         {isMobile && (
           <section
-            className="sticky bottom-0 left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center mt-10"
-            id="family-button-mobile"
+            className='sticky bottom-0 left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center mt-10'
+            id='family-button-mobile'
           >
             {familyListAPI.map((familydata, id) => (
               <FancyLink
                 key={id}
                 destination={`/family/${familydata.slug.current}`}
-                className="relative -mb-4 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-5 font-bold uppercase last:mb-0"
+                className='relative -mb-4 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-5 font-bold uppercase last:mb-0'
                 style={{ backgroundColor: familydata.bgColor.hex }}
               >
                 {familydata.title}
@@ -350,24 +355,24 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
         <Footer />
       </motion.main>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `)
+  `);
   const familyAPI = await client.fetch(`
   *[_type == "family"]
-  `)
+  `);
   const familyListAPI = await client.fetch(`
   *[_type == "family_list"]
-  `)
+  `);
   return {
     props: {
       seoAPI,
       familyAPI,
       familyListAPI,
     },
-  }
+  };
 }
