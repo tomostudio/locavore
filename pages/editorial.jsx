@@ -1,51 +1,51 @@
-import { useEffect, useState } from 'react'
-import { NextSeo } from 'next-seo'
+import { useEffect, useState } from 'react';
+import { NextSeo } from 'next-seo';
 
-import { LazyMotion, domAnimation, m } from 'framer-motion'
-import { fade } from '@/helpers/preset/transitions'
+import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { fade } from '@/helpers/preset/transitions';
 
 // Layout
-import Layout from '@/components/modules/layout'
-import Container from '@/components/modules/container'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
+import Layout from '@/components/modules/layout';
+import Container from '@/components/modules/container';
+import Footer from '@/components/modules/footer';
+import HeaderGap from '@/components/modules/headerGap';
 
 // Components
-import StickyButton from '@/components/modules/stickyButton'
-import SEO from '@/components/utils/seo'
-import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard'
+import StickyButton from '@/components/modules/stickyButton';
+import SEO from '@/components/utils/seo';
+import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard';
 
 // Helpers
-import client from '@/helpers/sanity/client'
-import { toPlainText } from '@/helpers/functional/toPlainText'
-import urlFor from '@/helpers/sanity/urlFor'
-import { checkText } from '@/helpers/functional/checkText'
+import client from '@/helpers/sanity/client';
+import { toPlainText } from '@/helpers/functional/toPlainText';
+import urlFor from '@/helpers/sanity/urlFor';
+import { checkText } from '@/helpers/functional/checkText';
 
 export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
-  const [windowWidth, setWidth] = useState()
-  const [seo] = seoAPI
-  const [editorial] = editorialAPI
+  const [windowWidth, setWidth] = useState();
+  const [seo] = seoAPI;
+  const [editorial] = editorialAPI;
 
   const checkClosest = () => {
-    const today = new Date()
+    const today = new Date();
 
     const closest = issueAPI.reduce((a, b) => {
-      const adiff = new Date(a.date) - today
-      return adiff > 0 && adiff < new Date(b.date) - today ? a : b
-    })
+      const adiff = new Date(a.date) - today;
+      return adiff > 0 && adiff < new Date(b.date) - today ? a : b;
+    });
 
-    return closest
-  }
+    return closest;
+  };
 
   useEffect(() => {
-    setWidth(window.innerWidth)
-    window.scroll(0, 0)
-    window.addEventListener('resize', () => setWidth(window.innerWidth))
-    return () => {}
-  }, [])
+    setWidth(window.innerWidth);
+    window.scroll(0, 0);
+    window.addEventListener('resize', () => setWidth(window.innerWidth));
+    return () => {};
+  }, []);
 
   //Variable to toggle Coming Soon Style
-  const comingsoon = true
+  const comingsoon = true;
 
   return (
     <Layout>
@@ -85,11 +85,11 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
       />
 
       <LazyMotion features={domAnimation}>
-        <m.main initial="initial" animate="enter" exit="exit" variants={fade}>
+        <m.main initial='initial' animate='enter' exit='exit' variants={fade}>
           {/* Header Gap */}
           {/* Untuk Content */}
-          <section className="pb-10 w-full h-full flex flex-col">
-            <Container className="max-md:px-6">
+          <section className='pb-10 w-full h-full flex flex-col'>
+            <Container className='max-md:px-6'>
               {/* Sticky Container */}
               <div className={`relative w-full`}>
                 <div
@@ -100,19 +100,29 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                 >
                   <HeaderGap />
                   {/* Title */}
-                  <div className="mb-14">
-                    <h1 className="titlestyle">
+                  <div className='mb-14'>
+                    <h1 className='titlestyle'>
                       Editorial
-                      <span className="sub">Issues</span>Index
+                      <span className='sub'>Issues</span>Index
                     </h1>
                   </div>
+                  {/* // COMING SOON TEST */}
+                  <EditorialIssueCard
+                    comingsoon={true}
+                    title={'title'}
+                    date={'date'}
+                    className='mb-10'
+                    destination={`/editorial}`}
+                    imageThumbnail={`/placeholder/locavore-rintik-crop-11.jpg`}
+                  />
+                  {/* Cari Latest Post with Coming Soon Tag  */}
                   {new Date(checkClosest().date) > new Date() && (
                     <EditorialIssueCard
-                      comingsoon={true}
+                      comingsoon={true} // <- ini mesti di enable aja.
                       title={checkClosest().title}
                       date={checkClosest().date}
                       totalArticles={15}
-                      className="mb-10"
+                      className='mb-10'
                       destination={`/editorial/${checkClosest().slug.current}`}
                       imageThumbnail={urlFor(checkClosest().image).url()}
                       descriptions={
@@ -128,11 +138,45 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
               </div>
               {/* Card */}
               <div
-                id="editorialIssuesList"
+                id='editorialIssuesList'
                 className={`relative w-full h-full space-y-10 ${
                   new Date(checkClosest().date) > new Date() && 'comingsoonAdj'
                 }`}
               >
+                <EditorialIssueCard
+                  key={12}
+                  issueNo={1}
+                  title='title'
+                  date='date'
+                  dark={true} // toggle dark mode
+                  totalArticles={12}
+                  destination={`/editorial`}
+                  imageThumbnail={`/placeholder/locavore-rintik-crop-11.jpg`}
+                  descriptions={<p>description</p>}
+                />
+                <EditorialIssueCard
+                  key={1}
+                  issueNo={1}
+                  title='title'
+                  date='date'
+                  dark={false} // toggle dark mode
+                  totalArticles={12}
+                  destination={`/editorial`}
+                  imageThumbnail={`/placeholder/locavore-rintik-crop-11.jpg`}
+                  descriptions={<p>Testing</p>}
+                />
+                <EditorialIssueCard
+                  key={1}
+                  issueNo={1}
+                  title='title'
+                  date='date'
+                  dark={false}
+                  totalArticles={12}
+                  destination={`/editorial`}
+                  bgColor={'#F00'} // pilih warna kalo ga pake image.
+                  descriptions={<p>Testing</p>}
+                />
+                {/* Ini map aja yang ga ada tulisan coming soon  */}
                 {issueAPI.map(
                   (data, id) =>
                     new Date(checkClosest().date) > new Date() &&
@@ -172,20 +216,20 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                         }}
                         descriptions={<p>{toPlainText(data.description)}</p>}
                       />
-                    )),
+                    ))
                 )}
               </div>
             </Container>
           </section>
           {/* Button Sticky */}
-          <StickyButton destination="/editorial/search" arrow="right">
+          <StickyButton destination='/editorial/search' arrow='right'>
             SEARCH ALL ARTICLES
           </StickyButton>
           <Footer />
         </m.main>
       </LazyMotion>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
@@ -194,18 +238,18 @@ export async function getStaticProps() {
                       ...,
                       "articleCount": count(*[_type=='article' && references(^._id)])
                     }
-                    `)
+                    `);
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `)
+                    `);
   const editorialAPI = await client.fetch(`
                     *[_type == "editorial"]
-                    `)
+                    `);
   return {
     props: {
       issueAPI,
       seoAPI,
       editorialAPI,
     },
-  }
+  };
 }
