@@ -29,12 +29,18 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
   const checkClosest = () => {
     const today = new Date()
 
-    const closest = issueAPI.reduce((a, b) => {
-      const adiff = new Date(a.date) - today
-      return adiff > 0 && adiff < new Date(b.date) - today ? a : b
-    })
+    const dataSoon = issueAPI.filter((data) => data.comingSoon === true)
 
-    return closest
+    if (dataSoon.length > 0) {
+      const closest = dataSoon.reduce((a, b) => {
+        const adiff = new Date(a.date) - today
+        return adiff > 0 && adiff < new Date(b.date) - today ? a : b
+      })
+
+      return closest
+    } else {
+      return false
+    }
   }
 
   useEffect(() => {
@@ -94,6 +100,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
               <div className={`relative w-full`}>
                 <div
                   className={`w-full setflex-center  pt-10 ${
+                    checkClosest() &&
                     new Date(checkClosest().date) > new Date() &&
                     'comingsoonSticky'
                   }`}
@@ -106,65 +113,62 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                       <span className="sub">Issues</span>Index
                     </h1>
                   </div>
-                  {new Date(checkClosest().date) > new Date() && (
-                    <EditorialIssueCard
-                      comingsoon={true}
-                      title={checkClosest().title}
-                      date={checkClosest().date}
-                      totalArticles={15}
-                      className="mb-10"
-                      destination={`/editorial/${checkClosest().slug.current}`}
-                      imageThumbnail={urlFor(checkClosest().image).url()}
-                      descriptions={
-                        <p>{toPlainText(checkClosest().description)}</p>
-                      }
-                    />
-                  )}
+                  {checkClosest() &&
+                    new Date(checkClosest().date) > new Date() && (
+                      <EditorialIssueCard
+                        comingsoon={true}
+                        title={checkClosest().title}
+                        date={checkClosest().date}
+                        dark={checkClosest().dark}
+                        totalArticles={data.articleCount}
+                        className="mb-10"
+                        destination={`/editorial/${
+                          checkClosest().slug.current
+                        }`}
+                        imageThumbnail={
+                          checkClosest().thumbnail
+                            ? urlFor(checkClosest().thumbnail).url()
+                            : null
+                        }
+                        descriptions={
+                          <p>{toPlainText(checkClosest().description)}</p>
+                        }
+                      />
+                    )}
                 </div>
                 {/* Spacer */}
-                {new Date(checkClosest().date) > new Date() && (
-                  <div className={`stickySpacer`} />
-                )}
+                {checkClosest() &&
+                  new Date(checkClosest().date) > new Date() && (
+                    <div className={`stickySpacer`} />
+                  )}
               </div>
               {/* Card */}
               <div
                 id="editorialIssuesList"
                 className={`relative w-full h-full space-y-10 ${
-                  new Date(checkClosest().date) > new Date() && 'comingsoonAdj'
+                  checkClosest() &&
+                  new Date(checkClosest().date) > new Date() &&
+                  'comingsoonAdj'
                 }`}
               >
                 {issueAPI.map(
                   (data, id) =>
-                    new Date(checkClosest().date) > new Date() &&
-                    !(checkClosest().slug.current === data.slug.current) &&
-                    (data.title.toLowerCase() === 'under construction' ? (
+                    !(
+                      checkClosest() &&
+                      new Date(checkClosest().date) > new Date()
+                    ) && (
                       <EditorialIssueCard
                         key={id}
                         issueNo={id}
                         title={data.title}
                         date={data.date}
-                        dark={false}
-                        totalArticles={data.articleCount}
-                        destination={`/editorial/${data.slug.current}`}
-                        imageThumbnail={urlFor(data.image).url()}
-                        styleTitle={{
-                          fontSize:
-                            checkText(data.title, '3rem Whyte Inktrap') >
-                              windowWidth - 144 && '29px',
-                        }}
-                        descriptions={<p>{toPlainText(data.description)}</p>}
-                      />
-                    ) : (
-                      <EditorialIssueCard
-                        key={id}
-                        issueNo={id}
-                        title={data.title}
-                        date={data.date}
-                        dark={true}
+                        dark={data.dark}
                         bgColor={data.bgColor ? data.bgColor : '#fff'}
                         totalArticles={data.articleCount}
                         destination={`/editorial/${data.slug.current}`}
-                        imageThumbnail={urlFor(data.image).url()}
+                        imageThumbnail={
+                          data.thumbnail ? urlFor(data.thumbnail).url() : ''
+                        }
                         styleTitle={{
                           fontSize:
                             checkText(data.title, '3rem Whyte Inktrap') >
@@ -172,7 +176,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                         }}
                         descriptions={<p>{toPlainText(data.description)}</p>}
                       />
-                    )),
+                    ),
                 )}
               </div>
             </Container>
