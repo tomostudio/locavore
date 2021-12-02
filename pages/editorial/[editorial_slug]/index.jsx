@@ -21,6 +21,7 @@ import urlFor from '@/helpers/sanity/urlFor'
 import { toPlainText } from '@/helpers/functional/toPlainText'
 import checkMonth from '@/helpers/functional/checkMonth'
 
+
 export default function Index({ issueAPI, seoAPI }) {
   const router = useRouter()
   const [seo] = seoAPI

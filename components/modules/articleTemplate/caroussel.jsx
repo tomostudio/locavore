@@ -203,7 +203,7 @@ export default function Caroussel({ article, seo, nextArticle }) {
         )}
         thumbnail={urlFor(nextArticle.article.thumbnail).url()}
         alt={nextArticle.article.thumbnail.name}
-        destination={`/editorial/${nextArticle.editorial_slug}/article/${nextArticle.article.slug.current}`}
+        destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
       />
       {/* Button Sticky */}
       <StickyButton destination="/editorial/metamorphosis" arrow="left">

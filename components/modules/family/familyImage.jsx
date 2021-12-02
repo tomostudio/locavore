@@ -1,72 +1,73 @@
-import { useRef } from 'react'
-import Image from 'next/image'
-import FancyLink from '@/components/utils/fancyLink'
+import { useRef } from 'react';
+import Image from 'next/image';
+import FancyLink from '@/components/utils/fancyLink';
 
 const familyImage = ({ store, src, alt, position = '', name = '' }) => {
   function hexToRgb(hex) {
-    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
       ? [
           parseInt(result[1], 16),
           parseInt(result[2], 16),
           parseInt(result[3], 16),
         ]
-      : null
+      : null;
   }
 
-  const familyRef = useRef(null)
+  const familyRef = useRef(null);
 
+  console.log(store);
   return (
     <FancyLink
       data-store={store.slug.current}
       destination={`/family/${store.slug.current}`}
-      className="family-card"
+      className='family-card'
       ref={familyRef}
       onMouseEnter={(e) => {
-        familyRef.current.classList.add('show')
+        familyRef.current.classList.add('show');
       }}
       onMouseLeave={(e) => {
-        familyRef.current.classList.remove('show')
+        familyRef.current.classList.remove('show');
       }}
     >
       <Image
         src={src}
         alt={alt}
-        layout="fill"
-        loading="eager"
+        layout='fill'
+        loading='eager'
         priority={true}
-        objectFit="cover"
-        objectPosition="top"
+        objectFit='cover'
+        objectPosition='top'
       />
-      <div className="absolute w-full h-full top-0 left-0 flex flex-col items-center  text-center justify-center p-4 z-1">
+      <div className='absolute w-full h-full top-0 left-0 flex flex-col items-center  text-center justify-center p-4 z-1'>
         {position !== '' && name !== '' ? (
-          <span className="relative z-1 mb-auto font-serif text-sm font-bold">
+          <span className='relative z-1 mb-auto font-serif text-sm font-bold'>
             {name}
           </span>
         ) : (
           ''
         )}
-        <span className="font-bold text-lg leading-none text-center relative z-2">
+        <span className='font-bold text-lg leading-none text-center relative z-2'>
           {store.title}
         </span>
         {position !== '' && name !== '' ? (
-          <span className="relative z-1 mt-auto font-serif text-sm ">
+          <span className='relative z-1 mt-auto font-serif text-sm '>
             {position}
           </span>
         ) : (
           ''
         )}
         <div
-          className="absolute w-full h-full top-0 left-0 z-0 "
+          className='absolute w-full h-full top-0 left-0 z-0 '
           style={{
             backgroundColor: `rgba(${hexToRgb(
-              store.bgColor.hex ? store.bgColor.hex : '#FFFFFF',
+              store.bgColor.hex ? store.bgColor.hex : '#FFFFFF'
             )}, .9)`,
           }}
         />
       </div>
     </FancyLink>
-  )
-}
+  );
+};
 
-export default familyImage
+export default familyImage;

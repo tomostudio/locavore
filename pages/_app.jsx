@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import '@/styles/main.scss';
 import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
@@ -10,7 +11,9 @@ import Header from '@/components/modules/header.jsx';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-
+  useEffect(() => {
+    history.scrollRestoration = 'manual';
+  }, []);
   return (
     <>
       <DefaultSeo

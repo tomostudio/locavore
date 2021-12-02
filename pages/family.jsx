@@ -17,7 +17,6 @@ import { bp, isMobile } from '@/helpers/preset/breakpoints';
 import urlFor from '@/helpers/sanity/urlFor';
 import { fade } from '@/helpers/preset/transitions';
 import client from '@/helpers/sanity/client';
-import familyImage from '@/components/modules/family/familyImage';
 
 export default function Family({ seoAPI, familyAPI, familyListAPI }) {
   const [seo] = seoAPI;
@@ -57,84 +56,12 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
     },
   ];
 
-  // const familyImageData = [
-  //   {
-  //     storeID: 2,
-  //     src: '/placeholder/Additional-Locavore.jpg',
-  //     alt: 'Locavore',
-  //   },
-  //   {
-  //     storeID: 2,
-  //     src: '/placeholder/Additional-Locavore-2.jpg',
-  //     alt: 'Locavore Staff',
-  //   },
-  //   {
-  //     storeID: 1,
-  //     src: '/placeholder/Additional-Locavore-3.jpg',
-  //     alt: 'Locavore',
-  //   },
-  //   {
-  //     storeID: 1,
-  //     src: '/placeholder/Additional-Locavore-4.jpg',
-  //     alt: 'Locavore',
-  //   },
-  //   {
-  //     storeID: 0,
-  //     position: 'Executive Chef',
-  //     name: 'Eelke Plasmeijer',
-  //     src: '/placeholder/Additional-Locavore-5.jpg',
-  //     alt: 'Locavore',
-  //   },
-  //   {
-  //     storeID: 0,
-  //     position: 'Executive Chef',
-  //     name: 'Eelke Plasmeijer',
-  //     src: '/placeholder/Additional-Locavore-6.jpg',
-  //     alt: 'Locavore',
-  //   },
-  //   {
-  //     storeID: 3,
-  //     src: '/placeholder/Additional-Locavore-7.jpg',
-  //     alt: 'Locavore',
-  //   },
-  //   {
-  //     storeID: 3,
-  //     src: '/placeholder/Additional-Locavore-8.jpg',
-  //     alt: 'Locavore',
-  //   },
-  //   {
-  //     storeID: 4,
-  //     src: '/placeholder/Additional-Locavore-9.jpg',
-  //     alt: 'Locavore',
-  //   },
-  //   {
-  //     storeID: 4,
-  //     src: '/placeholder/Additional-Locavore-10.jpg',
-  //     alt: 'Locavore',
-  //   },
-  //   {
-  //     storeID: 5,
-  //     src: '/placeholder/Additional-Locavore-11.jpg',
-  //     alt: 'Locavore',
-  //   },
-  //   {
-  //     storeID: 5,
-  //     src: '/placeholder/Additional-Locavore-12.jpg',
-  //     alt: 'Locavore',
-  //   },
-  //   {
-  //     storeID: 5,
-  //     src: '/placeholder/Additional-Locavore-13.jpg',
-  //     alt: 'Locavore',
-  //   },
-  // ];
+  let familyImageAPI_split = [];
 
-  let familyImageData = [];
-  
-  familyListAPI.map((family, id) => {
-    family.member.map((memberData) => {
-      familyImageData.push({
-        ...memberData,
+  familyListAPI.map((item, id) => {
+    item.member.map((data) => {
+      familyImageAPI_split.push({
+        ...data,
         storeID: id,
       });
     });
@@ -160,7 +87,7 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
     return array;
   };
 
-  const [familyDataFixed, setFamilyData] = useState(familyImageData);
+  const [familyImageFixed, setFamilyData] = useState([]);
 
   // Mouse Leave & Enter for Family Button
   const familybutton_enter = (slug) => {
@@ -180,10 +107,16 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
   };
 
   let onWindow = 'none';
+
+  const row_data = {
+    mobile: 5,
+    tablet: 4,
+    desktop: 5,
+  };
   const resetData = () => {
     let triggerChange = false;
     let columnCount = 8;
-    let minRow = 3;
+    let minRow = row_data.desktop;
 
     if (window.innerWidth < bp.mobile) {
       // Mobile
@@ -191,7 +124,7 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
         onWindow = 'mobile';
         triggerChange = true;
         columnCount = 3;
-        minRow = 5;
+        minRow = row_data.mobile;
       }
     } else if (
       window.innerWidth >= bp.mobile &&
@@ -201,7 +134,7 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
       if (onWindow !== 'tablet') {
         onWindow = 'tablet';
         columnCount = 5;
-        minRow = 3;
+        minRow = row_data.tablet;
         triggerChange = true;
       }
     } else {
@@ -209,7 +142,7 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
       if (onWindow !== 'desktop') {
         onWindow = 'desktop';
         columnCount = 8;
-        minRow = 3;
+        minRow = row_data.desktop;
         triggerChange = true;
       }
     }
@@ -217,7 +150,7 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
     if (triggerChange) {
       triggerChange = false;
 
-      let _a = [...familyImageData]; // placeholder array
+      let _a = [...familyImageAPI_split]; // placeholder array
 
       let minData = columnCount * minRow; // get min data based on row and column
 
@@ -231,10 +164,14 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
           addData =
             Math.ceil(_a.length / columnCount) * columnCount - _a.length;
         }
-
         // add new data;
         for (let i = 0; i <= addData - 1; i++) {
-          _a.push(familyImageData[i]);
+          let dataIndex = i;
+          let multipler = Math.floor(i / familyImageAPI_split.length);
+          if (dataIndex >= familyImageAPI_split.length) {
+            dataIndex = i - familyImageAPI_split.length * multipler;
+          }
+          _a.push(familyImageAPI_split[dataIndex]);
         }
       }
       setFamilyData(shuffle(_a)); // apply data and shuffle
@@ -245,7 +182,6 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
     resetData();
     window.addEventListener('resize', resetData);
     window.scroll(0, 0);
-    console.log(familyImageData);
     return () => {
       window.removeEventListener('resize', resetData);
     };
@@ -323,16 +259,17 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
             className='relative w-full h-auto flex flex-wrap  '
             id='family-image'
           >
-            {familyDataFixed.map((data, id) => (
-              <FamilyImage
-                key={id}
-                store={familyListAPI[data.storeID]}
-                position={data.position || ''}
-                name={data.name || ''}
-                src={urlFor(data.image).url()}
-                alt={data.name}
-              />
-            ))}
+            {familyImageFixed !== [] &&
+              familyImageFixed.map((data, id) => (
+                <FamilyImage
+                  key={id}
+                  store={familyListAPI[data.storeID]}
+                  position={data.position || ''}
+                  name={data.name || ''}
+                  src={urlFor(data.image).url()}
+                  alt={data.name}
+                />
+              ))}
           </div>
         </section>
         {isMobile && (
