@@ -19,7 +19,6 @@ import Container from '@/components/modules/container';
 // Helpers
 import client from '@/helpers/sanity/client';
 import checkMonth from '@/helpers/functional/checkMonth';
-import { checkText } from '@/helpers/functional/checkText';
 import urlFor from '@/helpers/sanity/urlFor';
 import timeConvert from '@/helpers/functional/timeConvert';
 
