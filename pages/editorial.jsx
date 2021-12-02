@@ -19,7 +19,6 @@ import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCar
 import client from '@/helpers/sanity/client';
 import { toPlainText } from '@/helpers/functional/toPlainText';
 import urlFor from '@/helpers/sanity/urlFor';
-import { checkText } from '@/helpers/functional/checkText';
 
 export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
   const [seo] = seoAPI;
