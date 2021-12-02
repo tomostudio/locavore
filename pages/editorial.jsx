@@ -47,7 +47,6 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
 
   useEffect(() => {
     // check if coming soon is enabled or present
-    // history.scrollRestoration = 'manual';
 
     if (isComingSoon) {
       window.scrollTo(0, 315)
@@ -127,21 +126,6 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                         }
                       />
                     )}
-                  {/* Cari Latest Post with Coming Soon Tag  */}
-                  {/* {new Date(checkClosest().date) > new Date() && (
-                    <EditorialIssueCard
-                      comingsoon={true} // <- ini mesti di enable aja.
-                      title={checkClosest().title}
-                      date={checkClosest().date}
-                      totalArticles={15}
-                      className='mb-10'
-                      destination={`/editorial/${checkClosest().slug.current}`}
-                      imageThumbnail={urlFor(checkClosest().image).url()}
-                      descriptions={
-                        <p>{toPlainText(checkClosest().description)}</p>
-                      }
-                    />
-                  )} */}
                 </div>
                 {isComingSoon && new Date(checkClosest().date) > new Date() && (
                   <div className={`stickySpacer`} />
@@ -157,38 +141,12 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                     : ''
                 }`}
               >
-                {/* <EditorialIssueCard
-                  issueNo={1}
-                  title="title"
-                  date="date"
-                  dark={true} // toggle dark mode
-                  totalArticles={12}
-                  destination={`/editorial`}
-                  imageThumbnail={`/placeholder/locavore-rintik-crop-11.jpg`}
-                  descriptions={<p>description</p>}
-                />
-                <EditorialIssueCard
-                  issueNo={1}
-                  title="title"
-                  date="date"
-                  dark={false} // toggle dark mode
-                  totalArticles={12}
-                  destination={`/editorial`}
-                  imageThumbnail={`/placeholder/locavore-rintik-crop-11.jpg`}
-                  descriptions={<p>Testing</p>}
-                />
-                <EditorialIssueCard
-                  issueNo={1}
-                  title="title"
-                  date="date"
-                  dark={false}
-                  totalArticles={12}
-                  destination={`/editorial`}
-                  bgColor={'#F00'} // pilih warna kalo ga pake image.
-                  descriptions={<p>Testing</p>}
-                /> */}
                 {/* Ini map aja yang ga ada tulisan coming soon  */}
+<<<<<<< HEAD
                 {issueAPI.slice(0).reverse().map(
+=======
+                {issueAPI.reverse().map(
+>>>>>>> 618e55e5b2aae5db13df4154986eb2dc578bf5b7
                   (data, id) =>
                     !data.comingSoon && (
                       <EditorialIssueCard
