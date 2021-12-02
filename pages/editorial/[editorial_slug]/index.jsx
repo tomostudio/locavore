@@ -21,12 +21,16 @@ import urlFor from '@/helpers/sanity/urlFor'
 import { toPlainText } from '@/helpers/functional/toPlainText'
 import checkMonth from '@/helpers/functional/checkMonth'
 
-
-export default function Index({ issueAPI, seoAPI }) {
+export default function Index({ issueAPI, seoAPI, editorial_slug }) {
   const router = useRouter()
   const [seo] = seoAPI
-  const [issue] = issueAPI
-  const dark = issue.title.toLowerCase() === 'under construction' ? false : true
+  let issue
+  issueAPI.forEach((data, id) => {
+    if (data.slug.current === editorial_slug) {
+      issue = { ...data, issueNo: id }
+    }
+  })
+  const dark = issue.dark
   const containerRef = useRef(null)
   const appContext = useAppContext()
 
@@ -270,7 +274,7 @@ export default function Index({ issueAPI, seoAPI }) {
               id="issueNoInside"
               className="content-issue font-serif font-normal italic text-5xl"
             >
-              Issue {issue.order}
+              Issue {issue.issueNo}
             </span>
             <h1 className="title-issue font-sans font-normal text-8xl">
               {issue.title}
@@ -288,7 +292,7 @@ export default function Index({ issueAPI, seoAPI }) {
                 dark ? 'text-white' : 'text-black'
               }`}
             >
-              ISSUE {issue.order}
+              ISSUE {issue.issueNo}
             </span>
           </Container>
         </div>
@@ -423,9 +427,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const editorial_slug = params.editorial_slug
   const issueAPI = await client.fetch(
     `
-      *[_type == "issue" && slug.current == "${params.editorial_slug}"] 
+      *[_type == "issue"] 
     `,
   )
   const seoAPI = await client.fetch(`
@@ -435,6 +440,7 @@ export async function getStaticProps({ params }) {
     props: {
       issueAPI,
       seoAPI,
+      editorial_slug,
     },
   }
 }

@@ -26,9 +26,14 @@ import timeConvert from '@/helpers/functional/timeConvert';
 // install Swiper modules
 SwiperCore.use([Pagination]);
 
-export default function Issue({ issueAPI, seoAPI }) {
+export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
   const router = useRouter();
-  const [issue] = issueAPI;
+  let issue;
+  issueAPI.forEach((data, id) => {
+    if (data.slug.current === editorial_slug) {
+      issue = { ...data, issueNo: id };
+    }
+  });
   const [seo] = seoAPI;
 
   const articleRef = useRef([]);
@@ -170,7 +175,7 @@ export default function Issue({ issueAPI, seoAPI }) {
         <Container className='max-md:px-6'>
           <div className='w-full h-full setflex-center'>
             <span className='font-serif italic text-xl'>
-              Issue {issue.order} —{' '}
+              Issue {issue.issueNo} —{' '}
               {checkMonth(new Date(issue.date).getMonth())}{' '}
               {new Date(issue.date).getFullYear()}
             </span>
@@ -204,7 +209,7 @@ export default function Issue({ issueAPI, seoAPI }) {
                   >
                     <ArticleCard
                       bgColor={data.category.color.hex}
-                      title={`${data.order}. ${data.title}`}
+                      title={`${id}. ${data.title}`}
                       category={data.category.title}
                       timeRead={timeConvert(
                         data.timeReadBlog ? data.timeReadBlog : data.timeRead
@@ -260,9 +265,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const editorial_slug = params.editorial_slug;
   const issueAPI = await client.fetch(
     `
-        *[_type == "issue" && slug.current == "${params.editorial_slug}"] {
+        *[_type == "issue"] {
           ...,
           "article": *[_type=='article' && references(^._id)] {
             ...,
@@ -280,6 +286,7 @@ export async function getStaticProps({ params }) {
     props: {
       issueAPI,
       seoAPI,
+      editorial_slug,
     },
   };
 }
