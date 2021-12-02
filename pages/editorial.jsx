@@ -22,9 +22,10 @@ import urlFor from '@/helpers/sanity/urlFor';
 import { checkText } from '@/helpers/functional/checkText';
 
 export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
-  const [windowWidth, setWidth] = useState();
   const [seo] = seoAPI;
   const [editorial] = editorialAPI;
+
+  const isComingSoon = true; // tanda if there is a comingsoon card or not
 
   const checkClosest = () => {
     const today = new Date();
@@ -38,14 +39,19 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
   };
 
   useEffect(() => {
-    setWidth(window.innerWidth);
-    window.scroll(0, 0);
-    window.addEventListener('resize', () => setWidth(window.innerWidth));
+    // check if coming soon is enabled or present
+    // history.scrollRestoration = 'manual';
+
+    if (isComingSoon) {
+      window.scrollTo(0, 315);
+      console.log(' coming soon');
+    } else {
+      window.scrollTo(0, 0);
+      console.log('non coming soon');
+    }
+
     return () => {};
   }, []);
-
-  //Variable to toggle Coming Soon Style
-  const comingsoon = true;
 
   return (
     <Layout>
@@ -93,10 +99,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
               {/* Sticky Container */}
               <div className={`relative w-full`}>
                 <div
-                  className={`w-full setflex-center  pt-10 ${
-                    new Date(checkClosest().date) > new Date() &&
-                    'comingsoonSticky'
-                  }`}
+                  className={`w-full setflex-center  pt-10 comingsoonSticky`}
                 >
                   <HeaderGap />
                   {/* Title */}
@@ -107,16 +110,18 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                     </h1>
                   </div>
                   {/* // COMING SOON TEST */}
-                  <EditorialIssueCard
-                    comingsoon={true}
-                    title={'title'}
-                    date={'date'}
-                    className='mb-10'
-                    destination={`/editorial}`}
-                    imageThumbnail={`/placeholder/locavore-rintik-crop-11.jpg`}
-                  />
+                  {isComingSoon && (
+                    <EditorialIssueCard
+                      comingsoon={true}
+                      title={'title'}
+                      date={'date'}
+                      className='mb-10'
+                      destination={`/editorial}`}
+                      imageThumbnail={`/placeholder/locavore-rintik-crop-11.jpg`}
+                    />
+                  )}
                   {/* Cari Latest Post with Coming Soon Tag  */}
-                  {new Date(checkClosest().date) > new Date() && (
+                  {/* {new Date(checkClosest().date) > new Date() && (
                     <EditorialIssueCard
                       comingsoon={true} // <- ini mesti di enable aja.
                       title={checkClosest().title}
@@ -129,22 +134,19 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                         <p>{toPlainText(checkClosest().description)}</p>
                       }
                     />
-                  )}
+                  )} */}
                 </div>
+                {isComingSoon && <div className={`stickySpacer`} />}
                 {/* Spacer */}
-                {new Date(checkClosest().date) > new Date() && (
-                  <div className={`stickySpacer`} />
-                )}
               </div>
               {/* Card */}
               <div
                 id='editorialIssuesList'
                 className={`relative w-full h-full space-y-10 ${
-                  new Date(checkClosest().date) > new Date() && 'comingsoonAdj'
+                  isComingSoon ? 'comingsoonMargin' : ''
                 }`}
               >
                 <EditorialIssueCard
-                  key={12}
                   issueNo={1}
                   title='title'
                   date='date'
@@ -155,7 +157,6 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                   descriptions={<p>description</p>}
                 />
                 <EditorialIssueCard
-                  key={1}
                   issueNo={1}
                   title='title'
                   date='date'
@@ -166,7 +167,6 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                   descriptions={<p>Testing</p>}
                 />
                 <EditorialIssueCard
-                  key={1}
                   issueNo={1}
                   title='title'
                   date='date'
@@ -191,11 +191,6 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                         totalArticles={data.articleCount}
                         destination={`/editorial/${data.slug.current}`}
                         imageThumbnail={urlFor(data.image).url()}
-                        styleTitle={{
-                          fontSize:
-                            checkText(data.title, '3rem Whyte Inktrap') >
-                              windowWidth - 144 && '29px',
-                        }}
                         descriptions={<p>{toPlainText(data.description)}</p>}
                       />
                     ) : (
@@ -209,11 +204,6 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                         totalArticles={data.articleCount}
                         destination={`/editorial/${data.slug.current}`}
                         imageThumbnail={urlFor(data.image).url()}
-                        styleTitle={{
-                          fontSize:
-                            checkText(data.title, '3rem Whyte Inktrap') >
-                              windowWidth - 144 && '29px',
-                        }}
                         descriptions={<p>{toPlainText(data.description)}</p>}
                       />
                     ))

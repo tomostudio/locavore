@@ -116,7 +116,6 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
   const resetData = () => {
     let triggerChange = false;
     let columnCount = 8;
-    console.log(row_data);
     let minRow = row_data.desktop;
 
     if (window.innerWidth < bp.mobile) {
