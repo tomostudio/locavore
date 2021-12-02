@@ -22,9 +22,12 @@ import urlFor from '@/helpers/sanity/urlFor'
 import { checkText } from '@/helpers/functional/checkText'
 
 export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
-  const [windowWidth, setWidth] = useState()
   const [seo] = seoAPI
   const [editorial] = editorialAPI
+
+  const dataSoon = issueAPI.filter((data) => data.comingSoon === true)
+
+  const isComingSoon = dataSoon.length > 0 ? true : false // tanda if there is a comingsoon card or not
 
   const checkClosest = () => {
     const today = new Date()
@@ -44,14 +47,19 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
   }
 
   useEffect(() => {
-    setWidth(window.innerWidth)
-    window.scroll(0, 0)
-    window.addEventListener('resize', () => setWidth(window.innerWidth))
+    // check if coming soon is enabled or present
+    // history.scrollRestoration = 'manual';
+
+    if (isComingSoon) {
+      window.scrollTo(0, 315)
+      console.log(' coming soon')
+    } else {
+      window.scrollTo(0, 0)
+      console.log('non coming soon')
+    }
+
     return () => {}
   }, [])
-
-  //Variable to toggle Coming Soon Style
-  const comingsoon = true
 
   return (
     <Layout>
@@ -99,11 +107,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
               {/* Sticky Container */}
               <div className={`relative w-full`}>
                 <div
-                  className={`w-full setflex-center  pt-10 ${
-                    checkClosest() &&
-                    new Date(checkClosest().date) > new Date() &&
-                    'comingsoonSticky'
-                  }`}
+                  className={`w-full setflex-center  pt-10 comingsoonSticky`}
                 >
                   <HeaderGap />
                   {/* Title */}
@@ -113,14 +117,18 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                       <span className="sub">Issues</span>Index
                     </h1>
                   </div>
-                  {checkClosest() &&
+                  {/* // COMING SOON TEST */}
+                  {isComingSoon &&
                     new Date(checkClosest().date) > new Date() && (
                       <EditorialIssueCard
                         comingsoon={true}
                         title={checkClosest().title}
                         date={checkClosest().date}
                         dark={checkClosest().dark}
-                        totalArticles={data.articleCount}
+                        bgColor={
+                          !checkClosest().thumbnail &&
+                          checkClosest().bgColor.hex
+                        }
                         className="mb-10"
                         destination={`/editorial/${
                           checkClosest().slug.current
@@ -130,50 +138,84 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                             ? urlFor(checkClosest().thumbnail).url()
                             : null
                         }
-                        descriptions={
-                          <p>{toPlainText(checkClosest().description)}</p>
-                        }
                       />
                     )}
+                  {/* Cari Latest Post with Coming Soon Tag  */}
+                  {/* {new Date(checkClosest().date) > new Date() && (
+                    <EditorialIssueCard
+                      comingsoon={true} // <- ini mesti di enable aja.
+                      title={checkClosest().title}
+                      date={checkClosest().date}
+                      totalArticles={15}
+                      className='mb-10'
+                      destination={`/editorial/${checkClosest().slug.current}`}
+                      imageThumbnail={urlFor(checkClosest().image).url()}
+                      descriptions={
+                        <p>{toPlainText(checkClosest().description)}</p>
+                      }
+                    />
+                  )} */}
                 </div>
+                {isComingSoon && new Date(checkClosest().date) > new Date() && (
+                  <div className={`stickySpacer`} />
+                )}
                 {/* Spacer */}
-                {checkClosest() &&
-                  new Date(checkClosest().date) > new Date() && (
-                    <div className={`stickySpacer`} />
-                  )}
               </div>
               {/* Card */}
               <div
                 id="editorialIssuesList"
                 className={`relative w-full h-full space-y-10 ${
-                  checkClosest() &&
-                  new Date(checkClosest().date) > new Date() &&
-                  'comingsoonAdj'
+                  isComingSoon && new Date(checkClosest().date) > new Date()
+                    ? 'comingsoonMargin'
+                    : ''
                 }`}
               >
+                {/* <EditorialIssueCard
+                  issueNo={1}
+                  title="title"
+                  date="date"
+                  dark={true} // toggle dark mode
+                  totalArticles={12}
+                  destination={`/editorial`}
+                  imageThumbnail={`/placeholder/locavore-rintik-crop-11.jpg`}
+                  descriptions={<p>description</p>}
+                />
+                <EditorialIssueCard
+                  issueNo={1}
+                  title="title"
+                  date="date"
+                  dark={false} // toggle dark mode
+                  totalArticles={12}
+                  destination={`/editorial`}
+                  imageThumbnail={`/placeholder/locavore-rintik-crop-11.jpg`}
+                  descriptions={<p>Testing</p>}
+                />
+                <EditorialIssueCard
+                  issueNo={1}
+                  title="title"
+                  date="date"
+                  dark={false}
+                  totalArticles={12}
+                  destination={`/editorial`}
+                  bgColor={'#F00'} // pilih warna kalo ga pake image.
+                  descriptions={<p>Testing</p>}
+                /> */}
+                {/* Ini map aja yang ga ada tulisan coming soon  */}
                 {issueAPI.map(
                   (data, id) =>
-                    !(
-                      checkClosest() &&
-                      new Date(checkClosest().date) > new Date()
-                    ) && (
+                    !data.comingsoon && (
                       <EditorialIssueCard
                         key={id}
                         issueNo={id}
                         title={data.title}
                         date={data.date}
                         dark={data.dark}
-                        bgColor={data.bgColor ? data.bgColor : '#fff'}
+                        bgColor={!data.thumbnail ? data.bgColor.hex : null}
                         totalArticles={data.articleCount}
                         destination={`/editorial/${data.slug.current}`}
                         imageThumbnail={
-                          data.thumbnail ? urlFor(data.thumbnail).url() : ''
+                          data.thumbnail ? urlFor(data.thumbnail).url() : null
                         }
-                        styleTitle={{
-                          fontSize:
-                            checkText(data.title, '3rem Whyte Inktrap') >
-                              windowWidth - 144 && '29px',
-                        }}
                         descriptions={<p>{toPlainText(data.description)}</p>}
                       />
                     ),
