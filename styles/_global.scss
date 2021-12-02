@@ -96,6 +96,28 @@ $issuecardgap: 40px;
   max-width: $issuecard-width * 3 + $issuecardgap * 2;
 }
 
+// ISSUE LIST
+.issue_container {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: visible !important;
+  white-space: nowrap;
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    width: calc((100vw - #{$card-width + 20px}) / 2);
+    height: 100%;
+    flex-shrink: 0;
+  }
+  & .article_wrapper {
+    padding: 30px 0px;
+    & > a {
+      display: block;
+    }
+  }
+}
+
 // Family
 
 .family-card {
@@ -156,9 +178,7 @@ $issuecardgap: 40px;
   aspect-ratio: 1;
 }
 
-
 // UTILS
-
 #social {
   & > a {
     position: relative;

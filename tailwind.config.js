@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  // mode: 'jit',
+  mode: 'jit',
   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: false,
   theme: {
@@ -86,6 +86,9 @@ module.exports = {
         '56rem': '56rem',
         '60rem': '60rem',
         content: '46rem',
+        's-30': '30vw',
+        's-40': '40vw',
+        's-50': '50vw',
       },
       colors: {
         culture: '#D66A51',
@@ -109,15 +112,15 @@ module.exports = {
       },
       zIndex: {
         min1: '-1',
-        '1': '1',
-        '2': '2',
-        '3': '3',
-        '4': '4',
-        '5': '5',
-        '6': '6',
-        '7': '7',
-        '8': '8',
-        '9': '9',
+        1: '1',
+        2: '2',
+        3: '3',
+        4: '4',
+        5: '5',
+        6: '6',
+        7: '7',
+        8: '8',
+        9: '9',
       },
       borderRadius: {
         '50%': '50%',
@@ -131,7 +134,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      top: ['hover'],
+    },
     margin: ['responsive', 'hover', 'first', 'last'],
   },
   plugins: [
