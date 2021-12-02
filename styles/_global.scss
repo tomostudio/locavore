@@ -1,4 +1,4 @@
-@import '_utils.scss';
+@import "_utils.scss";
 
 #link {
   @apply cursor-pointer px-3 bg-lightGray bg-opacity-70;
@@ -104,11 +104,19 @@ $issuecardgap: 40px;
   white-space: nowrap;
   &::before,
   &::after {
-    content: '';
+    content: "";
     display: block;
     width: calc((100vw - #{$card-width + 20px}) / 2);
     height: 100%;
     flex-shrink: 0;
+  }
+
+  &.noscroll {
+    justify-content: center;
+    &::before,
+    &::after {
+      width: 0px;
+    }
   }
   & .article_wrapper {
     padding: 30px 0px;
@@ -116,6 +124,11 @@ $issuecardgap: 40px;
       display: block;
     }
   }
+}
+
+.issueindicator.noscroll {
+  transform: translateX(-50%) !important;
+  left: 50%;
 }
 
 // Family
@@ -131,7 +144,7 @@ $issuecardgap: 40px;
     width: calc(100% / 3);
   }
   &::after {
-    content: '';
+    content: "";
     display: block;
     padding-bottom: 100%;
   }
@@ -184,7 +197,7 @@ $issuecardgap: 40px;
     position: relative;
     width: 100%;
     &::after {
-      content: '';
+      content: "";
       display: block;
       padding-bottom: 100%;
     }

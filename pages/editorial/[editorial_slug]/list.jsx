@@ -30,6 +30,7 @@ export default function Issue({ issueAPI, seoAPI }) {
   const router = useRouter();
   const [issue] = issueAPI;
   const [seo] = seoAPI;
+
   const articleRef = useRef([]);
   const scrollInd = useRef(null);
   const scrollContainer = useRef(null);
@@ -54,7 +55,7 @@ export default function Issue({ issueAPI, seoAPI }) {
       }deg)`;
 
       // set center item
-      if (fromCenter > -10 && fromCenter < 10) {
+      if (fromCenter > -15 && fromCenter < 15) {
         setCenterCard(id + 1);
       }
     });
@@ -69,17 +70,45 @@ export default function Issue({ issueAPI, seoAPI }) {
           10000
         )
       ) / 100;
+
     const indWidth = scrollInd.current.offsetWidth;
     const parentWidth = scrollInd.current.parentElement.offsetWidth;
     const scrollMove = (parentWidth - indWidth) * (currentScroll / 100);
     scrollInd.current.style.transform = `translateX(${scrollMove}px)`;
+
+    console.log(
+      scrollContainer.current.scrollLeft,
+      scrollContainer.current.scroll
+    );
+  };
+
+  const [scrollStyle, setScrollStyle] = useState('normal');
+
+  const detectLength = () => {
+    if (articleRef.current.length <= 2) {
+      setScrollStyle('noscroll');
+    } else {
+      let totalWidth = 0;
+      articleRef.current.forEach((a) => {
+        totalWidth += a.offsetWidth;
+      });
+      setScrollStyle('normal');
+      if (totalWidth < window.innerWidth - 300) {
+        const centerPos =
+          (scrollContainer.current.scrollWidth - window.innerWidth) / 2;
+        scrollContainer.current.scrollLeft = centerPos;
+      }
+    }
   };
 
   useEffect(() => {
     window.scroll(0, 0);
+    detectLength();
     updateScroll();
-
-    // check article card count & container size
+    window.addEventListener('resize', detectLength, true);
+    return () => {
+      window.removeEventListener('resize', detectLength, true);
+    };
   }, []);
 
   return (
@@ -154,7 +183,7 @@ export default function Issue({ issueAPI, seoAPI }) {
          */}
         <div className='w-full flex' id='editorial-slider'>
           <ScrollContainer
-            className='issue_container flex w-full space-x-7 px-7 hide-scrollbar'
+            className={`issue_container flex w-full space-x-7 px-7 hide-scrollbar ${scrollStyle}`}
             horizontal={true}
             vertical={false}
             hideScrollbars={false}
@@ -162,30 +191,32 @@ export default function Issue({ issueAPI, seoAPI }) {
             innerRef={scrollContainer}
             nativeMobileScroll={true}
           >
-            {issue.article.map((data, id) => (
-              <div
-                className='article_wrapper'
-                key={id}
-                ref={(el) => (articleRef.current[id] = el)}
-              >
-                <FancyLink
-                  destination={`/editorial/${issue.slug.current}/${data.slug.current}`}
-                  className={`group`}
+            {issue.article.map((data, id) => {
+              return (
+                <div
+                  className='article_wrapper'
+                  key={id}
+                  ref={(el) => (articleRef.current[id] = el)}
                 >
-                  <ArticleCard
-                    bgColor={data.category.color.hex}
-                    title={`${data.order}. ${data.title}`}
-                    category={data.category.title}
-                    timeRead={timeConvert(
-                      data.timeReadBlog ? data.timeReadBlog : data.timeRead
-                    )}
-                    src={urlFor(data.thumbnail).url()}
-                    alt={data.thumbnail.name}
+                  <FancyLink
+                    destination={`/editorial/${issue.slug.current}/${data.slug.current}`}
                     className={`group`}
-                  />
-                </FancyLink>
-              </div>
-            ))}
+                  >
+                    <ArticleCard
+                      bgColor={data.category.color.hex}
+                      title={`${data.order}. ${data.title}`}
+                      category={data.category.title}
+                      timeRead={timeConvert(
+                        data.timeReadBlog ? data.timeReadBlog : data.timeRead
+                      )}
+                      src={urlFor(data.thumbnail).url()}
+                      alt={data.thumbnail.name}
+                      className={`group`}
+                    />
+                  </FancyLink>
+                </div>
+              );
+            })}
           </ScrollContainer>
         </div>
         {/* Lower Information */}
@@ -200,7 +231,7 @@ export default function Issue({ issueAPI, seoAPI }) {
               <div className='relative border-b w-s-50 max-w-sm max-md:w-full h-px border-black'>
                 <div
                   ref={scrollInd}
-                  className='absolute w-8 h-1 -top-px border border-black bg-black'
+                  className={`absolute w-8 h-1 -top-px border border-black bg-black issueindicator ${scrollStyle}`}
                 />
               </div>
             </div>
