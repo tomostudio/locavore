@@ -16,9 +16,9 @@ import SEO from '@/components/utils/seo'
 import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard'
 
 // Helpers
-import client from '@/helpers/sanity/client';
-import { toPlainText } from '@/helpers/functional/toPlainText';
-import urlFor from '@/helpers/sanity/urlFor';
+import client from '@/helpers/sanity/client'
+import { toPlainText } from '@/helpers/functional/toPlainText'
+import urlFor from '@/helpers/sanity/urlFor'
 
 export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
   const [seo] = seoAPI
@@ -65,35 +65,23 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
       <SEO
         seo={{
           title: 'Editorial',
-          webTitle: typeof seo !== 'undefined' ? seo.webTitle : '',
+          webTitle: seo.webTitle && seo.webTitle,
           description:
-            typeof editorial !== 'undefined' &&
-            typeof editorial.seo !== 'undefined'
+            editorial && editorial.seo && editorial.seo.seo_description
               ? editorial.seo.seo_description
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_description
-              : '',
+              : seo.seo && seo.seo.seo_description,
           meta_keywords:
-            typeof editorial !== 'undefined' &&
-            typeof editorial.seo !== 'undefined'
+            editorial && editorial.seo && editorial.seo.seo_keywords
               ? editorial.seo.seo_keywords
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_keywords
-              : '',
+              : seo.seo.seo_keywords && seo.seo.seo_keywords,
           image:
-            typeof editorial !== 'undefined' &&
-            typeof editorial.seo !== 'undefined'
+            editorial && editorial.seo && editorial.seo.seo_image
               ? urlFor(editorial.seo.seo_image).url()
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? urlFor(seo.seo.seo_image).url()
-              : '',
+              : seo.seo && seo.seo.seo_image && urlFor(seo.seo.seo_image).url(),
           image_alt:
-            typeof editorial !== 'undefined' &&
-            typeof editorial.seo !== 'undefined'
+            editorial && editorial.seo && editorial.seo.seo_image.name
               ? editorial.seo.seo_image.name
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_image.name
-              : '',
+              : seo.seo && seo.seo.seo_image.name && seo.seo.seo_image.name,
         }}
       />
 
@@ -200,12 +188,12 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                   descriptions={<p>Testing</p>}
                 /> */}
                 {/* Ini map aja yang ga ada tulisan coming soon  */}
-                {issueAPI.map(
+                {issueAPI.slice(0).reverse().map(
                   (data, id) =>
-                    !data.comingsoon && (
+                    !data.comingSoon && (
                       <EditorialIssueCard
                         key={id}
-                        issueNo={id}
+                        issueNo={(issueAPI.length - 1) - id}
                         title={data.title}
                         date={data.date}
                         dark={data.dark}

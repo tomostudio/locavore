@@ -54,50 +54,24 @@ export default function Blog({ article, seo, nextArticle }) {
       <SEO
         seo={{
           title: article.title,
-          webTitle:
-            typeof seo !== 'undefined' && seo.webTitle ? seo.webTitle : '',
+          webTitle: seo.webTitle ? seo.webTitle : '',
           pagelink: router.pathname,
           description:
-            typeof article.seo !== 'undefined' &&
-            typeof article.seo.seo_description !== 'undefined' &&
-            article.seo.seo_description
+            article.seo && article.seo.seo_description
               ? article.seo.seo_description
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_description !== 'undefined' &&
-                seo.seo.seo_description
-              ? seo.seo.seo_description
-              : '',
+              : seo.seo && seo.seo.seo_description && seo.seo.seo_description,
           meta_keywords:
-            typeof article.seo !== 'undefined' &&
-            typeof article.seo.seo_keywords !== 'undefined' &&
-            article.seo.seo_keywords
+            article.seo && article.seo.seo_keywords
               ? article.seo.seo_keywords
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_keywords !== 'undefined' &&
-                seo.seo.seo_keywords
-              ? seo.seo.seo_keywords
-              : '',
+              : seo.seo && seo.seo.seo_keywords && seo.seo.seo_keywords,
           image:
-            typeof article.seo !== 'undefined' &&
-            typeof article.seo.seo_image !== 'undefined' &&
-            article.seo.seo_image
+            article.seo && article.seo.seo_image
               ? urlFor(article.seo.seo_image).url()
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_image !== 'undefined' &&
-                seo.seo.seo_image
-              ? urlFor(seo.seo.seo_image).url()
-              : '',
+              : seo.seo && seo.seo.seo_image && urlFor(seo.seo.seo_image).url(),
           image_alt:
-            typeof article.seo !== 'undefined' &&
-            typeof article.seo.seo_image !== 'undefined' &&
-            typeof article.seo.seo_image.name !== 'undefined' &&
-            article.seo.seo_image.name
+            article.seo && article.seo.seo_image.name
               ? article.seo.seo_image.name
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_image !== 'undefined' &&
-                seo.seo.seo_image.name
-              ? seo.seo.seo_image.name
-              : '',
+              : seo.seo && seo.seo.seo_image.name && seo.seo.seo_image.name,
         }}
       />
       <Navbar
@@ -269,7 +243,7 @@ export default function Blog({ article, seo, nextArticle }) {
                 <div className="w-full setflex-center">
                   <div className="relative w-full h-36rem">
                     <Image
-                      src={urlFor(data).url()}
+                      src={urlFor(data.image).url()}
                       alt={data.name}
                       className="rounded-xl"
                       layout="fill"
