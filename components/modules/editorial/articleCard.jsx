@@ -19,7 +19,7 @@ const ArticleCard = ({
         borderColor: border ? '#000' : 'transparent',
       }}
     >
-      <h3 className='text-3xl m-0 p-0'>{title}</h3>
+      <h3 className='text-3xl m-0 p-0 whitespace-normal'>{title}</h3>
       <div className='pb-2 mt-5 w-full flex justify-between border-b border-black text-sm'>
         <span>{category}</span>
         <span className='font-serif italic text-base'>{timeRead}</span>

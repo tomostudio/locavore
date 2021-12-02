@@ -5,16 +5,16 @@ import ScrollContainer from 'react-indiana-drag-scroll';
 import { useRouter } from 'next/router';
 
 // Layout
-import Layout from '@/components/modules/layout'
-import HeaderGap from '@/components/modules/headerGap'
-import Footer from '@/components/modules/footer'
+import Layout from '@/components/modules/layout';
+import HeaderGap from '@/components/modules/headerGap';
+import Footer from '@/components/modules/footer';
 
 // Components
-import ArticleCard from '@/components/modules/editorial/articleCard'
-import SEO from '@/components/utils/seo'
-import FancyLink from '@/components/utils/fancyLink'
-import StickyButton from '@/components/modules/stickyButton'
-import Container from '@/components/modules/container'
+import ArticleCard from '@/components/modules/editorial/articleCard';
+import SEO from '@/components/utils/seo';
+import FancyLink from '@/components/utils/fancyLink';
+import StickyButton from '@/components/modules/stickyButton';
+import Container from '@/components/modules/container';
 
 // Helpers
 import client from '@/helpers/sanity/client';
@@ -24,17 +24,18 @@ import urlFor from '@/helpers/sanity/urlFor';
 import timeConvert from '@/helpers/functional/timeConvert';
 
 // install Swiper modules
-SwiperCore.use([Pagination])
+SwiperCore.use([Pagination]);
 
 export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
   const router = useRouter();
-  let issue
+  let issue;
   issueAPI.forEach((data, id) => {
     if (data.slug.current === editorial_slug) {
-      issue = { ...data, issueNo: id }
+      issue = { ...data, issueNo: id };
     }
-  })
+  });
   const [seo] = seoAPI;
+
   const articleRef = useRef([]);
   const scrollInd = useRef(null);
   const scrollContainer = useRef(null);
@@ -59,7 +60,7 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
       }deg)`;
 
       // set center item
-      if (fromCenter > -10 && fromCenter < 10) {
+      if (fromCenter > -15 && fromCenter < 15) {
         setCenterCard(id + 1);
       }
     });
@@ -74,17 +75,45 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
           10000
         )
       ) / 100;
+
     const indWidth = scrollInd.current.offsetWidth;
     const parentWidth = scrollInd.current.parentElement.offsetWidth;
     const scrollMove = (parentWidth - indWidth) * (currentScroll / 100);
     scrollInd.current.style.transform = `translateX(${scrollMove}px)`;
+
+    console.log(
+      scrollContainer.current.scrollLeft,
+      scrollContainer.current.scroll
+    );
+  };
+
+  const [scrollStyle, setScrollStyle] = useState('normal');
+
+  const detectLength = () => {
+    if (articleRef.current.length <= 2) {
+      setScrollStyle('noscroll');
+    } else {
+      let totalWidth = 0;
+      articleRef.current.forEach((a) => {
+        totalWidth += a.offsetWidth;
+      });
+      setScrollStyle('normal');
+      if (totalWidth < window.innerWidth - 300) {
+        const centerPos =
+          (scrollContainer.current.scrollWidth - window.innerWidth) / 2;
+        scrollContainer.current.scrollLeft = centerPos;
+      }
+    }
   };
 
   useEffect(() => {
     window.scroll(0, 0);
+    detectLength();
     updateScroll();
-
-    // check article card count & container size
+    window.addEventListener('resize', detectLength, true);
+    return () => {
+      window.removeEventListener('resize', detectLength, true);
+    };
   }, []);
 
   return (
@@ -141,11 +170,11 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <section className="py-10 w-full h-full flex flex-col space-y-10">
+      <section className='py-10 w-full h-full flex flex-col space-y-10'>
         {/* Title */}
-        <Container className="max-md:px-6">
-          <div className="w-full h-full setflex-center">
-            <span className="font-serif italic text-xl">
+        <Container className='max-md:px-6'>
+          <div className='w-full h-full setflex-center'>
+            <span className='font-serif italic text-xl'>
               Issue {issue.issueNo} —{' '}
               {checkMonth(new Date(issue.date).getMonth())}{' '}
               {new Date(issue.date).getFullYear()}
@@ -157,9 +186,9 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
         </Container>
         {/* Card
          */}
-        <div className="w-full flex" id="editorial-slider">
+        <div className='w-full flex' id='editorial-slider'>
           <ScrollContainer
-            className='issue_container flex w-full space-x-7 px-7 hide-scrollbar'
+            className={`issue_container flex w-full space-x-7 px-7 hide-scrollbar ${scrollStyle}`}
             horizontal={true}
             vertical={false}
             hideScrollbars={false}
@@ -167,30 +196,32 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
             innerRef={scrollContainer}
             nativeMobileScroll={true}
           >
-            {issue.article.map((data, id) => (
-              <div
-                className='article_wrapper'
-                key={id}
-                ref={(el) => (articleRef.current[id] = el)}
-              >
-                <FancyLink
-                  destination={`/editorial/${issue.slug.current}/${data.slug.current}`}
-                  className={`group`}
+            {issue.article.map((data, id) => {
+              return (
+                <div
+                  className='article_wrapper'
+                  key={id}
+                  ref={(el) => (articleRef.current[id] = el)}
                 >
-                  <ArticleCard
-                    bgColor={data.category.color.hex}
-                    title={`${id}. ${data.title}`}
-                    category={data.category.title}
-                    timeRead={timeConvert(
-                      data.timeReadBlog ? data.timeReadBlog : data.timeRead,
-                    )}
-                    src={urlFor(data.thumbnail).url()}
-                    alt={data.thumbnail.name}
+                  <FancyLink
+                    destination={`/editorial/${issue.slug.current}/${data.slug.current}`}
                     className={`group`}
-                  />
-                </FancyLink>
-              </div>
-            ))}
+                  >
+                    <ArticleCard
+                      bgColor={data.category.color.hex}
+                      title={`${id}. ${data.title}`}
+                      category={data.category.title}
+                      timeRead={timeConvert(
+                        data.timeReadBlog ? data.timeReadBlog : data.timeRead
+                      )}
+                      src={urlFor(data.thumbnail).url()}
+                      alt={data.thumbnail.name}
+                      className={`group`}
+                    />
+                  </FancyLink>
+                </div>
+              );
+            })}
           </ScrollContainer>
         </div>
         {/* Lower Information */}
@@ -205,7 +236,7 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
               <div className='relative border-b w-s-50 max-w-sm max-md:w-full h-px border-black'>
                 <div
                   ref={scrollInd}
-                  className='absolute w-8 h-1 -top-px border border-black bg-black'
+                  className={`absolute w-8 h-1 -top-px border border-black bg-black issueindicator ${scrollStyle}`}
                 />
               </div>
             </div>
@@ -213,28 +244,28 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
         </Container>
       </section>
       {/* Button Sticky */}
-      <StickyButton destination="/editorial" arrow="left">
+      <StickyButton destination='/editorial' arrow='left'>
         EDITORIAL INDEX
       </StickyButton>
       <Footer />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "issue"]
-      `)
+      `);
 
   const paths = res.map((data) => ({
     params: { editorial_slug: data.slug.current.toString() },
-  }))
+  }));
 
-  return { paths, fallback: false }
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const editorial_slug = params.editorial_slug
+  const editorial_slug = params.editorial_slug;
   const issueAPI = await client.fetch(
     `
         *[_type == "issue"] {
@@ -246,16 +277,16 @@ export async function getStaticProps({ params }) {
             "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
           }
         }
-      `,
-  )
+      `
+  );
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `)
+  `);
   return {
     props: {
       issueAPI,
       seoAPI,
       editorial_slug,
     },
-  }
+  };
 }
