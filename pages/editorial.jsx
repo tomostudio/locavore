@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react';
-import { NextSeo } from 'next-seo';
+import { useEffect, useState } from 'react'
+import { NextSeo } from 'next-seo'
 
-import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { fade } from '@/helpers/preset/transitions';
+import { LazyMotion, domAnimation, m } from 'framer-motion'
+import { fade } from '@/helpers/preset/transitions'
 
 // Layout
-import Layout from '@/components/modules/layout';
-import Container from '@/components/modules/container';
-import Footer from '@/components/modules/footer';
-import HeaderGap from '@/components/modules/headerGap';
+import Layout from '@/components/modules/layout'
+import Container from '@/components/modules/container'
+import Footer from '@/components/modules/footer'
+import HeaderGap from '@/components/modules/headerGap'
 
 // Components
-import StickyButton from '@/components/modules/stickyButton';
-import SEO from '@/components/utils/seo';
-import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard';
+import StickyButton from '@/components/modules/stickyButton'
+import SEO from '@/components/utils/seo'
+import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard'
 
 // Helpers
 import client from '@/helpers/sanity/client';
@@ -21,36 +21,44 @@ import { toPlainText } from '@/helpers/functional/toPlainText';
 import urlFor from '@/helpers/sanity/urlFor';
 
 export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
-  const [seo] = seoAPI;
-  const [editorial] = editorialAPI;
+  const [seo] = seoAPI
+  const [editorial] = editorialAPI
 
-  const isComingSoon = true; // tanda if there is a comingsoon card or not
+  const dataSoon = issueAPI.filter((data) => data.comingSoon === true)
+
+  const isComingSoon = dataSoon.length > 0 ? true : false // tanda if there is a comingsoon card or not
 
   const checkClosest = () => {
-    const today = new Date();
+    const today = new Date()
 
-    const closest = issueAPI.reduce((a, b) => {
-      const adiff = new Date(a.date) - today;
-      return adiff > 0 && adiff < new Date(b.date) - today ? a : b;
-    });
+    const dataSoon = issueAPI.filter((data) => data.comingSoon === true)
 
-    return closest;
-  };
+    if (dataSoon.length > 0) {
+      const closest = dataSoon.reduce((a, b) => {
+        const adiff = new Date(a.date) - today
+        return adiff > 0 && adiff < new Date(b.date) - today ? a : b
+      })
+
+      return closest
+    } else {
+      return false
+    }
+  }
 
   useEffect(() => {
     // check if coming soon is enabled or present
     // history.scrollRestoration = 'manual';
 
     if (isComingSoon) {
-      window.scrollTo(0, 315);
-      console.log(' coming soon');
+      window.scrollTo(0, 315)
+      console.log(' coming soon')
     } else {
-      window.scrollTo(0, 0);
-      console.log('non coming soon');
+      window.scrollTo(0, 0)
+      console.log('non coming soon')
     }
 
-    return () => {};
-  }, []);
+    return () => {}
+  }, [])
 
   return (
     <Layout>
@@ -90,11 +98,11 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
       />
 
       <LazyMotion features={domAnimation}>
-        <m.main initial='initial' animate='enter' exit='exit' variants={fade}>
+        <m.main initial="initial" animate="enter" exit="exit" variants={fade}>
           {/* Header Gap */}
           {/* Untuk Content */}
-          <section className='pb-10 w-full h-full flex flex-col'>
-            <Container className='max-md:px-6'>
+          <section className="pb-10 w-full h-full flex flex-col">
+            <Container className="max-md:px-6">
               {/* Sticky Container */}
               <div className={`relative w-full`}>
                 <div
@@ -102,23 +110,35 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                 >
                   <HeaderGap />
                   {/* Title */}
-                  <div className='mb-14'>
-                    <h1 className='titlestyle'>
+                  <div className="mb-14">
+                    <h1 className="titlestyle">
                       Editorial
-                      <span className='sub'>Issues</span>Index
+                      <span className="sub">Issues</span>Index
                     </h1>
                   </div>
                   {/* // COMING SOON TEST */}
-                  {isComingSoon && (
-                    <EditorialIssueCard
-                      comingsoon={true}
-                      title={'title'}
-                      date={'date'}
-                      className='mb-10'
-                      destination={`/editorial}`}
-                      imageThumbnail={`/placeholder/locavore-rintik-crop-11.jpg`}
-                    />
-                  )}
+                  {isComingSoon &&
+                    new Date(checkClosest().date) > new Date() && (
+                      <EditorialIssueCard
+                        comingsoon={true}
+                        title={checkClosest().title}
+                        date={checkClosest().date}
+                        dark={checkClosest().dark}
+                        bgColor={
+                          !checkClosest().thumbnail &&
+                          checkClosest().bgColor.hex
+                        }
+                        className="mb-10"
+                        destination={`/editorial/${
+                          checkClosest().slug.current
+                        }`}
+                        imageThumbnail={
+                          checkClosest().thumbnail
+                            ? urlFor(checkClosest().thumbnail).url()
+                            : null
+                        }
+                      />
+                    )}
                   {/* Cari Latest Post with Coming Soon Tag  */}
                   {/* {new Date(checkClosest().date) > new Date() && (
                     <EditorialIssueCard
@@ -135,20 +155,24 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                     />
                   )} */}
                 </div>
-                {isComingSoon && <div className={`stickySpacer`} />}
+                {isComingSoon && new Date(checkClosest().date) > new Date() && (
+                  <div className={`stickySpacer`} />
+                )}
                 {/* Spacer */}
               </div>
               {/* Card */}
               <div
-                id='editorialIssuesList'
+                id="editorialIssuesList"
                 className={`relative w-full h-full space-y-10 ${
-                  isComingSoon ? 'comingsoonMargin' : ''
+                  isComingSoon && new Date(checkClosest().date) > new Date()
+                    ? 'comingsoonMargin'
+                    : ''
                 }`}
               >
-                <EditorialIssueCard
+                {/* <EditorialIssueCard
                   issueNo={1}
-                  title='title'
-                  date='date'
+                  title="title"
+                  date="date"
                   dark={true} // toggle dark mode
                   totalArticles={12}
                   destination={`/editorial`}
@@ -157,8 +181,8 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                 />
                 <EditorialIssueCard
                   issueNo={1}
-                  title='title'
-                  date='date'
+                  title="title"
+                  date="date"
                   dark={false} // toggle dark mode
                   totalArticles={12}
                   destination={`/editorial`}
@@ -167,58 +191,46 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                 />
                 <EditorialIssueCard
                   issueNo={1}
-                  title='title'
-                  date='date'
+                  title="title"
+                  date="date"
                   dark={false}
                   totalArticles={12}
                   destination={`/editorial`}
                   bgColor={'#F00'} // pilih warna kalo ga pake image.
                   descriptions={<p>Testing</p>}
-                />
+                /> */}
                 {/* Ini map aja yang ga ada tulisan coming soon  */}
                 {issueAPI.map(
                   (data, id) =>
-                    new Date(checkClosest().date) > new Date() &&
-                    !(checkClosest().slug.current === data.slug.current) &&
-                    (data.title.toLowerCase() === 'under construction' ? (
+                    !data.comingsoon && (
                       <EditorialIssueCard
                         key={id}
                         issueNo={id}
                         title={data.title}
                         date={data.date}
-                        dark={false}
+                        dark={data.dark}
+                        bgColor={!data.thumbnail ? data.bgColor.hex : null}
                         totalArticles={data.articleCount}
                         destination={`/editorial/${data.slug.current}`}
-                        imageThumbnail={urlFor(data.image).url()}
+                        imageThumbnail={
+                          data.thumbnail ? urlFor(data.thumbnail).url() : null
+                        }
                         descriptions={<p>{toPlainText(data.description)}</p>}
                       />
-                    ) : (
-                      <EditorialIssueCard
-                        key={id}
-                        issueNo={id}
-                        title={data.title}
-                        date={data.date}
-                        dark={true}
-                        bgColor={data.bgColor ? data.bgColor : '#fff'}
-                        totalArticles={data.articleCount}
-                        destination={`/editorial/${data.slug.current}`}
-                        imageThumbnail={urlFor(data.image).url()}
-                        descriptions={<p>{toPlainText(data.description)}</p>}
-                      />
-                    ))
+                    ),
                 )}
               </div>
             </Container>
           </section>
           {/* Button Sticky */}
-          <StickyButton destination='/editorial/search' arrow='right'>
+          <StickyButton destination="/editorial/search" arrow="right">
             SEARCH ALL ARTICLES
           </StickyButton>
           <Footer />
         </m.main>
       </LazyMotion>
     </Layout>
-  );
+  )
 }
 
 export async function getStaticProps() {
@@ -227,18 +239,18 @@ export async function getStaticProps() {
                       ...,
                       "articleCount": count(*[_type=='article' && references(^._id)])
                     }
-                    `);
+                    `)
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `);
+                    `)
   const editorialAPI = await client.fetch(`
                     *[_type == "editorial"]
-                    `);
+                    `)
   return {
     props: {
       issueAPI,
       seoAPI,
       editorialAPI,
     },
-  };
+  }
 }

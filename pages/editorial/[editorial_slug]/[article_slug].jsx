@@ -1,32 +1,11 @@
-import { NextSeo } from 'next-seo'
-import Image from 'next/image'
-import Marquee from 'react-fast-marquee'
-import { useRouter } from 'next/router'
-
-// Layout
-import Layout from '@/components/modules/layout'
-import Container from '@/components/modules/container'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
-import Navbar from '@/components/modules/header'
-
-// Components
-import PillButton from '@/components/modules/pillButton'
-import ArticleCard from '@/components/modules/editorial/articleCard'
-import StickyButton from '@/components/modules/stickyButton'
-import SEO from '@/components/utils/seo'
-
 // Helpers
-import FancyLink from '@/components/utils/fancyLink'
 import client from '@/helpers/sanity/client'
-import urlFor from '@/helpers/sanity/urlFor'
 import Blog from '@/components/modules/articleTemplate/blog'
 import Caroussel from '@/components/modules/articleTemplate/caroussel'
 import Gallery from '@/components/modules/articleTemplate/gallery'
 import Video from '@/components/modules/articleTemplate/video'
 
 export default function ArticleSlug({ articleAPI, seoAPI, nextArticle }) {
-  const router = useRouter()
   const [seo] = seoAPI
   const [article] = articleAPI
   // const onMouseClick = (slug) => {

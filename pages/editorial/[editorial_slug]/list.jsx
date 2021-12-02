@@ -132,7 +132,7 @@ export default function Issue({ issueAPI, seoAPI }) {
             {item.map((data, id) => (
               <div className='article_wrapper' key={id} ref={sentryRef}>
                 <FancyLink
-                  destination={`/editorial/${issue.slug.current}/article/${data.slug.current}`}
+                  destination={`/editorial/${issue.slug.current}/${data.slug.current}`}
                   className={`group`}
                 >
                   <ArticleCard

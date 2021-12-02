@@ -222,7 +222,7 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
                     <IssueCard
                       key={id}
                       issueNo={data.issue.order}
-                      destination={`${data.issue.slug.current}/article/${data.slug.current}`}
+                      destination={`${data.issue.slug.current}/${data.slug.current}`}
                       articleClassName="bg-culture w-full"
                       title={`${data.order}. ${data.title}`}
                       category={data.category.title}
