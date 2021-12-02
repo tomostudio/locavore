@@ -24,7 +24,13 @@ import urlFor from '@/helpers/sanity/urlFor'
 import { useAppContext } from 'context/state'
 import timeConvert from '@/helpers/functional/timeConvert'
 
-export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
+export default function Search({
+  seoAPI,
+  searchAPI,
+  categoryAPI,
+  articleAPI,
+  issueAPI,
+}) {
   const [seo] = seoAPI
   const [APISearch] = searchAPI
   const appContext = useAppContext()
@@ -32,6 +38,18 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
   const [postNum, setPostNum] = useState(6)
   const [search, setSearch] = useState('')
   const [itemsToDisplay, setitemsToDisplay] = useState(articleAPI)
+
+  let dataOrderIssue = []
+  articleAPI.forEach((data) => {
+    issueAPI.forEach((item, index) => {
+      if (item.slug.current === data.issue.slug.current) {
+        dataOrderIssue.push({
+          slug: item.slug.current,
+          issueNo: index,
+        })
+      }
+    })
+  })
 
   const handleLoadMoreCategory = () => {
     setPostNumCategory((prevPostNum) => prevPostNum + 3)
@@ -79,10 +97,10 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
         keys: ['title', 'category.title'],
       })
       const data = fuse.search(search).map((result) => result.item)
-      if(value) {
+      if (value) {
         const dataFilter = data.filter((item) => item.category.title === value)
         setitemsToDisplay(dataFilter)
-      }else {
+      } else {
         setitemsToDisplay(data)
       }
     } else {
@@ -219,21 +237,23 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
                   id="search-results"
                 >
                   {itemsToDisplay.slice(0, postNum).map((data, id) => (
-                    <IssueCard
-                      key={id}
-                      // issueNo={data.issue.order}
-                      destination={`${data.issue.slug.current}/${data.slug.current}`}
-                      articleClassName="bg-culture w-full"
-                      title={`${data.title}`}
-                      category={data.category.title}
-                      timeRead={timeConvert(
-                        data.timeReadBlog ? data.timeReadBlog : data.timeRead,
-                      )}
-                      bgColor={data.category.color.hex}
-                      borderColor=""
-                      thumbnail={urlFor(data.thumbnail).url()}
-                      alt={data.thumbnail.name}
-                    />
+                    <>
+                      <IssueCard
+                        key={id}
+                        issueNo={dataOrderIssue.find((item) => item.slug === data.issue.slug.current).issueNo}
+                        destination={`${data.issue.slug.current}/${data.slug.current}`}
+                        articleClassName="bg-culture w-full"
+                        title={`${data.title}`}
+                        category={data.category.title}
+                        timeRead={timeConvert(
+                          data.timeReadBlog ? data.timeReadBlog : data.timeRead,
+                        )}
+                        bgColor={data.category.color.hex}
+                        borderColor=""
+                        thumbnail={urlFor(data.thumbnail).url()}
+                        alt={data.thumbnail.name}
+                      />
+                    </>
                   ))}
                 </div>
                 {search || appContext.category
@@ -281,6 +301,9 @@ export async function getStaticProps() {
   const categoryAPI = await client.fetch(`
                     *[_type == "category"]
                     `)
+  const issueAPI = await client.fetch(`
+                    *[_type == "issue"]
+                    `)
   const articleAPI = await client.fetch(`*[
     _type == "article"
   ]{
@@ -296,6 +319,7 @@ export async function getStaticProps() {
       searchAPI,
       categoryAPI,
       articleAPI,
+      issueAPI,
     },
   }
 }
