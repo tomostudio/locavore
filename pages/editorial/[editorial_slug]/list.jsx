@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import SwiperCore, { Pagination } from 'swiper';
 import useInfiniteScroll from 'react-infinite-scroll-hook';
 import ScrollContainer from 'react-indiana-drag-scroll';
@@ -23,7 +23,6 @@ import { checkText } from '@/helpers/functional/checkText';
 import urlFor from '@/helpers/sanity/urlFor';
 import timeConvert from '@/helpers/functional/timeConvert';
 
-
 // install Swiper modules
 SwiperCore.use([Pagination]);
 
@@ -31,22 +30,58 @@ export default function Issue({ issueAPI, seoAPI }) {
   const router = useRouter();
   const [issue] = issueAPI;
   const [seo] = seoAPI;
-  const [windowWidth, setWidth] = useState();
-  const [item, setItem] = useState(issue.article);
-  const fetchMoreData = () => {
-    setItem(item.concat(issue.article));
+  const articleRef = useRef([]);
+  const scrollInd = useRef(null);
+  const scrollContainer = useRef(null);
+  const [centerCard, setCenterCard] = useState(1);
+
+  const updateScroll = () => {
+    articleRef.current.forEach((card, id) => {
+      // get window position relative to center (Horizontal)
+      const fromCenter =
+        -50 +
+        Math.round(
+          ((card.getBoundingClientRect().x +
+            card.getBoundingClientRect().width / 2) /
+            window.innerWidth) *
+            100
+        );
+
+      // update card rotation
+      const rotatationTarget = card.querySelector('a');
+      rotatationTarget.style.transform = `rotate(${
+        (fromCenter / 100) * 10
+      }deg)`;
+
+      // set center item
+      if (fromCenter > -10 && fromCenter < 10) {
+        setCenterCard(id + 1);
+      }
+    });
+
+    // update scroll bar position
+    const currentScroll =
+      Math.round(
+        Math.min(
+          (scrollContainer.current.scrollLeft /
+            (scrollContainer.current.scrollWidth - window.innerWidth)) *
+            10000,
+          10000
+        )
+      ) / 100;
+    const indWidth = scrollInd.current.offsetWidth;
+    const parentWidth = scrollInd.current.parentElement.offsetWidth;
+    const scrollMove = (parentWidth - indWidth) * (currentScroll / 100);
+    scrollInd.current.style.transform = `translateX(${scrollMove}px)`;
   };
 
-  const [sentryRef] = useInfiniteScroll({
-    hasNextPage: true,
-    onLoadMore: fetchMoreData,
-  });
-
   useEffect(() => {
-    setWidth(window.innerWidth);
     window.scroll(0, 0);
-    window.addEventListener('resize', () => setWidth(window.innerWidth));
+    updateScroll();
+
+    // check article card count & container size
   }, []);
+
   return (
     <Layout>
       <SEO
@@ -110,14 +145,7 @@ export default function Issue({ issueAPI, seoAPI }) {
               {checkMonth(new Date(issue.date).getMonth())}{' '}
               {new Date(issue.date).getFullYear()}
             </span>
-            <h1
-              className=' font-sans font-normal max-md:break-all max-md:text-center'
-              style={{
-                fontSize:
-                  checkText(issue.title, '3rem Whyte Inktrap') >
-                    windowWidth - 40 && '42px',
-              }}
-            >
+            <h1 className=' font-sans font-normal max-md:break-all max-md:text-center'>
               {issue.title}
             </h1>
           </div>
@@ -126,11 +154,20 @@ export default function Issue({ issueAPI, seoAPI }) {
          */}
         <div className='w-full flex' id='editorial-slider'>
           <ScrollContainer
-            className='flex w-full space-x-7 px-7'
+            className='issue_container flex w-full space-x-7 px-7 hide-scrollbar'
             horizontal={true}
+            vertical={false}
+            hideScrollbars={false}
+            onScroll={updateScroll}
+            innerRef={scrollContainer}
+            nativeMobileScroll={true}
           >
-            {item.map((data, id) => (
-              <div className='article_wrapper' key={id} ref={sentryRef}>
+            {issue.article.map((data, id) => (
+              <div
+                className='article_wrapper'
+                key={id}
+                ref={(el) => (articleRef.current[id] = el)}
+              >
                 <FancyLink
                   destination={`/editorial/${issue.slug.current}/${data.slug.current}`}
                   className={`group`}
@@ -144,21 +181,27 @@ export default function Issue({ issueAPI, seoAPI }) {
                     )}
                     src={urlFor(data.thumbnail).url()}
                     alt={data.thumbnail.name}
+                    className={`group`}
                   />
                 </FancyLink>
               </div>
             ))}
           </ScrollContainer>
         </div>
-        {/* CHANGE */}
+        {/* Lower Information */}
         <Container className='max-md:px-6'>
           <div className='w-full setflex-center'>
             <div className='mb-5 text-xs'>
-              <span className='font-bold'>1</span>-<span>15</span>
+              <span className='font-bold'>{centerCard}</span>
+              {` — `}
+              <span>{articleRef.current.length}</span>
             </div>
             <div className='relative w-full setflex-center'>
-              <div className='relative border-b w-48 max-md:w-full h-px border-black'>
-                <div className='absolute left-4 w-8 h-1 -top-px border border-black bg-black' />
+              <div className='relative border-b w-s-50 max-w-sm max-md:w-full h-px border-black'>
+                <div
+                  ref={scrollInd}
+                  className='absolute w-8 h-1 -top-px border border-black bg-black'
+                />
               </div>
             </div>
           </div>
