@@ -221,10 +221,10 @@ export default function Search({ seoAPI, searchAPI, categoryAPI, articleAPI }) {
                   {itemsToDisplay.slice(0, postNum).map((data, id) => (
                     <IssueCard
                       key={id}
-                      issueNo={data.issue.order}
+                      // issueNo={data.issue.order}
                       destination={`${data.issue.slug.current}/${data.slug.current}`}
                       articleClassName="bg-culture w-full"
-                      title={`${data.order}. ${data.title}`}
+                      title={`${data.title}`}
                       category={data.category.title}
                       timeRead={timeConvert(
                         data.timeReadBlog ? data.timeReadBlog : data.timeRead,

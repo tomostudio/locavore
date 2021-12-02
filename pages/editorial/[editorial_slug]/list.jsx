@@ -1,52 +1,56 @@
-import { useEffect, useState } from 'react';
-import SwiperCore, { Pagination } from 'swiper';
-import useInfiniteScroll from 'react-infinite-scroll-hook';
-import ScrollContainer from 'react-indiana-drag-scroll';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react'
+import SwiperCore, { Pagination } from 'swiper'
+import useInfiniteScroll from 'react-infinite-scroll-hook'
+import ScrollContainer from 'react-indiana-drag-scroll'
+import { useRouter } from 'next/router'
 
 // Layout
-import Layout from '@/components/modules/layout';
-import HeaderGap from '@/components/modules/headerGap';
-import Footer from '@/components/modules/footer';
+import Layout from '@/components/modules/layout'
+import HeaderGap from '@/components/modules/headerGap'
+import Footer from '@/components/modules/footer'
 
 // Components
-import ArticleCard from '@/components/modules/editorial/articleCard';
-import SEO from '@/components/utils/seo';
-import FancyLink from '@/components/utils/fancyLink';
-import StickyButton from '@/components/modules/stickyButton';
-import Container from '@/components/modules/container';
+import ArticleCard from '@/components/modules/editorial/articleCard'
+import SEO from '@/components/utils/seo'
+import FancyLink from '@/components/utils/fancyLink'
+import StickyButton from '@/components/modules/stickyButton'
+import Container from '@/components/modules/container'
 
 // Helpers
-import client from '@/helpers/sanity/client';
-import checkMonth from '@/helpers/functional/checkMonth';
-import { checkText } from '@/helpers/functional/checkText';
-import urlFor from '@/helpers/sanity/urlFor';
-import timeConvert from '@/helpers/functional/timeConvert';
-
+import client from '@/helpers/sanity/client'
+import checkMonth from '@/helpers/functional/checkMonth'
+import { checkText } from '@/helpers/functional/checkText'
+import urlFor from '@/helpers/sanity/urlFor'
+import timeConvert from '@/helpers/functional/timeConvert'
 
 // install Swiper modules
-SwiperCore.use([Pagination]);
+SwiperCore.use([Pagination])
 
-export default function Issue({ issueAPI, seoAPI }) {
-  const router = useRouter();
-  const [issue] = issueAPI;
-  const [seo] = seoAPI;
-  const [windowWidth, setWidth] = useState();
-  const [item, setItem] = useState(issue.article);
+export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
+  const router = useRouter()
+  const [seo] = seoAPI
+  let issue
+  issueAPI.forEach((data, id) => {
+    if (data.slug.current === editorial_slug) {
+      issue = { ...data, issueNo: id }
+    }
+  })
+  const [windowWidth, setWidth] = useState()
+  const [item, setItem] = useState(issue.article)
   const fetchMoreData = () => {
-    setItem(item.concat(issue.article));
-  };
+    setItem(item.concat(issue.article))
+  }
 
   const [sentryRef] = useInfiniteScroll({
     hasNextPage: true,
     onLoadMore: fetchMoreData,
-  });
+  })
 
   useEffect(() => {
-    setWidth(window.innerWidth);
-    window.scroll(0, 0);
-    window.addEventListener('resize', () => setWidth(window.innerWidth));
-  }, []);
+    setWidth(window.innerWidth)
+    window.scroll(0, 0)
+    window.addEventListener('resize', () => setWidth(window.innerWidth))
+  }, [])
   return (
     <Layout>
       <SEO
@@ -101,17 +105,17 @@ export default function Issue({ issueAPI, seoAPI }) {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <section className='py-10 w-full h-full flex flex-col space-y-10'>
+      <section className="py-10 w-full h-full flex flex-col space-y-10">
         {/* Title */}
-        <Container className='max-md:px-6'>
-          <div className='w-full h-full setflex-center'>
-            <span className='font-serif italic text-xl'>
-              Issue {issue.order} —{' '}
+        <Container className="max-md:px-6">
+          <div className="w-full h-full setflex-center">
+            <span className="font-serif italic text-xl">
+              Issue {issue.issueNo} —{' '}
               {checkMonth(new Date(issue.date).getMonth())}{' '}
               {new Date(issue.date).getFullYear()}
             </span>
             <h1
-              className=' font-sans font-normal max-md:break-all max-md:text-center'
+              className=" font-sans font-normal max-md:break-all max-md:text-center"
               style={{
                 fontSize:
                   checkText(issue.title, '3rem Whyte Inktrap') >
@@ -124,23 +128,23 @@ export default function Issue({ issueAPI, seoAPI }) {
         </Container>
         {/* Card
          */}
-        <div className='w-full flex' id='editorial-slider'>
+        <div className="w-full flex" id="editorial-slider">
           <ScrollContainer
-            className='flex w-full space-x-7 px-7'
+            className="flex w-full space-x-7 px-7"
             horizontal={true}
           >
             {item.map((data, id) => (
-              <div className='article_wrapper' key={id} ref={sentryRef}>
+              <div className="article_wrapper" key={id} ref={sentryRef}>
                 <FancyLink
                   destination={`/editorial/${issue.slug.current}/${data.slug.current}`}
                   className={`group`}
                 >
                   <ArticleCard
                     bgColor={data.category.color.hex}
-                    title={`${data.order}. ${data.title}`}
+                    title={`${id}. ${data.title}`}
                     category={data.category.title}
                     timeRead={timeConvert(
-                      data.timeReadBlog ? data.timeReadBlog : data.timeRead
+                      data.timeReadBlog ? data.timeReadBlog : data.timeRead,
                     )}
                     src={urlFor(data.thumbnail).url()}
                     alt={data.thumbnail.name}
@@ -151,44 +155,45 @@ export default function Issue({ issueAPI, seoAPI }) {
           </ScrollContainer>
         </div>
         {/* CHANGE */}
-        <Container className='max-md:px-6'>
-          <div className='w-full setflex-center'>
-            <div className='mb-5 text-xs'>
-              <span className='font-bold'>1</span>-<span>15</span>
+        <Container className="max-md:px-6">
+          <div className="w-full setflex-center">
+            <div className="mb-5 text-xs">
+              <span className="font-bold">1</span>-<span>15</span>
             </div>
-            <div className='relative w-full setflex-center'>
-              <div className='relative border-b w-48 max-md:w-full h-px border-black'>
-                <div className='absolute left-4 w-8 h-1 -top-px border border-black bg-black' />
+            <div className="relative w-full setflex-center">
+              <div className="relative border-b w-48 max-md:w-full h-px border-black">
+                <div className="absolute left-4 w-8 h-1 -top-px border border-black bg-black" />
               </div>
             </div>
           </div>
         </Container>
       </section>
       {/* Button Sticky */}
-      <StickyButton destination='/editorial' arrow='left'>
+      <StickyButton destination="/editorial" arrow="left">
         EDITORIAL INDEX
       </StickyButton>
       <Footer />
     </Layout>
-  );
+  )
 }
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "issue"]
-      `);
+      `)
 
   const paths = res.map((data) => ({
     params: { editorial_slug: data.slug.current.toString() },
-  }));
+  }))
 
-  return { paths, fallback: false };
+  return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
+  const editorial_slug = params.editorial_slug
   const issueAPI = await client.fetch(
     `
-        *[_type == "issue" && slug.current == "${params.editorial_slug}"] {
+        *[_type == "issue"] {
           ...,
           "article": *[_type=='article' && references(^._id)] {
             ...,
@@ -197,15 +202,16 @@ export async function getStaticProps({ params }) {
             "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
           }
         }
-      `
-  );
+      `,
+  )
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `);
+  `)
   return {
     props: {
       issueAPI,
       seoAPI,
+      editorial_slug,
     },
-  };
+  }
 }

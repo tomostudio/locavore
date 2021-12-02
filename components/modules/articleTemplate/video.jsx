@@ -93,7 +93,7 @@ export default function Video({ article, seo, nextArticle }) {
       </section>
       <NextArticle
         bgColor={nextArticle.article.category.color.hex}
-        title={`${nextArticle.article.order}. ${nextArticle.article.title}`}
+        title={`${nextArticle.article.title}`}
         category={nextArticle.article.category.title}
         timeRead={timeConvert(
           nextArticle.article.timeReadBlog
