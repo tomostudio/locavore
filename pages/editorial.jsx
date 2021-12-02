@@ -16,10 +16,9 @@ import SEO from '@/components/utils/seo'
 import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard'
 
 // Helpers
-import client from '@/helpers/sanity/client'
-import { toPlainText } from '@/helpers/functional/toPlainText'
-import urlFor from '@/helpers/sanity/urlFor'
-import { checkText } from '@/helpers/functional/checkText'
+import client from '@/helpers/sanity/client';
+import { toPlainText } from '@/helpers/functional/toPlainText';
+import urlFor from '@/helpers/sanity/urlFor';
 
 export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
   const [seo] = seoAPI
