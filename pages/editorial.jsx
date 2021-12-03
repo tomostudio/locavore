@@ -142,12 +142,12 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                 }`}
               >
                 {/* Ini map aja yang ga ada tulisan coming soon  */}
-                {issueAPI.reverse().map(
+                {issueAPI.map(
                   (data, id) =>
                     !data.comingSoon && (
                       <EditorialIssueCard
                         key={id}
-                        issueNo={(issueAPI.length - 1) - id}
+                        issueNo={id}
                         title={data.title}
                         date={data.date}
                         dark={data.dark}
