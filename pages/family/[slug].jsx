@@ -267,7 +267,6 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI }) => {
         >
           {familyListAPI.map((familydata, id) => {
             const checkSame = familydata._id === family._id;
-            console.log(familydata._id, family._id, checkSame);
             return (
               <FancyLink
                 key={id}
