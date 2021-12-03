@@ -112,17 +112,19 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                         date={checkClosest().date}
                         dark={checkClosest().dark}
                         bgColor={
-                          !checkClosest().thumbnail &&
-                          checkClosest().bgColor.hex
+                          checkClosest().thumbnail &&
+                          !checkClosest().thumbnail.placeholder &&
+                          checkClosest().thumbnail.color.hex
+                            ? checkClosest().thumbnail.color.hex
+                            : '#fff'
                         }
                         className='mb-10'
                         destination={`/editorial/${
                           checkClosest().slug.current
                         }`}
                         imageThumbnail={
-                          checkClosest().thumbnail.asset
-                            ? urlFor(checkClosest().thumbnail).url()
-                            : null
+                          checkClosest().thumbnail &&
+                          urlFor(checkClosest().thumbnail.placeholder).url()
                         }
                       />
                     )}
@@ -147,15 +149,22 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                     return (
                       <EditorialIssueCard
                         key={id}
-                        issueNo={id}
+                        issueNo={data.issueNumber}
                         title={data.title}
                         date={data.date}
                         dark={data.dark}
-                        bgColor={!data.thumbnail ? data.bgColor.hex : null}
+                        bgColor={
+                          data.thumbnail &&
+                          !data.thumbnail.placeholder &&
+                          data.thumbnail.color.hex
+                            ? data.thumbnail.color.hex
+                            : '#fff'
+                        }
                         totalArticles={data.articleCount}
                         destination={`/editorial/${data.slug.current}`}
                         imageThumbnail={
-                          data.thumbnail.asset ? urlFor(data.thumbnail).url() : null
+                          data.thumbnail &&
+                          urlFor(data.thumbnail.placeholder).url()
                         }
                         descriptions={<p>{toPlainText(data.description)}</p>}
                       />
