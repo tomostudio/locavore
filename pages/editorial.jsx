@@ -112,17 +112,19 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                         date={checkClosest().date}
                         dark={checkClosest().dark}
                         bgColor={
-                          !checkClosest().thumbnail &&
-                          checkClosest().bgColor.hex
+                          checkClosest().thumbnail &&
+                          !checkClosest().thumbnail.placeholder &&
+                          checkClosest().thumbnail.color.hex
+                            ? checkClosest().thumbnail.color.hex
+                            : '#fff'
                         }
                         className="mb-10"
                         destination={`/editorial/${
                           checkClosest().slug.current
                         }`}
                         imageThumbnail={
-                          checkClosest().thumbnail
-                            ? urlFor(checkClosest().thumbnail).url()
-                            : null
+                          checkClosest().thumbnail &&
+                          urlFor(checkClosest().thumbnail.placeholder).url()
                         }
                       />
                     )}
@@ -142,25 +144,34 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                 }`}
               >
                 {/* Ini map aja yang ga ada tulisan coming soon  */}
-                {issueAPI.reverse().map(
-                  (data, id) =>
-                    !data.comingSoon && (
-                      <EditorialIssueCard
-                        key={id}
-                        issueNo={(issueAPI.length - 1) - id}
-                        title={data.title}
-                        date={data.date}
-                        dark={data.dark}
-                        bgColor={!data.thumbnail ? data.bgColor.hex : null}
-                        totalArticles={data.articleCount}
-                        destination={`/editorial/${data.slug.current}`}
-                        imageThumbnail={
-                          data.thumbnail ? urlFor(data.thumbnail).url() : null
-                        }
-                        descriptions={<p>{toPlainText(data.description)}</p>}
-                      />
-                    ),
-                )}
+                {issueAPI
+                  .reverse()
+                  .map(
+                    (data, id) =>
+                      !data.comingSoon && (
+                        <EditorialIssueCard
+                          key={id}
+                          issueNo={data.issueNumber}
+                          title={data.title}
+                          date={data.date}
+                          dark={data.dark}
+                          bgColor={
+                            data.thumbnail &&
+                            !data.thumbnail.placeholder &&
+                            data.thumbnail.color.hex
+                              ? data.thumbnail.color.hex
+                              : '#fff'
+                          }
+                          totalArticles={data.articleCount}
+                          destination={`/editorial/${data.slug.current}`}
+                          imageThumbnail={
+                            data.thumbnail &&
+                            urlFor(data.thumbnail.placeholder).url()
+                          }
+                          descriptions={<p>{toPlainText(data.description)}</p>}
+                        />
+                      ),
+                  )}
               </div>
             </Container>
           </section>
