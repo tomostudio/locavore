@@ -320,7 +320,7 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
             dark ? 'bg-black ' : 'bg-white'
           }`}
         >
-          {issue.image.asset ? (
+          {issue.image && issue.image.asset ? (
             <>
               {/* Image  */}
               <div
