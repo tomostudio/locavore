@@ -279,7 +279,7 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
               id="issueNoInside"
               className="content-issue font-serif font-normal italic text-5xl"
             >
-              Issue {issue.issueNo}
+              Issue {issue.issueNumber}
             </span>
             <h1 className="title-issue font-sans font-normal text-8xl">
               {issue.title}
