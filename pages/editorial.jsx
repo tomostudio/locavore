@@ -142,11 +142,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                 }`}
               >
                 {/* Ini map aja yang ga ada tulisan coming soon  */}
-<<<<<<< HEAD
-                {issueAPI.slice(0).reverse().map(
-=======
                 {issueAPI.reverse().map(
->>>>>>> 618e55e5b2aae5db13df4154986eb2dc578bf5b7
                   (data, id) =>
                     !data.comingSoon && (
                       <EditorialIssueCard
