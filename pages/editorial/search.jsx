@@ -203,7 +203,7 @@ export default function Search({
                         className={`text-xs uppercase max-md:py-1 px-4 ${
                           appContext.category.toLowerCase() ===
                           data.title.toLocaleLowerCase()
-                            ? 'activeCategory'
+                            ? 'bg-gray text-white'
                             : ''
                         }`}
                         key={id}

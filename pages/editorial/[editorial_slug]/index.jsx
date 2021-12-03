@@ -40,7 +40,8 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
     })
     // white, black, blur-black, blur-white, trans-white, trans-black
 
-    window.scroll(0, 0)
+    window.scroll(0, 0);
+
     return () => {
       appContext.setHeader({ headerStyle: 'default' })
     }
@@ -321,21 +322,30 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
             dark ? 'bg-black ' : 'bg-white'
           }`}
         >
-          {/* Image  */}
-          <div
-            className={`absolute h-full w-full top-0 left-0  z-10 ${
-              dark ? 'bg-black opacity-40' : 'bg-white opacity-25'
-            }`}
-          />
-
-          {issue.image1 && (
-            <Image
-              src={issue.image1 && urlFor(issue.image1.placeholder).url()}
-              alt={issue.image1 && issue.image1.placeholder.name}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
+          {issue.image1 && issue.image1.placeholder.asset ? (
+            <>
+              {/* Image  */}
+              <div
+                className={`absolute h-full w-full top-0 left-0  z-10 ${
+                  dark ? 'bg-black opacity-40' : 'bg-white opacity-25'
+                }`}
+              />
+              <Image
+                src={urlFor(issue.image1.placeholder).url()}
+                alt={issue.image1.name}
+                layout='fill'
+                objectFit='cover'
+                objectPosition='center'
+              />
+            </>
+          ) : (
+            <>
+              {/* Plain Background  */}
+              <div
+                className='absolute h-full w-full top-0 left-0 z-20'
+                style={{ background: 'rgba(0,50,50,1' }}
+              />
+            </>
           )}
         </div>
 
@@ -346,26 +356,30 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
             dark ? 'bg-black ' : 'bg-white'
           }`}
         >
-          {/* Plain Background  */}
-          {/* <div
-          className='absolute h-full w-full top-0 left-0 z-20'
-          style={{ background: 'rgba(50,50,50,1' }}
-        /> */}
-          {/* Image  */}
-          <div
-            className={`absolute  h-full w-full top-0 left-0 z-10  ${
-              dark ? 'bg-black opacity-40' : 'bg-white opacity-25'
-            }`}
-          />
-
-          {issue.image2 && (
-            <Image
-              src={urlFor(issue.image2.placeholder).url()}
-              alt={issue.image2.placeholder}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
+          {issue.background2 && issue.background2.placeholder.asset ? (
+            <>
+              {/* Image  */}
+              <div
+                className={`absolute  h-full w-full top-0 left-0 z-10  ${
+                  dark ? 'bg-black opacity-40' : 'bg-white opacity-25'
+                }`}
+              />
+              <Image
+                src={urlFor(issue.background2.placeholder).url()}
+                alt={issue.background2.name}
+                layout='fill'
+                objectFit='cover'
+                objectPosition='center'
+              />
+            </>
+          ) : (
+            <>
+              {/* Plain Background  */}
+              <div
+                className='absolute h-full w-full top-0 left-0 z-20'
+                style={{ background: 'rgba(50,50,0,1' }}
+              />
+            </>
           )}
         </div>
       </div>
