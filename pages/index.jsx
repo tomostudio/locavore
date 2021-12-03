@@ -37,7 +37,7 @@ export default function Home({ seoAPI }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)

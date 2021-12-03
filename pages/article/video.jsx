@@ -32,7 +32,7 @@ export default function Video() {
         <Container className="max-md:px-0">
           {/* Video */}
           <div className="relative w-full flex flex-col space-y-3">
-            <VideoComponent setVideo={setVideo} video={video}/>
+            {/* <VideoComponent setVideo={setVideo} video={video}/> */}
           </div>
         </Container>
       </section>
