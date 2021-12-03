@@ -142,7 +142,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                 }`}
               >
                 {/* Ini map aja yang ga ada tulisan coming soon  */}
-                {issueAPI.map((data, id) => {
+                {issueAPI.reverse().map((data, id) => {
                   if (!data.comingSoon)
                     return (
                       <EditorialIssueCard
