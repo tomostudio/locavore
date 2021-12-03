@@ -211,6 +211,7 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
                       timeRead={timeConvert(
                         data.timeReadBlog ? data.timeReadBlog : data.timeRead,
                       )}
+                      border={data.category.border}
                       src={urlFor(data.thumbnail).url()}
                       alt={data.thumbnail.name}
                       className={`group`}
