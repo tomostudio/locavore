@@ -362,8 +362,8 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
             dark ? 'bg-black ' : 'bg-white'
           }`}
         >
-          {issue.background2 ? (
-            issue.background2.placeholder ? (
+          {issue.image2 ? (
+            issue.image2.placeholder ? (
               <>
                 {/* Image  */}
                 <div
@@ -372,8 +372,8 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
                   }`}
                 />
                 <Image
-                  src={urlFor(issue.background2.placeholder).url()}
-                  alt={issue.background2.name}
+                  src={urlFor(issue.image2.placeholder).url()}
+                  alt={issue.image2.name}
                   layout="fill"
                   objectFit="cover"
                   objectPosition="center"
