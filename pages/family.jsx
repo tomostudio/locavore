@@ -18,7 +18,12 @@ import urlFor from '@/helpers/sanity/urlFor';
 import { fade } from '@/helpers/preset/transitions';
 import client from '@/helpers/sanity/client';
 
-export default function Family({ seoAPI, familyAPI, familyListAPI }) {
+export default function Family({
+  seoAPI,
+  familyAPI,
+  familyListAPI,
+  memberListAPI,
+}) {
   const [seo] = seoAPI;
   const [family] = familyAPI;
 
@@ -57,15 +62,38 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
   ];
 
   let familyImageAPI_split = [];
+  // familyListAPI.forEach((data, index) => {
+  //   memberListAPI.forEach((item) => {
+  //     if (item.slug.current === data.family.slug.current) {
+  //       familyImageAPI_split.push({
+  //         ...data,
+  //         storeID: index,
+  //       })
+  //     }
+  //   })
+  // })
 
-  familyListAPI.map((item, id) => {
-    item.member.map((data) => {
+  memberListAPI.map((data) => {
+    if (
+      familyListAPI.find((x) => x.slug.current === data.family.slug.current)
+    ) {
       familyImageAPI_split.push({
         ...data,
-        storeID: id,
+        storeID: familyListAPI.findIndex(
+          (x) => x.slug.current === data.family.slug.current
+        ),
       });
-    });
+    }
   });
+
+  // familyListAPI.map((item, id) => {
+  //   memberListAPI.map((data) => {
+  //     familyImageAPI_split.push({
+  //       ...data,
+  //       storeID: id,
+  //     })
+  //   })
+  // })
 
   const shuffle = (array) => {
     let currentIndex = array.length,
@@ -192,31 +220,23 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
       <SEO
         seo={{
           title: 'Family',
-          webTitle: typeof seo !== 'undefined' ? seo.webTitle : '',
+          webTitle: seo.webTitle && seo.webTitle,
           description:
-            typeof family !== 'undefined' && typeof family.seo !== 'undefined'
+            family && family.seo && family.seo.seo_description
               ? family.seo.seo_description
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_description
-              : '',
+              : seo.seo && seo.seo.seo_description,
           meta_keywords:
-            typeof family !== 'undefined' && typeof family.seo !== 'undefined'
+            family && family.seo && family.seo.seo_keywords
               ? family.seo.seo_keywords
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_keywords
-              : '',
+              : seo.seo.seo_keywords && seo.seo.seo_keywords,
           image:
-            typeof family !== 'undefined' && typeof family.seo !== 'undefined'
+            family && family.seo && family.seo.seo_image
               ? urlFor(family.seo.seo_image).url()
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? urlFor(seo.seo.seo_image).url()
-              : '',
+              : seo.seo && seo.seo.seo_image && urlFor(seo.seo.seo_image).url(),
           image_alt:
-            typeof family !== 'undefined' && typeof family.seo !== 'undefined'
+            family && family.seo && family.seo.seo_image.name
               ? family.seo.seo_image.name
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_image.name
-              : '',
+              : seo.seo && seo.seo.seo_image.name && seo.seo.seo_image.name,
         }}
       />
       <motion.main
@@ -238,21 +258,23 @@ export default function Family({ seoAPI, familyAPI, familyListAPI }) {
           className='sticky max-md:hidden top-20 z-50 max-w-5xl mx-auto flex flex-wrap mt-14 items-stretch'
           id='family-button'
         >
-          {familyListAPI.map((familydata, id) => (
-            <FancyLink
-              key={id}
-              destination={`/family/${familydata.slug.current}`}
-              onMouseEnter={() => familybutton_enter(familydata.slug.current)}
-              onMouseLeave={() => familybutton_leave(0)}
-              className='group relative text-center uppercase overflow-hidden bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full'
-            >
-              <div className='relative z-2'>{familydata.title}</div>
-              <div
-                className='absolute top-0 left-0 w-full h-full z-0 opacity-0 group-hover:opacity-100'
-                style={{ backgroundColor: familydata.bgColor.hex }}
-              />
-            </FancyLink>
-          ))}
+          {familyListAPI.map((familydata, id) => {
+            return (
+              <FancyLink
+                key={id}
+                destination={`/family/${familydata.slug.current}`}
+                onMouseEnter={() => familybutton_enter(familydata.slug.current)}
+                onMouseLeave={() => familybutton_leave(0)}
+                className='group relative text-center uppercase overflow-hidden bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full'
+              >
+                <div className='relative z-2'>{familydata.title}</div>
+                <div
+                  className='absolute top-0 left-0 w-full h-full z-0 opacity-0 group-hover:opacity-100'
+                  style={{ backgroundColor: familydata.bgColor.hex }}
+                />
+              </FancyLink>
+            );
+          })}
         </div>
         <section className='w-full h-full flex flex-col relative mt-12 '>
           <div
@@ -305,11 +327,18 @@ export async function getStaticProps() {
   const familyListAPI = await client.fetch(`
   *[_type == "family_list"]
   `);
+  const memberListAPI = await client.fetch(`
+  *[_type == "member_list"] {
+    ...,
+    family->
+  }
+  `);
   return {
     props: {
       seoAPI,
       familyAPI,
       familyListAPI,
+      memberListAPI,
     },
   };
 }

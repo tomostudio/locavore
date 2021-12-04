@@ -24,34 +24,20 @@ export default function Home({ seoAPI }) {
       <SEO
         seo={{
           title: 'Home',
-          webTitle: typeof seo !== 'undefined' ? seo.webTitle : '',
-          description:
-            typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_description
-              : '',
-          description:
-            typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_description
-              : '',
-          meta_keywords:
-            typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_keywords
-              : '',
+          webTitle: seo.webTitle && seo.webTitle,
+          description: seo.seo && seo.seo.seo_description,
+          meta_keywords: seo.seo.seo_keywords && seo.seo.seo_keywords,
           image:
-            typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? urlFor(seo.seo.seo_image).url()
-              : '',
+            seo.seo && seo.seo.seo_image && urlFor(seo.seo.seo_image).url(),
           image_alt:
-            typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_image.name
-              : '',
+            seo.seo && seo.seo.seo_image.name && seo.seo.seo_image.name,
         }}
       />
     </>
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)

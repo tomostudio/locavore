@@ -170,7 +170,3 @@ body {
   filter: blur(4px);
   transition: filter 0.5s;
 }
-
-.activeCategory {
-  @apply bg-gray text-white #{!important};
-}
