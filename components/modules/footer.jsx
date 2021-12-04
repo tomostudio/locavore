@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import Arrow from '../utils/arrow'
 import Container from './container'
 import Image from 'next/image'
+import FancyLink from '../utils/fancyLink'
 
-const Footer = ({ className }) => {
+const Footer = ({ className, setting }) => {
   const [time, setTime] = useState(new Date())
 
   useEffect(() => {
@@ -52,42 +53,66 @@ const Footer = ({ className }) => {
         </div>
         <div className="w-full h-full max-md:mt-10 max-md:space-y-10 flex flex-col justify-between">
           <div className="w-auto h-full space-x-6 flex justify-end max-md:justify-start">
-            <div className="relative w-16px h-16px">
-              <Image
-                src={`/instagram-white.png`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="contain"
-                objectPosition="center"
-              />
-            </div>
-            <div className="relative w-16px h-16px">
-              <Image
-                src={`/facebook-white.png`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="contain"
-                objectPosition="center"
-              />
-            </div>
-            <div className="relative w-16px h-16px">
-              <Image
-                src={`/youtube-white.png`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="contain"
-                objectPosition="center"
-              />
-            </div>
-            <div className="relative w-16px h-16px">
-              <Image
-                src={`/linkedin-white.png`}
-                alt={'Locavore'}
-                layout="fill"
-                objectFit="contain"
-                objectPosition="center"
-              />
-            </div>
+            {setting.footerLink && setting.footerLink.instagram && (
+              <FancyLink
+                destination={setting.footerLink.instagram.link}
+                blank={true}
+                className="relative w-16px h-16px"
+              >
+                <Image
+                  src={`/instagram-white.png`}
+                  alt={'Locavore'}
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="center"
+                />
+              </FancyLink>
+            )}
+            {setting.footerLink && setting.footerLink.facebook && (
+              <FancyLink
+                destination={setting.footerLink.facebook.link}
+                blank={true}
+                className="relative w-16px h-16px"
+              >
+                <Image
+                  src={`/facebook-white.png`}
+                  alt={'Locavore'}
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="center"
+                />
+              </FancyLink>
+            )}
+            {setting.footerLink && setting.footerLink.youtube && (
+              <FancyLink
+                destination={setting.footerLink.youtube.link}
+                blank={true}
+                className="relative w-16px h-16px"
+              >
+                <Image
+                  src={`/youtube-white.png`}
+                  alt={'Locavore'}
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="center"
+                />
+              </FancyLink>
+            )}
+            {setting.footerLink && setting.footerLink.linkedin && (
+              <FancyLink
+                destination={setting.footerLink.linkedin.link}
+                blank={true}
+                className="relative w-16px h-16px"
+              >
+                <Image
+                  src={`/linkedin-white.png`}
+                  alt={'Locavore'}
+                  layout="fill"
+                  objectFit="contain"
+                  objectPosition="center"
+                />
+              </FancyLink>
+            )}
           </div>
           <div className="w-full h-full flex justify-end max-md:justify-start items-end max-md:items-start">
             <span className="text-sm">

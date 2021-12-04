@@ -182,7 +182,7 @@ export default function UnderConstruction() {
       <StickyButton destination="/editorial" arrow="left">
         EDITORIAL INDEX
       </StickyButton>
-      <Footer />
+      {/* <Footer /> */}
     </Layout>
   )
 }

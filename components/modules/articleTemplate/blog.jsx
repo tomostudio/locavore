@@ -9,7 +9,6 @@ import Layout from '@/components/modules/layout'
 import Container from '@/components/modules/container'
 import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
-import Navbar from '@/components/modules/header'
 
 // Components
 import PillButton from '@/components/modules/pillButton'
@@ -73,11 +72,6 @@ export default function Blog({ article, seo, nextArticle }) {
               ? article.seo.seo_image.name
               : seo.seo && seo.seo.seo_image.name && seo.seo.seo_image.name,
         }}
-      />
-      <Navbar
-        className="border-black"
-        defaultStyle
-        logo="/locavore-black.png"
       />
 
       {/* Header Gap */}
@@ -283,7 +277,7 @@ export default function Blog({ article, seo, nextArticle }) {
       <StickyButton destination="/editorial/metamorphosis" arrow="left">
         article 1
       </StickyButton>
-      <Footer />
+      <Footer setting={seo}/>
     </Layout>
   )
 }

@@ -177,7 +177,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
           <StickyButton destination='/editorial/search' arrow='right'>
             SEARCH ALL ARTICLES
           </StickyButton>
-          <Footer />
+      <Footer setting={seo}/>
         </m.main>
       </LazyMotion>
     </Layout>

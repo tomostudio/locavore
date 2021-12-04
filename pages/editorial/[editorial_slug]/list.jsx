@@ -245,7 +245,7 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
       <StickyButton destination="/editorial" arrow="left">
         EDITORIAL INDEX
       </StickyButton>
-      <Footer />
+      <Footer setting={seo}/>
     </Layout>
   )
 }

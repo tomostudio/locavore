@@ -328,7 +328,7 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI }) => {
           </FancyLink>
         </section> */}
       </motion.section>
-      <Footer />
+      <Footer setting={seo}/>
     </Layout>
   );
 };

@@ -7,7 +7,6 @@ import Layout from '@/components/modules/layout'
 import Container from '@/components/modules/container'
 import HeaderGap from '@/components/modules/headerGap'
 import Footer from '@/components/modules/footer'
-import Navbar from '@/components/modules/header'
 
 // Components
 import FancyLink from '@/components/utils/fancyLink'
@@ -82,7 +81,7 @@ export default function Video({ article, seo, nextArticle }) {
       <StickyButton destination="/editorial/metamorphosis" arrow="left">
         ISSUE 1
       </StickyButton>
-      <Footer />
+      <Footer setting={seo}/>
     </Layout>
   )
 }

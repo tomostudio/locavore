@@ -136,7 +136,7 @@ export default function Gallery({ article, seo, nextArticle }) {
       <StickyButton destination="/editorial/metamorphosis" arrow="left">
         ISSUE 1
       </StickyButton>
-      <Footer />
+      <Footer setting={seo}/>
     </Layout>
   )
 }
