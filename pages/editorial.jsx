@@ -186,7 +186,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
 
 export async function getStaticProps() {
   const issueAPI = await client.fetch(`
-                    *[_type == "issue"] {
+                    *[_type == "issue"] | order(issueNumber asc) {
                       ...,
                       "articleCount": count(*[_type=='article' && references(^._id)])
                     }

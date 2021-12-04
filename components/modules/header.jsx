@@ -97,7 +97,7 @@ export default function Header({ className = '', setting }) {
               >
                 Editorial
               </FancyLink>
-              {setting[0].headerLink &&
+              {setting && setting[0].headerLink &&
                 setting[0].headerLink.map((item, index) => (
                   <FancyLink
                     key={index}

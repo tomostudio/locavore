@@ -247,7 +247,7 @@ export default function Search({
                         }
                         destination={`${data.issue.slug.current}/${data.slug.current}`}
                         articleClassName="bg-culture w-full"
-                        title={`${data.title}`}
+                        title={`${data.articleNumber}. ${data.title}`}
                         category={data.category.title}
                         timeRead={timeConvert(
                           data.timeReadBlog ? data.timeReadBlog : data.timeRead,
@@ -310,7 +310,7 @@ export async function getStaticProps() {
                     `)
   const articleAPI = await client.fetch(`*[
     _type == "article"
-  ]{
+  ] | order(articleNumber asc) {
     ...,
     issue->,
     category->,

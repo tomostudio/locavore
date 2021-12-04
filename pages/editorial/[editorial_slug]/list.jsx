@@ -268,7 +268,7 @@ export async function getStaticProps({ params }) {
     `
         *[_type == "issue"] {
           ...,
-          "article": *[_type=='article' && references(^._id)] {
+          "article": *[_type=='article' && references(^._id)] | order(articleNumber asc) {
             ...,
             category->,
             "timeRead": round(length(pt::text(description)) / 5 / 180 ),

@@ -121,7 +121,7 @@ export default function Gallery({ article, seo, nextArticle }) {
       </section>
       <NextArticle
         bgColor={nextArticle.article.category.color.hex}
-        title={`${nextArticle.article.title}`}
+        title={`${nextArticle.article.articleNumber}. ${nextArticle.article.title}`}
         category={nextArticle.article.category.title}
         timeRead={timeConvert(
           nextArticle.article.timeReadBlog
