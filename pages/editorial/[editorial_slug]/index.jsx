@@ -322,7 +322,7 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
             dark ? 'bg-black ' : 'bg-white'
           }`}
         >
-          {issue.image1 && issue.image1.placeholder.asset ? (
+          {issue.image1 && issue.image1.asset ? (
             <>
               {/* Image  */}
               <div
