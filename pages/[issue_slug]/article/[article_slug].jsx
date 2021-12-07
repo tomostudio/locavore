@@ -386,7 +386,7 @@ export default function ArticleSlug() {
       <StickyButton destination="/editorial/metamorphosis" arrow="left">
         ISSUE 1
       </StickyButton>
-      <Footer />
+      {/* <Footer /> */}
     </Layout>
   )
 }

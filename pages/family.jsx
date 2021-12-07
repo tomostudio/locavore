@@ -311,7 +311,7 @@ export default function Family({
             ))}
           </section>
         )}
-        <Footer />
+        <Footer setting={seo}/>
       </motion.main>
     </Layout>
   );

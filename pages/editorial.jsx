@@ -177,7 +177,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
           <StickyButton destination='/editorial/search' arrow='right'>
             SEARCH ALL ARTICLES
           </StickyButton>
-          <Footer />
+      <Footer setting={seo}/>
         </m.main>
       </LazyMotion>
     </Layout>
@@ -186,7 +186,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
 
 export async function getStaticProps() {
   const issueAPI = await client.fetch(`
-                    *[_type == "issue"] {
+                    *[_type == "issue"] | order(issueNumber asc) {
                       ...,
                       "articleCount": count(*[_type=='article' && references(^._id)])
                     }

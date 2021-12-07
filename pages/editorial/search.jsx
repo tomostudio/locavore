@@ -240,10 +240,14 @@ export default function Search({
                     <>
                       <IssueCard
                         key={id}
-                        issueNo={dataOrderIssue.find((item) => item.slug === data.issue.slug.current).issueNo}
+                        issueNo={
+                          dataOrderIssue.find(
+                            (item) => item.slug === data.issue.slug.current,
+                          ).issueNo
+                        }
                         destination={`${data.issue.slug.current}/${data.slug.current}`}
                         articleClassName="bg-culture w-full"
-                        title={`${data.title}`}
+                        title={`${data.articleNumber}. ${data.title}`}
                         category={data.category.title}
                         timeRead={timeConvert(
                           data.timeReadBlog ? data.timeReadBlog : data.timeRead,
@@ -284,7 +288,7 @@ export default function Search({
           <StickyButton destination="/editorial" arrow="left">
             Browse all issues
           </StickyButton>
-          <Footer />
+          <Footer setting={seo} />
         </m.main>
       </LazyMotion>
     </Layout>
@@ -306,7 +310,7 @@ export async function getStaticProps() {
                     `)
   const articleAPI = await client.fetch(`*[
     _type == "article"
-  ]{
+  ] | order(articleNumber asc) {
     ...,
     issue->,
     category->,
