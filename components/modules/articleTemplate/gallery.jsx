@@ -63,7 +63,7 @@ export default function Gallery({ article, seo, nextArticle }) {
                   <div className="w-full setflex-center mt-3 max-md:mt-2">
                     <div className="relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1">
                       <Image
-                        src={urlFor(item.image).url()}
+                        src={urlFor(item.image).width(1500).url()}
                         alt={item.name}
                         layout="fill"
                         objectFit="cover"
@@ -86,7 +86,7 @@ export default function Gallery({ article, seo, nextArticle }) {
                   <div className="w-full mt-3 max-md:mt-2 h-30rem max-md:h-56 flex space-x-3 max-md:space-x-2">
                     <div className="relative w-full h-full">
                       <Image
-                        src={urlFor(item.firstImage).url()}
+                        src={urlFor(item.firstImage).width(1500).url()}
                         alt={item.firstImage.name}
                         layout="fill"
                         objectFit="cover"
@@ -95,7 +95,7 @@ export default function Gallery({ article, seo, nextArticle }) {
                     </div>
                     <div className="relative w-full h-full">
                       <Image
-                        src={urlFor(item.secondImage).url()}
+                        src={urlFor(item.secondImage).width(1500).url()}
                         alt={item.secondImage.name}
                         layout="fill"
                         objectFit="cover"
@@ -128,7 +128,8 @@ export default function Gallery({ article, seo, nextArticle }) {
             ? nextArticle.article.timeReadBlog
             : nextArticle.article.timeRead,
         )}
-        thumbnail={urlFor(nextArticle.article.thumbnail).url()}
+        thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
+        border={nextArticle.article.category.border}
         alt={nextArticle.article.thumbnail.name}
         destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
       />

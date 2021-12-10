@@ -17,7 +17,7 @@ const PillButton = ({
         <FancyLink
           destination={destination}
           onClick={onClick}
-          className={`pillbutton text-xs px-6 py-2 border border-gray text-gray rounded-3xl transition-all ease-linear setflex-center-row ${className} ${
+          className={`pillbutton text-xs px-6 py-2 border border-gray text-gray rounded-3xl transition-all ease-linear setflex-center-row whitespace-nowrap text-center ${className} ${
             defaultHover ? 'hover:bg-gray hover:text-white' : ''
           }`}
           {...others}

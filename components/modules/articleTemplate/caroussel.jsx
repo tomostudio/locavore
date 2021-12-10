@@ -95,7 +95,7 @@ export default function Caroussel({ article, seo, nextArticle }) {
                 <SwiperSlide key={id}>
                   <div className="relative w-full aspect-w-16 max-md:aspect-w-1 aspect-h-9 max-md:aspect-h-1">
                     <Image
-                      src={urlFor(data).url()}
+                      src={urlFor(data).width(1500).url()}
                       alt={data.name}
                       layout="fill"
                       objectFit="cover"
@@ -144,7 +144,7 @@ export default function Caroussel({ article, seo, nextArticle }) {
                   <SwiperSlide key={id}>
                     <div className="cursor-pointer relative w-full h-full">
                       <Image
-                        src={urlFor(data).url()}
+                        src={urlFor(data).width(1500).url()}
                         alt={data.name}
                         className="rounded-2xl"
                         layout="fill"
@@ -169,7 +169,8 @@ export default function Caroussel({ article, seo, nextArticle }) {
             ? nextArticle.article.timeReadBlog
             : nextArticle.article.timeRead,
         )}
-        thumbnail={urlFor(nextArticle.article.thumbnail).url()}
+        thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
+        border={nextArticle.article.category.border}
         alt={nextArticle.article.thumbnail.name}
         destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
       />

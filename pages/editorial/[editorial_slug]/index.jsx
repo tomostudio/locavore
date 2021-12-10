@@ -27,7 +27,7 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
   let issue
   issueAPI.forEach((data, id) => {
     if (data.slug.current === editorial_slug) {
-      issue = { ...data, issueNo: id }
+      issue = { ...data}
     }
   })
   const dark = issue.dark
@@ -35,6 +35,7 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
   const appContext = useAppContext()
 
   useEffect(() => {
+    console.log(issue.headerOption);
     appContext.setHeader({
       headerStyle: issue.headerOption ? issue.headerOption : 'default',
     })
@@ -297,7 +298,7 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
                 dark ? 'text-white' : 'text-black'
               }`}
             >
-              ISSUE {issue.issueNo}
+              ISSUE {issue.issueNumber}
             </span>
           </Container>
         </div>

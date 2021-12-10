@@ -77,11 +77,6 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
     const parentWidth = scrollInd.current.parentElement.offsetWidth
     const scrollMove = (parentWidth - indWidth) * (currentScroll / 100)
     scrollInd.current.style.transform = `translateX(${scrollMove}px)`
-
-    console.log(
-      scrollContainer.current.scrollLeft,
-      scrollContainer.current.scroll,
-    )
   }
 
   const [scrollStyle, setScrollStyle] = useState('normal')
@@ -102,6 +97,10 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
       }
     }
   }
+
+  const processedArticle = issue.article.sort((a,b) => {
+    return a.articleNumber - b.articleNumber
+  }) // sort article based on article number
 
   useEffect(() => {
     window.scroll(0, 0)
@@ -172,7 +171,7 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
         <Container className="max-md:px-6">
           <div className="w-full h-full setflex-center">
             <span className="font-serif italic text-xl">
-              Issue {issue.issueNo} —{' '}
+              Issue {issue.issueNumber} —{' '}
               {checkMonth(new Date(issue.date).getMonth())}{' '}
               {new Date(issue.date).getFullYear()}
             </span>
@@ -193,7 +192,7 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
             innerRef={scrollContainer}
             nativeMobileScroll={true}
           >
-            {issue.article.map((data, id) => {
+            {processedArticle.map((data, id) => {
               return (
                 <div
                   className="article_wrapper"
@@ -212,7 +211,7 @@ export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
                         data.timeReadBlog ? data.timeReadBlog : data.timeRead,
                       )}
                       border={data.category.border}
-                      src={urlFor(data.thumbnail).url()}
+                      src={urlFor(data.thumbnail).width(750).url()}
                       alt={data.thumbnail.name}
                       className={`group`}
                     />

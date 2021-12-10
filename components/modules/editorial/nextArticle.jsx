@@ -13,7 +13,7 @@ export default function NextArticle({
   category,
   timeRead,
   bgColor,
-  borderColor,
+  border,
   thumbnail = '',
   alt,
 }) {
@@ -28,10 +28,10 @@ export default function NextArticle({
             <ArticleCard
               className='rotate-6 group-hover:-rotate-2 group-hover:-translate-y-2'
               title={title}
+              border={border}
               bgColor={bgColor}
               category={category}
               timeRead={timeRead}
-              border={borderColor}
               src={thumbnail}
               alt={alt}
             />

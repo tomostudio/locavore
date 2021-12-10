@@ -24,7 +24,14 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
   const [seo] = seoAPI;
   const [editorial] = editorialAPI;
 
-  const dataSoon = issueAPI.filter((data) => data.comingSoon === true);
+  const dataSoon = issueAPI
+    .filter((data) => data.comingSoon === true)
+    .sort((a, b) => {
+      return a.issueNumber - b.issueNumber;
+    });
+  const processedIssue = issueAPI.sort((a, b) => {
+    return b.issueNumber - a.issueNumber;
+  }); // sort array descending
 
   const isComingSoon = dataSoon.length > 0 ? true : false; // tanda if there is a comingsoon card or not
 
@@ -45,15 +52,14 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
     }
   };
 
+  console.log(checkClosest());
+
   useEffect(() => {
     // check if coming soon is enabled or present
-
     if (isComingSoon) {
       window.scrollTo(0, 315);
-      console.log(' coming soon');
     } else {
       window.scrollTo(0, 0);
-      console.log('non coming soon');
     }
 
     return () => {};
@@ -104,47 +110,39 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                     </h1>
                   </div>
                   {/* // COMING SOON TEST */}
-                  {isComingSoon &&
-                    new Date(checkClosest().date) > new Date() && (
-                      <EditorialIssueCard
-                        comingsoon={true}
-                        title={checkClosest().title}
-                        date={checkClosest().date}
-                        dark={checkClosest().dark}
-                        bgColor={
-                          checkClosest().thumbnail &&
-                          !checkClosest().thumbnail.placeholder &&
-                          checkClosest().thumbnail.color.hex
-                            ? checkClosest().thumbnail.color.hex
-                            : '#fff'
-                        }
-                        className='mb-10'
-                        destination={`/editorial/${
-                          checkClosest().slug.current
-                        }`}
-                        imageThumbnail={
-                          checkClosest().thumbnail &&
-                          urlFor(checkClosest().thumbnail.placeholder).url()
-                        }
-                      />
-                    )}
+                  {isComingSoon && (
+                    <EditorialIssueCard
+                      comingsoon={true}
+                      title={checkClosest().title}
+                      date={checkClosest().date}
+                      dark={checkClosest().dark}
+                      bgColor={
+                        checkClosest().thumbnail &&
+                        !checkClosest().thumbnail.placeholder &&
+                        checkClosest().thumbnail.color.hex
+                          ? checkClosest().thumbnail.color.hex
+                          : '#fff'
+                      }
+                      className='mb-10'
+                      destination={`/editorial/${checkClosest().slug.current}`}
+                      imageThumbnail={
+                        checkClosest().thumbnail &&
+                        urlFor(checkClosest().thumbnail.placeholder).url()
+                      }
+                    />
+                  )}
                 </div>
-                {isComingSoon && new Date(checkClosest().date) > new Date() && (
-                  <div className={`stickySpacer`} />
-                )}
+                {isComingSoon && <div className={`stickySpacer`} />}
                 {/* Spacer */}
               </div>
               {/* Card */}
               <div
                 id='editorialIssuesList'
                 className={`relative w-full h-full space-y-10 ${
-                  isComingSoon && new Date(checkClosest().date) > new Date()
-                    ? 'comingsoonMargin'
-                    : ''
+                  isComingSoon ? 'comingsoonMargin' : ''
                 }`}
               >
-                {/* Ini map aja yang ga ada tulisan coming soon  */}
-                {issueAPI.reverse().map((data, id) => {
+                {processedIssue.map((data, id) => {
                   if (!data.comingSoon)
                     return (
                       <EditorialIssueCard
@@ -177,7 +175,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
           <StickyButton destination='/editorial/search' arrow='right'>
             SEARCH ALL ARTICLES
           </StickyButton>
-      <Footer setting={seo}/>
+          <Footer setting={seo} />
         </m.main>
       </LazyMotion>
     </Layout>

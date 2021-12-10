@@ -253,7 +253,7 @@ export default function Search({
                           data.timeReadBlog ? data.timeReadBlog : data.timeRead,
                         )}
                         bgColor={data.category.color.hex}
-                        borderColor=""
+                        borderColor={data.category.border}
                         thumbnail={urlFor(data.thumbnail).url()}
                         alt={data.thumbnail.name}
                       />

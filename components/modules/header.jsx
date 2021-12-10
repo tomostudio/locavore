@@ -25,9 +25,9 @@ export default function Header({ className = '', setting }) {
           ? 'border-black bg-white bg-opacity-50 backdrop-filter backdrop-blur-sm'
           : headerStyle.toLowerCase() === 'blur-white'
           ? 'border-white bg-black bg-opacity-50 backdrop-filter backdrop-blur-sm'
-          : headerStyle.toLowerCase() === 'trans-black'
+          : headerStyle.toLowerCase() === 'trans-black' || headerStyle.toLowerCase() === 'transparent-black'
           ? 'border-black bg-opacity-0'
-          : headerStyle.toLowerCase() === 'trans-white'
+          : headerStyle.toLowerCase() === 'trans-white' || headerStyle.toLowerCase() === 'transparent-white'
           ? 'border-white bg-opacity-0'
           : 'border-black bg-white'
       }`}
