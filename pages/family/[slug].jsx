@@ -242,11 +242,11 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI }) => {
             <div className='w-1/2 h-full flex justify-end'>
               <div className='relative w-44 h-full' id='family-logo'>
                 <Image
-                  src={urlFor(family.logo).url()}
+                  src={urlFor(family.logo).width(750).url()}
                   alt={family.logo.name}
                   className='rounded-2xl'
                   layout='fill'
-                  objectFit='cover'
+                  objectFit='contain'
                   objectPosition='center'
                 />
               </div>
@@ -286,47 +286,6 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI }) => {
         <div className='hidden max-md:block w-full mt-12'>
           <Arrow className='mx-auto' position='top' />
         </div>
-        {/* <section
-          className='sticky bottom-0 left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center'
-          id='btnMobile'
-        >
-          <FancyLink
-            destination='article/locavore'
-            className='relative -bottom-14 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-4 font-bold uppercase'
-          >
-            Locavore
-          </FancyLink>
-          <FancyLink
-            destination='article/rooster'
-            className='relative z-2 -bottom-12 text-center w-full rounded-t-2xl bg-nightrooster pt-2 pb-4 font-bold uppercase'
-          >
-            the night rooster
-          </FancyLink>
-          <FancyLink
-            destination='article/locaparts'
-            className='relative z-3 -bottom-9 text-center w-full rounded-t-2xl bg-localparts pt-2 pb-4 font-bold uppercase'
-          >
-            locaparts
-          </FancyLink>
-          <FancyLink
-            destination='article/nusantara'
-            className='relative z-4 -bottom-6 text-center w-full rounded-t-2xl bg-nusantara pt-2 pb-4 font-bold uppercase'
-          >
-            nusantara
-          </FancyLink>
-          <FancyLink
-            destination='article/localab'
-            className='relative z-5 -bottom-3 text-center w-full rounded-t-2xl bg-localab pt-2 pb-4 font-bold uppercase'
-          >
-            localab
-          </FancyLink>
-          <FancyLink
-            destination='article/togo'
-            className='relative z-6 text-center w-full rounded-t-2xl bg-togo pt-2 pb-4 font-bold uppercase'
-          >
-            locavore to-go
-          </FancyLink>
-        </section> */}
       </motion.section>
       <Footer setting={seo}/>
     </Layout>

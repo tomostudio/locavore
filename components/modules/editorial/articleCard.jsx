@@ -10,7 +10,6 @@ const ArticleCard = ({
   bgColor = '#ffffff',
   border,
 }) => {
-  console.log(border);
   return (
     <div
       className={`article-card relative rounded-xl w-full p-5 flex flex-col transition-all hover:shadow-lg hover:-translate-y-2 duration-300 ${className}`}

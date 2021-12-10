@@ -60,7 +60,7 @@ export default function App({ Component, pageProps, seoAPI }) {
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.asPath} />
         </AnimatePresence>
-        <Link />
+        {/* <Link /> */}
       </AppWrapper>
     </>
   );

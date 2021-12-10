@@ -5,11 +5,13 @@ import Caroussel from '@/components/modules/articleTemplate/caroussel';
 import Gallery from '@/components/modules/articleTemplate/gallery';
 import Video from '@/components/modules/articleTemplate/video';
 
-export default function ArticleSlug({ articleAPI, seoAPI, nextArticle }) {
+export default function ArticleSlug({
+  articleAPI,
+  seoAPI,
+  nextArticle,
+}) {
   const [seo] = seoAPI;
   const [article] = articleAPI;
-
-  console.log(nextArticle.article);
 
   return article.layout === 'blog' ? (
     <Blog article={article} seo={seo} nextArticle={nextArticle} />
@@ -28,14 +30,18 @@ export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "article"] {
           ...,
-          issue->
+          issue->,
+          category->,
         }
       `);
 
   const paths = res.map((data) => ({
     params: {
       article_slug: data.slug.current.toString(),
+      previewData: data.slug,
+      articleNumber: data.articleNumber,
       editorial_slug: data.issue.slug.current.toString(),
+      ...data,
     },
   }));
 
@@ -57,11 +63,11 @@ export async function getStaticProps({ params }) {
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `);
-  
+
   const next = await client.fetch(
     `
-        *[_type == "issue" && slug.current == "${params.editorial_slug}"] {
-          "article": *[_type=='article' && references(^._id)] {
+        *[_type == "issue" && slug.current ==  "${params.editorial_slug}" ] {
+          "article": *[_type=='article' && references(^._id) ] | order(articleNumber asc) {
             ...,
             category->,
             "timeRead": round(length(pt::text(description)) / 5 / 180 ),
@@ -71,29 +77,30 @@ export async function getStaticProps({ params }) {
       `
   );
 
-  const processedArticle = next[0].article.sort((a,b) => {
-    return a.articleNumber - b.articleNumber
-  }) // sort article based on article number
+  const processedArticle = next[0].article.sort((a, b) => {
+    return a.articleNumber - b.articleNumber;
+  }); // sort article based on article number
 
-  processedArticle.forEach((data, id) => {
-    if (id + 1 > processedArticle.length) {
-      nextArticle = {
-        editorial_slug: params.editorial_slug,
-        article: processedArticle[id + 1],
-      };
-    } else {
-      nextArticle = {
-        editorial_slug: params.editorial_slug,
-        article: processedArticle[0],
-      };
-    }
-  });
+  const nextArticleIndex = processedArticle.indexOf(processedArticle.find(({ slug }) => slug.current == params.article_slug)) + 1;
 
+  if (nextArticleIndex < processedArticle.length) {
+    nextArticle = {
+      editorial_slug: params.editorial_slug,
+      article: processedArticle[nextArticleIndex],
+    };
+  } else {
+    nextArticle = {
+      editorial_slug: params.editorial_slug,
+      article: processedArticle[0],
+    };
+  }
 
   return {
     props: {
       articleAPI,
       seoAPI,
+      nextArticleIndex,
+      processedArticle,
       nextArticle,
     },
   };
