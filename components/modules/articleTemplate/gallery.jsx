@@ -132,7 +132,7 @@ export default function Gallery({ article, seo, footer, nextArticle }) {
       {nextArticle !== null && (
         <NextArticle
           bgColor={nextArticle.article.category.color.hex}
-          title={`${nextArticle.article.articleNumber}. ${nextArticle.article.title}`}
+          title={`${!nextArticle.article.turnOffArticleNumber && `${nextArticle.article.articleNumber}.`} ${nextArticle.article.title}`}
           category={nextArticle.article.category.title}
           timeRead={timeConvert(
             nextArticle.article.timeReadBlog

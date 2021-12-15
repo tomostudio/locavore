@@ -235,7 +235,7 @@ export default function Search({
                           issueNo={datas.issueNumber}
                           destination={`${datas.slug.current}/${data.slug.current}`}
                           articleClassName="bg-culture w-full"
-                          title={`${data.articleNumber}. ${data.title}`}
+                          title={`${!data.turnOffArticleNumber && `${data.articleNumber}.`} ${data.title}`}
                           category={data.category.title}
                           timeRead={timeConvert(
                             data.timeReadBlog

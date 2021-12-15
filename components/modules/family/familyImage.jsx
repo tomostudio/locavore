@@ -16,7 +16,6 @@ const familyImage = ({ store, src, alt, position = '', name = '' }) => {
 
   const familyRef = useRef(null);
 
-  console.log(store);
   return (
     <FancyLink
       data-store={store.slug.current}

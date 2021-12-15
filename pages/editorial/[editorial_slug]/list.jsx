@@ -201,7 +201,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
                   >
                     <ArticleCard
                       bgColor={data.category.color.hex}
-                      title={`${data.articleNumber}. ${data.title}`}
+                      title={`${!data.turnOffArticleNumber && `${data.articleNumber}.`} ${data.title}`}
                       category={data.category.title}
                       timeRead={timeConvert(
                         data.timeReadBlog ? data.timeReadBlog : data.timeRead,

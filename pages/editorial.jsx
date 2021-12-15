@@ -53,8 +53,6 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI, footerAPI })
     }
   }
 
-  console.log(checkClosest())
-
   useEffect(() => {
     // check if coming soon is enabled or present
     if (isComingSoon) {
