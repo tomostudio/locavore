@@ -96,7 +96,7 @@ export default function Search({
     } else {
       const fuse = new Fuse(articleAPI, {
         keys: ['article.category.title'],
-        useExtendedSearch: true,
+        includeMatches: true,
       })
       let cat = fuse.search(`=${value}`).map((result) => result.item)
       setitemsToDisplay(value ? cat : articleAPI)
@@ -218,7 +218,11 @@ export default function Search({
                 <span className="font-bold mt-12 mb-10 text-lg">
                   We found &nbsp;
                   <span className="border-black border-b">
-                    {itemsToDisplay.length} Articles
+                    {itemsToDisplay.reduce(
+                      (count, current) => count + current.article.length,
+                      0,
+                    )}{' '}
+                    Articles
                   </span>
                 </span>
                 {/* Card */}
@@ -235,7 +239,10 @@ export default function Search({
                           issueNo={datas.issueNumber}
                           destination={`${datas.slug.current}/${data.slug.current}`}
                           articleClassName="bg-culture w-full"
-                          title={`${!data.turnOffArticleNumber && `${data.articleNumber}.`} ${data.title}`}
+                          title={`${
+                            !data.turnOffArticleNumber &&
+                            `${data.articleNumber}.`
+                          } ${data.title}`}
                           category={data.category.title}
                           timeRead={timeConvert(
                             data.timeReadBlog
@@ -323,7 +330,7 @@ export async function getStaticProps() {
       articleAPI,
       issueAPI,
       footerAPI,
-      headerAPI
+      headerAPI,
     },
   }
 }
