@@ -449,7 +449,7 @@ export default function Index({ issueAPI, seoAPI, editorial_slug }) {
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
-      *[_type == "issue"]
+      *[_type == "issue" && comingSoon == false]
     `)
 
   const paths = res.map((data) => ({

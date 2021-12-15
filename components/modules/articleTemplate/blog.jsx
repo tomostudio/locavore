@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { NextSeo } from 'next-seo'
 import Image from 'next/image'
 import Marquee from 'react-fast-marquee'
@@ -27,6 +27,7 @@ export default function Blog({ article, seo, nextArticle }) {
   const articleBlog = article.blog.filter((item) => item._type === 'orange')
   const articleWhite = article.blog.filter((item) => item._type === 'white')
   let layoutFilter = [...articleBlog, ...articleWhite]
+  const [baseUrl, setBaseUrl] = useState();
   const scrolltoview = (slug) => {
     const element = document.querySelector(`[data-slug*="${slug}"]`)
     const headerOffset = 60
@@ -45,6 +46,7 @@ export default function Blog({ article, seo, nextArticle }) {
 
   useEffect(() => {
     window.scroll(0, 0)
+    setBaseUrl(window.location.href)
     return () => {}
   }, [])
 
@@ -78,7 +80,7 @@ export default function Blog({ article, seo, nextArticle }) {
       <HeaderGap />
 
       {/* Untuk Content */}
-      <OpeningArticle article={article} />
+      <OpeningArticle article={article} baseUrl={baseUrl} />
 
       <section className="">
         <Container>
@@ -260,25 +262,31 @@ export default function Blog({ article, seo, nextArticle }) {
         )}
       </section>
       {/* Card Next Article */}
-      <NextArticle
-        bgColor={nextArticle.article.category.color.hex}
-        title={`${nextArticle.article.articleNumber}. ${nextArticle.article.title}`}
-        category={nextArticle.article.category.title}
-        timeRead={timeConvert(
-          nextArticle.article.timeReadBlog
-            ? nextArticle.article.timeReadBlog
-            : nextArticle.article.timeRead,
-        )}
-        thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
-        border={nextArticle.article.category.border}
-        alt={nextArticle.article.thumbnail.name}
-        destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
-      />
+      {nextArticle !== null && (
+        <NextArticle
+          bgColor={nextArticle.article.category.color.hex}
+          title={`${nextArticle.article.articleNumber}. ${nextArticle.article.title}`}
+          category={nextArticle.article.category.title}
+          timeRead={timeConvert(
+            nextArticle.article.timeReadBlog
+              ? nextArticle.article.timeReadBlog
+              : nextArticle.article.timeRead,
+          )}
+          thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
+          border={nextArticle.article.category.border}
+          alt={nextArticle.article.thumbnail.name}
+          destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
+        />
+      )}
       {/* Button Sticky */}
-      <StickyButton destination="/editorial/metamorphosis" arrow="left">
-        article 1
+      <StickyButton
+        className={nextArticle === null && `mb-5 mt-10`}
+        destination={`/editorial/${article.issue.slug.current}`}
+        arrow="left"
+      >
+        ISSUE {article.issue.issueNumber}
       </StickyButton>
-      <Footer setting={seo}/>
+      <Footer setting={seo} />
     </Layout>
   )
 }

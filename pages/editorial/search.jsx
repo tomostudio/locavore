@@ -39,17 +39,9 @@ export default function Search({
   const [search, setSearch] = useState('')
   const [itemsToDisplay, setitemsToDisplay] = useState(articleAPI)
 
+  console.log(articleAPI)
+
   let dataOrderIssue = []
-  articleAPI.forEach((data) => {
-    issueAPI.forEach((item, index) => {
-      if (item.slug.current === data.issue.slug.current) {
-        dataOrderIssue.push({
-          slug: item.slug.current,
-          issueNo: index,
-        })
-      }
-    })
-  })
 
   const handleLoadMoreCategory = () => {
     setPostNumCategory((prevPostNum) => prevPostNum + 3)
@@ -68,7 +60,7 @@ export default function Search({
 
     if (appContext.category) {
       const fuseCategory = new Fuse(articleAPI, {
-        keys: ['category.title'],
+        keys: ['article.category.title'],
         useExtendedSearch: true,
       })
       let cat = fuseCategory
@@ -76,13 +68,13 @@ export default function Search({
         .map((result) => result.item)
 
       const fuseSearchCategory = new Fuse(cat, {
-        keys: ['title'],
+        keys: ['article.title'],
       })
       const data = fuseSearchCategory.search(value).map((result) => result.item)
       setitemsToDisplay(value ? data : cat)
     } else {
       const fuse = new Fuse(articleAPI, {
-        keys: ['title', 'category.title'],
+        keys: ['aricle.title', 'article.category.title'],
       })
       const data = fuse.search(value).map((result) => result.item)
       setitemsToDisplay(value ? data : articleAPI)
@@ -94,7 +86,7 @@ export default function Search({
     appContext.setCategory(value)
     if (search) {
       const fuse = new Fuse(articleAPI, {
-        keys: ['title', 'category.title'],
+        keys: ['article.title', 'article.category.title'],
       })
       const data = fuse.search(search).map((result) => result.item)
       if (value) {
@@ -105,7 +97,7 @@ export default function Search({
       }
     } else {
       const fuse = new Fuse(articleAPI, {
-        keys: ['category.title'],
+        keys: ['article.category.title'],
         useExtendedSearch: true,
       })
       let cat = fuse.search(`=${value}`).map((result) => result.item)
@@ -236,29 +228,29 @@ export default function Search({
                   className="w-full h-auto gap-8 flex-wrap"
                   id="search-results"
                 >
-                  {itemsToDisplay.slice(0, postNum).map((data, id) => (
-                    <>
-                      <IssueCard
-                        key={id}
-                        issueNo={
-                          dataOrderIssue.find(
-                            (item) => item.slug === data.issue.slug.current,
-                          ).issueNo
-                        }
-                        destination={`${data.issue.slug.current}/${data.slug.current}`}
-                        articleClassName="bg-culture w-full"
-                        title={`${data.articleNumber}. ${data.title}`}
-                        category={data.category.title}
-                        timeRead={timeConvert(
-                          data.timeReadBlog ? data.timeReadBlog : data.timeRead,
-                        )}
-                        bgColor={data.category.color.hex}
-                        borderColor={data.category.border}
-                        thumbnail={urlFor(data.thumbnail).url()}
-                        alt={data.thumbnail.name}
-                      />
-                    </>
-                  ))}
+                  {itemsToDisplay
+                    .slice(0, postNum)
+                    .map((datas, _) =>
+                      datas.article.map((data, id) => (
+                        <IssueCard
+                          key={id}
+                          issueNo={datas.issueNumber}
+                          destination={`${datas.slug.current}/${data.slug.current}`}
+                          articleClassName="bg-culture w-full"
+                          title={`${data.articleNumber}. ${data.title}`}
+                          category={data.category.title}
+                          timeRead={timeConvert(
+                            data.timeReadBlog
+                              ? data.timeReadBlog
+                              : data.timeRead,
+                          )}
+                          bgColor={data.category.color.hex}
+                          borderColor={data.category.border}
+                          thumbnail={urlFor(data.thumbnail).url()}
+                          alt={data.thumbnail.name}
+                        />
+                      )),
+                    )}
                 </div>
                 {search || appContext.category
                   ? !(postNum >= itemsToDisplay.length) && (
@@ -309,13 +301,15 @@ export async function getStaticProps() {
                     *[_type == "issue"]
                     `)
   const articleAPI = await client.fetch(`*[
-    _type == "article"
-  ] | order(articleNumber asc) {
+    _type == "issue"
+  ] | order(issueNumber asc) {
     ...,
-    issue->,
-    category->,
-    "timeRead": round(length(pt::text(description)) / 5 / 180 ),
-    "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
+    "article": *[_type=='article' && references(^._id) ] | order(articleNumber asc) {
+      ...,
+      category->,
+      "timeRead": round(length(pt::text(description)) / 5 / 180 ),
+      "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
+    }
   }`)
   return {
     props: {

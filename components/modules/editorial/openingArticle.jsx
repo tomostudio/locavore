@@ -7,7 +7,7 @@ import { useAppContext } from 'context/state'
 import checkMonth from '@/helpers/functional/checkMonth'
 import { toPlainText } from '@/helpers/functional/toPlainText'
 
-export default function OpeningArticle({ article }) {
+export default function OpeningArticle({ article, baseUrl }) {
   const appContext = useAppContext()
   return (
     <section className="pt-10 pb-12 w-full h-full">
@@ -34,7 +34,11 @@ export default function OpeningArticle({ article }) {
               {new Date(article.date).getFullYear()}
             </span>
             <div className="flex space-x-7">
-              <div className="relative w-16px h-16px">
+              <FancyLink
+                blank={true}
+                destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                className="relative w-16px h-16px"
+              >
                 <Image
                   src={`/facebook.png`}
                   alt={'Locavore'}
@@ -42,7 +46,7 @@ export default function OpeningArticle({ article }) {
                   objectFit="contain"
                   objectPosition="center"
                 />
-              </div>
+              </FancyLink>
               <div className="relative w-16px h-16px">
                 <Image
                   src={`/twitter.png`}

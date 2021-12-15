@@ -33,9 +33,11 @@ export default function Caroussel({ article, seo, nextArticle }) {
   const router = useRouter()
   const [firstSwiper, setFirstSwiper] = useState(null)
   const [secondSwiper, setSecondSwiper] = useState(null)
+  const [baseUrl, setBaseUrl] = useState();
 
   useEffect(() => {
     window.scroll(0, 0)
+    setBaseUrl(window.location.href)
     return () => {}
   }, [])
 
@@ -68,7 +70,7 @@ export default function Caroussel({ article, seo, nextArticle }) {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <OpeningArticle article={article} />
+      <OpeningArticle article={article} baseUrl={baseUrl} />
       <section className="w-full h-full flex flex-col">
         <Container className="max-md:mb-5 space-y-3 max-md:space-y-5 max-md:px-0">
           {/* Gallery */}
@@ -160,25 +162,32 @@ export default function Caroussel({ article, seo, nextArticle }) {
         </Container>
         <hr className="hidden max-md:block border-gray mt-3 mb-14 mx-6" />
       </section>
-      <NextArticle
-        bgColor={nextArticle.article.category.color.hex}
-        title={`${nextArticle.article.articleNumber}. ${nextArticle.article.title}`}
-        category={nextArticle.article.category.title}
-        timeRead={timeConvert(
-          nextArticle.article.timeReadBlog
-            ? nextArticle.article.timeReadBlog
-            : nextArticle.article.timeRead,
-        )}
-        thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
-        border={nextArticle.article.category.border}
-        alt={nextArticle.article.thumbnail.name}
-        destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
-      />
+      {/* Card Next Article */}
+      {nextArticle !== null && (
+        <NextArticle
+          bgColor={nextArticle.article.category.color.hex}
+          title={`${nextArticle.article.articleNumber}. ${nextArticle.article.title}`}
+          category={nextArticle.article.category.title}
+          timeRead={timeConvert(
+            nextArticle.article.timeReadBlog
+              ? nextArticle.article.timeReadBlog
+              : nextArticle.article.timeRead,
+          )}
+          thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
+          border={nextArticle.article.category.border}
+          alt={nextArticle.article.thumbnail.name}
+          destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
+        />
+      )}
       {/* Button Sticky */}
-      <StickyButton destination="/editorial/metamorphosis" arrow="left">
-        ISSUE 1
+      <StickyButton
+        className={nextArticle === null && `mb-5 mt-10`}
+        destination={`/editorial/${article.issue.slug.current}`}
+        arrow="left"
+      >
+        ISSUE {article.issue.issueNumber}
       </StickyButton>
-      <Footer setting={seo}/>
+      <Footer setting={seo} />
     </Layout>
   )
 }

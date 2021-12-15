@@ -54,6 +54,7 @@ export async function getStaticProps({ params }) {
     `
         *[_type == "article" && slug.current == "${params.article_slug}"] {
           ...,
+          issue->,
           category->,
           "timeRead": round(length(pt::text(description)) / 5 / 180 ),
           "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
@@ -66,7 +67,8 @@ export async function getStaticProps({ params }) {
 
   const next = await client.fetch(
     `
-        *[_type == "issue" && slug.current ==  "${params.editorial_slug}" ] {
+        *[_type == "issue" && slug.current ==  "${params.editorial_slug}"] {
+          ...,
           "article": *[_type=='article' && references(^._id) ] | order(articleNumber asc) {
             ...,
             category->,
@@ -88,11 +90,8 @@ export async function getStaticProps({ params }) {
       editorial_slug: params.editorial_slug,
       article: processedArticle[nextArticleIndex],
     };
-  } else {
-    nextArticle = {
-      editorial_slug: params.editorial_slug,
-      article: processedArticle[0],
-    };
+  }else {
+    nextArticle = null
   }
 
   return {

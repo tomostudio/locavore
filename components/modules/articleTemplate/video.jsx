@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Layout
@@ -23,6 +23,14 @@ import timeConvert from '@/helpers/functional/timeConvert'
 export default function Video({ article, seo, nextArticle }) {
   const router = useRouter()
   const [statusVideo, setStatusVideo] = useState(false)
+  const [baseUrl, setBaseUrl] = useState();
+
+  useEffect(() => {
+    window.scroll(0, 0)
+    setBaseUrl(window.location.href)
+    return () => {}
+  }, [])
+
   return (
     <Layout>
       <SEO
@@ -51,7 +59,7 @@ export default function Video({ article, seo, nextArticle }) {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <OpeningArticle article={article} />
+      <OpeningArticle article={article} baseUrl={baseUrl} />
       <section className="w-full h-full flex flex-col">
         <Container className="max-md:px-0">
           {/* Video */}
@@ -64,25 +72,31 @@ export default function Video({ article, seo, nextArticle }) {
           </div>
         </Container>
       </section>
-      <NextArticle
-        bgColor={nextArticle.article.category.color.hex}
-        title={`${nextArticle.article.articleNumber}. ${nextArticle.article.title}`}
-        category={nextArticle.article.category.title}
-        timeRead={timeConvert(
-          nextArticle.article.timeReadBlog
-            ? nextArticle.article.timeReadBlog
-            : nextArticle.article.timeRead,
-        )}
-        thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
-        border={nextArticle.article.category.border}
-        alt={nextArticle.article.thumbnail.name}
-        destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
-      />
+      {nextArticle !== null && (
+        <NextArticle
+          bgColor={nextArticle.article.category.color.hex}
+          title={`${nextArticle.article.articleNumber}. ${nextArticle.article.title}`}
+          category={nextArticle.article.category.title}
+          timeRead={timeConvert(
+            nextArticle.article.timeReadBlog
+              ? nextArticle.article.timeReadBlog
+              : nextArticle.article.timeRead,
+          )}
+          thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
+          border={nextArticle.article.category.border}
+          alt={nextArticle.article.thumbnail.name}
+          destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
+        />
+      )}
       {/* Button Sticky */}
-      <StickyButton destination="/editorial/metamorphosis" arrow="left">
-        ISSUE 1
+      <StickyButton
+        className={nextArticle === null && `mb-5 mt-10`}
+        destination={`/editorial/${article.issue.slug.current}`}
+        arrow="left"
+      >
+        ISSUE {article.issue.issueNumber}
       </StickyButton>
-      <Footer setting={seo}/>
+      <Footer setting={seo} />
     </Layout>
   )
 }

@@ -1,8 +1,8 @@
 import PillButton from './pillButton';
 
-const StickyButton = ({ destination, arrow, children }) => {
+const StickyButton = ({ className, destination, arrow, children }) => {
   return (
-    <div className='stickyButton sticky bottom-0 pb-5 mb-10 left-0 w-full z-40 setflex-center'>
+    <div className={`stickyButton sticky bottom-0 pb-5 mb-10 left-0 w-full z-40 setflex-center ${className}`}>
       <PillButton
         destination={destination}
         arrow={arrow}

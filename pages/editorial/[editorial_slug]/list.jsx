@@ -25,14 +25,9 @@ import timeConvert from '@/helpers/functional/timeConvert'
 // install Swiper modules
 SwiperCore.use([Pagination])
 
-export default function Issue({ issueAPI, seoAPI, editorial_slug }) {
+export default function Issue({ issueAPI, seoAPI }) {
   const router = useRouter()
-  let issue
-  issueAPI.forEach((data, id) => {
-    if (data.slug.current === editorial_slug) {
-      issue = { ...data, issueNo: id }
-    }
-  })
+  const [issue] = issueAPI
   const [seo] = seoAPI
 
   const articleRef = useRef([])
@@ -262,10 +257,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const editorial_slug = params.editorial_slug
   const issueAPI = await client.fetch(
     `
-        *[_type == "issue"] {
+        *[_type == "issue" && slug.current ==  "${params.editorial_slug}"] {
           ...,
           "article": *[_type=='article' && references(^._id)] | order(articleNumber asc) {
             ...,
@@ -283,7 +277,6 @@ export async function getStaticProps({ params }) {
     props: {
       issueAPI,
       seoAPI,
-      editorial_slug,
     },
   }
 }
