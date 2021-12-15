@@ -1,69 +1,69 @@
-import { useEffect, useState } from 'react';
-import { NextSeo } from 'next-seo';
+import { useEffect, useState } from 'react'
+import { NextSeo } from 'next-seo'
 
-import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { fade } from '@/helpers/preset/transitions';
+import { LazyMotion, domAnimation, m } from 'framer-motion'
+import { fade } from '@/helpers/preset/transitions'
 
 // Layout
-import Layout from '@/components/modules/layout';
-import Container from '@/components/modules/container';
-import Footer from '@/components/modules/footer';
-import HeaderGap from '@/components/modules/headerGap';
+import Layout from '@/components/modules/layout'
+import Container from '@/components/modules/container'
+import Footer from '@/components/modules/footer'
+import HeaderGap from '@/components/modules/headerGap'
 
 // Components
-import StickyButton from '@/components/modules/stickyButton';
-import SEO from '@/components/utils/seo';
-import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard';
+import StickyButton from '@/components/modules/stickyButton'
+import SEO from '@/components/utils/seo'
+import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard'
 
 // Helpers
-import client from '@/helpers/sanity/client';
-import { toPlainText } from '@/helpers/functional/toPlainText';
-import urlFor from '@/helpers/sanity/urlFor';
+import client from '@/helpers/sanity/client'
+import { toPlainText } from '@/helpers/functional/toPlainText'
+import urlFor from '@/helpers/sanity/urlFor'
 
 export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
-  const [seo] = seoAPI;
-  const [editorial] = editorialAPI;
+  const [seo] = seoAPI
+  const [editorial] = editorialAPI
 
   const dataSoon = issueAPI
     .filter((data) => data.comingSoon === true)
     .sort((a, b) => {
-      return a.issueNumber - b.issueNumber;
-    });
+      return a.issueNumber - b.issueNumber
+    })
   const processedIssue = issueAPI.sort((a, b) => {
-    return b.issueNumber - a.issueNumber;
-  }); // sort array descending
+    return b.issueNumber - a.issueNumber
+  }) // sort array descending
 
-  const isComingSoon = dataSoon.length > 0 ? true : false; // tanda if there is a comingsoon card or not
+  const isComingSoon = dataSoon.length > 0 ? true : false // tanda if there is a comingsoon card or not
 
   const checkClosest = () => {
-    const today = new Date();
+    const today = new Date()
 
-    const dataSoon = issueAPI.filter((data) => data.comingSoon === true);
+    const dataSoon = issueAPI.filter((data) => data.comingSoon === true)
 
     if (dataSoon.length > 0) {
       const closest = dataSoon.reduce((a, b) => {
-        const adiff = new Date(a.date) - today;
-        return adiff > 0 && adiff < new Date(b.date) - today ? a : b;
-      });
+        const adiff = new Date(a.date) - today
+        return adiff > 0 && adiff < new Date(b.date) - today ? a : b
+      })
 
-      return closest;
+      return closest
     } else {
-      return false;
+      return false
     }
-  };
+  }
 
-  console.log(checkClosest());
+  console.log(checkClosest())
 
   useEffect(() => {
     // check if coming soon is enabled or present
     if (isComingSoon) {
-      window.scrollTo(0, 315);
+      window.scrollTo(0, 315)
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 0)
     }
 
-    return () => {};
-  }, []);
+    return () => {}
+  }, [])
 
   return (
     <Layout>
@@ -91,11 +91,11 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
       />
 
       <LazyMotion features={domAnimation}>
-        <m.main initial='initial' animate='enter' exit='exit' variants={fade}>
+        <m.main initial="initial" animate="enter" exit="exit" variants={fade}>
           {/* Header Gap */}
           {/* Untuk Content */}
-          <section className='pb-10 w-full h-full flex flex-col'>
-            <Container className='max-md:px-6'>
+          <section className="pb-10 w-full h-full flex flex-col">
+            <Container className="max-md:px-6">
               {/* Sticky Container */}
               <div className={`relative w-full`}>
                 <div
@@ -103,10 +103,10 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                 >
                   <HeaderGap />
                   {/* Title */}
-                  <div className='mb-14'>
-                    <h1 className='titlestyle'>
+                  <div className="mb-14">
+                    <h1 className="titlestyle">
                       Editorial
-                      <span className='sub'>Issues</span>Index
+                      <span className="sub">Issues</span>Index
                     </h1>
                   </div>
                   {/* // COMING SOON TEST */}
@@ -123,7 +123,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                           ? checkClosest().thumbnail.color.hex
                           : '#fff'
                       }
-                      className='mb-10'
+                      className="mb-10"
                       destination={`/editorial/${checkClosest().slug.current}`}
                       imageThumbnail={
                         checkClosest().thumbnail &&
@@ -137,7 +137,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
               </div>
               {/* Card */}
               <div
-                id='editorialIssuesList'
+                id="editorialIssuesList"
                 className={`relative w-full h-full space-y-10 ${
                   isComingSoon ? 'comingsoonMargin' : ''
                 }`}
@@ -166,20 +166,20 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
                         }
                         descriptions={<p>{toPlainText(data.description)}</p>}
                       />
-                    );
+                    )
                 })}
               </div>
             </Container>
           </section>
           {/* Button Sticky */}
-          <StickyButton destination='/editorial/search' arrow='right'>
+          <StickyButton destination="/editorial/search" arrow="right">
             SEARCH ALL ARTICLES
           </StickyButton>
           <Footer setting={seo} />
         </m.main>
       </LazyMotion>
     </Layout>
-  );
+  )
 }
 
 export async function getStaticProps() {
@@ -188,18 +188,22 @@ export async function getStaticProps() {
                       ...,
                       "articleCount": count(*[_type=='article' && references(^._id)])
                     }
-                    `);
+                    `)
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `);
+                    `)
   const editorialAPI = await client.fetch(`
                     *[_type == "editorial"]
-                    `);
+                    `)
+  const headerAPI = await client.fetch(`
+                    *[_type == "header"]
+                    `)
   return {
     props: {
       issueAPI,
       seoAPI,
       editorialAPI,
+      headerAPI
     },
-  };
+  }
 }

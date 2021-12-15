@@ -55,10 +55,4 @@ export async function getServerSideProps() {
       permanent: false,
     },
   }
-
-  return {
-    props: {
-      seoAPI,
-    },
-  }
 }

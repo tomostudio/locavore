@@ -4,7 +4,7 @@ import Container from './container'
 import Image from 'next/image'
 import FancyLink from '../utils/fancyLink'
 
-const Footer = ({ className, setting }) => {
+const Footer = ({ className, footer }) => {
   const [time, setTime] = useState(new Date())
 
   useEffect(() => {
@@ -53,9 +53,9 @@ const Footer = ({ className, setting }) => {
         </div>
         <div className="w-full h-full max-md:mt-10 max-md:space-y-10 flex flex-col justify-between">
           <div className="w-auto h-full space-x-6 flex justify-end max-md:justify-start">
-            {setting.footerLink && setting.footerLink.instagram && (
+            {footer.footerLink && footer.footerLink.instagram && (
               <FancyLink
-                destination={setting.footerLink.instagram.link}
+                destination={footer.footerLink.instagram.link}
                 blank={true}
                 className="relative w-16px h-16px"
               >
@@ -68,9 +68,9 @@ const Footer = ({ className, setting }) => {
                 />
               </FancyLink>
             )}
-            {setting.footerLink && setting.footerLink.facebook && (
+            {footer.footerLink && footer.footerLink.facebook && (
               <FancyLink
-                destination={setting.footerLink.facebook.link}
+                destination={footer.footerLink.facebook.link}
                 blank={true}
                 className="relative w-16px h-16px"
               >
@@ -83,9 +83,9 @@ const Footer = ({ className, setting }) => {
                 />
               </FancyLink>
             )}
-            {setting.footerLink && setting.footerLink.youtube && (
+            {footer.footerLink && footer.footerLink.youtube && (
               <FancyLink
-                destination={setting.footerLink.youtube.link}
+                destination={footer.footerLink.youtube.link}
                 blank={true}
                 className="relative w-16px h-16px"
               >
@@ -98,9 +98,9 @@ const Footer = ({ className, setting }) => {
                 />
               </FancyLink>
             )}
-            {setting.footerLink && setting.footerLink.linkedin && (
+            {footer.footerLink && footer.footerLink.linkedin && (
               <FancyLink
-                destination={setting.footerLink.linkedin.link}
+                destination={footer.footerLink.linkedin.link}
                 blank={true}
                 className="relative w-16px h-16px"
               >
@@ -116,7 +116,7 @@ const Footer = ({ className, setting }) => {
           </div>
           <div className="w-full h-full flex justify-end max-md:justify-start items-end max-md:items-start">
             <span className="text-sm">
-              © 2021 Locavore. All Rights Reserved.
+              {footer.creditText}
             </span>
           </div>
         </div>

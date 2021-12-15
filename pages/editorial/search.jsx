@@ -311,6 +311,9 @@ export async function getStaticProps() {
       "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
     }
   }`)
+  const headerAPI = await client.fetch(`
+  *[_type == "header"]
+  `)
   return {
     props: {
       seoAPI,
@@ -318,6 +321,7 @@ export async function getStaticProps() {
       categoryAPI,
       articleAPI,
       issueAPI,
+      headerAPI
     },
   }
 }

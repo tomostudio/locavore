@@ -316,11 +316,15 @@ export async function getStaticProps({ params }) {
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `);
+  const headerAPI = await client.fetch(`
+  *[_type == "header"]
+  `)
   return {
     props: {
       familyAPI,
       seoAPI,
       familyListAPI,
+      headerAPI
     },
   };
 }

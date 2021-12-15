@@ -9,7 +9,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import Header from '@/components/modules/header.jsx';
 
-export default function App({ Component, pageProps, seoAPI }) {
+export default function App({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
     history.scrollRestoration = 'manual';
@@ -56,7 +56,7 @@ export default function App({ Component, pageProps, seoAPI }) {
               : `/locavore-black.png`
           }`}
         /> */}
-        <Header setting={pageProps.seoAPI}/>
+        <Header header={pageProps.headerAPI}/>
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.asPath} />
         </AnimatePresence>

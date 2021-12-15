@@ -19,7 +19,7 @@ import NextArticle from '@/components/modules/editorial/nextArticle'
 import timeConvert from '@/helpers/functional/timeConvert'
 import urlFor from '@/helpers/sanity/urlFor'
 
-export default function Gallery({ article, seo, nextArticle }) {
+export default function Gallery({ article, seo, footer, nextArticle }) {
   const router = useRouter()
   const [statusVideo, setStatusVideo] = useState(false)
   const [baseUrl, setBaseUrl] = useState();
@@ -153,7 +153,7 @@ export default function Gallery({ article, seo, nextArticle }) {
       >
         ISSUE {article.issue.issueNumber}
       </StickyButton>
-      <Footer setting={seo} />
+      <Footer footer={footer} />
     </Layout>
   )
 }

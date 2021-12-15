@@ -5,7 +5,7 @@ import { useAppContext } from 'context/state'
 import { useState } from 'react'
 import Image from 'next/image'
 
-export default function Header({ className = '', setting }) {
+export default function Header({ className = '', header }) {
   const appContext = useAppContext()
   const { headerStyle } = appContext.headerVar
   const [menu, setMenu] = useState(false)
@@ -97,8 +97,8 @@ export default function Header({ className = '', setting }) {
               >
                 Editorial
               </FancyLink>
-              {setting && setting[0].headerLink &&
-                setting[0].headerLink.map((item, index) => (
+              {header && header[0].headerLink &&
+                header[0].headerLink.map((item, index) => (
                   <FancyLink
                     key={index}
                     destination={item.link}

@@ -22,12 +22,12 @@ import FancyLink from '@/components/utils/fancyLink'
 import urlFor from '@/helpers/sanity/urlFor'
 import timeConvert from '@/helpers/functional/timeConvert'
 
-export default function Blog({ article, seo, nextArticle }) {
+export default function Blog({ article, seo, footer, nextArticle }) {
   const router = useRouter()
   const articleBlog = article.blog.filter((item) => item._type === 'orange')
   const articleWhite = article.blog.filter((item) => item._type === 'white')
   let layoutFilter = [...articleBlog, ...articleWhite]
-  const [baseUrl, setBaseUrl] = useState();
+  const [baseUrl, setBaseUrl] = useState()
   const scrolltoview = (slug) => {
     const element = document.querySelector(`[data-slug*="${slug}"]`)
     const headerOffset = 60
@@ -286,7 +286,7 @@ export default function Blog({ article, seo, nextArticle }) {
       >
         ISSUE {article.issue.issueNumber}
       </StickyButton>
-      <Footer setting={seo} />
+      <Footer footer={footer} />
     </Layout>
   )
 }

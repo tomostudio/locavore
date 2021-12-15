@@ -145,10 +145,14 @@ export async function getStaticProps() {
   const socialAPI = await client.fetch(`
   *[_type == "social"]
   `)
+  const headerAPI = await client.fetch(`
+                    *[_type == "header"]
+                    `)
   return {
     props: {
       seoAPI,
       socialAPI,
+      headerAPI
     },
   }
 }

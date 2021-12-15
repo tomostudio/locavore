@@ -29,7 +29,7 @@ import timeConvert from '@/helpers/functional/timeConvert'
 // install Swiper modules
 SwiperCore.use([EffectFade, Navigation])
 
-export default function Caroussel({ article, seo, nextArticle }) {
+export default function Caroussel({ article, seo, footer, nextArticle }) {
   const router = useRouter()
   const [firstSwiper, setFirstSwiper] = useState(null)
   const [secondSwiper, setSecondSwiper] = useState(null)
@@ -187,7 +187,7 @@ export default function Caroussel({ article, seo, nextArticle }) {
       >
         ISSUE {article.issue.issueNumber}
       </StickyButton>
-      <Footer setting={seo} />
+      <Footer footer={footer} />
     </Layout>
   )
 }

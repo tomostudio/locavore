@@ -21,21 +21,15 @@ import urlFor from '@/helpers/sanity/urlFor'
 import { toPlainText } from '@/helpers/functional/toPlainText'
 import checkMonth from '@/helpers/functional/checkMonth'
 
-export default function Index({ issueAPI, seoAPI, editorial_slug }) {
+export default function Index({ issueAPI, seoAPI }) {
   const router = useRouter()
   const [seo] = seoAPI
-  let issue
-  issueAPI.forEach((data, id) => {
-    if (data.slug.current === editorial_slug) {
-      issue = { ...data}
-    }
-  })
+  const [issue] = issueAPI
   const dark = issue.dark
   const containerRef = useRef(null)
   const appContext = useAppContext()
 
   useEffect(() => {
-    console.log(issue.headerOption);
     appContext.setHeader({
       headerStyle: issue.headerOption ? issue.headerOption : 'default',
     })
@@ -460,20 +454,22 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const editorial_slug = params.editorial_slug
   const issueAPI = await client.fetch(
     `
-      *[_type == "issue"] 
+      *[_type == "issue" && slug.current ==  "${params.editorial_slug}"]
     `,
   )
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)
+  const headerAPI = await client.fetch(`
+  *[_type == "header"]
+  `)
   return {
     props: {
       issueAPI,
       seoAPI,
-      editorial_slug,
+      headerAPI
     },
   }
 }

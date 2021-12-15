@@ -20,7 +20,7 @@ import NextArticle from '@/components/modules/editorial/nextArticle'
 import urlFor from '@/helpers/sanity/urlFor'
 import timeConvert from '@/helpers/functional/timeConvert'
 
-export default function Video({ article, seo, nextArticle }) {
+export default function Video({ article, seo, footer, nextArticle }) {
   const router = useRouter()
   const [statusVideo, setStatusVideo] = useState(false)
   const [baseUrl, setBaseUrl] = useState();
@@ -96,7 +96,7 @@ export default function Video({ article, seo, nextArticle }) {
       >
         ISSUE {article.issue.issueNumber}
       </StickyButton>
-      <Footer setting={seo} />
+      <Footer footer={footer} />
     </Layout>
   )
 }
