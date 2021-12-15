@@ -233,7 +233,7 @@ export default function Header({ className = '', setting }) {
                 </FancyLink>
                 <FancyLink className="relative w-16px h-16px">
                   <Image
-                    src={`/Youtube.png`}
+                    src={`/youtube.png`}
                     alt={'Locavore'}
                     layout="fill"
                     objectFit="contain"
@@ -272,7 +272,7 @@ export default function Header({ className = '', setting }) {
                 </FancyLink>
                 <FancyLink className="relative w-16px h-16px">
                   <Image
-                    src={`/Youtube-white.png`}
+                    src={`/youtube-white.png`}
                     alt={'Locavore'}
                     layout="fill"
                     objectFit="contain"
