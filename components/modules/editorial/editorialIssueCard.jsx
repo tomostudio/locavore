@@ -12,7 +12,7 @@ export default function EditorialIssueCard({
   descriptions,
   destination,
   className = '',
-  dark = true,
+  dark,
   bgColor = '#000000',
   imageThumbnail = '',
   comingsoon = false,
@@ -33,7 +33,7 @@ export default function EditorialIssueCard({
       <div className="relative w-full h-full rounded-2xl flex flex-col justify-between">
         <div
           className={`absolute w-full h-full top-0 left-0 rounded-2xl overflow-hidden ${
-            dark ? 'bg-black' : 'bg-white'
+            dark === 'white-text' ? 'bg-black' : 'bg-white'
           }`}
         >
           {imageThumbnail ? (
@@ -41,7 +41,9 @@ export default function EditorialIssueCard({
               {/* Image */}
               <div
                 className={`imageCover w-full h-full absolute top-0 left-0 z-10 transition-all duration-300  ${
-                  dark ? 'bg-black  opacity-25' : 'bg-white  opacity-25'
+                  dark === 'white-text'
+                    ? 'bg-black  opacity-25'
+                    : 'bg-white  opacity-25'
                 } ${!comingsoon && `group-hover:opacity-40`}`}
               />
               <Image
@@ -64,12 +66,15 @@ export default function EditorialIssueCard({
         </div>
         <div
           className={`relative z-10 w-full h-full flex flex-col justify-between p-8 ${
-            dark ? 'text-white ' : 'text-black'
+            dark === 'white-text' ? 'text-white ' : 'text-black'
           }`}
         >
           {useMediaQuery('(max-width: 768px)') && (
             <div className="w-full flex justify-between text-xs">
-              <span>{checkMonth(new Date(date).getMonth())} {new Date(date).getFullYear()}</span>
+              <span>
+                {checkMonth(new Date(date).getMonth())}{' '}
+                {new Date(date).getFullYear()}
+              </span>
               {!comingsoon && <span>{totalArticles} ARTICLES</span>}
             </div>
           )}
@@ -83,10 +88,13 @@ export default function EditorialIssueCard({
                 {!comingsoon && <div className="w-36rem">{descriptions}</div>}
                 <div
                   className={`flex space-x-16 border-t w-full pt-6 mt-6 text-xs ${
-                    dark ? 'border-white' : 'border-black'
+                    dark === 'white-text' ? 'border-white' : 'border-black'
                   }`}
                 >
-                  <span>{checkMonth(new Date(date).getMonth())} {new Date(date).getFullYear()}</span>
+                  <span>
+                    {checkMonth(new Date(date).getMonth())}{' '}
+                    {new Date(date).getFullYear()}
+                  </span>
                   {!comingsoon && <span>{totalArticles} ARTICLES</span>}
                 </div>
               </div>
@@ -96,7 +104,7 @@ export default function EditorialIssueCard({
                 className={`px-10 py-7 border  rounded-50%  transition-all duration-300 ${
                   !comingsoon &&
                   `${
-                    dark
+                    dark === 'white-text'
                       ? 'border-white text-white group-hover:text-black group-hover:bg-white'
                       : 'border-black text-black group-hover:text-white group-hover:bg-black'
                   }`

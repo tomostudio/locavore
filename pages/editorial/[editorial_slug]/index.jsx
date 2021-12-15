@@ -266,7 +266,7 @@ export default function Index({ issueAPI, seoAPI }) {
         <div
           id="issueTitle"
           className={`h-s-50 pb-20 top-0 left-0 right-0 w-screen flex items-center content-center flex-col justify-end fixed z-10 pointer-events-none  opacity-0 ${
-            dark ? 'text-white' : 'text-black'
+            dark === "white-text" ? 'text-white' : 'text-black'
           }`}
         >
           <Container className="max-md:px-6 text-center setflex-center ">
@@ -289,7 +289,7 @@ export default function Index({ issueAPI, seoAPI }) {
           <Container className="max-md:px-6 text-center ">
             <span
               className={` font-normal text-8xl ${
-                dark ? 'text-white' : 'text-black'
+                dark === "white-text" ? 'text-white' : 'text-black'
               }`}
             >
               ISSUE {issue.issueNumber}
@@ -303,7 +303,7 @@ export default function Index({ issueAPI, seoAPI }) {
         >
           <span
             className={`font-light text-xs tracking-widest  ${
-              dark ? 'text-white' : 'text-black'
+              dark === "white-text" ? 'text-white' : 'text-black'
             }`}
           >
             SCROLL
@@ -314,7 +314,7 @@ export default function Index({ issueAPI, seoAPI }) {
         <div
           id="firstBG"
           className={`fixed setflex-center h-screen w-screen top-0 left-0 -z-1 pointer-events-none ${
-            dark ? 'bg-black ' : 'bg-white'
+            dark === "white-text" ? 'bg-black ' : 'bg-white'
           }`}
         >
           {issue.image1 ? (
@@ -323,7 +323,7 @@ export default function Index({ issueAPI, seoAPI }) {
                 {/* Image  */}
                 <div
                   className={`absolute h-full w-full top-0 left-0  z-10 ${
-                    dark ? 'bg-black opacity-40' : 'bg-white opacity-25'
+                    dark === "white-text" ? 'bg-black opacity-40' : 'bg-white opacity-25'
                   }`}
                 />
                 <Image
@@ -354,7 +354,7 @@ export default function Index({ issueAPI, seoAPI }) {
         <div
           id="endBg"
           className={`fixed setflex-center h-screen w-screen top-0 left-0 -z-10 pointer-events-none ${
-            dark ? 'bg-black ' : 'bg-white'
+            dark === "white-text" ? 'bg-black ' : 'bg-white'
           }`}
         >
           {issue.image2 ? (
@@ -363,7 +363,7 @@ export default function Index({ issueAPI, seoAPI }) {
                 {/* Image  */}
                 <div
                   className={`absolute  h-full w-full top-0 left-0 z-10  ${
-                    dark ? 'bg-black opacity-40' : 'bg-white opacity-25'
+                    dark === "white-text" ? 'bg-black opacity-40' : 'bg-white opacity-25'
                   }`}
                 />
                 <Image
@@ -407,7 +407,7 @@ export default function Index({ issueAPI, seoAPI }) {
                     <section className="w-full ">
                       <Container
                         className={`max-md:px-6 pb-16 flex flex-col justify-start content-center items-center ${
-                          dark ? 'text-white' : 'text-black'
+                          dark === "white-text" ? 'text-white' : 'text-black'
                         }`}
                       >
                         <span className="content-issue w-full text-center">
@@ -421,7 +421,7 @@ export default function Index({ issueAPI, seoAPI }) {
                         <FancyLink
                           destination={`/editorial/${issue.slug.current}/list`}
                           className={`content-issue mt-12 py-4 px-6 text-xs tracking-widest transition-all ease-linear ${
-                            dark
+                            dark === "white-text"
                               ? 'hover:bg-white border hover:text-black border-white rounded-xl'
                               : 'hover:bg-black border hover:text-white border-black rounded-xl'
                           }`}
