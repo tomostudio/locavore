@@ -25,10 +25,11 @@ import { toPlainText } from '@/helpers/functional/toPlainText';
 // install Swiper modules
 SwiperCore.use([Pagination]);
 
-const FamilySlug = ({ familyAPI, seoAPI, familyListAPI }) => {
+const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
   const router = useRouter();
   const [seo] = seoAPI;
   const [family] = familyAPI;
+  const [footer] = footerAPI;
   const appContext = useAppContext();
 
   // const onMouseEnter = (id, color, slug) => {
@@ -287,7 +288,7 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI }) => {
           <Arrow className='mx-auto' position='top' />
         </div>
       </motion.section>
-      <Footer setting={seo}/>
+      <Footer footer={footer}/>
     </Layout>
   );
 };
@@ -319,11 +320,15 @@ export async function getStaticProps({ params }) {
   const headerAPI = await client.fetch(`
   *[_type == "header"]
   `)
+  const footerAPI = await client.fetch(`
+  *[_type == "footer"]
+  `)
   return {
     props: {
       familyAPI,
       seoAPI,
       familyListAPI,
+      footerAPI,
       headerAPI
     },
   };

@@ -30,6 +30,7 @@ export default function Search({
   categoryAPI,
   articleAPI,
   issueAPI,
+  footerAPI,
 }) {
   const [seo] = seoAPI
   const [APISearch] = searchAPI
@@ -38,10 +39,7 @@ export default function Search({
   const [postNum, setPostNum] = useState(6)
   const [search, setSearch] = useState('')
   const [itemsToDisplay, setitemsToDisplay] = useState(articleAPI)
-
-  console.log(articleAPI)
-
-  let dataOrderIssue = []
+  const [footer] = footerAPI;
 
   const handleLoadMoreCategory = () => {
     setPostNumCategory((prevPostNum) => prevPostNum + 3)
@@ -280,7 +278,7 @@ export default function Search({
           <StickyButton destination="/editorial" arrow="left">
             Browse all issues
           </StickyButton>
-          <Footer setting={seo} />
+          <Footer footer={footer} />
         </m.main>
       </LazyMotion>
     </Layout>
@@ -314,6 +312,9 @@ export async function getStaticProps() {
   const headerAPI = await client.fetch(`
   *[_type == "header"]
   `)
+  const footerAPI = await client.fetch(`
+  *[_type == "footer"]
+  `)
   return {
     props: {
       seoAPI,
@@ -321,6 +322,7 @@ export async function getStaticProps() {
       categoryAPI,
       articleAPI,
       issueAPI,
+      footerAPI,
       headerAPI
     },
   }

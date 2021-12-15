@@ -20,9 +20,10 @@ import client from '@/helpers/sanity/client'
 import { toPlainText } from '@/helpers/functional/toPlainText'
 import urlFor from '@/helpers/sanity/urlFor'
 
-export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
+export default function Editorial({ issueAPI, seoAPI, editorialAPI, footerAPI }) {
   const [seo] = seoAPI
   const [editorial] = editorialAPI
+  const [footer] = footerAPI
 
   const dataSoon = issueAPI
     .filter((data) => data.comingSoon === true)
@@ -175,7 +176,7 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI }) {
           <StickyButton destination="/editorial/search" arrow="right">
             SEARCH ALL ARTICLES
           </StickyButton>
-          <Footer setting={seo} />
+          <Footer footer={footer} />
         </m.main>
       </LazyMotion>
     </Layout>
@@ -198,11 +199,15 @@ export async function getStaticProps() {
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
                     `)
+  const footerAPI = await client.fetch(`
+                    *[_type == "footer"]
+                    `)
   return {
     props: {
       issueAPI,
       seoAPI,
       editorialAPI,
+      footerAPI,
       headerAPI
     },
   }

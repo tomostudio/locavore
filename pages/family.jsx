@@ -23,9 +23,11 @@ export default function Family({
   familyAPI,
   familyListAPI,
   memberListAPI,
+  footerAPI
 }) {
   const [seo] = seoAPI
   const [family] = familyAPI
+  const [footer] = footerAPI
 
   // TEST DATA
   const dataFamilyButtons = [
@@ -310,7 +312,7 @@ export default function Family({
             ))}
           </section>
         )}
-        <Footer setting={seo} />
+        <Footer footer={footer} />
       </motion.main>
     </Layout>
   )
@@ -332,6 +334,9 @@ export async function getStaticProps() {
     family->
   }
   `)
+  const footerAPI = await client.fetch(`
+                    *[_type == "footer"]
+                    `)
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
                     `)
@@ -341,6 +346,7 @@ export async function getStaticProps() {
       familyAPI,
       familyListAPI,
       memberListAPI,
+      footerAPI,
       headerAPI,
     },
   }

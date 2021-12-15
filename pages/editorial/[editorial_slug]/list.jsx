@@ -25,10 +25,11 @@ import timeConvert from '@/helpers/functional/timeConvert'
 // install Swiper modules
 SwiperCore.use([Pagination])
 
-export default function Issue({ issueAPI, seoAPI }) {
+export default function Issue({ issueAPI, seoAPI, footerAPI }) {
   const router = useRouter()
   const [issue] = issueAPI
   const [seo] = seoAPI
+  const [footer] = footerAPI
 
   const articleRef = useRef([])
   const scrollInd = useRef(null)
@@ -239,7 +240,7 @@ export default function Issue({ issueAPI, seoAPI }) {
       <StickyButton destination="/editorial" arrow="left">
         EDITORIAL INDEX
       </StickyButton>
-      <Footer setting={seo}/>
+      <Footer footer={footer}/>
     </Layout>
   )
 }
@@ -276,10 +277,14 @@ export async function getStaticProps({ params }) {
   const headerAPI = await client.fetch(`
   *[_type == "header"]
   `)
+  const footerAPI = await client.fetch(`
+  *[_type == "footer"]
+  `)
   return {
     props: {
       issueAPI,
       seoAPI,
+      footerAPI,
       headerAPI
     },
   }
