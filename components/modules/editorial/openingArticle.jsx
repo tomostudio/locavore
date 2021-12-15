@@ -47,7 +47,11 @@ export default function OpeningArticle({ article, baseUrl }) {
                   objectPosition="center"
                 />
               </FancyLink>
-              <div className="relative w-16px h-16px">
+              <FancyLink
+                blank={true}
+                destination={`https://twitter.com/share?url=${baseUrl}`}
+                className="relative w-16px h-16px"
+              >
                 <Image
                   src={`/twitter.png`}
                   alt={'Locavore'}
@@ -55,8 +59,8 @@ export default function OpeningArticle({ article, baseUrl }) {
                   objectFit="contain"
                   objectPosition="center"
                 />
-              </div>
-              <div className="relative w-16px h-16px">
+              </FancyLink>
+              {/* <div className="relative w-16px h-16px">
                 <Image
                   src={`/mail.png`}
                   alt={'Locavore'}
@@ -64,7 +68,7 @@ export default function OpeningArticle({ article, baseUrl }) {
                   objectFit="contain"
                   objectPosition="center"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
