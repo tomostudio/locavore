@@ -184,8 +184,8 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
               </FancyLink>
             </div>
           </div>
-          <div className='w-full flex'>
-            <div className='flex w-1/2 flex-col justify-between text-base pr-14 border-r'>
+          <div className='w-full grid grid-cols-2'>
+            <div className='flex flex-col justify-between text-base pr-14 border-r py-7 space-y-4'>
               <p>
                 {family.address}
                 {` • `}
@@ -240,8 +240,8 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
                 )}
               </div>
             </div>
-            <div className='w-1/2 h-full flex justify-end'>
-              <div className='relative w-44 h-full' id='family-logo'>
+            <div className='h-full flex justify-end items-center relative w-full'>
+              <div className='relative w-3/4 h-3/4' id='family-logo'>
                 <Image
                   src={urlFor(family.logo).width(750).url()}
                   alt={family.logo.name}
