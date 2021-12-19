@@ -23,7 +23,7 @@ import timeConvert from '@/helpers/functional/timeConvert'
 export default function Video({ article, seo, footer, nextArticle }) {
   const router = useRouter()
   const [statusVideo, setStatusVideo] = useState(false)
-  const [baseUrl, setBaseUrl] = useState();
+  const [baseUrl, setBaseUrl] = useState()
 
   useEffect(() => {
     window.scroll(0, 0)
@@ -72,22 +72,27 @@ export default function Video({ article, seo, footer, nextArticle }) {
           </div>
         </Container>
       </section>
-      {nextArticle !== null && (
-        <NextArticle
-          bgColor={nextArticle.article.category.color.hex}
-          title={`${!nextArticle.article.turnOffArticleNumber && `${nextArticle.article.articleNumber}.`} ${nextArticle.article.title}`}
-          category={nextArticle.article.category.title}
-          timeRead={timeConvert(
-            nextArticle.article.timeReadBlog
-              ? nextArticle.article.timeReadBlog
-              : nextArticle.article.timeRead,
-          )}
-          thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
-          border={nextArticle.article.category.border}
-          alt={nextArticle.article.thumbnail.name}
-          destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
-        />
-      )}
+      <NextArticle
+        bgColor={nextArticle.article.category.color.hex}
+        title={`${
+          !nextArticle.article.turnOffArticleNumber &&
+          `${nextArticle.article.articleNumber}.`
+        } ${nextArticle.article.title}`}
+        category={nextArticle.article.category.title}
+        timeRead={
+          nextArticle.article.readTime
+            ? timeConvert(nextArticle.article.readTime)
+            : nextArticle.article.timeReadBlog
+            ? nextArticle.article.timeReadBlog !== 0 &&
+              timeConvert(nextArticle.article.timeReadBlog)
+            : nextArticle.article.timeRead !== 0 &&
+              timeConvert(nextArticle.article.timeRead)
+        }
+        thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
+        border={nextArticle.article.category.border}
+        alt={nextArticle.article.thumbnail.name}
+        destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
+      />
       {/* Button Sticky */}
       <StickyButton
         className={nextArticle === null && `mb-5 mt-10`}

@@ -39,7 +39,7 @@ export default function Search({
   const [postNum, setPostNum] = useState(6)
   const [search, setSearch] = useState('')
   const [itemsToDisplay, setitemsToDisplay] = useState(articleAPI)
-  const [footer] = footerAPI;
+  const [footer] = footerAPI
 
   const handleLoadMoreCategory = () => {
     setPostNumCategory((prevPostNum) => prevPostNum + 3)
@@ -244,11 +244,15 @@ export default function Search({
                             `${data.articleNumber}.`
                           } ${data.title}`}
                           category={data.category.title}
-                          timeRead={timeConvert(
-                            data.timeReadBlog
-                              ? data.timeReadBlog
-                              : data.timeRead,
-                          )}
+                          timeRead={
+                            data.readTime
+                              ? timeConvert(data.readTime)
+                              : data.timeReadBlog
+                              ? data.timeReadBlog !== 0 &&
+                                timeConvert(data.timeReadBlog)
+                              : data.timeRead !== 0 &&
+                                timeConvert(data.timeRead)
+                          }
                           bgColor={data.category.color.hex}
                           borderColor={data.category.border}
                           thumbnail={urlFor(data.thumbnail).url()}

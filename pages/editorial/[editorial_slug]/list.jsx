@@ -94,7 +94,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
     }
   }
 
-  const processedArticle = issue.article.sort((a,b) => {
+  const processedArticle = issue.article.sort((a, b) => {
     return a.articleNumber - b.articleNumber
   }) // sort article based on article number
 
@@ -201,11 +201,18 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
                   >
                     <ArticleCard
                       bgColor={data.category.color.hex}
-                      title={`${!data.turnOffArticleNumber && `${data.articleNumber}.`} ${data.title}`}
+                      title={`${
+                        !data.turnOffArticleNumber && `${data.articleNumber}.`
+                      } ${data.title}`}
                       category={data.category.title}
-                      timeRead={timeConvert(
-                        data.timeReadBlog ? data.timeReadBlog : data.timeRead,
-                      )}
+                      timeRead={
+                        data.readTime
+                          ? timeConvert(data.readTime)
+                          : data.timeReadBlog
+                          ? data.timeReadBlog !== 0 &&
+                            timeConvert(data.timeReadBlog)
+                          : data.timeRead !== 0 && timeConvert(data.timeRead)
+                      }
                       border={data.category.border}
                       src={urlFor(data.thumbnail).width(750).url()}
                       alt={data.thumbnail.name}
@@ -240,7 +247,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
       <StickyButton destination="/editorial" arrow="left">
         EDITORIAL INDEX
       </StickyButton>
-      <Footer footer={footer}/>
+      <Footer footer={footer} />
     </Layout>
   )
 }
@@ -285,7 +292,7 @@ export async function getStaticProps({ params }) {
       issueAPI,
       seoAPI,
       footerAPI,
-      headerAPI
+      headerAPI,
     },
   }
 }

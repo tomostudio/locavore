@@ -125,7 +125,10 @@ export async function getStaticProps({ params }) {
       article: processedArticle[nextArticleIndex],
     }
   } else {
-    nextArticle = null
+    nextArticle = {
+      editorial_slug: params.editorial_slug,
+      article: processedArticle[0],
+    }
   }
 
   return {

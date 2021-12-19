@@ -125,7 +125,8 @@ export default function Header({ className = '', header }) {
             </>
           )}
           <FancyLink
-            destination="/about"
+            destination={header[0].booking}
+            blank={true}
             a11yText="Navigate to the about page"
             className="font-bold hover:opacity-60 transition-opacity ease-linear"
           >
