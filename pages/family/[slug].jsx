@@ -255,7 +255,8 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
           </div>
           <div className='w-full setflex-center'>
             <FancyLink
-              destination='/'
+              destination={family.booking}
+              blank={true}
               className='mt-16 py-3 px-6 text-base tracking-widest border border-black font-bold rounded-xl hover:bg-black hover:text-white transition-all duration-300'
             >
               BOOK NOW
