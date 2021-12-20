@@ -123,11 +123,13 @@ export async function getStaticProps({ params }) {
     nextArticle = {
       editorial_slug: params.editorial_slug,
       article: processedArticle[nextArticleIndex],
+      turnOffArticleNumber: next[0].turnOffArticleNumber
     }
   } else {
     nextArticle = {
       editorial_slug: params.editorial_slug,
       article: processedArticle[0],
+      turnOffArticleNumber: next[0].turnOffArticleNumber
     }
   }
 

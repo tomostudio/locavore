@@ -265,7 +265,7 @@ export default function Blog({ article, seo, footer, nextArticle }) {
       <NextArticle
         bgColor={nextArticle.article.category.color.hex}
         title={`${
-          !nextArticle.article.turnOffArticleNumber &&
+          !nextArticle.turnOffArticleNumber &&
           `${nextArticle.article.articleNumber}.`
         } ${nextArticle.article.title}`}
         category={nextArticle.article.category.title}

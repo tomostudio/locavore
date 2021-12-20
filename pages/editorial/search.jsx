@@ -240,7 +240,7 @@ export default function Search({
                           destination={`${datas.slug.current}/${data.slug.current}`}
                           articleClassName="bg-culture w-full"
                           title={`${
-                            !data.turnOffArticleNumber &&
+                            !datas.turnOffArticleNumber &&
                             `${data.articleNumber}.`
                           } ${data.title}`}
                           category={data.category.title}

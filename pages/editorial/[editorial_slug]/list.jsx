@@ -202,7 +202,8 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
                     <ArticleCard
                       bgColor={data.category.color.hex}
                       title={`${
-                        !data.turnOffArticleNumber && `${data.articleNumber}.`
+                        !data.issue.turnOffArticleNumber &&
+                        `${data.articleNumber}.`
                       } ${data.title}`}
                       category={data.category.title}
                       timeRead={
@@ -271,6 +272,7 @@ export async function getStaticProps({ params }) {
           ...,
           "article": *[_type=='article' && references(^._id)] | order(articleNumber asc) {
             ...,
+            issue->,
             category->,
             "timeRead": round(length(pt::text(description)) / 5 / 180 ),
             "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
