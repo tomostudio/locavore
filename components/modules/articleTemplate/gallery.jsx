@@ -58,7 +58,7 @@ export default function Gallery({ article, seo, footer, nextArticle }) {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <OpeningArticle article={article} baseUrl={baseUrl} />
+      <OpeningArticle general={seo} article={article} baseUrl={baseUrl} />
       <section className="w-full h-full flex flex-col">
         <Container className="max-md:px-0">
           {/* Image */}

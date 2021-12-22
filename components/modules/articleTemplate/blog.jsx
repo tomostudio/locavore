@@ -80,7 +80,7 @@ export default function Blog({ article, seo, footer, nextArticle }) {
       <HeaderGap />
 
       {/* Untuk Content */}
-      <OpeningArticle article={article} baseUrl={baseUrl} />
+      <OpeningArticle general={seo} article={article} baseUrl={baseUrl} />
 
       <section className="">
         <Container>

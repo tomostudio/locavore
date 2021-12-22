@@ -190,7 +190,7 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
                 {family.address}
                 {` • `}
                 <FancyLink
-                  destination={family.instagram.link}
+                  destination={family.mapLink}
                   className='whitespace-nowrap hover:opacity-50 transition-opacity duration-300 underline'
                   blank={true}
                 >

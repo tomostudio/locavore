@@ -7,7 +7,7 @@ import { useAppContext } from 'context/state'
 import checkMonth from '@/helpers/functional/checkMonth'
 import { toPlainText } from '@/helpers/functional/toPlainText'
 
-export default function OpeningArticle({ article, baseUrl }) {
+export default function OpeningArticle({ general, article, baseUrl }) {
   const appContext = useAppContext()
   return (
     <section className="pt-10 pb-12 w-full h-full">
@@ -60,7 +60,10 @@ export default function OpeningArticle({ article, baseUrl }) {
                   objectPosition="center"
                 />
               </FancyLink>
-              {/* <div className="relative w-16px h-16px">
+              <FancyLink
+                destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
+                className="relative w-16px h-16px"
+              >
                 <Image
                   src={`/mail.png`}
                   alt={'Locavore'}
@@ -68,7 +71,7 @@ export default function OpeningArticle({ article, baseUrl }) {
                   objectFit="contain"
                   objectPosition="center"
                 />
-              </div> */}
+              </FancyLink>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import { useAppContext } from 'context/state'
 import { useState } from 'react'
 import Image from 'next/image'
+import urlFor from '@/helpers/sanity/urlFor'
 
 export default function Header({ className = '', header }) {
   const appContext = useAppContext()
@@ -71,11 +72,12 @@ export default function Header({ className = '', header }) {
             src={
               headerStyle.toLowerCase() === 'default' ||
               headerStyle.toLowerCase().includes('black')
-                ? '/locavore-black.png'
+                ? urlFor(header[0].logo.black).url()
                 : headerStyle.toLowerCase().includes('white')
-                ? '/locavore-white.png'
-                : '/locavore-black.png'
+                ? urlFor(header[0].logo.white).url()
+                : urlFor(header[0].logo.black).url()
             }
+            width={86}
           />
         </FancyLink>
         <nav

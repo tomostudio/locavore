@@ -70,7 +70,7 @@ export default function Caroussel({ article, seo, footer, nextArticle }) {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <OpeningArticle article={article} baseUrl={baseUrl} />
+      <OpeningArticle general={seo} article={article} baseUrl={baseUrl} />
       <section className="w-full h-full flex flex-col">
         <Container className="max-md:mb-5 space-y-3 max-md:space-y-5 max-md:px-0">
           {/* Gallery */}
