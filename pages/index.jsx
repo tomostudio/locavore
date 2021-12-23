@@ -1,58 +1,41 @@
-import { useEffect } from 'react'
-import { NextSeo } from 'next-seo'
-import Router from 'next/router'
-
-// Components
-import SEO from '@/components/utils/seo'
-
 // Helpers
 import client from '@/helpers/sanity/client'
-import urlFor from '@/helpers/sanity/urlFor'
+import EditorialTemplate from '@/components/modules/editorial/editorialTemplate'
 
-export default function Home({ seoAPI }) {
+export default function Home({ issueAPI, seoAPI }) {
   const [seo] = seoAPI
-  useEffect(() => {
-    // const { pathname } = Router;
-    // if (pathname == '/') {
-    //   // Router.push('/editorial/metamorphosis');
-    //   location.replace('/editorial/metamorphosis');
-    // }
-  }, [])
+  const [issue] = issueAPI
 
   return (
     <>
-      <SEO
-        seo={{
-          title: 'Home',
-          webTitle: seo.webTitle && seo.webTitle,
-          description: seo.seo && seo.seo.seo_description,
-          meta_keywords: seo.seo.seo_keywords && seo.seo.seo_keywords,
-          image:
-            seo.seo && seo.seo.seo_image && urlFor(seo.seo.seo_image).url(),
-          image_alt:
-            seo.seo && seo.seo.seo_image.name && seo.seo.seo_image.name,
-        }}
-      />
+      <EditorialTemplate seo={seo} issue={issue} />
     </>
   )
 }
 
-export async function getServerSideProps() {
-  const seoAPI = await client.fetch(`
-  *[_type == "settings"]
-  `)
-
+export async function getStaticProps() {
   const homeAPI = await client.fetch(`
   *[_type == "home"] {
     issue->
   }
   `)
 
-  //redirect test
+  const issueAPI = await client.fetch(
+    `
+      *[_type == "issue" && slug.current ==  "${homeAPI[0].issue.slug.current}"]
+    `,
+  )
+  const seoAPI = await client.fetch(`
+  *[_type == "settings"]
+  `)
+  const headerAPI = await client.fetch(`
+  *[_type == "header"]
+  `)
   return {
-    redirect: {
-      destination: `/editorial/${homeAPI[0].issue.slug.current}`,
-      permanent: false,
+    props: {
+      issueAPI,
+      seoAPI,
+      headerAPI,
     },
   }
 }
