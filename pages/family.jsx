@@ -287,8 +287,8 @@ export default function Family({
                 <FamilyImage
                   key={id}
                   store={familyListAPI[data.storeID]}
-                  position={data.position || ''}
-                  name={data.name || ''}
+                  position={!data.family.hideNamePosition && data.position || ''}
+                  name={!data.family.hideNamePosition && data.name || ''}
                   src={urlFor(data.image).url()}
                   alt={data.name}
                 />
