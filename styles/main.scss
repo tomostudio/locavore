@@ -135,15 +135,12 @@ body {
     width: 384px;
   }
 }
+#swipe-caroussel {
+  .swiper-slide {
+    @apply w-56 #{!important};
 
-@layer components {
-  #swipe-caroussel {
-    .swiper-slide {
-      @apply w-56 #{!important};
-
-      @include mobile {
-        @apply w-36 #{!important};
-      }
+    @include mobile {
+      @apply w-36 #{!important};
     }
   }
 }

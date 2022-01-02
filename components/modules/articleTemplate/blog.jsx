@@ -26,7 +26,12 @@ export default function Blog({ article, seo, footer, nextArticle }) {
   const router = useRouter()
   const articleBlog = article.blog.filter((item) => item._type === 'orange')
   const articleWhite = article.blog.filter((item) => item._type === 'white')
-  let layoutFilter = [...articleBlog, ...articleWhite]
+  let layoutFilter = article.blog.filter((item) => item._type === 'orange' || item._type === 'white').map((data,id) => {
+    return {
+      part: id + 1,
+      ...data
+    }
+  })
   const [baseUrl, setBaseUrl] = useState()
   const scrolltoview = (slug) => {
     const element = document.querySelector(`[data-slug*="${slug}"]`)
@@ -87,8 +92,8 @@ export default function Blog({ article, seo, footer, nextArticle }) {
           <div>
             <div className="flex flex-col space-y-1 max-md:mt-5 text-culture">
               {layoutFilter.map((data, i) => (
-                <div>
-                  <span className="block font-serif italic">Part {i + 1}</span>
+                <div key={i}>
+                  <span className="block font-serif italic">Part {data.part}</span>
                   <FancyLink
                     onClick={() => scrolltoview(data.title)}
                     className="font-bold font-serif border-culture border-b"

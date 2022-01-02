@@ -123,7 +123,6 @@ export default function Editorial({ issueAPI, seoAPI, editorialAPI, footerAPI })
                           : '#fff'
                       }
                       className="mb-10"
-                      destination={`/editorial/${checkClosest().slug.current}`}
                       imageThumbnail={
                         checkClosest().thumbnail &&
                         urlFor(checkClosest().thumbnail.placeholder).url()
