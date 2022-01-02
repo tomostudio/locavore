@@ -24,14 +24,14 @@ import timeConvert from '@/helpers/functional/timeConvert'
 
 export default function Blog({ article, seo, footer, nextArticle }) {
   const router = useRouter()
-  const articleBlog = article.blog.filter((item) => item._type === 'orange')
-  const articleWhite = article.blog.filter((item) => item._type === 'white')
-  let layoutFilter = article.blog.filter((item) => item._type === 'orange' || item._type === 'white').map((data,id) => {
-    return {
-      part: id + 1,
-      ...data
-    }
-  })
+  let layoutFilter = article.blog
+    .filter((item) => item._type === 'orange' || item._type === 'white')
+    .map((data, id) => {
+      return {
+        part: id + 1,
+        ...data,
+      }
+    })
   const [baseUrl, setBaseUrl] = useState()
   const scrolltoview = (slug) => {
     const element = document.querySelector(`[data-slug*="${slug}"]`)
@@ -40,13 +40,9 @@ export default function Blog({ article, seo, footer, nextArticle }) {
     const offsetPosition = elementPosition - headerOffset
 
     window.scrollTo({
-      top: offsetPosition,
+      top: document.querySelectorAll(`[data-slug*="${slug}"]`)[0].offsetTop - 60,
       behavior: 'smooth',
     })
-
-    // document.querySelectorAll(`[data-slug*="${slug}"]`)[0].scrollIntoView({
-    //   behavior: 'smooth',
-    // });
   }
 
   useEffect(() => {
@@ -93,9 +89,11 @@ export default function Blog({ article, seo, footer, nextArticle }) {
             <div className="flex flex-col space-y-1 max-md:mt-5 text-culture">
               {layoutFilter.map((data, i) => (
                 <div key={i}>
-                  <span className="block font-serif italic">Part {data.part}</span>
+                  <span className="block font-serif italic">
+                    Part {data.part}
+                  </span>
                   <FancyLink
-                    onClick={() => scrolltoview(data.title)}
+                    onClick={() => scrolltoview(data.slug.current)}
                     className="font-bold font-serif border-culture border-b"
                   >
                     {data.title}
@@ -112,26 +110,34 @@ export default function Blog({ article, seo, footer, nextArticle }) {
             <>
               {/* Orange Component */}
               <div
-                data-slug={data.title}
+                data-slug={data.slug.current}
                 className="w-full h-auto px-8 py-4 max-md:p-2"
                 style={{ background: '#D66A51' }}
+                key={i}
               >
                 <div className="w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center">
                   <div className="w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10">
                     {/* Title */}
                     <div className="font-serif text-center font-bold">
-                      <span className="block italic">Part {i + 1}</span>
+                      <span className="block italic">
+                        Part{' '}
+                        {
+                          layoutFilter.find(
+                            (item) => item.slug.current === data.slug.current,
+                          ).part
+                        }
+                      </span>
                       {data.title}
                     </div>
-                    {data.content.map((content, i) =>
+                    {data.content.map((content, id) =>
                       content._type === 'block' ? (
-                        <p className="px-paddingContent max-md:p-0">
+                        <p className="px-paddingContent max-md:p-0" key={id}>
                           {content.children.map((child) => child.text).join('')}
                         </p>
                       ) : content._type === 'img' ? (
                         <>
                           {/* Image */}
-                          <div className="w-full h-auto px-paddingContent max-md:p-0">
+                          <div className="w-full h-auto px-paddingContent max-md:p-0" key={id}>
                             <div className="relative w-full h-80">
                               <Image
                                 src={urlFor(content.image).url()}
@@ -153,7 +159,7 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                         </>
                       ) : (
                         content._type === 'blockquote' && (
-                          <p className="font-sans font-bold uppercase px-paddingContent max-md:p-0">
+                          <p className="font-sans font-bold uppercase px-paddingContent max-md:p-0" key={id}>
                             {content.content}
                           </p>
                         )
@@ -167,24 +173,32 @@ export default function Blog({ article, seo, footer, nextArticle }) {
             <>
               {/* White Component */}
               <div
-                data-slug={data.title}
+                data-slug={data.slug.current}
                 className="w-full h-auto px-8 max-md:px-6 py-14 setflex-center"
+                key={i}
               >
                 <div className="w-content max-md:w-full space-y-10 max-md:space-y-7">
                   {/* Title */}
                   <div className="font-serif text-center font-bold">
-                    <span className="block italic">Part {i + 1}</span>
+                    <span className="block italic">
+                      Part{' '}
+                      {
+                        layoutFilter.find(
+                          (item) => item.slug.current === data.slug.current,
+                        ).part
+                      }
+                    </span>
                     {data.title}
                   </div>
-                  {data.content.map((content, i) =>
+                  {data.content.map((content, id) =>
                     content._type === 'block' ? (
-                      <p className="px-paddingContent max-md:p-0">
+                      <p className="px-paddingContent max-md:p-0" key={id}>
                         {content.children.map((child) => child.text).join('')}
                       </p>
                     ) : (
                       content._type === 'quote' && (
                         <>
-                          <div className="h-40 setflex-center w-full">
+                          <div className="h-40 setflex-center w-full" key={id}>
                             <hr className="bg-culture border border-culture h-full w-px" />
                           </div>
                           <div className="relative h-32px w-32px mb-3">
@@ -214,7 +228,7 @@ export default function Blog({ article, seo, footer, nextArticle }) {
           ) : data._type === 'image' ? (
             <>
               {/* Image Component */}
-              <div className="w-full h-auto setflex-center my-14">
+              <div className="w-full h-auto setflex-center my-14" key={i}>
                 <div className="relative w-content max-md:w-full px-paddingContent max-md:px-6">
                   <div className="relative w-full h-72">
                     <Image
@@ -241,7 +255,7 @@ export default function Blog({ article, seo, footer, nextArticle }) {
             data._type === 'imageFull' && (
               <>
                 {/* Image Full Component */}
-                <div className="w-full setflex-center">
+                <div className="w-full setflex-center" key={i}>
                   <div className="relative w-full h-36rem">
                     <Image
                       src={urlFor(data.image).url()}
