@@ -13,7 +13,7 @@ export default function Home({ issueAPI, seoAPI }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const homeAPI = await client.fetch(`
   *[_type == "home"] {
     issue->
@@ -36,6 +36,10 @@ export async function getStaticProps() {
       issueAPI,
       seoAPI,
       headerAPI,
+    },
+    redirect: {
+      destination: `/editorial/${homeAPI[0].issue.slug.current}`,
+      permanent: false,
     },
   }
 }
