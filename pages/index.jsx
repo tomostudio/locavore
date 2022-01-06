@@ -50,7 +50,7 @@ export default function Home({
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const homeAPI = await client.fetch(`
   *[_type == "home"] {
     issue->

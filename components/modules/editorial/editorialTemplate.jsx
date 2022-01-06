@@ -21,8 +21,6 @@ import urlFor from '@/helpers/sanity/urlFor'
 
 export default function EditorialTemplate({ issueAPI, seo, editorial, footer }) {
 
-  console.log(issueAPI)
-
   const dataSoon = issueAPI
     .filter((data) => data.comingSoon === true)
     .sort((a, b) => {
