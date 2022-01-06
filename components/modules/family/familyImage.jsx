@@ -33,7 +33,7 @@ const familyImage = ({ store, src, alt, position = '', name = '' }) => {
         src={src}
         alt={alt}
         layout='fill'
-        loading='eager'
+        loading={'eager'}
         priority={true}
         objectFit='cover'
         objectPosition='top'

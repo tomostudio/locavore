@@ -212,7 +212,7 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
                   <FancyLink
                     destination={family.instagram.link}
                     blank={true}
-                    className='relative w-16px h-16px hover:opacity-50 transition-opacity duration-300'
+                    className='relative w-16px h-16px hover:opacity-30 transition-opacity duration-300'
                   >
                     <Image
                       src={`/ig.svg`}
