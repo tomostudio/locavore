@@ -289,7 +289,7 @@ export default function Family({
                   store={familyListAPI[data.storeID]}
                   position={!data.family.hideNamePosition && data.position || ''}
                   name={!data.family.hideNamePosition && data.name || ''}
-                  src={urlFor(data.image).width(350).url()}
+                  src={data.image}
                   alt={data.name}
                 />
               ))}

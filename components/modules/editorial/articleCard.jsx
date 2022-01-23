@@ -31,6 +31,8 @@ const ArticleCard = ({
           className='rounded-xl'
           layout='fill'
           objectFit='cover'
+          placeholder="blur"
+          blurDataURL={`${src}?blur=50`}
           objectPosition='center'
         />
       </div>

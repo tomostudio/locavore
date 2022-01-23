@@ -248,6 +248,8 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
                   className='rounded-2xl'
                   layout='fill'
                   objectFit='contain'
+                  loading='eager'
+                  priority={true}
                   objectPosition='center'
                 />
               </div>

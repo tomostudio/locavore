@@ -50,7 +50,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
 
       // update card rotation
       const rotatationTarget = card.querySelector('a')
-      rotatationTarget.style.transform = `rotate(${(fromCenter / 100) * 10}deg)`
+      rotatationTarget.style.transform = `rotate(${(fromCenter / 100) * 7.5}deg)`
 
       // set center item
       if (fromCenter > -15 && fromCenter < 15) {
@@ -180,7 +180,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
          */}
         <div className="w-full flex" id="editorial-slider">
           <ScrollContainer
-            className={`issue_container flex w-full space-x-7 px-7 hide-scrollbar ${scrollStyle}`}
+            className={`issue_container flex w-full space-x-7 py-7 px-7 hide-scrollbar ${scrollStyle}`}
             horizontal={true}
             vertical={false}
             hideScrollbars={false}
