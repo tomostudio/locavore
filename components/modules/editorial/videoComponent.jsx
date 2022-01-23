@@ -11,9 +11,7 @@ const VideoComponent = ({ setStatusVideo, statusVideo, video }) => {
     >
       {!statusVideo && (
         <div
-          className={`w-full h-full absolute top-0 left-0 z-10 transition-all duration-300 pointer-events-none ${
-            video.dark ? 'bg-black  opacity-25' : 'bg-white opacity-25'
-          } group-hover:opacity-40`}
+          className={`w-full h-full absolute top-0 left-0 z-10 transition-all duration-300 pointer-events-none bg-black opacity-25 group-hover:opacity-40`}
         />
       )}
       <div
@@ -49,10 +47,10 @@ const VideoComponent = ({ setStatusVideo, statusVideo, video }) => {
       {!statusVideo && (
         <div className="absolute top-0 left-0 z-20 h-full w-full setflex-center">
           <div
-            className={`px-10 py-7 border rounded-50% text-white transition-all duration-300 ${
+            className={`px-10 py-7 rounded-50% transition-all duration-300 ${
               video.dark
-                ? 'border-white text-white group-hover:text-black group-hover:bg-white'
-                : 'border-black text-black group-hover:text-white group-hover:bg-black'
+                ? 'bg-white text-black group-hover:text-white group-hover:bg-black'
+                : 'bg-black text-white group-hover:text-black group-hover:bg-white'
             }`}
           >
             WATCH

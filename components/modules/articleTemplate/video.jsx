@@ -63,7 +63,7 @@ export default function Video({ article, seo, footer, nextArticle }) {
       <section className="w-full h-full flex flex-col">
         <Container className="max-md:px-0">
           {/* Video */}
-          <div className="relative w-full flex flex-col space-y-3">
+          <div className="relative w-full max-w-800px mx-auto flex flex-col space-y-3">
             <VideoComponent
               setStatusVideo={setStatusVideo}
               statusVideo={statusVideo}

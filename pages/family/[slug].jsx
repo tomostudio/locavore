@@ -207,7 +207,7 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
                 <span>{family.email}</span>
               </div>
               <div className='flex items-center space-x-6'>
-                <span className='text-sm'>Share</span>
+                <span className='text-sm'>Visit</span>
                 {family.instagram && (
                   <FancyLink
                     destination={family.instagram.link}
@@ -241,7 +241,7 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
               </div>
             </div>
             <div className='h-full flex justify-end items-center relative w-full'>
-              <div className='relative w-3/4 h-3/4' id='family-logo'>
+              <div className='relative w-90% h-90%' id='family-logo'>
                 <Image
                   src={urlFor(family.logo).width(750).url()}
                   alt={family.logo.name}

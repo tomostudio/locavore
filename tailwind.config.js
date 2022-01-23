@@ -74,6 +74,7 @@ module.exports = {
         '56rem': '56rem',
         '60rem': '60rem',
         header: '60px',
+        '90%': '90%',
       },
       width: {
         '16px': '16px',
@@ -89,6 +90,7 @@ module.exports = {
         's-30': '30vw',
         's-40': '40vw',
         's-50': '50vw',
+        '90%': '90%',
       },
       colors: {
         culture: '#D66A51',
@@ -127,6 +129,7 @@ module.exports = {
       },
       maxWidth: {
         issueCard: '400px',
+        '800px': '800px',
       },
       spacing: {
         paddingContent: '5rem',

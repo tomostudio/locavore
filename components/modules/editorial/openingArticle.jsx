@@ -77,7 +77,7 @@ export default function OpeningArticle({ general, article, baseUrl }) {
         </div>
         <div className="w-full h-full">
           {/* Description */}
-          <p>{toPlainText(article.description)}</p>
+          <p className='max-w-800px'>{toPlainText(article.description)}</p>
         </div>
       </Container>
     </section>

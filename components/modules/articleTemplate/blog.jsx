@@ -40,7 +40,8 @@ export default function Blog({ article, seo, footer, nextArticle }) {
     const offsetPosition = elementPosition - headerOffset
 
     window.scrollTo({
-      top: document.querySelectorAll(`[data-slug*="${slug}"]`)[0].offsetTop - 60,
+      top:
+        document.querySelectorAll(`[data-slug*="${slug}"]`)[0].offsetTop - 60,
       behavior: 'smooth',
     })
   }
@@ -112,7 +113,11 @@ export default function Blog({ article, seo, footer, nextArticle }) {
               <div
                 data-slug={data.slug.current}
                 className="w-full h-auto px-8 py-4 max-md:p-2"
-                style={{ background: '#D66A51' }}
+                style={{
+                  background: data.color
+                    ? data.color.hex && data.color.hex
+                    : '#D66A51',
+                }}
                 key={i}
               >
                 <div className="w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center">
@@ -137,7 +142,10 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                       ) : content._type === 'img' ? (
                         <>
                           {/* Image */}
-                          <div className="w-full h-auto px-paddingContent max-md:p-0" key={id}>
+                          <div
+                            className="w-full h-auto px-paddingContent max-md:p-0"
+                            key={id}
+                          >
                             <div className="relative w-full h-80">
                               <Image
                                 src={urlFor(content.image).url()}
@@ -159,7 +167,10 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                         </>
                       ) : (
                         content._type === 'blockquote' && (
-                          <p className="font-sans font-bold uppercase px-paddingContent max-md:p-0" key={id}>
+                          <p
+                            className="font-sans font-bold uppercase px-paddingContent max-md:p-0"
+                            key={id}
+                          >
                             {content.content}
                           </p>
                         )

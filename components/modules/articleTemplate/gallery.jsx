@@ -116,7 +116,7 @@ export default function Gallery({ article, seo, footer, nextArticle }) {
                 </Fragment>
               ) : (
                 item._type === 'video' && (
-                  <div className="w-full mt-3 max-md:mt-2" key={id}>
+                  <div className="w-full max-w-800px mx-auto mt-3 max-md:mt-2" key={id}>
                     <VideoComponent
                       setStatusVideo={setStatusVideo}
                       statusVideo={statusVideo}
