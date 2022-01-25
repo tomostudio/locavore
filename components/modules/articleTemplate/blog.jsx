@@ -265,11 +265,10 @@ export default function Blog({ article, seo, footer, nextArticle }) {
           ) : (
             data._type === 'imageFull' && (
               <>
-                {/* Image Full Component */}
                 <div className="w-full setflex-center" key={i}>
                   <div className="relative w-full h-36rem">
                     <Image
-                      src={urlFor(data.image).url()}
+                      src={urlFor(data).url()}
                       alt={data.name}
                       className="rounded-xl"
                       layout="fill"
