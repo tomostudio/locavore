@@ -24,14 +24,16 @@ import timeConvert from '@/helpers/functional/timeConvert'
 
 export default function Blog({ article, seo, footer, nextArticle }) {
   const router = useRouter()
-  let layoutFilter = article.blog
-    .filter((item) => item._type === 'orange' || item._type === 'white')
-    .map((data, id) => {
-      return {
-        part: id + 1,
-        ...data,
-      }
-    })
+  let layoutFilter =
+    article.blog &&
+    article.blog
+      .filter((item) => item._type === 'orange' || item._type === 'white')
+      .map((data, id) => {
+        return {
+          part: id + 1,
+          ...data,
+        }
+      })
   const [baseUrl, setBaseUrl] = useState()
   const scrolltoview = (slug) => {
     const element = document.querySelector(`[data-slug*="${slug}"]`)
@@ -87,50 +89,140 @@ export default function Blog({ article, seo, footer, nextArticle }) {
       <section className="">
         <Container>
           <div>
-            <div className="flex flex-col space-y-1 max-md:mt-5 text-culture">
-              {layoutFilter.map((data, i) => (
-                <div key={i}>
-                  <span className="block font-serif italic">
-                    Part {data.part}
-                  </span>
-                  <FancyLink
-                    onClick={() => scrolltoview(data.slug.current)}
-                    className="font-bold font-serif border-culture border-b"
-                  >
-                    {data.title}
-                  </FancyLink>
-                </div>
-              ))}
+            <div
+              className="flex flex-col space-y-1 max-md:mt-5"
+              style={{
+                color: article.categoryColor
+                  ? article.category.color.hex
+                  : '#D66A51',
+              }}
+            >
+              {layoutFilter &&
+                layoutFilter.map((data, i) => (
+                  <div key={i}>
+                    <span className="block font-serif italic">
+                      Part {data.part}
+                    </span>
+                    <FancyLink
+                      onClick={() => scrolltoview(data.slug.current)}
+                      className="font-bold font-serif border-b"
+                      style={{
+                        borderColor: article.categoryColor
+                          ? article.category.color.hex
+                          : '#D66A51',
+                      }}
+                    >
+                      {data.title}
+                    </FancyLink>
+                  </div>
+                ))}
             </div>
           </div>
         </Container>
       </section>
       <section className="mt-14 w-full h-full">
-        {article.blog.map((data, i) =>
-          data._type === 'orange' ? (
-            <>
-              {/* Orange Component */}
-              <div
-                data-slug={data.slug.current}
-                className="w-full h-auto px-8 py-4 max-md:p-2"
-                style={{
-                  background: data.color
-                    ? data.color.hex && data.color.hex
-                    : '#D66A51',
-                }}
-                key={i}
-              >
-                <div className="w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center">
-                  <div className="w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10">
+        {article.blog &&
+          article.blog.map((data, i) =>
+            data._type === 'orange' ? (
+              <>
+                {/* Orange Component */}
+                <div
+                  data-slug={data.slug.current}
+                  className="w-full h-auto px-8 py-4 max-md:p-2"
+                  style={{
+                    background: article.categoryColor
+                      ? article.category.color.hex
+                      : data.color
+                      ? data.color.hex && data.color.hex
+                      : '#D66A51',
+                  }}
+                  key={i}
+                >
+                  <div className="w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center">
+                    <div className="w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10">
+                      {/* Title */}
+                      <div className="font-serif text-center font-bold">
+                        <span className="block italic">
+                          Part{' '}
+                          {layoutFilter &&
+                            layoutFilter.find(
+                              (item) => item.slug.current === data.slug.current,
+                            ).part}
+                        </span>
+                        {data.title}
+                      </div>
+                      {data.content.map((content, id) =>
+                        content._type === 'block' ? (
+                          <p className="px-paddingContent max-md:p-0" key={id}>
+                            {content.children
+                              .map((child) => child.text)
+                              .join('')}
+                          </p>
+                        ) : content._type === 'img' ? (
+                          <>
+                            {/* Image */}
+                            <div
+                              className="w-full h-auto px-paddingContent max-md:p-0"
+                              key={id}
+                            >
+                              <div className="relative w-full h-80">
+                                <Image
+                                  src={urlFor(content.image).url()}
+                                  alt={content.image.name}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  objectPosition="center"
+                                />
+                              </div>
+                              {content.name && (
+                                <div className="flex items-end max-md:items-start w-full mt-3">
+                                  <div
+                                    className="w-10 h-5 border-b-2 border-l-2 mr-4"
+                                    style={{
+                                      borderColor: article.categoryColor
+                                        ? article.category.color.hex
+                                        : '#D66A51',
+                                    }}
+                                  />
+                                  <span className="w-full font-serif text-sm font-bold">
+                                    {content.name}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          </>
+                        ) : (
+                          content._type === 'blockquote' && (
+                            <p
+                              className="font-sans font-bold uppercase px-paddingContent max-md:p-0"
+                              key={id}
+                            >
+                              {content.content}
+                            </p>
+                          )
+                        ),
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : data._type === 'white' ? (
+              <>
+                {/* White Component */}
+                <div
+                  data-slug={data.slug.current}
+                  className="w-full h-auto px-8 max-md:px-6 py-14 setflex-center"
+                  key={i}
+                >
+                  <div className="w-content max-md:w-full space-y-10 max-md:space-y-7">
                     {/* Title */}
                     <div className="font-serif text-center font-bold">
                       <span className="block italic">
                         Part{' '}
-                        {
+                        {layoutFilter &&
                           layoutFilter.find(
                             (item) => item.slug.current === data.slug.current,
-                          ).part
-                        }
+                          ).part}
                       </span>
                       {data.title}
                     </div>
@@ -139,157 +231,109 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                         <p className="px-paddingContent max-md:p-0" key={id}>
                           {content.children.map((child) => child.text).join('')}
                         </p>
-                      ) : content._type === 'img' ? (
-                        <>
-                          {/* Image */}
-                          <div
-                            className="w-full h-auto px-paddingContent max-md:p-0"
-                            key={id}
-                          >
-                            <div className="relative w-full h-80">
+                      ) : (
+                        content._type === 'quote' && (
+                          <>
+                            <div
+                              className="h-40 setflex-center w-full"
+                              key={id}
+                            >
+                              <hr
+                                className="border h-full w-px"
+                                style={{
+                                  borderColor: article.categoryColor
+                                    ? article.category.color.hex
+                                    : '#D66A51',
+                                }}
+                              />
+                            </div>
+                            <div className="relative h-32px w-32px mb-3">
                               <Image
-                                src={urlFor(content.image).url()}
-                                alt={content.image.name}
+                                src={`/quote.png`}
+                                alt="Locavore"
                                 layout="fill"
-                                objectFit="cover"
+                                objectFit="contain"
                                 objectPosition="center"
                               />
                             </div>
-                            {content.name && (
-                              <div className="flex items-end max-md:items-start w-full mt-3">
-                                <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
-                                <span className="w-full font-serif text-sm font-bold">
-                                  {content.name}
-                                </span>
-                              </div>
-                            )}
-                          </div>
-                        </>
-                      ) : (
-                        content._type === 'blockquote' && (
-                          <p
-                            className="font-sans font-bold uppercase px-paddingContent max-md:p-0"
-                            key={id}
-                          >
-                            {content.content}
-                          </p>
+                            <p className="font-sans font-bold text-3xl max-md:text-2xl">
+                              {content.content}
+                            </p>
+                          </>
                         )
                       ),
                     )}
                   </div>
                 </div>
-              </div>
-            </>
-          ) : data._type === 'white' ? (
-            <>
-              {/* White Component */}
-              <div
-                data-slug={data.slug.current}
-                className="w-full h-auto px-8 max-md:px-6 py-14 setflex-center"
-                key={i}
-              >
-                <div className="w-content max-md:w-full space-y-10 max-md:space-y-7">
-                  {/* Title */}
-                  <div className="font-serif text-center font-bold">
-                    <span className="block italic">
-                      Part{' '}
-                      {
-                        layoutFilter.find(
-                          (item) => item.slug.current === data.slug.current,
-                        ).part
-                      }
-                    </span>
-                    {data.title}
-                  </div>
-                  {data.content.map((content, id) =>
-                    content._type === 'block' ? (
-                      <p className="px-paddingContent max-md:p-0" key={id}>
-                        {content.children.map((child) => child.text).join('')}
-                      </p>
-                    ) : (
-                      content._type === 'quote' && (
-                        <>
-                          <div className="h-40 setflex-center w-full" key={id}>
-                            <hr className="bg-culture border border-culture h-full w-px" />
-                          </div>
-                          <div className="relative h-32px w-32px mb-3">
-                            <Image
-                              src={`/quote.png`}
-                              alt="Locavore"
-                              layout="fill"
-                              objectFit="contain"
-                              objectPosition="center"
-                            />
-                          </div>
-                          <p className="font-sans font-bold text-3xl max-md:text-2xl">
-                            There are many variations of passages of Lorem Ipsum
-                            available, but the majority have suffered alteration
-                            in some form, or randomised words which don't look
-                            even slightly believable. If you are going to use a
-                            passage of Lorem Ipsum, you need to be sure there
-                            isn't anything hidden in the middle of text.
-                          </p>
-                        </>
-                      )
-                    ),
-                  )}
-                </div>
-              </div>
-            </>
-          ) : data._type === 'image' ? (
-            <>
-              {/* Image Component */}
-              <div className="w-full h-auto setflex-center my-14" key={i}>
-                <div className="relative w-content max-md:w-full px-paddingContent max-md:px-6">
-                  <div className="relative w-full h-72">
-                    <Image
-                      src={urlFor(data).url()}
-                      alt={data.name}
-                      className="rounded-xl"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                    />
-                  </div>
-                  {data.name && (
-                    <div className="flex items-end max-md:items-start mt-3">
-                      <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
-                      <span className="w-full font-serif text-sm font-bold">
-                        {data.name}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </>
-          ) : (
-            data._type === 'imageFull' && (
+              </>
+            ) : data._type === 'image' ? (
               <>
-                {/* Image Full Component */}
-                <div className="w-full setflex-center" key={i}>
-                  <div className="relative w-full h-36rem">
-                    <Image
-                      src={urlFor(data.image).url()}
-                      alt={data.name}
-                      className="rounded-xl"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                    />
-                  </div>
-                  {data.name && (
-                    <div className="w-content max-md:w-full px-paddingContent max-md:px-6 flex items-end max-md:items-start mt-3">
-                      <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
-                      <span className="w-full font-serif text-sm font-bold">
-                        {data.name}
-                      </span>
+                {/* Image Component */}
+                <div className="w-full h-auto setflex-center my-14" key={i}>
+                  <div className="relative w-content max-md:w-full px-paddingContent max-md:px-6">
+                    <div className="relative w-full h-72">
+                      <Image
+                        src={urlFor(data).url()}
+                        alt={data.name}
+                        className="rounded-xl"
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="center"
+                      />
                     </div>
-                  )}
+                    {data.name && (
+                      <div className="flex items-end max-md:items-start mt-3">
+                        <div
+                          className="w-10 h-5 border-b-2 border-l-2 mr-4"
+                          style={{
+                            borderColor: article.categoryColor
+                              ? article.category.color.hex
+                              : '#D66A51',
+                          }}
+                        />
+                        <span className="w-full font-serif text-sm font-bold">
+                          {data.name}
+                        </span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </>
-            )
-          ),
-        )}
+            ) : (
+              data._type === 'imageFull' && (
+                <>
+                  {/* Image Full Component */}
+                  <div className="w-full setflex-center" key={i}>
+                    <div className="relative w-full h-36rem">
+                      <Image
+                        src={urlFor(data.image).url()}
+                        alt={data.name}
+                        className="rounded-xl"
+                        layout="fill"
+                        objectFit="cover"
+                        objectPosition="center"
+                      />
+                    </div>
+                    {data.name && (
+                      <div className="w-content max-md:w-full px-paddingContent max-md:px-6 flex items-end max-md:items-start mt-3">
+                        <div
+                          className="w-10 h-5 border-b-2 border-l-2 mr-4"
+                          style={{
+                            borderColor: article.categoryColor
+                              ? article.category.color.hex
+                              : '#D66A51',
+                          }}
+                        />
+                        <span className="w-full font-serif text-sm font-bold">
+                          {data.name}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </>
+              )
+            ),
+          )}
       </section>
       {/* Card Next Article */}
       <NextArticle

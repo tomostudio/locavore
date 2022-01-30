@@ -5,7 +5,7 @@ import PillButton from '../pillButton'
 import Image from 'next/image'
 import { useAppContext } from 'context/state'
 import checkMonth from '@/helpers/functional/checkMonth'
-import { toPlainText } from '@/helpers/functional/toPlainText'
+import SanityBlockContent from '@sanity/block-content-to-react'
 
 export default function OpeningArticle({ general, article, baseUrl }) {
   const appContext = useAppContext()
@@ -77,7 +77,9 @@ export default function OpeningArticle({ general, article, baseUrl }) {
         </div>
         <div className="w-full h-full">
           {/* Description */}
-          <p className='max-w-800px'>{toPlainText(article.description)}</p>
+          <p className="max-w-800px">
+            <SanityBlockContent blocks={article.description} />
+          </p>
         </div>
       </Container>
     </section>
