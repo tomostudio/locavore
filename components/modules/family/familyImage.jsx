@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import FancyLink from '@/components/utils/fancyLink';
+import urlFor from '@/helpers/sanity/urlFor';
 
 const familyImage = ({ store, src, alt, position = '', name = '' }) => {
   function hexToRgb(hex) {
@@ -28,15 +29,20 @@ const familyImage = ({ store, src, alt, position = '', name = '' }) => {
       onMouseLeave={(e) => {
         familyRef.current.classList.remove('show');
       }}
+      style={{
+        backgroundColor: `rgba(${hexToRgb(
+          store.bgColor.hex ? store.bgColor.hex : '#D0D0D0'
+        )}, 1)`,
+      }}
     >
       <Image
-        src={src}
+        src={urlFor(src).width(750).url()}
         alt={alt}
         layout='fill'
-        loading={'eager'}
-        priority={true}
         objectFit='cover'
         objectPosition='top'
+        placeholder="blur"
+        blurDataURL={urlFor(src).blur(2).format('webp').saturation(-100).width(100).url()}
       />
       <div className='absolute w-full h-full top-0 left-0 flex flex-col items-center  text-center justify-center p-4 z-1'>
         {position !== '' && name !== '' ? (
