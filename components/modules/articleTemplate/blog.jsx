@@ -172,6 +172,13 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                                   layout="fill"
                                   objectFit="cover"
                                   objectPosition="center"
+                                  placeholder="blur"
+                                  blurDataURL={urlFor(content.image)
+                                    .blur(2)
+                                    .format('webp')
+                                    .saturation(-100)
+                                    .width(100)
+                                    .url()}
                                 />
                               </div>
                               {content.name && (
@@ -279,6 +286,13 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                         layout="fill"
                         objectFit="cover"
                         objectPosition="center"
+                        placeholder="blur"
+                        blurDataURL={urlFor(data)
+                          .blur(2)
+                          .format('webp')
+                          .saturation(-100)
+                          .width(100)
+                          .url()}
                       />
                     </div>
                     {data.name && (
@@ -312,6 +326,13 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                         layout="fill"
                         objectFit="cover"
                         objectPosition="center"
+                        placeholder="blur"
+                        blurDataURL={urlFor(data.image)
+                          .blur(2)
+                          .format('webp')
+                          .saturation(-100)
+                          .width(100)
+                          .url()}
                       />
                     </div>
                     {data.name && (
