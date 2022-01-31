@@ -203,8 +203,8 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
                 </FancyLink>
               </p>
               <div className='w-full flex flex-col'>
-                <span>{family.phone_number}</span>
-                <span>{family.email}</span>
+                <FancyLink destination={`tel:${family.phone_number}`}>{family.phone_number}</FancyLink>
+                <FancyLink destination={`mailto:${family.email}`}>{family.email}</FancyLink>
               </div>
               <div className='flex items-center space-x-6'>
                 <span className='text-sm'>Visit</span>
@@ -232,6 +232,21 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
                     <Image
                       src={`/FB.svg`}
                       alt={family.facebook.title}
+                      layout='fill'
+                      objectFit='contain'
+                      objectPosition='center'
+                    />
+                  </FancyLink>
+                )}
+                {family.waLink && (
+                  <FancyLink
+                    destination={family.waLink}
+                    blank={true}
+                    className='relative w-16px h-16px hover:opacity-50 transition-opacity duration-300'
+                  >
+                    <Image
+                      src={`/wa.svg`}
+                      alt={family.title}
                       layout='fill'
                       objectFit='contain'
                       objectPosition='center'
