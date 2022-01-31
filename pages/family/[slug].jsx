@@ -1,8 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import SwiperCore, { Pagination } from 'swiper';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import ScrollContainer from 'react-indiana-drag-scroll';
 import { useRouter } from 'next/router';
 
 // Layout
@@ -16,7 +15,6 @@ import FancyLink from '@/components/utils/fancyLink';
 import SEO from '@/components/utils/seo';
 
 // Helpers
-import colors from '@/helpers/preset/colors';
 import { useAppContext } from 'context/state';
 import client from '@/helpers/sanity/client';
 import urlFor from '@/helpers/sanity/urlFor';
