@@ -9,6 +9,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import Header from '@/components/modules/header.jsx'
 import Script from 'next/script'
+import Head from 'next/head';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
@@ -85,6 +86,36 @@ export default function App({ Component, pageProps }) {
           cardType: 'summary_large_image',
         }}
       />
+
+      <Head>
+        {/* FAVICON  */}
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1,viewport-fit=cover"
+        />
+        {/* FAVICON  */}
+      </Head>
 
       <AppWrapper>
         {/* <Header
