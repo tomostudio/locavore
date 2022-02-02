@@ -130,7 +130,7 @@ export default function Blog({ article, seo, footer, nextArticle }) {
           </div>
         </Container>
       </section>
-      <section className="mt-14 w-full h-full">
+      <section className="mt-14 space-y-14 w-full h-full">
         {article.blog &&
           article.blog.map((data, i) =>
             data._type === 'orange' ? (
@@ -257,7 +257,7 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                     .replace(/ /g, '-')
                     .replace(/[-]+/g, '-')
                     .replace(/[^\w-]+/g, '')}
-                  className="w-full h-auto px-8 max-md:px-6 py-14 setflex-center"
+                  className="w-full h-auto px-8 max-md:px-6 setflex-center"
                   key={i}
                 >
                   <div className="w-content max-md:w-full space-y-10 max-md:space-y-7">
@@ -372,101 +372,14 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                   </div>
                 </div>
               </>
-            ) : data._type === 'images' ? (
-              data.image ? (
-                data.option ? (
-                  <>
-                    {/* Image Full Component */}
-                    <div className="w-full h-auto setflex-center my-14" key={i}>
-                      <div className="relative w-full h-36rem">
-                        <Image
-                          src={urlFor(data.image).url()}
-                          alt={data.name}
-                          className="rounded-xl"
-                          layout="fill"
-                          objectFit="cover"
-                          objectPosition="center"
-                          placeholder="blur"
-                          blurDataURL={urlFor(data.image)
-                            .blur(2)
-                            .format('webp')
-                            .saturation(-100)
-                            .width(100)
-                            .url()}
-                        />
-                      </div>
-                      {data.name && (
-                        <div className="w-content max-md:w-full px-paddingContent max-md:px-6 flex items-end max-md:items-start mt-3">
-                          <div
-                            className="w-10 h-5 border-b-2 border-l-2 mr-4"
-                            style={{
-                              borderColor: article.categoryColor
-                                ? article.category.color.hex
-                                : '#D66A51',
-                            }}
-                          />
-                          <span className="w-full font-serif text-sm font-bold">
-                            {data.name}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Image Component */}
-                    <div className="w-full h-auto setflex-center my-14" key={i}>
-                      <div className="relative w-content max-md:w-full px-paddingContent max-md:px-6">
-                        <div className="relative w-full h-72">
-                          <Image
-                            src={urlFor(data.image).url()}
-                            alt={data.image.name}
-                            className="rounded-xl"
-                            layout="fill"
-                            objectFit="cover"
-                            objectPosition="center"
-                            placeholder="blur"
-                            blurDataURL={urlFor(data.image)
-                              .blur(2)
-                              .format('webp')
-                              .saturation(-100)
-                              .width(100)
-                              .url()}
-                          />
-                        </div>
-                        {data.image.name && (
-                          <div className="flex items-end max-md:items-start mt-3">
-                            <div
-                              className="w-10 h-5 border-b-2 border-l-2 mr-4"
-                              style={{
-                                borderColor: article.categoryColor
-                                  ? article.category.color.hex
-                                  : '#D66A51',
-                              }}
-                            />
-                            <span className="w-full font-serif text-sm font-bold">
-                              {data.image.name}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </>
-                )
-              ) : (
-                <></>
-              )
             ) : data._type === 'gallery' ? (
-              <Container className="max-md:px-0 my-14">
-                <div className="w-full flex flex-col">
-                  {data.gallery.map((item, id) =>
+              <Container className="max-md:px-0 mt-14">
+                <div className="w-full flex flex-col space-y-14">
+                  {data.galleryComponent.map((item, id) =>
                     item._type === 'singleImage' ? (
                       <Fragment key={id}>
                         {/* Singe Image */}
-                        <div
-                          className="w-full setflex-center mt-3 max-md:mt-2"
-                          key={id}
-                        >
+                        <div className="w-full setflex-center" key={id}>
                           <div
                             className="relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1"
                             style={{
@@ -499,7 +412,7 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                     ) : item._type === 'twoImage' ? (
                       <Fragment key={id}>
                         {/* Two Image */}
-                        <div className="w-full mt-3 max-md:mt-2 h-30rem max-md:h-56 flex space-x-3 max-md:space-x-2">
+                        <div className="w-full h-30rem max-md:h-56 flex space-x-3 max-md:space-x-2">
                           <div className="relative w-full h-full">
                             <Image
                               src={urlFor(item.firstImage).width(1500).url()}
@@ -523,7 +436,7 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                     ) : (
                       item._type === 'video' && (
                         <div
-                          className="w-full max-w-800px mx-auto mt-3 max-md:mt-2"
+                          className="w-full max-w-800px mx-auto py-14"
                           key={id}
                         >
                           <VideoComponent
@@ -538,7 +451,7 @@ export default function Blog({ article, seo, footer, nextArticle }) {
                 </div>
               </Container>
             ) : data._type === 'video' ? (
-              <Container className="max-md:px-0 my-14">
+              <Container className="max-md:px-0">
                 {/* Video */}
                 <div className="relative w-full max-w-800px mx-auto flex flex-col space-y-3">
                   <VideoComponent
