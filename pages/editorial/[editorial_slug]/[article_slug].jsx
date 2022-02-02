@@ -1,9 +1,5 @@
 // Helpers
 import client from '@/helpers/sanity/client'
-import Blog from '@/components/modules/articleTemplate/blog'
-import Caroussel from '@/components/modules/articleTemplate/caroussel'
-import Gallery from '@/components/modules/articleTemplate/gallery'
-import Video from '@/components/modules/articleTemplate/video'
 import { useRouter } from 'next/router'
 import { Fragment, useEffect, useState } from 'react'
 import Layout from '@/components/modules/layout'
