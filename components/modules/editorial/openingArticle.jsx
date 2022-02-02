@@ -10,7 +10,7 @@ import SanityBlockContent from '@sanity/block-content-to-react'
 export default function OpeningArticle({ general, article, baseUrl }) {
   const appContext = useAppContext()
   return (
-    <section className="pt-10 pb-12 w-full h-full">
+    <section className="pt-10 w-full h-full">
       <Container className="space-y-10 max-md:px-6">
         {/* Title */}
         <h1 className="m-0 font-sans font-normal">{article.title}</h1>

@@ -4,6 +4,23 @@ import Blog from '@/components/modules/articleTemplate/blog'
 import Caroussel from '@/components/modules/articleTemplate/caroussel'
 import Gallery from '@/components/modules/articleTemplate/gallery'
 import Video from '@/components/modules/articleTemplate/video'
+import { useRouter } from 'next/router'
+import { Fragment, useEffect, useState } from 'react'
+import Layout from '@/components/modules/layout'
+import SEO from '@/components/utils/seo'
+import urlFor from '@/helpers/sanity/urlFor'
+import HeaderGap from '@/components/modules/headerGap'
+import OpeningArticle from '@/components/modules/editorial/openingArticle'
+import Container from '@/components/modules/container'
+import FancyLink from '@/components/utils/fancyLink'
+import VideoComponent from '@/components/modules/editorial/videoComponent'
+import Image from 'next/image'
+import GalleryComponent from '@/components/modules/editorial/galleryComponent'
+import NextArticle from '@/components/modules/editorial/nextArticle'
+import StickyButton from '@/components/modules/stickyButton'
+import Footer from '@/components/modules/footer'
+import timeConvert from '@/helpers/functional/timeConvert'
+import CarousselComponent from '@/components/modules/editorial/carousselComponent'
 
 export default function ArticleSlug({
   articleAPI,
@@ -16,36 +33,413 @@ export default function ArticleSlug({
   const [footer] = footerAPI
   const [article] = articleAPI
 
-  return article.layout === 'blog' ? (
-    <Blog
-      article={article}
-      seo={seo}
-      footer={footer}
-      nextArticle={nextArticle}
-    />
-  ) : article.layout === 'caroussel' ? (
-    <Caroussel
-      article={article}
-      seo={seo}
-      footer={footer}
-      nextArticle={nextArticle}
-    />
-  ) : article.layout === 'gallery' ? (
-    <Gallery
-      article={article}
-      seo={seo}
-      footer={footer}
-      nextArticle={nextArticle}
-    />
-  ) : (
-    article.layout === 'video' && (
-      <Video
-        article={article}
-        seo={seo}
-        footer={footer}
-        nextArticle={nextArticle}
+  const router = useRouter()
+  let layoutFilter =
+    article.blog &&
+    article.blog
+      .filter((item) => item._type === 'orange' || item._type === 'white')
+      .map((data, id) => {
+        return {
+          part: id + 1,
+          ...data,
+        }
+      })
+  const [baseUrl, setBaseUrl] = useState()
+
+  const scrolltoview = (slug) => {
+    window.scrollTo({
+      top:
+        document.querySelectorAll(`[data-slug*="${slug}"]`)[0].offsetTop - 60,
+      behavior: 'smooth',
+    })
+  }
+
+  useEffect(() => {
+    window.scroll(0, 0)
+    setBaseUrl(window.location.href)
+    return () => {}
+  }, [])
+
+  return (
+    <Layout>
+      <SEO
+        seo={{
+          title: article.title,
+          webTitle: seo.webTitle ? seo.webTitle : '',
+          pagelink: router.pathname,
+          description:
+            article.seo && article.seo.seo_description
+              ? article.seo.seo_description
+              : seo.seo && seo.seo.seo_description && seo.seo.seo_description,
+          meta_keywords:
+            article.seo && article.seo.seo_keywords
+              ? article.seo.seo_keywords
+              : seo.seo && seo.seo.seo_keywords && seo.seo.seo_keywords,
+          image:
+            article.seo && article.seo.seo_image
+              ? urlFor(article.seo.seo_image).url()
+              : seo.seo && seo.seo.seo_image && urlFor(seo.seo.seo_image).url(),
+          image_alt:
+            article.seo && article.seo.seo_image.name
+              ? article.seo.seo_image.name
+              : seo.seo && seo.seo.seo_image.name && seo.seo.seo_image.name,
+        }}
       />
-    )
+
+      {/* Header Gap */}
+      <HeaderGap />
+
+      {/* Untuk Content */}
+      <OpeningArticle general={seo} article={article} baseUrl={baseUrl} />
+
+      {article.layout === 'blog' && (
+        <section className="mt-12">
+          <Container>
+            <div>
+              <div
+                className="flex flex-col space-y-1 max-md:mt-5"
+                style={{
+                  color: article.categoryColor
+                    ? article.category.color.hex
+                    : '#D66A51',
+                }}
+              >
+                {layoutFilter &&
+                  layoutFilter.map((data, i) => (
+                    <div key={i}>
+                      <span className="block font-serif italic">
+                        Part {data.part}
+                      </span>
+                      <FancyLink
+                        onClick={() =>
+                          scrolltoview(
+                            data.title
+                              .toLowerCase()
+                              .replace(/ /g, '-')
+                              .replace(/[-]+/g, '-')
+                              .replace(/[^\w-]+/g, ''),
+                          )
+                        }
+                        className="font-bold font-serif border-b"
+                        style={{
+                          borderColor: article.categoryColor
+                            ? article.category.color.hex
+                            : '#D66A51',
+                        }}
+                      >
+                        {data.title}
+                      </FancyLink>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </Container>
+        </section>
+      )}
+      <section className="mt-12 space-y-12 w-full h-full">
+        {article.layout === 'blog' ? (
+          article.blog.map((data, i) =>
+            data._type === 'orange' ? (
+              <>
+                {/* Orange Component */}
+                <div
+                  data-slug={data.title
+                    .toLowerCase()
+                    .replace(/ /g, '-')
+                    .replace(/[-]+/g, '-')
+                    .replace(/[^\w-]+/g, '')}
+                  className="w-full h-auto px-8 py-4 max-md:p-2"
+                  style={{
+                    background: article.categoryColor
+                      ? article.category.color.hex
+                      : data.color
+                      ? data.color.hex && data.color.hex
+                      : '#D66A51',
+                  }}
+                  key={i}
+                >
+                  <div className="w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center">
+                    <div className="w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10">
+                      {/* Title */}
+                      <div className="font-serif text-center font-bold">
+                        <span className="block italic">
+                          Part{' '}
+                          {layoutFilter &&
+                            layoutFilter.find(
+                              (item) =>
+                                item.title
+                                  .toLowerCase()
+                                  .replace(/ /g, '-')
+                                  .replace(/[-]+/g, '-')
+                                  .replace(/[^\w-]+/g, '') ===
+                                data.title
+                                  .toLowerCase()
+                                  .replace(/ /g, '-')
+                                  .replace(/[-]+/g, '-')
+                                  .replace(/[^\w-]+/g, ''),
+                            ).part}
+                        </span>
+                        {data.title}
+                      </div>
+                      {data.content &&
+                        data.content.map((content, id) =>
+                          content._type === 'block' ? (
+                            <p
+                              className="px-paddingContent max-md:p-0"
+                              key={id}
+                            >
+                              {content.children
+                                .map((child) => child.text)
+                                .join('')}
+                            </p>
+                          ) : content._type === 'img' ? (
+                            <>
+                              {/* Image */}
+                              <div
+                                className={`w-full h-auto max-md:p-0 ${
+                                  !content.option && 'px-paddingContent'
+                                }`}
+                                key={id}
+                              >
+                                <div className="relative w-full h-80">
+                                  <Image
+                                    src={urlFor(content.image).url()}
+                                    alt={content.image.name}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    objectPosition="center"
+                                    placeholder="blur"
+                                    blurDataURL={urlFor(content.image)
+                                      .blur(2)
+                                      .format('webp')
+                                      .saturation(-100)
+                                      .width(100)
+                                      .url()}
+                                  />
+                                </div>
+                                {content.name && (
+                                  <div
+                                    className={`flex items-end max-md:items-start w-full mt-3 ${
+                                      content.option &&
+                                      'px-paddingContent max-md:p-0'
+                                    }`}
+                                  >
+                                    <div
+                                      className="w-10 h-5 border-b-2 border-l-2 mr-4"
+                                      style={{
+                                        borderColor: article.categoryColor
+                                          ? article.category.color.hex
+                                          : '#D66A51',
+                                      }}
+                                    />
+                                    <span className="w-full font-serif text-sm font-bold">
+                                      {content.name}
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                            </>
+                          ) : (
+                            content._type === 'blockquote' && (
+                              <p
+                                className="font-sans font-bold uppercase px-paddingContent max-md:p-0"
+                                key={id}
+                              >
+                                {content.content}
+                              </p>
+                            )
+                          ),
+                        )}
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : data._type === 'white' ? (
+              <>
+                {/* White Component */}
+                <div
+                  data-slug={data.title
+                    .toLowerCase()
+                    .replace(/ /g, '-')
+                    .replace(/[-]+/g, '-')
+                    .replace(/[^\w-]+/g, '')}
+                  className="w-full h-auto px-8 max-md:px-6 setflex-center"
+                  key={i}
+                >
+                  <div className="w-content max-md:w-full space-y-10 max-md:space-y-7">
+                    {/* Title */}
+                    <div className="font-serif text-center font-bold">
+                      <span className="block italic">
+                        Part{' '}
+                        {layoutFilter &&
+                          layoutFilter.find(
+                            (item) =>
+                              item.title
+                                .toLowerCase()
+                                .replace(/ /g, '-')
+                                .replace(/[-]+/g, '-')
+                                .replace(/[^\w-]+/g, '') ===
+                              data.title
+                                .toLowerCase()
+                                .replace(/ /g, '-')
+                                .replace(/[-]+/g, '-')
+                                .replace(/[^\w-]+/g, ''),
+                          ).part}
+                      </span>
+                      {data.title}
+                    </div>
+                    {data.content &&
+                      data.content.map((content, id) =>
+                        content._type === 'block' ? (
+                          <p className="px-paddingContent max-md:p-0" key={id}>
+                            {content.children
+                              .map((child) => child.text)
+                              .join('')}
+                          </p>
+                        ) : content._type === 'img' ? (
+                          <>
+                            {/* Image */}
+                            <div
+                              className={`w-full h-auto max-md:p-0 ${
+                                !content.option && 'px-paddingContent'
+                              }`}
+                              key={id}
+                            >
+                              <div className="relative w-full h-80">
+                                <Image
+                                  src={urlFor(content.image).url()}
+                                  alt={content.image.name}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  objectPosition="center"
+                                  placeholder="blur"
+                                  blurDataURL={urlFor(content.image)
+                                    .blur(2)
+                                    .format('webp')
+                                    .saturation(-100)
+                                    .width(100)
+                                    .url()}
+                                />
+                              </div>
+                              {content.name && (
+                                <div
+                                  className={`flex items-end max-md:items-start w-full mt-3 ${
+                                    content.option &&
+                                    'px-paddingContent max-md:p-0'
+                                  }`}
+                                >
+                                  <div
+                                    className="w-10 h-5 border-b-2 border-l-2 mr-4"
+                                    style={{
+                                      borderColor: article.categoryColor
+                                        ? article.category.color.hex
+                                        : '#D66A51',
+                                    }}
+                                  />
+                                  <span className="w-full font-serif text-sm font-bold">
+                                    {content.name}
+                                  </span>
+                                </div>
+                              )}
+                            </div>
+                          </>
+                        ) : (
+                          content._type === 'quote' && (
+                            <>
+                              <div
+                                className="h-40 setflex-center w-full"
+                                key={id}
+                              >
+                                <hr
+                                  className="border h-full w-px"
+                                  style={{
+                                    borderColor: article.categoryColor
+                                      ? article.category.color.hex
+                                      : '#D66A51',
+                                  }}
+                                />
+                              </div>
+                              <div className="relative h-32px w-32px mb-3">
+                                <Image
+                                  src={`/quote.png`}
+                                  alt="Locavore"
+                                  layout="fill"
+                                  objectFit="contain"
+                                  objectPosition="center"
+                                />
+                              </div>
+                              <p className="font-sans font-bold text-3xl max-md:text-2xl">
+                                {content.content}
+                              </p>
+                            </>
+                          )
+                        ),
+                      )}
+                  </div>
+                </div>
+              </>
+            ) : data._type === 'gallery' ? (
+              <GalleryComponent
+                gallery={data}
+                blog={true}
+              />
+            ) : data._type === 'video' ? (
+              <Container className="max-md:px-0">
+                {/* Video */}
+                <div className="relative w-full max-w-800px mx-auto flex flex-col space-y-3">
+                  <VideoComponent
+                    video={data}
+                  />
+                </div>
+              </Container>
+            ) : (
+              <></>
+            ),
+          )
+        ) : article.layout === 'video' ? (
+          <VideoComponent
+            video={article.video}
+          />
+        ) : article.layout === 'gallery' ? (
+          <GalleryComponent gallery={article} />
+        ) : article.layout === 'caroussel' ? (
+          <CarousselComponent caroussel={article} />
+        ) : (
+          <></>
+        )}
+      </section>
+      {/* Card Next Article */}
+      <NextArticle
+        bgColor={nextArticle.article.category.color.hex}
+        title={`${
+          !nextArticle.turnOffArticleNumber &&
+          `${nextArticle.article.articleNumber}.`
+        } ${nextArticle.article.title}`}
+        category={nextArticle.article.category.title}
+        timeRead={
+          nextArticle.article.readTime
+            ? timeConvert(nextArticle.article.readTime)
+            : nextArticle.article.timeReadBlog
+            ? nextArticle.article.timeReadBlog !== 0 &&
+              timeConvert(nextArticle.article.timeReadBlog)
+            : nextArticle.article.timeRead !== 0 &&
+              timeConvert(nextArticle.article.timeRead)
+        }
+        thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
+        border={nextArticle.article.category.border}
+        alt={nextArticle.article.thumbnail.name}
+        destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
+      />
+      {/* Button Sticky */}
+      <StickyButton
+        className={nextArticle === null && `mb-5 mt-10`}
+        destination={`/editorial/${article.issue.slug.current}/list`}
+        arrow="left"
+      >
+        ISSUE {article.issue.issueNumber}
+      </StickyButton>
+      <Footer footer={footer} />
+    </Layout>
   )
 }
 
@@ -123,13 +517,13 @@ export async function getStaticProps({ params }) {
     nextArticle = {
       editorial_slug: params.editorial_slug,
       article: processedArticle[nextArticleIndex],
-      turnOffArticleNumber: next[0].turnOffArticleNumber
+      turnOffArticleNumber: next[0].turnOffArticleNumber,
     }
   } else {
     nextArticle = {
       editorial_slug: params.editorial_slug,
       article: processedArticle[0],
-      turnOffArticleNumber: next[0].turnOffArticleNumber
+      turnOffArticleNumber: next[0].turnOffArticleNumber,
     }
   }
 
