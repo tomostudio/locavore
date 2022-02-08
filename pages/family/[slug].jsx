@@ -3,7 +3,6 @@ import SwiperCore, { Pagination } from 'swiper'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import Instagram from 'instagram-web-api'
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -20,18 +19,16 @@ import { useAppContext } from 'context/state'
 import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'
 import { toPlainText } from '@/helpers/functional/toPlainText'
-import ScrollContainer from 'react-indiana-drag-scroll'
 
 // install Swiper modules
 SwiperCore.use([Pagination])
 
-const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI, posts }) => {
+const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
   const router = useRouter()
   const [seo] = seoAPI
   const [family] = familyAPI
   const [footer] = footerAPI
   const appContext = useAppContext()
-  console.log(posts)
 
   // const onMouseEnter = (id, color, slug) => {
   //   document.getElementById('family-button').children[
@@ -139,25 +136,20 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI, posts }) => {
           <div className="w-full my-10">
             <p>{toPlainText(family.description)}</p>
             <div className="flex flex-col w-full mt-20 mb-10 ">
-              <ScrollContainer
+              {/* <ScrollContainer
                 className="flex space-x-4 flex-nowrap overflow-x-scroll hide-scrollbar"
                 horizontal={true}
               >
-                {posts.map(({ node }, id) => (
+                {family.image_socmed.map((data, id) => (
                   <FancyLink
-                    destination={`https://www.instagram.com/p/${node.shortcode}/`}
+                    destination={data.link}
                     blank={true}
-                    className="w-56 h-56 relative flex-shrink-0"
+                    className="w-72 h-72 relative flex-shrink-0"
                     key={id}
                   >
-                    {console.log(node.display_resources[0].src)}
-                    {/* <img
-                      src={node.display_resources[0].src}
-                      className="w-full h-full object-cover object-center"
-                    /> */}
                     <Image
-                      src={node.display_resources[0].src}
-                      alt={family.title}
+                      src={urlFor(data).url()}
+                      alt={data.name}
                       className="rounded-2xl "
                       layout="fill"
                       objectFit="cover"
@@ -165,8 +157,8 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI, posts }) => {
                     />
                   </FancyLink>
                 ))}
-              </ScrollContainer>
-              {/* <div className="w-full border border-black rounded-2xl h-56" /> */}
+              </ScrollContainer> */}
+              <div className="w-full border border-black rounded-2xl h-56" />
               <FancyLink
                 destination={family.instagram.link}
                 blank={true}
@@ -353,26 +345,12 @@ export async function getStaticProps({ params }) {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `)
-
-  const [family] = familyAPI
-
-  const clients = new Instagram({
-    username: family.instagram.username,
-    password: family.instagram.password,
-  })
-  await clients.login()
-
-  const response = await clients.getPhotosByUsername({
-    username: family.instagram.username,
-  })
-
   return {
     props: {
       familyAPI,
       seoAPI,
       familyListAPI,
       footerAPI,
-      posts: response.user.edge_owner_to_timeline_media.edges,
       headerAPI,
     },
   }
