@@ -133,7 +133,7 @@ export default function ArticleSlug({
         </section>
       )}
       <section className="mt-12 space-y-12 w-full h-full">
-        {article.layout === 'blog' ? (
+        {article.layout === 'blog' && article.blog ? (
           article.blog.map((data, i) =>
             data._type === 'orange' ? (
               <>
@@ -374,32 +374,25 @@ export default function ArticleSlug({
                   </div>
                 </div>
               </>
-            ) : data._type === 'gallery' ? (
-              <GalleryComponent
-                gallery={data}
-                blog={true}
-              />
+            ) : data._type === 'gallery' && data.gallery ? (
+              <GalleryComponent gallery={data.gallery} blog={true} />
             ) : data._type === 'video' ? (
               <Container className="max-md:px-0">
                 {/* Video */}
                 <div className="relative w-full max-w-800px mx-auto flex flex-col space-y-3">
-                  <VideoComponent
-                    video={data}
-                  />
+                  <VideoComponent video={data} />
                 </div>
               </Container>
             ) : (
               <></>
             ),
           )
-        ) : article.layout === 'video' ? (
-          <VideoComponent
-            video={article.video}
-          />
-        ) : article.layout === 'gallery' ? (
-          <GalleryComponent gallery={article} />
-        ) : article.layout === 'caroussel' ? (
-          <CarousselComponent caroussel={article} />
+        ) : article.layout === 'video' && article.video ? (
+          <VideoComponent video={article.video} />
+        ) : article.layout === 'gallery' && article.gallery ? (
+          <GalleryComponent gallery={article.gallery} />
+        ) : article.layout === 'caroussel' && article.caroussel ? (
+          <CarousselComponent caroussel={article.caroussel} />
         ) : (
           <></>
         )}

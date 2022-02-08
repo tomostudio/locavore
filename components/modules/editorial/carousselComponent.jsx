@@ -33,9 +33,9 @@ const CarousselComponent = ({ caroussel }) => {
             modules={[Controller]}
             onSwiper={setFirstSwiper}
             controller={{ control: secondSwiper }}
-            loopedSlides={caroussel.caroussel.length}
+            loopedSlides={caroussel.length}
           >
-            {caroussel.caroussel.map((data, id) => (
+            {caroussel.map((data, id) => (
               <SwiperSlide key={id}>
                 <div className="relative w-full aspect-w-16 max-md:aspect-w-1 aspect-h-9 max-md:aspect-h-1">
                   <Image
@@ -81,10 +81,10 @@ const CarousselComponent = ({ caroussel }) => {
               modules={[Controller]}
               onSwiper={setSecondSwiper}
               controller={{ control: firstSwiper }}
-              loopedSlides={caroussel.caroussel.length}
+              loopedSlides={caroussel.length}
               id="swipe-caroussel"
             >
-              {caroussel.caroussel.map((data, id) => (
+              {caroussel.map((data, id) => (
                 <SwiperSlide key={id}>
                   <div className="cursor-pointer relative w-full h-full">
                     <Image

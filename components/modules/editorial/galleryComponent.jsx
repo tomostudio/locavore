@@ -8,7 +8,7 @@ const GalleryComponent = ({ gallery, blog }) => {
   return (
     <Container className="max-md:px-0 mt-12">
       <div className={`w-full flex flex-col ${blog && 'space-y-12'}`}>
-        {gallery.gallery.map((item, id) =>
+        {gallery.map((item, id) =>
           item._type === 'singleImage' ? (
             <Fragment key={id}>
               {/* Singe Image */}
@@ -34,11 +34,11 @@ const GalleryComponent = ({ gallery, blog }) => {
                       .url()}
                   />
                 </div>
-                {item.image.name && (
+                {item.description && (
                   <div className="flex items-end max-md:items-start mt-3 mb-6 max-md:px-6">
                     <div className="w-10 h-5 border-culture border-b-2 border-l-2 mr-4" />
                     <span className="w-full font-serif text-sm font-bold">
-                      {item.image.name}
+                      {item.description}
                     </span>
                   </div>
                 )}
