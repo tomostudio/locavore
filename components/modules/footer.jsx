@@ -8,7 +8,6 @@ import FancyLink from '../utils/fancyLink';
 
 const Footer = ({ className, footer }) => {
   const MAILCHIMP_URL = process.env.NEXT_PUBLIC_MAILCHIMP_URL;
-
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -20,6 +19,7 @@ const Footer = ({ className, footer }) => {
       clearInterval(timeInterval);
     };
   }, []);
+
   return (
     <footer
       className={`w-full h-auto max-md:h-full flex bg-offBlack text-white px-0 py-14 ${className}`}
@@ -38,16 +38,13 @@ const Footer = ({ className, footer }) => {
           {/* Subscription Form  */}
           <MailchimpSubscribe
             url={MAILCHIMP_URL}
-            render={(props) => {
-              const { subscribe, status, message } = props || {};
-              return (
-                <SubscribeForm
-                  status={status}
-                  message={message}
-                  onValidated={(formData) => subscribe(formData)}
-                />
-              );
-            }}
+            render={({ subscribe, status, message }) => (
+              <SubscribeForm
+                status={status}
+                message={message}
+                onValidated={(formData) => subscribe(formData)}
+              />
+            )}
           />
         </div>
         <div className='w-full h-full max-md:mt-10 max-md:space-y-10 flex flex-col justify-between'>

@@ -1,22 +1,22 @@
 // Helpers
-import client from '@/helpers/sanity/client'
-import { useRouter } from 'next/router'
-import { Fragment, useEffect, useState } from 'react'
-import Layout from '@/components/modules/layout'
-import SEO from '@/components/utils/seo'
-import urlFor from '@/helpers/sanity/urlFor'
-import HeaderGap from '@/components/modules/headerGap'
-import OpeningArticle from '@/components/modules/editorial/openingArticle'
-import Container from '@/components/modules/container'
-import FancyLink from '@/components/utils/fancyLink'
-import VideoComponent from '@/components/modules/editorial/videoComponent'
-import Image from 'next/image'
-import GalleryComponent from '@/components/modules/editorial/galleryComponent'
-import NextArticle from '@/components/modules/editorial/nextArticle'
-import StickyButton from '@/components/modules/stickyButton'
-import Footer from '@/components/modules/footer'
-import timeConvert from '@/helpers/functional/timeConvert'
-import CarousselComponent from '@/components/modules/editorial/carousselComponent'
+import client from '@/helpers/sanity/client';
+import { useRouter } from 'next/router';
+import { Fragment, useEffect, useState } from 'react';
+import Layout from '@/components/modules/layout';
+import SEO from '@/components/utils/seo';
+import urlFor from '@/helpers/sanity/urlFor';
+import HeaderGap from '@/components/modules/headerGap';
+import OpeningArticle from '@/components/modules/editorial/openingArticle';
+import Container from '@/components/modules/container';
+import FancyLink from '@/components/utils/fancyLink';
+import VideoComponent from '@/components/modules/editorial/videoComponent';
+import Image from 'next/image';
+import GalleryComponent from '@/components/modules/editorial/galleryComponent';
+import NextArticle from '@/components/modules/editorial/nextArticle';
+import StickyButton from '@/components/modules/stickyButton';
+import Footer from '@/components/modules/footer';
+import timeConvert from '@/helpers/functional/timeConvert';
+import CarousselComponent from '@/components/modules/editorial/carousselComponent';
 
 export default function ArticleSlug({
   articleAPI,
@@ -25,11 +25,11 @@ export default function ArticleSlug({
   footerAPI,
   nextArticle,
 }) {
-  const [seo] = seoAPI
-  const [footer] = footerAPI
-  const [article] = articleAPI
+  const [seo] = seoAPI;
+  const [footer] = footerAPI;
+  const [article] = articleAPI;
 
-  const router = useRouter()
+  const router = useRouter();
   let layoutFilter =
     article.blog &&
     article.blog
@@ -38,23 +38,23 @@ export default function ArticleSlug({
         return {
           part: id + 1,
           ...data,
-        }
-      })
-  const [baseUrl, setBaseUrl] = useState()
+        };
+      });
+  const [baseUrl, setBaseUrl] = useState();
 
   const scrolltoview = (slug) => {
     window.scrollTo({
       top:
         document.querySelectorAll(`[data-slug*="${slug}"]`)[0].offsetTop - 60,
       behavior: 'smooth',
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-    window.scroll(0, 0)
-    setBaseUrl(window.location.href)
-    return () => {}
-  }, [])
+    window.scroll(0, 0);
+    setBaseUrl(window.location.href);
+    return () => {};
+  }, []);
 
   return (
     <Layout>
@@ -89,11 +89,11 @@ export default function ArticleSlug({
       <OpeningArticle general={seo} article={article} baseUrl={baseUrl} />
 
       {article.layout === 'blog' && (
-        <section className="mt-12">
+        <section className='mt-12'>
           <Container>
             <div>
               <div
-                className="flex flex-col space-y-1 max-md:mt-5"
+                className='flex flex-col space-y-1 max-md:mt-5'
                 style={{
                   color: article.categoryColor
                     ? article.category.color.hex
@@ -103,7 +103,7 @@ export default function ArticleSlug({
                 {layoutFilter &&
                   layoutFilter.map((data, i) => (
                     <div key={i}>
-                      <span className="block font-serif italic">
+                      <span className='block font-serif italic'>
                         Part {data.part}
                       </span>
                       <FancyLink
@@ -113,10 +113,10 @@ export default function ArticleSlug({
                               .toLowerCase()
                               .replace(/ /g, '-')
                               .replace(/[-]+/g, '-')
-                              .replace(/[^\w-]+/g, ''),
+                              .replace(/[^\w-]+/g, '')
                           )
                         }
-                        className="font-bold font-serif border-b"
+                        className='font-bold font-serif border-b'
                         style={{
                           borderColor: article.categoryColor
                             ? article.category.color.hex
@@ -132,140 +132,32 @@ export default function ArticleSlug({
           </Container>
         </section>
       )}
-      <section className="mt-12 space-y-12 w-full h-full">
+      <section className='mt-12 space-y-12 w-full h-full'>
         {article.layout === 'blog' && article.blog ? (
           article.blog.map((data, i) =>
             data._type === 'orange' ? (
-              <>
+              <div
+                data-slug={data.title
+                  .toLowerCase()
+                  .replace(/ /g, '-')
+                  .replace(/[-]+/g, '-')
+                  .replace(/[^\w-]+/g, '')}
+                className='w-full h-auto px-8 py-4 max-md:p-2'
+                style={{
+                  background: article.categoryColor
+                    ? article.category.color.hex
+                    : data.color
+                    ? data.color.hex && data.color.hex
+                    : '#D66A51',
+                }}
+                key={i}
+              >
                 {/* Orange Component */}
-                <div
-                  data-slug={data.title
-                    .toLowerCase()
-                    .replace(/ /g, '-')
-                    .replace(/[-]+/g, '-')
-                    .replace(/[^\w-]+/g, '')}
-                  className="w-full h-auto px-8 py-4 max-md:p-2"
-                  style={{
-                    background: article.categoryColor
-                      ? article.category.color.hex
-                      : data.color
-                      ? data.color.hex && data.color.hex
-                      : '#D66A51',
-                  }}
-                  key={i}
-                >
-                  <div className="w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center">
-                    <div className="w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10">
-                      {/* Title */}
-                      <div className="font-serif text-center font-bold">
-                        <span className="block italic">
-                          Part{' '}
-                          {layoutFilter &&
-                            layoutFilter.find(
-                              (item) =>
-                                item.title
-                                  .toLowerCase()
-                                  .replace(/ /g, '-')
-                                  .replace(/[-]+/g, '-')
-                                  .replace(/[^\w-]+/g, '') ===
-                                data.title
-                                  .toLowerCase()
-                                  .replace(/ /g, '-')
-                                  .replace(/[-]+/g, '-')
-                                  .replace(/[^\w-]+/g, ''),
-                            ).part}
-                        </span>
-                        {data.title}
-                      </div>
-                      {data.content &&
-                        data.content.map((content, id) =>
-                          content._type === 'block' ? (
-                            <p
-                              className="px-paddingContent max-md:p-0"
-                              key={id}
-                            >
-                              {content.children
-                                .map((child) => child.text)
-                                .join('')}
-                            </p>
-                          ) : content._type === 'img' ? (
-                            <>
-                              {/* Image */}
-                              <div
-                                className={`w-full h-auto max-md:p-0 ${
-                                  !content.option && 'px-paddingContent'
-                                }`}
-                                key={id}
-                              >
-                                <div className="relative w-full h-80">
-                                  <Image
-                                    src={urlFor(content.image).url()}
-                                    alt={content.image.name}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    objectPosition="center"
-                                    placeholder="blur"
-                                    blurDataURL={urlFor(content.image)
-                                      .blur(2)
-                                      .format('webp')
-                                      .saturation(-100)
-                                      .width(100)
-                                      .url()}
-                                  />
-                                </div>
-                                {content.name && (
-                                  <div
-                                    className={`flex items-end max-md:items-start w-full mt-3 ${
-                                      content.option &&
-                                      'px-paddingContent max-md:p-0'
-                                    }`}
-                                  >
-                                    <div
-                                      className="w-10 h-5 border-b-2 border-l-2 mr-4"
-                                      style={{
-                                        borderColor: article.categoryColor
-                                          ? article.category.color.hex
-                                          : '#D66A51',
-                                      }}
-                                    />
-                                    <span className="w-full font-serif text-sm font-bold">
-                                      {content.name}
-                                    </span>
-                                  </div>
-                                )}
-                              </div>
-                            </>
-                          ) : (
-                            content._type === 'blockquote' && (
-                              <p
-                                className="font-sans font-bold uppercase px-paddingContent max-md:p-0"
-                                key={id}
-                              >
-                                {content.content}
-                              </p>
-                            )
-                          ),
-                        )}
-                    </div>
-                  </div>
-                </div>
-              </>
-            ) : data._type === 'white' ? (
-              <>
-                {/* White Component */}
-                <div
-                  data-slug={data.title
-                    .toLowerCase()
-                    .replace(/ /g, '-')
-                    .replace(/[-]+/g, '-')
-                    .replace(/[^\w-]+/g, '')}
-                  className="w-full h-auto px-8 max-md:px-6 setflex-center"
-                  key={i}
-                >
-                  <div className="w-content max-md:w-full space-y-10 max-md:space-y-7">
+                <div className='w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center'>
+                  <div className='w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10'>
                     {/* Title */}
-                    <div className="font-serif text-center font-bold">
-                      <span className="block italic">
+                    <div className='font-serif text-center font-bold'>
+                      <span className='block italic'>
                         Part{' '}
                         {layoutFilter &&
                           layoutFilter.find(
@@ -279,7 +171,7 @@ export default function ArticleSlug({
                                 .toLowerCase()
                                 .replace(/ /g, '-')
                                 .replace(/[-]+/g, '-')
-                                .replace(/[^\w-]+/g, ''),
+                                .replace(/[^\w-]+/g, '')
                           ).part}
                       </span>
                       {data.title}
@@ -287,7 +179,7 @@ export default function ArticleSlug({
                     {data.content &&
                       data.content.map((content, id) =>
                         content._type === 'block' ? (
-                          <p className="px-paddingContent max-md:p-0" key={id}>
+                          <p className='px-paddingContent max-md:p-0' key={id}>
                             {content.children
                               .map((child) => child.text)
                               .join('')}
@@ -301,14 +193,14 @@ export default function ArticleSlug({
                               }`}
                               key={id}
                             >
-                              <div className="relative w-full h-80">
+                              <div className='relative w-full h-80'>
                                 <Image
                                   src={urlFor(content.image).url()}
                                   alt={content.image.name}
-                                  layout="fill"
-                                  objectFit="cover"
-                                  objectPosition="center"
-                                  placeholder="blur"
+                                  layout='fill'
+                                  objectFit='cover'
+                                  objectPosition='center'
+                                  placeholder='blur'
                                   blurDataURL={urlFor(content.image)
                                     .blur(2)
                                     .format('webp')
@@ -325,14 +217,14 @@ export default function ArticleSlug({
                                   }`}
                                 >
                                   <div
-                                    className="w-10 h-5 border-b-2 border-l-2 mr-4"
+                                    className='w-10 h-5 border-b-2 border-l-2 mr-4'
                                     style={{
                                       borderColor: article.categoryColor
                                         ? article.category.color.hex
                                         : '#D66A51',
                                     }}
                                   />
-                                  <span className="w-full font-serif text-sm font-bold">
+                                  <span className='w-full font-serif text-sm font-bold'>
                                     {content.name}
                                   </span>
                                 </div>
@@ -340,52 +232,151 @@ export default function ArticleSlug({
                             </div>
                           </>
                         ) : (
-                          content._type === 'quote' && (
-                            <>
+                          content._type === 'blockquote' && (
+                            <p
+                              className='font-sans font-bold uppercase px-paddingContent max-md:p-0'
+                              key={id}
+                            >
+                              {content.content}
+                            </p>
+                          )
+                        )
+                      )}
+                  </div>
+                </div>
+              </div>
+            ) : data._type === 'white' ? (
+              <div
+                data-slug={data.title
+                  .toLowerCase()
+                  .replace(/ /g, '-')
+                  .replace(/[-]+/g, '-')
+                  .replace(/[^\w-]+/g, '')}
+                className='w-full h-auto px-8 max-md:px-6 setflex-center'
+                key={i}
+              >
+                {/* White Component */}
+                <div className='w-content max-md:w-full space-y-10 max-md:space-y-7'>
+                  {/* Title */}
+                  <div className='font-serif text-center font-bold'>
+                    <span className='block italic'>
+                      Part{' '}
+                      {layoutFilter &&
+                        layoutFilter.find(
+                          (item) =>
+                            item.title
+                              .toLowerCase()
+                              .replace(/ /g, '-')
+                              .replace(/[-]+/g, '-')
+                              .replace(/[^\w-]+/g, '') ===
+                            data.title
+                              .toLowerCase()
+                              .replace(/ /g, '-')
+                              .replace(/[-]+/g, '-')
+                              .replace(/[^\w-]+/g, '')
+                        ).part}
+                    </span>
+                    {data.title}
+                  </div>
+                  {data.content &&
+                    data.content.map((content, id) =>
+                      content._type === 'block' ? (
+                        <p className='px-paddingContent max-md:p-0' key={id}>
+                          {content.children.map((child) => child.text).join('')}
+                        </p>
+                      ) : content._type === 'img' ? (
+                        <>
+                          {/* Image */}
+                          <div
+                            className={`w-full h-auto max-md:p-0 ${
+                              !content.option && 'px-paddingContent'
+                            }`}
+                            key={id}
+                          >
+                            <div className='relative w-full h-80'>
+                              <Image
+                                src={urlFor(content.image).url()}
+                                alt={content.image.name}
+                                layout='fill'
+                                objectFit='cover'
+                                objectPosition='center'
+                                placeholder='blur'
+                                blurDataURL={urlFor(content.image)
+                                  .blur(2)
+                                  .format('webp')
+                                  .saturation(-100)
+                                  .width(100)
+                                  .url()}
+                              />
+                            </div>
+                            {content.name && (
                               <div
-                                className="h-40 setflex-center w-full"
-                                key={id}
+                                className={`flex items-end max-md:items-start w-full mt-3 ${
+                                  content.option &&
+                                  'px-paddingContent max-md:p-0'
+                                }`}
                               >
-                                <hr
-                                  className="border h-full w-px"
+                                <div
+                                  className='w-10 h-5 border-b-2 border-l-2 mr-4'
                                   style={{
                                     borderColor: article.categoryColor
                                       ? article.category.color.hex
                                       : '#D66A51',
                                   }}
                                 />
+                                <span className='w-full font-serif text-sm font-bold'>
+                                  {content.name}
+                                </span>
                               </div>
-                              <div className="relative h-32px w-32px mb-3">
-                                <Image
-                                  src={`/quote.png`}
-                                  alt="Locavore"
-                                  layout="fill"
-                                  objectFit="contain"
-                                  objectPosition="center"
-                                />
-                              </div>
-                              <p className="font-sans font-bold text-3xl max-md:text-2xl">
-                                {content.content}
-                              </p>
-                            </>
-                          )
-                        ),
-                      )}
-                  </div>
+                            )}
+                          </div>
+                        </>
+                      ) : (
+                        content._type === 'quote' && (
+                          <>
+                            <div
+                              className='h-40 setflex-center w-full'
+                              key={id}
+                            >
+                              <hr
+                                className='border h-full w-px'
+                                style={{
+                                  borderColor: article.categoryColor
+                                    ? article.category.color.hex
+                                    : '#D66A51',
+                                }}
+                              />
+                            </div>
+                            <div className='relative h-32px w-32px mb-3'>
+                              <Image
+                                src={`/quote.png`}
+                                alt='Locavore'
+                                layout='fill'
+                                objectFit='contain'
+                                objectPosition='center'
+                              />
+                            </div>
+                            <p className='font-sans font-bold text-3xl max-md:text-2xl'>
+                              {content.content}
+                            </p>
+                          </>
+                        )
+                      )
+                    )}
                 </div>
-              </>
+              </div>
             ) : data._type === 'gallery' && data.gallery ? (
-              <GalleryComponent gallery={data.gallery} blog={true} />
+              <GalleryComponent gallery={data.gallery} blog={true} key={i} />
             ) : data._type === 'video' ? (
-              <Container className="max-md:px-0">
+              <Container className='max-md:px-0' key={i}>
                 {/* Video */}
-                <div className="relative w-full max-w-800px mx-auto flex flex-col space-y-3">
+                <div className='relative w-full max-w-800px mx-auto flex flex-col space-y-3'>
                   <VideoComponent video={data} />
                 </div>
               </Container>
             ) : (
-              <></>
-            ),
+              <Fragment key={i}></Fragment>
+            )
           )
         ) : article.layout === 'video' && article.video ? (
           <VideoComponent video={article.video} />
@@ -423,13 +414,13 @@ export default function ArticleSlug({
       <StickyButton
         className={nextArticle === null && `mb-5 mt-10`}
         destination={`/editorial/${article.issue.slug.current}/list`}
-        arrow="left"
+        arrow='left'
       >
         ISSUE {article.issue.issueNumber}
       </StickyButton>
       <Footer footer={footer} />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticPaths() {
@@ -439,7 +430,7 @@ export async function getStaticPaths() {
           issue->,
           category->,
         }
-      `)
+      `);
 
   const paths = res.map((data) => ({
     params: {
@@ -449,13 +440,13 @@ export async function getStaticPaths() {
       editorial_slug: data.issue.slug.current.toString(),
       ...data,
     },
-  }))
+  }));
 
-  return { paths, fallback: false }
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  let nextArticle = {}
+  let nextArticle = {};
   const articleAPI = await client.fetch(
     `
         *[_type == "article" && slug.current == "${params.article_slug}"] {
@@ -465,19 +456,19 @@ export async function getStaticProps({ params }) {
           "timeRead": round(length(pt::text(description)) / 5 / 180 ),
           "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
         }
-      `,
-  )
+      `
+  );
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `)
+  `);
 
   const headerAPI = await client.fetch(`
   *[_type == "header"]
-  `)
+  `);
 
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `)
+  `);
 
   const next = await client.fetch(
     `
@@ -490,30 +481,30 @@ export async function getStaticProps({ params }) {
             "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
           }
         }
-      `,
-  )
+      `
+  );
 
   const processedArticle = next[0].article.sort((a, b) => {
-    return a.articleNumber - b.articleNumber
-  }) // sort article based on article number
+    return a.articleNumber - b.articleNumber;
+  }); // sort article based on article number
 
   const nextArticleIndex =
     processedArticle.indexOf(
-      processedArticle.find(({ slug }) => slug.current == params.article_slug),
-    ) + 1
+      processedArticle.find(({ slug }) => slug.current == params.article_slug)
+    ) + 1;
 
   if (nextArticleIndex < processedArticle.length) {
     nextArticle = {
       editorial_slug: params.editorial_slug,
       article: processedArticle[nextArticleIndex],
       turnOffArticleNumber: next[0].turnOffArticleNumber,
-    }
+    };
   } else {
     nextArticle = {
       editorial_slug: params.editorial_slug,
       article: processedArticle[0],
       turnOffArticleNumber: next[0].turnOffArticleNumber,
-    }
+    };
   }
 
   return {
@@ -526,5 +517,5 @@ export async function getStaticProps({ params }) {
       processedArticle,
       nextArticle,
     },
-  }
+  };
 }

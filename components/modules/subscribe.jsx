@@ -1,38 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { decode } from 'html-entities';
 
 import Arrow from '../utils/arrow';
 
 const SubscribeForm = ({ status, message, onValidated }) => {
-  const [error, setError] = useState(null);
+  const [disable, setDisable] = useState(false);
+  const [redError, setRedError] = useState(false);
   const [email, setEmail] = useState(null);
+  const [placeholder, setPlaceholder] = useState('EMAIL');
+  const inputEl = useRef(null);
 
-  /**
-   * Handle form submit.
-   *
-   * @return {{value}|*|boolean|null}
-   */
+  // PROCESS
   const handleFormSubmit = () => {
-    setError(null);
-
-    if (!email) {
-      setError('Please enter a valid email address');
-      return null;
-    }
-
-    const isFormValidated = onValidated({ EMAIL: email });
-
-    // On success return true
-    return email && email.indexOf('@') > -1 && isFormValidated;
+    inputEl.current.blur();
+    setDisable(true);
+    return email && email.indexOf('@') > -1 && onValidated({ EMAIL: email });
   };
 
-  /**
-   * Handle Input Key Event.
-   *
-   * @param event
-   */
+  // FOR KEYBOARD ENTER
   const handleInputKeyEvent = (event) => {
-    setError(null);
     // Number 13 is the "Enter" key on the keyboard
     if (event.keyCode === 13) {
       // Cancel the default action, if needed
@@ -42,41 +28,71 @@ const SubscribeForm = ({ status, message, onValidated }) => {
     }
   };
 
-  /**
-   * Extract message from string.
-   *
-   * @param {String} message
-   * @return {null|*}
-   */
-  const getMessage = (message) => {
-    if (!message) {
-      return null;
-    }
-    const result = message?.split('-') ?? null;
-    if ('0' !== result?.[0]?.trim()) {
-      return decode(message);
-    }
-    const formattedMessage = result?.[1]?.trim() ?? null;
-    return formattedMessage ? decode(formattedMessage) : null;
+  let pTimeout = null;
+  const time = 2500;
+  const resetPlaceholderTimer = () => {
+    clearTimeout(pTimeout);
+    pTimeout = setTimeout(() => {
+      setDisable(false);
+      setRedError(false);
+      setPlaceholder('EMAIL');
+    }, time);
   };
+  useEffect(() => {
+    if (status === 'success') {
+      // Set Success Message
+      setRedError(false);
+      inputEl.current.value = '';
+      setPlaceholder('Got it!');
+      resetPlaceholderTimer();
+    } else if (status === 'error') {
+      //Set Error Message
+      inputEl.current.value = '';
+
+      //Customize the error messages accordingly
+      if (message.includes('cannot be added')) {
+        setRedError(true);
+        setPlaceholder("That's an invalid email.");
+      } else if (message.includes('is already subscribed')) {
+        setPlaceholder('You are already on the list!');
+      } else {
+        setRedError(true);
+        setPlaceholder(`Error ${message}`);
+      }
+      resetPlaceholderTimer();
+    } else if (status === 'sending') {
+      // Reset some status.
+      clearTimeout(pTimeout);
+    } else {
+      // Reset some status.
+      setRedError(false);
+      setDisable(false);
+    }
+  }, [status]);
 
   return (
-    <form className='flex w-full mt-10 max-w-sm flex-col justify-between'>
+    <div className='flex w-full mt-10 max-w-sm flex-col justify-between'>
       <label className='text-xl font-normal'>
         Sign up for
         <span className='font-serif italic'> insights </span>
         in your inbox
       </label>
-      <div className='relative mt-5 w-full border-white pb-2.5 border-b flex h-10'>
+      <div
+        className={`relative mt-5 w-full border-white pb-2.5 border-b flex h-10 ${
+          disable ? 'pointer-events-none' : ''
+        }`}
+      >
         <input
-          className='w-full text-sm tracking-wide placeholder-white outline-none bg-transparent'
+          className={`w-full text-sm tracking-wide placeholder-white outline-none bg-transparent ${
+            redError ? ' placeholder-red-500' : ''
+          }`}
           type='email'
-          placeholder='EMAIL'
+          placeholder={placeholder}
           onChange={(event) => setEmail(event?.target?.value ?? '')}
           onKeyUp={(event) => handleInputKeyEvent(event)}
+          ref={inputEl}
         />
-        <button onClick={handleFormSubmit} 
-            className='h-full w-10'>
+        <button onClick={handleFormSubmit} className='h-full w-10'>
           <Arrow
             position='right'
             className='absolute right-0 top-2'
@@ -84,7 +100,7 @@ const SubscribeForm = ({ status, message, onValidated }) => {
           />
         </button>
       </div>
-    </form>
+    </div>
   );
 };
 

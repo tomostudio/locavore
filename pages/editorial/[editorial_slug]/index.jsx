@@ -433,7 +433,7 @@ export default function Index({ issueAPI, seoAPI }) {
                           {new Date(issue.date).getFullYear()}
                           <span className='mx-4 inline-block'>•</span>8 ARTICLES
                         </span>
-                        <p className='content-issue max-w-md text-center mt-12'>
+                        <p className='content-issue max-w-lg text-center mt-12'>
                           {toPlainText(issue.description)}
                         </p>
                         <FancyLink
