@@ -1,4 +1,4 @@
-@import "_utils.scss";
+@import '_utils.scss';
 
 #link {
   @apply cursor-pointer px-3 bg-lightGray bg-opacity-70;
@@ -104,7 +104,7 @@ $issuecardgap: 40px;
   white-space: nowrap;
   &::before,
   &::after {
-    content: "";
+    content: '';
     display: block;
     width: calc((100vw - #{$card-width + 20px}) / 2);
     height: 100%;
@@ -131,6 +131,26 @@ $issuecardgap: 40px;
   left: 50%;
 }
 
+// ISSUE LIST 2
+#issue-content-wrapper {
+  width: 100%;
+  & .issue_container {
+    width: auto !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+  }
+  & > #editorial-slider{
+    position: sticky;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+}
+
+.issueindicator.noscroll {
+  transform: translateX(-50%) !important;
+  left: 50%;
+}
+
 // Family
 
 .family-card {
@@ -144,7 +164,7 @@ $issuecardgap: 40px;
     width: calc(100% / 3);
   }
   &::after {
-    content: "";
+    content: '';
     display: block;
     padding-bottom: 100%;
   }
@@ -193,7 +213,7 @@ $issuecardgap: 40px;
     position: relative;
     width: 100%;
     &::after {
-      content: "";
+      content: '';
       display: block;
       padding-bottom: 100%;
     }
