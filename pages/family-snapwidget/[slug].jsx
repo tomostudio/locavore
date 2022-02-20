@@ -24,13 +24,7 @@ import { toPlainText } from '@/helpers/functional/toPlainText';
 // install Swiper modules
 SwiperCore.use([Pagination]);
 
-const FamilySlug = ({
-  familyAPI,
-  seoAPI,
-  familyListAPI,
-  footerAPI,
-  instagramPosts,
-}) => {
+const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
   const router = useRouter();
   const [seo] = seoAPI;
   const [family] = familyAPI;
@@ -40,7 +34,6 @@ const FamilySlug = ({
   const dark = false;
 
   useEffect(() => {
-    // console.log(instagramPosts);
     appContext.setHeader({ headerStyle: dark ? 'white' : 'black' });
     window.scroll(0, 0);
     return () => {
@@ -128,79 +121,23 @@ const FamilySlug = ({
           <div className='w-full my-10'>
             <p>{toPlainText(family.description)}</p>
             <div className='flex flex-col w-full mt-20 mb-10 '>
-              <div className='w-full border border-black rounded-2xl h-auto p-5'>
-                <ScrollContainer
-                  className='flex space-x-4 flex-nowrap overflow-x-scroll hide-scrollbar h-auto rounded-xl'
-                  horizontal={true}
-                >
-                  {/* {instagramPosts.map(({ node }, id) => (
-                    <FancyLink
-                      destination={`https://www.instagram.com/p/${node.shortcode}`}
-                      blank={true}
-                      className='h-full w-auto relative flex-shrink-0'
-                      key={id}
-                    >
-                      <img src={node.thumbnail_src} className='rounded-2xl ' />
-                    </FancyLink>
-                  ))} */}
-
-                  <FancyLink
-                    destination={`https://www.instagram.com/p/`}
-                    blank={true}
-                    className='h-56 w-56 relative flex-shrink-0'
-                  >
-                    <Image
-                      src={`/placeholder/locavore-ig-sample-1.jpg`}
-                      alt={'Locavore'}
-                      className='rounded-xl '
-                      layout='fill'
-                      objectFit='cover'
-                      objectPosition='center'
-                    />
-                  </FancyLink>
-                  <FancyLink
-                    destination={`https://www.instagram.com/p/`}
-                    blank={true}
-                    className='h-56 w-56 relative flex-shrink-0'
-                  >
-                    <Image
-                      src={`/placeholder/locavore-ig-sample-2.jpg`}
-                      alt={'Locavore'}
-                      className='rounded-xl '
-                      layout='fill'
-                      objectFit='cover'
-                      objectPosition='center'
-                    />
-                  </FancyLink>
-                  <FancyLink
-                    destination={`https://www.instagram.com/p/`}
-                    blank={true}
-                    className='h-56 w-56 relative flex-shrink-0'
-                  >
-                    <Image
-                      src={`/placeholder/locavore-ig-sample-3.jpg`}
-                      alt={'Locavore'}
-                      className='rounded-xl '
-                      layout='fill'
-                      objectFit='cover'
-                      objectPosition='center'
-                    />
-                  </FancyLink>
-                  <FancyLink
-                    destination={`https://www.instagram.com/p/`}
-                    blank={true}
-                    className='h-56 w-56 relative flex-shrink-0'
-                  >
-                    <Image
-                      src={`/placeholder/locavore-ig-sample-4.jpg`}
-                      alt={'Locavore'}
-                      className='rounded-xl '
-                      layout='fill'
-                      objectFit='cover'
-                      objectPosition='center'
-                    />
-                  </FancyLink>
-                </ScrollContainer>
+              <div className='w-full border border-black rounded-2xl p-5 relative'>
+                {/* Ration Framing */}
+                <div className='relative w-full' style={{ paddingTop: '33%' }}>
+                  <iframe
+                    src='https://snapwidget.com/embed/986179'
+                    className='snapwidget-widget absolute top-0 left-0'
+                    allowtransparency='true'
+                    frameborder='0'
+                    scrolling='no'
+                    style={{
+                      border: 'none',
+                      overflow: 'hidden',
+                      width: '100%',
+                      height: '100%',
+                    }}
+                  />
+                </div>
               </div>
               <FancyLink
                 destination={family.instagram.link}
@@ -371,11 +308,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  // const igClient = new Instagram({
-  //   username: process.env.IG_USERNAME,
-  //   password: process.env.IG_PASSWORD,
-  // });
-
   const familyAPI = await client.fetch(
     `
       *[_type == "family_list" && slug.current == "${params.slug}"] 
@@ -394,28 +326,6 @@ export async function getStaticProps({ params }) {
   *[_type == "footer"]
   `);
 
-  //comment out instagram because IG block displaying ig post image other than instagram
-  // let posts = [];
-  // try {
-  //   await igClient.login();
-  //   // request photos for a specific instagram user
-  //   const instagram = await igClient.getPhotosByUsername({
-  //     username: 'restaurantlocavore', // get the instagram
-  //   });
-
-  //   if (instagram['user']['edge_owner_to_timeline_media']['count'] > 0) {
-  //     // if we receive timeline data back
-  //     // update the posts to be equal
-  //     // to the edges that were returned from the instagram API response
-  //     posts = instagram['user']['edge_owner_to_timeline_media']['edges'];
-  //   }
-  // } catch (err) {
-  //   console.log(
-  //     'Something went wrong while fetching content from Instagram',
-  //     err
-  //   );
-  // }
-
   return {
     props: {
       familyAPI,
@@ -423,7 +333,6 @@ export async function getStaticProps({ params }) {
       familyListAPI,
       footerAPI,
       headerAPI,
-      instagramPosts: '',
     },
   };
 }

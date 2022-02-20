@@ -406,6 +406,7 @@ export default function ArticleSlug({
               timeConvert(nextArticle.article.timeRead)
         }
         thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
+        blursrc={urlFor(nextArticle.article.thumbnail).blur(2).format('webp').saturation(-100).width(200).url()}
         border={nextArticle.article.category.border}
         alt={nextArticle.article.thumbnail.name}
         destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}

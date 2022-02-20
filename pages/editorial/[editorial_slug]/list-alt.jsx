@@ -36,7 +36,6 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
 
   const contentWrapperRef = useRef(null);
 
-  const [centerCard, setCenterCard] = useState(1);
 
   const updateArticleRotation = () => {
     articleRef.current.forEach((card, id) => {
@@ -53,8 +52,10 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
       // update card rotation
       const rotatationTarget = card.querySelector('a');
       rotatationTarget.style.transform = `rotate(${
-        (fromCenter / 100) * 7.5
-      }deg)`;
+        (fromCenter / 100) * 8
+      }deg) translateY(${
+        (Math.abs(fromCenter) / 100) * 75
+      }px)`;
 
       // set center item
       if (fromCenter > -15 && fromCenter < 15) {
@@ -63,76 +64,12 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
     });
   };
 
-  const updateScroll = () => {
-    updateArticleRotation();
-    // update scroll bar position
-    const currentScroll =
-      Math.round(
-        Math.min(
-          (scrollContainer.current.scrollLeft /
-            (scrollContainer.current.scrollWidth - window.innerWidth)) *
-            10000,
-          10000
-        )
-      ) / 100;
-
-    const indWidth = scrollInd.current.offsetWidth;
-    const parentWidth = scrollInd.current.parentElement.offsetWidth;
-    const scrollMove = (parentWidth - indWidth) * (currentScroll / 100);
-    scrollInd.current.style.transform = `translateX(${scrollMove}px)`;
-  };
-
-  const updateScroll2 = (e) => {
-    updateArticleRotation();
-    console.log('check scroll', e);
-
-    // on scroll convert container visibility to wrapper horizontal movement (transform x);
-
-    // also convert to scroll indicator
-  };
-
+  const [centerCard, setCenterCard] = useState(1);
   const [stickyTopVal, setStickyTopVal] = useState(0);
   const [containerHeight, setContHeight] = useState(1200);
+  const [contXTransform, setXTransform] = useState(0);
 
-  // Width To Height Multipler
-  const _multiplier = 1.5;
-
-  const setupContainer = () => {
-    updateArticleRotation();
-    detectLength();
-    //Get Card Wrapper Height
-    const cardHeight =
-      contentWrapperRef.current.querySelector('.article_wrapper').clientHeight;
-    const topHeight = (window.innerHeight - cardHeight) / 2;
-    setStickyTopVal(topHeight);
-
-    //Get Wrapper Width
-    const wrapperWidth = contentWrapperRef.current.clientWidth;
-    setContHeight(wrapperWidth * _multiplier);
-  };
-
-  // Detect The Length of the Scroll and Card Number to see if scroll is required.
   const [scrollStyle, setScrollStyle] = useState('normal');
-
-  const detectLength = () => {
-    // Get Total Width
-    let totalWidth = 0;
-    articleRef.current.forEach((a) => {
-      totalWidth += a.offsetWidth;
-    });
-
-    // disable scroll if the total width of the card is less than the window.
-    if (totalWidth < window.innerWidth - 300) {
-    }
-    // Adjust styling so the card is in the center
-
-    if (articleRef.current.length <= 2) {
-      setScrollStyle('noscroll');
-    } else {
-      //Get Width
-      setScrollStyle('normal');
-    }
-  };
 
   // sort article based on article number
   const processedArticle = issue.article.sort((a, b) => {
@@ -141,14 +78,101 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
 
   useEffect(() => {
     window.scroll(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const updateScroll2 = (e) => {
+      updateArticleRotation();
+      const winScroll =
+        document.body.scrollTop || document.documentElement.scrollTop;
+
+      // Get Movement Percentage
+      const startPoint =
+        document.querySelector('.list-title').offsetHeight + 60;
+      const totalScrolled =
+        containerHeight - document.documentElement.clientHeight;
+
+      const maxPercentage = 100;
+      const percentageMove = () => {
+        const p = ((winScroll - startPoint) / totalScrolled) * maxPercentage;
+        if (p < 0) {
+          return 0;
+        } else if (p > maxPercentage) {
+          return maxPercentage;
+        } else {
+          return p;
+        }
+      };
+
+      // Convert to Horizontal Movement
+      // setXTransform(`-${percentageMove() * 2.5}%`);
+      setXTransform(`-${(getWrapperWidth() - document.documentElement.clientWidth ) * (percentageMove() / 100)}px`);
+
+      // also convert to scroll indicator
+      const indWidth = scrollInd.current.offsetWidth;
+      const parentWidth = scrollInd.current.parentElement.offsetWidth;
+      const scrollMove = (parentWidth - indWidth) * (percentageMove() / 100);
+      scrollInd.current.style.transform = `translateX(${scrollMove}px)`;
+    };
+
+    // Get Wrapper Width
+    const getWrapperWidth = () => {
+      const wrapperchildren = contentWrapperRef.current.children;
+      let totalWidth = 0 + document.documentElement.clientWidth;
+      for (let child of wrapperchildren) {
+        totalWidth += child.offsetWidth;
+      }
+      return totalWidth;
+    };
+
+    // Width To Height Multipler
+    const _multiplier = 1;
+
+    const setupContainer = () => {
+      updateArticleRotation();
+      detectLength();
+      //Get Card Wrapper Height
+      const cardHeight =
+        contentWrapperRef.current.querySelector(
+          '.article_wrapper'
+        ).clientHeight;
+      const topHeight = (window.innerHeight - cardHeight) / 2 - 10;
+      setStickyTopVal(topHeight);
+
+      //Set Up Contaienr Height
+      setContHeight(getWrapperWidth() * _multiplier);
+    };
+
+    // Detect The Length of the Scroll and Card Number to see if scroll is required.
+    const detectLength = () => {
+      // Get Total Width
+      let totalWidth = 0;
+      articleRef.current.forEach((a) => {
+        totalWidth += a.offsetWidth;
+      });
+
+      // disable scroll if the total width of the card is less than the window.
+      if (totalWidth < window.innerWidth - 300) {
+      }
+      // Adjust styling so the card is in the center
+
+      if (articleRef.current.length <= 2) {
+        setScrollStyle('noscroll');
+      } else {
+        //Get Width
+        setScrollStyle('normal');
+      }
+    };
+
     setupContainer();
     window.addEventListener('resize', setupContainer, true);
     window.addEventListener('scroll', updateScroll2, true);
+
     return () => {
       window.removeEventListener('scroll', updateScroll2, true);
       window.removeEventListener('resize', setupContainer, true);
     };
-  }, []);
+  }, [containerHeight]);
 
   return (
     <Layout>
@@ -204,7 +228,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <section className='py-10 w-full h-full flex flex-col'>
+      <section className='py-10 w-full h-full flex flex-col list-title'>
         {/* Title */}
         <Container className='max-md:px-6'>
           <div className='w-full h-full setflex-center'>
@@ -222,7 +246,6 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
       <section
         id='issue-content-wrapper'
         style={{ height: `${containerHeight}px` }}
-        ref={contentWrapperRef}
       >
         <div
           className='w-full flex flex-col'
@@ -232,7 +255,8 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
           {/* Card */}
           <div
             className={`issue_container flex space-x-7 ${scrollStyle}`}
-            // onScroll={updateScroll}
+            style={{ transform: `translateX(${contXTransform})` }}
+            ref={contentWrapperRef}
           >
             {processedArticle.map((data, id) => {
               return (

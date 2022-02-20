@@ -9,6 +9,7 @@ const ArticleCard = ({
   alt,
   bgColor = '#ffffff',
   border,
+  blursrc = '',
 }) => {
   return (
     <div
@@ -24,15 +25,15 @@ const ArticleCard = ({
         <span>{category}</span>
         <span className='font-serif italic text-base'>{timeRead}</span>
       </div>
-      <div className='relative mt-5 w-full h-full'>
+      <div className='relative mt-5 w-full h-full rounded-xl'>
         <Image
           src={src}
           alt={alt}
           className='rounded-xl'
           layout='fill'
           objectFit='cover'
-          placeholder="blur"
-          blurDataURL={`${src}?blur=50`}
+          placeholder='blur'
+          blurDataURL={blursrc !== '' ? blursrc : `${src}?blur=50`}
           objectPosition='center'
         />
       </div>

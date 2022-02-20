@@ -1,99 +1,115 @@
-import { forwardRef, useState } from 'react'
-import Container from '../container'
-import Image from 'next/image'
-import urlFor from '@/helpers/sanity/urlFor'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, { EffectFade, Navigation, Controller } from 'swiper'
-import 'swiper/css/effect-fade'
-import 'swiper/css/navigation'
-import FancyLink from '@/components/utils/fancyLink'
-import Arrow from '@/components/utils/arrow'
+import { useState } from 'react';
+import Container from '../container';
+import Image from 'next/image';
+import urlFor from '@/helpers/sanity/urlFor';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Autoplay, FreeMode, Navigation, Thumbs, Controller } from 'swiper';
+import 'swiper/css/effect-fade';
+import 'swiper/css/navigation';
+import FancyLink from '@/components/utils/fancyLink';
+import Arrow from '@/components/utils/arrow';
 
 const CarousselComponent = ({ caroussel }) => {
-  const [firstSwiper, setFirstSwiper] = useState(null)
-  const [secondSwiper, setSecondSwiper] = useState(null)
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <>
-      <Container className="max-md:mb-5 space-y-3 max-md:space-y-5 max-md:px-0">
-        {/* Gallery */}
-        <div className="relative w-full h-full">
+      <Container className='max-md:mb-5 max-md:px-0'>
+        {/* Main Gallery */}
+        <div className='main-swipe relative w-full h-full'>
           <Swiper
             loop={true}
-            effect="fade"
-            // navigation={true}
-            // speed={0}
+            effect='fade'
+            speed={1000}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
             slidesPerView={1}
-            // loopedSlides={1}
-            allowTouchMove={false}
-            className="w-full h-full"
+            allowTouchMove={true}
+            className='w-full h-full'
             navigation={{
               nextEl: '.nextCaroussel',
               prevEl: '.prevCaroussel',
             }}
-            modules={[Controller]}
-            onSwiper={setFirstSwiper}
-            controller={{ control: secondSwiper }}
-            loopedSlides={caroussel.length}
+            thumbs={{ swiper: thumbsSwiper }}
+            modules={[Autoplay, FreeMode, Navigation, Thumbs]}
           >
             {caroussel.map((data, id) => (
               <SwiperSlide key={id}>
-                <div className="relative w-full aspect-w-16 max-md:aspect-w-1 aspect-h-9 max-md:aspect-h-1">
+                <div className='relative w-full aspect-w-16 max-md:aspect-w-1 aspect-h-9 max-md:aspect-h-1'>
                   <Image
                     src={urlFor(data).width(1500).url()}
                     alt={data.name}
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center"
-                    className="gallery-image"
+                    layout='fill'
+                    objectFit='cover'
+                    objectPosition='center'
+                    className='gallery-image'
+                    placeholder='blur'
+                    blurDataURL={urlFor(data)
+                      .blur(2)
+                      .format('webp')
+                      .width(500)
+                      .url()}
                   />
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="absolute pointer-events-none z-10 top-0 left-0 h-full w-full flex items-center justify-between px-6">
-            <FancyLink className="pointer-events-auto">
+          <div className='absolute pointer-events-none z-10 top-0 left-0 h-full w-full flex items-center justify-between '>
+            <div className='pointer-events-auto cursor-pointer group h-full flex center prevCaroussel relative p-6 pr-16 justify-center items-center'>
               <Arrow
-                position="left"
-                fill="white"
-                className="w-24px h-24px prevCaroussel"
+                position='left'
+                fill='white'
+                className='w-24px h-24px block z-2'
               />
-            </FancyLink>
-            <FancyLink className="pointer-events-auto">
+              <div className='w-full h-full bg-gradient-to-r from-black to-transparent opacity-0 group-hover:opacity-30 absolute left-0 top-0 transition-opacity duration-300' />
+            </div>
+            <div className='pointer-events-auto cursor-pointer group h-full flex center nextCaroussel relative p-6 pl-16 justify-center items-center'>
               <Arrow
-                position="right"
-                fill="white"
-                className="w-24px h-24px nextCaroussel"
+                position='right'
+                fill='white'
+                className='w-24px h-24px block z-2'
               />
-            </FancyLink>
+              <div className='w-full h-full bg-gradient-to-l from-black to-transparent opacity-0 group-hover:opacity-30 absolute left-0 top-0 transition-opacity duration-300' />
+            </div>
           </div>
         </div>
-        {/* List Gallery */}
-        <div className="relative w-full h-36 max-md:h-24 max-md:pl-6">
-          <div className="absolute left-0 w-full h-full flex space-x-3">
+        {/* Thumbnail Carousel */}
+        <div className='thumbnail-swipe relative w-full h-36 max-md:h-24 max-md:pl-6 mt-5'>
+          <div className='absolute left-0 w-full h-full flex space-x-3'>
             <Swiper
-              slidesPerView="auto"
+              onSwiper={setThumbsSwiper}
+              modules={[FreeMode, Navigation, Thumbs]}
+              slidesPerView='auto'
+              freeMode={true}
+              watchSlidesProgress={true}
               loop={true}
               spaceBetween={20}
-              allowTouchMove={false}
               slideToClickedSlide={true}
-              // loopedSlides={2}
               centeredSlides={true}
-              modules={[Controller]}
-              onSwiper={setSecondSwiper}
-              controller={{ control: firstSwiper }}
-              loopedSlides={caroussel.length}
-              id="swipe-caroussel"
+              allowTouchMove={true}
+              // modules={[Controller]}
+              // onSwiper={setSecondSwiper}
+              // controller={{ control: firstSwiper }}
+              // loopedSlides={caroussel.length}
+              id='swipe-caroussel'
             >
               {caroussel.map((data, id) => (
                 <SwiperSlide key={id}>
-                  <div className="cursor-pointer relative w-full h-full">
+                  <div className='cursor-pointer relative w-full h-full'>
                     <Image
                       src={urlFor(data).width(1500).url()}
                       alt={data.name}
-                      className="rounded-2xl"
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
+                      className='rounded-2xl'
+                      layout='fill'
+                      objectFit='cover'
+                      objectPosition='center'
+                      placeholder='blur'
+                      blurDataURL={urlFor(data)
+                        .blur(2)
+                        .format('webp')
+                        .width(200)
+                        .url()}
                     />
                   </div>
                 </SwiperSlide>
@@ -102,9 +118,9 @@ const CarousselComponent = ({ caroussel }) => {
           </div>
         </div>
       </Container>
-      <hr className="hidden max-md:block border-gray mt-3 mb-14 mx-6" />
+      <hr className='hidden max-md:block border-gray mt-3 mb-14 mx-6' />
     </>
-  )
-}
+  );
+};
 
-export default CarousselComponent
+export default CarousselComponent;

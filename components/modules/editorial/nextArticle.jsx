@@ -7,13 +7,12 @@ export default function NextArticle({
   className = '',
   articleTitle = 'Next Article',
   destination = '/',
-  issueNo = '',
-  articleClassName,
   title,
   category,
   timeRead,
   bgColor,
   border,
+  blursrc = '',
   thumbnail = '',
   alt,
 }) {
@@ -33,6 +32,7 @@ export default function NextArticle({
               category={category}
               timeRead={timeRead}
               src={thumbnail}
+              blursrc={blursrc}
               alt={alt}
             />
           </FancyLink>

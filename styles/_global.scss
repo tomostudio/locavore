@@ -151,6 +151,16 @@ $issuecardgap: 40px;
   left: 50%;
 }
 
+// ARTICLE CAROUSEL
+
+.thumbnail-swipe .swiper-slide:not(.swiper-slide-thumb-active) {
+  opacity: .5;
+  @apply transition-opacity duration-300;
+  &:hover{
+    opacity: 1;
+  }
+}
+
 // Family
 
 .family-card {
