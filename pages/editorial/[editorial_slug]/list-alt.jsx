@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-import SwiperCore, { Pagination } from 'swiper';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/preset/transitions';
 import { useRouter } from 'next/router';
@@ -22,8 +21,6 @@ import checkMonth from '@/helpers/functional/checkMonth';
 import urlFor from '@/helpers/sanity/urlFor';
 import timeConvert from '@/helpers/functional/timeConvert';
 
-// install Swiper modules
-SwiperCore.use([Pagination]);
 
 export default function Issue({ issueAPI, seoAPI, footerAPI }) {
   const router = useRouter();

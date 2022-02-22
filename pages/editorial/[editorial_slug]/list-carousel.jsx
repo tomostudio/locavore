@@ -1,5 +1,10 @@
 import { useEffect, useState, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, {
+  Pagination,
+} from 'swiper';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
+import 'swiper/css/pagination';
 import { fade } from '@/helpers/preset/transitions';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import { useRouter } from 'next/router';
@@ -22,7 +27,6 @@ import checkMonth from '@/helpers/functional/checkMonth';
 import urlFor from '@/helpers/sanity/urlFor';
 import timeConvert from '@/helpers/functional/timeConvert';
 
-
 export default function Issue({ issueAPI, seoAPI, footerAPI }) {
   const router = useRouter();
   const [issue] = issueAPI;
@@ -35,65 +39,48 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
 
   const [centerCard, setCenterCard] = useState(1);
 
-  const updateScroll = () => {
-    articleRef.current.forEach((card, id) => {
-      // get window position relative to center (Horizontal)
-      const fromCenter =
-        -50 +
-        Math.round(
-          ((card.getBoundingClientRect().x +
-            card.getBoundingClientRect().width / 2) /
-            window.innerWidth) *
-            100
-        );
+  // const updateScroll = () => {
+  //   articleRef.current.forEach((card, id) => {
+  //     // get window position relative to center (Horizontal)
+  //     const fromCenter =
+  //       -50 +
+  //       Math.round(
+  //         ((card.getBoundingClientRect().x +
+  //           card.getBoundingClientRect().width / 2) /
+  //           window.innerWidth) *
+  //           100
+  //       );
 
-      // update card rotation
-      const rotatationTarget = card.querySelector('a');
-      rotatationTarget.style.transform = `rotate(${
-        (fromCenter / 100) * 7.5
-      }deg)`;
+  //     // update card rotation
+  //     const rotatationTarget = card.querySelector('a');
+  //     rotatationTarget.style.transform = `rotate(${
+  //       (fromCenter / 100) * 7.5
+  //     }deg)`;
 
-      // set center item
-      if (fromCenter > -15 && fromCenter < 15) {
-        setCenterCard(id + 1);
-      }
-    });
+  //     // set center item
+  //     if (fromCenter > -15 && fromCenter < 15) {
+  //       setCenterCard(id + 1);
+  //     }
+  //   });
 
-    // update scroll bar position
-    const currentScroll =
-      Math.round(
-        Math.min(
-          (scrollContainer.current.scrollLeft /
-            (scrollContainer.current.scrollWidth - window.innerWidth)) *
-            10000,
-          10000
-        )
-      ) / 100;
+  //   // update scroll bar position
+  //   const currentScroll =
+  //     Math.round(
+  //       Math.min(
+  //         (scrollContainer.current.scrollLeft /
+  //           (scrollContainer.current.scrollWidth - window.innerWidth)) *
+  //           10000,
+  //         10000
+  //       )
+  //     ) / 100;
 
-    const indWidth = scrollInd.current.offsetWidth;
-    const parentWidth = scrollInd.current.parentElement.offsetWidth;
-    const scrollMove = (parentWidth - indWidth) * (currentScroll / 100);
-    scrollInd.current.style.transform = `translateX(${scrollMove}px)`;
-  };
+  //   const indWidth = scrollInd.current.offsetWidth;
+  //   const parentWidth = scrollInd.current.parentElement.offsetWidth;
+  //   const scrollMove = (parentWidth - indWidth) * (currentScroll / 100);
+  //   scrollInd.current.style.transform = `translateX(${scrollMove}px)`;
+  // };
 
   const [scrollStyle, setScrollStyle] = useState('normal');
-
-  const detectLength = () => {
-    if (articleRef.current.length <= 2) {
-      setScrollStyle('noscroll');
-    } else {
-      let totalWidth = 0;
-      articleRef.current.forEach((a) => {
-        totalWidth += a.offsetWidth;
-      });
-      setScrollStyle('normal');
-      if (totalWidth < window.innerWidth - 300) {
-        const centerPos =
-          (scrollContainer.current.scrollWidth - window.innerWidth) / 2;
-        scrollContainer.current.scrollLeft = centerPos;
-      }
-    }
-  };
 
   const processedArticle = issue.article.sort((a, b) => {
     return a.articleNumber - b.articleNumber;
@@ -101,11 +88,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
 
   useEffect(() => {
     window.scroll(0, 0);
-    detectLength();
-    updateScroll();
-    window.addEventListener('resize', detectLength, true);
     return () => {
-      window.removeEventListener('resize', detectLength, true);
     };
   }, []);
 
@@ -184,55 +167,61 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
               </h1>
             </div>
           </Container>
-          {/* Card
-           */}
           <div className='w-full flex' id='editorial-slider'>
-            <ScrollContainer
-              className={`issue_container flex w-full space-x-7 py-7 px-7 hide-scrollbar ${scrollStyle}`}
-              horizontal={true}
-              vertical={false}
-              hideScrollbars={false}
-              onScroll={updateScroll}
-              innerRef={scrollContainer}
-              nativeMobileScroll={true}
+            <Swiper
+              slidesPerView={4}
+              centeredSlides={true}
+              spaceBetween={30}
+              grabCursor={true}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Pagination]}
+              className='mySwiper'
             >
               {processedArticle.map((data, id) => {
                 return (
-                  <div
-                    className='article_wrapper'
-                    key={id}
-                    ref={(el) => (articleRef.current[id] = el)}
-                  >
-                    <FancyLink
-                      destination={`/editorial/${issue.slug.current}/${data.slug.current}`}
-                      className={`group`}
+                  <SwiperSlide key={id}>
+                    <div
+                      className='article_wrapper'
+                      ref={(el) => (articleRef.current[id] = el)}
                     >
-                      <ArticleCard
-                        bgColor={data.category.color.hex}
-                        title={`${
-                          !data.issue.turnOffArticleNumber &&
-                          `${data.articleNumber}.`
-                        } ${data.title}`}
-                        category={data.category.title}
-                        timeRead={
-                          data.readTime
-                            ? timeConvert(data.readTime)
-                            : data.timeReadBlog
-                            ? data.timeReadBlog !== 0 &&
-                              timeConvert(data.timeReadBlog)
-                            : data.timeRead !== 0 && timeConvert(data.timeRead)
-                        }
-                        border={data.category.border}
-                        src={urlFor(data.thumbnail).width(750).url()}
-                        blursrc={urlFor(data.thumbnail).blur(2).format('webp').width(350).url()}
-                        alt={data.thumbnail.name}
+                      <FancyLink
+                        destination={`/editorial/${issue.slug.current}/${data.slug.current}`}
                         className={`group`}
-                      />
-                    </FancyLink>
-                  </div>
+                      >
+                        <ArticleCard
+                          bgColor={data.category.color.hex}
+                          title={`${
+                            !data.issue.turnOffArticleNumber &&
+                            `${data.articleNumber}.`
+                          } ${data.title}`}
+                          category={data.category.title}
+                          timeRead={
+                            data.readTime
+                              ? timeConvert(data.readTime)
+                              : data.timeReadBlog
+                              ? data.timeReadBlog !== 0 &&
+                                timeConvert(data.timeReadBlog)
+                              : data.timeRead !== 0 &&
+                                timeConvert(data.timeRead)
+                          }
+                          border={data.category.border}
+                          src={urlFor(data.thumbnail).width(750).url()}
+                          blursrc={urlFor(data.thumbnail)
+                            .blur(2)
+                            .format('webp')
+                            .width(350)
+                            .url()}
+                          alt={data.thumbnail.name}
+                          className={`group`}
+                        />
+                      </FancyLink>
+                    </div>
+                  </SwiperSlide>
                 );
               })}
-            </ScrollContainer>
+            </Swiper>
           </div>
           {/* Lower Information */}
           <Container className='max-md:px-6'>
