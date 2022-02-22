@@ -66,8 +66,6 @@ body {
   }
 }
 
-// Family
-
 // Editorial
 .comingsoonSticky {
   position: sticky;
@@ -122,12 +120,6 @@ body {
 // SWIPER
 .swiper-pagination-bullets {
   display: none;
-}
-
-#swipe-family {
-  & .swiper-slide {
-    // @apply w-52 #{!important};
-  }
 }
 
 #swipe-editorial {

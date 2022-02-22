@@ -166,49 +166,6 @@ export default function Index({ issueAPI, seoAPI }) {
 
       return { id, elem, settings, animation };
     },
-    () => {
-      // Issue No Animation
-      const id = 'Issue Title';
-      const elem = '#issueTitle';
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: '#trigger1', // which section will be tracked as the scroll trigger
-          scroller: '#scroll-container', // id of scroll container
-          scrub: true,
-          start: 'top 0%',
-          end: 'bottom 0%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              scale: '0.75',
-              opacity: 0,
-              y: 50,
-              ease: 'none',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              scale: '1',
-              opacity: 1,
-              y: 0,
-              ease: 'none',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
   ];
 
   return (
@@ -271,24 +228,6 @@ export default function Index({ issueAPI, seoAPI }) {
           variants={fade}
           className={`z-1 relative`}
         >
-          <div
-            id='issueTitle'
-            className={`h-s-50 pb-20 top-0 left-0 right-0 w-screen flex items-center content-center flex-col justify-end fixed z-10 pointer-events-none  opacity-0 ${
-              dark === 'white-text' ? 'text-white' : 'text-black'
-            }`}
-          >
-            <Container className='max-md:px-6 text-center setflex-center '>
-              <span
-                id='issueNoInside'
-                className='content-issue font-serif font-normal italic text-5xl'
-              >
-                Issue {issue.issueNumber}
-              </span>
-              <h1 className='title-issue font-sans font-normal text-8xl'>
-                {issue.title}
-              </h1>
-            </Container>
-          </div>
           {/* Issue Number */}
           <div
             id='issueNo'
@@ -448,17 +387,38 @@ export default function Index({ issueAPI, seoAPI }) {
                           dark === 'white-text' ? 'text-white' : 'text-black'
                         }`}
                       >
-                        <span className='content-issue w-full text-center'>
+                        <span
+                          id='issueNoInside'
+                          className='content-issue font-serif font-normal italic text-5xl'
+                        >
+                          Issue {issue.issueNumber}
+                        </span>
+                        <h1 className='title-issue font-sans font-normal text-8xl'>
+                          {issue.title}
+                        </h1>
+                        <span className='content-issue w-full text-center mt-5'>
                           {checkMonth(new Date(issue.date).getMonth())}{' '}
                           {new Date(issue.date).getFullYear()}
                           <span className='mx-4 inline-block'>•</span>8 ARTICLES
                         </span>
-                        <p className='content-issue max-w-lg text-center mt-12'>
-                          {toPlainText(issue.description)}
-                        </p>
+                        <div className='content-issue max-w-lg text-center mt-16 flex flex-col'>
+                          {/* {toPlainText(issue.description)} */}
+                          {issue.description &&
+                            issue.description.map((content, id) =>
+                              content._type === 'block' ? (
+                                <p className='max-md:p-0 block my-4' key={id}>
+                                  {content.children
+                                    .map((child) => child.text)
+                                    .join('')}
+                                </p>
+                              ) : (
+                                ''
+                              )
+                            )}
+                        </div>
                         <FancyLink
                           destination={`/editorial/${issue.slug.current}/list`}
-                          className={`content-issue mt-12 py-4 px-6 text-xs tracking-widest transition-all ease-linear ${
+                          className={`content-issue mt-8 py-4 px-6 text-xs tracking-widest transition-all ease-linear ${
                             dark === 'white-text'
                               ? 'hover:bg-white border hover:text-black border-white rounded-xl'
                               : 'hover:bg-black border hover:text-white border-black rounded-xl'

@@ -154,10 +154,17 @@ export default function ArticleSlug({
               >
                 {/* Orange Component */}
                 <div className='w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center'>
-                  <div className='w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10'>
+                  <div className='w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10 flex-col'>
                     {/* Title */}
                     <div className='font-serif text-center font-bold'>
-                      <span className='block italic'>
+                      <span
+                        className='block italic'
+                        style={{
+                          color: article.categoryColor
+                            ? article.category.color.hex
+                            : '#D66A51',
+                        }}
+                      >
                         Part{' '}
                         {layoutFilter &&
                           layoutFilter.find(
@@ -179,7 +186,10 @@ export default function ArticleSlug({
                     {data.content &&
                       data.content.map((content, id) =>
                         content._type === 'block' ? (
-                          <p className='px-paddingContent max-md:p-0' key={id}>
+                          <p
+                            className='px-paddingContent max-md:p-0 my-4'
+                            key={id}
+                          >
                             {content.children
                               .map((child) => child.text)
                               .join('')}
@@ -406,7 +416,12 @@ export default function ArticleSlug({
               timeConvert(nextArticle.article.timeRead)
         }
         thumbnail={urlFor(nextArticle.article.thumbnail).width(1000).url()}
-        blursrc={urlFor(nextArticle.article.thumbnail).blur(2).format('webp').saturation(-100).width(200).url()}
+        blursrc={urlFor(nextArticle.article.thumbnail)
+          .blur(2)
+          .format('webp')
+          .saturation(-100)
+          .width(200)
+          .url()}
         border={nextArticle.article.category.border}
         alt={nextArticle.article.thumbnail.name}
         destination={`/editorial/${nextArticle.editorial_slug}/${nextArticle.article.slug.current}`}
