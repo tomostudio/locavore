@@ -2,8 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   mode: 'jit',
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false,
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     zIndex: {
       '-1': '-1',
@@ -135,12 +134,6 @@ module.exports = {
         paddingContent: '5rem',
       },
     },
-  },
-  variants: {
-    extend: {
-      top: ['hover'],
-    },
-    margin: ['responsive', 'hover', 'first', 'last'],
   },
   plugins: [
     require('tailwindcss-padding-safe'),

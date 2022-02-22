@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { NextSeo } from 'next-seo'
+import { useEffect } from 'react'
 
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { fade } from '@/helpers/preset/transitions'
@@ -15,7 +14,6 @@ import StickyButton from '@/components/modules/stickyButton'
 import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard'
 
 // Helpers
-import client from '@/helpers/sanity/client'
 import { toPlainText } from '@/helpers/functional/toPlainText'
 import urlFor from '@/helpers/sanity/urlFor'
 

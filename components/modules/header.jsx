@@ -1,15 +1,15 @@
-import FancyLink from '@/components/utils/fancyLink'
-import Container from '@/components/modules/container'
-import { useMediaQuery } from '@/helpers/functional/checkMedia'
-import { useAppContext } from 'context/state'
-import { useState } from 'react'
-import Image from 'next/image'
-import urlFor from '@/helpers/sanity/urlFor'
+import FancyLink from '@/components/utils/fancyLink';
+import Container from '@/components/modules/container';
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
+import { useAppContext } from 'context/state';
+import { useState } from 'react';
+import Image from 'next/image';
+import urlFor from '@/helpers/sanity/urlFor';
 
 export default function Header({ className = '', header }) {
-  const appContext = useAppContext()
-  const { headerStyle } = appContext.headerVar
-  const [menu, setMenu] = useState(false)
+  const appContext = useAppContext();
+  const { headerStyle } = appContext.headerVar;
+  const [menu, setMenu] = useState(false);
 
   return (
     <header
@@ -26,9 +26,11 @@ export default function Header({ className = '', header }) {
           ? 'border-black bg-white bg-opacity-50 backdrop-filter backdrop-blur-sm'
           : headerStyle.toLowerCase() === 'blur-white'
           ? 'border-white bg-black bg-opacity-50 backdrop-filter backdrop-blur-sm'
-          : headerStyle.toLowerCase() === 'trans-black' || headerStyle.toLowerCase() === 'transparent-black'
+          : headerStyle.toLowerCase() === 'trans-black' ||
+            headerStyle.toLowerCase() === 'transparent-black'
           ? 'border-black bg-opacity-0'
-          : headerStyle.toLowerCase() === 'trans-white' || headerStyle.toLowerCase() === 'transparent-white'
+          : headerStyle.toLowerCase() === 'trans-white' ||
+            headerStyle.toLowerCase() === 'transparent-white'
           ? 'border-white bg-opacity-0'
           : 'border-black bg-white'
       }`}
@@ -39,36 +41,36 @@ export default function Header({ className = '', header }) {
         {headerStyle.toLowerCase() === 'default' ? (
           <FancyLink
             onClick={() => {
-              setMenu(!menu)
+              setMenu(!menu);
             }}
-            className="hidden max-md:block"
+            className='hidden max-md:block'
           >
-            <svg width="25" height="9" viewBox="0 0 25 9" fill="none">
-              <line y1="1" x2="25" y2="1" stroke="black" />
-              <line y1="8" x2="25" y2="8" stroke="black" strokeWidth="2" />
+            <svg width='25' height='9' viewBox='0 0 25 9' fill='none'>
+              <line y1='1' x2='25' y2='1' stroke='black' />
+              <line y1='8' x2='25' y2='8' stroke='black' strokeWidth='2' />
             </svg>
           </FancyLink>
         ) : headerStyle.toLowerCase() === 'white' ? (
           <FancyLink
             onClick={() => {
-              setMenu(!menu)
+              setMenu(!menu);
             }}
-            className="hidden max-md:block"
+            className='hidden max-md:block'
           >
-            <svg width="25" height="9" viewBox="0 0 25 9" fill="none">
-              <line y1="1" x2="25" y2="1" stroke="white" />
-              <line y1="8" x2="25" y2="8" stroke="white" strokeWidth="2" />
+            <svg width='25' height='9' viewBox='0 0 25 9' fill='none'>
+              <line y1='1' x2='25' y2='1' stroke='white' />
+              <line y1='8' x2='25' y2='8' stroke='white' strokeWidth='2' />
             </svg>
           </FancyLink>
         ) : (
           ''
         )}
         <FancyLink
-          destination="/"
-          a11yText="Navigate to the home page"
-          className="max-md:ml-3 setflex-center max-md:p-0"
+          destination='/'
+          a11yText='Navigate to the home page'
+          className='max-md:ml-3 setflex-center max-md:p-0'
         >
-          <img
+          <Image
             src={
               headerStyle.toLowerCase() === 'default' ||
               headerStyle.toLowerCase().includes('black')
@@ -77,7 +79,11 @@ export default function Header({ className = '', header }) {
                 ? urlFor(header[0].logo.white).url()
                 : urlFor(header[0].logo.black).url()
             }
-            width={86}
+            layout='intrinsic'
+            objectFit='contain'
+            objectPosition={'left center'}
+            width={200}
+            height={25}
           />
         </FancyLink>
         <nav
@@ -93,19 +99,20 @@ export default function Header({ className = '', header }) {
           {useMediaQuery('(min-width: 768px)') && (
             <>
               <FancyLink
-                destination="/editorial"
-                a11yText="Navigate to the editorial page"
-                className="hover:opacity-60 transition-opacity ease-linear"
+                destination='/editorial'
+                a11yText='Navigate to the editorial page'
+                className='hover:opacity-60 transition-opacity ease-linear'
               >
                 Editorial
               </FancyLink>
-              {header && header[0].headerLink &&
+              {header &&
+                header[0].headerLink &&
                 header[0].headerLink.map((item, index) => (
                   <FancyLink
                     key={index}
                     destination={item.link}
                     a11yText={item.title}
-                    className="hover:opacity-60 transition-opacity ease-linear"
+                    className='hover:opacity-60 transition-opacity ease-linear'
                   >
                     {item.title}
                   </FancyLink>
@@ -118,9 +125,9 @@ export default function Header({ className = '', header }) {
                 Under Construction
               </FancyLink> */}
               <FancyLink
-                destination="/family"
-                a11yText="Navigate to the about page"
-                className="hover:opacity-60 transition-opacity ease-linear"
+                destination='/family'
+                a11yText='Navigate to the about page'
+                className='hover:opacity-60 transition-opacity ease-linear'
               >
                 Family
               </FancyLink>
@@ -129,8 +136,8 @@ export default function Header({ className = '', header }) {
           <FancyLink
             destination={header[0].booking}
             blank={true}
-            a11yText="Navigate to the about page"
-            className="font-bold hover:opacity-60 transition-opacity ease-linear"
+            a11yText='Navigate to the about page'
+            className='font-bold hover:opacity-60 transition-opacity ease-linear'
           >
             BOOKING
           </FancyLink>
@@ -159,7 +166,7 @@ export default function Header({ className = '', header }) {
                 : ''
             }`}
           >
-            <FancyLink destination="/editorial" className="text-center">
+            <FancyLink destination='/editorial' className='text-center'>
               Editorial
             </FancyLink>
           </div>
@@ -173,8 +180,8 @@ export default function Header({ className = '', header }) {
             }`}
           >
             <FancyLink
-              destination="/under_construction"
-              className="text-center"
+              destination='/under_construction'
+              className='text-center'
             >
               Under Construction
             </FancyLink>
@@ -188,7 +195,7 @@ export default function Header({ className = '', header }) {
                 : ''
             }`}
           >
-            <FancyLink destination="/family" className="text-center">
+            <FancyLink destination='/family' className='text-center'>
               Family
             </FancyLink>
           </div>
@@ -201,7 +208,7 @@ export default function Header({ className = '', header }) {
                 : ''
             }`}
           >
-            <FancyLink destination="/booking" className="text-center">
+            <FancyLink destination='/booking' className='text-center'>
               Booking
             </FancyLink>
           </div>
@@ -216,79 +223,79 @@ export default function Header({ className = '', header }) {
           >
             {headerStyle.toLowerCase() === 'default' ? (
               <>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/instagram.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/facebook.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/youtube.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/linkedin.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
               </>
             ) : headerStyle.toLowerCase() === 'white' ? (
               <>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/instagram-white.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/facebook-white.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/youtube-white.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
-                <FancyLink className="relative w-16px h-16px">
+                <FancyLink className='relative w-16px h-16px'>
                   <Image
                     src={`/linkedin-white.png`}
                     alt={'Locavore'}
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="center"
+                    layout='fill'
+                    objectFit='contain'
+                    objectPosition='center'
                   />
                 </FancyLink>
               </>
@@ -310,5 +317,5 @@ export default function Header({ className = '', header }) {
         </div>
       )}
     </header>
-  )
+  );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import SwiperCore, { Pagination } from 'swiper';
-import ScrollContainer from 'react-indiana-drag-scroll';
+import { motion } from 'framer-motion';
+import { fade } from '@/helpers/preset/transitions';
 import { useRouter } from 'next/router';
 
 // Layout
@@ -36,7 +37,6 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
 
   const contentWrapperRef = useRef(null);
 
-
   const updateArticleRotation = () => {
     articleRef.current.forEach((card, id) => {
       // get window position relative to center (Horizontal)
@@ -53,9 +53,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
       const rotatationTarget = card.querySelector('a');
       rotatationTarget.style.transform = `rotate(${
         (fromCenter / 100) * 8
-      }deg) translateY(${
-        (Math.abs(fromCenter) / 100) * 75
-      }px)`;
+      }deg) translateY(${(Math.abs(fromCenter) / 100) * 75}px)`;
 
       // set center item
       if (fromCenter > -15 && fromCenter < 15) {
@@ -81,7 +79,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
   }, []);
 
   useEffect(() => {
-    const updateScroll2 = (e) => {
+    const updateScroll = (e) => {
       updateArticleRotation();
       const winScroll =
         document.body.scrollTop || document.documentElement.scrollTop;
@@ -90,11 +88,15 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
       const startPoint =
         document.querySelector('.list-title').offsetHeight + 60;
       const totalScrolled =
-        containerHeight - document.documentElement.clientHeight;
+        containerHeight - startPoint;
 
       const maxPercentage = 100;
       const percentageMove = () => {
-        const p = ((winScroll - startPoint) / totalScrolled) * maxPercentage;
+        const accelerate = 250;
+        const decelerate = 150;
+        const p =
+          ((winScroll - startPoint + accelerate) / (totalScrolled + decelerate)) *
+          maxPercentage;
         if (p < 0) {
           return 0;
         } else if (p > maxPercentage) {
@@ -106,7 +108,12 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
 
       // Convert to Horizontal Movement
       // setXTransform(`-${percentageMove() * 2.5}%`);
-      setXTransform(`-${(getWrapperWidth() - document.documentElement.clientWidth ) * (percentageMove() / 100)}px`);
+      setXTransform(
+        `-${
+          (getWrapperWidth() - document.documentElement.clientWidth) *
+          (percentageMove() / 100)
+        }px`
+      );
 
       // also convert to scroll indicator
       const indWidth = scrollInd.current.offsetWidth;
@@ -166,10 +173,10 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
 
     setupContainer();
     window.addEventListener('resize', setupContainer, true);
-    window.addEventListener('scroll', updateScroll2, true);
+    window.addEventListener('scroll', updateScroll, true);
 
     return () => {
-      window.removeEventListener('scroll', updateScroll2, true);
+      window.removeEventListener('scroll', updateScroll, true);
       window.removeEventListener('resize', setupContainer, true);
     };
   }, [containerHeight]);
@@ -228,93 +235,96 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
-      <section className='py-10 w-full h-full flex flex-col list-title'>
-        {/* Title */}
-        <Container className='max-md:px-6'>
-          <div className='w-full h-full setflex-center'>
-            <span className='font-serif italic text-xl'>
-              Issue {issue.issueNumber} —{' '}
-              {checkMonth(new Date(issue.date).getMonth())}{' '}
-              {new Date(issue.date).getFullYear()}
-            </span>
-            <h1 className=' font-sans font-normal max-md:break-all max-md:text-center'>
-              {issue.title}
-            </h1>
-          </div>
-        </Container>
-      </section>
-      <section
-        id='issue-content-wrapper'
-        style={{ height: `${containerHeight}px` }}
-      >
-        <div
-          className='w-full flex flex-col'
-          id='editorial-slider'
-          style={{ top: `${stickyTopVal}px` }}
-        >
-          {/* Card */}
-          <div
-            className={`issue_container flex space-x-7 ${scrollStyle}`}
-            style={{ transform: `translateX(${contXTransform})` }}
-            ref={contentWrapperRef}
-          >
-            {processedArticle.map((data, id) => {
-              return (
-                <div
-                  className='article_wrapper'
-                  key={id}
-                  ref={(el) => (articleRef.current[id] = el)}
-                >
-                  <FancyLink
-                    destination={`/editorial/${issue.slug.current}/${data.slug.current}`}
-                    className={`group`}
-                  >
-                    <ArticleCard
-                      bgColor={data.category.color.hex}
-                      title={`${
-                        !data.issue.turnOffArticleNumber &&
-                        `${data.articleNumber}.`
-                      } ${data.title}`}
-                      category={data.category.title}
-                      timeRead={
-                        data.readTime
-                          ? timeConvert(data.readTime)
-                          : data.timeReadBlog
-                          ? data.timeReadBlog !== 0 &&
-                            timeConvert(data.timeReadBlog)
-                          : data.timeRead !== 0 && timeConvert(data.timeRead)
-                      }
-                      border={data.category.border}
-                      src={urlFor(data.thumbnail).width(750).url()}
-                      alt={data.thumbnail.name}
-                      className={`group`}
-                    />
-                  </FancyLink>
-                </div>
-              );
-            })}
-          </div>
-          {/* Lower Information */}
-          <Container className='max-md:px-6 pb-7'>
-            <div className='w-full setflex-center'>
-              <div className='mb-5 text-xs'>
-                <span className='font-bold'>{centerCard}</span>
-                {` — `}
-                <span>{articleRef.current.length}</span>
-              </div>
-              <div className='relative w-full setflex-center'>
-                <div className='relative border-b w-s-50 max-w-sm max-md:w-full h-px border-black'>
-                  <div
-                    ref={scrollInd}
-                    className={`absolute w-8 h-1 -top-px border border-black bg-black issueindicator ${scrollStyle}`}
-                  />
-                </div>
-              </div>
+      <motion.div initial='initial' animate='enter' exit='exit' variants={fade}>
+        <section className='py-10 w-full h-full flex flex-col list-title'>
+          {/* Title */}
+          <Container className='max-md:px-6'>
+            <div className='w-full h-full setflex-center'>
+              <span className='font-serif italic text-xl'>
+                Issue {issue.issueNumber} —{' '}
+                {checkMonth(new Date(issue.date).getMonth())}{' '}
+                {new Date(issue.date).getFullYear()}
+              </span>
+              <h1 className=' font-sans font-normal max-md:break-all max-md:text-center'>
+                {issue.title}
+              </h1>
             </div>
           </Container>
-        </div>
-      </section>
-      {/* Button Sticky */}
+        </section>
+
+        <section
+          id='issue-content-wrapper'
+          style={{ height: `${containerHeight}px` }}
+        >
+          <div
+            className='w-full flex flex-col'
+            id='editorial-slider'
+            style={{ top: `${stickyTopVal}px` }}
+          >
+            {/* Card */}
+            <div
+              className={`issue_container flex space-x-7 ${scrollStyle}`}
+              style={{ transform: `translateX(${contXTransform})` }}
+              ref={contentWrapperRef}
+            >
+              {processedArticle.map((data, id) => {
+                return (
+                  <div
+                    className='article_wrapper'
+                    key={id}
+                    ref={(el) => (articleRef.current[id] = el)}
+                  >
+                    <FancyLink
+                      destination={`/editorial/${issue.slug.current}/${data.slug.current}`}
+                      className={`group`}
+                    >
+                      <ArticleCard
+                        bgColor={data.category.color.hex}
+                        title={`${
+                          !data.issue.turnOffArticleNumber &&
+                          `${data.articleNumber}.`
+                        } ${data.title}`}
+                        category={data.category.title}
+                        timeRead={
+                          data.readTime
+                            ? timeConvert(data.readTime)
+                            : data.timeReadBlog
+                            ? data.timeReadBlog !== 0 &&
+                              timeConvert(data.timeReadBlog)
+                            : data.timeRead !== 0 && timeConvert(data.timeRead)
+                        }
+                        border={data.category.border}
+                        src={urlFor(data.thumbnail).width(750).url()}
+                        alt={data.thumbnail.name}
+                        className={`group`}
+                      />
+                    </FancyLink>
+                  </div>
+                );
+              })}
+            </div>
+            {/* Lower Information */}
+            <Container className='max-md:px-6 pb-7'>
+              <div className='w-full setflex-center'>
+                <div className='mb-5 text-xs'>
+                  <span className='font-bold'>{centerCard}</span>
+                  {` — `}
+                  <span>{articleRef.current.length}</span>
+                </div>
+                <div className='relative w-full setflex-center'>
+                  <div className='relative border-b w-s-50 max-w-sm max-md:w-full h-px border-black'>
+                    <div
+                      ref={scrollInd}
+                      className={`absolute w-8 h-1 -top-px border border-black bg-black issueindicator ${scrollStyle}`}
+                    />
+                  </div>
+                </div>
+              </div>
+            </Container>
+          </div>
+        </section>
+        {/* Button Sticky */}
+      </motion.div>
       <StickyButton destination='/editorial' arrow='left'>
         EDITORIAL INDEX
       </StickyButton>

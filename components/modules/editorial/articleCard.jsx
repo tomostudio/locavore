@@ -29,7 +29,7 @@ const ArticleCard = ({
         <Image
           src={src}
           alt={alt}
-          className='rounded-xl'
+          className='rounded-xl overflow-hidden'
           layout='fill'
           objectFit='cover'
           placeholder='blur'
