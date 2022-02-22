@@ -21,7 +21,6 @@ import checkMonth from '@/helpers/functional/checkMonth';
 import urlFor from '@/helpers/sanity/urlFor';
 import timeConvert from '@/helpers/functional/timeConvert';
 
-
 export default function Issue({ issueAPI, seoAPI, footerAPI }) {
   const router = useRouter();
   const [issue] = issueAPI;
@@ -84,15 +83,15 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
       // Get Movement Percentage
       const startPoint =
         document.querySelector('.list-title').offsetHeight + 60;
-      const totalScrolled =
-        containerHeight - startPoint;
+      const totalScrolled = containerHeight - startPoint;
 
       const maxPercentage = 100;
       const percentageMove = () => {
         const accelerate = 250;
         const decelerate = 150;
         const p =
-          ((winScroll - startPoint + accelerate) / (totalScrolled + decelerate)) *
+          ((winScroll - startPoint + accelerate) /
+            (totalScrolled + decelerate)) *
           maxPercentage;
         if (p < 0) {
           return 0;
@@ -292,6 +291,11 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
                         }
                         border={data.category.border}
                         src={urlFor(data.thumbnail).width(750).url()}
+                        blursrc={urlFor(data.thumbnail)
+                          .blur(2)
+                          .format('webp')
+                          .width(350)
+                          .url()}
                         alt={data.thumbnail.name}
                         className={`group`}
                       />
