@@ -192,75 +192,77 @@ export default function ArticleSlug({
                         {data.title}
                       </span>
                     </div>
-                    {data.content &&
-                      data.content.map((content, id) =>
-                        content._type === 'block' ? (
-                          <p
-                            className='px-paddingContent max-md:p-0 my-4'
-                            key={id}
-                          >
-                            {content.children
-                              .map((child) => child.text)
-                              .join('')}
-                          </p>
-                        ) : content._type === 'img' ? (
-                          <>
-                            {/* Image */}
-                            <div
-                              className={`w-full h-auto max-md:p-0 ${
-                                !content.option && 'px-paddingContent'
-                              }`}
-                              key={id}
-                            >
-                              <div className='relative w-full h-80'>
-                                <Image
-                                  src={urlFor(content.image).url()}
-                                  alt={content.image.name}
-                                  layout='fill'
-                                  objectFit='cover'
-                                  objectPosition='center'
-                                  placeholder='blur'
-                                  blurDataURL={urlFor(content.image)
-                                    .blur(2)
-                                    .format('webp')
-                                    .saturation(-100)
-                                    .width(100)
-                                    .url()}
-                                />
-                              </div>
-                              {content.name && (
-                                <div
-                                  className={`flex items-end max-md:items-start w-full mt-3 ${
-                                    content.option &&
-                                    'px-paddingContent max-md:p-0'
-                                  }`}
-                                >
-                                  <div
-                                    className='w-10 h-5 border-b-2 border-l-2 mr-4'
-                                    style={{
-                                      borderColor: article.categoryColor
-                                        ? article.category.color.hex
-                                        : '#D66A51',
-                                    }}
-                                  />
-                                  <span className='w-full font-serif text-sm font-bold'>
-                                    {content.name}
-                                  </span>
-                                </div>
-                              )}
-                            </div>
-                          </>
-                        ) : (
-                          content._type === 'blockquote' && (
+                    <div>
+                      {data.content &&
+                        data.content.map((content, id) =>
+                          content._type === 'block' ? (
                             <p
-                              className='font-sans font-bold uppercase px-paddingContent max-md:p-0'
+                              className='px-paddingContent max-md:p-0 my-4'
                               key={id}
                             >
-                              {content.content}
+                              {content.children
+                                .map((child) => child.text)
+                                .join('')}
                             </p>
+                          ) : content._type === 'img' ? (
+                            <>
+                              {/* Image */}
+                              <div
+                                className={`w-full h-auto max-md:p-0 ${
+                                  !content.option && 'px-paddingContent'
+                                }`}
+                                key={id}
+                              >
+                                <div className='relative w-full h-80'>
+                                  <Image
+                                    src={urlFor(content.image).url()}
+                                    alt={content.image.name}
+                                    layout='fill'
+                                    objectFit='cover'
+                                    objectPosition='center'
+                                    placeholder='blur'
+                                    blurDataURL={urlFor(content.image)
+                                      .blur(2)
+                                      .format('webp')
+                                      .saturation(-100)
+                                      .width(100)
+                                      .url()}
+                                  />
+                                </div>
+                                {content.name && (
+                                  <div
+                                    className={`flex items-end max-md:items-start w-full mt-3 ${
+                                      content.option &&
+                                      'px-paddingContent max-md:p-0'
+                                    }`}
+                                  >
+                                    <div
+                                      className='w-10 h-5 border-b-2 border-l-2 mr-4'
+                                      style={{
+                                        borderColor: article.categoryColor
+                                          ? article.category.color.hex
+                                          : '#D66A51',
+                                      }}
+                                    />
+                                    <span className='w-full font-serif text-sm font-bold'>
+                                      {content.name}
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+                            </>
+                          ) : (
+                            content._type === 'blockquote' && (
+                              <p
+                                className='font-sans font-bold uppercase px-paddingContent max-md:p-0'
+                                key={id}
+                              >
+                                {content.content}
+                              </p>
+                            )
                           )
-                        )
-                      )}
+                        )}
+                    </div>
                   </div>
                 </div>
               </div>
