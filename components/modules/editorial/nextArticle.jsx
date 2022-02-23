@@ -39,7 +39,7 @@ export default function NextArticle({
           <div className='absolute top-0 left-0 h-full w-full setflex-center z-min1'>
             <Marquee gradient={false}>
               <h1 className='font-sans font-normal h-28'>
-                {articleTitle} • {articleTitle} • {articleTitle}
+                {`${articleTitle} • ${articleTitle} • ${articleTitle} • `}
               </h1>
             </Marquee>
           </div>

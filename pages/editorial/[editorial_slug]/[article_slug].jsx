@@ -93,7 +93,7 @@ export default function ArticleSlug({
           <Container>
             <div>
               <div
-                className='flex flex-col space-y-1 max-md:mt-5'
+                className='flex flex-col space-y-2 max-md:mt-5'
                 style={{
                   color: article.categoryColor
                     ? article.category.color.hex
@@ -142,7 +142,7 @@ export default function ArticleSlug({
                   .replace(/ /g, '-')
                   .replace(/[-]+/g, '-')
                   .replace(/[^\w-]+/g, '')}
-                className='w-full h-auto px-8 py-4 max-md:p-2'
+                className='w-full h-auto px-8 py-4 max-md:p-2 setflex-center'
                 style={{
                   background: article.categoryColor
                     ? article.category.color.hex
@@ -153,8 +153,8 @@ export default function ArticleSlug({
                 key={i}
               >
                 {/* Orange Component */}
-                <div className='w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center'>
-                  <div className='w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10 flex-col'>
+                <div className='w-full h-full bg-white rounded-2xl py-14 max-md:py-7 setflex-center max-w-screen-xl'>
+                  <div className='w-content max-md:w-full max-md:px-4 max-md:space-y-7 space-y-10 flex-col '>
                     {/* Title */}
                     <div className='font-serif text-center font-bold'>
                       <span
@@ -181,7 +181,16 @@ export default function ArticleSlug({
                                 .replace(/[^\w-]+/g, '')
                           ).part}
                       </span>
-                      {data.title}
+                      <span
+                        style={{
+                          color: article.categoryColor
+                            ? article.category.color.hex
+                            : '#D66A51',
+                        }}
+                        className='block'
+                      >
+                        {data.title}
+                      </span>
                     </div>
                     {data.content &&
                       data.content.map((content, id) =>

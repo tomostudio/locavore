@@ -139,7 +139,7 @@ $issuecardgap: 40px;
     overflow-x: visible !important;
     overflow-y: visible !important;
   }
-  & > #editorial-slider{
+  & > #editorial-slider {
     position: sticky;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -154,9 +154,9 @@ $issuecardgap: 40px;
 // ARTICLE CAROUSEL
 
 .thumbnail-swipe .swiper-slide:not(.swiper-slide-thumb-active) {
-  opacity: .5;
+  opacity: 0.5;
   @apply transition-opacity duration-300;
-  &:hover{
+  &:hover {
     opacity: 1;
   }
 }
@@ -190,7 +190,7 @@ $issuecardgap: 40px;
 }
 
 #family-button {
-  & > a {
+  & > * {
     display: block;
     flex-grow: 1;
     min-width: calc(100% / 3);
@@ -201,17 +201,18 @@ $issuecardgap: 40px;
     &:nth-child(3) {
       margin-top: 0px;
     }
-    &:nth-child(1),
+    // FIRST CARD
     &:nth-child(3n - 2) {
+      z-index: 1;
       left: 24px;
     }
-    &:nth-child(3n + 2) {
-      // right: 24px;
+    // FIRST CARD
+    &:nth-child(3n - 1) {
+      z-index: 2;
     }
+    // FIRST CARD
     &:nth-child(3n) {
-      right: 24px;
-    }
-    &:last-child:nth-child(3n + 2) {
+      z-index: 3;
       right: 24px;
     }
   }

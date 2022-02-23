@@ -24,13 +24,13 @@ export default function EditorialIssueCard({
       className={`group relative w-full  rounded-2xl px-5 pb-5 flex flex-col transition-all  duration-300 ${
         comingsoon
           ? 'h-20rem bg-lighterGray'
-          : '  bg-lightGray even:bg-lighterGray h-30rem hover:shadow-lg hover:-translate-y-1'
+          : 'bg-lightGray even:bg-lighterGray h-30rem hover:shadow-lg hover:-translate-y-1 '
       } ${className}`}
     >
       <div className="text-center w-full py-3">
         <span>{comingsoon ? <>COMING SOON</> : <>ISSUE {issueNo}</>}</span>
       </div>
-      <div className="relative w-full h-full rounded-2xl flex flex-col justify-between">
+      <div className="relative w-full h-full rounded-2xl flex flex-col justify-between overflow-hidden">
         <div
           className={`absolute w-full h-full top-0 left-0 rounded-2xl overflow-hidden ${
             dark === 'white-text' ? 'bg-black' : 'bg-white'

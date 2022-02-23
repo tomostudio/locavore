@@ -65,8 +65,8 @@ export default function Index({ issueAPI, seoAPI }) {
           to: [
             elem,
             {
-              y: '100%',
-              scale: 2.5,
+              y: '90%',
+              scale: 4.5,
               ease: 'none',
             },
           ],

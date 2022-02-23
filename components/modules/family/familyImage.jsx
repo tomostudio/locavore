@@ -36,7 +36,7 @@ const familyImage = ({ store, src, alt, position = '', name = '' }) => {
       }}
     >
       <Image
-        src={urlFor(src).width(750).url()}
+        src={urlFor(src).format('webp').width(750).url()}
         alt={alt}
         layout='fill'
         objectFit='cover'

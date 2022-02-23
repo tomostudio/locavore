@@ -7,7 +7,7 @@ import VideoComponent from './videoComponent'
 const GalleryComponent = ({ gallery, blog }) => {
   return (
     <Container className="max-md:px-0 mt-12">
-      <div className={`w-full flex flex-col ${blog && 'space-y-12'}`}>
+      <div className={`w-full flex flex-col ${blog && 'space-y-4'}`}>
         {gallery.map((item, id) =>
           item._type === 'singleImage' ? (
             <Fragment key={id}>

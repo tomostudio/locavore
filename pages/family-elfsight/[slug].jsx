@@ -111,27 +111,42 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
           },
         }}
       >
-        <div className='w-52rem max-md:w-full px-paddingContent max-md:px-5 mb-14 pb-14 border-b border-black setflex-center '>
-          <div className='w-full setflex-center'>
+        <div className='w-52rem max-md:w-full px-paddingContent max-md:px-5 setflex-center '>
+          <div className='w-full setflex-center mb-10'>
             <span className='text-center py-3 font-bold uppercase'>
               {family.title}
             </span>
             <div className='border-b border-black h-px w-full' />
+            <div className='w-full my-10'>
+              <p>{toPlainText(family.description)}</p>
+            </div>
           </div>
-          <div className='w-full my-10'>
-            <p>{toPlainText(family.description)}</p>
-            <div className='flex flex-col w-full mt-20 mb-10 '>
+        </div>
+        <div className='w-full max-w-screen-xl max-md:w-full px-5 setflex-center '>
+          <div className='w-full my-0'>
+            <div className='flex flex-col w-full'>
+              {/* INSTAGRAM SECTION */}
               <div className='w-full border border-black rounded-2xl h-auto p-5'>
                 <script
                   src='https://apps.elfsight.com/p/platform.js'
                   defer
                 ></script>
-                <div className='elfsight-app-b1b735e6-61b1-4eda-8840-cf78479acb1c rounded-2xl overflow-hidden'></div>
+                {/* Change the Elfsight Code to Update */}
+                {/* default code elfsight-app-b1b735e6-61b1-4eda-8840-cf78479acb1c */}
+                <div
+                  className={`${'elfsight-app-b1b735e6-61b1-4eda-8840-cf78479acb1c'} rounded-2xl overflow-hidden`}
+                ></div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div className='w-52rem max-md:w-full px-paddingContent max-md:px-5 mb-14 pb-14 setflex-center '>
+          <div className='w-full '>
+            <div className='flex flex-col w-full mb-10 '>
               <FancyLink
                 destination={family.instagram.link}
                 blank={true}
-                className='w-full flex justify-between mt-5 hover:opacity-50 transition-opacity duration-300'
+                className='w-full flex justify-between mt-4 hover:opacity-50 transition-opacity duration-300'
               >
                 <div className='flex items-center space-x-5'>
                   <div className='relative w-16px h-16px'>

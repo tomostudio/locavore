@@ -29,7 +29,8 @@ const SubscribeForm = ({ status, message, onValidated }) => {
   };
 
   let pTimeout = null;
-  const time = 2500;
+  const time = 4000;
+
   const resetPlaceholderTimer = () => {
     clearTimeout(pTimeout);
     pTimeout = setTimeout(() => {
