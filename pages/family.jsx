@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import FancyLink from '@/components/utils/fancyLink';
 import FamilyImage from '@/components/modules/family/familyImage';
 import SEO from '@/components/utils/seo';
+import HeadingTitle from '@/components/utils/headingTitle';
 
 // Helpers
 // import { useAppContext } from 'context/state';
@@ -29,51 +30,7 @@ export default function Family({
   const [family] = familyAPI;
   const [footer] = footerAPI;
 
-  // TEST DATA
-  const dataFamilyButtons = [
-    {
-      slug: 'locavore',
-      title: 'LOCAVORE',
-      colour: '#789578',
-    },
-    {
-      slug: 'night-rooster',
-      title: 'THE NIGHT ROOSTER',
-      colour: '#91C1E4',
-    },
-    {
-      slug: 'localparts',
-      title: 'LOCAL PARTS',
-      colour: '#C06467',
-    },
-    {
-      slug: 'nusantara',
-      title: 'NUSANTARA',
-      colour: '#E18065',
-    },
-    {
-      slug: 'localab',
-      title: 'LOCAVORE LAB',
-      colour: '#BC9EDF',
-    },
-    {
-      slug: 'togo',
-      title: 'LOCAVORE TO-GO',
-      colour: '#C2D09A',
-    },
-  ];
-
   let familyImageAPI_split = [];
-  // familyListAPI.forEach((data, index) => {
-  //   memberListAPI.forEach((item) => {
-  //     if (item.slug.current === data.family.slug.current) {
-  //       familyImageAPI_split.push({
-  //         ...data,
-  //         storeID: index,
-  //       })
-  //     }
-  //   })
-  // })
 
   memberListAPI.map((data) => {
     if (
@@ -88,14 +45,6 @@ export default function Family({
     }
   });
 
-  // familyListAPI.map((item, id) => {
-  //   memberListAPI.map((data) => {
-  //     familyImageAPI_split.push({
-  //       ...data,
-  //       storeID: id,
-  //     })
-  //   })
-  // })
 
   const shuffle = (array) => {
     let currentIndex = array.length,
@@ -257,15 +206,14 @@ export default function Family({
       >
         {/* Header Gap */}
         <HeaderGap />
-        <div className='w-full h-full pt-10 setflex-center px-4'>
-          <h1 className='titlestyle'>
-            Family
-            <span className='sub'>of</span>Locavore
-          </h1>
-        </div>
+
+        <HeadingTitle className={`sticky`} style={{ top: '60px' }}>
+          Family
+          <span className='sub'>of</span>Locavore
+        </HeadingTitle>
         {/* Family Button */}
         <div
-          className='sticky max-md:hidden top-20 z-50 max-w-5xl mx-auto flex flex-wrap mt-14 items-stretch'
+          className='sticky max-md:hidden top-20 z-50 max-w-5xl mx-auto flex flex-wrap mb-12 items-stretch'
           id='family-button'
         >
           <>
@@ -292,7 +240,7 @@ export default function Family({
             ></div>
           ))}
         </div>
-        <section className='w-full h-full flex flex-col relative mt-12 '>
+        <section className='w-full h-full flex flex-col relative'>
           <div
             className='relative w-full h-auto flex flex-wrap  '
             id='family-image'

@@ -1,28 +1,28 @@
-import { useEffect, useState } from 'react'
-import ScrollContainer from 'react-indiana-drag-scroll'
-import { LazyMotion, domAnimation, m } from 'framer-motion'
-import Fuse from 'fuse.js'
+import { useEffect, useState } from 'react';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
+import Fuse from 'fuse.js';
 
 // Layout
-import Layout from '@/components/modules/layout'
-import Container from '@/components/modules/container'
-import Footer from '@/components/modules/footer'
-import HeaderGap from '@/components/modules/headerGap'
+import Layout from '@/components/modules/layout';
+import Container from '@/components/modules/container';
+import Footer from '@/components/modules/footer';
+import HeaderGap from '@/components/modules/headerGap';
 
 // Components
-import PillButton from '@/components/modules/pillButton'
-import StickyButton from '@/components/modules/stickyButton'
-import IssueCard from '@/components/modules/editorial/issueCard'
-import FancyLink from '@/components/utils/fancyLink'
-import Arrow from '@/components/utils/arrow'
-import SEO from '@/components/utils/seo'
+import PillButton from '@/components/modules/pillButton';
+import StickyButton from '@/components/modules/stickyButton';
+import IssueCard from '@/components/modules/editorial/issueCard';
+import FancyLink from '@/components/utils/fancyLink';
+import Arrow from '@/components/utils/arrow';
+import SEO from '@/components/utils/seo';
+import HeadingTitle from '@/components/utils/headingTitle';
 
 // Helpers
-import { fade } from '@/helpers/preset/transitions'
-import client from '@/helpers/sanity/client'
-import urlFor from '@/helpers/sanity/urlFor'
-import { useAppContext } from 'context/state'
-import timeConvert from '@/helpers/functional/timeConvert'
+import { fade } from '@/helpers/preset/transitions';
+import client from '@/helpers/sanity/client';
+import urlFor from '@/helpers/sanity/urlFor';
+import { useAppContext } from 'context/state';
+import timeConvert from '@/helpers/functional/timeConvert';
 
 export default function Search({
   seoAPI,
@@ -32,86 +32,88 @@ export default function Search({
   issueAPI,
   footerAPI,
 }) {
-  const [seo] = seoAPI
-  const [APISearch] = searchAPI
-  const appContext = useAppContext()
-  const [postNumCategory, setPostNumCategory] = useState(3)
-  const [postNum, setPostNum] = useState(6)
-  const [search, setSearch] = useState('')
-  const [itemsToDisplay, setitemsToDisplay] = useState(articleAPI)
-  const [footer] = footerAPI
+  const [seo] = seoAPI;
+  const [APISearch] = searchAPI;
+  const appContext = useAppContext();
+  const [postNumCategory, setPostNumCategory] = useState(3);
+  const [postNum, setPostNum] = useState(6);
+  const [search, setSearch] = useState('');
+  const [itemsToDisplay, setitemsToDisplay] = useState(articleAPI);
+  const [footer] = footerAPI;
 
   const handleLoadMoreCategory = () => {
-    setPostNumCategory((prevPostNum) => prevPostNum + 3)
-  }
+    setPostNumCategory((prevPostNum) => prevPostNum + 3);
+  };
 
   const handleLoadMore = () => {
-    setPostNum((prevPostNum) => prevPostNum + 6)
-  }
+    setPostNum((prevPostNum) => prevPostNum + 6);
+  };
 
   // Search
   const handleSearch = ({ target }) => {
-    const { value } = target
+    const { value } = target;
     // set value untuk search
-    setSearch(value)
-    setPostNum(6)
+    setSearch(value);
+    setPostNum(6);
 
     if (appContext.category) {
       const fuseCategory = new Fuse(articleAPI, {
         keys: ['article.category.title'],
         useExtendedSearch: true,
-      })
+      });
       let cat = fuseCategory
         .search(`=${appContext.category}`)
-        .map((result) => result.item)
+        .map((result) => result.item);
 
       const fuseSearchCategory = new Fuse(cat, {
         keys: ['article.title'],
-      })
-      const data = fuseSearchCategory.search(value).map((result) => result.item)
-      setitemsToDisplay(value ? data : cat)
+      });
+      const data = fuseSearchCategory
+        .search(value)
+        .map((result) => result.item);
+      setitemsToDisplay(value ? data : cat);
     } else {
       const fuse = new Fuse(articleAPI, {
         keys: ['aricle.title', 'article.category.title'],
-      })
-      const data = fuse.search(value).map((result) => result.item)
-      setitemsToDisplay(value ? data : articleAPI)
+      });
+      const data = fuse.search(value).map((result) => result.item);
+      setitemsToDisplay(value ? data : articleAPI);
     }
-  }
+  };
 
   const handleCategory = (value) => {
-    setPostNum(6)
-    appContext.setCategory(value)
+    setPostNum(6);
+    appContext.setCategory(value);
     if (search) {
       const fuse = new Fuse(articleAPI, {
         keys: ['article.title', 'article.category.title'],
-      })
-      const data = fuse.search(search).map((result) => result.item)
+      });
+      const data = fuse.search(search).map((result) => result.item);
       if (value) {
-        const dataFilter = data.filter((item) => item.category.title === value)
-        setitemsToDisplay(dataFilter)
+        const dataFilter = data.filter((item) => item.category.title === value);
+        setitemsToDisplay(dataFilter);
       } else {
-        setitemsToDisplay(data)
+        setitemsToDisplay(data);
       }
     } else {
       const fuse = new Fuse(articleAPI, {
         keys: ['article.category.title'],
         includeMatches: true,
-      })
-      let cat = fuse.search(`=${value}`).map((result) => result.item)
-      setitemsToDisplay(value ? cat : articleAPI)
+      });
+      let cat = fuse.search(`=${value}`).map((result) => result.item);
+      setitemsToDisplay(value ? cat : articleAPI);
     }
-  }
+  };
 
   useEffect(() => {
     if (appContext.category) {
-      handleCategory(appContext.category)
+      handleCategory(appContext.category);
     }
-    window.scroll(0, 0)
+    window.scroll(0, 0);
     return () => {
-      appContext.setCategory('')
-    }
-  }, [])
+      appContext.setCategory('');
+    };
+  }, []);
 
   return (
     <Layout>
@@ -150,165 +152,170 @@ export default function Search({
         }}
       />
       <LazyMotion features={domAnimation}>
-        <m.main initial="initial" animate="enter" exit="exit" variants={fade}>
+        <m.main initial='initial' animate='enter' exit='exit' variants={fade}>
           {/* Header Gap */}
           <HeaderGap />
           {/* Untuk Content */}
-          <section>
-            <Container className="max-md:px-6 pt-10 pb-10">
-              <div className="w-full h-full setflex-center">
-                {/* Title */}
-                <h1 className="titlestyle">
-                  Search
-                  <span className="sub">All</span>Articles
-                </h1>
-                {/* Form Search */}
-                <div className="w-content max-md:w-full max-md:p-0 mt-10 px-paddingContent">
-                  <form className="mb-6 flex w-full h-full flex-col justify-between">
-                    <div className="relative w-full  border-black pb-2.5 border-b">
-                      <input
-                        onChange={handleSearch}
-                        className="w-full text-xs tracking-wide placeholder-black bg-transparent outline-none"
-                        type="text"
-                        placeholder="ENTER A KEYWORD"
-                      />
-                      <Arrow
-                        position="right"
-                        className="absolute right-0 top-2 cursor-pointer"
-                        fill="black"
-                      />
-                    </div>
-                  </form>
-                  <div className="w-full h-auto opacity-80 flex flex-wrap items-center space-x-2 space-y-2 max-md:space-x-0">
-                    <span className="block text-xs pt-px">CATEGORY</span>
-                    {categoryAPI.slice(0, postNumCategory).map((data, id) => (
-                      <PillButton
-                        onClick={() =>
-                          handleCategory(
-                            appContext.category === `${data.title}`
-                              ? ''
-                              : `${data.title}`,
-                          )
-                        }
-                        className={`text-xs uppercase max-md:py-1 px-4 ${
-                          appContext.category.toLowerCase() ===
-                          data.title.toLocaleLowerCase()
-                            ? 'bg-gray text-white'
-                            : ''
-                        }`}
-                        key={id}
-                      >
-                        {data.title}
-                      </PillButton>
-                    ))}
-                    {!(postNumCategory >= categoryAPI.length) && (
-                      <PillButton
-                        className="text-xs uppercase max-md:py-1 px-4"
-                        onClick={handleLoadMoreCategory}
-                        loadMore={true}
-                      >
-                        ...
-                      </PillButton>
-                    )}
+          <Container className='max-md:px-6 pb-10'>
+            <div
+              className='w-full h-full setflex-center relative'Ï
+            >
+              {/* Title */}
+              <HeadingTitle className='max-md:mb-0'>
+                Search
+                <span className='sub'>All</span>Articles
+              </HeadingTitle>
+              {/* Form Search */}
+              <div className='w-full max-w-xl max-md:p-0'>
+                <form className='mb-4 flex w-full h-full flex-col justify-between'>
+                  <div className='relative w-full  border-black pb-2.5 border-b'>
+                    <input
+                      onChange={handleSearch}
+                      className='w-full text-xs tracking-wide placeholder-black bg-transparent outline-none'
+                      type='text'
+                      placeholder='ENTER A KEYWORD'
+                    />
+                    <Arrow
+                      position='right'
+                      className='absolute right-0 top-2 cursor-pointer'
+                      fill='black'
+                    />
                   </div>
+                </form>
+                <div className='w-full h-auto opacity-80 flex flex-wrap items-center'>
+                  <span className='block text-xs pt-px mr-4 mt-2'>
+                    CATEGORY
+                  </span>
+                  {categoryAPI.slice(0, postNumCategory).map((data, id) => (
+                    <PillButton
+                      onClick={() =>
+                        handleCategory(
+                          appContext.category === `${data.title}`
+                            ? ''
+                            : `${data.title}`
+                        )
+                      }
+                      className={`text-xs uppercase py-1 px-4 mt-2 mr-2 ${
+                        appContext.category.toLowerCase() ===
+                        data.title.toLocaleLowerCase()
+                          ? 'bg-gray text-white'
+                          : ''
+                      }`}
+                      key={id}
+                    >
+                      {data.title}
+                    </PillButton>
+                  ))}
+                  {!(postNumCategory >= categoryAPI.length) && (
+                    <PillButton
+                      className='text-xs uppercase max-md:py-1 px-4 2 mt-2 mr-2'
+                      onClick={handleLoadMoreCategory}
+                      loadMore={true}
+                    >
+                      ...
+                    </PillButton>
+                  )}
                 </div>
-                {/* Category */}
               </div>
-              <div className="relative w-full h-auto setflex-center">
-                <span className="font-bold mt-12 mb-10 text-lg">
+              {/* Category */}
+              <div className='mt-10'>
+                <span className='font-bold text-lg'>
                   We found &nbsp;
-                  <span className="border-black border-b">
+                  <span className='border-black border-b'>
                     {itemsToDisplay.reduce(
                       (count, current) => count + current.article.length,
-                      0,
+                      0
                     )}{' '}
                     Articles
                   </span>
                 </span>
-                {/* Card */}
-                <div
-                  className="w-full h-auto gap-8 flex-wrap"
-                  id="search-results"
-                >
-                  {itemsToDisplay
-                    .slice(0, postNum)
-                    .map((datas, _) =>
-                      datas.article.map((data, id) => (
-                        <IssueCard
-                          key={id}
-                          issueNo={datas.issueNumber}
-                          destination={`${datas.slug.current}/${data.slug.current}`}
-                          articleClassName="bg-culture w-full"
-                          title={`${
-                            !datas.turnOffArticleNumber &&
-                            `${data.articleNumber}.`
-                          } ${data.title}`}
-                          category={data.category.title}
-                          timeRead={
-                            data.readTime
-                              ? timeConvert(data.readTime)
-                              : data.timeReadBlog
-                              ? data.timeReadBlog !== 0 &&
-                                timeConvert(data.timeReadBlog)
-                              : data.timeRead !== 0 &&
-                                timeConvert(data.timeRead)
-                          }
-                          bgColor={data.category.color.hex}
-                          borderColor={data.category.border}
-                          thumbnail={urlFor(data.thumbnail).url()}
-                          alt={data.thumbnail.name}
-                        />
-                      )),
-                    )}
-                </div>
-                {search || appContext.category
-                  ? !(postNum >= itemsToDisplay.length) && (
-                      <div className="flex mt-10">
-                        <FancyLink
-                          onClick={handleLoadMore}
-                          className="py-4 px-5 text-xs text-gray tracking-widest transition-all ease-linear hover:text-white hover:bg-gray border border-gray rounded-xl"
-                        >
-                          LOAD MORE
-                        </FancyLink>
-                      </div>
-                    )
-                  : !(postNum >= articleAPI.length) && (
-                      <div className="flex mt-10">
-                        <FancyLink
-                          onClick={handleLoadMore}
-                          className="py-4 px-5 text-xs text-gray tracking-widest transition-all ease-linear hover:text-white hover:bg-gray border border-gray rounded-xl"
-                        >
-                          LOAD MORE
-                        </FancyLink>
-                      </div>
-                    )}
               </div>
-            </Container>
-          </section>
+            </div>
+            {/* content */}
+            <section className='relative w-full h-auto setflex-center mt-10'>
+              {/* Card */}
+              <div
+                className='w-full'
+                id='search-results'
+              >
+                {itemsToDisplay
+                  .slice(0, postNum)
+                  .map((datas, _) =>
+                    datas.article.map((data, id) => (
+                      <IssueCard
+                        key={id}
+                        issueNo={datas.issueNumber}
+                        destination={`${datas.slug.current}/${data.slug.current}`}
+                        articleClassName='bg-culture w-full'
+                        title={`${
+                          !datas.turnOffArticleNumber &&
+                          `${data.articleNumber}.`
+                        } ${data.title}`}
+                        category={data.category.title}
+                        timeRead={
+                          data.readTime
+                            ? timeConvert(data.readTime)
+                            : data.timeReadBlog
+                            ? data.timeReadBlog !== 0 &&
+                              timeConvert(data.timeReadBlog)
+                            : data.timeRead !== 0 && timeConvert(data.timeRead)
+                        }
+                        bgColor={data.category.color.hex}
+                        borderColor={data.category.border}
+                        thumbnail={urlFor(data.thumbnail).url()}
+                        alt={data.thumbnail.name}
+                      />
+                    ))
+                  )}
+              </div>
+
+              {search || appContext.category
+                ? !(postNum >= itemsToDisplay.length) && (
+                    <div className='flex mt-10'>
+                      <FancyLink
+                        onClick={handleLoadMore}
+                        className='py-4 px-5 text-xs text-gray tracking-widest transition-all ease-linear hover:text-white hover:bg-gray border border-gray rounded-xl'
+                      >
+                        LOAD MORE
+                      </FancyLink>
+                    </div>
+                  )
+                : !(postNum >= articleAPI.length) && (
+                    <div className='flex mt-10'>
+                      <FancyLink
+                        onClick={handleLoadMore}
+                        className='py-4 px-5 text-xs text-gray tracking-widest transition-all ease-linear hover:text-white hover:bg-gray border border-gray rounded-xl'
+                      >
+                        LOAD MORE
+                      </FancyLink>
+                    </div>
+                  )}
+            </section>
+          </Container>
           {/* Button Sticky */}
-          <StickyButton destination="/editorial" arrow="left">
+          <StickyButton destination='/editorial' arrow='left'>
             Browse all issues
           </StickyButton>
           <Footer footer={footer} />
         </m.main>
       </LazyMotion>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps() {
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `)
+                    `);
   const searchAPI = await client.fetch(`
                     *[_type == "search"]
-                    `)
+                    `);
   const categoryAPI = await client.fetch(`
                     *[_type == "category"]
-                    `)
+                    `);
   const issueAPI = await client.fetch(`
                     *[_type == "issue"]
-                    `)
+                    `);
   const articleAPI = await client.fetch(`*[
     _type == "issue"
   ] | order(issueNumber asc) {
@@ -319,13 +326,13 @@ export async function getStaticProps() {
       "timeRead": round(length(pt::text(description)) / 5 / 180 ),
       "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
     }
-  }`)
+  }`);
   const headerAPI = await client.fetch(`
   *[_type == "header"]
-  `)
+  `);
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `)
+  `);
   return {
     props: {
       seoAPI,
@@ -336,5 +343,5 @@ export async function getStaticProps() {
       footerAPI,
       headerAPI,
     },
-  }
+  };
 }

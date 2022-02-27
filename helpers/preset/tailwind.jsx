@@ -1,5 +1,5 @@
 const transition = {
-  fade: 'hover:opacity-40 transition-opacity duration-300',
+  fade: 'hover:opacity-50 transition-opacity duration-300',
 };
 
 const defVal = {

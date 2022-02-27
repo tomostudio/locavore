@@ -37,7 +37,7 @@ const EditorialIssueCard = React.forwardRef(
     return (
       <FancyLink
         destination={destination}
-        className={`group relative w-full rounded-2xl p-5 pt-0 max-md:p-4 max-md:pt-0 flex flex-col transition-[shadow transform] duration-300 ${
+        className={`group relative select-all w-full rounded-2xl p-5 pt-0 max-md:p-4 max-md:pt-0 flex flex-col transition-[shadow transform] duration-300 ${
           comingsoon
             ? `bg-lighterGray cursor-default ${
                 useMediaQuery('(max-width: 850px)') ? 'max-md:pt-4' : ''
@@ -97,7 +97,7 @@ const EditorialIssueCard = React.forwardRef(
           >
             {/* MOBILE ARTICLE DATE */}
             {useMediaQuery('(max-width: 850px)') && !comingsoon && (
-              <div className='w-full flex justify-between text-base max-sm:text-sm font-bold text-center uppercase max-md:h-24'>
+              <div className='w-full flex justify-between text-base max-sm:text-sm font-bold text-center uppercase max-md:h-24 mb-auto'>
                 <span>
                   {checkMonth(new Date(date).getMonth())}{' '}
                   {new Date(date).getFullYear()}

@@ -124,11 +124,8 @@ module.exports = {
         '50%': '50%',
       },
       maxWidth: {
-        issueCard: '400px',
+        issueCard: '375px',
         '800px': '800px',
-      },
-      spacing: {
-        paddingContent: '5rem',
       },
     },
   },
