@@ -5,6 +5,8 @@ import SubscribeForm from './subscribe';
 import Container from './container';
 import Image from 'next/image';
 import FancyLink from '../utils/fancyLink';
+import { transition } from '@/helpers/preset/tailwind';
+import { Youtube, Facebook, Instagram, Linkedin } from '@/helpers/preset/svg';
 
 const Footer = ({ className, footer }) => {
   const MAILCHIMP_URL = process.env.NEXT_PUBLIC_MAILCHIMP_URL;
@@ -47,70 +49,46 @@ const Footer = ({ className, footer }) => {
             )}
           />
         </div>
-        <div className='w-full h-full max-md:mt-10 max-md:space-y-10 flex flex-col justify-between'>
-          <div className='w-auto h-full space-x-6 flex justify-end max-md:justify-start'>
+        <div className='w-full h-full max-md:mt-10 max-md:space-y-10 flex flex-col justify-between relative -right-3 max-md:right-0 max-md:-left-3'>
+          <div className='w-auto h-full space-x-4 flex justify-end max-md:justify-start'>
             {footer.footerLink && footer.footerLink.instagram && (
               <FancyLink
                 destination={footer.footerLink.instagram.link}
                 blank={true}
-                className='relative w-16px h-16px'
+                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
               >
-                <Image
-                  src={`/instagram-white.png`}
-                  alt={'Locavore'}
-                  layout='fill'
-                  objectFit='contain'
-                  objectPosition='center'
-                />
+              <Instagram fill={ '#FFF'} className='w-4 h-4' />
               </FancyLink>
             )}
             {footer.footerLink && footer.footerLink.facebook && (
               <FancyLink
                 destination={footer.footerLink.facebook.link}
                 blank={true}
-                className='relative w-16px h-16px'
+                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
               >
-                <Image
-                  src={`/facebook-white.png`}
-                  alt={'Locavore'}
-                  layout='fill'
-                  objectFit='contain'
-                  objectPosition='center'
-                />
+                <Facebook fill={'#FFF'} className='w-4 h-4' />
               </FancyLink>
             )}
             {footer.footerLink && footer.footerLink.youtube && (
               <FancyLink
                 destination={footer.footerLink.youtube.link}
                 blank={true}
-                className='relative w-16px h-16px'
+                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
               >
-                <Image
-                  src={`/youtube-white.png`}
-                  alt={'Locavore'}
-                  layout='fill'
-                  objectFit='contain'
-                  objectPosition='center'
-                />
+                <Youtube fill={'#FFF'} className='w-4 h-4' />
               </FancyLink>
             )}
             {footer.footerLink && footer.footerLink.linkedin && (
               <FancyLink
                 destination={footer.footerLink.linkedin.link}
                 blank={true}
-                className='relative w-16px h-16px'
+                className={`relative w-10 h-10 setflex-center  ${transition.fade}`}
               >
-                <Image
-                  src={`/linkedin-white.png`}
-                  alt={'Locavore'}
-                  layout='fill'
-                  objectFit='contain'
-                  objectPosition='center'
-                />
+                <Linkedin fill={'#FFF'} className='w-4 h-4' />
               </FancyLink>
             )}
           </div>
-          <div className='w-full h-full flex justify-end max-md:justify-start items-end max-md:items-start'>
+          <div className='w-full h-full flex justify-end max-md:justify-start items-end max-md:items-start pr-3 max-md:pr-0 max-md:pl-3'>
             <span className='text-sm'>{footer.creditText}</span>
           </div>
         </div>

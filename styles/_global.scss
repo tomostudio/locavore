@@ -69,155 +69,6 @@ main {
   }
 }
 
-h1.titlestyle {
-  @apply m-0 flex max-md:flex-wrap justify-center items-start max-md:items-end font-sans font-normal flex-wrap;
-  margin-bottom: 1px;
-  & .sub {
-    @apply text-6xl max-md:text-3xl mt-2.5 mb-0 mx-4 font-serif italic font-normal;
-  }
-}
-
-// Issue
-
-$card-width: 360px;
-$card-height: 480px;
-.article-card {
-  // max-width: $card-width;
-  width: $card-width;
-  height: $card-height;
-  aspect-ratio: 18 / 24;
-}
-
-$issuecard-width: $card-width + 40px;
-$issuecardgap: 40px;
-#search-results {
-  @apply grid grid-flow-row grid-cols-3 grid-rows-none max-md:grid-cols-1;
-  grid-gap: $issuecardgap;
-  max-width: $issuecard-width * 3 + $issuecardgap * 2;
-}
-
-// ISSUE LIST
-.issue_container {
-  width: 100%;
-  overflow-x: scroll;
-  overflow-y: visible !important;
-  white-space: nowrap;
-  &::before,
-  &::after {
-    content: '';
-    display: block;
-    width: calc((100vw - #{$card-width + 20px}) / 2);
-    height: 100%;
-    flex-shrink: 0;
-  }
-
-  &.noscroll {
-    justify-content: center;
-    &::before,
-    &::after {
-      width: 0px;
-    }
-  }
-  & .article_wrapper {
-    padding: 30px 0px;
-    & > a {
-      display: block;
-    }
-  }
-}
-
-.issueindicator.noscroll {
-  transform: translateX(-50%) !important;
-  left: 50%;
-}
-
-// ISSUE LIST 2
-#issue-content-wrapper {
-  width: 100%;
-  & .issue_container {
-    width: auto !important;
-    overflow-x: visible !important;
-    overflow-y: visible !important;
-  }
-  & > #editorial-slider {
-    position: sticky;
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
-}
-
-.issueindicator.noscroll {
-  transform: translateX(-50%) !important;
-  left: 50%;
-}
-
-// ARTICLE CAROUSEL
-
-.thumbnail-swipe .swiper-slide:not(.swiper-slide-thumb-active) {
-  opacity: 0.5;
-  @apply transition-opacity duration-300;
-  &:hover {
-    opacity: 1;
-  }
-}
-
-// Family
-
-.family-card {
-  @apply block;
-  position: relative;
-  width: calc(100% / 8);
-  @include tablet {
-    width: calc(100% / 5);
-  }
-  @include mobile {
-    width: calc(100% / 3);
-  }
-  &::after {
-    content: '';
-    display: block;
-    padding-bottom: 100%;
-  }
-  & > div:last-child {
-    @apply transition-all duration-300;
-    opacity: 0;
-  }
-  &.show {
-    & > div:last-child {
-      opacity: 1;
-    }
-  }
-}
-
-#family-button {
-  & > * {
-    display: block;
-    flex-grow: 1;
-    min-width: calc(100% / 3);
-    max-width: calc(100% - 48px);
-    margin-top: -1px;
-    &:nth-child(1),
-    &:nth-child(2),
-    &:nth-child(3) {
-      margin-top: 0px;
-    }
-    // FIRST CARD
-    &:nth-child(3n - 2) {
-      z-index: 1;
-      left: 24px;
-    }
-    // FIRST CARD
-    &:nth-child(3n - 1) {
-      z-index: 2;
-    }
-    // FIRST CARD
-    &:nth-child(3n) {
-      z-index: 3;
-      right: 24px;
-    }
-  }
-}
-
 // UTILS
 #social {
   & > a {
@@ -229,4 +80,82 @@ $issuecardgap: 40px;
       padding-bottom: 100%;
     }
   }
+}
+
+// HEADER
+.mobile-menu-icon {
+  width: 25px;
+  height: 25px;
+  position: relative;
+  & > div {
+    position: absolute;
+    width: 25px;
+    height: 1px;
+    left: 50%;
+    top: 50%;
+    transition: margin-top 0.05s ease .125s, transform 0.15s ease 0s;
+    transform-origin: 50% 50%;
+    &:first-child {
+      transform: translate(-50%, -50%);
+      margin-top: 4px;
+    }
+    &:last-child {
+      transform: translate(-50%, -50%);
+      margin-top: -4px;
+    }
+  }
+
+  &.open {
+    & > div {
+      transition: margin-top 0.05s ease, transform 0.15s ease 0.04s;
+      &:first-child {
+        margin-top: 0px;
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+      &:last-child {
+        margin-top: 0px;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+    }
+  }
+
+  &.white {
+    & > div {
+      background: white;
+    }
+  }
+  &.black {
+    & > div {
+      background: black;
+    }
+  }
+}
+
+.active {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+.inActive {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.inActiveFamilyButton {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.activeBackground {
+  opacity: 0.75;
+  transition: opacity 0.5s;
+}
+.actveBlur {
+  filter: blur(4px);
+  transition: filter 0.5s;
+}
+
+// OUTLINE
+
+a, button{
+  @apply outline-slate-500 outline-2 outline-offset-4;
 }

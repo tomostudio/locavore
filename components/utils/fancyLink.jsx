@@ -1,5 +1,6 @@
-import Link from 'next/link'
-import { forwardRef } from 'react'
+import Link from 'next/link';
+import { forwardRef } from 'react';
+import { useAppContext } from 'context/state';
 
 const FancyLink = forwardRef(
   (
@@ -12,7 +13,7 @@ const FancyLink = forwardRef(
       onClick,
       ...others
     },
-    ref,
+    ref
   ) => {
     return !destination ? (
       <button
@@ -42,15 +43,15 @@ const FancyLink = forwardRef(
         className={`${
           destination ? 'pointer-events-auto' : 'pointer-events-none'
         } ${className}`}
-        target="_blank"
+        target='_blank'
         href={destination}
         ref={ref}
         {...others}
       >
         {children}
       </a>
-    )
-  },
-)
+    );
+  }
+);
 
-export default FancyLink
+export default FancyLink;

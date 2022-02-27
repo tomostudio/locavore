@@ -9,153 +9,19 @@
 
 /* Custom Style Imports */
 @import '_typography.scss';
-@import '_locomotive.scss';
+// @import '_locomotive.scss';
 
 /* Other Styling */
 @import '_global.scss';
 
 
-/* Borders */
-.container {
-  // border: solid 1px blue;
-}
+/* Page Specific Styling */
+@import '_editorial.scss';
+@import '_family.scss';
 
-.bi {
-  border: solid 1px blue;
-}
 
 /* Simple defaults */
 body {
   @apply font-default tracking-wide font-normal antialiased text-black bg-white;
   overscroll-behavior: none;
-}
-
-/* Trigger Animation  */
-.trigger {
-  @apply transition-colors delay-200 duration-200;
-  @apply bg-transparent;
-
-  &.is-inview {
-    @apply transition-colors delay-200 duration-1000;
-    @apply bg-red-300;
-  }
-}
-
-// Editorial
-
-#scrollIndicator {
-  & > * {
-    animation: scrollmove 1.5s linear infinite;
-  }
-}
-
-@keyframes scrollmove {
-  0%,
-  10% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  40%,
-  60% {
-    opacity: 1;
-  }
-  90%,
-  100% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-}
-
-// Editorial
-.comingsoonSticky {
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0px;
-  bottom: auto;
-  & + .stickySpacer {
-    height: 315px;
-  }
-}
-
-.comingsoonMargin {
-  margin-top: -315px;
-}
-
-#editorial-slider {
-  .editorialCard {
-    position: relative;
-    width: calc(100% / 5);
-    &::after {
-      content: '';
-      display: block;
-      padding-bottom: 100%;
-    }
-  }
-}
-
-#swipe-editorial {
-  .swiper-slide {
-    width: 384px;
-    & .article_wrapper {
-      @apply px-3 py-6;
-      & > a {
-        @apply transition-transform duration-300 block relative;
-      }
-      &.prev-2 > a {
-        transform: rotateZ(-4deg) translate(0, 20px);
-      }
-      &.prev-1 > a {
-        transform: rotateZ(-2.5deg) translate(0, 5px);
-      }
-      &.next-1 > a {
-        transform: rotateZ(2.5deg) translate(0, 5px);
-      }
-      &.next-2 > a {
-        transform: rotateZ(4deg) translate(0, 20px);
-      }
-    }
-  }
-}
-
-// SWIPER
-.swiper-pagination-bullets {
-  display: none;
-}
-
-#swipe-editorial {
-  .swiper-slide {
-    width: 384px;
-  }
-}
-#swipe-caroussel {
-  .swiper-slide {
-    @apply w-56 #{!important};
-
-    @include mobile {
-      @apply w-36 #{!important};
-    }
-  }
-}
-
-.active {
-  opacity: 1;
-  transition: opacity 0.5s;
-}
-.inActive {
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-
-.inActiveFamilyButton {
-  opacity: 0;
-  transition: opacity 0.25s;
-}
-
-.activeBackground {
-  opacity: 0.75;
-  transition: opacity 0.5s;
-}
-.actveBlur {
-  filter: blur(4px);
-  transition: filter 0.5s;
 }
