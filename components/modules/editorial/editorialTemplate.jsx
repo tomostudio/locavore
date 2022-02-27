@@ -181,7 +181,7 @@ export default function EditorialTemplate({
                           data.thumbnail &&
                           urlFor(data.thumbnail.placeholder).url()
                         }
-                        descriptions={<p>{data.coverText}</p>}
+                        descriptions={data.coverText}
                         blurDataURL={
                           data.thumbnail &&
                           urlFor(data.thumbnail.placeholder)

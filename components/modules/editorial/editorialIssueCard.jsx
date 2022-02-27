@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import FancyLink from '@/components/utils/fancyLink';
-import { useMediaQuery } from '@/helpers/functional/checkMedia';
-import checkMonth from '@/helpers/functional/checkMonth';
+import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
+import FancyLink from '@/components/utils/fancyLink'
+import { useMediaQuery } from '@/helpers/functional/checkMedia'
+import checkMonth from '@/helpers/functional/checkMonth'
+import { PortableText } from '@portabletext/react'
 
 const EditorialIssueCard = React.forwardRef(
   (
@@ -21,18 +22,68 @@ const EditorialIssueCard = React.forwardRef(
       styleTitle,
       blurDataURL = '',
     },
-    ref
+    ref,
   ) => {
     //check title word count
-    const maxLetter = 8;
-    const [titleS, setSize] = useState(false);
+    const maxLetter = 8
+    const [titleS, setSize] = useState(false)
     useEffect(() => {
-      const splitTitle = title.split(' ');
+      const splitTitle = title.split(' ')
 
       splitTitle.forEach((word) => {
-        setSize(word.length > maxLetter);
-      });
-    }, []);
+        setSize(word.length > maxLetter)
+      })
+    }, [])
+
+    const serializers = {
+      block: {
+        normal: ({ children }) =>
+          children[0] === '' ? <br /> : <p>{children}</p>,
+        h1: ({ children }) => <h1>{children}</h1>,
+        h2: ({ children }) => <h2>{children}</h2>,
+        h3: ({ children }) => <h3>{children}</h3>,
+        h4: ({ children }) => <h4>{children}</h4>,
+        h5: ({ children }) => <h5>{children}</h5>,
+      },
+      list: {
+        number: ({ children }) => <ol className="list-decimal">{children}</ol>,
+      },
+      types: {
+        code: (props) => (
+          <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
+        ),
+      },
+      marks: {
+        changeColor: (props) => (
+          <span style={{ color: props.value.color.hex }}>{props.children}</span>
+        ),
+        center: (props) => (
+          <span className="block text-center">{props.children}</span>
+        ),
+        left: (props) => (
+          <span className="block text-left">{props.children}</span>
+        ),
+        right: (props) => (
+          <span className="block text-right">{props.children}</span>
+        ),
+        backgroundColor: (props) => (
+          <span style={{ backgroundColor: props.value.color.hex }}>
+            {props.children}
+          </span>
+        ),
+        largerSize: (props) => (
+          <span style={{ fontSize: '22px' }}>{props.children}</span>
+        ),
+        sub: (props) => <sub>{props.children}</sub>,
+        sup: (props) => <sup>{props.children}</sup>,
+        fontSize: (props) => (
+          <span style={{ fontSize: props.value.size }}>{props.children}</span>
+        ),
+        font: (props) => (
+          <span className={props.value.type}>{props.children}</span>
+        ),
+      },
+    }
 
     return (
       <FancyLink
@@ -48,12 +99,12 @@ const EditorialIssueCard = React.forwardRef(
       >
         {/* TOP HEADER */}
         {!(useMediaQuery('(max-width: 850px)') && comingsoon) && (
-          <div className='text-center w-full py-3 h-[50px] setflex-center'>
+          <div className="text-center w-full py-3 h-[50px] setflex-center">
             <span>{comingsoon ? <>COMING SOON</> : <>ISSUE {issueNo}</>}</span>
           </div>
         )}
 
-        <div className='relative w-full rounded-2xl flex flex-col justify-between overflow-hidden'>
+        <div className="relative w-full rounded-2xl flex flex-col justify-between overflow-hidden">
           <div
             className={`absolute w-full h-full top-0 left-0 rounded-2xl  ${
               dark === 'white-text' ? 'bg-black' : 'bg-white'
@@ -72,9 +123,9 @@ const EditorialIssueCard = React.forwardRef(
                 <Image
                   src={imageThumbnail}
                   alt={'Locavore'}
-                  layout='fill'
-                  objectFit='cover'
-                  objectPosition='center'
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
                   placeholder={`${imageThumbnail ? 'blur' : 'empty'}`}
                   blurDataURL={blurDataURL}
                 />
@@ -83,7 +134,7 @@ const EditorialIssueCard = React.forwardRef(
               <>
                 {/* Plain BG */}
                 <div
-                  className='w-full h-full absolute top-0'
+                  className="w-full h-full absolute top-0"
                   style={{ background: bgColor }}
                 />
               </>
@@ -94,12 +145,14 @@ const EditorialIssueCard = React.forwardRef(
               dark === 'white-text' ? 'text-white ' : 'text-black'
             }
             ${
-              comingsoon ? `h-64 max-md:h-60` : `min-h-[24rem] max-sm:aspect-[4/5]`
+              comingsoon
+                ? `h-64 max-md:h-60`
+                : `min-h-[24rem] max-sm:aspect-[4/5]`
             } `}
           >
             {/* MOBILE ARTICLE DATE */}
             {useMediaQuery('(max-width: 850px)') && !comingsoon && (
-              <div className='w-full flex justify-between text-base max-sm:text-sm font-bold text-center uppercase max-md:h-24 mb-auto'>
+              <div className="w-full flex justify-between text-base max-sm:text-sm font-bold text-center uppercase max-md:h-24 mb-auto">
                 <span>
                   {checkMonth(new Date(date).getMonth())}{' '}
                   {new Date(date).getFullYear()}
@@ -109,7 +162,7 @@ const EditorialIssueCard = React.forwardRef(
             )}
 
             {useMediaQuery('(max-width: 850px)') && comingsoon && (
-              <div className='w-full text-base max-sm:text-sm font-bold text-center uppercase'>
+              <div className="w-full text-base max-sm:text-sm font-bold text-center uppercase">
                 COMING SOON
               </div>
             )}
@@ -126,7 +179,7 @@ const EditorialIssueCard = React.forwardRef(
 
             {/* COMING SOON DATE */}
             {useMediaQuery('(max-width: 850px)') && comingsoon && (
-              <div className='w-full text-base max-sm:text-sm font-bold text-center uppercase'>
+              <div className="w-full text-base max-sm:text-sm font-bold text-center uppercase">
                 {checkMonth(new Date(date).getMonth())}{' '}
                 {new Date(date).getFullYear()}
               </div>
@@ -134,10 +187,17 @@ const EditorialIssueCard = React.forwardRef(
 
             {/* DESCRIPTION */}
             {!(useMediaQuery('(max-width: 850px)') && comingsoon) && (
-              <div className='w-full mt-auto flex justify-between items-end max-md:justify-center max-md:h-24'>
-                <div className='flex flex-col max-md:hidden mr-8 grow-1'>
+              <div className="w-full mt-auto flex justify-between items-end max-md:justify-center max-md:h-24">
+                <div className="flex flex-col max-md:hidden mr-8 grow-1">
                   {/* Description */}
-                  {!comingsoon && <div className='w-full'>{descriptions}</div>}
+                  {!comingsoon && (
+                    <div className="w-full">
+                      <PortableText
+                        value={descriptions}
+                        components={serializers}
+                      />
+                    </div>
+                  )}
                   <div
                     className={`flex space-x-16 border-t w-full pt-6 mt-6 text-xs ${
                       dark === 'white-text' ? 'border-white' : 'border-black'
@@ -150,7 +210,7 @@ const EditorialIssueCard = React.forwardRef(
                     {!comingsoon && <span>{totalArticles} ARTICLES</span>}
                   </div>
                 </div>
-                <div className='max-md:w-auto shrink-0'>
+                <div className="max-md:w-auto shrink-0">
                   <div
                     className={`px-10 py-7 border rounded-[100%] max-md:px-6 max-md:py-5 max-md:mb-4 transition-all duration-300 ${
                       !comingsoon &&
@@ -173,7 +233,7 @@ const EditorialIssueCard = React.forwardRef(
           </div>
         </div>
       </FancyLink>
-    );
-  }
-);
-export default EditorialIssueCard;
+    )
+  },
+)
+export default EditorialIssueCard
