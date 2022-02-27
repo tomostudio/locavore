@@ -2,36 +2,15 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   mode: 'jit',
-  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
-    zIndex: {
-      '-1': '-1',
-      '-10': '-10',
-      0: 0,
-      1: 1,
-      10: 10,
-      20: 20,
-      30: 30,
-      40: 40,
-      50: 50,
-      25: 25,
-      50: 50,
-      75: 75,
-      100: 100,
-      auto: 'auto',
-    },
     fontFamily: {
       default: ['Favorit Pro', 'sans-serif'],
       sans: ['Whyte Inktrap', 'sans-serif'],
       serif: ['Alegreya', 'serif'],
-    },
-    // custom screens
-    screens: {
-      'max-sm': { max: '550px' },
-      'max-md': { max: '768px' },
-      'max-lg': { max: '1150px' },
-      'max-xl': { max: '1280px' },
-      ...defaultTheme.screens,
     },
     flexGrow: {
       1: 1,
@@ -40,6 +19,36 @@ module.exports = {
     extend: {
       minHeight: {
         "16rem": "16rem"
+      },
+      screens: {
+        'max-sm': { max: '600px' },
+        'max-md': { max: '850px' },
+        'max-lg': { max: '1200px' },
+        'max-xl': { max: '1400px' },
+        sm: '600px',
+        md: '850px',
+        lg: '1200px',
+        xl: '1280px',
+      },
+      zIndex: {
+        '-1': '-1',
+        '-2': '-2',
+        '-3': '-3',
+        '-4': '-4',
+        '-5': '-5',
+        '-6': '-6',
+        '-7': '-7',
+        '-8': '-8',
+        '-9': '-9',
+        1: '1',
+        2: '2',
+        3: '3',
+        4: '4',
+        5: '5',
+        6: '6',
+        7: '7',
+        8: '8',
+        9: '9',
       },
       spacing: {
         '10px': '10px',
@@ -113,18 +122,6 @@ module.exports = {
       },
       inset: {
         '-0.5': '-0.5px',
-      },
-      zIndex: {
-        min1: '-1',
-        1: '1',
-        2: '2',
-        3: '3',
-        4: '4',
-        5: '5',
-        6: '6',
-        7: '7',
-        8: '8',
-        9: '9',
       },
       borderRadius: {
         '50%': '50%',

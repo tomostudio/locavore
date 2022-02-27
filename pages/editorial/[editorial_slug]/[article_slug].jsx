@@ -17,7 +17,6 @@ import StickyButton from '@/components/modules/stickyButton'
 import Footer from '@/components/modules/footer'
 import timeConvert from '@/helpers/functional/timeConvert'
 import CarousselComponent from '@/components/modules/editorial/carousselComponent'
-import SanityBlockContent from '@sanity/block-content-to-react'
 import { PortableText } from '@portabletext/react'
 import Caption from '@/components/modules/editorial/caption'
 

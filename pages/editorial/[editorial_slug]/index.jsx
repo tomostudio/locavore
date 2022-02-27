@@ -444,25 +444,25 @@ export default function Index({ issueAPI, seoAPI }) {
                   exit="exit"
                   variants={fade}
                 >
-                  <div id="trigger1" className="w-full h-s-150 " />
-                  <div id="trigger2" className="w-full min-h-screen ">
-                    <div className="h-s-50 w-full" />
-                    <section className="w-full ">
+                  <div id='trigger1' className='w-full h-[150vh] mx-md:h-screen' />
+                  <div id='trigger2' className='w-full min-h-screen '>
+                    <div className='h-[50vh] w-full' />
+                    <section className='w-full '>
                       <Container
                         className={`max-md:px-6 pb-16 flex flex-col justify-start content-center items-center ${
                           dark === 'white-text' ? 'text-white' : 'text-black'
                         }`}
                       >
                         <span
-                          id="issueNoInside"
-                          className="content-issue font-serif font-normal italic text-5xl"
+                          id='issueNoInside'
+                          className='font-serif font-normal italic text-5xl max-md:text-3xl'
                         >
                           Issue {issue.issueNumber}
                         </span>
-                        <h1 className="title-issue font-sans font-normal text-8xl">
+                        <h1 className='title-issue font-sans font-normal text-8xl max-md:text-7xl text-center leading-none'>
                           {issue.title}
                         </h1>
-                        <span className="content-issue w-full text-center mt-5">
+                        <span className=' w-full text-center mt-5 max-md:mt-2'>
                           {checkMonth(new Date(issue.date).getMonth())}{' '}
                           {new Date(issue.date).getFullYear()}
                           <span className="mx-4 inline-block">•</span>8 ARTICLES
@@ -475,7 +475,7 @@ export default function Index({ issueAPI, seoAPI }) {
                         </div>
                         <FancyLink
                           destination={`/editorial/${issue.slug.current}/list`}
-                          className={`content-issue mt-8 py-4 px-6 text-xs tracking-widest transition-all ease-linear ${
+                          className={` mt-10 py-4 px-6 text-xs tracking-widest transition-all ease-linear ${
                             dark === 'white-text'
                               ? 'hover:bg-white border hover:text-black border-white rounded-xl'
                               : 'hover:bg-black border hover:text-white border-black rounded-xl'
@@ -519,12 +519,18 @@ export async function getStaticProps({ params }) {
   `)
   const headerAPI = await client.fetch(`
   *[_type == "header"]
-  `)
+  `);
+
+
+  const footerAPI = await client.fetch(`
+  *[_type == "footer"]
+  `);
   return {
     props: {
       issueAPI,
       seoAPI,
       headerAPI,
+      footerAPI,
     },
   }
 }

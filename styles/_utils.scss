@@ -2,8 +2,8 @@ $mobile-width: 768px;
 $tablet-width: 1150px;
 
 // Color
-$lightergrey: #F0F0F0;
-$lightgrey: #DEDCDA;
+$lightergrey: #f0f0f0;
+$lightgrey: #dedcda;
 $gray: #676767;
 $offBlack: #181818;
 
@@ -33,3 +33,10 @@ $offBlack: #181818;
   @apply flex flex-row justify-center items-center content-center;
 }
 
+.hide-scrollbar {
+  overflow: -moz-scrollbars-none;
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0 !important;
+  }
+}

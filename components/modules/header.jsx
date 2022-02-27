@@ -1,321 +1,289 @@
+import { useEffect, useState } from 'react';
 import FancyLink from '@/components/utils/fancyLink';
 import Container from '@/components/modules/container';
 import { useMediaQuery } from '@/helpers/functional/checkMedia';
 import { useAppContext } from 'context/state';
-import { useState } from 'react';
 import Image from 'next/image';
 import urlFor from '@/helpers/sanity/urlFor';
+import { transition } from '@/helpers/preset/tailwind';
+import { Youtube, Facebook, Instagram, Linkedin } from '@/helpers/preset/svg';
 
-export default function Header({ className = '', header }) {
+export default function Header({ className = '', header, footer }) {
   const appContext = useAppContext();
   const { headerStyle } = appContext.headerVar;
-  const [menu, setMenu] = useState(false);
+  // mobileMenu
+  // setMobileMenu
+  const [menu, setMenu] = useState(appContext.mobileMenu);
+  const [footerProcessed] = footer;
+
+  const [wHeight, setWHeight] = useState(800);
+
+  // simplified value of BNW
+  // true = black
+  const [bnw, setBNW] = useState(true);
+
+  useEffect(() => {
+    setMenu(appContext.mobileMenu);
+  }, [appContext.mobileMenu]);
+
+  useEffect(() => {
+    setBNW(!headerStyle.includes('white'));
+  }, [headerStyle]);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      setWHeight(window.innerHeight);
+    };
+    window.addEventListener('resize', updateHeight, false);
+
+    const checkMenu = () => {
+      const { innerWidth: width, innerHeight: height } = window;
+      if (width > 850) {
+        appContext.setMobileMenu(false);
+      }
+    };
+
+    window.addEventListener('resize', checkMenu, false);
+    return () => {
+      window.removeEventListener('resize', updateHeight, false);
+      window.removeEventListener('resize', checkMenu, false);
+    };
+  }, []);
+
+  const MobileLink = ({
+    destination,
+    className = '',
+    children,
+    bnw = true,
+  }) => (
+    <FancyLink
+      destination={destination}
+      className={`text-center w-full py-8 border-b flex justify-center text-4xl  ${
+        bnw || menu
+          ? 'border-black text-black hover:bg-black hover:text-white transition-colors'
+          : 'border-white text-white hover:bg-white hover:text-black transition-colors'
+      } ${className}`}
+    >
+      {children}
+    </FancyLink>
+  );
+
+  // Header Style Values:
+  // default, hidden, white black,
+  // blur-black, blur-white
+  // trans-black / transparent-black,   trans-white / transparent-white
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 w-full z-50  transition-all duration-150 ease-linear border-b ${className} ${
-        headerStyle.toLowerCase() === 'default'
-          ? 'border-black bg-white'
-          : headerStyle.toLowerCase() === 'hidden'
-          ? 'hidden'
-          : headerStyle.toLowerCase() === 'white'
-          ? 'border-white bg-black'
-          : headerStyle.toLowerCase() === 'black'
-          ? 'border-black bg-white '
-          : headerStyle.toLowerCase() === 'blur-black'
-          ? 'border-black bg-white bg-opacity-50 backdrop-filter backdrop-blur-sm'
-          : headerStyle.toLowerCase() === 'blur-white'
-          ? 'border-white bg-black bg-opacity-50 backdrop-filter backdrop-blur-sm'
-          : headerStyle.toLowerCase() === 'trans-black' ||
-            headerStyle.toLowerCase() === 'transparent-black'
-          ? 'border-black bg-opacity-0'
-          : headerStyle.toLowerCase() === 'trans-white' ||
-            headerStyle.toLowerCase() === 'transparent-white'
-          ? 'border-white bg-opacity-0'
-          : 'border-black bg-white'
-      }`}
+    <nav
+      className='fixed top-0 left-0 right-0 w-full z-50 max-h-screen overflow-auto hide-scrollbar'
+      style={{ height: menu ? `${wHeight}px` : 'auto' }}
     >
-      <Container
-        className={`h-header relative pointer-events-auto flex flex-wrap max-md:flex-nowrap max-md:pb-5 max-md:items-center max-md:pt-10 `}
+      <header
+        className={`sticky top-0 left-0 right-0 w-full z-2 border-b ${className}
+        ${
+          headerStyle.toLowerCase().includes('blur')
+            ? 'bg-opacity-50 backdrop-filter backdrop-blur-sm'
+            : headerStyle.toLowerCase().includes('trans') ||
+              headerStyle.toLowerCase().includes('transparent')
+            ? 'bg-opacity-0'
+            : 'bg-opacity-100'
+        }
+        ${bnw || menu ? 'border-black bg-white' : 'border-white bg-black'}
+        ${menu ? `!bg-opacity-100 ` : ''}
+        ${headerStyle.toLowerCase().includes('hidden') ? '!hidden' : ''}`}
       >
-        {headerStyle.toLowerCase() === 'default' ? (
-          <FancyLink
-            onClick={() => {
-              setMenu(!menu);
-            }}
-            className='hidden max-md:block'
-          >
-            <svg width='25' height='9' viewBox='0 0 25 9' fill='none'>
-              <line y1='1' x2='25' y2='1' stroke='black' />
-              <line y1='8' x2='25' y2='8' stroke='black' strokeWidth='2' />
-            </svg>
-          </FancyLink>
-        ) : headerStyle.toLowerCase() === 'white' ? (
-          <FancyLink
-            onClick={() => {
-              setMenu(!menu);
-            }}
-            className='hidden max-md:block'
-          >
-            <svg width='25' height='9' viewBox='0 0 25 9' fill='none'>
-              <line y1='1' x2='25' y2='1' stroke='white' />
-              <line y1='8' x2='25' y2='8' stroke='white' strokeWidth='2' />
-            </svg>
-          </FancyLink>
-        ) : (
-          ''
-        )}
-        <FancyLink
-          destination='/'
-          a11yText='Navigate to the home page'
-          className='max-md:ml-3 setflex-center max-md:p-0'
+        <Container
+          className={`h-header relative pointer-events-auto flex flex-wrap max-md:flex-nowrap max-md:items-center `}
         >
-          <Image
-            src={
-              headerStyle.toLowerCase() === 'default' ||
-              headerStyle.toLowerCase().includes('black')
-                ? urlFor(header[0].logo.black).url()
-                : headerStyle.toLowerCase().includes('white')
-                ? urlFor(header[0].logo.white).url()
-                : urlFor(header[0].logo.black).url()
+          <FancyLink
+            onClick={() => {
+              //Toggle Menu
+              appContext.setMobileMenu(!appContext.mobileMenu);
+            }}
+            className={`mobile-menu-icon hidden max-md:block w-[25px] h-[25px] max-md:mr-4 ${
+              bnw || menu ? 'black' : 'white'
             }
-            layout='intrinsic'
-            objectFit='contain'
-            objectPosition={'left center'}
-            width={200}
-            height={25}
-          />
-        </FancyLink>
-        <nav
-          className={`ml-auto setflex-center-row max-md:justify-end space-x-6 w-full text-sm md:text-sm md:w-auto transition-colors duration-300 ease-linear ${
-            headerStyle.toLowerCase() === 'default' ||
-            headerStyle.toLowerCase().includes('black')
-              ? 'text-black'
-              : headerStyle.toLowerCase().includes('white')
-              ? 'text-white'
-              : ''
-          }`}
-        >
-          {useMediaQuery('(min-width: 768px)') && (
-            <>
-              <FancyLink
-                destination='/editorial'
-                a11yText='Navigate to the editorial page'
-                className='hover:opacity-60 transition-opacity ease-linear'
-              >
-                Editorial
-              </FancyLink>
-              {header &&
-                header[0].headerLink &&
-                header[0].headerLink.map((item, index) => (
-                  <FancyLink
-                    key={index}
-                    destination={item.link}
-                    a11yText={item.title}
-                    className='hover:opacity-60 transition-opacity ease-linear'
-                  >
-                    {item.title}
-                  </FancyLink>
-                ))}
-              {/* <FancyLink
-                destination="/editorial/uc"
-                a11yText="Navigate to the about page"
-                className="hover:opacity-60 transition-opacity ease-linear"
-              >
-                Under Construction
-              </FancyLink> */}
-              <FancyLink
-                destination='/family'
-                a11yText='Navigate to the about page'
-                className='hover:opacity-60 transition-opacity ease-linear'
-              >
-                Family
-              </FancyLink>
-            </>
-          )}
-          <FancyLink
-            destination={header[0].booking}
-            blank={true}
-            a11yText='Navigate to the about page'
-            className='font-bold hover:opacity-60 transition-opacity ease-linear'
+          ${menu ? 'open black' : ''} ${transition.fade}`}
           >
-            BOOKING
+            <div />
+            <div />
           </FancyLink>
-        </nav>
-      </Container>
-      {useMediaQuery('(max-width: 768px)') && (
+          {/* Locavore Logo */}
+          <FancyLink
+            destination='/'
+            a11yText='Navigate to the home page'
+            className={` setflex-center max-md:p-0 ${transition.fade}`}
+          >
+            {bnw || menu ? (
+              <Image
+                src={urlFor(header[0].logo.black).url()}
+                layout='intrinsic'
+                objectFit='contain'
+                objectPosition={'left center'}
+                width={200}
+                height={25}
+              />
+            ) : (
+              <Image
+                src={urlFor(header[0].logo.white).url()}
+                layout='intrinsic'
+                objectFit='contain'
+                objectPosition={'left center'}
+                width={200}
+                height={25}
+              />
+            )}
+          </FancyLink>
+          {/* Right Header Content */}
+          <div
+            className={`ml-auto setflex-center-row max-md:justify-end space-x-6 w-full text-sm md:text-sm md:w-auto ${
+              bnw || menu ? 'text-black' : 'text-white'
+            }`}
+          >
+            {useMediaQuery('(min-width: 850px)') && (
+              <>
+                <FancyLink
+                  destination='/editorial'
+                  a11yText='Navigate to the editorial page'
+                  className={`leading-none ${transition.fade}`}
+                >
+                  Editorial
+                </FancyLink>
+                {/* Custom Header Insert */}
+                {header &&
+                  header[0].headerLink &&
+                  header[0].headerLink.map((item, index) => (
+                    <FancyLink
+                      key={index}
+                      destination={item.link}
+                      a11yText={item.title}
+                      className={`leading-none ${transition.fade}`}
+                    >
+                      {item.title}
+                    </FancyLink>
+                  ))}
+                <FancyLink
+                  destination='/family'
+                  a11yText='Navigate to the about page'
+                  className={`leading-none ${transition.fade}`}
+                >
+                  Family
+                </FancyLink>
+              </>
+            )}
+            <FancyLink
+              destination={header[0].booking}
+              blank={true}
+              a11yText='Navigate to the about page'
+              className={`font-bold leading-none ${transition.fade}`}
+            >
+              BOOKING
+            </FancyLink>
+          </div>
+        </Container>
+      </header>
+      {/* MOBILE MENU */}
+      {useMediaQuery('(max-width: 850px)') && (
         <div
-          className={`z-0 w-full h-screen ${
+          className={`z-1 w-full flex flex-col justify-between ${
             menu
               ? 'relative opacity-1 pointer-events-auto'
-              : 'absolute opacity-0 pointer-events-none'
-          } ${
-            headerStyle.toLowerCase() === 'default'
-              ? 'bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm'
-              : headerStyle.toLowerCase() === 'white'
-              ? 'bg-black bg-opacity-75 backdrop-filter backdrop-blur-sm'
-              : ''
-          }`}
+              : 'opacity-0 pointer-events-none hidden'
+          } ${bnw || menu ? 'bg-white ' : 'bg-black'} `}
         >
+          {/* <HeaderGap className='grow-0 shrink-0' /> */}
+          <MobileLink bnw={bnw} destination='/editorial'>
+            Editorial
+          </MobileLink>
+          {header &&
+            header[0].headerLink &&
+            header[0].headerLink.map((item, index) => (
+              <MobileLink key={index} bnw={bnw} destination={item.link}>
+                {item.title}
+              </MobileLink>
+            ))}
+          <MobileLink bnw={bnw} destination='/family'>
+            Family
+          </MobileLink>
+          <MobileLink bnw={bnw} destination='/booking'>
+            Booking
+          </MobileLink>
+          {/* Social Media */}
           <div
-            className={`w-full py-8 border-b flex justify-center text-4xl ${
-              headerStyle.toLowerCase() === 'default'
-                ? 'border-black'
-                : headerStyle.toLowerCase() === 'white'
-                ? 'border-white text-white'
-                : ''
+            className={`w-full py-8 border-b flex justify-center space-x-4 ${
+              bnw || menu ? 'border-black' : 'border-white'
             }`}
           >
-            <FancyLink destination='/editorial' className='text-center'>
-              Editorial
-            </FancyLink>
-          </div>
-          <div
-            className={`w-full py-8 border-b flex justify-center text-4xl ${
-              headerStyle.toLowerCase() === 'default'
-                ? 'border-black'
-                : headerStyle.toLowerCase() === 'white'
-                ? 'border-white text-white'
-                : ''
-            }`}
-          >
-            <FancyLink
-              destination='/under_construction'
-              className='text-center'
-            >
-              Under Construction
-            </FancyLink>
-          </div>
-          <div
-            className={`w-full py-8 border-b flex justify-center text-4xl ${
-              headerStyle.toLowerCase() === 'default'
-                ? 'border-black'
-                : headerStyle.toLowerCase() === 'white'
-                ? 'border-white text-white'
-                : ''
-            }`}
-          >
-            <FancyLink destination='/family' className='text-center'>
-              Family
-            </FancyLink>
-          </div>
-          <div
-            className={`w-full py-8 border-b flex justify-center text-4xl ${
-              headerStyle.toLowerCase() === 'default'
-                ? 'border-black'
-                : headerStyle.toLowerCase() === 'white'
-                ? 'border-white text-white'
-                : ''
-            }`}
-          >
-            <FancyLink destination='/booking' className='text-center'>
-              Booking
-            </FancyLink>
-          </div>
-          <div
-            className={`w-full py-8 border-b flex justify-center space-x-12 ${
-              headerStyle.toLowerCase() === 'default'
-                ? 'border-black'
-                : headerStyle.toLowerCase() === 'white'
-                ? 'border-white'
-                : ''
-            }`}
-          >
-            {headerStyle.toLowerCase() === 'default' ? (
-              <>
-                <FancyLink className='relative w-16px h-16px'>
-                  <Image
-                    src={`/instagram.png`}
-                    alt={'Locavore'}
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='center'
+            {footerProcessed.footerLink &&
+              footerProcessed.footerLink.instagram && (
+                <FancyLink
+                  destination={footerProcessed.footerLink.instagram.link}
+                  blank={true}
+                  className={`relative w-10 h-10 setflex-center ${transition.fade}`}
+                >
+                  <Instagram
+                    fill={bnw || menu ? '#000' : '#FFF'}
+                    className='w-4 h-4'
                   />
                 </FancyLink>
-                <FancyLink className='relative w-16px h-16px'>
-                  <Image
-                    src={`/facebook.png`}
-                    alt={'Locavore'}
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='center'
-                  />
-                </FancyLink>
-                <FancyLink className='relative w-16px h-16px'>
-                  <Image
-                    src={`/youtube.png`}
-                    alt={'Locavore'}
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='center'
-                  />
-                </FancyLink>
-                <FancyLink className='relative w-16px h-16px'>
-                  <Image
-                    src={`/linkedin.png`}
-                    alt={'Locavore'}
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='center'
-                  />
-                </FancyLink>
-              </>
-            ) : headerStyle.toLowerCase() === 'white' ? (
-              <>
-                <FancyLink className='relative w-16px h-16px'>
-                  <Image
-                    src={`/instagram-white.png`}
-                    alt={'Locavore'}
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='center'
-                  />
-                </FancyLink>
-                <FancyLink className='relative w-16px h-16px'>
-                  <Image
-                    src={`/facebook-white.png`}
-                    alt={'Locavore'}
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='center'
-                  />
-                </FancyLink>
-                <FancyLink className='relative w-16px h-16px'>
-                  <Image
-                    src={`/youtube-white.png`}
-                    alt={'Locavore'}
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='center'
-                  />
-                </FancyLink>
-                <FancyLink className='relative w-16px h-16px'>
-                  <Image
-                    src={`/linkedin-white.png`}
-                    alt={'Locavore'}
-                    layout='fill'
-                    objectFit='contain'
-                    objectPosition='center'
-                  />
-                </FancyLink>
-              </>
-            ) : (
-              ''
+              )}
+            {footerProcessed.footerLink && footerProcessed.footerLink.facebook && (
+              <FancyLink
+                destination={footerProcessed.footerLink.facebook.link}
+                blank={true}
+                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
+              >
+                <Facebook
+                  fill={bnw || menu ? '#000' : '#FFF'}
+                  className='w-4 h-4'
+                />
+              </FancyLink>
+            )}
+            {footerProcessed.footerLink && footerProcessed.footerLink.youtube && (
+              <FancyLink
+                destination={footerProcessed.footerLink.youtube.link}
+                blank={true}
+                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
+              >
+                <Youtube
+                  fill={bnw || menu ? '#000' : '#FFF'}
+                  className='w-4 h-4'
+                />
+              </FancyLink>
+            )}
+            {footerProcessed.footerLink && footerProcessed.footerLink.linkedin && (
+              <FancyLink
+                destination={footerProcessed.footerLink.linkedin.link}
+                blank={true}
+                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
+              >
+                <Linkedin
+                  fill={bnw || menu ? '#000' : '#FFF'}
+                  className='w-4 h-4'
+                />
+              </FancyLink>
             )}
           </div>
-          <div
-            className={`w-full pt-7 flex justify-center ${
-              headerStyle.toLowerCase() === 'default'
-                ? 'text-black'
-                : headerStyle.toLowerCase() === 'white'
-                ? 'text-white'
-                : ''
+          {/* Ending */}
+          <FancyLink
+            className={`w-full h-16 flex justify-center items-center mt-auto sticky bottom-0 transition-colors  ${
+              bnw || menu
+                ? 'bg-white text-black hover:bg-black hover:text-white'
+                : 'bg-black text-white hover:bg-white hover:text-black'
             }`}
+            onClick={() => appContext.setMobileMenu(false)}
           >
-            <FancyLink onClick={() => setMenu(false)}>Close</FancyLink>
-          </div>
+            <div
+              className={`w-full h-[1px] absolute top-[-1px]  transition-colors ${
+                bnw || menu
+                  ? 'bg-black hover:bg-black hover:text-white'
+                  : 'bg-white hover:bg-white hover:text-black'
+              }`}
+            />
+            Close
+          </FancyLink>
         </div>
       )}
-    </header>
+    </nav>
   );
 }

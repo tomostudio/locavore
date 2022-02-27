@@ -1,30 +1,30 @@
-import { useEffect } from 'react'
-import '@/styles/main.scss'
-import { AnimatePresence } from 'framer-motion'
-import { useRouter } from 'next/router'
-import { DefaultSeo } from 'next-seo'
-import { AppWrapper } from '../context/state.jsx'
-import Link from '@/components/utils/shortcutLinks'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import Header from '@/components/modules/header.jsx'
-import Script from 'next/script'
+import { useEffect } from 'react';
+import '@/styles/main.scss';
+import { AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
+import { DefaultSeo } from 'next-seo';
+import { AppWrapper } from '../context/state.jsx';
+import Link from '@/components/utils/shortcutLinks';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import Header from '@/components/modules/header.jsx';
+import Script from 'next/script';
 import Head from 'next/head';
 
 export default function App({ Component, pageProps }) {
-  const router = useRouter()
+  const router = useRouter();
   useEffect(() => {
-    history.scrollRestoration = 'manual'
-  }, [])
+    history.scrollRestoration = 'manual';
+  }, []);
   return (
     <>
       {pageProps.seoAPI && pageProps.seoAPI[0].googleID && (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${pageProps.seoAPI[0].googleID}`}
-            strategy="afterInteractive"
+            strategy='afterInteractive'
           />
-          <Script id="google-analytics" strategy="afterInteractive">
+          <Script id='google-analytics' strategy='afterInteractive'>
             {`
     window.dataLayer = window.dataLayer || [];
     function gtag(){window.dataLayer.push(arguments);}
@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
       )}
       {pageProps.seoAPI && pageProps.seoAPI[0].googleID && (
         <>
-          <Script strategy="afterInteractive">
+          <Script strategy='afterInteractive'>
             {`
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -50,8 +50,8 @@ export default function App({ Component, pageProps }) {
           </Script>
           <noscript>
             <img
-              height="1"
-              width="1"
+              height='1'
+              width='1'
               style={{
                 display: 'none',
               }}
@@ -64,9 +64,8 @@ export default function App({ Component, pageProps }) {
         // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
         noindex={true}
         // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
-        // titleTemplate='%s | Locavore'
-        defaultTitle="Locavore"
-        description="Description"
+        defaultTitle='Locavore'
+        description='Description'
         openGraph={{
           type: 'website',
           locale: 'en_ID',
@@ -90,52 +89,39 @@ export default function App({ Component, pageProps }) {
       <Head>
         {/* FAVICON  */}
         <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
+          rel='icon'
+          type='image/png'
+          sizes='32x32'
+          href='/favicon-32x32.png'
         />
         <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
+          rel='icon'
+          type='image/png'
+          sizes='16x16'
+          href='/favicon-16x16.png'
         />
         <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
+          rel='apple-touch-icon'
+          sizes='180x180'
+          href='/apple-touch-icon.png'
         />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="msapplication-TileColor" content="#000000" />
+        <link rel='manifest' href='/site.webmanifest' />
+        <link rel='mask-icon' href='/safari-pinned-tab.svg' color='#000000' />
+        <meta name='theme-color' content='#000000' />
+        <meta name='msapplication-TileColor' content='#000000' />
         <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1,viewport-fit=cover"
+          name='viewport'
+          content='width=device-width, initial-scale=1,viewport-fit=cover'
         />
         {/* FAVICON  */}
       </Head>
 
       <AppWrapper>
-        {/* <Header
-          className={`${
-            router.asPath === '/' || router.asPath === '/under_construction'
-              ? `text-white`
-              : `border-black bg-white`
-          }`}
-          logo={`${
-            router.asPath === '/' || router.asPath === '/under_construction'
-              ? `/locavore-white.png`
-              : `/locavore-black.png`
-          }`}
-        /> */}
-        <Header header={pageProps.headerAPI} />
+        <Header header={pageProps.headerAPI} footer={pageProps.footerAPI} />
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.asPath} />
         </AnimatePresence>
-        {/* <Link /> */}
       </AppWrapper>
     </>
-  )
+  );
 }
