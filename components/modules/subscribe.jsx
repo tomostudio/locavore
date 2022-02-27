@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { decode } from 'html-entities';
+import { transition } from '@/helpers/preset/tailwind';
 
 import Arrow from '../utils/arrow';
 
-const SubscribeForm = ({ status, message, onValidated }) => {
+const SubscribeForm = ({ status, message, onValidated, className = '', ...props }) => {
   const [disable, setDisable] = useState(false);
   const [redError, setRedError] = useState(false);
   const [email, setEmail] = useState(null);
@@ -72,7 +72,7 @@ const SubscribeForm = ({ status, message, onValidated }) => {
   }, [status]);
 
   return (
-    <div className='flex w-full mt-10 max-w-sm flex-col justify-between'>
+    <div className={`flex w-full max-w-sm max-md:max-w-lg flex-col justify-between ${className}`} {...props}>
       <label className='text-xl font-normal'>
         Sign up for
         <span className='font-serif italic'> insights </span>
@@ -93,7 +93,7 @@ const SubscribeForm = ({ status, message, onValidated }) => {
           onKeyUp={(event) => handleInputKeyEvent(event)}
           ref={inputEl}
         />
-        <button onClick={handleFormSubmit} className='h-full w-10'>
+        <button onClick={handleFormSubmit} className={`h-full w-10 ${transition.fade}`}>
           <Arrow
             position='right'
             className='absolute right-0 top-2'

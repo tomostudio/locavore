@@ -46,8 +46,8 @@
 }
 
 // Issue
-$card-width: 360px;
-$card-height: 480px;
+$card-width: 335px;
+$card-height: $card-width / 18 * 24;
 .article-card {
   // max-width: $card-width;
   width: $card-width;
@@ -58,9 +58,48 @@ $card-height: 480px;
 $issuecard-width: $card-width + 40px;
 $issuecardgap: 40px;
 #search-results {
-  @apply grid grid-flow-row grid-cols-3 grid-rows-none max-md:grid-cols-1;
-  grid-gap: $issuecardgap;
-  max-width: $issuecard-width * 3 + $issuecardgap * 2;
+  //Grid Setting
+  @apply flex flex-wrap justify-center;
+  // @apply grid grid-cols-3 grid-rows-none gap-8;
+  & > * {
+    @apply my-4;
+  }
+  @media (min-width: 1275px) {
+    & > * {
+      &:nth-child(3n) {
+        @apply ml-4 mr-auto;
+      }
+      &:nth-child(3n - 2) {
+        @apply ml-4 mr-4;
+      }
+      &:nth-child(3n - 1) {
+        @apply mr-4 ml-auto;
+      }
+      &:last-child:nth-child(3n - 2) {
+        @apply mr-auto ml-auto;
+      }
+    }
+  }
+  @media (min-width: 880px) and (max-width: 1275px) {
+    // @apply grid-cols-2;
+    & > * {
+      &:nth-child(2n) {
+        @apply ml-4 mr-auto;
+      }
+      &:nth-child(2n - 1) {
+        @apply mr-4 ml-auto;
+      }
+      &:last-child:nth-child(2n - 1) {
+        @apply mr-auto ml-auto;
+      }
+    }
+  }
+  @media (max-width: 879px) {
+  @apply flex-col;
+    & > * {
+      @apply mx-auto ml-auto mr-auto;
+    }
+  }
 }
 
 // ISSUE LIST

@@ -75,7 +75,7 @@ export default function Header({ className = '', header, footer }) {
 
   return (
     <nav
-      className='fixed top-0 left-0 right-0 w-full z-50 max-h-screen overflow-auto hide-scrollbar'
+      className={`fixed top-0 left-0 right-0 w-full z-50 overflow-auto hide-scrollbar flex flex-col ${menu ? 'h-screen': ''}`}
       style={{ height: menu ? `${wHeight}px` : 'auto' }}
     >
       <header
@@ -136,7 +136,7 @@ export default function Header({ className = '', header, footer }) {
           </FancyLink>
           {/* Right Header Content */}
           <div
-            className={`ml-auto setflex-center-row max-md:justify-end space-x-6 w-full text-sm md:text-sm md:w-auto ${
+            className={`ml-auto setflex-center-row max-md:justify-end space-x-6 w-full pointer-events-none text-sm md:text-sm md:w-auto ${
               bnw || menu ? 'text-black' : 'text-white'
             }`}
           >
@@ -185,7 +185,7 @@ export default function Header({ className = '', header, footer }) {
       {/* MOBILE MENU */}
       {useMediaQuery('(max-width: 850px)') && (
         <div
-          className={`z-1 w-full flex flex-col justify-between ${
+          className={`z-1 w-full flex flex-col justify-between grow-1 ${
             menu
               ? 'relative opacity-1 pointer-events-auto'
               : 'opacity-0 pointer-events-none hidden'
@@ -266,7 +266,7 @@ export default function Header({ className = '', header, footer }) {
           </div>
           {/* Ending */}
           <FancyLink
-            className={`w-full h-16 flex justify-center items-center mt-auto sticky bottom-0 transition-colors  ${
+            className={`w-full h-16 flex justify-center items-center mt-auto transition-colors relative ${
               bnw || menu
                 ? 'bg-white text-black hover:bg-black hover:text-white'
                 : 'bg-black text-white hover:bg-white hover:text-black'

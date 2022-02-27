@@ -24,11 +24,11 @@ const Footer = ({ className, footer }) => {
 
   return (
     <footer
-      className={`w-full h-auto max-md:h-full flex bg-offBlack text-white px-0 py-14 ${className}`}
+      className={`w-full h-auto max-md:h-full flex bg-offBlack text-white px-0 py-14 max-md:py-10 ${className}`}
     >
       <Container className='flex max-md:flex-col max-md:px-6'>
-        <div className='h-full max-md:space-y-10 w-full max-md:w-full flex flex-col'>
-          <div className='w-full '>
+        <div className='h-full w-full max-md:w-full flex flex-col'>
+          <div className='w-full mb-8'>
             <span className='text-sm'>
               UBUD{' '}
               {time.toLocaleTimeString([], {
@@ -49,7 +49,7 @@ const Footer = ({ className, footer }) => {
             )}
           />
         </div>
-        <div className='w-full h-full max-md:mt-10 max-md:space-y-10 flex flex-col justify-between relative -right-3 max-md:right-0 max-md:-left-3'>
+        <div className='w-full h-full max-md:mt-10 flex flex-col justify-between relative -right-3 max-md:right-0 max-md:-left-3'>
           <div className='w-auto h-full space-x-4 flex justify-end max-md:justify-start'>
             {footer.footerLink && footer.footerLink.instagram && (
               <FancyLink
@@ -88,7 +88,7 @@ const Footer = ({ className, footer }) => {
               </FancyLink>
             )}
           </div>
-          <div className='w-full h-full flex justify-end max-md:justify-start items-end max-md:items-start pr-3 max-md:pr-0 max-md:pl-3'>
+          <div className='w-full h-full max-md:mt-8 flex justify-end max-md:justify-start items-end max-md:items-start pr-3 max-md:pr-0 max-md:pl-3'>
             <span className='text-sm'>{footer.creditText}</span>
           </div>
         </div>

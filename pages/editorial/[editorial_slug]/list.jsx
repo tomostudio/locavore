@@ -22,7 +22,6 @@ import checkMonth from '@/helpers/functional/checkMonth';
 import urlFor from '@/helpers/sanity/urlFor';
 import timeConvert from '@/helpers/functional/timeConvert';
 
-
 export default function Issue({ issueAPI, seoAPI, footerAPI }) {
   const router = useRouter();
   const [issue] = issueAPI;
@@ -109,6 +108,17 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
     };
   }, []);
 
+  //check title word count
+  const maxLetter = 10;
+  const [titleS, setSize] = useState(false);
+  useEffect(() => {
+    const splitTitle = issue.title.split(' ');
+
+    splitTitle.forEach((word) => {
+      setSize(word.length > maxLetter);
+    });
+  }, []);
+
   return (
     <Layout>
       <SEO
@@ -179,7 +189,11 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
                 {checkMonth(new Date(issue.date).getMonth())}{' '}
                 {new Date(issue.date).getFullYear()}
               </span>
-              <h1 className=' font-sans font-normal max-md:break-all max-md:text-center'>
+              <h1
+                className={`font-sans font-normal text-center ${
+                  titleS ? 'text-5xl sm:text-7xl md:text-8xl' : ''
+                }`}
+              >
                 {issue.title}
               </h1>
             </div>
@@ -224,7 +238,11 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
                         }
                         border={data.category.border}
                         src={urlFor(data.thumbnail).width(750).url()}
-                        blursrc={urlFor(data.thumbnail).blur(2).format('webp').width(350).url()}
+                        blursrc={urlFor(data.thumbnail)
+                          .blur(2)
+                          .format('webp')
+                          .width(350)
+                          .url()}
                         alt={data.thumbnail.name}
                         className={`group`}
                       />
