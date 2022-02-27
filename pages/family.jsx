@@ -219,7 +219,6 @@ export default function Family({
     resetData();
     window.addEventListener('resize', resetData);
     window.scroll(0, 0);
-    console.log(familyListAPI);
     return () => {
       window.removeEventListener('resize', resetData);
     };

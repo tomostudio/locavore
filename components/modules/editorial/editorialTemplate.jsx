@@ -14,11 +14,14 @@ import StickyButton from '@/components/modules/stickyButton'
 import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard'
 
 // Helpers
-import { toPlainText } from '@/helpers/functional/toPlainText'
 import urlFor from '@/helpers/sanity/urlFor'
 
-export default function EditorialTemplate({ issueAPI, seo, editorial, footer }) {
-
+export default function EditorialTemplate({
+  issueAPI,
+  seo,
+  editorial,
+  footer,
+}) {
   const dataSoon = issueAPI
     .filter((data) => data.comingSoon === true)
     .sort((a, b) => {
@@ -60,7 +63,6 @@ export default function EditorialTemplate({ issueAPI, seo, editorial, footer }) 
 
   return (
     <Layout>
-
       <LazyMotion features={domAnimation}>
         <m.main initial="initial" animate="enter" exit="exit" variants={fade}>
           {/* Header Gap */}
@@ -97,7 +99,17 @@ export default function EditorialTemplate({ issueAPI, seo, editorial, footer }) 
                       className="mb-10"
                       imageThumbnail={
                         checkClosest().thumbnail &&
-                        urlFor(checkClosest().thumbnail.placeholder).url()
+                        urlFor(checkClosest().thumbnail.placeholder)
+                          .width(1500)
+                          .url()
+                      }
+                      blurDataURL={
+                        checkClosest().thumbnail &&
+                        urlFor(checkClosest().thumbnail.placeholder)
+                          .blur(2)
+                          .format('webp')
+                          .width(500)
+                          .url()
                       }
                     />
                   )}
@@ -134,7 +146,15 @@ export default function EditorialTemplate({ issueAPI, seo, editorial, footer }) 
                           data.thumbnail &&
                           urlFor(data.thumbnail.placeholder).url()
                         }
-                        descriptions={<p>{toPlainText(data.description)}</p>}
+                        descriptions={<p>{data.coverText}</p>}
+                        blurDataURL={
+                          data.thumbnail &&
+                          urlFor(data.thumbnail.placeholder)
+                            .blur(2)
+                            .format('webp')
+                            .width(500)
+                            .url()
+                        }
                       />
                     )
                 })}

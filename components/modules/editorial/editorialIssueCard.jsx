@@ -17,6 +17,7 @@ export default function EditorialIssueCard({
   imageThumbnail = '',
   comingsoon = false,
   styleTitle,
+  blurDataURL = '',
 }) {
   return (
     <FancyLink
@@ -52,6 +53,8 @@ export default function EditorialIssueCard({
                 layout="fill"
                 objectFit="cover"
                 objectPosition="center"
+                placeholder={`${imageThumbnail ? 'blur' : 'empty'}`}
+                blurDataURL={blurDataURL}
               />
             </>
           ) : (
@@ -78,7 +81,10 @@ export default function EditorialIssueCard({
               {!comingsoon && <span>{totalArticles} ARTICLES</span>}
             </div>
           )}
-          <h1 className="font-sans font-normal break-all text-left" style={styleTitle}>
+          <h1
+            className="font-sans font-normal break-all text-left"
+            style={styleTitle}
+          >
             {title}
           </h1>
           <div className="w-full flex justify-between items-end max-md:justify-center">

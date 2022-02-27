@@ -5,10 +5,61 @@ import PillButton from '../pillButton'
 import Image from 'next/image'
 import { useAppContext } from 'context/state'
 import checkMonth from '@/helpers/functional/checkMonth'
-import SanityBlockContent from '@sanity/block-content-to-react'
+import { PortableText } from '@portabletext/react'
 
 export default function OpeningArticle({ general, article, baseUrl }) {
   const appContext = useAppContext()
+
+  const serializers = {
+    // hardBreak: (props) => <br />,
+    block: {
+      normal: ({children}) => children[0] === '' ? <br /> : <p>{children}</p>,
+      h1: ({ children }) => <h1>{children}</h1>,
+      h2: ({ children }) => <h2>{children}</h2>,
+      h3: ({ children }) => <h3>{children}</h3>,
+      h4: ({ children }) => <h4>{children}</h4>,
+      h5: ({ children }) => <h5>{children}</h5>,
+    },
+    list: {
+      number: ({ children }) => <ol className="list-decimal">{children}</ol>,
+    },
+    types: {
+      code: (props) => (
+        <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
+      ),
+    },
+    marks: {
+      changeColor: (props) => (
+        <span style={{ color: props.value.color.hex }}>{props.children}</span>
+      ),
+      center: (props) => (
+        <span className="block text-center">{props.children}</span>
+      ),
+      left: (props) => (
+        <span className="block text-left">{props.children}</span>
+      ),
+      right: (props) => (
+        <span className="block text-right">{props.children}</span>
+      ),
+      backgroundColor: (props) => (
+        <span style={{ backgroundColor: props.value.color.hex }}>
+          {props.children}
+        </span>
+      ),
+      largerSize: (props) => (
+        <span style={{ fontSize: '22px' }}>{props.children}</span>
+      ),
+      sub: (props) => <sub>{props.children}</sub>,
+      sup: (props) => <sup>{props.children}</sup>,
+      fontSize: (props) => (
+        <span style={{ fontSize: props.value.size }}>{props.children}</span>
+      ),
+      font: (props) => (
+        <span className={props.value.type}>{props.children}</span>
+      ),
+    },
+  }
+
   return (
     <section className="pt-10 w-full h-full">
       <Container className="space-y-10 max-md:px-6">
@@ -77,9 +128,12 @@ export default function OpeningArticle({ general, article, baseUrl }) {
         </div>
         <div className="w-full h-full">
           {/* Description */}
-          <p className="max-w-800px">
-            <SanityBlockContent blocks={article.description} />
-          </p>
+          <div className="max-w-800px flex flex-col">
+            <PortableText
+              value={article.description}
+              components={serializers}
+            />
+          </div>
         </div>
       </Container>
     </section>

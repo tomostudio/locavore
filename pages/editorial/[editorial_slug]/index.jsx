@@ -1,53 +1,53 @@
-import { useEffect, useRef } from 'react';
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
-import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { fade } from '@/helpers/preset/transitions';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
+import { useEffect, useRef } from 'react'
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+import { LazyMotion, domAnimation, m } from 'framer-motion'
+import { fade } from '@/helpers/preset/transitions'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 // Layout
-import Layout from '@/components/modules/layout';
-import Container from '@/components/modules/container';
+import Layout from '@/components/modules/layout'
+import Container from '@/components/modules/container'
 
 // Components
-import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx';
-import FancyLink from '@/components/utils/fancyLink';
-import SEO from '@/components/utils/seo';
+import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
+import FancyLink from '@/components/utils/fancyLink'
+import SEO from '@/components/utils/seo'
 
 // Helpers
-import PushScrollGlobal from '@/helpers/globalscroll';
-import { useAppContext } from 'context/state';
-import client from '@/helpers/sanity/client';
-import urlFor from '@/helpers/sanity/urlFor';
-import { toPlainText } from '@/helpers/functional/toPlainText';
-import checkMonth from '@/helpers/functional/checkMonth';
+import PushScrollGlobal from '@/helpers/globalscroll'
+import { useAppContext } from 'context/state'
+import client from '@/helpers/sanity/client'
+import urlFor from '@/helpers/sanity/urlFor'
+import checkMonth from '@/helpers/functional/checkMonth'
+import { PortableText } from '@portabletext/react'
 
 export default function Index({ issueAPI, seoAPI }) {
-  const router = useRouter();
-  const [seo] = seoAPI;
-  const [issue] = issueAPI;
-  const dark = issue.dark;
-  const containerRef = useRef(null);
-  const appContext = useAppContext();
+  const router = useRouter()
+  const [seo] = seoAPI
+  const [issue] = issueAPI
+  const dark = issue.dark
+  const containerRef = useRef(null)
+  const appContext = useAppContext()
 
   useEffect(() => {
     appContext.setHeader({
       headerStyle: issue.headerOption ? issue.headerOption : 'default',
-    });
+    })
     // white, black, blur-black, blur-white, trans-white, trans-black
 
-    window.scroll(0, 0);
+    window.scroll(0, 0)
 
     return () => {
-      appContext.setHeader({ headerStyle: 'default' });
-    };
-  }, []);
+      appContext.setHeader({ headerStyle: 'default' })
+    }
+  }, [])
 
   const animationObj = [
     () => {
       // Issue No Animation
-      const id = 'issueNo';
-      const elem = '#issueNo';
+      const id = 'issueNo'
+      const elem = '#issueNo'
       const settings = {
         scrollTrigger: {
           id: id,
@@ -57,7 +57,7 @@ export default function Index({ issueAPI, seoAPI }) {
           start: 'top 0%',
           end: 'bottom -0%',
         },
-      };
+      }
 
       // Input Animation
       const animation = [
@@ -71,14 +71,14 @@ export default function Index({ issueAPI, seoAPI }) {
             },
           ],
         },
-      ];
+      ]
 
-      return { id, elem, settings, animation };
+      return { id, elem, settings, animation }
     },
     () => {
       // Start Background
-      const id = 'First BG';
-      const elem = '#firstBG';
+      const id = 'First BG'
+      const elem = '#firstBG'
       const settings = {
         scrollTrigger: {
           id: id,
@@ -88,7 +88,7 @@ export default function Index({ issueAPI, seoAPI }) {
           start: 'top 0%',
           end: 'bottom 0%',
         },
-      };
+      }
 
       // Input Animation
       const animation = [
@@ -102,14 +102,14 @@ export default function Index({ issueAPI, seoAPI }) {
             },
           ],
         },
-      ];
+      ]
 
-      return { id, elem, settings, animation };
+      return { id, elem, settings, animation }
     },
     () => {
       // Start Background
-      const id = 'End BG';
-      const elem = '#endBg';
+      const id = 'End BG'
+      const elem = '#endBg'
       const settings = {
         scrollTrigger: {
           id: id,
@@ -119,7 +119,7 @@ export default function Index({ issueAPI, seoAPI }) {
           start: 'top 0%',
           end: 'bottom 0%',
         },
-      };
+      }
 
       // Input Animation
       const animation = [
@@ -132,14 +132,14 @@ export default function Index({ issueAPI, seoAPI }) {
             },
           ],
         },
-      ];
+      ]
 
-      return { id, elem, settings, animation };
+      return { id, elem, settings, animation }
     },
     () => {
       // Scroller Dissapear
-      const id = 'scrollIndicator';
-      const elem = '#scrollIndicator';
+      const id = 'scrollIndicator'
+      const elem = '#scrollIndicator'
       const settings = {
         scrollTrigger: {
           id: id,
@@ -149,7 +149,7 @@ export default function Index({ issueAPI, seoAPI }) {
           start: 'top -10%',
           end: 'bottom 50%',
         },
-      };
+      }
 
       // Input Animation
       const animation = [
@@ -162,11 +162,77 @@ export default function Index({ issueAPI, seoAPI }) {
             },
           ],
         },
-      ];
+      ]
 
-      return { id, elem, settings, animation };
+      return { id, elem, settings, animation }
     },
-  ];
+  ]
+
+  const serializers = {
+    block: {
+      normal: ({ children }) =>
+        children[0] === '' ? (
+          <br />
+        ) : (
+          <p className="max-md:p-0 block my-4">{children}</p>
+        ),
+      h1: ({ children }) => (
+        <h1 className="max-md:p-0 block my-4">{children}</h1>
+      ),
+      h2: ({ children }) => (
+        <h2 className="max-md:p-0 block my-4">{children}</h2>
+      ),
+      h3: ({ children }) => (
+        <h3 className="max-md:p-0 block my-4">{children}</h3>
+      ),
+      h4: ({ children }) => (
+        <h4 className="max-md:p-0 block my-4">{children}</h4>
+      ),
+      h5: ({ children }) => (
+        <h5 className="max-md:p-0 block my-4">{children}</h5>
+      ),
+    },
+    list: {
+      number: ({ children }) => (
+        <ol className="list-decimal max-md:p-0 block my-4">{children}</ol>
+      ),
+    },
+    types: {
+      code: (props) => (
+        <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
+      ),
+    },
+    marks: {
+      changeColor: (props) => (
+        <span style={{ color: props.value.color.hex }}>{props.children}</span>
+      ),
+      center: (props) => (
+        <span className="block text-center">{props.children}</span>
+      ),
+      left: (props) => (
+        <span className="block text-left">{props.children}</span>
+      ),
+      right: (props) => (
+        <span className="block text-right">{props.children}</span>
+      ),
+      backgroundColor: (props) => (
+        <span style={{ backgroundColor: props.value.color.hex }}>
+          {props.children}
+        </span>
+      ),
+      largerSize: (props) => (
+        <span style={{ fontSize: '22px' }}>{props.children}</span>
+      ),
+      sub: (props) => <sub>{props.children}</sub>,
+      sup: (props) => <sup>{props.children}</sup>,
+      fontSize: (props) => (
+        <span style={{ fontSize: props.value.size }}>{props.children}</span>
+      ),
+      font: (props) => (
+        <span className={props.value.type}>{props.children}</span>
+      ),
+    },
+  }
 
   return (
     <Layout>
@@ -222,18 +288,18 @@ export default function Index({ issueAPI, seoAPI }) {
       {/* Issue Title */}
       <LazyMotion features={domAnimation}>
         <m.div
-          initial='initial'
-          animate='enter'
-          exit='exit'
+          initial="initial"
+          animate="enter"
+          exit="exit"
           variants={fade}
           className={`z-1 relative`}
         >
           {/* Issue Number */}
           <div
-            id='issueNo'
-            className='h-screen top-0 left-0 right-0  setflex-center w-screen fixed z-10 pointer-events-none'
+            id="issueNo"
+            className="h-screen top-0 left-0 right-0  setflex-center w-screen fixed z-10 pointer-events-none"
           >
-            <Container className='max-md:px-6 text-center '>
+            <Container className="max-md:px-6 text-center ">
               <span
                 className={` font-normal text-8xl ${
                   dark === 'white-text' ? 'text-white' : 'text-black'
@@ -245,8 +311,8 @@ export default function Index({ issueAPI, seoAPI }) {
           </div>
           {/* Scroll Inidicator */}
           <div
-            id='scrollIndicator'
-            className='fixed z-20 bottom-10 left-0 w-full setflex-center pointer-events-none'
+            id="scrollIndicator"
+            className="fixed z-20 bottom-10 left-0 w-full setflex-center pointer-events-none"
           >
             <span
               className={`font-light text-xs tracking-widest  ${
@@ -259,7 +325,7 @@ export default function Index({ issueAPI, seoAPI }) {
 
           {/* First Background */}
           <div
-            id='firstBG'
+            id="firstBG"
             className={`fixed setflex-center h-screen w-screen top-0 left-0 -z-1 pointer-events-none ${
               dark === 'white-text' ? 'bg-black ' : 'bg-white'
             }`}
@@ -278,11 +344,11 @@ export default function Index({ issueAPI, seoAPI }) {
                   <Image
                     src={urlFor(issue.image1.placeholder).width(1400).url()}
                     alt={issue.image1.name}
-                    layout='fill'
-                    objectFit='cover'
-                    objectPosition='center'
-                    loading='eager'
-                    placeholder='blur'
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                    loading="eager"
+                    placeholder="blur"
                     blurDataURL={urlFor(issue.image1.placeholder)
                       .width(1400)
                       .blur(2)
@@ -295,7 +361,7 @@ export default function Index({ issueAPI, seoAPI }) {
                   <>
                     {/* Plain Background  */}
                     <div
-                      className='absolute h-full w-full top-0 left-0 z-20'
+                      className="absolute h-full w-full top-0 left-0 z-20"
                       style={{ background: `${issue.image1.color.hex}` }}
                     />
                   </>
@@ -308,7 +374,7 @@ export default function Index({ issueAPI, seoAPI }) {
 
           {/* End Background */}
           <div
-            id='endBg'
+            id="endBg"
             className={`fixed setflex-center h-screen w-screen top-0 left-0 -z-10 pointer-events-none ${
               dark === 'white-text' ? 'bg-black ' : 'bg-white'
             }`}
@@ -327,11 +393,11 @@ export default function Index({ issueAPI, seoAPI }) {
                   <Image
                     src={urlFor(issue.image2.placeholder).width(1400).url()}
                     alt={issue.image2.name}
-                    layout='fill'
-                    objectFit='cover'
-                    loading='eager'
-                    objectPosition='center'
-                    placeholder='blur'
+                    layout="fill"
+                    objectFit="cover"
+                    loading="eager"
+                    objectPosition="center"
+                    placeholder="blur"
                     blurDataURL={urlFor(issue.image2.placeholder)
                       .width(1400)
                       .blur(2)
@@ -344,7 +410,7 @@ export default function Index({ issueAPI, seoAPI }) {
                   <>
                     {/* Plain Background  */}
                     <div
-                      className='absolute h-full w-full top-0 left-0 z-20'
+                      className="absolute h-full w-full top-0 left-0 z-20"
                       style={{ background: `${issue.image2.color.hex}` }}
                     />
                   </>
@@ -365,56 +431,47 @@ export default function Index({ issueAPI, seoAPI }) {
         <div
           data-scroll-container
           ref={containerRef}
-          id='scroll-container'
+          id="scroll-container"
           className={`z-1 relative`}
         >
           <div data-scroll-section>
             <ScrollTriggerWrapper animation={animationObj}>
               <LazyMotion features={domAnimation}>
                 <m.main
-                  className='relative p-0 m-0'
-                  initial='initial'
-                  animate='enter'
-                  exit='exit'
+                  className="relative p-0 m-0"
+                  initial="initial"
+                  animate="enter"
+                  exit="exit"
                   variants={fade}
                 >
-                  <div id='trigger1' className='w-full h-s-150 ' />
-                  <div id='trigger2' className='w-full min-h-screen '>
-                    <div className='h-s-50 w-full' />
-                    <section className='w-full '>
+                  <div id="trigger1" className="w-full h-s-150 " />
+                  <div id="trigger2" className="w-full min-h-screen ">
+                    <div className="h-s-50 w-full" />
+                    <section className="w-full ">
                       <Container
                         className={`max-md:px-6 pb-16 flex flex-col justify-start content-center items-center ${
                           dark === 'white-text' ? 'text-white' : 'text-black'
                         }`}
                       >
                         <span
-                          id='issueNoInside'
-                          className='content-issue font-serif font-normal italic text-5xl'
+                          id="issueNoInside"
+                          className="content-issue font-serif font-normal italic text-5xl"
                         >
                           Issue {issue.issueNumber}
                         </span>
-                        <h1 className='title-issue font-sans font-normal text-8xl'>
+                        <h1 className="title-issue font-sans font-normal text-8xl">
                           {issue.title}
                         </h1>
-                        <span className='content-issue w-full text-center mt-5'>
+                        <span className="content-issue w-full text-center mt-5">
                           {checkMonth(new Date(issue.date).getMonth())}{' '}
                           {new Date(issue.date).getFullYear()}
-                          <span className='mx-4 inline-block'>•</span>8 ARTICLES
+                          <span className="mx-4 inline-block">•</span>8 ARTICLES
                         </span>
-                        <div className='content-issue max-w-lg text-center mt-16 flex flex-col'>
-                          {/* {toPlainText(issue.description)} */}
-                          {issue.description &&
-                            issue.description.map((content, id) =>
-                              content._type === 'block' ? (
-                                <p className='max-md:p-0 block my-4' key={id}>
-                                  {content.children
-                                    .map((child) => child.text)
-                                    .join('')}
-                                </p>
-                              ) : (
-                                ''
-                              )
-                            )}
+                        <div className="content-issue max-w-lg text-center mt-16 flex flex-col">
+                          <PortableText
+                            value={issue.description}
+                            components={serializers}
+                          />
                         </div>
                         <FancyLink
                           destination={`/editorial/${issue.slug.current}/list`}
@@ -436,38 +493,38 @@ export default function Index({ issueAPI, seoAPI }) {
         </div>
       </LocomotiveScrollProvider>
     </Layout>
-  );
+  )
 }
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
       *[_type == "issue" && comingSoon == false]
-    `);
+    `)
 
   const paths = res.map((data) => ({
     params: { editorial_slug: data.slug.current.toString() },
-  }));
+  }))
 
-  return { paths, fallback: false };
+  return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
   const issueAPI = await client.fetch(
     `
       *[_type == "issue" && slug.current ==  "${params.editorial_slug}"]
-    `
-  );
+    `,
+  )
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `);
+  `)
   const headerAPI = await client.fetch(`
   *[_type == "header"]
-  `);
+  `)
   return {
     props: {
       issueAPI,
       seoAPI,
       headerAPI,
     },
-  };
+  }
 }

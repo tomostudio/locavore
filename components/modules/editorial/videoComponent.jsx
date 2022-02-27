@@ -3,12 +3,13 @@ import urlFor from '@/helpers/sanity/urlFor'
 import Image from 'next/image'
 import { useState } from 'react'
 import FancyLink from '../../utils/fancyLink'
+import Caption from './caption'
 
-const VideoComponent = ({ video }) => {
+const VideoComponent = ({ className, video, article }) => {
   const [statusVideo, setStatusVideo] = useState(false)
 
   return (
-    <div className="relative w-full h-full mx-auto max-w-800px">
+    <div className={`relative w-full h-full mx-auto max-w-800px ${className}`}>
       <FancyLink
         onClick={() => setStatusVideo(true)}
         className={`group relative w-full mx-auto max-w-800px`}
@@ -20,6 +21,9 @@ const VideoComponent = ({ video }) => {
         )}
         <div
           className={`relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1`}
+          style={{
+            backgroundColor: `rgba(208,208,208, 1)`,
+          }}
         >
           <iframe
             src={
@@ -37,7 +41,7 @@ const VideoComponent = ({ video }) => {
             }`}
           >
             <Image
-              src={urlFor(video.thumbnail).url()}
+              src={urlFor(video.thumbnail).width(1500).url()}
               alt={video.thumbnail.name}
               className={`${statusVideo ? 'inActive' : ''}`}
               loading="eager"
@@ -45,6 +49,12 @@ const VideoComponent = ({ video }) => {
               layout="fill"
               objectFit="cover"
               objectPosition="center"
+              placeholder="blur"
+              blurDataURL={urlFor(video.thumbnail)
+                .blur(2)
+                .format('webp')
+                .width(500)
+                .url()}
             />
           </div>
         </div>
@@ -62,6 +72,7 @@ const VideoComponent = ({ video }) => {
           </div>
         )}
       </FancyLink>
+      {video.caption && <Caption caption={video.caption} article={article} />}
     </div>
   )
 }

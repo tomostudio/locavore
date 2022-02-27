@@ -1,24 +1,30 @@
-import { useState } from 'react';
-import Container from '../container';
-import Image from 'next/image';
-import urlFor from '@/helpers/sanity/urlFor';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Autoplay, FreeMode, Navigation, Thumbs, Controller } from 'swiper';
-import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import FancyLink from '@/components/utils/fancyLink';
-import Arrow from '@/components/utils/arrow';
+import { useState } from 'react'
+import Container from '../container'
+import Image from 'next/image'
+import urlFor from '@/helpers/sanity/urlFor'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore, {
+  Autoplay,
+  FreeMode,
+  Navigation,
+  Thumbs,
+  Controller,
+} from 'swiper'
+import 'swiper/css/effect-fade'
+import 'swiper/css/navigation'
+import FancyLink from '@/components/utils/fancyLink'
+import Arrow from '@/components/utils/arrow'
 
 const CarousselComponent = ({ caroussel }) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null)
   return (
     <>
-      <Container className='max-md:mb-5 max-md:px-0'>
+      <Container className="max-md:mb-5 max-md:px-0">
         {/* Main Gallery */}
-        <div className='main-swipe relative w-full h-full'>
+        <div className="main-swipe relative w-full h-full">
           <Swiper
             loop={true}
-            effect='fade'
+            effect="fade"
             speed={1000}
             autoplay={{
               delay: 5000,
@@ -26,7 +32,7 @@ const CarousselComponent = ({ caroussel }) => {
             }}
             slidesPerView={1}
             allowTouchMove={true}
-            className='w-full h-full'
+            className="w-full h-full"
             navigation={{
               nextEl: '.nextCaroussel',
               prevEl: '.prevCaroussel',
@@ -36,15 +42,20 @@ const CarousselComponent = ({ caroussel }) => {
           >
             {caroussel.map((data, id) => (
               <SwiperSlide key={id}>
-                <div className='relative w-full aspect-w-16 max-md:aspect-w-1 aspect-h-9 max-md:aspect-h-1'>
+                <div
+                  className="relative w-full aspect-w-16 max-md:aspect-w-1 aspect-h-9 max-md:aspect-h-1"
+                  style={{
+                    backgroundColor: `rgba(208,208,208, 1)`,
+                  }}
+                >
                   <Image
                     src={urlFor(data).width(1500).url()}
                     alt={data.name}
-                    layout='fill'
-                    objectFit='cover'
-                    objectPosition='center'
-                    className='gallery-image'
-                    placeholder='blur'
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                    className="gallery-image"
+                    placeholder="blur"
                     blurDataURL={urlFor(data)
                       .blur(2)
                       .format('webp')
@@ -55,32 +66,32 @@ const CarousselComponent = ({ caroussel }) => {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className='absolute pointer-events-none z-10 top-0 left-0 h-full w-full flex items-center justify-between '>
-            <div className='pointer-events-auto cursor-pointer group h-full flex center prevCaroussel relative p-6 pr-16 justify-center items-center'>
+          <div className="absolute pointer-events-none z-10 top-0 left-0 h-full w-full flex items-center justify-between ">
+            <div className="pointer-events-auto cursor-pointer group h-full flex center prevCaroussel relative p-6 pr-16 justify-center items-center">
               <Arrow
-                position='left'
-                fill='white'
-                className='w-24px h-24px block z-2'
+                position="left"
+                fill="white"
+                className="w-24px h-24px block z-2"
               />
-              <div className='w-full h-full bg-gradient-to-r from-black to-transparent opacity-0 group-hover:opacity-30 absolute left-0 top-0 transition-opacity duration-300' />
+              <div className="w-full h-full bg-gradient-to-r from-black to-transparent opacity-0 group-hover:opacity-30 absolute left-0 top-0 transition-opacity duration-300" />
             </div>
-            <div className='pointer-events-auto cursor-pointer group h-full flex center nextCaroussel relative p-6 pl-16 justify-center items-center'>
+            <div className="pointer-events-auto cursor-pointer group h-full flex center nextCaroussel relative p-6 pl-16 justify-center items-center">
               <Arrow
-                position='right'
-                fill='white'
-                className='w-24px h-24px block z-2'
+                position="right"
+                fill="white"
+                className="w-24px h-24px block z-2"
               />
-              <div className='w-full h-full bg-gradient-to-l from-black to-transparent opacity-0 group-hover:opacity-30 absolute left-0 top-0 transition-opacity duration-300' />
+              <div className="w-full h-full bg-gradient-to-l from-black to-transparent opacity-0 group-hover:opacity-30 absolute left-0 top-0 transition-opacity duration-300" />
             </div>
           </div>
         </div>
         {/* Thumbnail Carousel */}
-        <div className='thumbnail-swipe relative w-full h-36 max-md:h-24 max-md:pl-6 mt-5'>
-          <div className='absolute left-0 w-full h-full flex space-x-3'>
+        <div className="thumbnail-swipe relative w-full h-36 max-md:h-24 max-md:pl-6 mt-5">
+          <div className="absolute left-0 w-full h-full flex space-x-3">
             <Swiper
               onSwiper={setThumbsSwiper}
               modules={[FreeMode, Navigation, Thumbs]}
-              slidesPerView='auto'
+              slidesPerView="auto"
               freeMode={true}
               watchSlidesProgress={true}
               loop={true}
@@ -92,19 +103,24 @@ const CarousselComponent = ({ caroussel }) => {
               // onSwiper={setSecondSwiper}
               // controller={{ control: firstSwiper }}
               // loopedSlides={caroussel.length}
-              id='swipe-caroussel'
+              id="swipe-caroussel"
             >
               {caroussel.map((data, id) => (
                 <SwiperSlide key={id}>
-                  <div className='cursor-pointer relative w-full h-full'>
+                  <div
+                    className="cursor-pointer relative w-full h-full"
+                    style={{
+                      backgroundColor: `rgba(208,208,208, 1)`,
+                    }}
+                  >
                     <Image
                       src={urlFor(data).width(1500).url()}
                       alt={data.name}
-                      className='rounded-2xl'
-                      layout='fill'
-                      objectFit='cover'
-                      objectPosition='center'
-                      placeholder='blur'
+                      className="rounded-2xl"
+                      layout="fill"
+                      objectFit="cover"
+                      objectPosition="center"
+                      placeholder="blur"
                       blurDataURL={urlFor(data)
                         .blur(2)
                         .format('webp')
@@ -118,9 +134,9 @@ const CarousselComponent = ({ caroussel }) => {
           </div>
         </div>
       </Container>
-      <hr className='hidden max-md:block border-gray mt-3 mb-14 mx-6' />
+      <hr className="hidden max-md:block border-gray mt-3 mb-14 mx-6" />
     </>
-  );
-};
+  )
+}
 
-export default CarousselComponent;
+export default CarousselComponent
