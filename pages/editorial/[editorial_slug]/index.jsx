@@ -44,7 +44,7 @@ export default function Index({ issueAPI, seoAPI }) {
   }, []);
 
   //check title word count
-  const maxLetter = 8;
+  const maxLetter = 10;
   const [titleS, setSize] = useState(false);
   useEffect(() => {
     const splitTitle = issue.title.split(' ');
@@ -411,7 +411,7 @@ export default function Index({ issueAPI, seoAPI }) {
                         <h1
                           className={`title-issue font-sans font-normal  text-center leading-none ${
                             titleS
-                              ? 'text-5xl sm:text-7xl md:text-8xl '
+                              ? 'text-6xl sm:text-7xl md:text-8xl'
                               : 'text-7xl sm:text-8xl'
                           }`}
                         >
