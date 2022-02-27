@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { decode } from 'html-entities';
+import { transition } from '@/helpers/preset/tailwind';
 
 import Arrow from '../utils/arrow';
 
@@ -93,7 +93,7 @@ const SubscribeForm = ({ status, message, onValidated, className = '', ...props 
           onKeyUp={(event) => handleInputKeyEvent(event)}
           ref={inputEl}
         />
-        <button onClick={handleFormSubmit} className='h-full w-10'>
+        <button onClick={handleFormSubmit} className={`h-full w-10 ${transition.fade}`}>
           <Arrow
             position='right'
             className='absolute right-0 top-2'
