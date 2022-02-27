@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { fade } from '@/helpers/preset/transitions';
@@ -43,6 +43,18 @@ export default function Index({ issueAPI, seoAPI }) {
     };
   }, []);
 
+  //check title word count
+  const maxLetter = 8;
+  const [titleS, setSize] = useState(false);
+  useEffect(() => {
+    const splitTitle = issue.title.split(' ');
+
+    splitTitle.forEach((word) => {
+      setSize(word.length > maxLetter);
+    });
+  }, []);
+
+  // ANIMATION
   const animationObj = [
     () => {
       // Issue No Animation
@@ -235,7 +247,7 @@ export default function Index({ issueAPI, seoAPI }) {
           >
             <Container className='max-md:px-6 text-center '>
               <span
-                className={` font-normal text-8xl ${
+                className={` font-normal text-7xl sm:text-8xl md:text-9xl  uppercase ${
                   dark === 'white-text' ? 'text-white' : 'text-black'
                 }`}
               >
@@ -378,7 +390,10 @@ export default function Index({ issueAPI, seoAPI }) {
                   exit='exit'
                   variants={fade}
                 >
-                  <div id='trigger1' className='w-full h-[150vh] mx-md:h-screen' />
+                  <div
+                    id='trigger1'
+                    className='w-full h-[150vh] mx-md:h-screen'
+                  />
                   <div id='trigger2' className='w-full min-h-screen '>
                     <div className='h-[50vh] w-full' />
                     <section className='w-full '>
@@ -393,7 +408,13 @@ export default function Index({ issueAPI, seoAPI }) {
                         >
                           Issue {issue.issueNumber}
                         </span>
-                        <h1 className='title-issue font-sans font-normal text-8xl max-md:text-7xl text-center leading-none'>
+                        <h1
+                          className={`title-issue font-sans font-normal  text-center leading-none ${
+                            titleS
+                              ? 'text-5xl sm:text-7xl md:text-8xl '
+                              : 'text-7xl sm:text-8xl'
+                          }`}
+                        >
                           {issue.title}
                         </h1>
                         <span className=' w-full text-center mt-5 max-md:mt-2'>
@@ -463,7 +484,6 @@ export async function getStaticProps({ params }) {
   const headerAPI = await client.fetch(`
   *[_type == "header"]
   `);
-
 
   const footerAPI = await client.fetch(`
   *[_type == "footer"]

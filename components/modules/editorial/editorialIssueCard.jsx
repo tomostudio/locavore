@@ -29,7 +29,6 @@ const EditorialIssueCard = React.forwardRef(
       const splitTitle = title.split(' ');
 
       splitTitle.forEach((word) => {
-        console.log(word.length);
         setSize(word.length > maxLetter);
       });
     }, []);

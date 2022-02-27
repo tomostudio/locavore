@@ -64,7 +64,7 @@ export default function App({ Component, pageProps }) {
         // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
         noindex={true}
         // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
-        defaultTitle='Locavore'
+        defaultTitle='Locavore®'
         description='Description'
         openGraph={{
           type: 'website',
