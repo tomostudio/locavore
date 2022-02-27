@@ -16,10 +16,15 @@ export async function getStaticProps() {
   const headerAPI = await client.fetch(`
       *[_type == "header"]
       `)
+
+  const footerAPI = await client.fetch(`
+      *[_type == "footer"]
+      `)
   return {
     props: {
       seoAPI,
-      headerAPI
+      headerAPI,
+      footerAPI
     },
   }
 }

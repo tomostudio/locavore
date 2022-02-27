@@ -92,9 +92,9 @@ const GalleryComponent = ({ gallery, article }) => {
             )
           ),
         )}
-        {gallery.description && (
+        {gallery.caption && (
           <div className="w-content mx-auto max-md:w-full max-md:px-4">
-            <Caption caption={gallery.description} article={article} />
+            <Caption caption={gallery.caption} article={article} />
           </div>
         )}
       </div>
