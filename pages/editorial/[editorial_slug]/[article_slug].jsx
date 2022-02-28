@@ -84,6 +84,7 @@ export default function ArticleSlug({
       ),
     },
     types: {
+      video: (props) => <VideoComponent video={props.value} article={article} />,
       lineSpacer: () => (
         <div className="h-40 setflex-center w-full">
           <hr
@@ -202,7 +203,7 @@ export default function ArticleSlug({
       columnBlock: (props) => (
         <div
           className={`flex space-x-4 text-left ${
-            props.value.padding ? 'px-paddingContent max-md:p-0' : ''
+            !props.value.padding ? 'px-paddingContent max-md:p-0' : ''
           }`}
         >
           <div className="w-1/2 h-full relative">
@@ -492,9 +493,6 @@ export default function ArticleSlug({
                         value={data.content}
                         components={serializers}
                       />
-                      {data.video && (
-                        <VideoComponent video={data.video} article={article} />
-                      )}
                     </div>
                   </div>
                 </div>

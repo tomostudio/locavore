@@ -72,7 +72,8 @@ const VideoComponent = ({ className, video, article }) => {
           </div>
         )}
       </FancyLink>
-      {video.caption && <Caption caption={video.caption} article={article} />}
+      {video.caption && 
+          <div className="w-content mx-auto max-md:w-full max-md:px-4"><Caption caption={video.caption} article={article} /> </div>}
     </div>
   )
 }

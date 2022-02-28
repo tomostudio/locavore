@@ -53,6 +53,7 @@ module.exports = {
       },
       spacing: {
         '10px': '10px',
+        paddingContent: '5rem',
       },
       boxShadow: {
         darker:
