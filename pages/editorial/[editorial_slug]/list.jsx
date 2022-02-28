@@ -20,6 +20,7 @@ import Container from '@/components/modules/container';
 import client from '@/helpers/sanity/client';
 import checkMonth from '@/helpers/functional/checkMonth';
 import urlFor from '@/helpers/sanity/urlFor';
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
 import timeConvert from '@/helpers/functional/timeConvert';
 
 export default function Issue({ issueAPI, seoAPI, footerAPI }) {
@@ -33,6 +34,9 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
   const scrollContainer = useRef(null);
 
   const [centerCard, setCenterCard] = useState(1);
+
+  const [noScroll, setNoScroll] = useState(false);
+  // set scroll style status
 
   const updateScroll = () => {
     articleRef.current.forEach((card, id) => {
@@ -58,6 +62,28 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
       }
     });
 
+    // Hide Scroll indicator
+    const { innerWidth: width, innerHeight: height } = window;
+    if (scrollContainer.current.scrollLeft > 50 && width > 600) {
+      document.querySelector('#scrollIndicator').classList.add('hide');
+    } else {
+      document.querySelector('#scrollIndicator').classList.remove('hide');
+    }
+
+    // Show Content indicator
+    const finalTarget =
+      scrollContainer.current.scrollWidth - window.innerWidth - 50;
+    if (scrollContainer.current.scrollLeft > finalTarget) {
+      document.querySelector('#endIndicator').classList.remove('opacity-0');
+    } else {
+      document.querySelector('#endIndicator').classList.add('opacity-0');
+    }
+
+    updateScrollBar();
+  };
+
+  // Update Scroll Bar Position
+  const updateScrollBar = () => {
     // update scroll bar position
     const currentScroll =
       Math.round(
@@ -75,36 +101,29 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
     scrollInd.current.style.transform = `translateX(${scrollMove}px)`;
   };
 
-  const [scrollStyle, setScrollStyle] = useState('normal');
-
+  // Detect Page Length
   const detectLength = () => {
-    if (articleRef.current.length <= 2) {
-      setScrollStyle('noscroll');
+    if (articleRef.current.length <= 1) {
+      setNoScroll(true);
     } else {
-      let totalWidth = 0;
-      articleRef.current.forEach((a) => {
-        totalWidth += a.offsetWidth;
-      });
-      setScrollStyle('normal');
-      if (totalWidth < window.innerWidth - 300) {
-        const centerPos =
-          (scrollContainer.current.scrollWidth - window.innerWidth) / 2;
-        scrollContainer.current.scrollLeft = centerPos;
-      }
+      setNoScroll(false);
     }
   };
 
+  // sort article based on article number
   const processedArticle = issue.article.sort((a, b) => {
     return a.articleNumber - b.articleNumber;
-  }); // sort article based on article number
+  });
 
   useEffect(() => {
     window.scroll(0, 0);
     detectLength();
     updateScroll();
     window.addEventListener('resize', detectLength, true);
+    window.addEventListener('resize', updateScrollBar, true);
     return () => {
       window.removeEventListener('resize', detectLength, true);
+      window.removeEventListener('resize', updateScrollBar, true);
     };
   }, []);
 
@@ -198,11 +217,38 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
               </h1>
             </div>
           </Container>
-          {/* Card
-           */}
-          <div className='w-full flex' id='editorial-slider'>
+          {/* Card */}
+          <div className='w-full flex relative flex-col' id='editorial-slider'>
+            <div
+              id='scrollIndicator'
+              className={`${
+                noScroll ? 'hidden' : ''
+              } pointer-events-none w-full absolute top-[50%] translate-y-[-50%] text-left transition-opacity duration-300 max-sm:relative max-sm:top-0 max-sm:translate-y-0 max-sm:left-0 max-sm:w-full max-sm:px-5 max-sm:text-center`}
+            >
+              <Container>
+                <span className='relative sm:animate-fade-left-slower block uppercase leading-none text-xs tracking-widest '>
+                  Scroll / Drag
+                  {useMediaQuery('(min-width: 600px)') ? <br /> : ' '}
+                  Horizontally
+                </span>
+              </Container>
+            </div>
+            <div
+              id='endIndicator'
+              className={`${
+                noScroll ? 'hidden' : ''
+              } w-full pointer-events-none absolute top-[50%] translate-y-[-50%] text-right transition-opacity duration-300 max-sm:hidden opacity-0`}
+            >
+              <Container>
+                <span className='relative block uppercase leading-none text-xs tracking-widest '>
+                  END OF ISSUE {issue.issueNumber}
+                </span>
+              </Container>
+            </div>
             <ScrollContainer
-              className={`issue_container flex w-full space-x-7 py-7 px-7 hide-scrollbar ${scrollStyle}`}
+              className={`issue_container relative flex w-full py-7 hide-scrollbar ${
+                noScroll ? 'noscroll' : ''
+              }`}
               horizontal={true}
               vertical={false}
               hideScrollbars={false}
@@ -210,6 +256,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
               innerRef={scrollContainer}
               nativeMobileScroll={true}
             >
+              <div className='spacer' />
               {processedArticle.map((data, id) => {
                 return (
                   <div
@@ -250,6 +297,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
                   </div>
                 );
               })}
+              <div className='spacer' />
             </ScrollContainer>
           </div>
           {/* Lower Information */}
@@ -261,10 +309,12 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
                 <span>{articleRef.current.length}</span>
               </div>
               <div className='relative w-full setflex-center'>
-                <div className='relative border-b w-s-50 max-w-sm max-md:w-full h-px border-black'>
+                <div className='relative border-b w-full max-w-sm h-px border-black'>
                   <div
                     ref={scrollInd}
-                    className={`absolute w-8 h-1 -top-px border border-black bg-black issueindicator ${scrollStyle}`}
+                    className={`absolute w-8 h-1 -top-px border border-black bg-black issueindicator ${
+                      noScroll ? 'noscroll' : ''
+                    }`}
                   />
                 </div>
               </div>

@@ -17,8 +17,37 @@ module.exports = {
       2: 1,
     },
     extend: {
+      keyframes: {
+        'fade-left': {
+          '0%, 5%': {
+            opacity: 0,
+            transform: 'translateX(20px)',
+          },
+          '40%, 60%': { opacity: 1 },
+          '95%, 100%': {
+            opacity: 0,
+            transform: 'translateX(-20px)',
+          },
+        },
+        'fade-down': {
+          '0%, 5%': {
+            opacity: 0,
+            transform: 'translateY(-20px)',
+          },
+          '40%, 60%': { opacity: 1 },
+          '95%, 100%': {
+            opacity: 0,
+            transform: 'translateY(20px)',
+          },
+        },
+      },
+      animation: {
+        'fade-left': 'fade-left 1.5s linear infinite',
+        'fade-left-slower': 'fade-left 2.5s linear infinite',
+        'fade-down': 'fade-down 1.5s linear infinite',
+      },
       minHeight: {
-        "16rem": "16rem"
+        '16rem': '16rem',
       },
       screens: {
         'max-sm': { max: '600px' },
@@ -31,7 +60,7 @@ module.exports = {
         xl: '1280px',
       },
       zIndex: {
-        'min1': "-1",
+        min1: '-1',
         '-1': '-1',
         '-2': '-2',
         '-3': '-3',
@@ -53,11 +82,16 @@ module.exports = {
       },
       spacing: {
         '10px': '10px',
-        paddingContent: '5rem',
       },
       boxShadow: {
         darker:
           '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)',
+      },
+      dropShadow: {
+        top: '0px -4px 4px rgba(0, 0, 0, .2)',
+      },
+      boxShadow: {
+        base: '0px 0px 10px 2px rgba(0, 0, 0, .4)',
       },
       height: {
         'screen-1/2': '50vh',
@@ -134,8 +168,11 @@ module.exports = {
       },
     },
   },
+  variants: {
+    paddingSafe: ['responsive'],
+  },
   plugins: [
-    require('tailwindcss-padding-safe'),
+    require('tailwindcss-padding-safe')(),
     require('@tailwindcss/aspect-ratio'),
   ],
 };

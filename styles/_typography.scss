@@ -1,22 +1,13 @@
 /* Content Stylings */
-.content {
-  @apply max-w-lg flex flex-col;
-  & > p {
-    @apply block mb-4 last:mb-0 max-md:mb-3 max-md:p-0;
-  }
 
+.editor-styling {
+  @apply flex flex-col;
+  & > *{
+    @apply block my-3 first:mt-0 last:mb-0;
+  
+  }
   & > p > a {
-    @apply underline hover:text-opacity-25 focus:text-opacity-25;
-  }
-
-  & > h1,
-  & > .h1 {
-    @apply text-3xl md:text-4xl;
-  }
-
-  & > h2,
-  & > .h2 {
-    @apply text-2xl md:text-3xl;
+    @apply underline hover:opacity-50 transition-opacity;
   }
 }
 

@@ -186,27 +186,27 @@ export default function Index({ issueAPI, seoAPI }) {
         children[0] === '' ? (
           <br />
         ) : (
-          <p className="max-md:p-0 block my-4">{children}</p>
+          <p>{children}</p>
         ),
       h1: ({ children }) => (
-        <h1 className="max-md:p-0 block my-4">{children}</h1>
+        <h1 >{children}</h1>
       ),
       h2: ({ children }) => (
-        <h2 className="max-md:p-0 block my-4">{children}</h2>
+        <h2 >{children}</h2>
       ),
       h3: ({ children }) => (
-        <h3 className="max-md:p-0 block my-4">{children}</h3>
+        <h3 >{children}</h3>
       ),
       h4: ({ children }) => (
-        <h4 className="max-md:p-0 block my-4">{children}</h4>
+        <h4 >{children}</h4>
       ),
       h5: ({ children }) => (
-        <h5 className="max-md:p-0 block my-4">{children}</h5>
+        <h5 >{children}</h5>
       ),
     },
     list: {
       number: ({ children }) => (
-        <ol className="list-decimal max-md:p-0 block my-4">{children}</ol>
+        <ol className="list-decimal">{children}</ol>
       ),
     },
     types: {
@@ -327,7 +327,7 @@ export default function Index({ issueAPI, seoAPI }) {
             className="fixed z-20 bottom-10 left-0 w-full setflex-center pointer-events-none"
           >
             <span
-              className={`font-light text-xs tracking-widest  ${
+              className={`font-light text-xs tracking-widest animate-fade-down  ${
                 dark === 'white-text' ? 'text-white' : 'text-black'
               }`}
             >
@@ -464,7 +464,7 @@ export default function Index({ issueAPI, seoAPI }) {
                     <div className='h-[50vh] w-full' />
                     <section className='w-full '>
                       <Container
-                        className={`max-md:px-6 pb-16 flex flex-col justify-start content-center items-center ${
+                        className={`max-md:px-6 pb-24 pb-24-safe flex flex-col justify-start content-center items-center ${
                           dark === 'white-text' ? 'text-white' : 'text-black'
                         }`}
                       >
@@ -488,7 +488,7 @@ export default function Index({ issueAPI, seoAPI }) {
                           {new Date(issue.date).getFullYear()}
                           <span className="mx-4 inline-block">•</span>8 ARTICLES
                         </span>
-                        <div className="content-issue max-w-lg text-center mt-16 flex flex-col">
+                        <div className="content-issue editor-styling max-w-lg text-center mt-16">
                           <PortableText
                             value={issue.description}
                             components={serializers}
