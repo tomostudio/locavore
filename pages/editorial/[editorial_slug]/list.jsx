@@ -35,6 +35,9 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
 
   const [centerCard, setCenterCard] = useState(1);
 
+  const [noScroll, setNoScroll] = useState(false);
+  // set scroll style status
+
   const updateScroll = () => {
     articleRef.current.forEach((card, id) => {
       // get window position relative to center (Horizontal)
@@ -67,9 +70,9 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
       document.querySelector('#scrollIndicator').classList.remove('hide');
     }
 
+    // Show Content indicator
     const finalTarget =
       scrollContainer.current.scrollWidth - window.innerWidth - 100;
-    console.log(scrollContainer.current.scrollLeft, finalTarget);
     if (scrollContainer.current.scrollLeft > finalTarget) {
       document.querySelector('#endIndicator').classList.remove('opacity-0');
     } else {
@@ -98,29 +101,19 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
     scrollInd.current.style.transform = `translateX(${scrollMove}px)`;
   };
 
-  const [scrollStyle, setScrollStyle] = useState('normal');
-
   // Detect Page Length
   const detectLength = () => {
-    if (articleRef.current.length <= 2) {
-      setScrollStyle('noscroll');
+    if (articleRef.current.length <= 1) {
+      setNoScroll(true);
     } else {
-      let totalWidth = 0;
-      articleRef.current.forEach((a) => {
-        totalWidth += a.offsetWidth;
-      });
-      setScrollStyle('normal');
-      if (totalWidth < window.innerWidth - 300) {
-        const centerPos =
-          (scrollContainer.current.scrollWidth - window.innerWidth) / 2;
-        scrollContainer.current.scrollLeft = centerPos;
-      }
+      setNoScroll(false);
     }
   };
 
+  // sort article based on article number
   const processedArticle = issue.article.sort((a, b) => {
     return a.articleNumber - b.articleNumber;
-  }); // sort article based on article number
+  });
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -228,7 +221,9 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
           <div className='w-full flex relative flex-col' id='editorial-slider'>
             <div
               id='scrollIndicator'
-              className={` pointer-events-none w-full absolute top-[50%] translate-y-[-50%] text-left transition-opacity duration-300 max-sm:relative max-sm:top-0 max-sm:translate-y-0 max-sm:left-0 max-sm:w-full max-sm:px-5 max-sm:text-center`}
+              className={`${
+                noScroll ? 'hidden' : ''
+              } pointer-events-none w-full absolute top-[50%] translate-y-[-50%] text-left transition-opacity duration-300 max-sm:relative max-sm:top-0 max-sm:translate-y-0 max-sm:left-0 max-sm:w-full max-sm:px-5 max-sm:text-center`}
             >
               <Container>
                 <span className='relative sm:animate-fade-left-slower block uppercase leading-none text-xs tracking-widest '>
@@ -240,7 +235,9 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
             </div>
             <div
               id='endIndicator'
-              className={`w-full  pointer-events-none absolute top-[50%] translate-y-[-50%] text-right  transition-opacity duration-300 max-sm:hidden opacity-0`}
+              className={`${
+                noScroll ? 'hidden' : ''
+              } w-full pointer-events-none absolute top-[50%] translate-y-[-50%] text-right transition-opacity duration-300 max-sm:hidden opacity-0`}
             >
               <Container>
                 <span className='relative block uppercase leading-none text-xs tracking-widest '>
@@ -249,7 +246,9 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
               </Container>
             </div>
             <ScrollContainer
-              className={`issue_container relative flex w-full py-7 hide-scrollbar ${scrollStyle}`}
+              className={`issue_container relative flex w-full py-7 hide-scrollbar ${
+                noScroll ? 'noscroll' : ''
+              }`}
               horizontal={true}
               vertical={false}
               hideScrollbars={false}
@@ -310,10 +309,12 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
                 <span>{articleRef.current.length}</span>
               </div>
               <div className='relative w-full setflex-center'>
-                <div className='relative border-b w-full max-w-sm max-md:w-full h-px border-black'>
+                <div className='relative border-b w-full max-w-sm h-px border-black'>
                   <div
                     ref={scrollInd}
-                    className={`absolute w-8 h-1 -top-px border border-black bg-black issueindicator ${scrollStyle}`}
+                    className={`absolute w-8 h-1 -top-px border border-black bg-black issueindicator ${
+                      noScroll ? 'noscroll' : ''
+                    }`}
                   />
                 </div>
               </div>
