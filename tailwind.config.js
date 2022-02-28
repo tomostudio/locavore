@@ -82,11 +82,16 @@ module.exports = {
       },
       spacing: {
         '10px': '10px',
-        paddingContent: '5rem',
       },
       boxShadow: {
         darker:
           '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)',
+      },
+      dropShadow: {
+        top: '0px -4px 4px rgba(0, 0, 0, .2)',
+      },
+      boxShadow: {
+        base: '0px 0px 10px 2px rgba(0, 0, 0, .4)',
       },
       height: {
         'screen-1/2': '50vh',
@@ -163,8 +168,11 @@ module.exports = {
       },
     },
   },
+  variants: {
+    paddingSafe: ['responsive'],
+  },
   plugins: [
-    require('tailwindcss-padding-safe'),
+    require('tailwindcss-padding-safe')(),
     require('@tailwindcss/aspect-ratio'),
   ],
 };

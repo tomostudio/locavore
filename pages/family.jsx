@@ -10,14 +10,17 @@ import { motion } from 'framer-motion';
 import FancyLink from '@/components/utils/fancyLink';
 import FamilyImage from '@/components/modules/family/familyImage';
 import SEO from '@/components/utils/seo';
+import FamilyMenu from '@/components/modules/family/FamilyMenu';
+import FamilyMenuMobile from '@/components/modules/family/familyMenuMobile';
 import HeadingTitle from '@/components/utils/headingTitle';
 
 // Helpers
 // import { useAppContext } from 'context/state';
-import { bp, isMobile } from '@/helpers/preset/breakpoints';
+import { bp } from '@/helpers/preset/breakpoints';
 import urlFor from '@/helpers/sanity/urlFor';
 import { fade } from '@/helpers/preset/transitions';
 import client from '@/helpers/sanity/client';
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
 
 export default function Family({
   seoAPI,
@@ -45,7 +48,6 @@ export default function Family({
     }
   });
 
-
   const shuffle = (array) => {
     let currentIndex = array.length,
       randomIndex;
@@ -67,23 +69,6 @@ export default function Family({
   };
 
   const [familyImageFixed, setFamilyData] = useState([]);
-
-  // Mouse Leave & Enter for Family Button
-  const familybutton_enter = (slug) => {
-    const familyCards = document.querySelectorAll('.family-card');
-    familyCards.forEach((card, id) => {
-      if (card.getAttribute('data-store') === slug) {
-        card.classList.add('show');
-      }
-    });
-  };
-
-  const familybutton_leave = (id) => {
-    const familyCards = document.querySelectorAll('.family-card');
-    familyCards.forEach((card, id) => {
-      card.classList.remove('show');
-    });
-  };
 
   let onWindow = 'none';
 
@@ -157,13 +142,6 @@ export default function Family({
     }
   };
 
-  // check family list data
-  const getFillerNumber = () => {
-    const data = familyListAPI.length;
-    const gridTotal = Math.ceil(data / 3) * 3;
-    return gridTotal - data;
-  };
-
   useEffect(() => {
     resetData();
     window.addEventListener('resize', resetData);
@@ -203,79 +181,39 @@ export default function Family({
         exit='exit'
         variants={fade}
       >
-        {/* Header Gap */}
-        <HeaderGap />
+        <div>
+          {/* Header Gap */}
+          <HeaderGap />
 
-        <HeadingTitle className={`sticky`} style={{ top: '60px' }}>
-          Family
-          <span className='sub'>of</span>Locavore
-        </HeadingTitle>
-        {/* Family Button */}
-        <div
-          className='sticky max-md:hidden top-20 z-50 max-w-5xl mx-auto flex flex-wrap mb-12 items-stretch'
-          id='family-button'
-        >
-          <>
-            {familyListAPI.map((familydata, id) => (
-              <FancyLink
-                key={id}
-                destination={`/family/${familydata.slug.current}`}
-                onMouseEnter={() => familybutton_enter(familydata.slug.current)}
-                onMouseLeave={() => familybutton_leave(0)}
-                className='group relative text-center uppercase overflow-hidden bg-white text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full'
-              >
-                <div className='relative z-2'>{familydata.title}</div>
-                <div
-                  className='absolute top-0 left-0 w-full h-full z-0 opacity-0 group-hover:opacity-100'
-                  style={{ backgroundColor: familydata.bgColor.hex }}
-                />
-              </FancyLink>
-            ))}
-          </>
-          {[...Array(getFillerNumber())].map((e, i) => (
+          <HeadingTitle className={`sticky`} style={{ top: '60px' }}>
+            Family
+            <span className='sub'>of</span>Locavore
+          </HeadingTitle>
+          {/* Family Button */}
+          <FamilyMenu familyListAPI={familyListAPI} onFamilyHover={true} />
+          <section className='w-full h-full flex flex-col relative'>
             <div
-              className='relative bg-neutral-400 py-1 px-4 rounded-full border border-grayBorder'
-              key={i}
-            ></div>
-          ))}
-        </div>
-        <section className='w-full h-full flex flex-col relative'>
-          <div
-            className='relative w-full h-auto flex flex-wrap  '
-            id='family-image'
-          >
-            {familyImageFixed !== [] &&
-              familyImageFixed.map((data, id) => (
-                <FamilyImage
-                  key={id}
-                  store={familyListAPI[data.storeID]}
-                  position={
-                    (!data.family.hideNamePosition && data.position) || ''
-                  }
-                  name={(!data.family.hideNamePosition && data.name) || ''}
-                  src={data.image}
-                  alt={data.name}
-                />
-              ))}
-          </div>
-        </section>
-        {isMobile && (
-          <section
-            className='sticky bottom-0 left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center mt-10'
-            id='family-button-mobile'
-          >
-            {familyListAPI.map((familydata, id) => (
-              <FancyLink
-                key={id}
-                destination={`/family/${familydata.slug.current}`}
-                className='relative -mb-4 text-center w-full h-full rounded-t-2xl bg-locavore pt-2 pb-5 font-bold uppercase last:mb-0'
-                style={{ backgroundColor: familydata.bgColor.hex }}
-              >
-                {familydata.title}
-              </FancyLink>
-            ))}
+              className='relative w-full h-auto flex flex-wrap  '
+              id='family-image'
+            >
+              {familyImageFixed !== [] &&
+                familyImageFixed.map((data, id) => (
+                  <FamilyImage
+                    key={id}
+                    store={familyListAPI[data.storeID]}
+                    position={
+                      (!data.family.hideNamePosition && data.position) || ''
+                    }
+                    name={(!data.family.hideNamePosition && data.name) || ''}
+                    src={data.image}
+                    alt={data.name}
+                  />
+                ))}
+            </div>
           </section>
-        )}
+        </div>
+
+        <FamilyMenuMobile familyListAPI={familyListAPI} onFamilyHover={true} />
         <Footer footer={footer} />
       </motion.main>
     </Layout>

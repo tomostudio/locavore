@@ -1,8 +1,8 @@
 import useWindowDimensions from '@/helpers/functional/useWindowDimensions.ts';
 
 const bp = {
-  mobile: 768,
-  tablet: 1150,
+  mobile: 850,
+  tablet: 1200,
 };
 
 const isMobile = () => {

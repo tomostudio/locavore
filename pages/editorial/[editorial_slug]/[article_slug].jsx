@@ -58,27 +58,27 @@ export default function ArticleSlug({
         children[0] === '' ? (
           <br />
         ) : (
-          <p className="px-paddingContent max-md:p-0">{children}</p>
+          <p className="px-20 max-md:p-0">{children}</p>
         ),
       h1: ({ children }) => (
-        <h1 className="px-paddingContent max-md:p-0">{children}</h1>
+        <h1 className="px-20 max-md:p-0">{children}</h1>
       ),
       h2: ({ children }) => (
-        <h2 className="px-paddingContent max-md:p-0">{children}</h2>
+        <h2 className="px-20 max-md:p-0">{children}</h2>
       ),
       h3: ({ children }) => (
-        <h3 className="px-paddingContent max-md:p-0">{children}</h3>
+        <h3 className="px-20 max-md:p-0">{children}</h3>
       ),
       h4: ({ children }) => (
-        <h4 className="px-paddingContent max-md:p-0">{children}</h4>
+        <h4 className="px-20 max-md:p-0">{children}</h4>
       ),
       h5: ({ children }) => (
-        <h5 className="px-paddingContent max-md:p-0">{children}</h5>
+        <h5 className="px-20 max-md:p-0">{children}</h5>
       ),
     },
     list: {
       number: ({ children }) => (
-        <ol className="list-decimal px-paddingContent max-md:p-0">
+        <ol className="list-decimal px-20 max-md:p-0">
           {children}
         </ol>
       ),
@@ -167,7 +167,7 @@ export default function ArticleSlug({
       img: (props) => (
         <div
           className={`w-full h-auto ${
-            !props.value.option ? 'px-paddingContent max-md:p-0' : ''
+            !props.value.option ? 'px-20 max-md:p-0' : ''
           }`}
         >
           <div
@@ -203,7 +203,7 @@ export default function ArticleSlug({
       columnBlock: (props) => (
         <div
           className={`flex space-x-4 text-left ${
-            !props.value.padding ? 'px-paddingContent max-md:p-0' : ''
+            !props.value.padding ? 'px-20 max-md:p-0' : ''
           }`}
         >
           <div className="w-1/2 h-full relative">
@@ -511,7 +511,7 @@ export default function ArticleSlug({
                 <div
                   className={`h-auto setflex-center ${
                     !data.option
-                      ? 'w-content max-md:w-full px-paddingContent'
+                      ? 'w-content max-md:w-full px-20'
                       : 'w-full'
                   }`}
                 >
