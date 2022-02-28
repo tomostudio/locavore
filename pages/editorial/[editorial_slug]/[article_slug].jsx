@@ -19,6 +19,7 @@ import timeConvert from '@/helpers/functional/timeConvert'
 import CarousselComponent from '@/components/modules/editorial/carousselComponent'
 import { PortableText } from '@portabletext/react'
 import Caption from '@/components/modules/editorial/caption'
+import Quote from '@/components/utils/quote'
 
 export default function ArticleSlug({
   articleAPI,
@@ -84,7 +85,9 @@ export default function ArticleSlug({
       ),
     },
     types: {
-      video: (props) => <VideoComponent video={props.value} article={article} />,
+      video: (props) => (
+        <VideoComponent video={props.value} article={article} />
+      ),
       lineSpacer: () => (
         <div className="h-40 setflex-center w-full">
           <hr
@@ -107,13 +110,17 @@ export default function ArticleSlug({
       quote: (props) => (
         <div className="flex flex-col">
           {props.value.option && (
-            <div className="relative h-32px w-32px mb-3">
-              <Image
-                src={`/quote.png`}
-                alt="Locavore"
-                layout="fill"
-                objectFit="contain"
-                objectPosition="center"
+            <div className="relative h-full w-full mb-3">
+              <Quote
+                color={
+                  article.setColor
+                    ? article.setColor === 'articleColor'
+                      ? article.color.hex
+                      : article.setColor === 'categoryColor' &&
+                        article.categoryColor &&
+                        article.category.color.hex
+                    : '#D66A51'
+                }
               />
             </div>
           )}
