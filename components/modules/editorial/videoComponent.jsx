@@ -16,7 +16,9 @@ const VideoComponent = ({ className, video, article }) => {
       >
         {!statusVideo && (
           <div
-            className={`w-full h-full absolute top-0 left-0 z-10 transition-all duration-300 pointer-events-none bg-black opacity-25 group-hover:opacity-40`}
+            className={`w-full h-full absolute top-0 left-0 z-10 transition-all duration-300 pointer-events-non opacity-25 group-hover:opacity-40 ${
+              video.dark ? 'bg-black' : 'bg-white'
+            }`}
           />
         )}
         <div
@@ -62,7 +64,7 @@ const VideoComponent = ({ className, video, article }) => {
           <div className="absolute top-0 left-0 z-20 h-full w-full setflex-center">
             <div
               className={`px-10 py-7 rounded-50% transition-all duration-300 ${
-                video.dark
+                !video.dark
                   ? 'bg-white text-black group-hover:text-white group-hover:bg-black'
                   : 'bg-black text-white group-hover:text-black group-hover:bg-white'
               }`}
@@ -72,8 +74,11 @@ const VideoComponent = ({ className, video, article }) => {
           </div>
         )}
       </FancyLink>
-      {video.caption && 
-          <div className="w-content mx-auto max-md:w-full max-md:px-4"><Caption caption={video.caption} article={article} /> </div>}
+      {video.caption && (
+        <div className="w-content mx-auto max-md:w-full max-md:px-4">
+          <Caption caption={video.caption} article={article} />{' '}
+        </div>
+      )}
     </div>
   )
 }
