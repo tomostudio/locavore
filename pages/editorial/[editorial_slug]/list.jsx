@@ -72,7 +72,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
 
     // Show Content indicator
     const finalTarget =
-      scrollContainer.current.scrollWidth - window.innerWidth - 100;
+      scrollContainer.current.scrollWidth - window.innerWidth - 50;
     if (scrollContainer.current.scrollLeft > finalTarget) {
       document.querySelector('#endIndicator').classList.remove('opacity-0');
     } else {
