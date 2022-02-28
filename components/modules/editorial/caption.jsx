@@ -17,7 +17,7 @@ const Caption = ({ className, option = true, caption, article }) => {
             : '#D66A51',
         }}
       />
-      <span className="w-full font-serif text-sm font-bold">{caption}</span>
+      <span className="w-full font-serif text-base font-bold translate-y-1">{caption}</span>
     </div>
   )
 }

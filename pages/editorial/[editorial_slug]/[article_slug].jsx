@@ -19,6 +19,7 @@ import timeConvert from '@/helpers/functional/timeConvert';
 import CarousselComponent from '@/components/modules/editorial/carousselComponent';
 import { PortableText } from '@portabletext/react';
 import Caption from '@/components/modules/editorial/caption';
+import { Quote } from '@/helpers/preset/svg';
 
 export default function ArticleSlug({
   articleAPI,
@@ -97,13 +98,18 @@ export default function ArticleSlug({
       quote: (props) => (
         <div className='flex flex-col'>
           {props.value.option && (
-            <div className='relative h-32px w-32px mb-3'>
-              <Image
-                src={`/quote.png`}
-                alt='Locavore'
-                layout='fill'
-                objectFit='contain'
-                objectPosition='center'
+            <div className='relative h-8 w-8 mb-3'>
+              <Quote
+                className='w-full h-full'
+                fill={
+                  article.setColor
+                    ? article.setColor === 'articleColor'
+                      ? article.color.hex
+                      : article.setColor === 'categoryColor' &&
+                        article.categoryColor &&
+                        article.category.color.hex
+                    : '#D66A51'
+                }
               />
             </div>
           )}

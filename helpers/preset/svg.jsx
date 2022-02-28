@@ -4,6 +4,7 @@ const Facebook = ({ fill = '#000', ...props }) => (
   <svg
     width={9}
     height={16}
+    viewBox="0 0 9 16"
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -18,6 +19,7 @@ const Instagram = ({ fill = '#000', ...props }) => (
   <svg
     width={16}
     height={16}
+    viewBox="0 0 16 16"
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -37,6 +39,7 @@ const Linkedin = ({ fill = '#000', ...props }) => (
   <svg
     width={16}
     height={16}
+    viewBox="0 0 16 16"
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -52,6 +55,7 @@ const Youtube = ({ fill = '#000', ...props }) => (
   <svg
     width={19}
     height={14}
+    viewBox="0 0 19 14"
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -63,33 +67,68 @@ const Youtube = ({ fill = '#000', ...props }) => (
   </svg>
 );
 
-const Quote = ({fill = '#000', ...props }) => (
+const Quote = ({ fill = '#000', ...props }) => (
   <svg
-    width={42}
-    height={41}
-    fill='none'
     xmlns='http://www.w3.org/2000/svg'
-    xmlnsXlink='http://www.w3.org/1999/xlink'
+    viewBox='0 0 152.59 147.04'
     {...props}
   >
-    <path fill='url(#a)' d='M0 .157h42v40H0z' />
     <defs>
-      <pattern
-        id='a'
-        patternContentUnits='objectBoundingBox'
-        width={1}
-        height={1}
-      >
-        <use xlinkHref='#b' transform='matrix(.02 0 0 .021 0 -.004)' />
-      </pattern>
-      <image
-        id='b'
-        width={50}
-        height={48}
-        xlinkHref='data:image/png;base64,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'
-      />
+      <style>
+        {'.cls-1{fill:none;stroke-miterlimit:10;stroke-width:5.67px}'}
+      </style>
     </defs>
+    <g id='Layer_2' data-name='Layer 2'>
+      <g id='Layer_2-2' data-name='Layer 2'>
+        <path
+          className='cls-1'
+          stroke={fill}
+          d='M139 2.74c-62.11 16.44-58.23 83-58.23 83l-.2 58.5h69.18V82.36H109s-2.69-47.51 40.33-59.61M66 82.36H31.24s-2.69-47.51 40.33-59.61'
+        />
+        <path
+          className='cls-1'
+          stroke={fill}
+          d='M61.27 2.74C-.84 19.18 3 85.71 3 85.71l-.2 58.5H66'
+        />
+      </g>
+    </g>
   </svg>
 );
 
-export { Instagram, Facebook, Linkedin, Youtube };
+const Mail = ({ fill = '#000', ...props }) => (
+  <svg
+    width={21}
+    height={13}
+    viewBox="0 0 21 13"
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+    {...props}
+  >
+    <path
+      d='m4.086 2.476.743.62c.495.37.99.742 1.485 1.114 1.115.742 2.229 1.609 3.343 2.476.248.247.495.247.867 0 2.6-1.857 5.076-3.838 7.552-5.572.248-.124.372-.247.62-.495.247-.124.494-.371.742-.619H.62a60.059 60.059 0 0 0 3.467 2.476Z'
+      fill={fill}
+    />
+    <path
+      d='M18.448 2.6c-1.61 1.238-3.22 2.352-4.953 3.59-.371.248-.743.496-1.114.867-.372.248-.867.62-1.362.99h-.124c-.124.248-.495.496-.866.496-.248 0-.496-.124-.743-.248-2.724-1.98-5.324-3.962-7.924-5.819L0 1.486v10.523c0 .743.248.99.99.99h18.2c.743 0 .991-.123.991-.866V1.486L18.448 2.6Z'
+      fill={fill}
+    />
+  </svg>
+);
+
+const Twitter = ({ fill = '#000', ...props }) => (
+  <svg
+    width={19}
+    height={15}
+    viewBox="0 0 19 15"
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+    {...props}
+  >
+    <path
+      d='M1.264.707c2.041 2.406 4.615 3.724 7.762 3.948-.021-.206-.047-.39-.065-.578A3.742 3.742 0 0 1 11.547.198c1.396-.437 2.657-.148 3.748.834.133.12.237.16.42.112a7.654 7.654 0 0 0 1.981-.772c.043-.026.094-.044.17-.084-.292.882-.822 1.535-1.56 2.034.008.014.011.032.018.047.339-.073.68-.134 1.012-.224.331-.09.655-.217 1.03-.343-.151.206-.267.4-.418.556-.428.433-.871.856-1.318 1.271-.086.083-.13.152-.126.271.05 2.438-.637 4.655-2.027 6.645-1.505 2.156-3.543 3.554-6.102 4.16a10.996 10.996 0 0 1-3.78.225 10.59 10.59 0 0 1-4.451-1.528A16.056 16.056 0 0 1 0 13.305c2.07.184 3.896-.311 5.541-1.557-1.728-.152-2.877-1.019-3.514-2.647.58.094 1.113.086 1.656-.062C1.516 8.49.666 6.58.734 5.287c.515.256 1.045.43 1.642.451C.403 4.305.508 1.918 1.264.708Z'
+      fill={fill}
+    />
+  </svg>
+);
+
+export { Instagram, Facebook, Linkedin, Youtube, Quote, Mail, Twitter };
