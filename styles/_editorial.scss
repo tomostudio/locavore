@@ -1,30 +1,6 @@
 @import '_utils.scss';
 
 // Editorial
-#scrollIndicator {
-  & > * {
-    animation: scrollmove 1.5s linear infinite;
-  }
-}
-
-@keyframes scrollmove {
-  0%,
-  10% {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  40%,
-  60% {
-    opacity: 1;
-  }
-  90%,
-  100% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-}
-
-// Editorial
 .comingsoonSticky {
   position: sticky;
   position: -webkit-sticky;
@@ -41,6 +17,12 @@
       content: '';
       display: block;
       padding-bottom: 100%;
+    }
+  }
+  #scrollIndicator.hide{
+    @media screen and (min-width: '600px'){
+
+      opacity: 0;
     }
   }
 }
@@ -108,12 +90,13 @@ $issuecardgap: 40px;
   overflow-x: scroll;
   overflow-y: visible !important;
   white-space: nowrap;
-  &::before,
-  &::after {
+  position: relative;
+  & > .spacer{
     content: '';
     display: block;
-    width: calc((100vw - #{$card-width + 20px}) / 2);
+    width: calc((100vw - #{$card-width + 40px}) / 2);
     height: 100%;
+    position: relative;
     flex-shrink: 0;
   }
 
@@ -126,6 +109,7 @@ $issuecardgap: 40px;
   }
   & .article_wrapper {
     padding: 30px 0px;
+    margin: 0px 20px;
     & > a {
       display: block;
     }

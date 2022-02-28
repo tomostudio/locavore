@@ -327,7 +327,7 @@ export default function Index({ issueAPI, seoAPI }) {
             className="fixed z-20 bottom-10 left-0 w-full setflex-center pointer-events-none"
           >
             <span
-              className={`font-light text-xs tracking-widest  ${
+              className={`font-light text-xs tracking-widest animate-fade-down  ${
                 dark === 'white-text' ? 'text-white' : 'text-black'
               }`}
             >

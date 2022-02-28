@@ -17,8 +17,37 @@ module.exports = {
       2: 1,
     },
     extend: {
+      keyframes: {
+        'fade-left': {
+          '0%, 5%': {
+            opacity: 0,
+            transform: 'translateX(20px)',
+          },
+          '40%, 60%': { opacity: 1 },
+          '95%, 100%': {
+            opacity: 0,
+            transform: 'translateX(-20px)',
+          },
+        },
+        'fade-down': {
+          '0%, 5%': {
+            opacity: 0,
+            transform: 'translateY(-20px)',
+          },
+          '40%, 60%': { opacity: 1 },
+          '95%, 100%': {
+            opacity: 0,
+            transform: 'translateY(20px)',
+          },
+        },
+      },
+      animation: {
+        'fade-left': 'fade-left 1.5s linear infinite',
+        'fade-left-slower': 'fade-left 2.5s linear infinite',
+        'fade-down': 'fade-down 1.5s linear infinite',
+      },
       minHeight: {
-        "16rem": "16rem"
+        '16rem': '16rem',
       },
       screens: {
         'max-sm': { max: '600px' },
@@ -31,7 +60,7 @@ module.exports = {
         xl: '1280px',
       },
       zIndex: {
-        'min1': "-1",
+        min1: '-1',
         '-1': '-1',
         '-2': '-2',
         '-3': '-3',
