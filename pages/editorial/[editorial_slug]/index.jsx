@@ -44,15 +44,15 @@ export default function Index({ issueAPI, seoAPI }) {
   }, [])
 
   //check title word count
-  const maxLetter = 10;
-  const [titleS, setSize] = useState(false);
+  const maxLetter = 10
+  const [titleS, setSize] = useState(false)
   useEffect(() => {
-    const splitTitle = issue.title.split(' ');
+    const splitTitle = issue.title.split(' ')
 
     splitTitle.forEach((word) => {
-      setSize(word.length > maxLetter);
-    });
-  }, []);
+      setSize(word.length > maxLetter)
+    })
+  }, [])
 
   // ANIMATION
   const animationObj = [
@@ -183,31 +183,18 @@ export default function Index({ issueAPI, seoAPI }) {
   const serializers = {
     block: {
       normal: ({ children }) =>
-        children[0] === '' ? (
-          <br />
-        ) : (
-          <p>{children}</p>
-        ),
-      h1: ({ children }) => (
-        <h1 >{children}</h1>
-      ),
-      h2: ({ children }) => (
-        <h2 >{children}</h2>
-      ),
-      h3: ({ children }) => (
-        <h3 >{children}</h3>
-      ),
-      h4: ({ children }) => (
-        <h4 >{children}</h4>
-      ),
-      h5: ({ children }) => (
-        <h5 >{children}</h5>
-      ),
+        children[0] === '' ? <br /> : <p>{children}</p>,
+      h1: ({ children }) => <h1>{children}</h1>,
+      h2: ({ children }) => <h2>{children}</h2>,
+      h3: ({ children }) => <h3>{children}</h3>,
+      h4: ({ children }) => <h4>{children}</h4>,
+      h5: ({ children }) => <h5>{children}</h5>,
+      center: ({ children }) => <p className="text-center">{children}</p>,
+      left: ({ children }) => <p className="text-left">{children}</p>,
+      right: ({ children }) => <p className="text-right">{children}</p>,
     },
     list: {
-      number: ({ children }) => (
-        <ol className="list-decimal">{children}</ol>
-      ),
+      number: ({ children }) => <ol className="list-decimal">{children}</ol>,
     },
     types: {
       code: (props) => (
@@ -217,15 +204,6 @@ export default function Index({ issueAPI, seoAPI }) {
     marks: {
       changeColor: (props) => (
         <span style={{ color: props.value.color.hex }}>{props.children}</span>
-      ),
-      center: (props) => (
-        <span className="block text-center">{props.children}</span>
-      ),
-      left: (props) => (
-        <span className="block text-left">{props.children}</span>
-      ),
-      right: (props) => (
-        <span className="block text-right">{props.children}</span>
       ),
       backgroundColor: (props) => (
         <span style={{ backgroundColor: props.value.color.hex }}>
@@ -457,20 +435,20 @@ export default function Index({ issueAPI, seoAPI }) {
                   variants={fade}
                 >
                   <div
-                    id='trigger1'
-                    className='w-full h-[150vh] mx-md:h-screen'
+                    id="trigger1"
+                    className="w-full h-[150vh] mx-md:h-screen"
                   />
-                  <div id='trigger2' className='w-full min-h-screen '>
-                    <div className='h-[50vh] w-full' />
-                    <section className='w-full '>
+                  <div id="trigger2" className="w-full min-h-screen ">
+                    <div className="h-[50vh] w-full" />
+                    <section className="w-full ">
                       <Container
                         className={`max-md:px-6 pb-24 pb-24-safe flex flex-col justify-start content-center items-center ${
                           dark === 'white-text' ? 'text-white' : 'text-black'
                         }`}
                       >
                         <span
-                          id='issueNoInside'
-                          className='font-serif font-normal italic text-5xl max-md:text-3xl'
+                          id="issueNoInside"
+                          className="font-serif font-normal italic text-5xl max-md:text-3xl"
                         >
                           Issue {issue.issueNumber}
                         </span>
@@ -483,7 +461,7 @@ export default function Index({ issueAPI, seoAPI }) {
                         >
                           {issue.title}
                         </h1>
-                        <span className=' w-full text-center mt-5 max-md:mt-2'>
+                        <span className=" w-full text-center mt-5 max-md:mt-2">
                           {checkMonth(new Date(issue.date).getMonth())}{' '}
                           {new Date(issue.date).getFullYear()}
                           <span className="mx-4 inline-block">•</span>8 ARTICLES
@@ -540,11 +518,11 @@ export async function getStaticProps({ params }) {
   `)
   const headerAPI = await client.fetch(`
   *[_type == "header"]
-  `);
+  `)
 
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `);
+  `)
   return {
     props: {
       issueAPI,

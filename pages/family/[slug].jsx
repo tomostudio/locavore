@@ -51,6 +51,9 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
       h3: ({ children }) => <h3>{children}</h3>,
       h4: ({ children }) => <h4>{children}</h4>,
       h5: ({ children }) => <h5>{children}</h5>,
+      center: ({ children }) => <p className="text-center">{children}</p>,
+      left: ({ children }) => <p className="text-left">{children}</p>,
+      right: ({ children }) => <p className="text-right">{children}</p>,
     },
     list: {
       number: ({ children }) => <ol className='list-decimal'>{children}</ol>,
@@ -63,15 +66,6 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
     marks: {
       changeColor: (props) => (
         <span style={{ color: props.value.color.hex }}>{props.children}</span>
-      ),
-      center: (props) => (
-        <span className='block text-center'>{props.children}</span>
-      ),
-      left: (props) => (
-        <span className='block text-left'>{props.children}</span>
-      ),
-      right: (props) => (
-        <span className='block text-right'>{props.children}</span>
       ),
       backgroundColor: (props) => (
         <span style={{ backgroundColor: props.value.color.hex }}>

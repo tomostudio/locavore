@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   mode: 'jit',
@@ -82,6 +82,7 @@ module.exports = {
       },
       spacing: {
         '10px': '10px',
+        paddingContent: '5rem',
       },
       boxShadow: {
         darker:
@@ -175,4 +176,4 @@ module.exports = {
     require('tailwindcss-padding-safe')(),
     require('@tailwindcss/aspect-ratio'),
   ],
-};
+}
