@@ -7,7 +7,6 @@ import HeaderGap from '@/components/modules/headerGap';
 import { motion } from 'framer-motion';
 
 // Components
-import FancyLink from '@/components/utils/fancyLink';
 import FamilyImage from '@/components/modules/family/familyImage';
 import SEO from '@/components/utils/seo';
 import FamilyMenu from '@/components/modules/family/FamilyMenu';
@@ -20,7 +19,6 @@ import { bp } from '@/helpers/preset/breakpoints';
 import urlFor from '@/helpers/sanity/urlFor';
 import { fade } from '@/helpers/preset/transitions';
 import client from '@/helpers/sanity/client';
-import { useMediaQuery } from '@/helpers/functional/checkMedia';
 
 export default function Family({
   seoAPI,
