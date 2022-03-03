@@ -17,7 +17,7 @@ const PillButton = ({
         <FancyLink
           destination={destination}
           onClick={onClick}
-          className={`pillbutton text-xs px-4 py-2 border border-gray text-gray rounded-3xl transition-all ease-linear setflex-center-row whitespace-nowrap text-center ${className} ${
+          className={`pillbutton text-xs px-4 py-2 max-md:py-1 max-md:px-3 border border-gray text-gray rounded-3xl transition-all ease-linear setflex-center-row whitespace-nowrap text-center ${className} ${
             defaultHover ? 'hover:bg-gray hover:text-white' : ''
           }`}
           {...others}
@@ -38,7 +38,7 @@ const PillButton = ({
         <FancyLink
           destination={destination}
           onClick={onClick}
-          className={`pillbutton text-xs px-4 py-2 border border-gray bg-gray text-white rounded-3xl transition-all ease-linear setflex-center-row ${className} ${
+          className={`pillbutton text-xs px-4 py-2 max-md:py-1 max-md:px-3 border border-gray bg-gray text-white rounded-3xl transition-all ease-linear setflex-center-row ${className} ${
             defaultHover
               ? 'hover:bg-white hover:text-gray hover:border-gray'
               : ''

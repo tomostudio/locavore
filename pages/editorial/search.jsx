@@ -195,7 +195,7 @@ export default function Search({
                             : `${data.title}`
                         )
                       }
-                      className={`text-xs uppercase py-1 px-4 mt-2 mr-2 ${
+                      className={`text-xs uppercase mt-2 mr-2 ${
                         appContext.category.toLowerCase() ===
                         data.title.toLocaleLowerCase()
                           ? 'bg-gray text-white'
@@ -208,7 +208,7 @@ export default function Search({
                   ))}
                   {!(postNumCategory >= categoryAPI.length) && (
                     <PillButton
-                      className='text-xs uppercase max-md:py-1 px-4 2 mt-2 mr-2'
+                      className='text-xs uppercase mt-2 mr-2'
                       onClick={handleLoadMoreCategory}
                       loadMore={true}
                     >
