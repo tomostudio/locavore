@@ -9,7 +9,9 @@ import { transition } from '@/helpers/preset/tailwind';
 import { Youtube, Facebook, Instagram, Linkedin } from '@/helpers/preset/svg';
 
 const Footer = ({ className, footer }) => {
+  
   const MAILCHIMP_URL = process.env.NEXT_PUBLIC_MAILCHIMP_URL;
+
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {

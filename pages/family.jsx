@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 // Components
 import FamilyImage from '@/components/modules/family/familyImage';
 import SEO from '@/components/utils/seo';
-import FamilyMenu from '@/components/modules/family/FamilyMenu';
+import FamilyMenu from '@/components/modules/family/familyMenu';
 import FamilyMenuMobile from '@/components/modules/family/familyMenuMobile';
 import HeadingTitle from '@/components/utils/headingTitle';
 
