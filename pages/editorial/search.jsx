@@ -296,7 +296,7 @@ export default function Search({
           <StickyButton destination='/editorial' arrow='left'>
             Browse all issues
           </StickyButton>
-          <Footer footer={footer} />
+          <Footer footer={footer} mailchimp={seo.mailchimpID} />
         </m.main>
       </LazyMotion>
     </Layout>

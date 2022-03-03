@@ -61,34 +61,70 @@ export default function ArticleSlug({
         ) : (
           <p className="px-20 max-md:p-0">{children}</p>
         ),
-      h1: ({ children }) => <h1 className="px-20 max-md:p-0 text-left">{children}</h1>,
-      h2: ({ children }) => <h2 className="px-20 max-md:p-0 text-left">{children}</h2>,
-      h3: ({ children }) => <h3 className="px-20 max-md:p-0 text-left">{children}</h3>,
-      h4: ({ children }) => <h4 className="px-20 max-md:p-0 text-left">{children}</h4>,
-      h5: ({ children }) => <h5 className="px-20 max-md:p-0 text-left">{children}</h5>,
+      h1: ({ children }) => (
+        <h1 className="px-20 max-md:p-0" align="left">
+          {children}
+        </h1>
+      ),
+      h2: ({ children }) => (
+        <h2 className="px-20 max-md:p-0" align="left">
+          {children}
+        </h2>
+      ),
+      h3: ({ children }) => (
+        <h3 className="px-20 max-md:p-0" align="left">
+          {children}
+        </h3>
+      ),
+      h4: ({ children }) => (
+        <h4 className="px-20 max-md:p-0" align="left">
+          {children}
+        </h4>
+      ),
+      h5: ({ children }) => (
+        <h5 className="px-20 max-md:p-0" align="left">
+          {children}
+        </h5>
+      ),
       h1Center: ({ children }) => (
-        <h1 className="px-20 max-md:p-0 text-center">{children}</h1>
+        <h1 className="px-20 max-md:p-0" align="center">
+          {children}
+        </h1>
       ),
       h2Center: ({ children }) => (
-        <h2 className="px-20 max-md:p-0 text-center">{children}</h2>
+        <h2 className="px-20 max-md:p-0" align="center">
+          {children}
+        </h2>
       ),
       h3Center: ({ children }) => (
-        <h3 className="px-20 max-md:p-0 text-center">{children}</h3>
+        <h3 className="px-20 max-md:p-0" align="center">
+          {children}
+        </h3>
       ),
       h4Center: ({ children }) => (
-        <h4 className="px-20 max-md:p-0 text-center">{children}</h4>
+        <h4 className="px-20 max-md:p-0" align="center">
+          {children}
+        </h4>
       ),
       h5Center: ({ children }) => (
-        <h5 className="px-20 max-md:p-0 text-center">{children}</h5>
+        <h5 className="px-20 max-md:p-0" align="center">
+          {children}
+        </h5>
       ),
       center: ({ children }) => (
-        <p className="px-20 max-md:p-0 text-center">{children}</p>
+        <p className="px-20 max-md:p-0" align="center">
+          {children}
+        </p>
       ),
       right: ({ children }) => (
-        <p className="px-20 max-md:p-0 text-right">{children}</p>
+        <p className="px-20 max-md:p-0" align="right">
+          {children}
+        </p>
       ),
       left: ({ children }) => (
-        <p className="px-20 max-md:p-0 text-left">{children}</p>
+        <p className="px-20 max-md:p-0" align="left">
+          {children}
+        </p>
       ),
     },
     list: {
@@ -169,13 +205,19 @@ export default function ArticleSlug({
                   <h5 className="font-sans font-bold">{children}</h5>
                 ),
                 center: ({ children }) => (
-                  <p className="font-sans font-bold text-center">{children}</p>
+                  <p className="font-sans font-bold" align="center">
+                    {children}
+                  </p>
                 ),
                 left: ({ children }) => (
-                  <p className="font-sans font-bold text-left">{children}</p>
+                  <p className="font-sans font-bold" align="left">
+                    {children}
+                  </p>
                 ),
                 right: ({ children }) => (
-                  <p className="font-sans font-bold text-right">{children}</p>
+                  <p className="font-sans font-bold" align="right">
+                    {children}
+                  </p>
                 ),
               },
               list: {
@@ -250,14 +292,10 @@ export default function ArticleSlug({
                       h4: ({ children }) => <h4>{children}</h4>,
                       h5: ({ children }) => <h5>{children}</h5>,
                       center: ({ children }) => (
-                        <p className="text-center">{children}</p>
+                        <p align="center">{children}</p>
                       ),
-                      left: ({ children }) => (
-                        <p className="text-left">{children}</p>
-                      ),
-                      right: ({ children }) => (
-                        <p className="text-right">{children}</p>
-                      ),
+                      left: ({ children }) => <p align="left">{children}</p>,
+                      right: ({ children }) => <p align="right">{children}</p>,
                     },
                     list: {
                       number: ({ children }) => (
@@ -267,7 +305,7 @@ export default function ArticleSlug({
                   }}
                 />
               </div>
-            ) : props.value.left.columnLeft === "image" ? (
+            ) : props.value.left.columnLeft === 'image' ? (
               <div
                 className="relative min-h-16rem rounded-xl overflow-hidden"
                 style={{
@@ -289,7 +327,9 @@ export default function ArticleSlug({
                     .url()}
                 />
               </div>
-            ) : <></>}
+            ) : (
+              <></>
+            )}
           </div>
           <div className="w-1/2 max-md:w-full h-full relative">
             {props.value.right.columnRight === 'block' ? (
@@ -306,14 +346,10 @@ export default function ArticleSlug({
                       h4: ({ children }) => <h4>{children}</h4>,
                       h5: ({ children }) => <h5>{children}</h5>,
                       center: ({ children }) => (
-                        <p className="text-center">{children}</p>
+                        <p align="center">{children}</p>
                       ),
-                      left: ({ children }) => (
-                        <p className="text-left">{children}</p>
-                      ),
-                      right: ({ children }) => (
-                        <p className="text-right">{children}</p>
-                      ),
+                      left: ({ children }) => <p align="left">{children}</p>,
+                      right: ({ children }) => <p align="right">{children}</p>,
                     },
                     list: {
                       number: ({ children }) => (
@@ -345,7 +381,9 @@ export default function ArticleSlug({
                     .url()}
                 />
               </div>
-            ) : <></>}
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       ),
@@ -417,58 +455,64 @@ export default function ArticleSlug({
       {/* Untuk Content */}
       <OpeningArticle general={seo} article={article} baseUrl={baseUrl} />
 
-      {article.layout === 'blog' && (
-        <section className="mt-12">
-          <Container>
-            <div>
-              <div
-                className="flex flex-col space-y-2 max-md:mt-5"
-                style={{
-                  color: article.setColor
-                    ? article.setColor === 'articleColor'
-                      ? article.color.hex
-                      : article.setColor === 'categoryColor' &&
-                        article.categoryColor &&
-                        article.category.color.hex
-                    : '#D66A51',
-                }}
-              >
-                {layoutFilter &&
-                  layoutFilter.map((data, i) => (
-                    <div key={i}>
-                      <span className="block font-serif italic">
-                        Part {data.part}
-                      </span>
-                      <FancyLink
-                        onClick={() =>
-                          scrolltoview(
-                            data.title
-                              .toLowerCase()
-                              .replace(/ /g, '-')
-                              .replace(/[-]+/g, '-')
-                              .replace(/[^\w-]+/g, ''),
-                          )
-                        }
-                        className="font-bold font-serif border-b"
-                        style={{
-                          borderColor: article.setColor
-                            ? article.setColor === 'articleColor'
-                              ? article.color.hex
-                              : article.setColor === 'categoryColor' &&
-                                article.categoryColor &&
-                                article.category.color.hex
-                            : '#D66A51',
-                        }}
-                      >
-                        {data.title}
-                      </FancyLink>
-                    </div>
-                  ))}
+      {article.layout === 'blog' &&
+        (layoutFilter && layoutFilter[0].showTitle ? (
+          <section className="mt-12">
+            <Container>
+              <div>
+                <div
+                  className="flex flex-col space-y-2 max-md:mt-5"
+                  style={{
+                    color: article.setColor
+                      ? article.setColor === 'articleColor'
+                        ? article.color.hex
+                        : article.setColor === 'categoryColor' &&
+                          article.categoryColor &&
+                          article.category.color.hex
+                      : '#D66A51',
+                  }}
+                >
+                  {layoutFilter &&
+                    layoutFilter.map(
+                      (data, i) =>
+                        data.showTitle && (
+                          <div key={i}>
+                            <span className="block font-serif italic">
+                              Part {data.part}
+                            </span>
+                            <FancyLink
+                              onClick={() =>
+                                scrolltoview(
+                                  data.title
+                                    .toLowerCase()
+                                    .replace(/ /g, '-')
+                                    .replace(/[-]+/g, '-')
+                                    .replace(/[^\w-]+/g, ''),
+                                )
+                              }
+                              className="font-bold font-serif border-b"
+                              style={{
+                                borderColor: article.setColor
+                                  ? article.setColor === 'articleColor'
+                                    ? article.color.hex
+                                    : article.setColor === 'categoryColor' &&
+                                      article.categoryColor &&
+                                      article.category.color.hex
+                                  : '#D66A51',
+                              }}
+                            >
+                              {data.title}
+                            </FancyLink>
+                          </div>
+                        ),
+                    )}
+                </div>
               </div>
-            </div>
-          </Container>
-        </section>
-      )}
+            </Container>
+          </section>
+        ) : (
+          <></>
+        ))}
       <section className="mt-12 space-y-12 w-full h-full">
         {article.layout === 'blog' && article.blog ? (
           article.blog.map((data, i) =>
@@ -503,7 +547,9 @@ export default function ArticleSlug({
                       <div
                         className="font-serif text-center font-bold mb-10 max-md:mb-7"
                         style={{
-                          color: article.setColor
+                          color: data.color
+                            ? data.color.hex
+                            : article.setColor
                             ? article.setColor === 'articleColor'
                               ? article.color.hex
                               : article.setColor === 'categoryColor' &&
@@ -640,7 +686,7 @@ export default function ArticleSlug({
       >
         ISSUE {article.issue.issueNumber}
       </StickyButton>
-      <Footer footer={footer} />
+      <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
   )
 }

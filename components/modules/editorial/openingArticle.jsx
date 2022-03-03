@@ -22,9 +22,9 @@ export default function OpeningArticle({ general, article, baseUrl }) {
       h3: ({ children }) => <h3>{children}</h3>,
       h4: ({ children }) => <h4>{children}</h4>,
       h5: ({ children }) => <h5>{children}</h5>,
-      center: ({ children }) => <p className="text-center">{children}</p>,
-      left: ({ children }) => <p className="text-left">{children}</p>,
-      right: ({ children }) => <p className="text-right">{children}</p>,
+      center: ({ children }) => <p align="center">{children}</p>,
+      left: ({ children }) => <p align="left">{children}</p>,
+      right: ({ children }) => <p align="right">{children}</p>,
     },
     list: {
       number: ({ children }) => <ol className="list-decimal">{children}</ol>,

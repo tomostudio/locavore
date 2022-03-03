@@ -108,7 +108,7 @@ const CarousselComponent = ({ caroussel }) => {
               {caroussel.map((data, id) => (
                 <SwiperSlide key={id}>
                   <div
-                    className="cursor-pointer relative w-full h-full"
+                    className="cursor-pointer relative w-full h-full rounded-2xl overflow-hidden"
                     style={{
                       backgroundColor: `rgba(208,208,208, 1)`,
                     }}
@@ -116,7 +116,6 @@ const CarousselComponent = ({ caroussel }) => {
                     <Image
                       src={urlFor(data).width(1500).url()}
                       alt={data.name}
-                      className="rounded-2xl"
                       layout="fill"
                       objectFit="cover"
                       objectPosition="center"
