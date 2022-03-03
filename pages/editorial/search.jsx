@@ -158,7 +158,7 @@ export default function Search({
           {/* Untuk Content */}
           <Container className='max-md:px-6 pb-10'>
             <div
-              className='w-full h-full setflex-center relative'Ï
+              className='w-full h-full setflex-center relative'
             >
               {/* Title */}
               <HeadingTitle className='max-md:mb-0'>
