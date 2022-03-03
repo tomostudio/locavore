@@ -61,11 +61,11 @@ export default function ArticleSlug({
         ) : (
           <p className="px-20 max-md:p-0">{children}</p>
         ),
-      h1: ({ children }) => <h1 className="px-20 max-md:p-0">{children}</h1>,
-      h2: ({ children }) => <h2 className="px-20 max-md:p-0">{children}</h2>,
-      h3: ({ children }) => <h3 className="px-20 max-md:p-0">{children}</h3>,
-      h4: ({ children }) => <h4 className="px-20 max-md:p-0">{children}</h4>,
-      h5: ({ children }) => <h5 className="px-20 max-md:p-0">{children}</h5>,
+      h1: ({ children }) => <h1 className="px-20 max-md:p-0 text-left">{children}</h1>,
+      h2: ({ children }) => <h2 className="px-20 max-md:p-0 text-left">{children}</h2>,
+      h3: ({ children }) => <h3 className="px-20 max-md:p-0 text-left">{children}</h3>,
+      h4: ({ children }) => <h4 className="px-20 max-md:p-0 text-left">{children}</h4>,
+      h5: ({ children }) => <h5 className="px-20 max-md:p-0 text-left">{children}</h5>,
       h1Center: ({ children }) => (
         <h1 className="px-20 max-md:p-0 text-center">{children}</h1>
       ),
@@ -360,7 +360,7 @@ export default function ArticleSlug({
         </span>
       ),
       largerSize: (props) => (
-        <span style={{ fontSize: '22px' }}>{props.children}</span>
+        <span style={{ fontSize: '1.5em' }}>{props.children}</span>
       ),
       sub: (props) => <sub>{props.children}</sub>,
       sup: (props) => <sup>{props.children}</sup>,

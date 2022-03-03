@@ -73,7 +73,7 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
         </span>
       ),
       largerSize: (props) => (
-        <span style={{ fontSize: '22px' }}>{props.children}</span>
+        <span style={{ fontSize: '1.5em' }}>{props.children}</span>
       ),
       sub: (props) => <sub>{props.children}</sub>,
       sup: (props) => <sup>{props.children}</sup>,
