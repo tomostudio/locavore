@@ -1,15 +1,17 @@
-import getYoutube from '@/components/utils/getYoutube'
-import urlFor from '@/helpers/sanity/urlFor'
-import Image from 'next/image'
-import { useState } from 'react'
-import FancyLink from '../../utils/fancyLink'
-import Caption from './caption'
+import getYoutube from '@/components/utils/getYoutube';
+import urlFor from '@/helpers/sanity/urlFor';
+import Image from 'next/image';
+import { useState } from 'react';
+import FancyLink from '../../utils/fancyLink';
+import Caption from './caption';
 
-const VideoComponent = ({ className, video, article }) => {
-  const [statusVideo, setStatusVideo] = useState(false)
+const VideoComponent = ({ className = '', video, article }) => {
+  const [statusVideo, setStatusVideo] = useState(false);
 
   return (
-    <div className={`relative w-full h-full mx-auto max-w-800px ${className}`}>
+    <div
+      className={`video relative w-full max-w-800px ${className}`}
+    >
       <FancyLink
         onClick={() => setStatusVideo(true)}
         className={`group block relative w-full mx-auto max-w-800px`}
@@ -33,9 +35,9 @@ const VideoComponent = ({ className, video, article }) => {
               getYoutube(video.link) +
               '?&autoplay=1'
             }
-            id="videos"
-            width="100%"
-            height="100%"
+            id='videos'
+            width='100%'
+            height='100%'
           ></iframe>
           <div
             className={`absolute w-full h-full z-2 ${
@@ -46,12 +48,12 @@ const VideoComponent = ({ className, video, article }) => {
               src={urlFor(video.thumbnail).width(1500).url()}
               alt={video.thumbnail.name}
               className={`${statusVideo ? 'inActive' : ''}`}
-              loading="eager"
+              loading='eager'
               priority={true}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-              placeholder="blur"
+              layout='fill'
+              objectFit='cover'
+              objectPosition='center'
+              placeholder='blur'
               blurDataURL={urlFor(video.thumbnail)
                 .blur(2)
                 .format('webp')
@@ -61,7 +63,7 @@ const VideoComponent = ({ className, video, article }) => {
           </div>
         </div>
         {!statusVideo && (
-          <div className="absolute top-0 left-0 z-20 h-full w-full setflex-center">
+          <div className='absolute top-0 left-0 z-20 h-full w-full setflex-center'>
             <div
               className={`px-10 py-7 rounded-50% transition-all duration-300 ${
                 !video.dark
@@ -75,12 +77,12 @@ const VideoComponent = ({ className, video, article }) => {
         )}
       </FancyLink>
       {video.caption && (
-        <div className="w-content mx-auto max-md:w-full max-md:px-4">
+        <div className='caption w-full mx-auto max-md:w-full max-md:px-4'>
           <Caption caption={video.caption} article={article} />{' '}
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default VideoComponent
+export default VideoComponent;

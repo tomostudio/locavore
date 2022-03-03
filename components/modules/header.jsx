@@ -75,20 +75,22 @@ export default function Header({ className = '', header, footer }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 w-full z-50 overflow-auto hide-scrollbar flex flex-col ${menu ? 'h-screen': ''}`}
+      className={`fixed top-0 left-0 right-0 w-full z-50 overflow-auto hide-scrollbar flex flex-col ${
+        menu ? 'h-screen' : ''
+      }`}
       style={{ height: menu ? `${wHeight}px` : 'auto' }}
     >
       <header
         className={`sticky top-0 left-0 right-0 w-full z-2 border-b ${className}
+        ${bnw || menu ? 'border-black bg-white' : 'border-white bg-black'}
         ${
           headerStyle.toLowerCase().includes('blur')
-            ? 'bg-opacity-50 backdrop-filter backdrop-blur-sm'
+            ? 'bg-opacity-50 backdrop-filter backdrop-blur-sm !bg-transparent'
             : headerStyle.toLowerCase().includes('trans') ||
               headerStyle.toLowerCase().includes('transparent')
             ? 'bg-opacity-0'
             : 'bg-opacity-100'
         }
-        ${bnw || menu ? 'border-black bg-white' : 'border-white bg-black'}
         ${menu ? `!bg-opacity-100 ` : ''}
         ${headerStyle.toLowerCase().includes('hidden') ? '!hidden' : ''}`}
       >
