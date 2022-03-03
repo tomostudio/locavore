@@ -13,7 +13,7 @@ import Footer from '@/components/modules/footer'
 import Arrow from '@/components/utils/arrow'
 import FancyLink from '@/components/utils/fancyLink'
 import SEO from '@/components/utils/seo'
-import FamilyMenu from '@/components/modules/family/FamilyMenu'
+import FamilyMenu from '@/components/modules/family/familyMenu'
 import FamilyMenuMobile from '@/components/modules/family/familyMenuMobile'
 
 // Helpers
