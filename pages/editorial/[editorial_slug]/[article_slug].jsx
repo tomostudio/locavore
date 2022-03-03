@@ -267,7 +267,7 @@ export default function ArticleSlug({
                   }}
                 />
               </div>
-            ) : (
+            ) : props.value.left.columnLeft === "image" ? (
               <div
                 className="relative min-h-16rem rounded-xl overflow-hidden"
                 style={{
@@ -289,7 +289,7 @@ export default function ArticleSlug({
                     .url()}
                 />
               </div>
-            )}
+            ) : <></>}
           </div>
           <div className="w-1/2 max-md:w-full h-full relative">
             {props.value.right.columnRight === 'block' ? (
@@ -323,7 +323,7 @@ export default function ArticleSlug({
                   }}
                 />
               </div>
-            ) : (
+            ) : props.value.right.columnRight === 'image' ? (
               <div
                 className="relative min-h-16rem rounded-xl overflow-hidden"
                 style={{
@@ -345,7 +345,7 @@ export default function ArticleSlug({
                     .url()}
                 />
               </div>
-            )}
+            ) : <></>}
           </div>
         </div>
       ),
