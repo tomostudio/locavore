@@ -219,7 +219,13 @@ export default function Index({ issueAPI, seoAPI }) {
         <span style={{ fontSize: props.value.size }}>{props.children}</span>
       ),
       font: (props) => (
-        <span className={props.value.type}>{props.children}</span>
+        <span
+          className={
+            props.value.type === 'display' ? 'font-default' : props.value.type
+          }
+        >
+          {props.children}
+        </span>
       ),
     },
   }
