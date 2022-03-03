@@ -89,7 +89,7 @@ const EditorialIssueCard = React.forwardRef(
     return (
       <FancyLink
         destination={destination}
-        className={`group relative select-all w-full rounded-2xl p-5 pt-0 max-md:p-4 max-md:pt-0 flex flex-col transition-[shadow transform] duration-300 ${
+        className={`group relative select-none w-full rounded-2xl p-5 pt-0 max-md:p-4 max-md:pt-0 flex flex-col transition-[shadow transform] duration-300 ${
           comingsoon
             ? `bg-lighterGray cursor-default ${
                 useMediaQuery('(max-width: 850px)') ? 'max-md:pt-4' : ''
