@@ -66,6 +66,21 @@ export default function ArticleSlug({
       h3: ({ children }) => <h3 className="px-20 max-md:p-0">{children}</h3>,
       h4: ({ children }) => <h4 className="px-20 max-md:p-0">{children}</h4>,
       h5: ({ children }) => <h5 className="px-20 max-md:p-0">{children}</h5>,
+      h1Center: ({ children }) => (
+        <h1 className="px-20 max-md:p-0 text-center">{children}</h1>
+      ),
+      h2Center: ({ children }) => (
+        <h2 className="px-20 max-md:p-0 text-center">{children}</h2>
+      ),
+      h3Center: ({ children }) => (
+        <h3 className="px-20 max-md:p-0 text-center">{children}</h3>
+      ),
+      h4Center: ({ children }) => (
+        <h4 className="px-20 max-md:p-0 text-center">{children}</h4>
+      ),
+      h5Center: ({ children }) => (
+        <h5 className="px-20 max-md:p-0 text-center">{children}</h5>
+      ),
       center: ({ children }) => (
         <p className="px-20 max-md:p-0 text-center">{children}</p>
       ),
@@ -185,7 +200,7 @@ export default function ArticleSlug({
           }`}
         >
           <div
-            className="relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1"
+            className="relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1 rounded-xl overflow-hidden"
             style={{
               backgroundColor: `rgba(208,208,208, 1)`,
             }}
@@ -216,11 +231,11 @@ export default function ArticleSlug({
       ),
       columnBlock: (props) => (
         <div
-          className={`flex space-x-4 text-left ${
+          className={`flex space-x-4 max-md:space-x-0 max-md:space-y-4 max-md:flex-col text-left ${
             !props.value.padding ? 'px-20 max-md:p-0' : ''
           }`}
         >
-          <div className="w-1/2 h-full relative">
+          <div className="w-1/2 max-md:w-full h-full relative">
             {props.value.left.columnLeft === 'block' ? (
               <div className="w-full h-full">
                 <PortableText
@@ -254,7 +269,7 @@ export default function ArticleSlug({
               </div>
             ) : (
               <div
-                className="relative min-h-16rem"
+                className="relative min-h-16rem rounded-xl overflow-hidden"
                 style={{
                   backgroundColor: `rgba(208,208,208, 1)`,
                 }}
@@ -276,7 +291,7 @@ export default function ArticleSlug({
               </div>
             )}
           </div>
-          <div className="w-1/2 h-full relative">
+          <div className="w-1/2 max-md:w-full h-full relative">
             {props.value.right.columnRight === 'block' ? (
               <div className="w-full h-full">
                 <PortableText
@@ -310,7 +325,7 @@ export default function ArticleSlug({
               </div>
             ) : (
               <div
-                className="relative min-h-16rem"
+                className="relative min-h-16rem rounded-xl overflow-hidden"
                 style={{
                   backgroundColor: `rgba(208,208,208, 1)`,
                 }}
@@ -461,14 +476,14 @@ export default function ArticleSlug({
                 className="w-full h-auto px-8 py-4 max-md:p-2 setflex-center"
                 style={{
                   background: data.border
-                    ? article.setColor
+                    ? data.color
+                      ? data.color.hex
+                      : article.setColor
                       ? article.setColor === 'articleColor'
-                        ? article.color.hex
+                        ? article.color && article.color.hex
                         : article.setColor === 'categoryColor' &&
                           article.categoryColor &&
                           article.category.color.hex
-                      : data.color
-                      ? data.color.hex && data.color.hex
                       : '#D66A51'
                     : 'none',
                 }}
@@ -539,7 +554,7 @@ export default function ArticleSlug({
                   }`}
                 >
                   <div
-                    className={`relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1`}
+                    className={`relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1 rounded-xl overflow-hidden`}
                     style={{
                       backgroundColor: `rgba(208,208,208, 1)`,
                     }}

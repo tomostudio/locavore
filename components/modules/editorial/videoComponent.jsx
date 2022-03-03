@@ -12,7 +12,7 @@ const VideoComponent = ({ className, video, article }) => {
     <div className={`relative w-full h-full mx-auto max-w-800px ${className}`}>
       <FancyLink
         onClick={() => setStatusVideo(true)}
-        className={`group relative w-full mx-auto max-w-800px`}
+        className={`group block relative w-full mx-auto max-w-800px`}
       >
         {!statusVideo && (
           <div

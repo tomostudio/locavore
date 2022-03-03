@@ -200,9 +200,9 @@ export default function Family({
                     key={id}
                     store={familyListAPI[data.storeID]}
                     position={
-                      (!data.family.hideNamePosition && data.position) || ''
+                      (data.hideNamePosition && data.position) || ''
                     }
-                    name={(!data.family.hideNamePosition && data.name) || ''}
+                    name={(data.hideNamePosition && data.name) || ''}
                     src={data.image}
                     alt={data.image.name}
                   />
