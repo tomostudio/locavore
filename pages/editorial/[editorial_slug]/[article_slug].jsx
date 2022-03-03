@@ -192,7 +192,7 @@ export default function ArticleSlug({
           >
             <Image
               src={urlFor(props.value.image).url()}
-              alt={props.value.name}
+              alt={props.value.image.name}
               layout="fill"
               objectFit="cover"
               objectPosition="center"

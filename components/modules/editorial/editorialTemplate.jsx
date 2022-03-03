@@ -1,18 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react'
 
-import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { fade } from '@/helpers/preset/transitions';
+import { LazyMotion, domAnimation, m } from 'framer-motion'
+import { fade } from '@/helpers/preset/transitions'
 
 // Layout
-import Layout from '@/components/modules/layout';
-import Container from '@/components/modules/container';
-import Footer from '@/components/modules/footer';
-import HeaderGap from '@/components/modules/headerGap';
+import Layout from '@/components/modules/layout'
+import Container from '@/components/modules/container'
+import Footer from '@/components/modules/footer'
+import HeaderGap from '@/components/modules/headerGap'
 
 // Components
-import StickyButton from '@/components/modules/stickyButton';
-import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard';
-import HeadingTitle from '@/components/utils/headingTitle';
+import StickyButton from '@/components/modules/stickyButton'
+import EditorialIssueCard from '@/components/modules/editorial/editorialIssueCard'
+import HeadingTitle from '@/components/utils/headingTitle'
 
 // Helpers
 import urlFor from '@/helpers/sanity/urlFor'
@@ -26,77 +26,77 @@ export default function EditorialTemplate({
   const dataSoon = issueAPI
     .filter((data) => data.comingSoon === true)
     .sort((a, b) => {
-      return a.issueNumber - b.issueNumber;
-    });
+      return a.issueNumber - b.issueNumber
+    })
   const processedIssue = issueAPI.sort((a, b) => {
-    return b.issueNumber - a.issueNumber;
-  }); // sort array descending
+    return b.issueNumber - a.issueNumber
+  }) // sort array descending
 
-  const isComingSoon = dataSoon.length > 0 ? true : false; // tanda if there is a comingsoon card or not
+  const isComingSoon = dataSoon.length > 0 ? true : false // tanda if there is a comingsoon card or not
 
   const checkClosest = () => {
-    const today = new Date();
+    const today = new Date()
 
-    const dataSoon = issueAPI.filter((data) => data.comingSoon === true);
+    const dataSoon = issueAPI.filter((data) => data.comingSoon === true)
 
     if (dataSoon.length > 0) {
       const closest = dataSoon.reduce((a, b) => {
-        const adiff = new Date(a.date) - today;
-        return adiff > 0 && adiff < new Date(b.date) - today ? a : b;
-      });
+        const adiff = new Date(a.date) - today
+        return adiff > 0 && adiff < new Date(b.date) - today ? a : b
+      })
 
-      return closest;
+      return closest
     } else {
-      return false;
+      return false
     }
-  };
+  }
 
-  const comingSoonComp = useRef(null);
-  const [scrollOffset, setOffset] = useState(316);
+  const comingSoonComp = useRef(null)
+  const [scrollOffset, setOffset] = useState(316)
 
   useEffect(() => {
-    const { innerWidth: width, innerHeight: height } = window;
+    const { innerWidth: width, innerHeight: height } = window
     // check if coming soon is enabled or present
     if (isComingSoon && width > 850) {
-      window.scrollTo(0, scrollOffset);
+      window.scrollTo(0, scrollOffset)
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 0)
     }
     const setBuffer = () => {
       if (isComingSoon) {
         if (width > 850) {
-          setOffset(comingSoonComp.current.offsetHeight - 10); // get automated number - reduce the card header
+          setOffset(comingSoonComp.current.offsetHeight - 10) // get automated number - reduce the card header
         } else {
-          setOffset(comingSoonComp.current.offsetHeight + 40); // get automated number + mobile margin bottom
+          setOffset(comingSoonComp.current.offsetHeight + 40) // get automated number + mobile margin bottom
         }
       }
-    };
+    }
 
-    window.addEventListener('resize', setBuffer, false);
+    window.addEventListener('resize', setBuffer, false)
     return () => {
-      window.removeEventListener('resize', setBuffer, false);
-    };
-  }, []);
+      window.removeEventListener('resize', setBuffer, false)
+    }
+  }, [])
 
   useEffect(() => {
-    const { innerWidth: width, innerHeight: height } = window;
+    const { innerWidth: width, innerHeight: height } = window
     if (isComingSoon) {
       if (width > 850) {
-        setOffset(comingSoonComp.current.offsetHeight - 10); // get automated number - reduce the card header
+        setOffset(comingSoonComp.current.offsetHeight - 10) // get automated number - reduce the card header
       } else {
-        setOffset(comingSoonComp.current.offsetHeight + 40); // get automated number + mobile margin bottom
+        setOffset(comingSoonComp.current.offsetHeight + 40) // get automated number + mobile margin bottom
       }
     }
-  }, [comingSoonComp]);
+  }, [comingSoonComp])
 
   return (
     <Layout>
       <LazyMotion features={domAnimation}>
-        <m.main initial='initial' animate='enter' exit='exit' variants={fade}>
+        <m.main initial="initial" animate="enter" exit="exit" variants={fade}>
           {/* Header Gap */}
           {/* Untuk Content */}
-          <section className='pb-10 w-full h-full flex flex-col'>
-            <Container className='max-md:px-6'>
+          <section className="pb-10 w-full h-full flex flex-col">
+            <Container className="max-md:px-6">
               {/* Sticky Container */}
               <div
                 className={`relative w-full ${
@@ -108,7 +108,7 @@ export default function EditorialTemplate({
                   {/* Heading Title */}
                   <HeadingTitle className={`sticky`} style={{ top: '60px' }}>
                     Editorial
-                    <span className='sub'>Issues</span>Index
+                    <span className="sub">Issues</span>Index
                   </HeadingTitle>
                   {/* // COMING SOON TEST */}
                   {isComingSoon && (
@@ -124,12 +124,16 @@ export default function EditorialTemplate({
                           ? checkClosest().thumbnail.color.hex
                           : '#fff'
                       }
-                      className='mb-10'
+                      className="mb-10"
                       imageThumbnail={
                         checkClosest().thumbnail &&
                         urlFor(checkClosest().thumbnail.placeholder)
                           .width(1500)
                           .url()
+                      }
+                      alt={
+                        checkClosest().thumbnail &&
+                        checkClosest().thumbnail.placeholder.name
                       }
                       blurDataURL={
                         checkClosest().thumbnail &&
@@ -153,7 +157,7 @@ export default function EditorialTemplate({
               </div>
               {/* Card */}
               <div
-                id='editorialIssuesList'
+                id="editorialIssuesList"
                 className={`relative w-full h-full space-y-10`}
                 style={{
                   marginTop: isComingSoon ? `-${scrollOffset - 0}px` : '0px',
@@ -181,6 +185,7 @@ export default function EditorialTemplate({
                           data.thumbnail &&
                           urlFor(data.thumbnail.placeholder).url()
                         }
+                        alt={data.thumbnail && data.thumbnail.placeholder.name}
                         descriptions={data.coverText}
                         blurDataURL={
                           data.thumbnail &&
@@ -191,18 +196,18 @@ export default function EditorialTemplate({
                             .url()
                         }
                       />
-                    );
+                    )
                 })}
               </div>
             </Container>
           </section>
           {/* Button Sticky */}
-          <StickyButton destination='/editorial/search' arrow='right'>
+          <StickyButton destination="/editorial/search" arrow="right">
             SEARCH ALL ARTICLES
           </StickyButton>
           <Footer footer={footer} />
         </m.main>
       </LazyMotion>
     </Layout>
-  );
+  )
 }

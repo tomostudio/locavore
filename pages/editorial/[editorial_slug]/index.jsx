@@ -333,7 +333,7 @@ export default function Index({ issueAPI, seoAPI }) {
                   />
                   <Image
                     src={urlFor(issue.image1.placeholder).width(1400).url()}
-                    alt={issue.image1.name}
+                    alt={issue.image1.placeholder.name}
                     layout="fill"
                     objectFit="cover"
                     objectPosition="center"
@@ -382,7 +382,7 @@ export default function Index({ issueAPI, seoAPI }) {
                   />
                   <Image
                     src={urlFor(issue.image2.placeholder).width(1400).url()}
-                    alt={issue.image2.name}
+                    alt={issue.image2.placeholder.name}
                     layout="fill"
                     objectFit="cover"
                     loading="eager"

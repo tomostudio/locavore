@@ -117,6 +117,7 @@ export default function Header({ className = '', header, footer }) {
             {bnw || menu ? (
               <Image
                 src={urlFor(header[0].logo.black).url()}
+                alt={header[0].logo.black.name}
                 layout='intrinsic'
                 objectFit='contain'
                 objectPosition={'left center'}
@@ -126,6 +127,7 @@ export default function Header({ className = '', header, footer }) {
             ) : (
               <Image
                 src={urlFor(header[0].logo.white).url()}
+                alt={header[0].logo.white.name}
                 layout='intrinsic'
                 objectFit='contain'
                 objectPosition={'left center'}

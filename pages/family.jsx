@@ -204,7 +204,7 @@ export default function Family({
                     }
                     name={(!data.family.hideNamePosition && data.name) || ''}
                     src={data.image}
-                    alt={data.name}
+                    alt={data.image.name}
                   />
                 ))}
             </div>

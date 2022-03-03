@@ -21,6 +21,7 @@ const EditorialIssueCard = React.forwardRef(
       comingsoon = false,
       styleTitle,
       blurDataURL = '',
+      alt,
     },
     ref,
   ) => {
@@ -116,7 +117,7 @@ const EditorialIssueCard = React.forwardRef(
                 />
                 <Image
                   src={imageThumbnail}
-                  alt={'Locavore'}
+                  alt={alt}
                   layout="fill"
                   objectFit="cover"
                   objectPosition="center"
