@@ -591,7 +591,7 @@ export default function ArticleSlug({
         ) : article.layout === 'video' && article.video ? (
           <VideoComponent video={article.video} article={article} />
         ) : article.layout === 'gallery' && article.gallery ? (
-          <GalleryComponent gallery={article.gallery} article={article} />
+          <GalleryComponent gallery={article} article={article} />
         ) : article.layout === 'caroussel' && article.caroussel ? (
           <CarousselComponent caroussel={article.caroussel} />
         ) : (
