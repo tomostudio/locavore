@@ -461,7 +461,7 @@ export default function Index({ issueAPI, seoAPI }) {
                         <h1
                           className={`title-issue font-sans font-normal  text-center leading-none ${
                             titleS
-                              ? 'text-6xl sm:text-7xl md:text-8xl'
+                              ? 'text-5xl sm:text-6xl md:text-8xl'
                               : 'text-7xl sm:text-8xl'
                           }`}
                         >

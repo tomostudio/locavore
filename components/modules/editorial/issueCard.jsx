@@ -18,9 +18,9 @@ const IssueCard = ({
   return (
     <FancyLink
       destination={destination}
-      className={`group article-issue-card relative w-full rounded-2xl px-5 pb-5 flex flex-col bg-lightGray odd:bg-lighterGray  max-w-issueCard ${className}`}
+      className={`group article-issue-card relative rounded-2xl px-5 pb-5 max-md:px-4 max-md:pb-4 flex flex-col bg-lightGray odd:bg-lighterGray  ${className}`}
     >
-      <div className='text-center w-full pt-4 pb-3'>
+      <div className='text-center w-full pt-4 pb-3 max-md:pt-3 max-md:pb-2'>
         <span>ISSUE {issueNo}</span>
       </div>
       <ArticleCard
