@@ -10,7 +10,7 @@ const VideoComponent = ({ className = '', video, article }) => {
 
   return (
     <div
-      className={`video relative w-full max-w-800px ${className}`}
+      className={`video relative w-full max-w-800px mx-auto ${className}`}
     >
       <FancyLink
         onClick={() => setStatusVideo(true)}
