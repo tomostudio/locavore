@@ -85,7 +85,9 @@ export default function Header({ className = '', header, footer }) {
         ${bnw || menu ? 'border-black bg-white' : 'border-white bg-black'}
         ${
           headerStyle.toLowerCase().includes('blur')
-            ? 'bg-opacity-50 backdrop-filter backdrop-blur-sm !bg-transparent'
+            ? `bg-opacity-50 backdrop-filter backdrop-blur-sm ${
+                menu ? '' : '!bg-transparent'
+              }`
             : headerStyle.toLowerCase().includes('trans') ||
               headerStyle.toLowerCase().includes('transparent')
             ? 'bg-opacity-0'

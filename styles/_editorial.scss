@@ -1,4 +1,4 @@
-@import '_utils.scss';
+@import "_utils.scss";
 
 // Editorial
 .comingsoonSticky {
@@ -14,14 +14,13 @@
     position: relative;
     width: calc(100% / 5);
     &::after {
-      content: '';
+      content: "";
       display: block;
       padding-bottom: 100%;
     }
   }
-  #scrollIndicator.hide{
-    @media screen and (min-width: '600px'){
-
+  #scrollIndicator.hide {
+    @media screen and (min-width: "600px") {
       opacity: 0;
     }
   }
@@ -30,11 +29,19 @@
 // Issue
 $card-width: 335px;
 $card-height: $card-width / 18 * 24;
+
 .article-card {
   // max-width: $card-width;
-  width: $card-width;
   height: $card-height;
+  width: $card-width;
   aspect-ratio: 18 / 24;
+  @include mobile {
+    $card-width: 280px;
+    $card-height: $card-width / 18 * 25;
+    aspect-ratio: 18 / 25;
+    height: $card-height;
+    width: $card-width;
+  }
 }
 
 $issuecard-width: $card-width + 40px;
@@ -77,7 +84,7 @@ $issuecardgap: 40px;
     }
   }
   @media (max-width: 879px) {
-  @apply flex-col;
+    @apply flex-col;
     & > * {
       @apply mx-auto ml-auto mr-auto;
     }
@@ -91,13 +98,17 @@ $issuecardgap: 40px;
   overflow-y: visible !important;
   white-space: nowrap;
   position: relative;
-  & > .spacer{
-    content: '';
+  & > .spacer {
+    content: "";
     display: block;
     width: calc((100vw - #{$card-width + 40px}) / 2);
     height: 100%;
     position: relative;
     flex-shrink: 0;
+    @include mobile {
+      $card-width: 280px;
+      width: calc((100vw - #{$card-width + 40px}) / 2);
+    }
   }
 
   &.noscroll {
@@ -110,6 +121,9 @@ $issuecardgap: 40px;
   & .article_wrapper {
     padding: 30px 0px;
     margin: 0px 20px;
+    @include mobile {
+      padding: 20px 0px;
+    }
     & > a {
       display: block;
     }
