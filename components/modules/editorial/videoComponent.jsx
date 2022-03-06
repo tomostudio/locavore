@@ -8,14 +8,14 @@ import Caption from './caption'
 const VideoComponent = ({
   className = '',
   video,
-  article,
+  color,
   gallery = false,
 }) => {
   const [statusVideo, setStatusVideo] = useState(false)
 
   return (
     <div
-      className={`video relative w-full ${
+      className={`video relative w-full mx-auto ${
         !gallery ? 'max-w-800px' : ''
       } ${className}`}
     >
@@ -87,7 +87,7 @@ const VideoComponent = ({
       </FancyLink>
       {video.caption && (
         <div className="caption w-content mx-auto max-md:w-full max-md:px-4">
-          <Caption caption={video.caption} article={article} />{' '}
+          <Caption caption={video.caption} color={color} />
         </div>
       )}
     </div>

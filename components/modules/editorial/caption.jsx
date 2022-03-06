@@ -1,4 +1,4 @@
-const Caption = ({ className, option = true, caption, article }) => {
+const Caption = ({ className, option = true, caption, color }) => {
   return (
     <div
       className={`flex items-end max-md:items-startw-full mt-3 max-md:p-0 ${
@@ -8,16 +8,12 @@ const Caption = ({ className, option = true, caption, article }) => {
       <div
         className="w-10 h-5 border-b-2 border-l-2 mr-4"
         style={{
-          borderColor: article.setColor
-            ? article.setColor === 'articleColor'
-              ? article.color.hex
-              : article.setColor === 'categoryColor' &&
-                article.categoryColor &&
-                article.category.color.hex
-            : '#D66A51',
+          borderColor: color,
         }}
       />
-      <span className="w-full font-serif text-base font-bold translate-y-1">{caption}</span>
+      <span className="w-full font-serif text-base font-bold translate-y-1">
+        {caption}
+      </span>
     </div>
   )
 }

@@ -5,7 +5,7 @@ import urlFor from '@/helpers/sanity/urlFor'
 import VideoComponent from './videoComponent'
 import Caption from './caption'
 
-const GalleryComponent = ({ gallery, article }) => {
+const GalleryComponent = ({ gallery, color }) => {
   return (
     <Container className="w-full h-auto setflex-center mt-12">
       <div className={`w-full max-w-screen-xl flex flex-col`}>
@@ -40,7 +40,7 @@ const GalleryComponent = ({ gallery, article }) => {
                     </div>
                     {item.caption && (
                       <div className="w-content mx-auto max-md:w-full max-md:px-4">
-                        <Caption caption={item.caption} article={article} />
+                        <Caption caption={item.caption} color={color} />
                       </div>
                     )}
                   </div>
@@ -76,7 +76,7 @@ const GalleryComponent = ({ gallery, article }) => {
                         <div className="w-full mx-auto max-md:w-full max-md:px-4">
                           <Caption
                             caption={item.firstImage.caption}
-                            article={article}
+                            color={color}
                           />
                         </div>
                       )}
@@ -106,7 +106,7 @@ const GalleryComponent = ({ gallery, article }) => {
                         <div className="w-full mx-auto max-md:w-full max-md:px-4">
                           <Caption
                             caption={item.secondImage.caption}
-                            article={article}
+                            color={color}
                           />
                         </div>
                       )}
@@ -117,7 +117,7 @@ const GalleryComponent = ({ gallery, article }) => {
                 item._type === 'video' && (
                   <VideoComponent
                     video={item}
-                    article={article}
+                    color={color}
                     gallery={true}
                   />
                 )
