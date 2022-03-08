@@ -353,8 +353,9 @@ export default function ArticleSlug({
       <NextArticle
         bgColor={nextArticle.article.category.color.hex}
         title={`${
-          !nextArticle.turnOffArticleNumber &&
-          `${nextArticle.article.articleNumber}.`
+          !nextArticle.turnOffArticleNumber
+            ? `${nextArticle.article.articleNumber}.`
+            : ''
         } ${nextArticle.article.title}`}
         category={nextArticle.article.category.title}
         timeRead={
