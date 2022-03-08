@@ -5,12 +5,7 @@ import { useState } from 'react'
 import FancyLink from '../../utils/fancyLink'
 import Caption from './caption'
 
-const VideoComponent = ({
-  className = '',
-  video,
-  color,
-  gallery = false,
-}) => {
+const VideoComponent = ({ className = '', video, color, gallery = false }) => {
   const [statusVideo, setStatusVideo] = useState(false)
 
   return (
@@ -39,11 +34,7 @@ const VideoComponent = ({
           }}
         >
           <iframe
-            src={
-              'https://www.youtube.com/embed/' +
-              getYoutube(video.link) +
-              '?&autoplay=1'
-            }
+            src={'https://www.youtube.com/embed/' + getYoutube(video.link)}
             id="videos"
             width="100%"
             height="100%"
