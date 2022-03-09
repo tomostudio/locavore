@@ -380,7 +380,7 @@ export default function ArticleSlug({
       />
       {/* Button Sticky */}
       <StickyButton
-        className={nextArticle === null && `mb-5 mt-10`}
+        className={nextArticle === null ? `mb-5 mt-10` : ''}
         destination={`/editorial/${article.issue.slug.current}/list`}
         arrow="left"
       >

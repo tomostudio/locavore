@@ -153,7 +153,7 @@ export default function Family({
       <SEO
         seo={{
           title: 'Family',
-          webTitle: seo.webTitle && seo.webTitle,
+          webTitle: seo.webTitle ? seo.webTitle : "",
           description:
             family && family.seo && family.seo.seo_description
               ? family.seo.seo_description

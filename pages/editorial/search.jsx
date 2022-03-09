@@ -118,35 +118,23 @@ export default function Search({
       <SEO
         seo={{
           title: 'Search',
-          webTitle: typeof seo !== 'undefined' ? seo.webTitle : '',
+          webTitle: seo.webTitle ? seo.webTitle : '',
           description:
-            typeof APISearch !== 'undefined' &&
-            typeof APISearch.seo !== 'undefined'
+            APISearch && APISearch.seo && APISearch.seo.seo_description
               ? APISearch.seo.seo_description
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_description
-              : '',
+              : seo.seo && seo.seo.seo_description,
           meta_keywords:
-            typeof APISearch !== 'undefined' &&
-            typeof APISearch.seo !== 'undefined'
+            APISearch && APISearch.seo && APISearch.seo.seo_keywords
               ? APISearch.seo.seo_keywords
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_keywords
-              : '',
+              : seo.seo.seo_keywords && seo.seo.seo_keywords,
           image:
-            typeof APISearch !== 'undefined' &&
-            typeof APISearch.seo !== 'undefined'
+            APISearch && APISearch.seo && APISearch.seo.seo_image
               ? urlFor(APISearch.seo.seo_image).url()
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? urlFor(seo.seo.seo_image).url()
-              : '',
+              : seo.seo && seo.seo.seo_image && urlFor(seo.seo.seo_image).url(),
           image_alt:
-            typeof APISearch !== 'undefined' &&
-            typeof APISearch.seo !== 'undefined'
+            APISearch && APISearch.seo && APISearch.seo.seo_image.name
               ? APISearch.seo.seo_image.name
-              : typeof seo !== 'undefined' && seo.seo !== 'undefined'
-              ? seo.seo.seo_image.name
-              : '',
+              : seo.seo && seo.seo.seo_image.name && seo.seo.seo_image.name,
         }}
       />
       <LazyMotion features={domAnimation}>
@@ -293,7 +281,7 @@ export default function Search({
             </section>
           </Container>
           {/* Button Sticky */}
-          <StickyButton destination="/editorial" arrow="left">
+          <StickyButton destination="/APISearch" arrow="left">
             Browse all issues
           </StickyButton>
           <Footer footer={footer} mailchimp={seo.mailchimpID} />

@@ -119,7 +119,7 @@ const EditorialIssueCard = React.forwardRef(
                     dark === 'white-text'
                       ? 'bg-black  opacity-30'
                       : 'bg-white opacity-30'
-                  } ${!comingsoon && `group-hover:opacity-50`}`}
+                  } ${!comingsoon ? `group-hover:opacity-50` : ''}`}
                 />
                 <Image
                   src={imageThumbnail}
@@ -214,12 +214,13 @@ const EditorialIssueCard = React.forwardRef(
                 <div className="max-md:w-auto shrink-0">
                   <div
                     className={`px-10 py-7 border rounded-[100%] max-md:px-6 max-md:py-5 max-md:mb-4 transition-all duration-300 ${
-                      !comingsoon &&
-                      `${
-                        dark === 'white-text'
-                          ? 'border-white text-white group-hover:text-black group-hover:bg-white'
-                          : 'border-black text-black group-hover:text-white group-hover:bg-black'
-                      }`
+                      !comingsoon
+                        ? `${
+                            dark === 'white-text'
+                              ? 'border-white text-white group-hover:text-black group-hover:bg-white'
+                              : 'border-black text-black group-hover:text-white group-hover:bg-black'
+                          }`
+                        : ''
                     }`}
                   >
                     <span

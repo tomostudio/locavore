@@ -20,7 +20,7 @@ export default function Editorial({
       <SEO
         seo={{
           title: 'Editorial',
-          webTitle: seo.webTitle && seo.webTitle,
+          webTitle: seo.webTitle ? seo.webTitle : "",
           description:
             editorial && editorial.seo && editorial.seo.seo_description
               ? editorial.seo.seo_description

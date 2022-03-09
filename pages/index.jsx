@@ -21,7 +21,7 @@ export default function Home({
       <SEO
         seo={{
           title: 'Home',
-          webTitle: seo.webTitle && seo.webTitle,
+          webTitle: seo.webTitle ? seo.webTitle : "",
           description:
             home && home.seo && home.seo.seo_description
               ? home.seo.seo_description
