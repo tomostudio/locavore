@@ -194,9 +194,15 @@ export default function Search({
                       className={`text-xs uppercase mt-2 mr-2 ${
                         appContext.category.toLowerCase() ===
                         data.title.toLocaleLowerCase()
-                          ? 'bg-gray text-white'
+                          ? 'bg-gray'
                           : ''
                       }`}
+                      click={
+                        appContext.category.toLowerCase() ===
+                        data.title.toLocaleLowerCase()
+                          ? true
+                          : false
+                      }
                       key={id}
                     >
                       {data.title}
