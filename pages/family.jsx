@@ -182,9 +182,8 @@ export default function Family({
           {/* Header Gap */}
           <HeaderGap />
 
-          <HeadingTitle className={`sticky`} style={{ top: '60px' }}>
-            Family
-            <span className="sub">of</span>Locavore
+          <HeadingTitle className={`sticky text-center`} style={{ top: '60px' }}>
+            <span className="sub">The</span>Locavore's Family
           </HeadingTitle>
           {/* Family Button */}
           <FamilyMenu familyListAPI={familyListAPI} onFamilyHover={true} />

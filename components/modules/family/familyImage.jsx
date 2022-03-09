@@ -24,7 +24,7 @@ const familyImage = ({ store, src, alt, position = '', name = '' }) => {
       className='family-card'
       ref={familyRef}
       onMouseEnter={(e) => {
-        familyRef.current.classList.add('show');
+        if (!('ontouchstart' in window)) familyRef.current.classList.add('show');
       }}
       onMouseLeave={(e) => {
         familyRef.current.classList.remove('show');
@@ -41,8 +41,13 @@ const familyImage = ({ store, src, alt, position = '', name = '' }) => {
         layout='fill'
         objectFit='cover'
         objectPosition='top'
-        placeholder="blur"
-        blurDataURL={urlFor(src).blur(2).format('webp').saturation(-100).width(100).url()}
+        placeholder='blur'
+        blurDataURL={urlFor(src)
+          .blur(2)
+          .format('webp')
+          .saturation(-100)
+          .width(100)
+          .url()}
       />
       <div className='absolute w-full h-full top-0 left-0 flex flex-col items-center  text-center justify-center p-4 z-1'>
         {position !== '' && name !== '' ? (

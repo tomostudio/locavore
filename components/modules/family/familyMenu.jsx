@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FancyLink from '@/components/utils/fancyLink';
 
 const FamilyMenu = ({
@@ -17,12 +17,14 @@ const FamilyMenu = ({
 
   // Mouse Leave & Enter for Family Button
   const familybutton_enter = (slug) => {
-    const familyCards = document.querySelectorAll('.family-card');
-    familyCards.forEach((card, id) => {
-      if (card.getAttribute('data-store') === slug) {
-        card.classList.add('show');
-      }
-    });
+    if (!('ontouchstart' in window)) {
+      const familyCards = document.querySelectorAll('.family-card');
+      familyCards.forEach((card, id) => {
+        if (card.getAttribute('data-store') === slug) {
+          card.classList.add('show');
+        }
+      });
+    }
   };
 
   const familybutton_leave = (id) => {
@@ -31,6 +33,12 @@ const FamilyMenu = ({
       card.classList.remove('show');
     });
   };
+
+  const [touch, setTouch] = useState(false);
+  useEffect(() => {
+    setTouch('ontouchstart' in window);
+    return () => {};
+  }, []);
 
   return (
     <div
@@ -42,16 +50,22 @@ const FamilyMenu = ({
         <FancyLink
           key={id}
           destination={`/family/${familydata.slug.current}`}
-          onMouseEnter={() => (onFamilyHover && familybutton_enter(familydata.slug.current))}
-          onMouseLeave={() => (onFamilyHover && familybutton_leave(0))}
-          className='group relative text-center uppercase overflow-hidden text-grayFont text-sm py-1 px-4 border border-grayBorder rounded-full'
+          onMouseEnter={() =>
+            onFamilyHover && familybutton_enter(familydata.slug.current)
+          }
+          onMouseLeave={() => onFamilyHover && familybutton_leave(0)}
+          className='group relative text-center uppercase overflow-hidden text-grayFont text-sm py-1 px-4 border border-black rounded-full'
           style={{
             backgroundColor: `${bgColor}`,
           }}
         >
           <div className='relative z-2'>{familydata.title}</div>
           <div
-            className='absolute top-0 left-0 w-full h-full z-0 opacity-0 group-hover:opacity-100'
+            className={`absolute top-0 left-0 w-full h-full z-0 ${
+              touch
+                ? 'opacity-100'
+                : ' opacity-0 betterhover:group-hover:opacity-100'
+            }`}
             style={{ backgroundColor: familydata.bgColor.hex }}
           />
         </FancyLink>
@@ -59,7 +73,7 @@ const FamilyMenu = ({
 
       {[...Array(getFillerNumber())].map((content, i) => (
         <div
-          className='relative rounded-full border border-grayBorder overflow-hidden'
+          className='relative rounded-full border border-black overflow-hidden'
           key={i}
           style={{
             backgroundColor: `${bgColor}`,

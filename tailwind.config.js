@@ -57,7 +57,7 @@ module.exports = {
         sm: '600px',
         md: '850px',
         lg: '1200px',
-        xl: '1280px',
+        xl: '1280px', 'betterhover': { 'raw': '(hover: hover)' },
       },
       zIndex: {
         min1: '-1',

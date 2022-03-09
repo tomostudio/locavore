@@ -210,7 +210,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
               </span>
               <h1
                 className={`font-sans font-normal text-center ${
-                  titleS ? 'text-5xl sm:text-7xl md:text-8xl' : ''
+                  titleS ? 'text-[2.5rem] sm:text-6xl md:text-8xl' : ''
                 }`}
               >
                 {issue.title}

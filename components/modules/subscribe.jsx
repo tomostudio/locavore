@@ -3,7 +3,13 @@ import { transition } from '@/helpers/preset/tailwind';
 
 import Arrow from '../utils/arrow';
 
-const SubscribeForm = ({ status, message, onValidated, className = '', ...props }) => {
+const SubscribeForm = ({
+  status,
+  message,
+  onValidated,
+  className = '',
+  ...props
+}) => {
   const [disable, setDisable] = useState(false);
   const [redError, setRedError] = useState(false);
   const [email, setEmail] = useState(null);
@@ -72,11 +78,12 @@ const SubscribeForm = ({ status, message, onValidated, className = '', ...props 
   }, [status]);
 
   return (
-    <div className={`flex w-full max-w-sm max-md:max-w-lg flex-col justify-between ${className}`} {...props}>
+    <div
+      className={`flex w-full max-w-sm max-md:max-w-lg flex-col justify-between ${className}`}
+      {...props}
+    >
       <label className='text-xl font-normal'>
-        Sign up for
-        <span className='font-serif italic'> insights </span>
-        in your inbox
+        Sign up with email for what's NXT
       </label>
       <div
         className={`relative mt-5 w-full border-white pb-2.5 border-b flex h-10 ${
@@ -93,7 +100,10 @@ const SubscribeForm = ({ status, message, onValidated, className = '', ...props 
           onKeyUp={(event) => handleInputKeyEvent(event)}
           ref={inputEl}
         />
-        <button onClick={handleFormSubmit} className={`h-full w-10 ${transition.fade}`}>
+        <button
+          onClick={handleFormSubmit}
+          className={`h-full w-10 ${transition.fade}`}
+        >
           <Arrow
             position='right'
             className='absolute right-0 top-2'

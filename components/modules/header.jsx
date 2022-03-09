@@ -101,6 +101,7 @@ export default function Header({ className = '', header, footer }) {
         >
           <FancyLink
             onClick={() => {
+              setWHeight(window.innerHeight);
               //Toggle Menu
               appContext.setMobileMenu(!appContext.mobileMenu);
             }}
