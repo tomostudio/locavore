@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useMediaQuery } from '@/helpers/functional/checkMedia';
 import FancyLink from '@/components/utils/fancyLink';
+import { motion } from 'framer-motion';
 
 const FamilyMenuMobile = ({
   familyListAPI,
@@ -36,7 +37,11 @@ const FamilyMenuMobile = ({
   const markerRef = useRef();
 
   const handleClickOutside = (event) => {
-    if (familyNavRef.current && !familyNavRef.current.contains(event.target) && !endScrollShow) {
+    if (
+      familyNavRef.current &&
+      !familyNavRef.current.contains(event.target) &&
+      !endScrollShow
+    ) {
       //clicked outside
       setMenuHide(true);
       document.removeEventListener('mousedown', handleClickOutside);
@@ -46,7 +51,8 @@ const FamilyMenuMobile = ({
   const checkScroll = () => {
     if (markerRef.current) {
       const checkSticky = markerRef.current.getBoundingClientRect().top;
-      if (checkSticky - window.innerHeight + 160 < 0) {
+      console.log(checkSticky - window.innerHeight + 160);
+      if (checkSticky - window.innerHeight + 120 < 0) {
         setMenuHide(false);
         setEndScrollShow(true);
       } else {
@@ -70,9 +76,9 @@ const FamilyMenuMobile = ({
     <>
       {useMediaQuery('(max-width: 600px)') && (
         <>
-          <div id='marker' className='h-0 w-full block' ref={markerRef} />
-          <nav
-            className={`group sticky bottom-[-2px] left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center overflow-hidden`}
+          <div className='h-0 w-full block' ref={markerRef} />
+          <motion.nav
+            className={`group sticky bottom-[-2px] left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center pt-10 overflow-hidden`}
             {...props}
             ref={familyNavRef}
             onClick={() => {
@@ -87,6 +93,20 @@ const FamilyMenuMobile = ({
                   setMenuHide(true);
                 }
               }
+            }}
+            initial='initial'
+            animate='enter'
+            exit='exit'
+            variants={{
+              initial: { y: '150%' },
+              enter: {
+                y: '0%',
+                transition: { duration: 2, ease: [0.83, 0, 0.17, 1], delay: 0 },
+              },
+              exit: {
+                opacity: 0,
+                transition: { duration: 0.5, ease: [0.83, 0, 0.17, 1] },
+              },
             }}
           >
             {familyListAPI.map((familydata, id) => {
@@ -111,7 +131,9 @@ const FamilyMenuMobile = ({
                                     ? '-mb-12 last:-mb-14 !pointer-events-none'
                                     : '-mb-6 last:-mb-7'
                                 }`
-                              : `-mb-12 last:-mb-14 betterhover:group-hover:-mb-6  betterhover:group-hover:last:-mb-7` // not on touch device
+                              : `-mb-12 last:-mb-14 betterhover:group-hover:-mb-6  betterhover:group-hover:last:-mb-7 ${
+                                  endScrollShow ? '-mb-6 last:-mb-7' : ''
+                                }` // not on touch device
                           }`
                         : '-mb-6 last:-mb-7'
                     } `}
@@ -129,7 +151,7 @@ const FamilyMenuMobile = ({
                   </FancyLink>
                 );
             })}
-          </nav>
+          </motion.nav>
         </>
       )}
     </>

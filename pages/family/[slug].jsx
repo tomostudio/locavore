@@ -148,11 +148,10 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
       <HeaderGap />
       <div>
         <motion.section
-          className='w-full setflex-center rounded-t-2xl max-sm:pb-10'
+          className='w-full setflex-center rounded-t-2xl'
           style={{
             backgroundColor: family.bgColor.hex ? family.bgColor.hex : '#fff',
           }}
-          id='rooster'
           initial='initial'
           animate='enter'
           exit='exit'
@@ -348,7 +347,7 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
           />
           {useMediaQuery('(max-width: 600px)') && (
             <div
-              className={`absolute bottom-0 w-full h-20 translate-y-[50%] -z-1`}
+              className={`absolute bottom-0 w-full h-28 translate-y-[80px] -z-1`}
               style={{
                 backgroundColor: family.bgColor.hex
                   ? family.bgColor.hex
