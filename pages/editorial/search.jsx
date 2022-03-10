@@ -224,7 +224,7 @@ export default function Search({
             {/* content */}
             <section className="relative w-full h-auto setflex-center mt-10">
               {/* Card */}
-              <div className="w-full" id="search-results">
+              <div id="search-results">
                 {itemsToDisplay
                   .slice(0, postNum)
                   .map((datas, _) =>
