@@ -5,9 +5,9 @@ const timeConvert = (n) => {
   var minutes = (hours - rhours) * 60
   var rminutes = Math.round(minutes)
   if (rhours === 0) {
-    return rminutes + ' min read'
+    return rminutes + ' min'
   } else {
-    return rhours + ' hour and ' + rminutes + ' min read'
+    return rhours + ' hour and ' + rminutes + ' min'
   }
 }
 
