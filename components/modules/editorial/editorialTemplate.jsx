@@ -19,7 +19,7 @@ import urlFor from '@/helpers/sanity/urlFor'
 
 export default function EditorialTemplate({
   issueAPI,
-  seo,
+  mailchimp,
   editorial,
   footer,
 }) {
@@ -205,7 +205,7 @@ export default function EditorialTemplate({
           <StickyButton destination="/editorial/search" arrow="right">
             SEARCH ALL ARTICLES
           </StickyButton>
-          <Footer footer={footer} />
+          <Footer footer={footer} mailchimp={mailchimp} />
         </m.main>
       </LazyMotion>
     </Layout>

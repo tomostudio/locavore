@@ -21,7 +21,7 @@ export default function Editorial({
       <SEO
         title={'Editorial'}
         pagelink={router.pathname}
-        inputSEO={editorial.seo}
+        inputSEO={typeof editorial !== 'undefined' && typeof editorial.seo !== 'undefined'  && editorial.seo}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -29,6 +29,7 @@ export default function Editorial({
         issueAPI={issueAPI}
         editorial={editorial}
         footer={footer}
+        mailchimp={seo.mailchimpID}
       />
     </>
   );

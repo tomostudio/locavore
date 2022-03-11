@@ -27,6 +27,7 @@ export default function Home({
         seo={seo}
         editorial={editorial}
         footer={footer}
+        mailchimp={seo.mailchimpID}
       />
     </>
   );
