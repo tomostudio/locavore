@@ -6,6 +6,7 @@ import { useAppContext } from 'context/state';
 import Image from 'next/image';
 import urlFor from '@/helpers/sanity/urlFor';
 import { transition } from '@/helpers/preset/tailwind';
+import { motion } from 'framer-motion';
 import { Youtube, Facebook, Instagram, Linkedin } from '@/helpers/preset/svg';
 
 export default function Header({ className = '', header, footer }) {
@@ -80,7 +81,25 @@ export default function Header({ className = '', header, footer }) {
       }`}
       style={{ height: menu ? `${wHeight}px` : 'auto' }}
     >
-      <header
+      <motion.header
+        initial='initial'
+        animate='enter'
+        exit='exit'
+        variants={{
+          initial: { opacity: 0 },
+          enter: {
+            opacity: 1,
+            transition: {
+              duration: 0.44,
+              ease: [0.83, 0, 0.17, 1],
+              delay: 0.05,
+            },
+          },
+          exit: {
+            opacity: 0,
+            transition: { duration: 0.25, ease: [0.83, 0, 0.17, 1] },
+          },
+        }}
         className={`sticky top-0 left-0 right-0 w-full z-2 border-b ${className}
         ${bnw || menu ? 'border-black bg-white' : 'border-white bg-black'}
         ${
@@ -121,20 +140,22 @@ export default function Header({ className = '', header, footer }) {
           >
             {bnw || menu ? (
               <Image
-                src={urlFor(header[0].logo.black).url()}
+                src={urlFor(header[0].logo.black).width(300).format('webp').url()}
                 alt={header[0].logo.black.name}
                 layout='intrinsic'
                 objectFit='contain'
                 objectPosition={'left center'}
+                priority={true}
                 width={200}
                 height={25}
               />
             ) : (
               <Image
-                src={urlFor(header[0].logo.white).url()}
+                src={urlFor(header[0].logo.white).width(300).format('webp').url()}
                 alt={header[0].logo.white.name}
                 layout='intrinsic'
                 objectFit='contain'
+                priority={true}
                 objectPosition={'left center'}
                 width={200}
                 height={25}
@@ -188,7 +209,7 @@ export default function Header({ className = '', header, footer }) {
             </FancyLink>
           </div>
         </Container>
-      </header>
+      </motion.header>
       {/* MOBILE MENU */}
       {useMediaQuery('(max-width: 850px)') && (
         <div

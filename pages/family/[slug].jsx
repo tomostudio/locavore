@@ -22,11 +22,18 @@ import client from '@/helpers/sanity/client';
 import urlFor from '@/helpers/sanity/urlFor';
 import { useMediaQuery } from '@/helpers/functional/checkMedia';
 import { PortableText } from '@portabletext/react';
+import { Facebook, Instagram, Whatsapp } from '@/helpers/preset/svg';
 
 // install Swiper modules
 SwiperCore.use([Pagination]);
 
-const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
+const FamilySlug = ({
+  familyAPI,
+  seoAPI,
+  familyListAPI,
+  footerAPI,
+  headerAPI,
+}) => {
   const router = useRouter();
   const [seo] = seoAPI;
   const [family] = familyAPI;
@@ -96,53 +103,11 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
   return (
     <Layout>
       <SEO
-        seo={{
-          title: family.title,
-          webTitle:
-            typeof seo !== 'undefined' && seo.webTitle ? seo.webTitle : '',
-          pagelink: router.pathname,
-          description:
-            typeof family.seo !== 'undefined' &&
-            typeof family.seo.seo_description !== 'undefined' &&
-            family.seo.seo_description
-              ? family.seo.seo_description
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_description !== 'undefined' &&
-                seo.seo.seo_description
-              ? seo.seo.seo_description
-              : '',
-          meta_keywords:
-            typeof family.seo !== 'undefined' &&
-            typeof family.seo.seo_keywords !== 'undefined' &&
-            family.seo.seo_keywords
-              ? family.seo.seo_keywords
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_keywords !== 'undefined' &&
-                seo.seo.seo_keywords
-              ? seo.seo.seo_keywords
-              : '',
-          image:
-            typeof family.seo !== 'undefined' &&
-            typeof family.seo.seo_image !== 'undefined' &&
-            family.seo.seo_image
-              ? urlFor(family.seo.seo_image).url()
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_image !== 'undefined' &&
-                seo.seo.seo_image
-              ? urlFor(seo.seo.seo_image).url()
-              : '',
-          image_alt:
-            typeof family.seo !== 'undefined' &&
-            typeof family.seo.seo_image !== 'undefined' &&
-            typeof family.seo.seo_image.name !== 'undefined' &&
-            family.seo.seo_image.name
-              ? family.seo.seo_image.name
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_image !== 'undefined' &&
-                seo.seo.seo_image.name
-              ? seo.seo.seo_image.name
-              : '',
-        }}
+        title={family.title}
+        pagelink={router.pathname}
+        inputSEO={family.seo}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       {/* Header Gap */}
       <HeaderGap />
@@ -212,15 +177,7 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
                   className='w-full flex justify-between mt-4 hover:opacity-50 transition-opacity duration-300'
                 >
                   <div className='flex items-center space-x-5'>
-                    <div className='relative w-16px h-16px'>
-                      <Image
-                        src={`/ig.svg`}
-                        alt={'Locavore'}
-                        layout='fill'
-                        objectFit='contain'
-                        objectPosition='center'
-                      />
-                    </div>
+                    <Instagram fill={'#000'} className='w-4 h-4' />
                     <span className=' text-base '>
                       @{family.instagram.title}
                     </span>
@@ -264,45 +221,27 @@ const FamilySlug = ({ familyAPI, seoAPI, familyListAPI, footerAPI }) => {
                     <FancyLink
                       destination={family.instagram.link}
                       blank={true}
-                      className='relative w-16px h-16px hover:opacity-30 transition-opacity duration-300'
+                      className='relative w-4 h-4 hover:opacity-30 transition-opacity duration-300'
                     >
-                      <Image
-                        src={`/ig.svg`}
-                        alt={family.instagram.title}
-                        layout='fill'
-                        objectFit='contain'
-                        objectPosition='center'
-                      />
+                      <Instagram fill={'#000'} className='w-4 h-4' />
                     </FancyLink>
                   )}
                   {family.facebook && (
                     <FancyLink
                       destination={family.facebook.link}
                       blank={true}
-                      className='relative w-16px h-16px hover:opacity-50 transition-opacity duration-300'
+                      className='relative w-4 h-4 hover:opacity-50 transition-opacity duration-300'
                     >
-                      <Image
-                        src={`/fb.svg`}
-                        alt={family.facebook.title}
-                        layout='fill'
-                        objectFit='contain'
-                        objectPosition='center'
-                      />
+                      <Facebook fill={'#000'} className='w-4 h-4' />
                     </FancyLink>
                   )}
                   {family.waLink && (
                     <FancyLink
                       destination={family.waLink}
                       blank={true}
-                      className='relative w-16px h-16px hover:opacity-50 transition-opacity duration-300'
+                      className='relative w-4 h-4 hover:opacity-50 transition-opacity duration-300'
                     >
-                      <Image
-                        src={`/wa.svg`}
-                        alt={family.title}
-                        layout='fill'
-                        objectFit='contain'
-                        objectPosition='center'
-                      />
+                      <Whatsapp fill={'#000'} className='w-4 h-4' />
                     </FancyLink>
                   )}
                 </div>

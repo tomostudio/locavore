@@ -3,12 +3,11 @@ import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import SubscribeForm from './subscribe';
 
 import Container from './container';
-import Image from 'next/image';
 import FancyLink from '../utils/fancyLink';
 import { transition } from '@/helpers/preset/tailwind';
 import { Youtube, Facebook, Instagram, Linkedin } from '@/helpers/preset/svg';
 
-const Footer = ({ className, footer, mailchimp }) => {
+const Footer = ({ className = '', footer, mailchimp }) => {
   const MAILCHIMP_URL = mailchimp;
   const [time, setTime] = useState(new Date());
 
@@ -57,7 +56,7 @@ const Footer = ({ className, footer, mailchimp }) => {
                 blank={true}
                 className={`relative w-10 h-10 setflex-center ${transition.fade}`}
               >
-              <Instagram fill={ '#FFF'} className='w-4 h-4' />
+                <Instagram fill={'#FFF'} className='w-4 h-4' />
               </FancyLink>
             )}
             {footer.footerLink && footer.footerLink.facebook && (

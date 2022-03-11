@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router';
 
 // Layout
 import Layout from '@/components/modules/layout'
@@ -16,7 +17,6 @@ import HeadingTitle from '@/components/utils/headingTitle';
 // Helpers
 // import { useAppContext } from 'context/state';
 import { bp } from '@/helpers/preset/breakpoints'
-import urlFor from '@/helpers/sanity/urlFor'
 import { fade } from '@/helpers/preset/transitions'
 import client from '@/helpers/sanity/client'
 
@@ -27,6 +27,7 @@ export default function Family({
   memberListAPI,
   footerAPI,
 }) {
+  const router = useRouter();
   const [seo] = seoAPI
   const [family] = familyAPI
   const [footer] = footerAPI
@@ -151,26 +152,11 @@ export default function Family({
   return (
     <Layout>
       <SEO
-        seo={{
-          title: 'Family',
-          webTitle: seo.webTitle ? seo.webTitle : "",
-          description:
-            family && family.seo && family.seo.seo_description
-              ? family.seo.seo_description
-              : seo.seo && seo.seo.seo_description,
-          meta_keywords:
-            family && family.seo && family.seo.seo_keywords
-              ? family.seo.seo_keywords
-              : seo.seo.seo_keywords && seo.seo.seo_keywords,
-          image:
-            family && family.seo && family.seo.seo_image
-              ? urlFor(family.seo.seo_image).url()
-              : seo.seo && seo.seo.seo_image && urlFor(seo.seo.seo_image).url(),
-          image_alt:
-            family && family.seo && family.seo.seo_image.name
-              ? family.seo.seo_image.name
-              : seo.seo && seo.seo.seo_image.name && seo.seo.seo_image.name,
-        }}
+        title={'Family'}
+        pagelink={router.pathname}
+        inputSEO={family.seo}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       <motion.main
         initial="initial"

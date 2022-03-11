@@ -4,7 +4,7 @@ const Facebook = ({ fill = '#000', ...props }) => (
   <svg
     width={9}
     height={16}
-    viewBox="0 0 9 16"
+    viewBox='0 0 9 16'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -19,7 +19,7 @@ const Instagram = ({ fill = '#000', ...props }) => (
   <svg
     width={16}
     height={16}
-    viewBox="0 0 16 16"
+    viewBox='0 0 16 16'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -39,7 +39,7 @@ const Linkedin = ({ fill = '#000', ...props }) => (
   <svg
     width={16}
     height={16}
-    viewBox="0 0 16 16"
+    viewBox='0 0 16 16'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -55,7 +55,7 @@ const Youtube = ({ fill = '#000', ...props }) => (
   <svg
     width={19}
     height={14}
-    viewBox="0 0 19 14"
+    viewBox='0 0 19 14'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -99,7 +99,7 @@ const Mail = ({ fill = '#000', ...props }) => (
   <svg
     width={21}
     height={13}
-    viewBox="0 0 21 13"
+    viewBox='0 0 21 13'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -119,7 +119,7 @@ const Twitter = ({ fill = '#000', ...props }) => (
   <svg
     width={19}
     height={15}
-    viewBox="0 0 19 15"
+    viewBox='0 0 19 15'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
     {...props}
@@ -131,4 +131,25 @@ const Twitter = ({ fill = '#000', ...props }) => (
   </svg>
 );
 
-export { Instagram, Facebook, Linkedin, Youtube, Quote, Mail, Twitter };
+const Whatsapp = ({ fill = '#000', ...props }) => (
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    width={30}
+    height={30}
+    viewBox='0 0 30 30'
+    {...props}
+    fill={fill}
+  >
+    <path d='M15 3C8.373 3 3 8.373 3 15c0 2.251.632 4.35 1.71 6.15L3.108 27l5.975-1.568A11.935 11.935 0 0 0 15 27c6.627 0 12-5.373 12-12S21.627 3 15 3zm-4.107 6.402c.195 0 .395 0 .568.008.214.005.447.02.67.514.265.586.842 2.056.916 2.205.074.149.126.324.023.52-.098.2-.149.32-.293.497-.149.172-.312.386-.447.516-.149.15-.303.312-.13.61.171.296.769 1.27 1.652 2.056 1.135 1.014 2.092 1.326 2.39 1.475.298.149.47.126.643-.074.177-.195.743-.865.943-1.163.195-.298.394-.246.664-.148.274.098 1.735.818 2.033.967.298.149.494.223.569.344.077.125.077.72-.17 1.414-.247.693-1.46 1.363-2.004 1.41-.55.05-1.061.246-3.568-.74-3.024-1.191-4.932-4.289-5.08-4.489-.15-.195-1.211-1.61-1.211-3.07 0-1.465.768-2.183 1.037-2.48.274-.299.595-.372.795-.372z' />
+  </svg>
+);
+export {
+  Instagram,
+  Facebook,
+  Linkedin,
+  Youtube,
+  Quote,
+  Mail,
+  Twitter,
+  Whatsapp,
+};

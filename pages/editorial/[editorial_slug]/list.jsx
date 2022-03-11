@@ -1,41 +1,41 @@
-import { useEffect, useState, useRef } from 'react'
-import { LazyMotion, domAnimation, m } from 'framer-motion'
-import { fade } from '@/helpers/preset/transitions'
-import ScrollContainer from 'react-indiana-drag-scroll'
-import { useRouter } from 'next/router'
+import { useEffect, useState, useRef } from 'react';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { fade } from '@/helpers/preset/transitions';
+import ScrollContainer from 'react-indiana-drag-scroll';
+import { useRouter } from 'next/router';
 
 // Layout
-import Layout from '@/components/modules/layout'
-import HeaderGap from '@/components/modules/headerGap'
-import Footer from '@/components/modules/footer'
+import Layout from '@/components/modules/layout';
+import HeaderGap from '@/components/modules/headerGap';
+import Footer from '@/components/modules/footer';
 
 // Components
-import ArticleCard from '@/components/modules/editorial/articleCard'
-import SEO from '@/components/utils/seo'
-import FancyLink from '@/components/utils/fancyLink'
-import StickyButton from '@/components/modules/stickyButton'
-import Container from '@/components/modules/container'
+import ArticleCard from '@/components/modules/editorial/articleCard';
+import SEO from '@/components/utils/seo';
+import FancyLink from '@/components/utils/fancyLink';
+import StickyButton from '@/components/modules/stickyButton';
+import Container from '@/components/modules/container';
 
 // Helpers
-import client from '@/helpers/sanity/client'
-import checkMonth from '@/helpers/functional/checkMonth'
-import urlFor from '@/helpers/sanity/urlFor'
-import { useMediaQuery } from '@/helpers/functional/checkMedia'
-import timeConvert from '@/helpers/functional/timeConvert'
+import client from '@/helpers/sanity/client';
+import checkMonth from '@/helpers/functional/checkMonth';
+import urlFor from '@/helpers/sanity/urlFor';
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
+import timeConvert from '@/helpers/functional/timeConvert';
 
 export default function Issue({ issueAPI, seoAPI, footerAPI }) {
-  const router = useRouter()
-  const [issue] = issueAPI
-  const [seo] = seoAPI
-  const [footer] = footerAPI
+  const router = useRouter();
+  const [issue] = issueAPI;
+  const [seo] = seoAPI;
+  const [footer] = footerAPI;
 
-  const articleRef = useRef([])
-  const scrollInd = useRef(null)
-  const scrollContainer = useRef(null)
+  const articleRef = useRef([]);
+  const scrollInd = useRef(null);
+  const scrollContainer = useRef(null);
 
-  const [centerCard, setCenterCard] = useState(1)
+  const [centerCard, setCenterCard] = useState(1);
 
-  const [noScroll, setNoScroll] = useState(false)
+  const [noScroll, setNoScroll] = useState(false);
   // set scroll style status
 
   const updateScroll = () => {
@@ -47,40 +47,40 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
           ((card.getBoundingClientRect().x +
             card.getBoundingClientRect().width / 2) /
             window.innerWidth) *
-            100,
-        )
+            100
+        );
 
       // update card rotation
-      const rotatationTarget = card.querySelector('a')
+      const rotatationTarget = card.querySelector('a');
       rotatationTarget.style.transform = `rotate(${
         (fromCenter / 100) * 7.5
-      }deg)`
+      }deg)`;
 
       // set center item
       if (fromCenter > -15 && fromCenter < 15) {
-        setCenterCard(id + 1)
+        setCenterCard(id + 1);
       }
-    })
+    });
 
     // Hide Scroll indicator
-    const { innerWidth: width, innerHeight: height } = window
+    const { innerWidth: width, innerHeight: height } = window;
     if (scrollContainer.current.scrollLeft > 50 && width > 600) {
-      document.querySelector('#scrollIndicator').classList.add('hide')
+      document.querySelector('#scrollIndicator').classList.add('hide');
     } else {
-      document.querySelector('#scrollIndicator').classList.remove('hide')
+      document.querySelector('#scrollIndicator').classList.remove('hide');
     }
 
     // Show Content indicator
     const finalTarget =
-      scrollContainer.current.scrollWidth - window.innerWidth - 50
+      scrollContainer.current.scrollWidth - window.innerWidth - 50;
     if (scrollContainer.current.scrollLeft > finalTarget) {
-      document.querySelector('#endIndicator').classList.remove('opacity-0')
+      document.querySelector('#endIndicator').classList.remove('opacity-0');
     } else {
-      document.querySelector('#endIndicator').classList.add('opacity-0')
+      document.querySelector('#endIndicator').classList.add('opacity-0');
     }
 
-    updateScrollBar()
-  }
+    updateScrollBar();
+  };
 
   // Update Scroll Bar Position
   const updateScrollBar = () => {
@@ -91,119 +91,77 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
           (scrollContainer.current.scrollLeft /
             (scrollContainer.current.scrollWidth - window.innerWidth)) *
             10000,
-          10000,
-        ),
-      ) / 100
+          10000
+        )
+      ) / 100;
 
-    const indWidth = scrollInd.current.offsetWidth
-    const parentWidth = scrollInd.current.parentElement.offsetWidth
-    const scrollMove = (parentWidth - indWidth) * (currentScroll / 100)
-    scrollInd.current.style.transform = `translateX(${scrollMove}px)`
-  }
+    const indWidth = scrollInd.current.offsetWidth;
+    const parentWidth = scrollInd.current.parentElement.offsetWidth;
+    const scrollMove = (parentWidth - indWidth) * (currentScroll / 100);
+    scrollInd.current.style.transform = `translateX(${scrollMove}px)`;
+  };
 
   // Detect Page Length
   const detectLength = () => {
     if (articleRef.current.length <= 1) {
-      setNoScroll(true)
+      setNoScroll(true);
     } else {
-      setNoScroll(false)
+      setNoScroll(false);
     }
-  }
+  };
 
   // sort article based on article number
   const processedArticle = issue.article.sort((a, b) => {
-    return a.articleNumber - b.articleNumber
-  })
+    return a.articleNumber - b.articleNumber;
+  });
 
   useEffect(() => {
-    window.scroll(0, 0)
-    detectLength()
-    updateScroll()
-    window.addEventListener('resize', detectLength, true)
-    window.addEventListener('resize', updateScrollBar, true)
+    window.scroll(0, 0);
+    detectLength();
+    updateScroll();
+    window.addEventListener('resize', detectLength, true);
+    window.addEventListener('resize', updateScrollBar, true);
     return () => {
-      window.removeEventListener('resize', detectLength, true)
-      window.removeEventListener('resize', updateScrollBar, true)
-    }
-  }, [])
+      window.removeEventListener('resize', detectLength, true);
+      window.removeEventListener('resize', updateScrollBar, true);
+    };
+  }, []);
 
   //check title word count
-  const maxLetter = 10
-  const [titleS, setSize] = useState(false)
+  const maxLetter = 10;
+  const [titleS, setSize] = useState(false);
   useEffect(() => {
-    const splitTitle = issue.title.split(' ')
+    const splitTitle = issue.title.split(' ');
 
     splitTitle.forEach((word) => {
-      setSize(word.length > maxLetter)
-    })
-  }, [])
+      setSize(word.length > maxLetter);
+    });
+  }, []);
 
   return (
     <Layout>
       <SEO
-        seo={{
-          title: issue.title,
-          webTitle:
-            typeof seo !== 'undefined' && seo.webTitle ? seo.webTitle : '',
-          pagelink: router.pathname,
-          description:
-            typeof issue.seo !== 'undefined' &&
-            typeof issue.seo.seo_description !== 'undefined' &&
-            issue.seo.seo_description
-              ? issue.seo.seo_description
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_description !== 'undefined' &&
-                seo.seo.seo_description
-              ? seo.seo.seo_description
-              : '',
-          meta_keywords:
-            typeof issue.seo !== 'undefined' &&
-            typeof issue.seo.seo_keywords !== 'undefined' &&
-            issue.seo.seo_keywords
-              ? issue.seo.seo_keywords
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_keywords !== 'undefined' &&
-                seo.seo.seo_keywords
-              ? seo.seo.seo_keywords
-              : '',
-          image:
-            typeof issue.seo !== 'undefined' &&
-            typeof issue.seo.seo_image !== 'undefined' &&
-            issue.seo.seo_image
-              ? urlFor(issue.seo.seo_image).url()
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_image !== 'undefined' &&
-                seo.seo.seo_image
-              ? urlFor(seo.seo.seo_image).url()
-              : '',
-          image_alt:
-            typeof issue.seo !== 'undefined' &&
-            typeof issue.seo.seo_image !== 'undefined' &&
-            typeof issue.seo.seo_image.name !== 'undefined' &&
-            issue.seo.seo_image.name
-              ? issue.seo.seo_image.name
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_image !== 'undefined' &&
-                seo.seo.seo_image.name
-              ? seo.seo.seo_image.name
-              : '',
-        }}
+        title={issue.title}
+        pagelink={router.pathname}
+        inputSEO={issue.seo}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       {/* Header Gap */}
       <HeaderGap />
       {/* Untuk Content */}
       <LazyMotion features={domAnimation}>
         <m.section
-          initial="initial"
-          animate="enter"
-          exit="exit"
+          initial='initial'
+          animate='enter'
+          exit='exit'
           variants={fade}
-          className="py-10 w-full h-full flex flex-col"
+          className='py-10 w-full h-full flex flex-col'
         >
           {/* Title */}
-          <Container className="max-md:px-6">
-            <div className="w-full h-full setflex-center">
-              <span className="font-serif italic text-xl">
+          <Container className='max-md:px-6'>
+            <div className='w-full h-full setflex-center'>
+              <span className='font-serif italic text-xl'>
                 Issue {issue.issueNumber} —{' '}
                 {checkMonth(new Date(issue.date).getMonth())}{' '}
                 {new Date(issue.date).getFullYear()}
@@ -218,15 +176,15 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
             </div>
           </Container>
           {/* Card */}
-          <div className="w-full flex relative flex-col" id="editorial-slider">
+          <div className='w-full flex relative flex-col' id='editorial-slider'>
             <div
-              id="scrollIndicator"
+              id='scrollIndicator'
               className={`${
                 noScroll ? 'hidden' : ''
               } pointer-events-none w-full absolute top-[50%] translate-y-[-50%] text-left transition-opacity duration-300 max-sm:relative max-sm:top-0 max-sm:translate-y-0 max-sm:left-0 max-sm:w-full max-sm:px-5 max-sm:text-center`}
             >
               <Container>
-                <span className="relative sm:animate-fade-left-slower block uppercase leading-none text-xs tracking-widest ">
+                <span className='relative sm:animate-fade-left-slower block uppercase leading-none text-xs tracking-widest '>
                   Scroll / Drag
                   {useMediaQuery('(min-width: 600px)') ? <br /> : ' '}
                   Horizontally
@@ -234,13 +192,13 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
               </Container>
             </div>
             <div
-              id="endIndicator"
+              id='endIndicator'
               className={`${
                 noScroll ? 'hidden' : ''
               } w-full pointer-events-none absolute top-[50%] translate-y-[-50%] text-right transition-opacity duration-300 max-sm:hidden opacity-0`}
             >
               <Container>
-                <span className="relative block uppercase leading-none text-xs tracking-widest ">
+                <span className='relative block uppercase leading-none text-xs tracking-widest '>
                   END OF ISSUE {issue.issueNumber}
                 </span>
               </Container>
@@ -256,11 +214,11 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
               innerRef={scrollContainer}
               nativeMobileScroll={true}
             >
-              <div className="spacer" />
+              <div className='spacer' />
               {processedArticle.map((data, id) => {
                 return (
                   <div
-                    className="article_wrapper"
+                    className='article_wrapper'
                     key={id}
                     ref={(el) => (articleRef.current[id] = el)}
                   >
@@ -271,8 +229,9 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
                       <ArticleCard
                         bgColor={data.category.color.hex}
                         title={`${
-                          !data.issue.turnOffArticleNumber ?
-                          `${data.articleNumber}.` : ''
+                          !data.issue.turnOffArticleNumber
+                            ? `${data.articleNumber}.`
+                            : ''
                         } ${data.title}`}
                         category={data.category.title}
                         timeRead={
@@ -295,21 +254,21 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
                       />
                     </FancyLink>
                   </div>
-                )
+                );
               })}
-              <div className="spacer" />
+              <div className='spacer' />
             </ScrollContainer>
           </div>
           {/* Lower Information */}
-          <Container className="max-md:px-6">
-            <div className="w-full setflex-center">
-              <div className="mb-5 text-xs">
-                <span className="font-bold">{centerCard}</span>
+          <Container className='max-md:px-6'>
+            <div className='w-full setflex-center'>
+              <div className='mb-5 text-xs'>
+                <span className='font-bold'>{centerCard}</span>
                 {` — `}
                 <span>{articleRef.current.length}</span>
               </div>
-              <div className="relative w-full setflex-center">
-                <div className="relative border-b w-full max-w-sm h-px border-black">
+              <div className='relative w-full setflex-center'>
+                <div className='relative border-b w-full max-w-sm h-px border-black'>
                   <div
                     ref={scrollInd}
                     className={`absolute w-8 h-1 -top-px border border-black bg-black issueindicator ${
@@ -323,24 +282,24 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
         </m.section>
       </LazyMotion>
       {/* Button Sticky */}
-      <StickyButton destination="/editorial" arrow="left">
+      <StickyButton destination='/editorial' arrow='left'>
         EDITORIAL INDEX
       </StickyButton>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
-  )
+  );
 }
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "issue"]
-      `)
+      `);
 
   const paths = res.map((data) => ({
     params: { editorial_slug: data.slug.current.toString() },
-  }))
+  }));
 
-  return { paths, fallback: false }
+  return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
@@ -356,17 +315,17 @@ export async function getStaticProps({ params }) {
             "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
           }
         }
-      `,
-  )
+      `
+  );
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `)
+  `);
   const headerAPI = await client.fetch(`
   *[_type == "header"]
-  `)
+  `);
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `)
+  `);
   return {
     props: {
       issueAPI,
@@ -374,5 +333,5 @@ export async function getStaticProps({ params }) {
       footerAPI,
       headerAPI,
     },
-  }
+  };
 }

@@ -4,7 +4,6 @@ import { AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import { AppWrapper } from '../context/state.jsx';
-import Link from '@/components/utils/shortcutLinks';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import Header from '@/components/modules/header.jsx';
@@ -15,6 +14,9 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
     history.scrollRestoration = 'manual';
+    setTimeout(() => {
+      console.log('initial loading delay');
+    }, 2000);
   }, []);
   return (
     <>
@@ -62,7 +64,7 @@ export default function App({ Component, pageProps }) {
       )}
       <DefaultSeo
         // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
-        noindex={true}
+        // noindex={true}
         // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
         defaultTitle='Locavore®'
         description='Description'
@@ -117,7 +119,9 @@ export default function App({ Component, pageProps }) {
       </Head>
 
       <AppWrapper>
-        <Header header={pageProps.headerAPI} footer={pageProps.footerAPI} />
+        <AnimatePresence>
+          <Header header={pageProps.headerAPI} footer={pageProps.footerAPI} />
+        </AnimatePresence>
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.asPath} />
         </AnimatePresence>

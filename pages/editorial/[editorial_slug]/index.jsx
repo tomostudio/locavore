@@ -233,53 +233,11 @@ export default function Index({ issueAPI, seoAPI }) {
   return (
     <Layout>
       <SEO
-        seo={{
-          title: issue.title,
-          webTitle:
-            typeof seo !== 'undefined' && seo.webTitle ? seo.webTitle : '',
-          pagelink: router.pathname,
-          description:
-            typeof issue.seo !== 'undefined' &&
-            typeof issue.seo.seo_description !== 'undefined' &&
-            issue.seo.seo_description
-              ? issue.seo.seo_description
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_description !== 'undefined' &&
-                seo.seo.seo_description
-              ? seo.seo.seo_description
-              : '',
-          meta_keywords:
-            typeof issue.seo !== 'undefined' &&
-            typeof issue.seo.seo_keywords !== 'undefined' &&
-            issue.seo.seo_keywords
-              ? issue.seo.seo_keywords
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_keywords !== 'undefined' &&
-                seo.seo.seo_keywords
-              ? seo.seo.seo_keywords
-              : '',
-          image:
-            typeof issue.seo !== 'undefined' &&
-            typeof issue.seo.seo_image !== 'undefined' &&
-            issue.seo.seo_image
-              ? urlFor(issue.seo.seo_image).url()
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_image !== 'undefined' &&
-                seo.seo.seo_image
-              ? urlFor(seo.seo.seo_image).url()
-              : '',
-          image_alt:
-            typeof issue.seo !== 'undefined' &&
-            typeof issue.seo.seo_image !== 'undefined' &&
-            typeof issue.seo.seo_image.name !== 'undefined' &&
-            issue.seo.seo_image.name
-              ? issue.seo.seo_image.name
-              : typeof seo.seo !== 'undefined' &&
-                typeof seo.seo.seo_image !== 'undefined' &&
-                seo.seo.seo_image.name
-              ? seo.seo.seo_image.name
-              : '',
-        }}
+        title={issue.title}
+        pagelink={router.pathname}
+        inputSEO={issue.seo}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       {/* Issue Title */}
       <LazyMotion features={domAnimation}>
@@ -338,7 +296,7 @@ export default function Index({ issueAPI, seoAPI }) {
                     }`}
                   />
                   <Image
-                    src={urlFor(issue.image1.placeholder).width(1400).url()}
+                    src={urlFor(issue.image1.placeholder).width(1400).format('webp').url()}
                     alt={issue.image1.placeholder.name}
                     layout='fill'
                     objectFit='cover'
@@ -346,7 +304,7 @@ export default function Index({ issueAPI, seoAPI }) {
                     loading='eager'
                     placeholder='blur'
                     blurDataURL={urlFor(issue.image1.placeholder)
-                      .width(1400)
+                      .width(800)
                       .blur(2)
                       .format('webp')
                       .url()}
@@ -387,7 +345,7 @@ export default function Index({ issueAPI, seoAPI }) {
                     }`}
                   />
                   <Image
-                    src={urlFor(issue.image2.placeholder).width(1400).url()}
+                    src={urlFor(issue.image2.placeholder).width(1400).format('webp').url()}
                     alt={issue.image2.placeholder.name}
                     layout='fill'
                     objectFit='cover'
@@ -395,7 +353,7 @@ export default function Index({ issueAPI, seoAPI }) {
                     objectPosition='center'
                     placeholder='blur'
                     blurDataURL={urlFor(issue.image2.placeholder)
-                      .width(1400)
+                      .width(800)
                       .blur(2)
                       .format('webp')
                       .url()}
