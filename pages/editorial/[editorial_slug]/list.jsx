@@ -65,9 +65,11 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
     // Hide Scroll indicator
     const { innerWidth: width, innerHeight: height } = window;
     if (scrollContainer.current.scrollLeft > 50 && width > 600) {
+      document.querySelector('.issue_container').classList.add('pointer-events-none');
       document.querySelector('#scrollIndicator').classList.add('hide');
     } else {
       document.querySelector('#scrollIndicator').classList.remove('hide');
+      document.querySelector('.issue_container').classList.remove('pointer-events-none');
     }
 
     // Show Content indicator

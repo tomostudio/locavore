@@ -33,6 +33,7 @@ const Footer = ({ className = '', footer, mailchimp = '' }) => {
               {time.toLocaleTimeString([], {
                 hour: '2-digit',
                 minute: '2-digit',
+                timeZone: "Asia/Makassar"
               })}
             </span>
           </div>
