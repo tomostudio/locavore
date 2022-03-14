@@ -53,7 +53,7 @@ const FamilySlug = ({
   const serializers = {
     block: {
       normal: ({ children }) =>
-        children[0] === '' ? <br /> : <p>{children}</p>,
+        children[0] === '' ? <br /> : <p align="center">{children}</p>,
       h1: ({ children }) => <h1>{children}</h1>,
       h2: ({ children }) => <h2>{children}</h2>,
       h3: ({ children }) => <h3>{children}</h3>,
