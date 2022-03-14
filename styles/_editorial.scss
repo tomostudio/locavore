@@ -86,6 +86,11 @@ $issuecardgap: 40px;
       width: 0px;
     }
   }
+  &.dragging{
+    & * {
+      pointer-events: none !important;
+    }
+  }
   & .article_wrapper {
     padding: 30px 0px;
     margin: 0px 20px;

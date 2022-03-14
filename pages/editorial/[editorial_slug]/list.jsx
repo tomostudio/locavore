@@ -213,6 +213,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
               onScroll={updateScroll}
               innerRef={scrollContainer}
               nativeMobileScroll={true}
+              draggingClassName={'dragging'}
             >
               <div className="spacer" />
               {processedArticle.map((data, id) => {
