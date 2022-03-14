@@ -255,22 +255,33 @@ const FamilySlug = ({
                   className="relative w-[90%] h-[90%] max-md:h-60"
                   id="family-logo"
                 >
-                  <Image
-                    src={urlFor(family.logo).width(750).url()}
-                    alt={family.logo.name}
-                    className="rounded-2xl"
-                    layout="fill"
-                    objectFit="contain"
-                    loading="eager"
-                    priority={true}
-                    objectPosition="center"
-                    placeholder="blur"
-                    blurDataURL={urlFor(family.logo)
-                      .blur(2)
-                      .format('webp')
-                      .width(300)
-                      .url()}
-                  />
+                  {family.logo && family.logo.asset ? (
+                    <Image
+                      src={urlFor(family.logo).width(750).url()}
+                      alt={family.logo.name}
+                      className="rounded-2xl"
+                      layout="fill"
+                      objectFit="contain"
+                      loading="eager"
+                      priority={true}
+                      objectPosition="center"
+                      placeholder="blur"
+                      blurDataURL={urlFor(family.logo)
+                        .blur(2)
+                        .format('webp')
+                        .width(300)
+                        .url()}
+                    />
+                  ) : (
+                    <span
+                      className="text-white text-2xl w-full h-full flex justify-center items-center"
+                      style={{
+                        backgroundColor: `rgba(208,208,208, 1)`,
+                      }}
+                    >
+                      Image Missing
+                    </span>
+                  )}
                 </div>
               </div>
             </div>

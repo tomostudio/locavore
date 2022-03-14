@@ -19,6 +19,7 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
         className={`group block relative w-full mx-auto ${
           !gallery ? 'max-w-800px' : ''
         }`}
+        pointerEvents={video.thumbnail && video.thumbnail.asset ? true : false}
       >
         {!statusVideo && (
           <div
@@ -28,41 +29,49 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
           />
         )}
         <div
-          className={`relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1`}
+          className={`relative w-full h-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1`}
           style={{
             backgroundColor: `rgba(208,208,208, 1)`,
           }}
         >
-          <iframe
-            src={'https://www.youtube.com/embed/' + getYoutube(video.link)}
-            id="videos"
-            width="100%"
-            height="100%"
-          ></iframe>
-          <div
-            className={`absolute w-full h-full z-2 ${
-              statusVideo ? 'pointer-events-none' : ''
-            }`}
-          >
-            <Image
-              src={urlFor(video.thumbnail).width(1500).url()}
-              alt={video.thumbnail.name}
-              className={`${statusVideo ? 'inActive' : ''}`}
-              loading="eager"
-              priority={true}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-              placeholder="blur"
-              blurDataURL={urlFor(video.thumbnail)
-                .blur(2)
-                .format('webp')
-                .width(500)
-                .url()}
-            />
-          </div>
+          {video.thumbnail && video.thumbnail.asset ? (
+            <>
+              <iframe
+                src={'https://www.youtube.com/embed/' + getYoutube(video.link)}
+                id="videos"
+                width="100%"
+                height="100%"
+              ></iframe>
+              <div
+                className={`absolute w-full h-full z-2 ${
+                  statusVideo ? 'pointer-events-none' : ''
+                }`}
+              >
+                <Image
+                  src={urlFor(video.thumbnail).width(1500).url()}
+                  alt={video.thumbnail.name}
+                  className={`${statusVideo ? 'inActive' : ''}`}
+                  loading="eager"
+                  priority={true}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="center"
+                  placeholder="blur"
+                  blurDataURL={urlFor(video.thumbnail)
+                    .blur(2)
+                    .format('webp')
+                    .width(500)
+                    .url()}
+                />
+              </div>
+            </>
+          ) : (
+            <span className="text-white text-2xl w-full h-full flex justify-center items-center">
+              Video Image Missing
+            </span>
+          )}
         </div>
-        {!statusVideo && (
+        {!statusVideo && video.thumbnail && video.thumbnail.asset ? (
           <div className="absolute top-0 left-0 z-20 h-full w-full setflex-center">
             <div
               className={`px-10 py-7 rounded-50% transition-all duration-300 ${
@@ -74,6 +83,8 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
               WATCH
             </div>
           </div>
+        ) : (
+          <></>
         )}
       </FancyLink>
       {video.caption && (

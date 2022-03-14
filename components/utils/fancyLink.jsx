@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { forwardRef } from 'react';
-import { useAppContext } from 'context/state';
+import Link from 'next/link'
+import { forwardRef } from 'react'
+import { useAppContext } from 'context/state'
 
 const FancyLink = forwardRef(
   (
@@ -11,15 +11,18 @@ const FancyLink = forwardRef(
       children,
       blank = false,
       onClick = () => {},
+      pointerEvents = true,
       ...others
     },
-    ref
+    ref,
   ) => {
-    const appContext = useAppContext();
+    const appContext = useAppContext()
     return !destination ? (
       <button
         aria-label={a11yText}
-        className={`cursor-pointer ${className} pointer-events-auto`}
+        className={`cursor-pointer ${className} ${
+          pointerEvents ? 'pointer-events-auto' : 'pointer-events-none'
+        }`}
         onClick={onClick}
         ref={ref}
         {...others}
@@ -30,11 +33,13 @@ const FancyLink = forwardRef(
       <Link href={destination} scroll={false}>
         <a
           aria-label={a11yText}
-          className={`${className} pointer-events-auto`}
+          className={`${className} ${
+            pointerEvents ? 'pointer-events-auto' : 'pointer-events-none'
+          }`}
           ref={ref}
           onClick={() => {
-            onClick();
-            appContext.setMobileMenu(false);
+            onClick()
+            appContext.setMobileMenu(false)
           }}
           {...others}
         >
@@ -47,15 +52,15 @@ const FancyLink = forwardRef(
         className={`${
           destination ? 'pointer-events-auto' : 'pointer-events-none'
         } ${className}`}
-        target='_blank'
+        target="_blank"
         href={destination}
         ref={ref}
         {...others}
       >
         {children}
       </a>
-    );
-  }
-);
+    )
+  },
+)
 
-export default FancyLink;
+export default FancyLink

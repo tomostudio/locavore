@@ -18,24 +18,30 @@ const GalleryComponent = ({ gallery, color }) => {
                   <div className="w-full flex-col">
                     <div className="w-full setflex-center" key={id}>
                       <div
-                        className={`relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1`}
+                        className={`relative w-full h-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1`}
                         style={{
                           backgroundColor: `rgba(208,208,208, 1)`,
                         }}
                       >
-                        <Image
-                          src={urlFor(item.image).width(1500).url()}
-                          alt={item.image.name}
-                          layout="fill"
-                          objectFit="cover"
-                          objectPosition="center"
-                          placeholder="blur"
-                          blurDataURL={urlFor(item.image)
-                            .blur(2)
-                            .format('webp')
-                            .width(500)
-                            .url()}
-                        />
+                        {item.image && item.image.asset ? (
+                          <Image
+                            src={urlFor(item.image).width(1500).url()}
+                            alt={item.image.name}
+                            layout="fill"
+                            objectFit="cover"
+                            objectPosition="center"
+                            placeholder="blur"
+                            blurDataURL={urlFor(item.image)
+                              .blur(2)
+                              .format('webp')
+                              .width(500)
+                              .url()}
+                          />
+                        ) : (
+                          <span className="text-white text-2xl w-full h-full flex justify-center items-center">
+                            Image Missing
+                          </span>
+                        )}
                       </div>
                     </div>
                     {item.caption && (
@@ -58,19 +64,28 @@ const GalleryComponent = ({ gallery, color }) => {
                           backgroundColor: `rgba(208,208,208, 1)`,
                         }}
                       >
-                        <Image
-                          src={urlFor(item.firstImage.image).width(1500).url()}
-                          alt={item.firstImage.image.name}
-                          layout="fill"
-                          objectFit="cover"
-                          objectPosition="center"
-                          placeholder="blur"
-                          blurDataURL={urlFor(item.firstImage.image)
-                            .blur(2)
-                            .format('webp')
-                            .width(500)
-                            .url()}
-                        />
+                        {item.firstImage.image &&
+                        item.firstImage.image.asset ? (
+                          <Image
+                            src={urlFor(item.firstImage.image)
+                              .width(1500)
+                              .url()}
+                            alt={item.firstImage.image.name}
+                            layout="fill"
+                            objectFit="cover"
+                            objectPosition="center"
+                            placeholder="blur"
+                            blurDataURL={urlFor(item.firstImage.image)
+                              .blur(2)
+                              .format('webp')
+                              .width(500)
+                              .url()}
+                          />
+                        ) : (
+                          <span className="text-white text-2xl w-full h-full flex justify-center items-center">
+                            Image Missing
+                          </span>
+                        )}
                       </div>
                       {item.firstImage.caption && (
                         <div className="w-full mx-auto max-md:w-full max-md:px-4">
@@ -88,19 +103,28 @@ const GalleryComponent = ({ gallery, color }) => {
                           backgroundColor: `rgba(208,208,208, 1)`,
                         }}
                       >
-                        <Image
-                          src={urlFor(item.secondImage.image).width(1500).url()}
-                          alt={item.secondImage.image.name}
-                          layout="fill"
-                          objectFit="cover"
-                          objectPosition="center"
-                          placeholder="blur"
-                          blurDataURL={urlFor(item.secondImage.image)
-                            .blur(2)
-                            .format('webp')
-                            .width(500)
-                            .url()}
-                        />
+                        {item.secondImage.image &&
+                        item.secondImage.image.asset ? (
+                          <Image
+                            src={urlFor(item.secondImage.image)
+                              .width(1500)
+                              .url()}
+                            alt={item.secondImage.image.name}
+                            layout="fill"
+                            objectFit="cover"
+                            objectPosition="center"
+                            placeholder="blur"
+                            blurDataURL={urlFor(item.secondImage.image)
+                              .blur(2)
+                              .format('webp')
+                              .width(500)
+                              .url()}
+                          />
+                        ) : (
+                          <span className="text-white text-2xl w-full h-full flex justify-center items-center">
+                            Image Missing
+                          </span>
+                        )}
                       </div>
                       {item.secondImage.caption && (
                         <div className="w-full mx-auto max-md:w-full max-md:px-4">
@@ -115,11 +139,7 @@ const GalleryComponent = ({ gallery, color }) => {
                 </Fragment>
               ) : (
                 item._type === 'video' && (
-                  <VideoComponent
-                    video={item}
-                    color={color}
-                    gallery={true}
-                  />
+                  <VideoComponent video={item} color={color} gallery={true} />
                 )
               ),
             )

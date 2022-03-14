@@ -14,6 +14,7 @@ const IssueCard = ({
   borderColor,
   thumbnail,
   alt,
+  blursrc
 }) => {
   return (
     <FancyLink
@@ -32,6 +33,7 @@ const IssueCard = ({
         border={borderColor}
         src={thumbnail}
         alt={alt}
+        blursrc={blursrc}
       />
     </FancyLink>
   );

@@ -125,25 +125,31 @@ const EditorComponent = ({ data, color }) => {
             img: (props) => (
               <div className={`image ${!props.value.option ? '' : '!px-0'}`}>
                 <div
-                  className="relative w-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1 rounded-xl overflow-hidden"
+                  className="relative w-full h-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1 rounded-xl overflow-hidden"
                   style={{
                     backgroundColor: `rgba(208,208,208, 1)`,
                   }}
                 >
-                  <Image
-                    src={urlFor(props.value.image).url()}
-                    alt={props.value.image.name}
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center"
-                    placeholder="blur"
-                    blurDataURL={urlFor(props.value.image)
-                      .blur(2)
-                      .format('webp')
-                      .saturation(-100)
-                      .width(100)
-                      .url()}
-                  />
+                  {props.value.image && props.value.image.asset ? (
+                    <Image
+                      src={urlFor(props.value.image).url()}
+                      alt={props.value.image.name}
+                      layout="fill"
+                      objectFit="cover"
+                      objectPosition="center"
+                      placeholder="blur"
+                      blurDataURL={urlFor(props.value.image)
+                        .blur(2)
+                        .format('webp')
+                        .saturation(-100)
+                        .width(100)
+                        .url()}
+                    />
+                  ) : (
+                    <span className="text-white text-2xl w-full h-full flex justify-center items-center">
+                      Image Missing
+                    </span>
+                  )}
                 </div>
                 {props.value.name && (
                   <Caption
@@ -196,25 +202,32 @@ const EditorComponent = ({ data, color }) => {
                     </div>
                   ) : props.value.left.columnLeft === 'image' ? (
                     <div
-                      className="relative min-h-16rem rounded-xl overflow-hidden"
+                      className="relative w-full h-full min-h-16rem rounded-xl overflow-hidden"
                       style={{
                         backgroundColor: `rgba(208,208,208, 1)`,
                       }}
                     >
-                      <Image
-                        src={urlFor(props.value.left.imageLeft).url()}
-                        alt={props.value.left.imageLeft.name}
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="center"
-                        placeholder="blur"
-                        blurDataURL={urlFor(props.value.left.imageLeft)
-                          .blur(2)
-                          .format('webp')
-                          .saturation(-100)
-                          .width(100)
-                          .url()}
-                      />
+                      {props.value.left.imageLeft &&
+                      props.value.left.imageLeft.asset ? (
+                        <Image
+                          src={urlFor(props.value.left.imageLeft).url()}
+                          alt={props.value.left.imageLeft.name}
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="center"
+                          placeholder="blur"
+                          blurDataURL={urlFor(props.value.left.imageLeft)
+                            .blur(2)
+                            .format('webp')
+                            .saturation(-100)
+                            .width(100)
+                            .url()}
+                        />
+                      ) : (
+                        <span className="text-white text-2xl w-full h-full flex justify-center items-center">
+                          Image Missing
+                        </span>
+                      )}
                     </div>
                   ) : (
                     <></>
@@ -260,25 +273,32 @@ const EditorComponent = ({ data, color }) => {
                     </div>
                   ) : props.value.right.columnRight === 'image' ? (
                     <div
-                      className="relative min-h-16rem rounded-xl overflow-hidden"
+                      className="relative w-full h-full min-h-16rem rounded-xl overflow-hidden"
                       style={{
                         backgroundColor: `rgba(208,208,208, 1)`,
                       }}
                     >
-                      <Image
-                        src={urlFor(props.value.right.imageRight).url()}
-                        alt={props.value.right.imageRight.name}
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="center"
-                        placeholder="blur"
-                        blurDataURL={urlFor(props.value.right.imageRight)
-                          .blur(2)
-                          .format('webp')
-                          .saturation(-100)
-                          .width(100)
-                          .url()}
-                      />
+                      {props.value.right.imageRight &&
+                      props.value.right.imageRight.asset ? (
+                        <Image
+                          src={urlFor(props.value.right.imageRight).url()}
+                          alt={props.value.right.imageRight.name}
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="center"
+                          placeholder="blur"
+                          blurDataURL={urlFor(props.value.right.imageRight)
+                            .blur(2)
+                            .format('webp')
+                            .saturation(-100)
+                            .width(100)
+                            .url()}
+                        />
+                      ) : (
+                        <span className="text-white text-2xl w-full h-full flex justify-center items-center">
+                          Image Missing
+                        </span>
+                      )}
                     </div>
                   ) : (
                     <></>
