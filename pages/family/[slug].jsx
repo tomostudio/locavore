@@ -195,7 +195,7 @@ const FamilySlug = ({
             <div className="w-full grid grid-cols-2 max-md:grid-cols-1">
               <div className="flex flex-col justify-between text-base pr-14 border-r py-7 space-y-4 relative max-md:row-start-2 max-md:row-end-3 max-md:text-center max-md:justify-center max-md:py-4 max-md:px-4 max-md:border-0">
                 <div className="hidden max-md:block w-[50%] h-[1px] bg-black mb-10 mx-auto min-w-[15em]" />
-                <p>
+                <div>
                   {family.address}
                   {` • `}
                   <FancyLink
@@ -210,7 +210,8 @@ const FamilySlug = ({
                       className=" ml-1 inline-block -translate-y-px"
                     />
                   </FancyLink>
-                </p>
+                  {!family.disableInfo && <p>{family.infoText}</p>}
+                </div>
                 <div className="w-full flex flex-col">
                   <FancyLink destination={`tel:${family.phone_number}`}>
                     {family.phone_number}
@@ -273,14 +274,12 @@ const FamilySlug = ({
                         .url()}
                     />
                   ) : (
-                    <span
-                      className="text-white text-2xl w-full h-full flex justify-center items-center"
+                    <div
+                      className="w-full h-full"
                       style={{
                         backgroundColor: `rgba(208,208,208, 1)`,
                       }}
-                    >
-                      Image Missing
-                    </span>
+                    ></div>
                   )}
                 </div>
               </div>

@@ -146,9 +146,8 @@ const EditorComponent = ({ data, color }) => {
                         .url()}
                     />
                   ) : (
-                    <span className="text-white text-2xl w-full h-full flex justify-center items-center">
-                      Image Missing
-                    </span>
+                    
+                    <></>
                   )}
                 </div>
                 {props.value.name && (
@@ -224,9 +223,7 @@ const EditorComponent = ({ data, color }) => {
                             .url()}
                         />
                       ) : (
-                        <span className="text-white text-2xl w-full h-full flex justify-center items-center">
-                          Image Missing
-                        </span>
+                        <></>
                       )}
                     </div>
                   ) : (
@@ -295,9 +292,7 @@ const EditorComponent = ({ data, color }) => {
                             .url()}
                         />
                       ) : (
-                        <span className="text-white text-2xl w-full h-full flex justify-center items-center">
-                          Image Missing
-                        </span>
+                        <></>
                       )}
                     </div>
                   ) : (
