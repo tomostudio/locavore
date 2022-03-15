@@ -1,4 +1,4 @@
-@import "_utils.scss";
+@import '_utils.scss';
 
 // Editorial
 .comingsoonSticky {
@@ -14,13 +14,13 @@
     position: relative;
     width: calc(100% / 5);
     &::after {
-      content: "";
+      content: '';
       display: block;
       padding-bottom: 100%;
     }
   }
   #scrollIndicator.hide {
-    @media screen and (min-width: "600px") {
+    @media screen and (min-width: '600px') {
       opacity: 0;
     }
   }
@@ -63,11 +63,13 @@ $issuecardgap: 40px;
 .issue_container {
   width: 100%;
   overflow-x: scroll;
-  overflow-y: visible !important;
   white-space: nowrap;
   position: relative;
-  & > .spacer {
-    content: "";
+  & .wrapper {
+    float: left;
+  }
+  & .wrapper > .spacer {
+    content: '';
     display: block;
     width: calc((100vw - #{$card-width + 40px}) / 2);
     height: 100%;
@@ -79,15 +81,20 @@ $issuecardgap: 40px;
     }
   }
 
-  &.noscroll {
-    justify-content: center;
+  &.single-item {
+    & > .wrapper {
+      justify-content: center;
+    }
+    & .wrapper > .spacer {
+      display: none;
+    }
     &::before,
     &::after {
       width: 0px;
     }
   }
-  &.dragging{
-    & * {
+  &.dragging {
+    & > .wrapper * {
       pointer-events: none !important;
     }
   }
@@ -103,7 +110,7 @@ $issuecardgap: 40px;
   }
 }
 
-.issueindicator.noscroll {
+.issueindicator.single-item {
   transform: translateX(-50%) !important;
   left: 50%;
 }
