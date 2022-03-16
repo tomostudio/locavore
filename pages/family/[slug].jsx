@@ -111,7 +111,7 @@ const FamilySlug = ({
       />
       {/* Header Gap */}
       <HeaderGap />
-      <div>
+      <div className='min-h-100vhWithHeader'>
         <motion.section
           className="w-full setflex-center rounded-t-2xl"
           style={{
