@@ -139,12 +139,12 @@ const FamilySlug = ({
                 {family.title}
               </span>
               <div className='border-b border-black h-px w-full' />
-              {/* <div className='editor-styling w-full mt-8 max-md:max-w-lg'>
+              <div className='editor-styling w-full mt-8 max-md:max-w-lg'>
                 <PortableText
                   value={family.description}
                   components={serializers}
                 />
-              </div> */}
+              </div> 
             </div>
           </div>
           {!family.disableInstagram && family.elfsightCode && (
