@@ -11,7 +11,6 @@ const FancyLink = forwardRef(
       children,
       blank = false,
       onClick = () => {},
-      pointerEvents = true,
       ...others
     },
     ref,
@@ -20,9 +19,7 @@ const FancyLink = forwardRef(
     return !destination ? (
       <button
         aria-label={a11yText}
-        className={`cursor-pointer ${className} ${
-          pointerEvents ? 'pointer-events-auto' : 'pointer-events-none'
-        }`}
+        className={`cursor-pointer ${className} pointer-events-auto`}
         onClick={onClick}
         ref={ref}
         {...others}
@@ -33,9 +30,7 @@ const FancyLink = forwardRef(
       <Link href={destination} scroll={false}>
         <a
           aria-label={a11yText}
-          className={`${className} ${
-            pointerEvents ? 'pointer-events-auto' : 'pointer-events-none'
-          }`}
+          className={`${className} pointer-events-auto`}
           ref={ref}
           onClick={() => {
             onClick()

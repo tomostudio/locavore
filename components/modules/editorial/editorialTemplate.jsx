@@ -95,7 +95,7 @@ export default function EditorialTemplate({
         <m.main initial="initial" animate="enter" exit="exit" variants={fade}>
           {/* Header Gap */}
           {/* Untuk Content */}
-          <section className="pb-10 w-full h-full flex flex-col">
+          <section className="pb-10 min-h-100vhWithHeader w-full h-full flex flex-col">
             <Container className="max-md:px-6">
               {/* Sticky Container */}
               <div

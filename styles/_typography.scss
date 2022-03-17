@@ -37,6 +37,9 @@ h2,
   & > p > a {
     @apply underline hover:opacity-50 transition-opacity cursor-pointer;
   }
+  & > * a {
+    word-break: break-all;
+  }
   &.blog {
     & > *:not(a) {
       cursor: default;

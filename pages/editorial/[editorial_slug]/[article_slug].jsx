@@ -277,9 +277,7 @@ export default function ArticleSlug({
                           .url()}
                       />
                     ) : (
-                      <span className="text-white text-2xl w-full h-full flex justify-center items-center">
-                        Image Missing
-                      </span>
+                      <></>
                     )}
                   </div>
                   {data.description && (

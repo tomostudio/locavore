@@ -20,6 +20,7 @@ import FamilyMenuMobile from '@/components/modules/family/familyMenuMobile';
 import { useAppContext } from 'context/state';
 import client from '@/helpers/sanity/client';
 import urlFor from '@/helpers/sanity/urlFor';
+import { transition } from '@/helpers/preset/tailwind';
 import { useMediaQuery } from '@/helpers/functional/checkMedia';
 import { PortableText } from '@portabletext/react';
 import { Facebook, Instagram, Whatsapp } from '@/helpers/preset/svg';
@@ -111,9 +112,9 @@ const FamilySlug = ({
       />
       {/* Header Gap */}
       <HeaderGap />
-      <div>
+      <div className='min-h-100vhWithHeader'>
         <motion.section
-          className='w-full  rounded-t-2xl min-h-[calc(100vh-60px)] flex flex-col items-center justify-between max-sm:justify-start'
+          className='w-full setflex-center rounded-t-2xl'
           style={{
             backgroundColor: family.bgColor.hex ? family.bgColor.hex : '#fff',
           }}
@@ -132,13 +133,13 @@ const FamilySlug = ({
             },
           }}
         >
-          <div className='w-full max-w-5xl px-20 max-md:px-5 setflex-center my-0'>
+          <div className='w-full max-w-5xl px-20 max-md:px-5 setflex-center '>
             <div className='w-full setflex-center mb-14'>
               <span className='text-center py-3 font-bold uppercase'>
                 {family.title}
               </span>
               <div className='border-b border-black h-px w-full' />
-              <div className='editor-styling w-full mt-8'>
+              <div className='editor-styling w-full mt-8 max-md:max-w-lg'>
                 <PortableText
                   value={family.description}
                   components={serializers}
@@ -147,7 +148,7 @@ const FamilySlug = ({
             </div>
           </div>
           {!family.disableInstagram && family.elfsightCode && (
-            <div className='w-full max-w-screen-xl max-md:w-full px-5 setflex-center my-0'>
+            <div className='w-full max-w-screen-xl max-md:w-full px-5 setflex-center '>
               <div className='w-full my-0'>
                 <div className='flex flex-col w-full'>
                   {/* INSTAGRAM SECTION */}
@@ -170,7 +171,7 @@ const FamilySlug = ({
               </div>
             </div>
           )}
-          <div className='w-full max-w-5xl px-20 max-md:px-5 mb-14 max-sm:mb-4 mt-0 setflex-center '>
+          <div className='w-full max-w-5xl px-20 max-md:px-5 mb-14 max-sm:mb-4 setflex-center max-md:max-w-lg '>
             {!family.disableInstagram && family.elfsightCode && (
               <div className='w-full'>
                 <div className='flex flex-col w-full mb-10 '>
@@ -195,12 +196,12 @@ const FamilySlug = ({
             <div className='w-full grid grid-cols-2 max-md:grid-cols-1'>
               <div className='flex flex-col justify-between text-base pr-14 border-r py-7 space-y-4 relative max-md:row-start-2 max-md:row-end-3 max-md:text-center max-md:justify-center max-md:py-4 max-md:px-4 max-md:border-0'>
                 <div className='hidden max-md:block w-[50%] h-[1px] bg-black mb-10 mx-auto min-w-[15em]' />
-                <p>
+                <div>
                   {family.address}
                   {` • `}
                   <FancyLink
                     destination={family.mapLink}
-                    className='whitespace-nowrap hover:opacity-50 transition-opacity duration-300 underline'
+                    className={`whitespace-nowrap ${transition.fade} underline`}
                     blank={true}
                   >
                     Map
@@ -210,12 +211,25 @@ const FamilySlug = ({
                       className=' ml-1 inline-block -translate-y-px'
                     />
                   </FancyLink>
-                </p>
-                <div className='w-full flex flex-col'>
-                  <FancyLink destination={`tel:${family.phone_number}`}>
+                </div>
+                {!family.disableInfo && (
+                  <div className='w-full flex flex-col'>{family.infoText}</div>
+                )}
+                <div className='w-full flex flex-col underline'>
+                  <FancyLink
+                    destination={
+                      family.waLink
+                        ? family.waLink
+                        : `tel:${family.phone_number}`
+                    }
+                    className={`${transition.fade}`}
+                  >
                     {family.phone_number}
                   </FancyLink>
-                  <FancyLink destination={`mailto:${family.email}`}>
+                  <FancyLink
+                    destination={`mailto:${family.email}`}
+                    className={`${transition.fade}`}
+                  >
                     {family.email}
                   </FancyLink>
                 </div>
@@ -273,14 +287,12 @@ const FamilySlug = ({
                         .url()}
                     />
                   ) : (
-                    <span
-                      className='text-white text-2xl w-full h-full flex justify-center items-center'
+                    <div
+                      className='w-full h-full'
                       style={{
                         backgroundColor: `rgba(208,208,208, 1)`,
                       }}
-                    >
-                      Image Missing
-                    </span>
+                    ></div>
                   )}
                 </div>
               </div>

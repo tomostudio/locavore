@@ -19,7 +19,6 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
         className={`group block relative w-full mx-auto ${
           !gallery ? 'max-w-800px' : ''
         }`}
-        pointerEvents={video.thumbnail && video.thumbnail.asset ? true : false}
       >
         {!statusVideo && (
           <div
@@ -34,14 +33,14 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
             backgroundColor: `rgba(208,208,208, 1)`,
           }}
         >
-          {video.thumbnail && video.thumbnail.asset ? (
-            <>
-              <iframe
-                src={'https://www.youtube.com/embed/' + getYoutube(video.link)}
-                id="videos"
-                width="100%"
-                height="100%"
-              ></iframe>
+          <>
+            <iframe
+              src={'https://www.youtube.com/embed/' + getYoutube(video.link)}
+              id="videos"
+              width="100%"
+              height="100%"
+            ></iframe>
+            {video.thumbnail && video.thumbnail.asset ? (
               <div
                 className={`absolute w-full h-full z-2 ${
                   statusVideo ? 'pointer-events-none' : ''
@@ -64,14 +63,19 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
                     .url()}
                 />
               </div>
-            </>
-          ) : (
-            <span className="text-white text-2xl w-full h-full flex justify-center items-center">
-              Video Image Missing
-            </span>
-          )}
+            ) : (
+              <div
+                className={`w-full h-full pointer-events-none ${
+                  statusVideo ? 'inActive' : ''
+                }`}
+                style={{
+                  backgroundColor: `rgba(208,208,208, 1)`,
+                }}
+              ></div>
+            )}
+          </>
         </div>
-        {!statusVideo && video.thumbnail && video.thumbnail.asset ? (
+        {!statusVideo && (
           <div className="absolute top-0 left-0 z-20 h-full w-full setflex-center">
             <div
               className={`px-10 py-7 rounded-50% transition-all duration-300 ${
@@ -83,8 +87,6 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
               WATCH
             </div>
           </div>
-        ) : (
-          <></>
         )}
       </FancyLink>
       {video.caption && (

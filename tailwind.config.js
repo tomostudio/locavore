@@ -48,6 +48,7 @@ module.exports = {
       },
       minHeight: {
         '16rem': '16rem',
+        '100vhWithHeader': "calc(100vh - 60px)"
       },
       screens: {
         'max-sm': { max: '600px' },
