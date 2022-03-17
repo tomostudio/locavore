@@ -112,9 +112,9 @@ const FamilySlug = ({
       />
       {/* Header Gap */}
       <HeaderGap />
-      <div className='min-h-100vhWithHeader'>
+      <div>
         <motion.section
-          className='w-full setflex-center rounded-t-2xl'
+          className='w-full setflex-center rounded-t-2xl min-h-[calc(100vh-60px)]'
           style={{
             backgroundColor: family.bgColor.hex ? family.bgColor.hex : '#fff',
           }}
@@ -133,18 +133,18 @@ const FamilySlug = ({
             },
           }}
         >
-          <div className='w-full max-w-5xl px-20 max-md:px-5 setflex-center '>
+          <div className='w-full max-w-5xl px-20 max-md:px-5 setflex-center  '>
             <div className='w-full setflex-center mb-14'>
               <span className='text-center py-3 font-bold uppercase'>
                 {family.title}
               </span>
               <div className='border-b border-black h-px w-full' />
-              <div className='editor-styling w-full mt-8 max-md:max-w-lg'>
+              {/* <div className='editor-styling w-full mt-8 max-md:max-w-lg'>
                 <PortableText
                   value={family.description}
                   components={serializers}
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           {!family.disableInstagram && family.elfsightCode && (
