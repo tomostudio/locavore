@@ -215,7 +215,7 @@ export async function getStaticProps() {
   *[_type == "family"]
   `);
   const familyListAPI = await client.fetch(`
-  *[_type == "family_list"]
+  *[_type == "family_list"] | order(order asc)
   `);
   const memberListAPI = await client.fetch(`
   *[_type == "member_list"] {

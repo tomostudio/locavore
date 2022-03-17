@@ -357,7 +357,7 @@ export async function getStaticProps({ params }) {
     `
   );
   const familyListAPI = await client.fetch(`
-  *[_type == "family_list"]
+  *[_type == "family_list"] | order(order asc)
   `);
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
