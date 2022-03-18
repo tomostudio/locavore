@@ -100,6 +100,56 @@ const FamilySlug = ({
     },
   }
 
+  const serializerInfo = {
+    block: {
+      normal: ({ children }) =>
+        children[0] === '' ? <br /> : <p>{children}</p>,
+      h1: ({ children }) => <h1>{children}</h1>,
+      h2: ({ children }) => <h2>{children}</h2>,
+      h3: ({ children }) => <h3>{children}</h3>,
+      h4: ({ children }) => <h4>{children}</h4>,
+      h5: ({ children }) => <h5>{children}</h5>,
+      center: ({ children }) => <p align="center">{children}</p>,
+      left: ({ children }) => <p align="left">{children}</p>,
+      right: ({ children }) => <p align="right">{children}</p>,
+    },
+    list: {
+      number: ({ children }) => <ol className="list-decimal">{children}</ol>,
+    },
+    types: {
+      code: (props) => (
+        <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
+      ),
+    },
+    marks: {
+      changeColor: (props) => (
+        <span style={{ color: props.value.color.hex }}>{props.children}</span>
+      ),
+      backgroundColor: (props) => (
+        <span style={{ backgroundColor: props.value.color.hex }}>
+          {props.children}
+        </span>
+      ),
+      largerSize: (props) => (
+        <span style={{ fontSize: '1.5em' }}>{props.children}</span>
+      ),
+      sub: (props) => <sub>{props.children}</sub>,
+      sup: (props) => <sup>{props.children}</sup>,
+      fontSize: (props) => (
+        <span style={{ fontSize: props.value.size }}>{props.children}</span>
+      ),
+      font: (props) => (
+        <span
+          className={
+            props.value.type === 'display' ? 'font-default' : props.value.type
+          }
+        >
+          {props.children}
+        </span>
+      ),
+    },
+  }
+
   return (
     <Layout>
       <SEO
@@ -111,7 +161,7 @@ const FamilySlug = ({
       />
       {/* Header Gap */}
       <HeaderGap />
-      <div className='min-h-100vhWithHeader'>
+      <div className="min-h-100vhWithHeader">
         <motion.section
           className="w-full setflex-center rounded-t-2xl"
           style={{
@@ -210,7 +260,12 @@ const FamilySlug = ({
                       className=" ml-1 inline-block -translate-y-px"
                     />
                   </FancyLink>
-                  {!family.disableInfo && <p>{family.infoText}</p>}
+                  {!family.disableInfo && (
+                    <PortableText
+                      value={family.infoText}
+                      components={serializerInfo}
+                    />
+                  )}
                 </div>
                 <div className="w-full flex flex-col">
                   <FancyLink destination={`tel:${family.phone_number}`}>
