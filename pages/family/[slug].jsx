@@ -20,6 +20,7 @@ import FamilyMenuMobile from '@/components/modules/family/familyMenuMobile'
 import { useAppContext } from 'context/state'
 import client from '@/helpers/sanity/client'
 import urlFor from '@/helpers/sanity/urlFor'
+import { transition } from '@/helpers/preset/tailwind'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import { PortableText } from '@portabletext/react'
 import { Facebook, Instagram, Whatsapp } from '@/helpers/preset/svg'
@@ -161,9 +162,9 @@ const FamilySlug = ({
       />
       {/* Header Gap */}
       <HeaderGap />
-      <div className="min-h-100vhWithHeader">
+      <div>
         <motion.section
-          className="w-full setflex-center rounded-t-2xl"
+          className="w-full setflex-center rounded-t-2xl min-h-[calc(100vh-60px)]"
           style={{
             backgroundColor: family.bgColor.hex ? family.bgColor.hex : '#fff',
           }}
@@ -182,13 +183,13 @@ const FamilySlug = ({
             },
           }}
         >
-          <div className="w-full max-w-5xl px-20 max-md:px-5 setflex-center ">
+          <div className="w-full max-w-5xl px-20 max-md:px-5 setflex-center  ">
             <div className="w-full setflex-center mb-14">
               <span className="text-center py-3 font-bold uppercase">
                 {family.title}
               </span>
               <div className="border-b border-black h-px w-full" />
-              <div className="editor-styling w-full mt-8">
+              <div className="editor-styling w-full mt-8 max-md:max-w-lg">
                 <PortableText
                   value={family.description}
                   components={serializers}
@@ -220,7 +221,7 @@ const FamilySlug = ({
               </div>
             </div>
           )}
-          <div className="w-full max-w-5xl px-20 max-md:px-5 mb-14 max-sm:mb-4 setflex-center ">
+          <div className="w-full max-w-5xl px-20 max-md:px-5 mb-14 max-sm:mb-4 setflex-center max-md:max-w-lg ">
             {!family.disableInstagram && family.elfsightCode && (
               <div className="w-full">
                 <div className="flex flex-col w-full mb-10 ">
@@ -250,7 +251,7 @@ const FamilySlug = ({
                   {` • `}
                   <FancyLink
                     destination={family.mapLink}
-                    className="whitespace-nowrap hover:opacity-50 transition-opacity duration-300 underline"
+                    className={`whitespace-nowrap ${transition.fade} underline`}
                     blank={true}
                   >
                     Map
@@ -260,18 +261,30 @@ const FamilySlug = ({
                       className=" ml-1 inline-block -translate-y-px"
                     />
                   </FancyLink>
-                  {!family.disableInfo && (
+                </div>
+                {!family.disableInfo && (
+                  <div className="w-full flex flex-col">
                     <PortableText
                       value={family.infoText}
                       components={serializerInfo}
                     />
-                  )}
-                </div>
-                <div className="w-full flex flex-col">
-                  <FancyLink destination={`tel:${family.phone_number}`}>
+                  </div>
+                )}
+                <div className="w-full flex flex-col underline">
+                  <FancyLink
+                    destination={
+                      family.waLink
+                        ? family.waLink
+                        : `tel:${family.phone_number}`
+                    }
+                    className={`${transition.fade}`}
+                  >
                     {family.phone_number}
                   </FancyLink>
-                  <FancyLink destination={`mailto:${family.email}`}>
+                  <FancyLink
+                    destination={`mailto:${family.email}`}
+                    className={`${transition.fade}`}
+                  >
                     {family.email}
                   </FancyLink>
                 </div>
@@ -306,7 +319,7 @@ const FamilySlug = ({
                   )}
                 </div>
               </div>
-              <div className="h-full flex justify-end items-center relative w-full max-md:row-start-1 max-md:row-end-2 max-md:h-auto max-md:justify-center max-md:max-w-md max-md:mx-auto">
+              <div className="flex justify-end items-center relative w-full max-md:row-start-1 max-md:row-end-2 max-md:h-auto max-md:justify-center max-md:max-w-md max-md:mx-auto">
                 <div
                   className="relative w-[90%] h-[90%] max-md:h-60"
                   id="family-logo"
@@ -356,6 +369,7 @@ const FamilySlug = ({
           <FamilyMenu
             familyListAPI={familyListAPI}
             bgColor={family.bgColor.hex ? family.bgColor.hex : 'default'}
+            className="mt-auto"
           />
           {useMediaQuery('(max-width: 600px)') && (
             <div
@@ -398,7 +412,7 @@ export async function getStaticProps({ params }) {
     `,
   )
   const familyListAPI = await client.fetch(`
-  *[_type == "family_list"]
+  *[_type == "family_list"] | order(order asc)
   `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]

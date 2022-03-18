@@ -110,7 +110,7 @@ const FamilyMenuMobile = ({
             }}
           >
             {familyListAPI.map((familydata, id) => {
-              if (collapse && familydata._id !== familyAPI[0]._id)
+              if (collapse && familydata._id !== familyAPI[0]._id || !collapse)
                 return (
                   <FancyLink
                     key={id}
