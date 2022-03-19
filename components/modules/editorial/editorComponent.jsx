@@ -146,7 +146,6 @@ const EditorComponent = ({ data, color }) => {
                         .url()}
                     />
                   ) : (
-                    
                     <></>
                   )}
                 </div>
@@ -161,13 +160,7 @@ const EditorComponent = ({ data, color }) => {
             ),
             columnBlock: (props) => (
               <div className={`column ${!props.value.padding ? '' : '!px-0'}`}>
-                <div
-                  className={
-                    props.value.left.columnLeft === 'blank'
-                      ? 'max-md:hidden'
-                      : ''
-                  }
-                >
+                <div>
                   {props.value.left.columnLeft === 'block' ? (
                     <div className="w-full h-full">
                       <PortableText
@@ -175,7 +168,11 @@ const EditorComponent = ({ data, color }) => {
                         components={{
                           block: {
                             normal: ({ children }) =>
-                              children[0] === '' ? <br /> : <p align="center">{children}</p>,
+                              children[0] === '' ? (
+                                <br />
+                              ) : (
+                                <p align="center">{children}</p>
+                              ),
                             h1: ({ children }) => <h1>{children}</h1>,
                             h2: ({ children }) => <h2>{children}</h2>,
                             h3: ({ children }) => <h3>{children}</h3>,
@@ -230,13 +227,7 @@ const EditorComponent = ({ data, color }) => {
                     <></>
                   )}
                 </div>
-                <div
-                  className={
-                    props.value.left.columnRight === 'blank'
-                      ? 'max-md:hidden'
-                      : ''
-                  }
-                >
+                <div>
                   {props.value.right.columnRight === 'block' ? (
                     <div className="w-full h-full">
                       <PortableText
@@ -244,7 +235,11 @@ const EditorComponent = ({ data, color }) => {
                         components={{
                           block: {
                             normal: ({ children }) =>
-                              children[0] === '' ? <br /> : <p align="center">{children}</p>,
+                              children[0] === '' ? (
+                                <br />
+                              ) : (
+                                <p align="center">{children}</p>
+                              ),
                             h1: ({ children }) => <h1>{children}</h1>,
                             h2: ({ children }) => <h2>{children}</h2>,
                             h3: ({ children }) => <h3>{children}</h3>,
