@@ -37,11 +37,24 @@ export default function Search({
   const [seo] = seoAPI
   const [APISearch] = searchAPI
   const appContext = useAppContext()
+  const [footer] = footerAPI
+
   const [postNumCategory, setPostNumCategory] = useState(3)
   const [postNum, setPostNum] = useState(6)
   const [search, setSearch] = useState('')
   const [itemsToDisplay, setitemsToDisplay] = useState(articleAPI)
-  const [footer] = footerAPI
+
+  let dataOrderIssue = []
+  articleAPI.forEach((data) => {
+    issueAPI.forEach((item, index) => {
+      if (item.slug.current === data.issue.slug.current) {
+        dataOrderIssue.push({
+          slug: item.slug.current,
+          issueNo: index,
+        })
+      }
+    })
+  })
 
   const handleLoadMoreCategory = () => {
     setPostNumCategory((prevPostNum) => prevPostNum + 3)
@@ -60,21 +73,21 @@ export default function Search({
 
     if (appContext.category) {
       const fuseCategory = new Fuse(articleAPI, {
-        keys: ['article.category.title'],
-        useExtendedSearch: true,
+        keys: ['category.title'],
+        includeMatches: true,
       })
       let cat = fuseCategory
         .search(`=${appContext.category}`)
         .map((result) => result.item)
 
       const fuseSearchCategory = new Fuse(cat, {
-        keys: ['article.title'],
+        keys: ['title', 'keywords'],
       })
       const data = fuseSearchCategory.search(value).map((result) => result.item)
       setitemsToDisplay(value ? data : cat)
     } else {
       const fuse = new Fuse(articleAPI, {
-        keys: ['aricle.title', 'article.category.title'],
+        keys: ['title', 'keywords', 'category.title'],
       })
       const data = fuse.search(value).map((result) => result.item)
       setitemsToDisplay(value ? data : articleAPI)
@@ -86,7 +99,7 @@ export default function Search({
     appContext.setCategory(value)
     if (search) {
       const fuse = new Fuse(articleAPI, {
-        keys: ['article.title', 'article.category.title'],
+        keys: ['title', 'keywords', 'category.title'],
       })
       const data = fuse.search(search).map((result) => result.item)
       if (value) {
@@ -97,7 +110,7 @@ export default function Search({
       }
     } else {
       const fuse = new Fuse(articleAPI, {
-        keys: ['article.category.title'],
+        keys: ['category.title'],
         includeMatches: true,
       })
       let cat = fuse.search(`=${value}`).map((result) => result.item)
@@ -199,10 +212,7 @@ export default function Search({
                 <span className="font-bold text-lg">
                   We found &nbsp;
                   <span className="border-black border-b">
-                    {itemsToDisplay.reduce(
-                      (count, current) => count + current.article.length,
-                      0,
-                    )}{' '}
+                    {itemsToDisplay.length}{' '}
                     Articles
                   </span>
                 </span>
@@ -214,37 +224,36 @@ export default function Search({
               <div id="search-results">
                 {itemsToDisplay
                   .slice(0, postNum)
-                  .map((datas, _) =>
-                    datas.article.map((data, id) => (
+                  .map((datas, id) => (
                       <IssueCard
                         key={id}
-                        issueNo={datas.issueNumber}
-                        destination={`${datas.slug.current}/${data.slug.current}`}
+                        issueNo={datas.issue.issueNumber}
+                        destination={`${datas.issue.slug.current}/${datas.slug.current}`}
                         articleClassName="bg-culture w-full"
                         title={`${
                           !datas.turnOffArticleNumber
-                            ? `${data.articleNumber}.`
+                            ? `${datas.articleNumber}.`
                             : ''
-                        } ${data.title}`}
-                        category={data.category.title}
+                        } ${datas.title}`}
+                        category={datas.category.title}
                         timeRead={
-                          data.readTime
-                            ? timeConvert(data.readTime)
-                            : data.timeReadBlog
-                            ? data.timeReadBlog !== 0 &&
-                              timeConvert(data.timeReadBlog)
-                            : data.timeRead !== 0 && timeConvert(data.timeRead)
+                          datas.readTime
+                            ? timeConvert(datas.readTime)
+                            : datas.timeReadBlog
+                            ? datas.timeReadBlog !== 0 &&
+                              timeConvert(datas.timeReadBlog)
+                            : datas.timeRead !== 0 && timeConvert(datas.timeRead)
                         }
-                        bgColor={data.category.color.hex}
-                        borderColor={data.category.border}
+                        bgColor={datas.category.color.hex}
+                        borderColor={datas.category.border}
                         thumbnail={
-                          data.thumbnail && data.thumbnail.asset
-                            ? urlFor(data.thumbnail).width(750).url()
+                          datas.thumbnail && datas.thumbnail.asset
+                            ? urlFor(datas.thumbnail).width(750).url()
                             : false
                         }
                         blursrc={
-                          data.thumbnail && data.thumbnail.asset
-                            ? urlFor(data.thumbnail)
+                          datas.thumbnail && datas.thumbnail.asset
+                            ? urlFor(datas.thumbnail)
                                 .blur(2)
                                 .format('webp')
                                 .width(350)
@@ -252,12 +261,12 @@ export default function Search({
                             : false
                         }
                         alt={
-                          data.thumbnail && data.thumbnail.asset
-                            ? data.thumbnail.name
+                          datas.thumbnail && datas.thumbnail.asset
+                            ? datas.thumbnail.name
                             : false
                         }
                       />
-                    )),
+                    ),
                   )}
               </div>
 
@@ -308,17 +317,16 @@ export async function getStaticProps() {
   const issueAPI = await client.fetch(`
                     *[_type == "issue"]
                     `)
+
   const articleAPI = await client.fetch(`*[
-    _type == "issue"
-  ] | order(issueNumber asc) {
-    ...,
-    "article": *[_type=='article' && references(^._id) ] | order(articleNumber asc) {
-      ...,
-      category->,
-      "timeRead": round(length(pt::text(description)) / 5 / 180 ),
-      "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
-    }
-  }`)
+                      _type == "article"
+                    ] | order(articleNumber asc) {
+                      ...,
+                      issue->,
+                      category->,
+                      "timeRead": round(length(pt::text(description)) / 5 / 180 ),
+                      "timeReadBlog": round(((length(pt::text(blog[].content)) / 5) + (length(pt::text(description)) / 5)) / 180 )
+                    }`)
   const headerAPI = await client.fetch(`
   *[_type == "header"]
   `)
