@@ -246,7 +246,7 @@ export default function Index({ issueAPI, seoAPI }) {
           animate='enter'
           exit='exit'
           variants={fade}
-          className={`z-1 relative`}
+          className={`z-1 relative no-select-all`}
         >
           {/* Issue Number */}
           <div

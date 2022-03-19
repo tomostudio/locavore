@@ -91,7 +91,7 @@ const SubscribeForm = ({
         }`}
       >
         <input
-          className={`w-full text-sm tracking-wide placeholder-white outline-none bg-transparent ${
+          className={`w-full text-sm tracking-wide placeholder-white outline-none bg-transparent !select-all ${
             redError ? ' placeholder-red-500' : ''
           }`}
           type='email'

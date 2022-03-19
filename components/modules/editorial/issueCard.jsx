@@ -19,13 +19,13 @@ const IssueCard = ({
   return (
     <FancyLink
       destination={destination}
-      className={`group article-issue-card relative rounded-2xl px-5 pb-5 max-md:px-4 max-md:pb-4 flex flex-col bg-lightGray odd:bg-lighterGray  ${className}`}
+      className={`group article-issue-card relative rounded-2xl px-5 pb-5 max-md:px-4 max-md:pb-4 select-none flex flex-col bg-lightGray odd:bg-lighterGray  ${className}`}
     >
       <div className='text-center w-full pt-4 pb-3 max-md:pt-3 max-md:pb-2'>
         <span>ISSUE {issueNo}</span>
       </div>
       <ArticleCard
-        className={`hover:shadow-darker hover:-rotate-1 group-even:hover:rotate-1 ${articleClassName}`}
+        className={`hover:shadow-darker hover:-rotate-1 group-even:hover:rotate-1 select-none ${articleClassName}`}
         title={title}
         bgColor={bgColor}
         category={category}

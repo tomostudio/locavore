@@ -164,6 +164,7 @@ export default function Family({
         animate='enter'
         exit='exit'
         variants={fade}
+        className='no-select-all'
       >
         <div>
           {/* Header Gap */}

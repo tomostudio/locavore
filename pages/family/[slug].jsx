@@ -164,7 +164,7 @@ const FamilySlug = ({
       <HeaderGap />
       <div>
         <motion.section
-          className="w-full setflex-center rounded-t-2xl min-h-[calc(100vh-60px)]"
+          className="w-full setflex-center rounded-t-2xl min-h-[calc(100vh-60px)] no-select-all"
           style={{
             backgroundColor: family.bgColor.hex ? family.bgColor.hex : '#fff',
           }}

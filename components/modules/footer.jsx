@@ -23,7 +23,7 @@ const Footer = ({ className = '', footer, mailchimp = '' }) => {
 
   return (
     <footer
-      className={`w-full h-auto max-md:h-full flex bg-offBlack text-white px-0 py-14 max-md:py-10 ${className}`}
+      className={`w-full h-auto max-md:h-full flex bg-offBlack text-white px-0 py-14 max-md:py-10 no-select-all ${className}`}
     >
       <Container className='flex max-md:flex-col max-md:px-6'>
         <div className='h-full w-full max-md:w-full flex flex-col'>

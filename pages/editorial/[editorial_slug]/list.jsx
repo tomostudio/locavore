@@ -116,11 +116,11 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
   });
 
   useEffect(() => {
-    window.scroll(0, 0);
     detectLength();
     updateScroll();
     window.addEventListener('resize', detectLength, true);
     window.addEventListener('resize', updateScrollBar, true);
+    window.scroll(0, 0);
     return () => {
       window.removeEventListener('resize', detectLength, true);
       window.removeEventListener('resize', updateScrollBar, true);
@@ -156,7 +156,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
           animate='enter'
           exit='exit'
           variants={fade}
-          className='py-10 w-full h-full flex flex-col'
+          className='py-10 w-full h-full flex flex-col no-select-all'
         >
           {/* Title */}
           <Container className='max-md:px-6'>

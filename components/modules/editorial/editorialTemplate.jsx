@@ -92,7 +92,7 @@ export default function EditorialTemplate({
   return (
     <Layout>
       <LazyMotion features={domAnimation}>
-        <m.main initial="initial" animate="enter" exit="exit" variants={fade}>
+        <m.main initial="initial" animate="enter" exit="exit" variants={fade} className='no-select-all'>
           {/* Header Gap */}
           {/* Untuk Content */}
           <section className="pb-10 min-h-100vhWithHeader w-full h-full flex flex-col">
