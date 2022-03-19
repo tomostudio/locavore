@@ -130,12 +130,12 @@ export default function App({ Component, pageProps }) {
   )
 }
 
-App.getInitialProps = async ({ ctx, router }) => {
-  if (router.asPath === '/search') {
-    ctx.res.writeHead(302, {
-      Location: '/editorial/search',
-    })
-    ctx.res.end()
-  }
-  return {}
-}
+// App.getInitialProps = async ({ ctx, router }) => {
+//   if (router.asPath === '/search') {
+//     ctx.res.writeHead(302, {
+//       Location: '/editorial/search',
+//     })
+//     ctx.res.end()
+//   }
+//   return {}
+// }
