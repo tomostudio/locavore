@@ -44,6 +44,8 @@ export default function Search({
   const [search, setSearch] = useState('');
   const [itemsToDisplay, setitemsToDisplay] = useState(articleAPI);
 
+  categoryAPI = categoryAPI.filter((elem) => articleAPI.find(({ category }) => category.title === elem.title));
+
   let dataOrderIssue = [];
   articleAPI.forEach((data) => {
     issueAPI.forEach((item, index) => {
