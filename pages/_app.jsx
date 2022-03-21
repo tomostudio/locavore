@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }) {
           </Script>
         </>
       )}
-      {pageProps.seoAPI && pageProps.seoAPI[0].googleID && (
+      {pageProps.seoAPI && pageProps.seoAPI[0].facebookID && (
         <>
           <Script strategy="afterInteractive">
             {`
