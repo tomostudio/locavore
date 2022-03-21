@@ -134,7 +134,7 @@ export default function Header({ className = '', header, footer }) {
           </FancyLink>
           {/* Locavore Logo */}
           <FancyLink
-            destination='/'
+            destination='/editorial/under-construction'
             a11yText='Navigate to the home page'
             className={` setflex-center max-md:p-0 ${transition.fade}`}
           >
@@ -170,13 +170,6 @@ export default function Header({ className = '', header, footer }) {
           >
             {useMediaQuery('(min-width: 850px)') && (
               <>
-                <FancyLink
-                  destination='/editorial'
-                  a11yText='Navigate to the editorial page'
-                  className={`leading-none ${transition.fade}`}
-                >
-                  Editorial
-                </FancyLink>
                 {/* Custom Header Insert */}
                 {header &&
                   header[0].headerLink &&
