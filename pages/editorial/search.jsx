@@ -44,20 +44,6 @@ export default function Search({
   const [search, setSearch] = useState('');
   const [itemsToDisplay, setitemsToDisplay] = useState(articleAPI);
 
-  categoryAPI = categoryAPI.filter((elem) => articleAPI.find(({ category }) => category.title === elem.title));
-
-  let dataOrderIssue = [];
-  articleAPI.forEach((data) => {
-    issueAPI.forEach((item, index) => {
-      if (item.slug.current === data.issue.slug.current) {
-        dataOrderIssue.push({
-          slug: item.slug.current,
-          issueNo: index,
-        });
-      }
-    });
-  });
-
   const handleLoadMoreCategory = () => {
     setPostNumCategory((prevPostNum) => prevPostNum + 3);
   };
