@@ -213,9 +213,9 @@ export default function Header({ className = '', header, footer }) {
           } ${bnw || menu ? 'bg-white ' : 'bg-black'} `}
         >
           {/* <HeaderGap className='grow-0 shrink-0' /> */}
-          <MobileLink bnw={bnw} destination='/editorial'>
+          {/* <MobileLink bnw={bnw} destination='/editorial'>
             Editorial
-          </MobileLink>
+          </MobileLink> */}
           {header &&
             header[0].headerLink &&
             header[0].headerLink.map((item, index) => (

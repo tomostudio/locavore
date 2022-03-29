@@ -58,6 +58,11 @@ const EditorialIssueCard = React.forwardRef(
         ),
       },
       marks: {
+        link: (props) => (
+          <FancyLink destination={props.value.url} blank={true}>
+            {props.children}
+          </FancyLink>
+        ),
         changeColor: (props) => (
           <span style={{ color: props.value.color.hex }}>{props.children}</span>
         ),

@@ -1,65 +1,65 @@
-import { useEffect, useRef, useState } from 'react';
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
-import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { fade } from '@/helpers/preset/transitions';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
+import { useEffect, useRef, useState } from 'react'
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+import { LazyMotion, domAnimation, m } from 'framer-motion'
+import { fade } from '@/helpers/preset/transitions'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 // Layout
-import Layout from '@/components/modules/layout';
-import Container from '@/components/modules/container';
+import Layout from '@/components/modules/layout'
+import Container from '@/components/modules/container'
 
 // Components
-import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx';
-import FancyLink from '@/components/utils/fancyLink';
-import SEO from '@/components/utils/seo';
+import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx'
+import FancyLink from '@/components/utils/fancyLink'
+import SEO from '@/components/utils/seo'
 
 // Helpers
-import PushScrollGlobal from '@/helpers/globalscroll';
-import { useAppContext } from 'context/state';
-import client from '@/helpers/sanity/client';
-import urlFor from '@/helpers/sanity/urlFor';
-import checkMonth from '@/helpers/functional/checkMonth';
-import { PortableText } from '@portabletext/react';
+import PushScrollGlobal from '@/helpers/globalscroll'
+import { useAppContext } from 'context/state'
+import client from '@/helpers/sanity/client'
+import urlFor from '@/helpers/sanity/urlFor'
+import checkMonth from '@/helpers/functional/checkMonth'
+import { PortableText } from '@portabletext/react'
 
 export default function Home({ issueAPI, seoAPI }) {
-  const router = useRouter();
-  const [seo] = seoAPI;
-  const [issue] = issueAPI;
-  const dark = issue.dark;
-  const containerRef = useRef(null);
-  const appContext = useAppContext();
+  const router = useRouter()
+  const [seo] = seoAPI
+  const [issue] = issueAPI
+  const dark = issue.dark
+  const containerRef = useRef(null)
+  const appContext = useAppContext()
 
   useEffect(() => {
     appContext.setHeader({
       headerStyle: issue.headerOption ? issue.headerOption : 'default',
-    });
+    })
     // white, black, blur-black, blur-white, trans-white, trans-black
 
-    window.scroll(0, 0);
+    window.scroll(0, 0)
 
     return () => {
-      appContext.setHeader({ headerStyle: 'default' });
-    };
-  }, []);
+      appContext.setHeader({ headerStyle: 'default' })
+    }
+  }, [])
 
   //check title word count
-  const maxLetter = 10;
-  const [titleS, setSize] = useState(false);
+  const maxLetter = 10
+  const [titleS, setSize] = useState(false)
   useEffect(() => {
-    const splitTitle = issue.title.split(' ');
+    const splitTitle = issue.title.split(' ')
 
     splitTitle.forEach((word) => {
-      setSize(word.length > maxLetter);
-    });
-  }, []);
+      setSize(word.length > maxLetter)
+    })
+  }, [])
 
   // ANIMATION
   const animationObj = [
     () => {
       // Issue No Animation
-      const id = 'issueNo';
-      const elem = '#issueNo';
+      const id = 'issueNo'
+      const elem = '#issueNo'
       const settings = {
         scrollTrigger: {
           id: id,
@@ -69,7 +69,7 @@ export default function Home({ issueAPI, seoAPI }) {
           start: 'top 0%',
           end: 'bottom -0%',
         },
-      };
+      }
 
       // Input Animation
       const animation = [
@@ -83,14 +83,14 @@ export default function Home({ issueAPI, seoAPI }) {
             },
           ],
         },
-      ];
+      ]
 
-      return { id, elem, settings, animation };
+      return { id, elem, settings, animation }
     },
     () => {
       // Start Background
-      const id = 'First BG';
-      const elem = '#firstBG';
+      const id = 'First BG'
+      const elem = '#firstBG'
       const settings = {
         scrollTrigger: {
           id: id,
@@ -100,7 +100,7 @@ export default function Home({ issueAPI, seoAPI }) {
           start: 'top 0%',
           end: 'bottom 0%',
         },
-      };
+      }
 
       // Input Animation
       const animation = [
@@ -114,14 +114,14 @@ export default function Home({ issueAPI, seoAPI }) {
             },
           ],
         },
-      ];
+      ]
 
-      return { id, elem, settings, animation };
+      return { id, elem, settings, animation }
     },
     () => {
       // Start Background
-      const id = 'End BG';
-      const elem = '#endBg';
+      const id = 'End BG'
+      const elem = '#endBg'
       const settings = {
         scrollTrigger: {
           id: id,
@@ -131,7 +131,7 @@ export default function Home({ issueAPI, seoAPI }) {
           start: 'top 0%',
           end: 'bottom 0%',
         },
-      };
+      }
 
       // Input Animation
       const animation = [
@@ -144,14 +144,14 @@ export default function Home({ issueAPI, seoAPI }) {
             },
           ],
         },
-      ];
+      ]
 
-      return { id, elem, settings, animation };
+      return { id, elem, settings, animation }
     },
     () => {
       // Scroller Dissapear
-      const id = 'scrollIndicator';
-      const elem = '#scrollIndicator';
+      const id = 'scrollIndicator'
+      const elem = '#scrollIndicator'
       const settings = {
         scrollTrigger: {
           id: id,
@@ -161,7 +161,7 @@ export default function Home({ issueAPI, seoAPI }) {
           start: 'top -10%',
           end: 'bottom 50%',
         },
-      };
+      }
 
       // Input Animation
       const animation = [
@@ -174,27 +174,27 @@ export default function Home({ issueAPI, seoAPI }) {
             },
           ],
         },
-      ];
+      ]
 
-      return { id, elem, settings, animation };
+      return { id, elem, settings, animation }
     },
-  ];
+  ]
 
   const serializers = {
     block: {
       normal: ({ children }) =>
-        children[0] === '' ? <br /> : <p align='center'>{children}</p>,
+        children[0] === '' ? <br /> : <p align="center">{children}</p>,
       h1: ({ children }) => <h1>{children}</h1>,
       h2: ({ children }) => <h2>{children}</h2>,
       h3: ({ children }) => <h3>{children}</h3>,
       h4: ({ children }) => <h4>{children}</h4>,
       h5: ({ children }) => <h5>{children}</h5>,
-      center: ({ children }) => <p align='center'>{children}</p>,
-      left: ({ children }) => <p align='left'>{children}</p>,
-      right: ({ children }) => <p align='right'>{children}</p>,
+      center: ({ children }) => <p align="center">{children}</p>,
+      left: ({ children }) => <p align="left">{children}</p>,
+      right: ({ children }) => <p align="right">{children}</p>,
     },
     list: {
-      number: ({ children }) => <ol className='list-decimal'>{children}</ol>,
+      number: ({ children }) => <ol className="list-decimal">{children}</ol>,
     },
     types: {
       code: (props) => (
@@ -202,6 +202,11 @@ export default function Home({ issueAPI, seoAPI }) {
       ),
     },
     marks: {
+      link: (props) => (
+        <FancyLink destination={props.value.url} blank={true}>
+          {props.children}
+        </FancyLink>
+      ),
       changeColor: (props) => (
         <span style={{ color: props.value.color.hex }}>{props.children}</span>
       ),
@@ -228,7 +233,7 @@ export default function Home({ issueAPI, seoAPI }) {
         </span>
       ),
     },
-  };
+  }
 
   return (
     <Layout>
@@ -242,18 +247,18 @@ export default function Home({ issueAPI, seoAPI }) {
       {/* Issue Title */}
       <LazyMotion features={domAnimation}>
         <m.div
-          initial='initial'
-          animate='enter'
-          exit='exit'
+          initial="initial"
+          animate="enter"
+          exit="exit"
           variants={fade}
           className={`z-1 relative no-select-all`}
         >
           {/* Issue Number */}
           <div
-            id='issueNo'
-            className='h-screen top-0 left-0 right-0  setflex-center w-screen fixed z-10 pointer-events-none'
+            id="issueNo"
+            className="h-screen top-0 left-0 right-0  setflex-center w-screen fixed z-10 pointer-events-none"
           >
-            <Container className='max-md:px-6 text-center '>
+            <Container className="max-md:px-6 text-center ">
               <span
                 className={` font-normal text-7xl sm:text-8xl md:text-9xl  uppercase ${
                   dark === 'white-text' ? 'text-white' : 'text-black'
@@ -265,8 +270,8 @@ export default function Home({ issueAPI, seoAPI }) {
           </div>
           {/* Scroll Inidicator */}
           <div
-            id='scrollIndicator'
-            className='fixed z-20 bottom-10 left-0 w-full setflex-center pointer-events-none'
+            id="scrollIndicator"
+            className="fixed z-20 bottom-10 left-0 w-full setflex-center pointer-events-none"
           >
             <span
               className={`font-light text-xs tracking-widest animate-fade-down  ${
@@ -279,7 +284,7 @@ export default function Home({ issueAPI, seoAPI }) {
 
           {/* First Background */}
           <div
-            id='firstBG'
+            id="firstBG"
             className={`fixed setflex-center h-screen w-screen top-0 left-0 -z-1 pointer-events-none ${
               dark === 'white-text' ? 'bg-black ' : 'bg-white'
             }`}
@@ -296,13 +301,16 @@ export default function Home({ issueAPI, seoAPI }) {
                     }`}
                   />
                   <Image
-                    src={urlFor(issue.image1.placeholder).width(1400).format('webp').url()}
+                    src={urlFor(issue.image1.placeholder)
+                      .width(1400)
+                      .format('webp')
+                      .url()}
                     alt={issue.image1.placeholder.name}
-                    layout='fill'
-                    objectFit='cover'
-                    objectPosition='center'
-                    loading='eager'
-                    placeholder='blur'
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
+                    loading="eager"
+                    placeholder="blur"
                     blurDataURL={urlFor(issue.image1.placeholder)
                       .width(800)
                       .blur(2)
@@ -315,7 +323,7 @@ export default function Home({ issueAPI, seoAPI }) {
                   <>
                     {/* Plain Background  */}
                     <div
-                      className='absolute h-full w-full top-0 left-0 z-20'
+                      className="absolute h-full w-full top-0 left-0 z-20"
                       style={{ background: `${issue.image1.color.hex}` }}
                     />
                   </>
@@ -328,7 +336,7 @@ export default function Home({ issueAPI, seoAPI }) {
 
           {/* End Background */}
           <div
-            id='endBg'
+            id="endBg"
             className={`fixed setflex-center h-screen w-screen top-0 left-0 -z-10 pointer-events-none ${
               dark === 'white-text' ? 'bg-black ' : 'bg-white'
             }`}
@@ -345,13 +353,16 @@ export default function Home({ issueAPI, seoAPI }) {
                     }`}
                   />
                   <Image
-                    src={urlFor(issue.image2.placeholder).width(1400).format('webp').url()}
+                    src={urlFor(issue.image2.placeholder)
+                      .width(1400)
+                      .format('webp')
+                      .url()}
                     alt={issue.image2.placeholder.name}
-                    layout='fill'
-                    objectFit='cover'
-                    loading='eager'
-                    objectPosition='center'
-                    placeholder='blur'
+                    layout="fill"
+                    objectFit="cover"
+                    loading="eager"
+                    objectPosition="center"
+                    placeholder="blur"
                     blurDataURL={urlFor(issue.image2.placeholder)
                       .width(800)
                       .blur(2)
@@ -364,7 +375,7 @@ export default function Home({ issueAPI, seoAPI }) {
                   <>
                     {/* Plain Background  */}
                     <div
-                      className='absolute h-full w-full top-0 left-0 z-20'
+                      className="absolute h-full w-full top-0 left-0 z-20"
                       style={{ background: `${issue.image2.color.hex}` }}
                     />
                   </>
@@ -385,34 +396,34 @@ export default function Home({ issueAPI, seoAPI }) {
         <div
           data-scroll-container
           ref={containerRef}
-          id='scroll-container'
+          id="scroll-container"
           className={`z-1 relative`}
         >
           <div data-scroll-section>
             <ScrollTriggerWrapper animation={animationObj}>
               <LazyMotion features={domAnimation}>
                 <m.main
-                  className='relative p-0 m-0'
-                  initial='initial'
-                  animate='enter'
-                  exit='exit'
+                  className="relative p-0 m-0"
+                  initial="initial"
+                  animate="enter"
+                  exit="exit"
                   variants={fade}
                 >
                   <div
-                    id='trigger1'
-                    className='w-full h-[150vh] mx-md:h-screen'
+                    id="trigger1"
+                    className="w-full h-[150vh] mx-md:h-screen"
                   />
-                  <div id='trigger2' className='w-full min-h-screen '>
-                    <div className='h-[50vh] w-full' />
-                    <section className='w-full'>
+                  <div id="trigger2" className="w-full min-h-screen ">
+                    <div className="h-[50vh] w-full" />
+                    <section className="w-full">
                       <Container
                         className={`max-md:px-6 pb-24 pb-24-safe flex flex-col justify-between min-h-[65vh] content-center items-center ${
                           dark === 'white-text' ? 'text-white' : 'text-black'
                         }`}
                       >
                         <span
-                          id='issueNoInside'
-                          className='font-serif font-normal italic text-5xl max-md:text-3xl'
+                          id="issueNoInside"
+                          className="font-serif font-normal italic text-5xl max-md:text-3xl"
                         >
                           Issue {issue.issueNumber}
                         </span>
@@ -425,13 +436,13 @@ export default function Home({ issueAPI, seoAPI }) {
                         >
                           {issue.title}
                         </h1>
-                        <span className=' w-full text-center mt-5 max-md:mt-2 mb-auto'>
+                        <span className=" w-full text-center mt-5 max-md:mt-2 mb-auto">
                           {checkMonth(new Date(issue.date).getMonth())}{' '}
                           {new Date(issue.date).getFullYear()}
-                          <span className='mx-4 inline-block'>•</span>
+                          <span className="mx-4 inline-block">•</span>
                           {issue.articleCount} ARTICLES
                         </span>
-                        <div className='content-issue editor-styling max-w-lg text-center mt-16'>
+                        <div className="content-issue editor-styling max-w-lg text-center mt-16">
                           <PortableText
                             value={issue.description}
                             components={serializers}
@@ -457,7 +468,7 @@ export default function Home({ issueAPI, seoAPI }) {
         </div>
       </LocomotiveScrollProvider>
     </Layout>
-  );
+  )
 }
 
 export async function getStaticProps() {
@@ -467,18 +478,18 @@ export async function getStaticProps() {
         ...,
         "articleCount": count(*[_type=='article' && references(^._id)])
       }
-    `
-  );
+    `,
+  )
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
-  `);
+  `)
   const headerAPI = await client.fetch(`
   *[_type == "header"]
-  `);
+  `)
 
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
-  `);
+  `)
   return {
     props: {
       issueAPI,
@@ -486,5 +497,5 @@ export async function getStaticProps() {
       headerAPI,
       footerAPI,
     },
-  };
+  }
 }
