@@ -6,11 +6,14 @@ import Image from 'next/image'
 import { useAppContext } from 'context/state'
 import checkMonth from '@/helpers/functional/checkMonth'
 import { PortableText } from '@portabletext/react'
-import { Facebook, Twitter, Mail } from '@/helpers/preset/svg'
+import { Facebook, Twitter, Mail, Link } from '@/helpers/preset/svg'
 import { transition } from '@/helpers/preset/tailwind'
+import { useRouter } from 'next/router';
+import { useEffect } from 'react/cjs/react.production.min'
 
 export default function OpeningArticle({ general, article, baseUrl }) {
   const appContext = useAppContext()
+  const router = useRouter();
 
   const serializers = {
     // hardBreak: (props) => <br />,
@@ -35,6 +38,9 @@ export default function OpeningArticle({ general, article, baseUrl }) {
       ),
     },
     marks: {
+      link: (props) => (
+        <FancyLink destination={props.value.url} blank={true}>{props.children}</FancyLink>
+      ),
       changeColor: (props) => (
         <span style={{ color: props.value.color.hex }}>{props.children}</span>
       ),
@@ -61,6 +67,15 @@ export default function OpeningArticle({ general, article, baseUrl }) {
         </span>
       ),
     },
+  }
+
+  const copy = () => {
+    const el = document.createElement("input");
+    el.value = baseUrl;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
   }
 
   return (
@@ -107,6 +122,12 @@ export default function OpeningArticle({ general, article, baseUrl }) {
                 className={`relative w-4 h-4 ${transition.fade}`}
               >
                 <Mail fill={'#000'} className={'w-full h-full'} />
+              </FancyLink>
+              <FancyLink
+                onClick={copy}
+                className={`relative w-4 h-4 ${transition.fade}`}
+              >
+                <Link fill={'#000'} className={'w-full h-full'} />
               </FancyLink>
             </div>
           </div>
