@@ -88,7 +88,6 @@ export default function ArticleSlug({
                       ? article.setColor === 'articleColor'
                         ? article.color.hex
                         : article.setColor === 'categoryColor' &&
-                          article.categoryColor &&
                           article.category.color.hex
                       : '#D66A51',
                   }}
@@ -117,7 +116,6 @@ export default function ArticleSlug({
                                   ? article.setColor === 'articleColor'
                                     ? article.color.hex
                                     : article.setColor === 'categoryColor' &&
-                                      article.categoryColor &&
                                       article.category.color.hex
                                   : '#D66A51',
                               }}
@@ -153,7 +151,6 @@ export default function ArticleSlug({
                       ? article.setColor === 'articleColor'
                         ? article.color && article.color.hex
                         : article.setColor === 'categoryColor' &&
-                          article.categoryColor &&
                           article.category.color.hex
                       : '#D66A51'
                     : 'none',
@@ -174,7 +171,6 @@ export default function ArticleSlug({
                             ? article.setColor === 'articleColor'
                               ? article.color.hex
                               : article.setColor === 'categoryColor' &&
-                                article.categoryColor &&
                                 article.category.color.hex
                             : '#D66A51',
                         }}
@@ -208,7 +204,6 @@ export default function ArticleSlug({
                           ? article.setColor === 'articleColor'
                             ? article.color.hex
                             : article.setColor === 'categoryColor' &&
-                              article.categoryColor &&
                               article.category.color.hex
                           : '#D66A51'
                       }
@@ -225,7 +220,6 @@ export default function ArticleSlug({
                       ? article.setColor === 'articleColor'
                         ? article.color.hex
                         : article.setColor === 'categoryColor' &&
-                          article.categoryColor &&
                           article.category.color.hex
                       : '#D66A51'
                   }
@@ -242,7 +236,6 @@ export default function ArticleSlug({
                         ? article.setColor === 'articleColor'
                           ? article.color.hex
                           : article.setColor === 'categoryColor' &&
-                            article.categoryColor &&
                             article.category.color.hex
                         : '#D66A51'
                     }
@@ -290,7 +283,6 @@ export default function ArticleSlug({
                             ? article.setColor === 'articleColor'
                               ? article.color.hex
                               : article.setColor === 'categoryColor' &&
-                                article.categoryColor &&
                                 article.category.color.hex
                             : '#D66A51'
                         }
@@ -312,7 +304,6 @@ export default function ArticleSlug({
                   ? article.setColor === 'articleColor'
                     ? article.color.hex
                     : article.setColor === 'categoryColor' &&
-                      article.categoryColor &&
                       article.category.color.hex
                   : '#D66A51'
               }
@@ -326,7 +317,6 @@ export default function ArticleSlug({
                 ? article.setColor === 'articleColor'
                   ? article.color.hex
                   : article.setColor === 'categoryColor' &&
-                    article.categoryColor &&
                     article.category.color.hex
                 : '#D66A51'
             }
@@ -369,10 +359,10 @@ export default function ArticleSlug({
       {/* Button Sticky */}
       <StickyButton
         className={nextArticle === null ? `mb-5 mt-10` : ''}
-        destination={`/editorial/${article.issue.slug.current}/list`}
+        destination={`/editorial/under-construction/list`}
         arrow="left"
       >
-        ISSUE {article.issue.issueNumber}
+        ARTICLE LIST
       </StickyButton>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

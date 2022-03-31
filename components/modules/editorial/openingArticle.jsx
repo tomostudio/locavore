@@ -1,16 +1,20 @@
 import React from 'react'
 import Container from '../container'
 import FancyLink from '../../utils/fancyLink'
+import Arrow from '../../utils/arrow'
 import PillButton from '../pillButton'
 import Image from 'next/image'
 import { useAppContext } from 'context/state'
 import checkMonth from '@/helpers/functional/checkMonth'
 import { PortableText } from '@portabletext/react'
-import { Facebook, Twitter, Mail } from '@/helpers/preset/svg'
+import { Facebook, Twitter, Mail, Link } from '@/helpers/preset/svg'
 import { transition } from '@/helpers/preset/tailwind'
+import { useRouter } from 'next/router'
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
 
 export default function OpeningArticle({ general, article, baseUrl }) {
   const appContext = useAppContext()
+  const router = useRouter()
 
   const serializers = {
     // hardBreak: (props) => <br />,
@@ -35,6 +39,11 @@ export default function OpeningArticle({ general, article, baseUrl }) {
       ),
     },
     marks: {
+      link: (props) => (
+        <FancyLink destination={props.value.url} blank={true}>
+          {props.children}
+        </FancyLink>
+      ),
       changeColor: (props) => (
         <span style={{ color: props.value.color.hex }}>{props.children}</span>
       ),
@@ -63,6 +72,26 @@ export default function OpeningArticle({ general, article, baseUrl }) {
     },
   }
 
+  const copy = () => {
+    const el = document.createElement('input')
+    el.value = baseUrl
+    document.body.appendChild(el)
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
+  }
+
+  const handleShareButton = () => {
+    // Check if navigator.share is supported by the browser
+    if (navigator.share) {
+      navigator.share({
+        url: `https://share.toogoodtogo.com/store/1006/milestones/meals-saved/`,
+      })
+    } else {
+      console.log('Sorry! Your browser does not support Web Share API')
+    }
+  }
+
   return (
     <section className="pt-10 w-full h-full">
       <Container className="space-y-10 max-md:px-6">
@@ -87,28 +116,44 @@ export default function OpeningArticle({ general, article, baseUrl }) {
               {checkMonth(new Date(article.date).getMonth())}{' '}
               {new Date(article.date).getFullYear()}
             </span>
-            <div className="flex space-x-7">
+            {useMediaQuery('(max-width: 850px)') ? (
               <FancyLink
-                blank={true}
-                destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
-                className={`relative w-4 h-4 ${transition.fade}`}
+                onClick={handleShareButton}
+                className={`relative h-4 ${transition.fade}`}
               >
-                <Facebook fill={'#000'} className={'w-full h-full'} />
+                Share
+                <Arrow position="right" className="inline ml-2" fill="black" />
               </FancyLink>
-              <FancyLink
-                blank={true}
-                destination={`https://twitter.com/share?url=${baseUrl}`}
-                className={`relative w-4 h-4 ${transition.fade}`}
-              >
-                <Twitter fill={'#000'} className={'w-full h-full'} />
-              </FancyLink>
-              <FancyLink
-                destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
-                className={`relative w-4 h-4 ${transition.fade}`}
-              >
-                <Mail fill={'#000'} className={'w-full h-full'} />
-              </FancyLink>
-            </div>
+            ) : (
+              <div className="flex space-x-7">
+                <FancyLink
+                  blank={true}
+                  destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                  className={`relative w-4 h-4 ${transition.fade}`}
+                >
+                  <Facebook fill={'#000'} className={'w-full h-full'} />
+                </FancyLink>
+                <FancyLink
+                  blank={true}
+                  destination={`https://twitter.com/share?url=${baseUrl}`}
+                  className={`relative w-4 h-4 ${transition.fade}`}
+                >
+                  <Twitter fill={'#000'} className={'w-full h-full'} />
+                </FancyLink>
+                <FancyLink
+                  destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
+                  className={`relative w-4 h-4 ${transition.fade}`}
+                >
+                  <Mail fill={'#000'} className={'w-full h-full'} />
+                </FancyLink>
+                <FancyLink
+                  onClick={copy}
+                  className={`relative w-4 h-4 ${transition.fade}`}
+                >
+                  <Link fill={'#000'} className={'w-full h-full'} />
+                </FancyLink>
+              </div>
+            )}
           </div>
         </div>
         <div className="w-full h-full">
