@@ -1,6 +1,7 @@
 import React from 'react'
 import Container from '../container'
 import FancyLink from '../../utils/fancyLink'
+import Arrow from '../../utils/arrow'
 import PillButton from '../pillButton'
 import Image from 'next/image'
 import { useAppContext } from 'context/state'
@@ -8,12 +9,11 @@ import checkMonth from '@/helpers/functional/checkMonth'
 import { PortableText } from '@portabletext/react'
 import { Facebook, Twitter, Mail, Link } from '@/helpers/preset/svg'
 import { transition } from '@/helpers/preset/tailwind'
-import { useRouter } from 'next/router';
-import { useEffect } from 'react/cjs/react.production.min'
+import { useRouter } from 'next/router'
 
 export default function OpeningArticle({ general, article, baseUrl }) {
   const appContext = useAppContext()
-  const router = useRouter();
+  const router = useRouter()
 
   const serializers = {
     // hardBreak: (props) => <br />,
@@ -39,7 +39,9 @@ export default function OpeningArticle({ general, article, baseUrl }) {
     },
     marks: {
       link: (props) => (
-        <FancyLink destination={props.value.url} blank={true}>{props.children}</FancyLink>
+        <FancyLink destination={props.value.url} blank={true}>
+          {props.children}
+        </FancyLink>
       ),
       changeColor: (props) => (
         <span style={{ color: props.value.color.hex }}>{props.children}</span>
@@ -70,12 +72,23 @@ export default function OpeningArticle({ general, article, baseUrl }) {
   }
 
   const copy = () => {
-    const el = document.createElement("input");
-    el.value = baseUrl;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand("copy");
-    document.body.removeChild(el);
+    const el = document.createElement('input')
+    el.value = baseUrl
+    document.body.appendChild(el)
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
+  }
+
+  const handleShareButton = () => {
+    // Check if navigator.share is supported by the browser
+    if (navigator.share) {
+      navigator.share({
+        url: `https://share.toogoodtogo.com/store/1006/milestones/meals-saved/`,
+      })
+    } else {
+      console.log('Sorry! Your browser does not support Web Share API')
+    }
   }
 
   return (
@@ -128,6 +141,14 @@ export default function OpeningArticle({ general, article, baseUrl }) {
                 className={`relative w-4 h-4 ${transition.fade}`}
               >
                 <Link fill={'#000'} className={'w-full h-full'} />
+              </FancyLink>
+
+              <FancyLink
+                onClick={handleShareButton}
+                className={`relative ${transition.fade}`}
+              >
+                Share
+                <Arrow position="right" className="inline ml-2" />
               </FancyLink>
             </div>
           </div>
