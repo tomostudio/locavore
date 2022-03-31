@@ -85,7 +85,7 @@ export default function OpeningArticle({ general, article, baseUrl }) {
     // Check if navigator.share is supported by the browser
     if (navigator.share) {
       navigator.share({
-        url: `https://share.toogoodtogo.com/store/1006/milestones/meals-saved/`,
+        url: baseUrl,
       })
     } else {
       console.log('Sorry! Your browser does not support Web Share API')
