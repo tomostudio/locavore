@@ -122,7 +122,7 @@ export default function OpeningArticle({ general, article, baseUrl }) {
                 className={`relative h-4 ${transition.fade}`}
               >
                 Share
-                <Arrow position="right" className="inline ml-2" />
+                <Arrow position="right" className="inline ml-2" fill="black" />
               </FancyLink>
             ) : (
               <div className="flex space-x-7">
