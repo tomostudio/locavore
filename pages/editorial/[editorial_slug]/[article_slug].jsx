@@ -45,6 +45,7 @@ export default function ArticleSlug({
         }
       })
   const [baseUrl, setBaseUrl] = useState()
+  const [navigators, setNavigator] = useState();
 
   const scrolltoview = (slug) => {
     window.scrollTo({
@@ -57,6 +58,7 @@ export default function ArticleSlug({
   useEffect(() => {
     window.scroll(0, 0)
     setBaseUrl(window.location.href)
+    setNavigator(navigator)
     return () => {}
   }, [])
 
@@ -74,7 +76,7 @@ export default function ArticleSlug({
       <HeaderGap />
 
       {/* Untuk Content */}
-      <OpeningArticle general={seo} article={article} baseUrl={baseUrl} />
+      <OpeningArticle general={seo} article={article} baseUrl={baseUrl} navigator={navigators} />
 
       {article.layout === 'blog' &&
         (layoutFilter && layoutFilter[0].showTitle ? (

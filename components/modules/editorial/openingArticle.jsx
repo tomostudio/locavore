@@ -9,7 +9,12 @@ import { PortableText } from '@portabletext/react'
 import { Facebook, Twitter, Mail } from '@/helpers/preset/svg'
 import { transition } from '@/helpers/preset/tailwind'
 
-export default function OpeningArticle({ general, article, baseUrl }) {
+export default function OpeningArticle({
+  general,
+  article,
+  baseUrl,
+  navigator,
+}) {
   const appContext = useAppContext()
 
   const serializers = {
@@ -63,6 +68,25 @@ export default function OpeningArticle({ general, article, baseUrl }) {
     },
   }
 
+  const handleShareButton = () => {
+    // Check if navigator.share is supported by the browser
+    if (navigator.share) {
+      console.log("Congrats! Your browser supports Web Share API");
+      navigator
+        .share({
+          url: `https://share.toogoodtogo.com/store/1006/milestones/meals-saved/`
+        })
+        .then(() => {
+          console.log("Sharing successfull");
+        })
+        .catch(() => {
+          console.log("Sharing failed");
+        });
+    } else {
+      console.log("Sorry! Your browser does not support Web Share API");
+    }
+  };
+
   return (
     <section className="pt-10 w-full h-full">
       <Container className="space-y-10 max-md:px-6">
@@ -89,24 +113,10 @@ export default function OpeningArticle({ general, article, baseUrl }) {
             </span>
             <div className="flex space-x-7">
               <FancyLink
-                blank={true}
-                destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                onClick={handleShareButton}
                 className={`relative w-4 h-4 ${transition.fade}`}
               >
-                <Facebook fill={'#000'} className={'w-full h-full'} />
-              </FancyLink>
-              <FancyLink
-                blank={true}
-                destination={`https://twitter.com/share?url=${baseUrl}`}
-                className={`relative w-4 h-4 ${transition.fade}`}
-              >
-                <Twitter fill={'#000'} className={'w-full h-full'} />
-              </FancyLink>
-              <FancyLink
-                destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
-                className={`relative w-4 h-4 ${transition.fade}`}
-              >
-                <Mail fill={'#000'} className={'w-full h-full'} />
+                Share <Facebook fill={'#000'} className={'w-full h-full'} />
               </FancyLink>
             </div>
           </div>
