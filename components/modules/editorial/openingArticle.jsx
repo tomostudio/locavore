@@ -10,6 +10,7 @@ import { PortableText } from '@portabletext/react'
 import { Facebook, Twitter, Mail, Link } from '@/helpers/preset/svg'
 import { transition } from '@/helpers/preset/tailwind'
 import { useRouter } from 'next/router'
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
 
 export default function OpeningArticle({ general, article, baseUrl }) {
   const appContext = useAppContext()
@@ -115,42 +116,44 @@ export default function OpeningArticle({ general, article, baseUrl }) {
               {checkMonth(new Date(article.date).getMonth())}{' '}
               {new Date(article.date).getFullYear()}
             </span>
-            <div className="flex space-x-7">
-              <FancyLink
-                blank={true}
-                destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
-                className={`relative w-4 h-4 ${transition.fade}`}
-              >
-                <Facebook fill={'#000'} className={'w-full h-full'} />
-              </FancyLink>
-              <FancyLink
-                blank={true}
-                destination={`https://twitter.com/share?url=${baseUrl}`}
-                className={`relative w-4 h-4 ${transition.fade}`}
-              >
-                <Twitter fill={'#000'} className={'w-full h-full'} />
-              </FancyLink>
-              <FancyLink
-                destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
-                className={`relative w-4 h-4 ${transition.fade}`}
-              >
-                <Mail fill={'#000'} className={'w-full h-full'} />
-              </FancyLink>
-              <FancyLink
-                onClick={copy}
-                className={`relative w-4 h-4 ${transition.fade}`}
-              >
-                <Link fill={'#000'} className={'w-full h-full'} />
-              </FancyLink>
-
+            {useMediaQuery('(max-width: 850px)') ? (
               <FancyLink
                 onClick={handleShareButton}
-                className={`relative ${transition.fade}`}
+                className={`relative h-4 ${transition.fade}`}
               >
                 Share
                 <Arrow position="right" className="inline ml-2" />
               </FancyLink>
-            </div>
+            ) : (
+              <div className="flex space-x-7">
+                <FancyLink
+                  blank={true}
+                  destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                  className={`relative w-4 h-4 ${transition.fade}`}
+                >
+                  <Facebook fill={'#000'} className={'w-full h-full'} />
+                </FancyLink>
+                <FancyLink
+                  blank={true}
+                  destination={`https://twitter.com/share?url=${baseUrl}`}
+                  className={`relative w-4 h-4 ${transition.fade}`}
+                >
+                  <Twitter fill={'#000'} className={'w-full h-full'} />
+                </FancyLink>
+                <FancyLink
+                  destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
+                  className={`relative w-4 h-4 ${transition.fade}`}
+                >
+                  <Mail fill={'#000'} className={'w-full h-full'} />
+                </FancyLink>
+                <FancyLink
+                  onClick={copy}
+                  className={`relative w-4 h-4 ${transition.fade}`}
+                >
+                  <Link fill={'#000'} className={'w-full h-full'} />
+                </FancyLink>
+              </div>
+            )}
           </div>
         </div>
         <div className="w-full h-full">
