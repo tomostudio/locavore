@@ -15,8 +15,7 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     history.scrollRestoration = 'manual'
     setTimeout(() => {
-      console.log('initial loading delay')
-    }, 2000)
+    }, 1500)
   }, [])
   return (
     <>
