@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../container'
 import FancyLink from '../../utils/fancyLink'
 import Arrow from '../../utils/arrow'
@@ -33,12 +33,12 @@ export default function OpeningArticle({
       h3: ({ children }) => <h3>{children}</h3>,
       h4: ({ children }) => <h4>{children}</h4>,
       h5: ({ children }) => <h5>{children}</h5>,
-      center: ({ children }) => <p align="center">{children}</p>,
-      left: ({ children }) => <p align="left">{children}</p>,
-      right: ({ children }) => <p align="right">{children}</p>,
+      center: ({ children }) => <p align='center'>{children}</p>,
+      left: ({ children }) => <p align='left'>{children}</p>,
+      right: ({ children }) => <p align='right'>{children}</p>,
     },
     list: {
-      number: ({ children }) => <ol className="list-decimal">{children}</ol>,
+      number: ({ children }) => <ol className='list-decimal'>{children}</ol>,
     },
     types: {
       code: (props) => (
@@ -77,27 +77,44 @@ export default function OpeningArticle({
         </span>
       ),
     },
-  }
+  };
 
   const copy = () => {
-    const el = document.createElement('input')
-    el.value = baseUrl
-    document.body.appendChild(el)
-    el.select()
-    document.execCommand('copy')
-    document.body.removeChild(el)
-  }
+    const el = document.createElement('input');
+    el.value = baseUrl;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
 
   const handleShareButton = () => {
-    // Check if navigator.share is supported by the browser
+    const shareData = {
+      title: `${article.title} at Locavore®`,
+      text: `${toPlainText(article.description)}`,
+      url: baseUrl,
+    };
+
     if (navigator.share) {
-      navigator.share({
-        url: `https://share.toogoodtogo.com/store/1006/milestones/meals-saved/`,
-      })
-    } else {
-      console.log('Sorry! Your browser does not support Web Share API')
+      navigator.share(shareData);
     }
-  }
+  };
+
+  const [showShare, setShare] = useState(false);
+
+  const resize = () => {
+    if (navigator.share && window.innerWidth < 850) {
+      setShare(true);
+    } else {
+      setShare(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener('resize', resize, true);
+    return () => {
+      window.removeEventListener('resize', resize, true);
+    };
+  }, []);
 
   const handleClick = (newState) => () => {
     copy()
@@ -109,36 +126,36 @@ export default function OpeningArticle({
   }
 
   return (
-    <section className="pt-10 w-full h-full">
-      <Container className="space-y-10 max-md:px-6">
+    <section className='pt-10 w-full h-full'>
+      <Container className='space-y-10 max-md:px-6'>
         {/* Title */}
-        <h1 className="m-0 font-sans font-normal">{article.title}</h1>
-        <div className="w-full flex max-md:flex-col items-center max-md:items-start justify-between">
+        <h1 className='m-0 font-sans font-normal'>{article.title}</h1>
+        <div className='w-full flex max-md:flex-col items-center max-md:items-start justify-between'>
           {/* Category */}
-          <div className="w-auto space-x-4 flex ">
+          <div className='w-auto space-x-4 flex '>
             <PillButton
-              destination="/editorial/search"
+              destination='/editorial/search'
               onClick={() => {
-                appContext.setCategory(article.category.title)
+                appContext.setCategory(article.category.title);
               }}
-              className="text-xs max-md:py-1 max-md:px-2 opacity-100 border-black"
+              className='text-xs max-md:py-1 max-md:px-2 opacity-100 border-black'
             >
               {article.category.title}
             </PillButton>
           </div>
           {/* Social Media */}
-          <div className="w-full max-md:mt-7 flex max-md:flex-row-reverse justify-between">
-            <span className="ml-4 max-md:m-0 font-serif italic font-bold">
+          <div className='w-full max-md:mt-7 flex max-md:flex-row-reverse justify-between'>
+            <span className='ml-4 max-md:m-0 font-serif italic font-bold'>
               {checkMonth(new Date(article.date).getMonth())}{' '}
               {new Date(article.date).getFullYear()}
             </span>
-            {useMediaQuery('(max-width: 850px)') ? (
+            {showShare ? (
               <FancyLink
                 onClick={handleShareButton}
-                className={`relative h-4 ${transition.fade}`}
+                className={`relative h-6 flex items-center justify-center content-center leading-none ${transition.fade}`}
               >
                 Share
-                <Arrow position="right" className="inline ml-2" fill="black" />
+                <Arrow position='right' className='inline ml-2' fill='black' />
               </FancyLink>
             ) : (
               <div className="flex space-x-7">
@@ -209,5 +226,5 @@ export default function OpeningArticle({
         )}
       </Container>
     </section>
-  )
+  );
 }
