@@ -45,6 +45,7 @@ export default function ArticleSlug({
         }
       })
   const [baseUrl, setBaseUrl] = useState()
+  const [snackBar, setSnackBar] = useState(false)
 
   const scrolltoview = (slug) => {
     window.scrollTo({
@@ -74,7 +75,13 @@ export default function ArticleSlug({
       <HeaderGap />
 
       {/* Untuk Content */}
-      <OpeningArticle general={seo} article={article} baseUrl={baseUrl} />
+      <OpeningArticle
+        general={seo}
+        article={article}
+        baseUrl={baseUrl}
+        snackBar={snackBar}
+        setSnackBar={setSnackBar}
+      />
 
       {article.layout === 'blog' &&
         (layoutFilter && layoutFilter[0].showTitle ? (

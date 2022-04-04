@@ -10,9 +10,16 @@ import { PortableText } from '@portabletext/react'
 import { Facebook, Twitter, Mail, Link } from '@/helpers/preset/svg'
 import { transition } from '@/helpers/preset/tailwind'
 import { useRouter } from 'next/router'
-import { useMediaQuery } from '@/helpers/functional/checkMedia';
+import { useMediaQuery } from '@/helpers/functional/checkMedia'
+import { Button, Snackbar, Tooltip } from '@mui/material'
 
-export default function OpeningArticle({ general, article, baseUrl }) {
+export default function OpeningArticle({
+  general,
+  article,
+  baseUrl,
+  snackBar,
+  setSnackBar,
+}) {
   const appContext = useAppContext()
   const router = useRouter()
 
@@ -92,6 +99,15 @@ export default function OpeningArticle({ general, article, baseUrl }) {
     }
   }
 
+  const handleClick = (newState) => () => {
+    copy()
+    setSnackBar(true)
+  }
+
+  const handleClose = () => {
+    setSnackBar(false)
+  }
+
   return (
     <section className="pt-10 w-full h-full">
       <Container className="space-y-10 max-md:px-6">
@@ -126,45 +142,71 @@ export default function OpeningArticle({ general, article, baseUrl }) {
               </FancyLink>
             ) : (
               <div className="flex space-x-7">
-                <FancyLink
-                  blank={true}
-                  destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
-                  className={`relative w-4 h-4 ${transition.fade}`}
-                >
-                  <Facebook fill={'#000'} className={'w-full h-full'} />
-                </FancyLink>
-                <FancyLink
-                  blank={true}
-                  destination={`https://twitter.com/share?url=${baseUrl}`}
-                  className={`relative w-4 h-4 ${transition.fade}`}
-                >
-                  <Twitter fill={'#000'} className={'w-full h-full'} />
-                </FancyLink>
-                <FancyLink
-                  destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
-                  className={`relative w-4 h-4 ${transition.fade}`}
-                >
-                  <Mail fill={'#000'} className={'w-full h-full'} />
-                </FancyLink>
-                <FancyLink
-                  onClick={copy}
-                  className={`relative w-4 h-4 ${transition.fade}`}
-                >
-                  <Link fill={'#000'} className={'w-full h-full'} />
-                </FancyLink>
+                <Tooltip title="Facebook">
+                  <FancyLink
+                    blank={true}
+                    destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                    className={`relative w-4 h-4 ${transition.fade}`}
+                  >
+                    <Facebook fill={'#000'} className={'w-full h-full'} />
+                  </FancyLink>
+                </Tooltip>
+                <Tooltip title="Twitter">
+                  <FancyLink
+                    blank={true}
+                    destination={`https://twitter.com/share?url=${baseUrl}`}
+                    className={`relative w-4 h-4 ${transition.fade}`}
+                  >
+                    <Twitter fill={'#000'} className={'w-full h-full'} />
+                  </FancyLink>
+                </Tooltip>
+                <Tooltip title="Email">
+                  <FancyLink
+                    destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
+                    className={`relative w-4 h-4 ${transition.fade}`}
+                  >
+                    <Mail fill={'#000'} className={'w-full h-full'} />
+                  </FancyLink>
+                </Tooltip>
+                <Tooltip title="Copy Link">
+                  <Button
+                    onClick={handleClick({
+                      vertical: 'top',
+                      horizontal: 'center',
+                    })}
+                    className={`relative min-w-1rem min-h-1rem w-4 h-4 p-0 ${transition.fade}`}
+                  >
+                    <Link fill={'#000'} className={'w-full h-full'} />
+                  </Button>
+                </Tooltip>
+                <Snackbar
+                  autoHideDuration={3000}
+                  anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                  ContentProps={{
+                    classes: {
+                      root:
+                        'bg-white text-black rounded-2xl font-default min-w-0 px-8 shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)]',
+                    },
+                  }}
+                  open={snackBar}
+                  onClose={handleClose}
+                  message="LINK COPIED"
+                />
               </div>
             )}
           </div>
         </div>
-        <div className="w-full h-full">
-          {/* Description */}
-          <div className="max-w-800px flex flex-col">
-            <PortableText
-              value={article.description}
-              components={serializers}
-            />
+        {article.show_article && (
+          <div className="w-full h-full">
+            {/* Description */}
+            <div className="max-w-800px flex flex-col">
+              <PortableText
+                value={article.description}
+                components={serializers}
+              />
+            </div>
           </div>
-        </div>
+        )}
       </Container>
     </section>
   )

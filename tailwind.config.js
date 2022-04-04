@@ -48,7 +48,10 @@ module.exports = {
       },
       minHeight: {
         '16rem': '16rem',
-        '100vhWithHeader': "calc(100vh - 60px)"
+        '100vhWithHeader': 'calc(100vh - 60px)',
+      },
+      minWidth: {
+        '1rem': '1rem',
       },
       screens: {
         'max-sm': { max: '600px' },
@@ -58,7 +61,8 @@ module.exports = {
         sm: '600px',
         md: '850px',
         lg: '1200px',
-        xl: '1280px', 'betterhover': { 'raw': '(hover: hover)' },
+        xl: '1280px',
+        betterhover: { raw: '(hover: hover)' },
       },
       zIndex: {
         min1: '-1',
@@ -88,6 +92,7 @@ module.exports = {
       boxShadow: {
         darker:
           '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)',
+        test: '0px 1px 10px 0px rgba(0,0,0,0.25)',
       },
       dropShadow: {
         top: '0px -4px 4px rgba(0, 0, 0, .2)',
