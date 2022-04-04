@@ -186,15 +186,15 @@ export default function OpeningArticle({
                   </FancyLink>
                 </Tooltip>
                 <Tooltip title="Copy Link">
-                  <Button
+                  <FancyLink
                     onClick={handleClick({
                       vertical: 'top',
                       horizontal: 'center',
                     })}
-                    className={`relative min-w-1rem min-h-1rem w-4 h-4 p-0 ${transition.fade}`}
+                    className={`relative min-w-1rem min-h-1rem w-4 h-4 p-[1px] ${transition.fade}`}
                   >
                     <Link fill={'#000'} className={'w-full h-full'} />
-                  </Button>
+                  </FancyLink>
                 </Tooltip>
                 <Snackbar
                   autoHideDuration={3000}
