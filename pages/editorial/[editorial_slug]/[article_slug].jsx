@@ -36,14 +36,12 @@ export default function ArticleSlug({
   const router = useRouter()
   let layoutFilter =
     article.blog &&
-    article.blog
-      .filter((item) => item._type === 'editor')
-      .map((data, id) => {
-        return {
-          part: id + 1,
-          ...data,
-        }
-      })
+    article.blog.map((data, id) => {
+      return {
+        part: id + 1,
+        ...data,
+      }
+    })
   const [baseUrl, setBaseUrl] = useState()
   const [snackBar, setSnackBar] = useState(false)
 
@@ -146,9 +144,12 @@ export default function ArticleSlug({
               <div
                 data-slug={data.title
                   .toLowerCase()
-                  .replace(/ /g, '-')
-                  .replace(/[-]+/g, '-')
-                  .replace(/[^\w-]+/g, '')}
+                  .replace(/^\s+|\s+$/g, '')
+                  .replace(/[^a-z0-9 -]/g, '')
+                  .replace(/\s+/g, '-')
+                  .replace(/-+/g, '-')
+                  .replace(/^-+/, '')
+                  .replace(/-+$/, '')}
                 className="w-full h-auto px-8 py-4 max-md:p-2 setflex-center"
                 style={{
                   background: data.border
@@ -219,7 +220,60 @@ export default function ArticleSlug({
                 </div>
               </div>
             ) : data._type === 'gallery' && data.gallery ? (
-              <Fragment key={i}>
+              <Fragment
+                key={i}
+                data-slug={data.title
+                  .toLowerCase()
+                  .replace(/^\s+|\s+$/g, '')
+                  .replace(/[^a-z0-9 -]/g, '')
+                  .replace(/\s+/g, '-')
+                  .replace(/-+/g, '-')
+                  .replace(/^-+/, '')
+                  .replace(/-+$/, '')}
+              >
+                {/* Title */}
+                {data.showTitle && (
+                  <div
+                    className="font-serif text-center font-bold mb-10 max-md:mb-7"
+                    data-slug={data.title
+                      .toLowerCase()
+                      .replace(/^\s+|\s+$/g, '')
+                      .replace(/[^a-z0-9 -]/g, '')
+                      .replace(/\s+/g, '-')
+                      .replace(/-+/g, '-')
+                      .replace(/^-+/, '')
+                      .replace(/-+$/, '')}
+                    style={{
+                      color: data.color
+                        ? data.color.hex
+                        : article.setColor
+                        ? article.setColor === 'articleColor'
+                          ? article.color.hex
+                          : article.setColor === 'categoryColor' &&
+                            article.category.color.hex
+                        : '#D66A51',
+                    }}
+                  >
+                    <span className="block italic">
+                      Part{' '}
+                      {layoutFilter &&
+                        layoutFilter.find(
+                          (item) =>
+                            item.title
+                              .toLowerCase()
+                              .replace(/ /g, '-')
+                              .replace(/[-]+/g, '-')
+                              .replace(/[^\w-]+/g, '') ===
+                            data.title
+                              .toLowerCase()
+                              .replace(/ /g, '-')
+                              .replace(/[-]+/g, '-')
+                              .replace(/[^\w-]+/g, ''),
+                        ).part}
+                    </span>
+                    <span className="block">{data.title}</span>
+                  </div>
+                )}
                 <GalleryComponent
                   gallery={data}
                   color={
@@ -233,11 +287,57 @@ export default function ArticleSlug({
                 />
               </Fragment>
             ) : data._type === 'video' ? (
-              <div className="max-w-screen-xl mx-auto w-full" key={i}>
+              <div
+                className="max-w-screen-xl mx-auto w-full"
+                key={i}
+                data-slug={data.title
+                  .toLowerCase()
+                  .replace(/^\s+|\s+$/g, '')
+                  .replace(/[^a-z0-9 -]/g, '')
+                  .replace(/\s+/g, '-')
+                  .replace(/-+/g, '-')
+                  .replace(/^-+/, '')
+                  .replace(/-+$/, '')}
+              >
+                {/* Title */}
+                {data.showTitle && (
+                  <div
+                    className="font-serif text-center font-bold mb-10 max-md:mb-7"
+                    style={{
+                      color: data.color
+                        ? data.color.hex
+                        : article.setColor
+                        ? article.setColor === 'articleColor'
+                          ? article.color.hex
+                          : article.setColor === 'categoryColor' &&
+                            article.category.color.hex
+                        : '#D66A51',
+                    }}
+                  >
+                    <span className="block italic">
+                      Part{' '}
+                      {layoutFilter &&
+                        layoutFilter.find(
+                          (item) =>
+                            item.title
+                              .toLowerCase()
+                              .replace(/ /g, '-')
+                              .replace(/[-]+/g, '-')
+                              .replace(/[^\w-]+/g, '') ===
+                            data.title
+                              .toLowerCase()
+                              .replace(/ /g, '-')
+                              .replace(/[-]+/g, '-')
+                              .replace(/[^\w-]+/g, ''),
+                        ).part}
+                    </span>
+                    <span className="block">{data.title}</span>
+                  </div>
+                )}
                 {/* Video */}
                 <div className="relative w-full max-w-800px mx-auto flex flex-col space-y-3">
                   <VideoComponent
-                    video={data}
+                    video={data.video}
                     color={
                       article.setColor
                         ? article.setColor === 'articleColor'
@@ -250,7 +350,53 @@ export default function ArticleSlug({
                 </div>
               </div>
             ) : data._type === 'imageComponent' ? (
-              <div className={`w-full h-auto setflex-center`} key={i}>
+              <div
+                className={`w-full h-auto setflex-center`}
+                key={i}
+                data-slug={data.title
+                  .toLowerCase()
+                  .replace(/^\s+|\s+$/g, '')
+                  .replace(/[^a-z0-9 -]/g, '')
+                  .replace(/\s+/g, '-')
+                  .replace(/-+/g, '-')
+                  .replace(/^-+/, '')
+                  .replace(/-+$/, '')}
+              >
+                {/* Title */}
+                {data.showTitle && (
+                  <div
+                    className="font-serif text-center font-bold mb-10 max-md:mb-7"
+                    style={{
+                      color: data.color
+                        ? data.color.hex
+                        : article.setColor
+                        ? article.setColor === 'articleColor'
+                          ? article.color.hex
+                          : article.setColor === 'categoryColor' &&
+                            article.category.color.hex
+                        : '#D66A51',
+                    }}
+                  >
+                    <span className="block italic">
+                      Part{' '}
+                      {layoutFilter &&
+                        layoutFilter.find(
+                          (item) =>
+                            item.title
+                              .toLowerCase()
+                              .replace(/ /g, '-')
+                              .replace(/[-]+/g, '-')
+                              .replace(/[^\w-]+/g, '') ===
+                            data.title
+                              .toLowerCase()
+                              .replace(/ /g, '-')
+                              .replace(/[-]+/g, '-')
+                              .replace(/[^\w-]+/g, ''),
+                        ).part}
+                    </span>
+                    <span className="block">{data.title}</span>
+                  </div>
+                )}
                 <div
                   className={`h-auto setflex-center ${
                     !data.option ? 'w-content max-md:w-full px-20' : 'w-full'
