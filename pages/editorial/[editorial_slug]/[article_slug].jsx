@@ -110,9 +110,12 @@ export default function ArticleSlug({
                                 scrolltoview(
                                   data.title
                                     .toLowerCase()
-                                    .replace(/ /g, '-')
-                                    .replace(/[-]+/g, '-')
-                                    .replace(/[^\w-]+/g, ''),
+                                    .replace(/^\s+|\s+$/g, '')
+                                    .replace(/[^a-z0-9 -]/g, '')
+                                    .replace(/\s+/g, '-')
+                                    .replace(/-+/g, '-')
+                                    .replace(/^-+/, '')
+                                    .replace(/-+$/, ''),
                                 )
                               }
                               className="font-bold font-serif border-b"
@@ -190,14 +193,20 @@ export default function ArticleSlug({
                               (item) =>
                                 item.title
                                   .toLowerCase()
-                                  .replace(/ /g, '-')
-                                  .replace(/[-]+/g, '-')
-                                  .replace(/[^\w-]+/g, '') ===
+                                  .replace(/^\s+|\s+$/g, '')
+                                  .replace(/[^a-z0-9 -]/g, '')
+                                  .replace(/\s+/g, '-')
+                                  .replace(/-+/g, '-')
+                                  .replace(/^-+/, '')
+                                  .replace(/-+$/, '') ===
                                 data.title
                                   .toLowerCase()
-                                  .replace(/ /g, '-')
-                                  .replace(/[-]+/g, '-')
-                                  .replace(/[^\w-]+/g, ''),
+                                  .replace(/^\s+|\s+$/g, '')
+                                  .replace(/[^a-z0-9 -]/g, '')
+                                  .replace(/\s+/g, '-')
+                                  .replace(/-+/g, '-')
+                                  .replace(/^-+/, '')
+                                  .replace(/-+$/, ''),
                             ).part}
                         </span>
                         <span className="block">{data.title}</span>
@@ -261,14 +270,20 @@ export default function ArticleSlug({
                           (item) =>
                             item.title
                               .toLowerCase()
-                              .replace(/ /g, '-')
-                              .replace(/[-]+/g, '-')
-                              .replace(/[^\w-]+/g, '') ===
+                              .replace(/^\s+|\s+$/g, '')
+                              .replace(/[^a-z0-9 -]/g, '')
+                              .replace(/\s+/g, '-')
+                              .replace(/-+/g, '-')
+                              .replace(/^-+/, '')
+                              .replace(/-+$/, '') ===
                             data.title
                               .toLowerCase()
-                              .replace(/ /g, '-')
-                              .replace(/[-]+/g, '-')
-                              .replace(/[^\w-]+/g, ''),
+                              .replace(/^\s+|\s+$/g, '')
+                              .replace(/[^a-z0-9 -]/g, '')
+                              .replace(/\s+/g, '-')
+                              .replace(/-+/g, '-')
+                              .replace(/^-+/, '')
+                              .replace(/-+$/, ''),
                         ).part}
                     </span>
                     <span className="block">{data.title}</span>
@@ -321,14 +336,20 @@ export default function ArticleSlug({
                           (item) =>
                             item.title
                               .toLowerCase()
-                              .replace(/ /g, '-')
-                              .replace(/[-]+/g, '-')
-                              .replace(/[^\w-]+/g, '') ===
+                              .replace(/^\s+|\s+$/g, '')
+                              .replace(/[^a-z0-9 -]/g, '')
+                              .replace(/\s+/g, '-')
+                              .replace(/-+/g, '-')
+                              .replace(/^-+/, '')
+                              .replace(/-+$/, '') ===
                             data.title
                               .toLowerCase()
-                              .replace(/ /g, '-')
-                              .replace(/[-]+/g, '-')
-                              .replace(/[^\w-]+/g, ''),
+                              .replace(/^\s+|\s+$/g, '')
+                              .replace(/[^a-z0-9 -]/g, '')
+                              .replace(/\s+/g, '-')
+                              .replace(/-+/g, '-')
+                              .replace(/^-+/, '')
+                              .replace(/-+$/, ''),
                         ).part}
                     </span>
                     <span className="block">{data.title}</span>
@@ -384,14 +405,20 @@ export default function ArticleSlug({
                           (item) =>
                             item.title
                               .toLowerCase()
-                              .replace(/ /g, '-')
-                              .replace(/[-]+/g, '-')
-                              .replace(/[^\w-]+/g, '') ===
+                              .replace(/^\s+|\s+$/g, '')
+                              .replace(/[^a-z0-9 -]/g, '')
+                              .replace(/\s+/g, '-')
+                              .replace(/-+/g, '-')
+                              .replace(/^-+/, '')
+                              .replace(/-+$/, '') ===
                             data.title
                               .toLowerCase()
-                              .replace(/ /g, '-')
-                              .replace(/[-]+/g, '-')
-                              .replace(/[^\w-]+/g, ''),
+                              .replace(/^\s+|\s+$/g, '')
+                              .replace(/[^a-z0-9 -]/g, '')
+                              .replace(/\s+/g, '-')
+                              .replace(/-+/g, '-')
+                              .replace(/^-+/, '')
+                              .replace(/-+$/, ''),
                         ).part}
                     </span>
                     <span className="block">{data.title}</span>
