@@ -63,7 +63,7 @@ const Footer = ({ className = '', footer, mailchimp = '' }) => {
               )}
               {footer.footerLink && footer.footerLink.instagram && (
                 <FancyLink
-                  destination={footer.footerLink.instagram.link}
+                  destination={footer.footerLink.instagram}
                   blank={true}
                   className={`relative w-10 h-10 setflex-center ${transition.fade}`}
                 >
@@ -72,7 +72,7 @@ const Footer = ({ className = '', footer, mailchimp = '' }) => {
               )}
               {footer.footerLink && footer.footerLink.facebook && (
                 <FancyLink
-                  destination={footer.footerLink.facebook.link}
+                  destination={footer.footerLink.facebook}
                   blank={true}
                   className={`relative w-10 h-10 setflex-center ${transition.fade}`}
                 >
@@ -81,7 +81,7 @@ const Footer = ({ className = '', footer, mailchimp = '' }) => {
               )}
               {footer.footerLink && footer.footerLink.youtube && (
                 <FancyLink
-                  destination={footer.footerLink.youtube.link}
+                  destination={footer.footerLink.youtube}
                   blank={true}
                   className={`relative w-10 h-10 setflex-center ${transition.fade}`}
                 >
@@ -90,7 +90,7 @@ const Footer = ({ className = '', footer, mailchimp = '' }) => {
               )}
               {footer.footerLink && footer.footerLink.linkedin && (
                 <FancyLink
-                  destination={footer.footerLink.linkedin.link}
+                  destination={footer.footerLink.linkedin}
                   blank={true}
                   className={`relative w-10 h-10 setflex-center  ${transition.fade}`}
                 >
