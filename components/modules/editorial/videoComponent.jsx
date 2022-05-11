@@ -34,12 +34,14 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
           }}
         >
           <>
-            <iframe
-              src={'https://www.youtube.com/embed/' + getYoutube(video.link)}
-              id="videos"
-              width="100%"
-              height="100%"
-            ></iframe>
+            {getYoutube(video.link) && (
+              <iframe
+                src={'https://www.youtube.com/embed/' + getYoutube(video.link)}
+                id="videos"
+                width="100%"
+                height="100%"
+              ></iframe>
+            )}
             {video.thumbnail && video.thumbnail.asset ? (
               <div
                 className={`absolute w-full h-full z-2 ${
