@@ -90,10 +90,10 @@ export default function ArticleSlug({
                   className="flex flex-col space-y-2 max-md:mt-5"
                   style={{
                     color: article.setColor
-                      ? article.setColor === 'articleColor'
+                      ? article.setColor === 'articleColor' 
                         ? article.color.hex
                         : article.setColor === 'categoryColor' &&
-                          article.category.color.hex
+                          article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                       : '#D66A51',
                   }}
                 >
@@ -124,7 +124,7 @@ export default function ArticleSlug({
                                   ? article.setColor === 'articleColor'
                                     ? article.color.hex
                                     : article.setColor === 'categoryColor' &&
-                                      article.category.color.hex
+                                      article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                                   : '#D66A51',
                               }}
                             >
@@ -162,7 +162,7 @@ export default function ArticleSlug({
                       ? article.setColor === 'articleColor'
                         ? article.color && article.color.hex
                         : article.setColor === 'categoryColor' &&
-                          article.category.color.hex
+                          article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                       : '#D66A51'
                     : 'none',
                 }}
@@ -182,7 +182,7 @@ export default function ArticleSlug({
                             ? article.setColor === 'articleColor'
                               ? article.color.hex
                               : article.setColor === 'categoryColor' &&
-                                article.category.color.hex
+                                article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                             : '#D66A51',
                         }}
                       >
@@ -221,7 +221,7 @@ export default function ArticleSlug({
                           ? article.setColor === 'articleColor'
                             ? article.color.hex
                             : article.setColor === 'categoryColor' &&
-                              article.category.color.hex
+                              article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                           : '#D66A51'
                       }
                     />
@@ -259,7 +259,7 @@ export default function ArticleSlug({
                         ? article.setColor === 'articleColor'
                           ? article.color.hex
                           : article.setColor === 'categoryColor' &&
-                            article.category.color.hex
+                            article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                         : '#D66A51',
                     }}
                   >
@@ -296,7 +296,7 @@ export default function ArticleSlug({
                       ? article.setColor === 'articleColor'
                         ? article.color.hex
                         : article.setColor === 'categoryColor' &&
-                          article.category.color.hex
+                          article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                       : '#D66A51'
                   }
                 />
@@ -325,7 +325,7 @@ export default function ArticleSlug({
                         ? article.setColor === 'articleColor'
                           ? article.color.hex
                           : article.setColor === 'categoryColor' &&
-                            article.category.color.hex
+                            article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                         : '#D66A51',
                     }}
                   >
@@ -364,7 +364,7 @@ export default function ArticleSlug({
                         ? article.setColor === 'articleColor'
                           ? article.color.hex
                           : article.setColor === 'categoryColor' &&
-                            article.category.color.hex
+                            article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                         : '#D66A51'
                     }
                   />
@@ -394,7 +394,7 @@ export default function ArticleSlug({
                         ? article.setColor === 'articleColor'
                           ? article.color.hex
                           : article.setColor === 'categoryColor' &&
-                            article.category.color.hex
+                            article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                         : '#D66A51',
                     }}
                   >
@@ -463,7 +463,7 @@ export default function ArticleSlug({
                             ? article.setColor === 'articleColor'
                               ? article.color.hex
                               : article.setColor === 'categoryColor' &&
-                                article.category.color.hex
+                                article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                             : '#D66A51'
                         }
                       />
@@ -484,7 +484,7 @@ export default function ArticleSlug({
                   ? article.setColor === 'articleColor'
                     ? article.color.hex
                     : article.setColor === 'categoryColor' &&
-                      article.category.color.hex
+                      article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                   : '#D66A51'
               }
             />
@@ -497,7 +497,7 @@ export default function ArticleSlug({
                 ? article.setColor === 'articleColor'
                   ? article.color.hex
                   : article.setColor === 'categoryColor' &&
-                    article.category.color.hex
+                    article.category.color.hex === "#ffffff" ? "#000000" : article.category.color.hex
                 : '#D66A51'
             }
           />
