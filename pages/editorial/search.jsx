@@ -286,7 +286,7 @@ export default function Search({
             </section>
           </Container>
           {/* Button Sticky */}
-          <StickyButton destination='/APISearch' arrow='left'>
+          <StickyButton destination='/editorial' arrow='left'>
             Browse all issues
           </StickyButton>
           <Footer footer={footer} mailchimp={seo.mailchimpID} />
