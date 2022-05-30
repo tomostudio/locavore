@@ -52,7 +52,6 @@ const FancyLink = forwardRef(
         ref={ref}
         {...others}
       >
-      {console.log(destination)}
         {children}
       </a>
     )

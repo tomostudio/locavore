@@ -1,6 +1,5 @@
 // Regex untuk get ID Youtube
 const getYoutube = (value) => {
-  console.log(value)
   var regEx =
     '^(?:https?:)?//[^/]*(?:youtube(?:-nocookie)?.com|youtu.be).*[=/]([-\\w]{11})(?:\\?|=|&|$)'
   var matches = value.match(regEx)

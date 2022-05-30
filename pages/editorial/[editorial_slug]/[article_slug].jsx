@@ -80,11 +80,8 @@ export default function ArticleSlug({
         snackBar={snackBar}
         setSnackBar={setSnackBar}
       />
-
-      {console.log(layoutFilter)}
-      {/* ada error di sini, ini masih guna ga si? */}
       {article.layout === 'blog' &&
-        (layoutFilter.length > 0 && layoutFilter[0].showTitle ? (
+        (layoutFilter && layoutFilter[0].showTitle ? (
           <section className='mt-12'>
             <Container>
               <div>

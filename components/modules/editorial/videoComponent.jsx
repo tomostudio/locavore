@@ -23,7 +23,7 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
         {!statusVideo && (
           <div
             className={`w-full h-full absolute top-0 left-0 z-10 transition-all duration-300 pointer-events-non opacity-25 group-hover:opacity-40 ${
-              video.video.dark ? 'bg-black' : 'bg-white'
+              video.dark ? 'bg-black' : 'bg-white'
             }`}
           />
         )}
@@ -35,27 +35,26 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
         >
           {/* Structure videonya salah ya? coba di cek deh */}
           <>
-            {console.log(video)}
             <iframe
               src={
-                'https://www.youtube.com/embed/' + getYoutube(video.video.link)
+                'https://www.youtube.com/embed/' + getYoutube(video.link)
               }
               id='videos'
               width='100%'
               height='100%'
             />
-            {video.video.thumbnail && video.video.thumbnail.asset ? (
+            {video.thumbnail && video.thumbnail.asset ? (
               <div
                 className={`absolute w-full h-full z-2 ${
                   statusVideo ? 'pointer-events-none' : ''
                 }`}
               >
                 <Image
-                  src={urlFor(video.video.thumbnail)
+                  src={urlFor(video.thumbnail)
                     .width(1500)
                     .format('webp')
                     .url()}
-                  alt={video.video.thumbnail.name}
+                  alt={video.thumbnail.name}
                   className={`${statusVideo ? 'inActive' : ''}`}
                   loading='eager'
                   priority={true}
@@ -63,7 +62,7 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
                   objectFit='cover'
                   objectPosition='center'
                   placeholder='blur'
-                  blurDataURL={urlFor(video.video.thumbnail)
+                  blurDataURL={urlFor(video.thumbnail)
                     .blur(2)
                     .format('webp')
                     .width(500)
@@ -86,7 +85,7 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
           <div className='absolute top-0 left-0 z-20 h-full w-full setflex-center'>
             <div
               className={`px-10 py-7 rounded-50% transition-all duration-300 ${
-                !video.video.dark
+                !video.dark
                   ? 'bg-white text-black group-hover:text-white group-hover:bg-black'
                   : 'bg-black text-white group-hover:text-black group-hover:bg-white'
               }`}
@@ -96,9 +95,9 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
           </div>
         )}
       </FancyLink>
-      {video.video.caption && (
+      {video.caption && (
         <div className='caption w-content mx-auto max-md:w-full max-md:px-4'>
-          <Caption caption={video.video.caption} color={color} />
+          <Caption caption={video.caption} color={color} />
         </div>
       )}
     </div>
