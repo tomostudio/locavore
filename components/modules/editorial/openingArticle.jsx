@@ -134,7 +134,8 @@ export default function OpeningArticle({
           {/* Category */}
           <div className='w-auto space-x-4 flex '>
             <PillButton
-              destination='/editorial/search'
+              // destination='/editorial/search'
+              destination='/editorial/under-construction/list'
               onClick={() => {
                 appContext.setCategory(article.category.title);
               }}

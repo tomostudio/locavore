@@ -1,12 +1,12 @@
-import getYoutube from '@/components/utils/getYoutube'
-import urlFor from '@/helpers/sanity/urlFor'
-import Image from 'next/image'
-import { useState } from 'react'
-import FancyLink from '../../utils/fancyLink'
-import Caption from './caption'
+import getYoutube from '@/components/utils/getYoutube';
+import urlFor from '@/helpers/sanity/urlFor';
+import Image from 'next/image';
+import { useState } from 'react';
+import FancyLink from '../../utils/fancyLink';
+import Caption from './caption';
 
 const VideoComponent = ({ className = '', video, color, gallery = false }) => {
-  const [statusVideo, setStatusVideo] = useState(false)
+  const [statusVideo, setStatusVideo] = useState(false);
 
   return (
     <div
@@ -23,7 +23,7 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
         {!statusVideo && (
           <div
             className={`w-full h-full absolute top-0 left-0 z-10 transition-all duration-300 pointer-events-non opacity-25 group-hover:opacity-40 ${
-              video.dark ? 'bg-black' : 'bg-white'
+              video.video.dark ? 'bg-black' : 'bg-white'
             }`}
           />
         )}
@@ -33,30 +33,37 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
             backgroundColor: `rgba(208,208,208, 1)`,
           }}
         >
+          {/* Structure videonya salah ya? coba di cek deh */}
           <>
+            {console.log(video)}
             <iframe
-              src={'https://www.youtube.com/embed/' + getYoutube(video.link)}
-              id="videos"
-              width="100%"
-              height="100%"
-            ></iframe>
-            {video.thumbnail && video.thumbnail.asset ? (
+              src={
+                'https://www.youtube.com/embed/' + getYoutube(video.video.link)
+              }
+              id='videos'
+              width='100%'
+              height='100%'
+            />
+            {video.video.thumbnail && video.video.thumbnail.asset ? (
               <div
                 className={`absolute w-full h-full z-2 ${
                   statusVideo ? 'pointer-events-none' : ''
                 }`}
               >
                 <Image
-                  src={urlFor(video.thumbnail).width(1500).url()}
-                  alt={video.thumbnail.name}
+                  src={urlFor(video.video.thumbnail)
+                    .width(1500)
+                    .format('webp')
+                    .url()}
+                  alt={video.video.thumbnail.name}
                   className={`${statusVideo ? 'inActive' : ''}`}
-                  loading="eager"
+                  loading='eager'
                   priority={true}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
-                  placeholder="blur"
-                  blurDataURL={urlFor(video.thumbnail)
+                  layout='fill'
+                  objectFit='cover'
+                  objectPosition='center'
+                  placeholder='blur'
+                  blurDataURL={urlFor(video.video.thumbnail)
                     .blur(2)
                     .format('webp')
                     .width(500)
@@ -76,10 +83,10 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
           </>
         </div>
         {!statusVideo && (
-          <div className="absolute top-0 left-0 z-20 h-full w-full setflex-center">
+          <div className='absolute top-0 left-0 z-20 h-full w-full setflex-center'>
             <div
               className={`px-10 py-7 rounded-50% transition-all duration-300 ${
-                !video.dark
+                !video.video.dark
                   ? 'bg-white text-black group-hover:text-white group-hover:bg-black'
                   : 'bg-black text-white group-hover:text-black group-hover:bg-white'
               }`}
@@ -89,13 +96,13 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
           </div>
         )}
       </FancyLink>
-      {video.caption && (
-        <div className="caption w-content mx-auto max-md:w-full max-md:px-4">
-          <Caption caption={video.caption} color={color} />
+      {video.video.caption && (
+        <div className='caption w-content mx-auto max-md:w-full max-md:px-4'>
+          <Caption caption={video.video.caption} color={color} />
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default VideoComponent
+export default VideoComponent;
