@@ -33,12 +33,12 @@ export default function OpeningArticle({
       h3: ({ children }) => <h3>{children}</h3>,
       h4: ({ children }) => <h4>{children}</h4>,
       h5: ({ children }) => <h5>{children}</h5>,
-      center: ({ children }) => <p align='center'>{children}</p>,
-      left: ({ children }) => <p align='left'>{children}</p>,
-      right: ({ children }) => <p align='right'>{children}</p>,
+      center: ({ children }) => <p align="center">{children}</p>,
+      left: ({ children }) => <p align="left">{children}</p>,
+      right: ({ children }) => <p align="right">{children}</p>,
     },
     list: {
-      number: ({ children }) => <ol className='list-decimal'>{children}</ol>,
+      number: ({ children }) => <ol className="list-decimal">{children}</ol>,
     },
     types: {
       code: (props) => (
@@ -77,44 +77,44 @@ export default function OpeningArticle({
         </span>
       ),
     },
-  };
+  }
 
   const copy = () => {
-    const el = document.createElement('input');
-    el.value = baseUrl;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-  };
+    const el = document.createElement('input')
+    el.value = baseUrl
+    document.body.appendChild(el)
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
+  }
 
   const handleShareButton = () => {
     const shareData = {
       title: `${article.title} at Locavore®`,
       text: `${toPlainText(article.description)}`,
       url: baseUrl,
-    };
+    }
 
     if (navigator.share) {
-      navigator.share(shareData);
+      navigator.share(shareData)
     }
-  };
+  }
 
-  const [showShare, setShare] = useState(false);
+  const [showShare, setShare] = useState(false)
 
   const resize = () => {
     if (navigator.share && window.innerWidth < 850) {
-      setShare(true);
+      setShare(true)
     } else {
-      setShare(false);
+      setShare(false)
     }
-  };
+  }
   useEffect(() => {
-    window.addEventListener('resize', resize, true);
+    window.addEventListener('resize', resize, true)
     return () => {
-      window.removeEventListener('resize', resize, true);
-    };
-  }, []);
+      window.removeEventListener('resize', resize, true)
+    }
+  }, [])
 
   const handleClick = (newState) => () => {
     copy()
@@ -126,13 +126,13 @@ export default function OpeningArticle({
   }
 
   return (
-    <section className='pt-10 w-full h-full'>
-      <Container className='space-y-10 max-md:px-6'>
+    <section className="pt-10 w-full h-full">
+      <Container className="space-y-10 max-md:px-6">
         {/* Title */}
-        <h1 className='m-0 font-sans font-normal'>{article.title}</h1>
-        <div className='w-full flex max-md:flex-col items-center max-md:items-start justify-between'>
+        <h1 className="m-0 font-sans font-normal">{article.title}</h1>
+        <div className="w-full flex max-md:flex-col items-center max-md:items-start justify-between">
           {/* Category */}
-          <div className='w-auto space-x-4 flex '>
+          <div className="w-auto space-x-4 flex ">
             <PillButton
               // destination='/editorial/search'
               destination='/editorial/under-construction/list'
@@ -145,8 +145,8 @@ export default function OpeningArticle({
             </PillButton>
           </div>
           {/* Social Media */}
-          <div className='w-full max-md:mt-7 flex max-md:flex-row-reverse justify-between'>
-            <span className='ml-4 max-md:m-0 font-serif italic font-bold'>
+          <div className="w-full max-md:mt-7 flex max-md:flex-row-reverse justify-between">
+            <span className="ml-4 max-md:m-0 font-serif italic font-bold">
               {checkMonth(new Date(article.date).getMonth())}{' '}
               {new Date(article.date).getFullYear()}
             </span>
@@ -156,11 +156,11 @@ export default function OpeningArticle({
                 className={`relative h-6 flex items-center justify-center content-center leading-none ${transition.fade}`}
               >
                 Share
-                <Arrow position='right' className='inline ml-2' fill='black' />
+                <Arrow position="right" className="inline ml-2" fill="black" />
               </FancyLink>
             ) : (
               <div className="flex space-x-7">
-                <Tooltip title="Facebook">
+                <Tooltip title="Facebook" classes={{ tooltip: 'tooltip' }}>
                   <FancyLink
                     blank={true}
                     destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
@@ -169,7 +169,7 @@ export default function OpeningArticle({
                     <Facebook fill={'#000'} className={'w-full h-full'} />
                   </FancyLink>
                 </Tooltip>
-                <Tooltip title="Twitter">
+                <Tooltip title="Twitter" classes={{ tooltip: 'tooltip' }}>
                   <FancyLink
                     blank={true}
                     destination={`https://twitter.com/share?url=${baseUrl}`}
@@ -178,7 +178,7 @@ export default function OpeningArticle({
                     <Twitter fill={'#000'} className={'w-full h-full'} />
                   </FancyLink>
                 </Tooltip>
-                <Tooltip title="Email">
+                <Tooltip title="Email" classes={{ tooltip: 'tooltip' }}>
                   <FancyLink
                     destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
                     className={`relative w-4 h-4 ${transition.fade}`}
@@ -186,7 +186,7 @@ export default function OpeningArticle({
                     <Mail fill={'#000'} className={'w-full h-full'} />
                   </FancyLink>
                 </Tooltip>
-                <Tooltip title="Copy Link">
+                <Tooltip title="Copy Link" classes={{ tooltip: 'tooltip' }}>
                   <FancyLink
                     onClick={handleClick({
                       vertical: 'top',
@@ -202,8 +202,7 @@ export default function OpeningArticle({
                   anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                   ContentProps={{
                     classes: {
-                      root:
-                        'bg-white text-black rounded-2xl font-default min-w-0 px-8 shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)]',
+                      root: 'snackbar',
                     },
                   }}
                   open={snackBar}
@@ -227,5 +226,5 @@ export default function OpeningArticle({
         )}
       </Container>
     </section>
-  );
+  )
 }
