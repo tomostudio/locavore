@@ -1,21 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../container'
 import FancyLink from '../../utils/fancyLink'
+import Arrow from '../../utils/arrow'
 import PillButton from '../pillButton'
 import Image from 'next/image'
 import { useAppContext } from 'context/state'
 import checkMonth from '@/helpers/functional/checkMonth'
 import { PortableText } from '@portabletext/react'
-import { Facebook, Twitter, Mail } from '@/helpers/preset/svg'
+import { Facebook, Twitter, Mail, Link } from '@/helpers/preset/svg'
 import { transition } from '@/helpers/preset/tailwind'
+import { useRouter } from 'next/router'
+import { useMediaQuery } from '@/helpers/functional/checkMedia'
+import { Button, Snackbar, Tooltip } from '@mui/material'
 
 export default function OpeningArticle({
   general,
   article,
   baseUrl,
-  navigator,
+  snackBar,
+  setSnackBar,
 }) {
   const appContext = useAppContext()
+  const router = useRouter()
 
   const serializers = {
     // hardBreak: (props) => <br />,
@@ -40,6 +46,11 @@ export default function OpeningArticle({
       ),
     },
     marks: {
+      link: (props) => (
+        <FancyLink destination={props.value.url} blank={true}>
+          {props.children}
+        </FancyLink>
+      ),
       changeColor: (props) => (
         <span style={{ color: props.value.color.hex }}>{props.children}</span>
       ),
@@ -68,24 +79,51 @@ export default function OpeningArticle({
     },
   }
 
+  const copy = () => {
+    const el = document.createElement('input')
+    el.value = baseUrl
+    document.body.appendChild(el)
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
+  }
+
   const handleShareButton = () => {
-    // Check if navigator.share is supported by the browser
-    if (navigator.share) {
-      console.log("Congrats! Your browser supports Web Share API");
-      navigator
-        .share({
-          url: `https://share.toogoodtogo.com/store/1006/milestones/meals-saved/`
-        })
-        .then(() => {
-          console.log("Sharing successfull");
-        })
-        .catch(() => {
-          console.log("Sharing failed");
-        });
-    } else {
-      console.log("Sorry! Your browser does not support Web Share API");
+    const shareData = {
+      title: `${article.title} at Locavore®`,
+      text: `${toPlainText(article.description)}`,
+      url: baseUrl,
     }
-  };
+
+    if (navigator.share) {
+      navigator.share(shareData)
+    }
+  }
+
+  const [showShare, setShare] = useState(false)
+
+  const resize = () => {
+    if (navigator.share && window.innerWidth < 850) {
+      setShare(true)
+    } else {
+      setShare(false)
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('resize', resize, true)
+    return () => {
+      window.removeEventListener('resize', resize, true)
+    }
+  }, [])
+
+  const handleClick = (newState) => () => {
+    copy()
+    setSnackBar(true)
+  }
+
+  const handleClose = () => {
+    setSnackBar(false)
+  }
 
   return (
     <section className="pt-10 w-full h-full">
@@ -96,11 +134,12 @@ export default function OpeningArticle({
           {/* Category */}
           <div className="w-auto space-x-4 flex ">
             <PillButton
-              destination="/editorial/search"
+              // destination='/editorial/search'
+              destination='/editorial/under-construction/list'
               onClick={() => {
-                appContext.setCategory(article.category.title)
+                appContext.setCategory(article.category.title);
               }}
-              className="text-xs max-md:py-1 max-md:px-2 opacity-100 border-black"
+              className='text-xs max-md:py-1 max-md:px-2 opacity-100 border-black'
             >
               {article.category.title}
             </PillButton>
@@ -111,25 +150,80 @@ export default function OpeningArticle({
               {checkMonth(new Date(article.date).getMonth())}{' '}
               {new Date(article.date).getFullYear()}
             </span>
-            <div className="flex space-x-7">
+            {showShare ? (
               <FancyLink
                 onClick={handleShareButton}
-                className={`relative w-4 h-4 ${transition.fade}`}
+                className={`relative h-6 flex items-center justify-center content-center leading-none ${transition.fade}`}
               >
-                Share <Facebook fill={'#000'} className={'w-full h-full'} />
+                Share
+                <Arrow position="right" className="inline ml-2" fill="black" />
               </FancyLink>
+            ) : (
+              <div className="flex space-x-7">
+                <Tooltip title="Facebook" classes={{ tooltip: 'tooltip' }}>
+                  <FancyLink
+                    blank={true}
+                    destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                    className={`relative w-4 h-4 ${transition.fade}`}
+                  >
+                    <Facebook fill={'#000'} className={'w-full h-full'} />
+                  </FancyLink>
+                </Tooltip>
+                <Tooltip title="Twitter" classes={{ tooltip: 'tooltip' }}>
+                  <FancyLink
+                    blank={true}
+                    destination={`https://twitter.com/share?url=${baseUrl}`}
+                    className={`relative w-4 h-4 ${transition.fade}`}
+                  >
+                    <Twitter fill={'#000'} className={'w-full h-full'} />
+                  </FancyLink>
+                </Tooltip>
+                <Tooltip title="Email" classes={{ tooltip: 'tooltip' }}>
+                  <FancyLink
+                    destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
+                    className={`relative w-4 h-4 ${transition.fade}`}
+                  >
+                    <Mail fill={'#000'} className={'w-full h-full'} />
+                  </FancyLink>
+                </Tooltip>
+                <Tooltip title="Copy Link" classes={{ tooltip: 'tooltip' }}>
+                  <FancyLink
+                    onClick={handleClick({
+                      vertical: 'top',
+                      horizontal: 'center',
+                    })}
+                    className={`relative min-w-1rem min-h-1rem w-4 h-4 p-[1px] ${transition.fade}`}
+                  >
+                    <Link fill={'#000'} className={'w-full h-full'} />
+                  </FancyLink>
+                </Tooltip>
+                <Snackbar
+                  autoHideDuration={3000}
+                  anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                  ContentProps={{
+                    classes: {
+                      root: 'snackbar',
+                    },
+                  }}
+                  open={snackBar}
+                  onClose={handleClose}
+                  message="LINK COPIED"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+        {article.show_article && (
+          <div className="w-full h-full">
+            {/* Description */}
+            <div className="max-w-800px flex flex-col">
+              <PortableText
+                value={article.description}
+                components={serializers}
+              />
             </div>
           </div>
-        </div>
-        <div className="w-full h-full">
-          {/* Description */}
-          <div className="max-w-800px flex flex-col">
-            <PortableText
-              value={article.description}
-              components={serializers}
-            />
-          </div>
-        </div>
+        )}
       </Container>
     </section>
   )

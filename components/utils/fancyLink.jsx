@@ -48,7 +48,7 @@ const FancyLink = forwardRef(
           destination ? 'pointer-events-auto' : 'pointer-events-none'
         } ${className}`}
         target="_blank"
-        href={destination}
+        href={`${destination}`}
         ref={ref}
         {...others}
       >
