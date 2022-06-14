@@ -142,7 +142,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
     <Layout>
       <SEO
         title={issue.title}
-        pagelink={router.pathname}
+        pagelink={`editorial/${issue.slug.current}/list`}
         inputSEO={issue.seo}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}

@@ -239,7 +239,7 @@ export default function Index({ issueAPI, seoAPI }) {
     <Layout>
       <SEO
         title={issue.title}
-        pagelink={router.pathname}
+        pagelink={`editorial/${issue.slug.current}`}
         inputSEO={issue.seo}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}

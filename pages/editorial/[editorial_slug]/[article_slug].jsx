@@ -63,7 +63,7 @@ export default function ArticleSlug({
     <Layout>
       <SEO
         title={article.title}
-        pagelink={router.pathname}
+        pagelink={`editorial/${article.issue.slug.current}/${article.slug.current}`}
         inputSEO={article.seo}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
