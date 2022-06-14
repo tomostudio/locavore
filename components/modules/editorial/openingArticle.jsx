@@ -134,12 +134,12 @@ export default function OpeningArticle({
           {/* Category */}
           <div className="w-auto space-x-4 flex ">
             <PillButton
-              // destination="/editorial/search" Updated for Phase 0
-              // onClick={() => {
-              //   appContext.setCategory(article.category.title)
-              // }}
-              destination="/under-construction/list"
-              className="text-xs max-md:py-1 max-md:px-2 opacity-100 border-black"
+              // destination='/editorial/search'
+              destination='/editorial/under-construction/list'
+              onClick={() => {
+                appContext.setCategory(article.category.title);
+              }}
+              className='text-xs max-md:py-1 max-md:px-2 opacity-100 border-black'
             >
               {article.category.title}
             </PillButton>
