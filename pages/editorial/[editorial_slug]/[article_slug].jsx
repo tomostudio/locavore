@@ -301,6 +301,7 @@ export default function ArticleSlug({
                 />
               </Fragment>
             ) : data._type === 'video' ? (
+              <>
               <div
                 className="max-w-screen-xl mx-auto w-full"
                 key={i}
@@ -354,8 +355,9 @@ export default function ArticleSlug({
                     <span className="block">{data.title}</span>
                   </div>
                 )}
+              </div>
                 {/* Video */}
-                <div className='relative w-full max-w-800px mx-auto flex flex-col space-y-3'>
+                {/* <div className='relative w-full max-w-800px mx-auto flex flex-col space-y-3'> */}
                   <VideoComponent
                     video={data.video}
                     color={
@@ -367,8 +369,8 @@ export default function ArticleSlug({
                         : '#D66A51'
                     }
                   />
-                </div>
-              </div>
+                {/* </div> */}
+                </>
             ) : data._type === 'imageComponent' ? (
               <div
                 className={`w-full h-auto setflex-center`}
