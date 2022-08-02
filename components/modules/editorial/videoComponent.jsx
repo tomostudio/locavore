@@ -14,7 +14,7 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
         !gallery
           ? `${
               video.option === 'normal'
-                ? 'w-content max-md:w-full px-20 max-w-800px'
+                ? 'w-content max-md:w-full px-14 max-w-800px'
                 : video.option === 'medium' && 'w-full max-w-800px'
             }`
           : ''
@@ -23,11 +23,13 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
       <FancyLink
         onClick={() => setStatusVideo(true)}
         className={`group block relative w-full mx-auto ${
-          !gallery ? `${
-            video.option === 'normal'
-              ? 'w-content max-md:w-full px-20 max-w-800px'
-              : video.option === 'medium' && 'w-full max-w-800px'
-          }` : ''
+          !gallery
+            ? `${
+                video.option === 'normal'
+                  ? 'w-content max-md:w-full px-14 max-w-800px'
+                  : video.option === 'medium' && 'w-full max-w-800px'
+              }`
+            : ''
         }`}
       >
         {!statusVideo && (
@@ -100,7 +102,11 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
         )}
       </FancyLink>
       {video.caption && (
-        <div className="caption w-content mx-auto max-md:w-full max-md:px-4">
+        <div
+          className={`${
+            video.option ? 'w-content max-md:w-full' : 'w-full'
+          } caption mx-auto max-md:px-4`}
+        >
           <Caption caption={video.caption} color={color} />
         </div>
       )}

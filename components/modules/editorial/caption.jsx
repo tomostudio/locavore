@@ -1,7 +1,7 @@
 const Caption = ({ className, option = true, caption, color }) => {
   return (
     <div
-      className={`flex items-end max-md:items-startw-full mt-3 max-md:p-0 ${
+      className={`flex items-start w-full mt-3 max-md:p-0 ${
         option ? 'px-paddingContent' : ''
       } ${className}`}
     >

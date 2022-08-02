@@ -427,7 +427,7 @@ export default function ArticleSlug({
                 )}
                 <div
                   className={`h-auto setflex-center ${
-                    !data.option ? 'w-content max-md:w-full px-20' : 'w-full'
+                    !data.option ? 'w-content max-md:w-full px-14' : 'w-full'
                   }`}
                 >
                   <div
@@ -455,7 +455,7 @@ export default function ArticleSlug({
                     )}
                   </div>
                   {data.description && (
-                    <div className='w-content mx-auto max-md:w-full max-md:px-4'>
+                    <div className={`${data.option ? 'w-content max-md:w-full' : 'w-full'} mx-auto max-md:px-4`}>
                       <Caption
                         option={data.option}
                         caption={data.description}
