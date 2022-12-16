@@ -165,7 +165,7 @@ const FamilySlug = ({
     <Layout>
       <SEO
         title={family.title}
-        pagelink={router.pathname}
+        pagelink={`family/${family.slug.current}`}
         inputSEO={family.seo}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}

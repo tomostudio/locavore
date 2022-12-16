@@ -61,7 +61,7 @@ export default function ArticleSlug({
     <Layout>
       <SEO
         title={article.title}
-        pagelink={router.pathname}
+        pagelink={`editorial/${article.issue.slug.current}/${article.slug.current}`}
         inputSEO={article.seo}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
@@ -299,6 +299,7 @@ export default function ArticleSlug({
                 />
               </Fragment>
             ) : data._type === 'video' ? (
+              <>
               <div
                 className="max-w-screen-xl mx-auto w-full"
                 key={i}
@@ -352,8 +353,9 @@ export default function ArticleSlug({
                     <span className="block">{data.title}</span>
                   </div>
                 )}
+              </div>
                 {/* Video */}
-                <div className='relative w-full max-w-800px mx-auto flex flex-col space-y-3'>
+                {/* <div className='relative w-full max-w-800px mx-auto flex flex-col space-y-3'> */}
                   <VideoComponent
                     video={data.video}
                     color={
@@ -365,8 +367,8 @@ export default function ArticleSlug({
                         : '#D66A51'
                     }
                   />
-                </div>
-              </div>
+                {/* </div> */}
+                </>
             ) : data._type === 'imageComponent' ? (
               <div
                 className={`w-full h-auto setflex-center`}
@@ -423,7 +425,7 @@ export default function ArticleSlug({
                 )}
                 <div
                   className={`h-auto setflex-center ${
-                    !data.option ? 'w-content max-md:w-full px-20' : 'w-full'
+                    !data.option ? 'w-content max-md:w-full px-14' : 'w-full'
                   }`}
                 >
                   <div
@@ -451,7 +453,7 @@ export default function ArticleSlug({
                     )}
                   </div>
                   {data.description && (
-                    <div className='w-content mx-auto max-md:w-full max-md:px-4'>
+                    <div className={`${data.option ? 'w-content max-md:w-full' : 'w-full'} mx-auto max-md:px-4`}>
                       <Caption
                         option={data.option}
                         caption={data.description}

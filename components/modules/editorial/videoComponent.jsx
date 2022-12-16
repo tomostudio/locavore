@@ -10,14 +10,26 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
 
   return (
     <div
-      className={`video relative w-full mx-auto ${
-        !gallery ? 'max-w-800px' : ''
+      className={`video relative mx-auto ${
+        !gallery
+          ? `${
+              video.option === 'normal'
+                ? 'w-content max-md:w-full px-14 max-w-800px'
+                : video.option === 'medium' && 'w-full max-w-800px'
+            }`
+          : ''
       } ${className}`}
     >
       <FancyLink
         onClick={() => setStatusVideo(true)}
         className={`group block relative w-full mx-auto ${
-          !gallery ? 'max-w-800px' : ''
+          !gallery
+            ? `${
+                video.option === 'normal'
+                  ? 'w-content max-md:w-full px-14 max-w-800px'
+                  : video.option === 'medium' && 'w-full max-w-800px'
+              }`
+            : ''
         }`}
       >
         {!statusVideo && (
@@ -33,15 +45,12 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
             backgroundColor: `rgba(208,208,208, 1)`,
           }}
         >
-          {/* Structure videonya salah ya? coba di cek deh */}
           <>
             <iframe
-              src={
-                'https://www.youtube.com/embed/' + getYoutube(video.link)
-              }
-              id='videos'
-              width='100%'
-              height='100%'
+              src={'https://www.youtube.com/embed/' + getYoutube(video.link)}
+              id="videos"
+              width="100%"
+              height="100%"
             />
             {video.thumbnail && video.thumbnail.asset ? (
               <div
@@ -96,7 +105,11 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
         )}
       </FancyLink>
       {video.caption && (
-        <div className='caption w-content mx-auto max-md:w-full max-md:px-4'>
+        <div
+          className={`${
+            video.option ? 'w-content max-md:w-full' : 'w-full'
+          } caption mx-auto max-md:px-4`}
+        >
           <Caption caption={video.caption} color={color} />
         </div>
       )}

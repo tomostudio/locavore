@@ -44,6 +44,7 @@ const Footer = ({ className = '', footer, mailchimp = '' }) => {
               <SubscribeForm
                 status={status}
                 message={message}
+                subText={footer.subscription}
                 onValidated={(formData) => subscribe(formData)}
               />
             )}
