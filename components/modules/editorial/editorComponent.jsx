@@ -45,6 +45,16 @@ const EditorComponent = ({ data, color }) => {
                 />
               </div>
             ),
+            horizontallineSpacer: () => (
+              <div className="horizontal-line-spacer h-px w-full">
+                <hr
+                  className="border h-full w-full"
+                  style={{
+                    borderColor: color,
+                  }}
+                />
+              </div>
+            ),
             code: (props) => (
               <div
                 className="code"
