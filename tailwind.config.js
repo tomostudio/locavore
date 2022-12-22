@@ -140,7 +140,7 @@ module.exports = {
         '52rem': '56rem',
         '56rem': '56rem',
         '60rem': '60rem',
-        content: '46rem',
+        content: '52rem',
         's-30': '30vw',
         's-40': '40vw',
         's-50': '50vw',

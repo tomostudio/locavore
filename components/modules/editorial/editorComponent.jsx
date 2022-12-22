@@ -169,7 +169,7 @@ const EditorComponent = ({ data, color }) => {
               </div>
             ),
             columnBlock: (props) => (
-              <div className={`column ${!props.value.padding ? '' : '!px-0'}`}>
+              <div className={`column space-x-8 ${!props.value.padding ? '' : '!px-0'}`}>
                 <div>
                   {props.value.left.columnLeft === 'block' ? (
                     <div className="w-full h-full">
