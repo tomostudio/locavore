@@ -202,36 +202,61 @@ export default function Home({ issueAPI, seoAPI }) {
       ),
     },
     marks: {
-      link: (props) => (
-        <FancyLink destination={props.value.url} blank={true}>
-          {props.children}
-        </FancyLink>
-      ),
-      changeColor: (props) => (
-        <span style={{ color: props.value.color.hex }}>{props.children}</span>
-      ),
-      backgroundColor: (props) => (
-        <span style={{ backgroundColor: props.value.color.hex }}>
-          {props.children}
-        </span>
-      ),
+      add_ann: (props) =>
+        props.value?.link ? (
+          <FancyLink
+            destination={props.value.link}
+            blank={true}
+            style={{
+              color: props.value?.textColor
+                ? props.value?.textColor.hex
+                : 'currentColor',
+              backgroundColor: props.value?.bgColor
+                ? props.value?.bgColor
+                : 'transparent',
+              fontSize: props.value?.fontSize
+                ? props.value?.fontSize
+                : 'initial',
+            }}
+            className={
+              props.value?.font
+                ? props.value?.font === 'display'
+                  ? 'font-default'
+                  : props.value.font
+                : 'font-default'
+            }
+          >
+            {props.children}
+          </FancyLink>
+        ) : (
+          <span
+            style={{
+              color: props.value?.textColor
+                ? props.value?.textColor.hex
+                : 'currentColor',
+              backgroundColor: props.value?.bgColor
+                ? props.value?.bgColor
+                : 'transparent',
+              fontSize: props.value?.fontSize
+                ? props.value?.fontSize
+                : 'initial',
+            }}
+            className={
+              props.value?.font
+                ? props.value?.font === 'display'
+                  ? 'font-default'
+                  : props.value.font
+                : 'font-default'
+            }
+          >
+            {props.children}
+          </span>
+        ),
       largerSize: (props) => (
         <span style={{ fontSize: '1.5em' }}>{props.children}</span>
       ),
       sub: (props) => <sub>{props.children}</sub>,
       sup: (props) => <sup>{props.children}</sup>,
-      fontSize: (props) => (
-        <span style={{ fontSize: props.value.size }}>{props.children}</span>
-      ),
-      font: (props) => (
-        <span
-          className={
-            props.value.type === 'display' ? 'font-default' : props.value.type
-          }
-        >
-          {props.children}
-        </span>
-      ),
     },
   }
 
