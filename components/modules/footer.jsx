@@ -44,58 +44,62 @@ const Footer = ({ className = '', footer, mailchimp = '' }) => {
               <SubscribeForm
                 status={status}
                 message={message}
+                subText={footer.subscription}
                 onValidated={(formData) => subscribe(formData)}
               />
             )}
           />
         </div>
         <div className="w-full h-full max-md:mt-10 flex flex-col justify-between relative -right-3 max-md:right-0 max-md:-left-3">
-          <div className="w-auto h-full space-x-4 flex justify-end max-md:justify-start">
-            {footer.email && (
-              <FancyLink
-                destination={`mailto:${footer.email}`}
-                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
-              >
-                <Mail fill={'#fff'} className={'w-4 h-4'} />
-              </FancyLink>
-            )}
-            {footer.footerLink && footer.footerLink.instagram && (
-              <FancyLink
-                destination={footer.footerLink.instagram.link}
-                blank={true}
-                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
-              >
-                <Instagram fill={'#FFF'} className="w-4 h-4" />
-              </FancyLink>
-            )}
-            {footer.footerLink && footer.footerLink.facebook && (
-              <FancyLink
-                destination={footer.footerLink.facebook.link}
-                blank={true}
-                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
-              >
-                <Facebook fill={'#FFF'} className="w-4 h-4" />
-              </FancyLink>
-            )}
-            {footer.footerLink && footer.footerLink.youtube && (
-              <FancyLink
-                destination={footer.footerLink.youtube.link}
-                blank={true}
-                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
-              >
-                <Youtube fill={'#FFF'} className="w-4 h-4" />
-              </FancyLink>
-            )}
-            {footer.footerLink && footer.footerLink.linkedin && (
-              <FancyLink
-                destination={footer.footerLink.linkedin.link}
-                blank={true}
-                className={`relative w-10 h-10 setflex-center  ${transition.fade}`}
-              >
-                <Linkedin fill={'#FFF'} className="w-4 h-4" />
-              </FancyLink>
-            )}
-          </div>
+          {
+            footer.show_socmed && 
+            <div className="w-auto h-full space-x-4 flex justify-end max-md:justify-start">
+              {footer.footerLink && footer.footerLink.email && (
+                <FancyLink
+                  destination={`mailto:${footer.footerLink.email}`}
+                  className={`relative w-10 h-10 setflex-center ${transition.fade}`}
+                >
+                  <Mail fill={'#fff'} className={'w-4 h-4'} />
+                </FancyLink>
+              )}
+              {footer.footerLink && footer.footerLink.instagram && (
+                <FancyLink
+                  destination={footer.footerLink.instagram}
+                  blank={true}
+                  className={`relative w-10 h-10 setflex-center ${transition.fade}`}
+                >
+                  <Instagram fill={'#FFF'} className="w-4 h-4" />
+                </FancyLink>
+              )}
+              {footer.footerLink && footer.footerLink.facebook && (
+                <FancyLink
+                  destination={footer.footerLink.facebook}
+                  blank={true}
+                  className={`relative w-10 h-10 setflex-center ${transition.fade}`}
+                >
+                  <Facebook fill={'#FFF'} className="w-4 h-4" />
+                </FancyLink>
+              )}
+              {footer.footerLink && footer.footerLink.youtube && (
+                <FancyLink
+                  destination={footer.footerLink.youtube}
+                  blank={true}
+                  className={`relative w-10 h-10 setflex-center ${transition.fade}`}
+                >
+                  <Youtube fill={'#FFF'} className="w-4 h-4" />
+                </FancyLink>
+              )}
+              {footer.footerLink && footer.footerLink.linkedin && (
+                <FancyLink
+                  destination={footer.footerLink.linkedin}
+                  blank={true}
+                  className={`relative w-10 h-10 setflex-center  ${transition.fade}`}
+                >
+                  <Linkedin fill={'#FFF'} className="w-4 h-4" />
+                </FancyLink>
+              )}
+            </div>
+          }
           <div className="w-full h-full max-md:mt-8 flex justify-end max-md:justify-start items-end max-md:items-start pr-3 max-md:pr-0 max-md:pl-3">
             <span className="text-sm">{footer.creditText}</span>
           </div>

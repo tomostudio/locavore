@@ -14,9 +14,6 @@ export default function App({ Component, pageProps }) {
   const router = useRouter()
   useEffect(() => {
     history.scrollRestoration = 'manual'
-    setTimeout(() => {
-      console.log('initial loading delay')
-    }, 2000)
   }, [])
   return (
     <>
@@ -129,13 +126,3 @@ export default function App({ Component, pageProps }) {
     </>
   )
 }
-
-// App.getInitialProps = async ({ ctx, router }) => {
-//   if (router.asPath === '/search') {
-//     ctx.res.writeHead(302, {
-//       Location: '/editorial/search',
-//     })
-//     ctx.res.end()
-//   }
-//   return {}
-// }

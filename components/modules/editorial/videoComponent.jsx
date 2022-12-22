@@ -1,23 +1,35 @@
-import getYoutube from '@/components/utils/getYoutube'
-import urlFor from '@/helpers/sanity/urlFor'
-import Image from 'next/image'
-import { useState } from 'react'
-import FancyLink from '../../utils/fancyLink'
-import Caption from './caption'
+import getYoutube from '@/components/utils/getYoutube';
+import urlFor from '@/helpers/sanity/urlFor';
+import Image from 'next/image';
+import { useState } from 'react';
+import FancyLink from '../../utils/fancyLink';
+import Caption from './caption';
 
 const VideoComponent = ({ className = '', video, color, gallery = false }) => {
-  const [statusVideo, setStatusVideo] = useState(false)
+  const [statusVideo, setStatusVideo] = useState(false);
 
   return (
     <div
-      className={`video relative w-full mx-auto ${
-        !gallery ? 'max-w-800px' : ''
+      className={`video relative mx-auto ${
+        !gallery
+          ? `${
+              video.option === 'normal'
+                ? 'w-content max-md:w-full px-14 max-w-800px'
+                : video.option === 'medium' && 'w-full max-w-800px'
+            }`
+          : ''
       } ${className}`}
     >
       <FancyLink
         onClick={() => setStatusVideo(true)}
         className={`group block relative w-full mx-auto ${
-          !gallery ? 'max-w-800px' : ''
+          !gallery
+            ? `${
+                video.option === 'normal'
+                  ? 'w-content max-md:w-full px-14 max-w-800px'
+                  : video.option === 'medium' && 'w-full max-w-800px'
+              }`
+            : ''
         }`}
       >
         {!statusVideo && (
@@ -39,7 +51,7 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
               id="videos"
               width="100%"
               height="100%"
-            ></iframe>
+            />
             {video.thumbnail && video.thumbnail.asset ? (
               <div
                 className={`absolute w-full h-full z-2 ${
@@ -47,15 +59,18 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
                 }`}
               >
                 <Image
-                  src={urlFor(video.thumbnail).width(1500).url()}
+                  src={urlFor(video.thumbnail)
+                    .width(1500)
+                    .format('webp')
+                    .url()}
                   alt={video.thumbnail.name}
                   className={`${statusVideo ? 'inActive' : ''}`}
-                  loading="eager"
+                  loading='eager'
                   priority={true}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
-                  placeholder="blur"
+                  layout='fill'
+                  objectFit='cover'
+                  objectPosition='center'
+                  placeholder='blur'
                   blurDataURL={urlFor(video.thumbnail)
                     .blur(2)
                     .format('webp')
@@ -76,7 +91,7 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
           </>
         </div>
         {!statusVideo && (
-          <div className="absolute top-0 left-0 z-20 h-full w-full setflex-center">
+          <div className='absolute top-0 left-0 z-20 h-full w-full setflex-center'>
             <div
               className={`px-10 py-7 rounded-50% transition-all duration-300 ${
                 !video.dark
@@ -90,12 +105,16 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
         )}
       </FancyLink>
       {video.caption && (
-        <div className="caption w-content mx-auto max-md:w-full max-md:px-4">
+        <div
+          className={`${
+            video.option ? 'w-content max-md:w-full' : 'w-full'
+          } caption mx-auto max-md:px-4`}
+        >
           <Caption caption={video.caption} color={color} />
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default VideoComponent
+export default VideoComponent;

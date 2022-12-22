@@ -82,6 +82,18 @@ main {
   }
 }
 
+.snackbar {
+  @apply bg-white text-black rounded-2xl font-default min-w-0 px-8 shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)] #{!important};
+}
+
+.MuiSnackbar-anchorOriginTopCenter {
+  @apply top-20 #{!important};
+}
+
+.tooltip{
+  @apply bg-white text-black uppercase rounded-xl font-default px-8 py-2 shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)] #{!important};
+}
+
 // HEADER
 .mobile-menu-icon {
   width: 25px;

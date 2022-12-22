@@ -239,7 +239,7 @@ export default function Index({ issueAPI, seoAPI }) {
     <Layout>
       <SEO
         title={issue.title}
-        pagelink={router.pathname}
+        pagelink={`editorial/${issue.slug.current}`}
         inputSEO={issue.seo}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
@@ -264,7 +264,8 @@ export default function Index({ issueAPI, seoAPI }) {
                   dark === 'white-text' ? 'text-white' : 'text-black'
                 }`}
               >
-                ISSUE {issue.issueNumber}
+                {/* ISSUE {issue.issueNumber} */}
+                WHAT'S NXT?
               </span>
             </Container>
           </div>
