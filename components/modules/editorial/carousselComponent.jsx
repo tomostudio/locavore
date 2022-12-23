@@ -117,7 +117,7 @@ const CarousselComponent = ({ caroussel }) => {
                       src={urlFor(data).width(1500).url()}
                       alt={data.name}
                       layout="fill"
-                      objectFit="cover"
+                      objectFit={data.objectFit}
                       objectPosition="center"
                       placeholder="blur"
                       blurDataURL={urlFor(data)
