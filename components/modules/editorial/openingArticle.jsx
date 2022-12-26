@@ -46,36 +46,61 @@ export default function OpeningArticle({
       ),
     },
     marks: {
-      link: (props) => (
-        <FancyLink destination={props.value.url} blank={true}>
-          {props.children}
-        </FancyLink>
-      ),
-      changeColor: (props) => (
-        <span style={{ color: props.value.color.hex }}>{props.children}</span>
-      ),
-      backgroundColor: (props) => (
-        <span style={{ backgroundColor: props.value.color.hex }}>
-          {props.children}
-        </span>
-      ),
+      add_ann: (props) =>
+        props.value?.link ? (
+          <FancyLink
+            destination={props.value.link}
+            blank={true}
+            style={{
+              color: props.value?.textColor
+                ? props.value?.textColor.hex
+                : 'currentColor',
+              backgroundColor: props.value?.bgColor
+                ? props.value?.bgColor
+                : 'transparent',
+              fontSize: props.value?.fontSize
+                ? props.value?.fontSize
+                : 'initial',
+            }}
+            className={
+              props.value?.font
+                ? props.value?.font === 'display'
+                  ? 'font-default'
+                  : props.value.font
+                : 'font-default'
+            }
+          >
+            {props.children}
+          </FancyLink>
+        ) : (
+          <span
+            style={{
+              color: props.value?.textColor
+                ? props.value?.textColor.hex
+                : 'currentColor',
+              backgroundColor: props.value?.bgColor
+                ? props.value?.bgColor
+                : 'transparent',
+              fontSize: props.value?.fontSize
+                ? props.value?.fontSize
+                : 'initial',
+            }}
+            className={
+              props.value?.font
+                ? props.value?.font === 'display'
+                  ? 'font-default'
+                  : props.value.font
+                : 'font-default'
+            }
+          >
+            {props.children}
+          </span>
+        ),
       largerSize: (props) => (
         <span style={{ fontSize: '1.5em' }}>{props.children}</span>
       ),
       sub: (props) => <sub>{props.children}</sub>,
       sup: (props) => <sup>{props.children}</sup>,
-      fontSize: (props) => (
-        <span style={{ fontSize: props.value.size }}>{props.children}</span>
-      ),
-      font: (props) => (
-        <span
-          className={
-            props.value.type === 'display' ? 'font-default' : props.value.type
-          }
-        >
-          {props.children}
-        </span>
-      ),
     },
   }
 
@@ -135,11 +160,11 @@ export default function OpeningArticle({
           <div className="w-auto space-x-4 flex ">
             <PillButton
               // destination='/editorial/search'
-              destination='/editorial/under-construction/list'
+              destination="/editorial/under-construction/list"
               onClick={() => {
-                appContext.setCategory(article.category.title);
+                appContext.setCategory(article.category.title)
               }}
-              className='text-xs max-md:py-1 max-md:px-2 opacity-100 border-black'
+              className="text-xs max-md:py-1 max-md:px-2 opacity-100 border-black"
             >
               {article.category.title}
             </PillButton>
