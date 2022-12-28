@@ -4,6 +4,7 @@ import { Quote } from '@/helpers/preset/svg'
 import Image from 'next/image'
 import urlFor from '@/helpers/sanity/urlFor'
 import Caption from '@/components/modules/editorial/caption'
+import FancyLink from '@/components/utils/fancyLink'
 
 const EditorComponent = ({ data, color }) => {
   return (
