@@ -77,7 +77,7 @@ const FamilySlug = ({
         props.value?.link ? (
           <FancyLink
             destination={props.value.link}
-            blank={true}
+            blank={props.value.target_blank}
             style={{
               color: props.value?.textColor
                 ? props.value?.textColor.hex
@@ -157,7 +157,7 @@ const FamilySlug = ({
         props.value?.link ? (
           <FancyLink
             destination={props.value.link}
-            blank={true}
+            blank={props.value.target_blank}
             style={{
               color: props.value?.textColor
                 ? props.value?.textColor.hex
