@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { fade } from '@/helpers/preset/transitions'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import { useRouter } from 'next/router'
 
 // Layout

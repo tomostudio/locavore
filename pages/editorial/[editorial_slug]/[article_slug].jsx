@@ -10,7 +10,7 @@ import OpeningArticle from '@/components/modules/editorial/openingArticle';
 import Container from '@/components/modules/container';
 import FancyLink from '@/components/utils/fancyLink';
 import VideoComponent from '@/components/modules/editorial/videoComponent';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import GalleryComponent from '@/components/modules/editorial/galleryComponent';
 import NextArticle from '@/components/modules/editorial/nextArticle';
 import StickyButton from '@/components/modules/stickyButton';
