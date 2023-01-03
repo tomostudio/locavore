@@ -1,6 +1,6 @@
 import { forwardRef, Fragment } from 'react';
 import Container from '../container';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import urlFor from '@/helpers/sanity/urlFor';
 import VideoComponent from './videoComponent';
 import Caption from './caption';
@@ -31,15 +31,14 @@ const GalleryComponent = ({ gallery, color }) => {
                             {...useNextSanityImage(client, item.image, {
                               imageBuilder: singleIURB,
                             })}
-                            layout='responsive'
                             alt={item.image.name}
-                            className={`w-full h-auto`}
+                            style={{ width: '100%', height: 'auto' }}
                             placeholder='blur'
-                            unoptimized
                             blurDataURL={urlFor(item.image)
-                              .blur(2)
+                              .blur(4)
                               .format('webp')
-                              .width(500)
+                              .width(250)
+                              .quality(50)
                               .url()}
                           />
                         ) : (
@@ -79,15 +78,14 @@ const GalleryComponent = ({ gallery, color }) => {
                                 imageBuilder: columnIURB,
                               }
                             )}
-                            layout='responsive'
-                            unoptimized
+                            style={{ width: '100%', height: 'auto' }}
                             alt={item.firstImage.image.name}
-                            className={`w-full h-auto`}
                             placeholder='blur'
                             blurDataURL={urlFor(item.firstImage.image)
-                              .blur(2)
+                              .blur(4)
                               .format('webp')
-                              .width(500)
+                              .width(250)
+                              .quality(50)
                               .url()}
                           />
                         ) : (
@@ -124,14 +122,14 @@ const GalleryComponent = ({ gallery, color }) => {
                                 imageBuilder: columnIURB,
                               }
                             )}
+                            style={{ width: '100%', height: 'auto' }}
                             alt={item.secondImage.image.name}
-                            layout='responsive'
-                            className={`w-full h-auto`}
                             placeholder='blur'
                             blurDataURL={urlFor(item.secondImage.image)
-                              .blur(2)
+                              .blur(4)
                               .format('webp')
-                              .width(500)
+                              .width(250)
+                              .quality(50)
                               .url()}
                           />
                         ) : (

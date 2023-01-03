@@ -3,6 +3,7 @@ export const singleIURB = (imageUrlBuilder, options) => {
     .width(
       options.width || Math.min(options.originalImageDimensions.width, 2000)
     )
+    .quality(75)
     .format('webp');
 };
 
@@ -11,5 +12,6 @@ export const columnIURB = (imageUrlBuilder, options) => {
     .width(
       options.width || Math.min(options.originalImageDimensions.width, 750)
     )
+    .quality(75)
     .format('webp');
 };

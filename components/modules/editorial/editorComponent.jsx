@@ -1,7 +1,7 @@
 import { PortableText } from '@portabletext/react';
 import VideoComponent from '@/components/modules/editorial/videoComponent';
 import { Quote } from '@/helpers/preset/svg';
-import Image from "next/legacy/image";
+import Image from 'next/image';
 import urlFor from '@/helpers/sanity/urlFor';
 import Caption from '@/components/modules/editorial/caption';
 import FancyLink from '@/components/utils/fancyLink';
@@ -208,7 +208,7 @@ const EditorComponent = ({ data, color }) => {
                       {...useNextSanityImage(client, props.value.image, {
                         imageBuilder: singleIURB,
                       })}
-                      layout='responsive'
+                      style={{ width: '100%', height: 'auto' }}
                       alt={props.value.image.name}
                       placeholder='blur'
                       blurDataURL={urlFor(props.value.image)
@@ -349,7 +349,7 @@ const EditorComponent = ({ data, color }) => {
                               imageBuilder: columnIURB,
                             }
                           )}
-                          layout='responsive'
+                          style={{ width: '100%', height: 'auto' }}
                           alt={props.value.left.imageLeft.name}
                           placeholder='blur'
                           blurDataURL={urlFor(props.value.left.imageLeft)
@@ -479,7 +479,7 @@ const EditorComponent = ({ data, color }) => {
                               imageBuilder: columnIURB,
                             }
                           )}
-                          layout='responsive'
+                          style={{ width: '100%', height: 'auto' }}
                           alt={props.value.right.imageRight.name}
                           placeholder='blur'
                           blurDataURL={urlFor(props.value.right.imageRight)
