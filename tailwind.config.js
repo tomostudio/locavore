@@ -179,7 +179,7 @@ module.exports = {
     paddingSafe: ['responsive'],
   },
   plugins: [
-    require('tailwindcss-padding-safe')(),
+    require('tailwindcss-padding-safe'),
     require('@tailwindcss/aspect-ratio'),
   ],
 }
