@@ -1,6 +1,6 @@
 import { forwardRef, Fragment } from 'react';
 import Container from '../container';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import urlFor from '@/helpers/sanity/urlFor';
 import VideoComponent from './videoComponent';
 import Caption from './caption';
