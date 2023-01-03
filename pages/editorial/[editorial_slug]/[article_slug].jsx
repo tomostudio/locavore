@@ -230,14 +230,14 @@ export default function ArticleSlug({
             ) : data._type === 'gallery' && data.gallery ? (
               <Fragment
                 key={i}
-                data-slug={data.title
-                  .toLowerCase()
-                  .replace(/^\s+|\s+$/g, '')
-                  .replace(/[^a-z0-9 -]/g, '')
-                  .replace(/\s+/g, '-')
-                  .replace(/-+/g, '-')
-                  .replace(/^-+/, '')
-                  .replace(/-+$/, '')}
+                // data-slug={data.title
+                //   .toLowerCase()
+                //   .replace(/^\s+|\s+$/g, '')
+                //   .replace(/[^a-z0-9 -]/g, '')
+                //   .replace(/\s+/g, '-')
+                //   .replace(/-+/g, '-')
+                //   .replace(/^-+/, '')
+                //   .replace(/-+$/, '')}
               >
                 {/* Title */}
                 {data.showTitle && (

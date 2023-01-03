@@ -6,7 +6,7 @@ module.exports = {
         destination: '/editorial/search',
         permanent: true,
       },
-    ]
+    ];
   },
   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
@@ -22,5 +22,5 @@ module.exports = {
   },
   images: {
     domains: ['cdn.sanity.io']
-  }
+  },
 };
