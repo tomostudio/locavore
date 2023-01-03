@@ -468,7 +468,7 @@
   resolved "https://registry.npmjs.org/@sanity/image-url/-/image-url-0.140.22.tgz"
   integrity sha512-CAmQZnj+KM7FSEYiWlIGDit072syicYuAw0w7R2ctMzHiZ4p9mE/g6dBnYqrqFUrw2J+GpJgPt+RVspKP8vdqA==
 
-"@sanity/image-url@^1.0.1":
+"@sanity/image-url@^1.0.0", "@sanity/image-url@^1.0.1":
   version "1.0.1"
   resolved "https://registry.npmjs.org/@sanity/image-url/-/image-url-1.0.1.tgz"
   integrity sha512-AdKQ3zMk7WdoNwoJPrAvQhW+kUtBldBX0nHtnGy+rwmgsCQ0rAXasrgH43Fhmsp/yB6piiq+F2d5qEuBFsdQVg==
@@ -1588,6 +1588,13 @@ nanoid@^3.1.30, nanoid@^3.2.0, nanoid@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.1.tgz#6347a18cac88af88f58af0b3594b723d5e99bb35"
   integrity sha512-n6Vs/3KGyxPQd6uO0eH4Bv0ojGSUvuLlIHtC3Y0kEO23YRge8H9x1GCzLn28YX0H66pMkxuaeESFq4tKISKwdw==
+
+next-sanity-image@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/next-sanity-image/-/next-sanity-image-5.0.0.tgz#ecbdb3eebe71862bcbc53bea5129bd5d76401481"
+  integrity sha512-mVnybxCEcy3l4mi/Ob+0RhPw6W1b9RcCNfx4PyUCP67+R/Cs75o0x6UEZ2Xk7Vxg9Ms4YAaEXO7GJ5mF5zL0rQ==
+  dependencies:
+    "@sanity/image-url" "^1.0.0"
 
 next-seo@^5.1.0:
   version "5.1.0"

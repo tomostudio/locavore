@@ -4,6 +4,8 @@ import Image from 'next/image'
 import urlFor from '@/helpers/sanity/urlFor'
 import VideoComponent from './videoComponent'
 import Caption from './caption'
+import { useNextSanityImage } from 'next-sanity-image'
+import client from '@/helpers/sanity/client'
 
 const GalleryComponent = ({ gallery, color }) => {
   return (
@@ -18,14 +20,17 @@ const GalleryComponent = ({ gallery, color }) => {
                   <div className="w-full flex-col">
                     <div className="w-full setflex-center" key={id}>
                       <div
-                        className={`relative w-full h-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1`}
+                        className={`relative w-full h-full`}
                         style={{
                           backgroundColor: `rgba(208,208,208, 1)`,
+                          aspectRatio: `${
+                            item.image ? useNextSanityImage(client, item.image).width : '16'
+                          }/${item.image ? useNextSanityImage(client, item.image).height : '9'}`,
                         }}
                       >
                         {item.image && item.image.asset ? (
                           <Image
-                            src={urlFor(item.image).width(1500).url()}
+                            src={urlFor(item.image).url()}
                             alt={item.image.name}
                             layout="fill"
                             objectFit="cover"
