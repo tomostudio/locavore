@@ -3,7 +3,7 @@ import FancyLink from '@/components/utils/fancyLink';
 import Container from '@/components/modules/container';
 import { useMediaQuery } from '@/helpers/functional/checkMedia';
 import { useAppContext } from 'context/state';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import urlFor from '@/helpers/sanity/urlFor';
 import { transition } from '@/helpers/preset/tailwind';
 import { motion } from 'framer-motion';

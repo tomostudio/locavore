@@ -1,6 +1,6 @@
 import getYoutube from '@/components/utils/getYoutube';
 import urlFor from '@/helpers/sanity/urlFor';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { useState } from 'react';
 import FancyLink from '../../utils/fancyLink';
 import Caption from './caption';

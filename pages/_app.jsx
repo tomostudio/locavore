@@ -119,7 +119,7 @@ export default function App({ Component, pageProps }) {
         <AnimatePresence>
           <Header header={pageProps.headerAPI} footer={pageProps.footerAPI} />
         </AnimatePresence>
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence mode="wait">
           <Component {...pageProps} key={router.asPath} />
         </AnimatePresence>
       </AppWrapper>
