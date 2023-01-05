@@ -3,7 +3,7 @@ import Container from '../container'
 import FancyLink from '../../utils/fancyLink'
 import Arrow from '../../utils/arrow'
 import PillButton from '../pillButton'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { useAppContext } from 'context/state'
 import checkMonth from '@/helpers/functional/checkMonth'
 import { PortableText } from '@portabletext/react'
@@ -50,7 +50,7 @@ export default function OpeningArticle({
         props.value?.link ? (
           <FancyLink
             destination={props.value.link}
-            blank={true}
+            blank={props.value.target_blank}
             style={{
               color: props.value?.textColor
                 ? props.value?.textColor.hex

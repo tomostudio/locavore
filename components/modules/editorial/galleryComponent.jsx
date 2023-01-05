@@ -1,40 +1,44 @@
-import { forwardRef, Fragment } from 'react'
-import Container from '../container'
-import Image from 'next/image'
-import urlFor from '@/helpers/sanity/urlFor'
-import VideoComponent from './videoComponent'
-import Caption from './caption'
+import { forwardRef, Fragment } from 'react';
+import Container from '../container';
+import Image from 'next/image';
+import urlFor from '@/helpers/sanity/urlFor';
+import VideoComponent from './videoComponent';
+import Caption from './caption';
+import { useNextSanityImage } from 'next-sanity-image';
+import client from '@/helpers/sanity/client';
+import { singleIURB, columnIURB } from '@/components/utils/iurb';
 
 const GalleryComponent = ({ gallery, color }) => {
   return (
-    <Container className="w-full h-auto setflex-center mt-12">
+    <Container className='w-full h-auto setflex-center mt-12'>
       <div className={`w-full max-w-screen-xl flex flex-col`}>
-        <div className="w-full space-y-3">
+        <div className='w-full space-y-3'>
           {gallery.gallery ? (
             gallery.gallery.map((item, id) =>
               item._type === 'singleImage' ? (
                 <Fragment key={id}>
                   {/* Singe Image */}
-                  <div className="w-full flex-col">
-                    <div className="w-full setflex-center" key={id}>
+                  <div className='w-full flex-col'>
+                    <div className='w-full setflex-center' key={id}>
                       <div
-                        className={`relative w-full h-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1`}
+                        className={`relative w-full block`}
                         style={{
                           backgroundColor: `rgba(208,208,208, 1)`,
                         }}
                       >
                         {item.image && item.image.asset ? (
                           <Image
-                            src={urlFor(item.image).width(1500).url()}
+                            {...useNextSanityImage(client, item.image, {
+                              imageBuilder: singleIURB,
+                            })}
                             alt={item.image.name}
-                            layout="fill"
-                            objectFit="cover"
-                            objectPosition="center"
-                            placeholder="blur"
+                            style={{ width: '100%', height: 'auto' }}
+                            placeholder='blur'
                             blurDataURL={urlFor(item.image)
-                              .blur(2)
+                              .blur(4)
                               .format('webp')
-                              .width(500)
+                              .width(250)
+                              .quality(50)
                               .url()}
                           />
                         ) : (
@@ -56,12 +60,10 @@ const GalleryComponent = ({ gallery, color }) => {
               ) : item._type === 'twoImage' ? (
                 <Fragment key={id}>
                   {/* Two Image */}
-                  <div
-                    className={`w-full h-30rem max-md:h-56 flex space-x-3 max-md:space-x-2`}
-                  >
-                    <div className="flex flex-col w-full">
+                  <div className={`w-full flex space-x-3 max-md:space-x-2`}>
+                    <div className='flex flex-col w-full'>
                       <div
-                        className="relative w-full h-full"
+                        className='relative w-full block'
                         style={{
                           backgroundColor: `rgba(208,208,208, 1)`,
                         }}
@@ -69,18 +71,21 @@ const GalleryComponent = ({ gallery, color }) => {
                         {item.firstImage.image &&
                         item.firstImage.image.asset ? (
                           <Image
-                            src={urlFor(item.firstImage.image)
-                              .width(1500)
-                              .url()}
+                            {...useNextSanityImage(
+                              client,
+                              item.firstImage.image,
+                              {
+                                imageBuilder: columnIURB,
+                              }
+                            )}
+                            style={{ width: '100%', height: 'auto' }}
                             alt={item.firstImage.image.name}
-                            layout="fill"
-                            objectFit="cover"
-                            objectPosition="center"
-                            placeholder="blur"
+                            placeholder='blur'
                             blurDataURL={urlFor(item.firstImage.image)
-                              .blur(2)
+                              .blur(4)
                               .format('webp')
-                              .width(500)
+                              .width(250)
+                              .quality(50)
                               .url()}
                           />
                         ) : (
@@ -100,9 +105,9 @@ const GalleryComponent = ({ gallery, color }) => {
                         </div>
                       )}
                     </div>
-                    <div className="flex flex-col w-full">
+                    <div className='flex flex-col w-full'>
                       <div
-                        className="relative w-full h-full"
+                        className='relative w-full block'
                         style={{
                           backgroundColor: `rgba(208,208,208, 1)`,
                         }}
@@ -110,18 +115,21 @@ const GalleryComponent = ({ gallery, color }) => {
                         {item.secondImage.image &&
                         item.secondImage.image.asset ? (
                           <Image
-                            src={urlFor(item.secondImage.image)
-                              .width(1500)
-                              .url()}
+                            {...useNextSanityImage(
+                              client,
+                              item.secondImage.image,
+                              {
+                                imageBuilder: columnIURB,
+                              }
+                            )}
+                            style={{ width: '100%', height: 'auto' }}
                             alt={item.secondImage.image.name}
-                            layout="fill"
-                            objectFit="cover"
-                            objectPosition="center"
-                            placeholder="blur"
+                            placeholder='blur'
                             blurDataURL={urlFor(item.secondImage.image)
-                              .blur(2)
+                              .blur(4)
                               .format('webp')
-                              .width(500)
+                              .width(250)
+                              .quality(50)
                               .url()}
                           />
                         ) : (
@@ -147,7 +155,7 @@ const GalleryComponent = ({ gallery, color }) => {
                 item._type === 'video' && (
                   <VideoComponent video={item} color={color} gallery={true} />
                 )
-              ),
+              )
             )
           ) : (
             <></>
@@ -155,7 +163,7 @@ const GalleryComponent = ({ gallery, color }) => {
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default GalleryComponent
+export default GalleryComponent;

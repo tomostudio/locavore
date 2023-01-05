@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import FancyLink from '@/components/utils/fancyLink'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import checkMonth from '@/helpers/functional/checkMonth'
@@ -62,7 +62,7 @@ const EditorialIssueCard = React.forwardRef(
           props.value?.link ? (
             <FancyLink
               destination={props.value.link}
-              blank={true}
+              blank={props.value.target_blank}
               style={{
                 color: props.value?.textColor
                   ? props.value?.textColor.hex

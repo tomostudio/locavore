@@ -27,20 +27,21 @@ const FancyLink = forwardRef(
         {children}
       </button>
     ) : !blank ? (
-      <Link href={destination} scroll={false}>
-        <a
-          aria-label={a11yText}
-          className={`${className} pointer-events-auto`}
-          ref={ref}
-          onClick={() => {
-            onClick()
-            appContext.setMobileMenu(false)
-          }}
-          {...others}
-        >
-          {children}
-        </a>
-      </Link>
+      (<Link
+        href={destination}
+        scroll={false}
+        aria-label={a11yText}
+        className={`${className} pointer-events-auto`}
+        ref={ref}
+        onClick={() => {
+          onClick()
+          appContext.setMobileMenu(false)
+        }}
+        {...others}>
+
+        {children}
+
+      </Link>)
     ) : (
       <a
         aria-label={a11yText}
@@ -54,7 +55,7 @@ const FancyLink = forwardRef(
       >
         {children}
       </a>
-    )
+    );
   },
 )
 
