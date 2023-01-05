@@ -24,8 +24,7 @@ export default function Reveal() {
           scroller: '#scroll-container', // id of scroll container
           scrub: true,
           start: 'top 0%',
-          end: 'bottom 30%',
-          //   markers: true
+          end: 'bottom 30%'
         },
       }
 
@@ -55,8 +54,7 @@ export default function Reveal() {
           scroller: '#scroll-container', // id of scroll container
           scrub: true,
           start: 'top 70%',
-          end: 'bottom 0%',
-          markers: true,
+          end: 'bottom 0%'
         },
       }
 
