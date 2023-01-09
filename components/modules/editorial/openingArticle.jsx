@@ -62,13 +62,13 @@ export default function OpeningArticle({
                 ? props.value?.fontSize
                 : 'initial',
             }}
-            className={
+            className={`${
               props.value?.font
                 ? props.value?.font === 'display'
                   ? 'font-default'
                   : props.value.font
                 : 'font-default'
-            }
+            } underline`}
           >
             {props.children}
           </FancyLink>
