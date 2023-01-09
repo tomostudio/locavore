@@ -3,7 +3,7 @@ import Container from '../container'
 import FancyLink from '../../utils/fancyLink'
 import Arrow from '../../utils/arrow'
 import PillButton from '../pillButton'
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image'
 import { useAppContext } from 'context/state'
 import checkMonth from '@/helpers/functional/checkMonth'
 import { PortableText } from '@portabletext/react'
@@ -62,13 +62,13 @@ export default function OpeningArticle({
                 ? props.value?.fontSize
                 : 'initial',
             }}
-            className={
+            className={`${
               props.value?.font
                 ? props.value?.font === 'display'
                   ? 'font-default'
                   : props.value.font
                 : 'font-default'
-            }
+            } underline`}
           >
             {props.children}
           </FancyLink>
