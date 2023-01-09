@@ -24,7 +24,7 @@ export default function Reveal() {
           scroller: '#scroll-container', // id of scroll container
           scrub: true,
           start: 'top 0%',
-          end: 'bottom 30%'
+          end: 'bottom 30%',
         },
       }
 
@@ -50,22 +50,23 @@ export default function Reveal() {
       const settings = {
         scrollTrigger: {
           id: id,
-          trigger: '#trigger1', // which section will be tracked as the scroll trigger
+          trigger: '#trigger2', // which section will be tracked as the scroll trigger
           scroller: '#scroll-container', // id of scroll container
           scrub: true,
-          start: 'top 70%',
-          end: 'bottom 0%'
+          start: 'top 100%',
+          end: 'bottom 0%',
         },
       }
 
       // Input Animation
       const animation = [
         {
-          from: [
+          set: [
             elem,
             {
-              y: '0%',
-              scale: 8,
+              // opacity: 0,
+              y: '-100%',
+              scale: 5,
               ease: 'none',
             },
           ],
@@ -74,6 +75,7 @@ export default function Reveal() {
           to: [
             elem,
             {
+              // opacity: 1,
               y: '0%',
               scale: 1,
               ease: 'none',
@@ -88,7 +90,20 @@ export default function Reveal() {
 
   return (
     <Layout>
-      <div className="bg-[#BFC29D]">
+      <div className='bg-[#BFC29D]'>
+        {/* Begin */}
+        <div
+          id="scroll"
+          className="fixed z-2 bg-transparent top-0 left-0 w-full h-screen setflex-center pointer-events-none"
+        >
+          <span
+            className={`font-light text-xs text-center tracking-widest animate-fade-down text-black`}
+          >
+            SCROLL TO
+            <br />
+            BEGIN
+          </span>
+        </div>
         <LocomotiveScrollProvider
           options={{ smooth: false, lerp: 0.05 }}
           containerRef={containerRef}
@@ -111,24 +126,15 @@ export default function Reveal() {
                     exit="exit"
                     variants={fade}
                   >
-                    {/* Begin */}
-                    <div
-                      id="scroll"
-                      className="fixed top-0 left-0 w-full h-screen setflex-center pointer-events-none"
-                    >
-                      <span
-                        className={`font-light text-xs text-center tracking-widest animate-fade-down text-black`}
-                      >
-                        SCROLL TO
-                        <br />
-                        BEGIN
-                      </span>
-                    </div>
                     <div id="trigger1" className="w-full h-screen bg-red-500" />
+                    <div
+                      id="trigger2"
+                      className="w-full h-screen bg-green-500"
+                    />
                     {/* Section A1 */}
                     <div
                       id="section_a1"
-                      className="h-screen top-0 left-0 right-0  setflex-center w-screen z-10 pointer-events-none"
+                      className="h-screen top-0 left-0 right-0 scale-[5] translate-y-[-100%] setflex-center w-screen pointer-events-none"
                     >
                       <Container className="max-md:px-6 text-center ">
                         <span
@@ -140,7 +146,7 @@ export default function Reveal() {
                     </div>
                     <div
                       id="section_a2"
-                      className="w-full h-screen bg-green-500"
+                      className="w-full h-screen"
                     />
                   </m.main>
                 </LazyMotion>
