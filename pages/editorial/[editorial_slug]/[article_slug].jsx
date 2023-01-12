@@ -540,7 +540,8 @@ export default function ArticleSlug({
       {/* Button Sticky */}
       <StickyButton
         className={nextArticle === null ? `mb-5 mt-10` : ''}
-        destination={`/editorial/under-construction/list`}
+        // destination={`/editorial/under-construction/list`}
+        destination={`/editorial/${nextArticle.editorial_slug}/list`}
         arrow='left'
       >
         ARTICLE LIST
