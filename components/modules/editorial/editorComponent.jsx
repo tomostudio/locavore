@@ -233,13 +233,13 @@ const EditorComponent = ({ data, color }) => {
             ),
             columnBlock: (props) => (
               <div
-                className={`column space-x-8 ${
+                className={`column space-y-6 md:space-y-0 ${
                   !props.value.padding ? '' : '!px-0'
                 }`}
               >
-                <div>
+                <div className='md:pr-4'>
                   {props.value.left.columnLeft === 'block' ? (
-                    <div className='w-full h-full'>
+                    <div className='w-full h-full '>
                       <PortableText
                         value={props.value.left.blockLeft}
                         components={{
@@ -367,7 +367,7 @@ const EditorComponent = ({ data, color }) => {
                     <></>
                   )}
                 </div>
-                <div>
+                <div className='md:pl-4'>
                   {props.value.right.columnRight === 'block' ? (
                     <div className='w-full h-full'>
                       <PortableText
