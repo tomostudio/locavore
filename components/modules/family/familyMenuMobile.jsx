@@ -51,7 +51,6 @@ const FamilyMenuMobile = ({
   const checkScroll = () => {
     if (markerRef.current) {
       const checkSticky = markerRef.current.getBoundingClientRect().top;
-      // console.log(checkSticky - window.innerHeight + 160);
       if (checkSticky - window.innerHeight + 120 < 0) {
         setMenuHide(false);
         setEndScrollShow(true);

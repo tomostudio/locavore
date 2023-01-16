@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import FancyLink from '@/components/utils/fancyLink';
 import urlFor from '@/helpers/sanity/urlFor';
 

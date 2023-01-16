@@ -1,12 +1,12 @@
-import getYoutube from '@/components/utils/getYoutube'
-import urlFor from '@/helpers/sanity/urlFor'
-import Image from "next/legacy/image";
-import { useState } from 'react'
-import FancyLink from '../../utils/fancyLink'
-import Caption from './caption'
+import getYoutube from '@/components/utils/getYoutube';
+import urlFor from '@/helpers/sanity/urlFor';
+import Image from 'next/legacy/image';
+import { useState } from 'react';
+import FancyLink from '../../utils/fancyLink';
+import Caption from './caption';
 
 const VideoComponent = ({ className = '', video, color, gallery = false }) => {
-  const [statusVideo, setStatusVideo] = useState(false)
+  const [statusVideo, setStatusVideo] = useState(false);
 
   return (
     <div
@@ -59,15 +59,18 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
                 }`}
               >
                 <Image
-                  src={urlFor(video.thumbnail).width(1500).format('webp').url()}
+                  src={urlFor(video.thumbnail)
+                    .width(1500)
+                    .format('webp')
+                    .url()}
                   alt={video.thumbnail.name}
                   className={`${statusVideo ? 'inActive' : ''}`}
-                  loading="eager"
+                  loading='eager'
                   priority={true}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="center"
-                  placeholder="blur"
+                  layout='fill'
+                  objectFit='cover'
+                  objectPosition='center'
+                  placeholder='blur'
                   blurDataURL={urlFor(video.thumbnail)
                     .blur(2)
                     .format('webp')
@@ -88,7 +91,7 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
           </>
         </div>
         {!statusVideo && (
-          <div className="absolute top-0 left-0 z-20 h-full w-full setflex-center">
+          <div className='absolute top-0 left-0 z-20 h-full w-full setflex-center'>
             <div
               className={`px-10 py-7 rounded-50% transition-all duration-300 ${
                 !video.dark
@@ -111,7 +114,7 @@ const VideoComponent = ({ className = '', video, color, gallery = false }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default VideoComponent
+export default VideoComponent;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image'
 import useInfiniteScroll from 'react-infinite-scroll-hook'
 
 // Layout

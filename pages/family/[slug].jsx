@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import SwiperCore, { Pagination } from 'swiper'
 import { motion } from 'framer-motion'
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image'
 import { useRouter } from 'next/router'
 
 // Layout

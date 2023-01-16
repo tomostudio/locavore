@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image'
 import FancyLink from '@/components/utils/fancyLink'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import checkMonth from '@/helpers/functional/checkMonth'

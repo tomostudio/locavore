@@ -298,7 +298,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
         </m.section>
       </LazyMotion>
       {/* Button Sticky */}
-      <StickyButton destination='/' arrow='left'>
+      <StickyButton destination='/editorial' arrow='left'>
         HOME
       </StickyButton>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
