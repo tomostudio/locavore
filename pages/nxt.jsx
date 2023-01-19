@@ -67,12 +67,16 @@ export default function Reveal() {
   return (
     <Layout>
       <SEO title={'Editorial'} pagelink={router.pathname} />
-      <div className='outercontainer fixed z-50 w-full h-full border '>
+      {/* FIXED POSITION */}
+      <div className='outercontainer fixed z-50 w-full h-full border pointer-events-none '>
         <div className='absolute left-0 top-0 flex items-center justify-center w-full h-full'>
           <div id='box' className='relative w-96 h-96 bg-yellow-400' />
         </div>
         <div id='line' className='absolute w-full h-1 bg-red-500 top-[50%]' />
       </div>
+      {/* CAPTION */}
+      <div className='caption fixed z-50 w-full h-full pointer-events-none'></div>
+
       <LocomotiveScrollProvider
         options={{ smooth: false, lerp: 0.05 }}
         containerRef={containerRef}
@@ -119,7 +123,7 @@ export default function Reveal() {
           </div>
         </div>
       </LocomotiveScrollProvider>
-    </Layout>
+    </Layout>  
   );
 }
 
