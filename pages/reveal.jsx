@@ -427,7 +427,7 @@ export default function Reveal() {
           <div className="fixed z-20 bottom-10 left-0 w-full setflex-center">
             <div className='w-full flex flex-wrap justify-center max-w-xl gap-2'>
               <div id="footer1" className='px-2'>
-                <span className='text-gray text-xs'>WE HAD A DREAM</span>
+                <span className='text-gray text-xs active'>WE HAD A DREAM</span>
               </div>
               <div className=' px-2'>
                 <span className='text-gray text-xs'>INSPIRED BY NICE THINGS</span>

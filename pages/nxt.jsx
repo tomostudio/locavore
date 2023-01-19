@@ -22,7 +22,7 @@ export default function Reveal() {
     () => {
       // Scroller Dissapear
       const id = 'scroll'; // animation id
-      const elem = '#box';
+      const elem = '';
       const settings = {
         scrollTrigger: {
           id: id,
@@ -36,46 +36,96 @@ export default function Reveal() {
 
       // Input Animation
       const animation = [
-        {
-          set: [
-            elem,
-            {
-              y: '300%',
-              scale: 3,
-              ease: 'none',
-              opacity: 0,
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              y: 0,
-              scale: 1,
-              ease: 'none',
-              opacity: 1,
-            },
-          ],
-        },
+        // {
+        //   set: [
+        //     elem,
+        //     {
+        //       y: '300%',
+        //       scale: 3,
+        //       ease: 'none',
+        //       opacity: 0,
+        //     },
+        //   ],
+        // },
+        // {
+        //   to: [
+        //     elem,
+        //     {
+        //       y: 0,
+        //       scale: 1,
+        //       ease: 'none',
+        //       opacity: 1,
+        //     },
+        //   ],
+        // },
       ];
 
       return { id, elem, settings, animation };
     },
   ];
 
+  const [bgColor, setBgColor] = useState('#BFC29D');
+
+  useEffect(() => {
+    const BackgroundLocomotiveEvents = (e) => {
+      const { enter, target, element } = e.detail;
+      console.log(enter, target, element, e);
+      if (enter === 'enter')
+        switch (target) {
+          case 'section1':
+            console.log('set');
+            setBgColor('#BFC29D');
+            break;
+          case 'section2':
+            console.log('set');
+            setBgColor('#B1BA96');
+            break;
+
+          default:
+            break;
+        }
+    };
+
+    window.addEventListener('LocoCall', BackgroundLocomotiveEvents);
+    return () => {
+      window.removeEventListener('LocoCall', BackgroundLocomotiveEvents);
+    };
+  }, []);
   return (
     <Layout>
       <SEO title={'Editorial'} pagelink={router.pathname} />
       {/* FIXED POSITION */}
-      <div className='outercontainer fixed z-50 w-full h-full border pointer-events-none '>
-        <div className='absolute left-0 top-0 flex items-center justify-center w-full h-full'>
-          <div id='box' className='relative w-96 h-96 bg-yellow-400' />
-        </div>
-        <div id='line' className='absolute w-full h-1 bg-red-500 top-[50%]' />
-      </div>
+      <div className='outercontainer fixed z-50 w-full h-full border pointer-events-none '></div>
+      {/* BACKGROUND COLOR */}
+      <div
+        id='NXTbackground'
+        className={`background fixed z-1 w-full h-full pointer-events-none transition-colors duration-1000`}
+        style={{ background: bgColor }}
+      />
       {/* CAPTION */}
-      <div className='caption fixed z-50 w-full h-full pointer-events-none'></div>
+      <div
+        id='reveal_caption'
+        className='caption fixed z-50 pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 __b bottom-4 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl text-md'
+      >
+        <div className={`caption_tab px-2 w-fit rotate-0 active`}>
+          WE HAD A DREAM
+        </div>
+        <div className={`caption_tab px-2 w-fit rotate-1`}>
+          INSPIRED BY NICE THINGS
+        </div>
+        <div className={`caption_tab px-2 w-fit -rotate-[-.5deg]`}>
+          AND A BETTER WORLD
+        </div>
+        <div className={`caption_tab px-2 w-fit rotate-[-.25deg]`}>
+          SO WE TOOK THAT DREAM AND MADE IT REAL
+        </div>
+        <div className={`caption_tab px-2 w-fit rotate-0`}>
+          SO OTHER PEOPLE CAN DREAM TOO
+        </div>
+        <div className={`caption_tab px-2 w-fit rotate-1/2`}>
+          INSPIRED BY OUR NICE THING
+        </div>
+      </div>
 
       <LocomotiveScrollProvider
         options={{ smooth: false, lerp: 0.05 }}
@@ -99,31 +149,39 @@ export default function Reveal() {
                   exit='exit'
                   variants={fade}
                 >
-                  <div
+                  <section
                     id='trigger0'
-                    className='trigger w-full h-screen bg-slate-400 text-4xl flex justify-center items-center '
+                    className='trigger w-full h-[110vh] text-4xl flex justify-center items-center '
                   >
-                    0
-                  </div>
-                  <div
+                    <span
+                      className={`font-light text-xs text-center tracking-widest animate-fade-down text-black`}
+                    >
+                      SCROLL TO
+                      <br />
+                      BEGIN
+                    </span>
+                  </section>
+                  <section
                     id='trigger1'
-                    className='trigger relative w-full h-screen bg-red-400 text-4xl flex justify-center items-center '
-                  >
-                    <span className=''>1</span>
-                  </div>
-                  <div
-                    id='trigger2'
-                    className='trigger w-full h-screen  bg-blue-400 text-4xl flex justify-center items-center '
-                  >
-                    2
-                  </div>
+                    className='trigger relative w-full h-[110vh] text-4xl flex justify-center items-center __b '
+                    data-scroll
+                    data-scroll-repeat
+                    data-scroll-call='section1'
+                  ></section>
+                  <section
+                    id='trigger1'
+                    className='trigger relative w-full h-[110vh]  text-4xl flex justify-center items-center '
+                    data-scroll
+                    data-scroll-repeat
+                    data-scroll-call='section2'
+                  ></section>
                 </m.main>
               </LazyMotion>
             </ScrollTriggerWrapper>
           </div>
         </div>
       </LocomotiveScrollProvider>
-    </Layout>  
+    </Layout>
   );
 }
 
