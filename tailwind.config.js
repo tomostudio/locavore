@@ -10,6 +10,7 @@ module.exports = {
     fontFamily: {
       default: ['Favorit Pro', 'sans-serif'],
       sans: ['Whyte Inktrap', 'sans-serif'],
+      funkturm: ['Funkturm', 'sans-serif'],
       serif: ['Alegreya', 'serif'],
     },
     flexGrow: {
