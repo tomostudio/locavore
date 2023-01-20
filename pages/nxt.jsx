@@ -95,7 +95,15 @@ export default function Reveal() {
     <Layout>
       <SEO title={'Editorial'} pagelink={router.pathname} />
       {/* FIXED POSITION */}
-      <div className='outercontainer fixed z-50 w-full h-full border pointer-events-none '></div>
+      <div className='outercontainer fixed z-50 w-full h-full border pointer-events-none '>
+        {/* SECTION 1 WE HAD A DREAM */}
+        <div id='section1_fixed'>
+          <div className='font-funkturm absolute w-full h-full flex justify-center items-center text-center leading-none text-white text-9xl'>
+            WE HAD
+            <br />A DREAM
+          </div>
+        </div>
+      </div>
       {/* BACKGROUND COLOR */}
       <div
         id='NXTbackground'
@@ -105,7 +113,7 @@ export default function Reveal() {
       {/* CAPTION */}
       <div
         id='reveal_caption'
-        className='caption fixed z-50 pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 __b bottom-4 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl text-md'
+        className='caption fixed z-50 pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 bottom-4 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl text-md'
       >
         <div className={`caption_tab px-2 w-fit rotate-0 active`}>
           WE HAD A DREAM
@@ -151,15 +159,17 @@ export default function Reveal() {
                 >
                   <section
                     id='trigger0'
-                    className='trigger w-full h-[110vh] text-4xl flex justify-center items-center '
+                    className='trigger w-full h-[110vh] text-4xl'
                   >
-                    <span
-                      className={`font-light text-xs text-center tracking-widest animate-fade-down text-black`}
-                    >
-                      SCROLL TO
-                      <br />
-                      BEGIN
-                    </span>
+                    <div className='flex justify-center items-center w-full h-screen'>
+                      <span
+                        className={`font-light text-xs text-center tracking-widest animate-fade-down text-black`}
+                      >
+                        SCROLL TO
+                        <br />
+                        BEGIN
+                      </span>
+                    </div>
                   </section>
                   <section
                     id='trigger1'
@@ -167,7 +177,10 @@ export default function Reveal() {
                     data-scroll
                     data-scroll-repeat
                     data-scroll-call='section1'
-                  ></section>
+                  >
+                    {/* WE HAD A DREAM */}
+                    <div className='exit' />
+                  </section>
                   <section
                     id='trigger1'
                     className='trigger relative w-full h-[110vh]  text-4xl flex justify-center items-center '
