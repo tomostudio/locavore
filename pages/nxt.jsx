@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 
+import { Parallax } from 'react-scroll-parallax';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 
@@ -19,45 +20,147 @@ export default function Reveal() {
 
   // ANIMATION
   const animationObj = [
+    // SECTION 1
+    // TITLE ENTER
     () => {
-      // Scroller Dissapear
-      const id = 'scroll'; // animation id
-      const elem = '';
+      // WE HAVE A DREAM COMING IN
+      const id = 'wehaveadream-enter'; // animation id
+      const elem = '#section1_fixed #whd_title';
       const settings = {
         scrollTrigger: {
           id: id,
-          trigger: '#trigger1', // which section will be tracked as the scroll trigger
+          trigger: '#enter-dream', // which section will be tracked as the scroll trigger
           scroller: '#scroll-container', // id of scroll container
           scrub: true,
           start: 'top 100%',
-          end: 'bottom 0%',
+          end: 'bottom 100%',
         },
       };
 
       // Input Animation
       const animation = [
-        // {
-        //   set: [
-        //     elem,
-        //     {
-        //       y: '300%',
-        //       scale: 3,
-        //       ease: 'none',
-        //       opacity: 0,
-        //     },
-        //   ],
-        // },
-        // {
-        //   to: [
-        //     elem,
-        //     {
-        //       y: 0,
-        //       scale: 1,
-        //       ease: 'none',
-        //       opacity: 1,
-        //     },
-        //   ],
-        // },
+        {
+          set: [
+            elem,
+            {
+              opacity: 0,
+              scale: 5,
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              opacity: 1,
+              scale: 1,
+            },
+          ],
+        },
+      ];
+
+      return { id, elem, settings, animation };
+    },
+    // EYES ENTER
+    () => {
+      // WE HAVE A DREAM COMING IN
+      const id = 'eyes-enter'; // animation id
+      const elem = '#eyes';
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: '#enter-eyes', // which section will be tracked as the scroll trigger
+          scroller: '#scroll-container', // id of scroll container
+          scrub: true,
+          start: 'top 100%',
+          end: 'bottom 100%',
+        },
+      };
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              opacity: 0,
+              y: 200,
+              ease: 'none',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              opacity: 1,
+              y: 100,
+              ease: 'none',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              opacity: 1,
+              y: 0,
+              ease: 'none',
+            },
+          ],
+        },
+      ];
+
+      return { id, elem, settings, animation };
+    },
+    // EYES EXIT
+    () => {
+      // WE HAVE A DREAM COMING IN
+      const id = 'eyes-enter'; // animation id
+      const elem = '#eyes';
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: '#exit-eyes', // which section will be tracked as the scroll trigger
+          scroller: '#scroll-container', // id of scroll container
+          scrub: true,
+          start: 'top 100%',
+          end: 'bottom 100%',
+        },
+      };
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              opacity: 1,
+              y: 0,
+              ease: 'none',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              opacity: 1,
+              y: 100,
+              ease: 'none',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              opacity: 0,
+              y: 200,
+              ease: 'none',
+            },
+          ],
+        },
       ];
 
       return { id, elem, settings, animation };
@@ -68,16 +171,15 @@ export default function Reveal() {
 
   useEffect(() => {
     const BackgroundLocomotiveEvents = (e) => {
+      console.log(e);
+      // console.log(enter, target, element, e);
       const { enter, target, element } = e.detail;
-      console.log(enter, target, element, e);
       if (enter === 'enter')
         switch (target) {
           case 'section1':
-            console.log('set');
             setBgColor('#BFC29D');
             break;
           case 'section2':
-            console.log('set');
             setBgColor('#B1BA96');
             break;
 
@@ -95,13 +197,20 @@ export default function Reveal() {
     <Layout>
       <SEO title={'Editorial'} pagelink={router.pathname} />
       {/* FIXED POSITION */}
-      <div className='outercontainer fixed z-50 w-full h-full border pointer-events-none '>
+      <div className='outercontainer fixed z-50 w-full h-full border pointer-events-none select-none'>
         {/* SECTION 1 WE HAD A DREAM */}
         <div id='section1_fixed'>
-          <div className='font-funkturm absolute w-full h-full flex justify-center items-center text-center leading-none text-white text-9xl'>
+          <div
+            id='whd_title'
+            className=' pointer-events-none font-funkturm absolute w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl'
+          >
             WE HAD
             <br />A DREAM
           </div>
+          <div
+            id='eyes'
+            className='opacity-0 h-24 w-[50vh] bg-slate-900 fixed bottom-[15vh] left-1/2 translate-x-[-50%]'
+          />
         </div>
       </div>
       {/* BACKGROUND COLOR */}
@@ -147,51 +256,72 @@ export default function Reveal() {
           id='scroll-container'
           className={`z-1 relative`}
         >
-          <div data-scroll-section>
-            <ScrollTriggerWrapper animation={animationObj}>
-              <LazyMotion features={domAnimation}>
-                <m.main
-                  className='relative p-0 m-0'
-                  initial='initial'
-                  animate='enter'
-                  exit='exit'
-                  variants={fade}
+          <ScrollTriggerWrapper animation={animationObj}>
+            <LazyMotion features={domAnimation}>
+              <m.main
+                className='relative p-0 m-0'
+                initial='initial'
+                animate='enter'
+                exit='exit'
+                variants={fade}
+              >
+                <section
+                  id='trigger0'
+                  className='trigger w-full h-[110vh] text-4xl'
+                  data-scroll-section
                 >
-                  <section
-                    id='trigger0'
-                    className='trigger w-full h-[110vh] text-4xl'
-                  >
-                    <div className='flex justify-center items-center w-full h-screen'>
-                      <span
-                        className={`font-light text-xs text-center tracking-widest animate-fade-down text-black`}
+                  <div className='flex justify-center items-center w-full h-screen'>
+                    <Parallax speed={-20}>
+                      <div
+                        className={`font-light text-xs text-center tracking-widest animate-fade-down text-black select-none`}
                       >
                         SCROLL TO
                         <br />
                         BEGIN
-                      </span>
-                    </div>
-                  </section>
-                  <section
-                    id='trigger1'
-                    className='trigger relative w-full h-[110vh] text-4xl flex justify-center items-center __b '
-                    data-scroll
-                    data-scroll-repeat
-                    data-scroll-call='section1'
-                  >
-                    {/* WE HAD A DREAM */}
-                    <div className='exit' />
-                  </section>
-                  <section
-                    id='trigger1'
-                    className='trigger relative w-full h-[110vh]  text-4xl flex justify-center items-center '
-                    data-scroll
-                    data-scroll-repeat
-                    data-scroll-call='section2'
-                  ></section>
-                </m.main>
-              </LazyMotion>
-            </ScrollTriggerWrapper>
-          </div>
+                      </div>
+                    </Parallax>
+                  </div>
+                </section>
+                <section
+                  id='trigger1'
+                  className='trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center __b '
+                  data-scroll
+                  data-scroll-repeat
+                  data-scroll-call='section1'
+                  data-scroll-section
+                >
+                  {/* WE HAD A DREAM */}
+                  <div
+                    id='enter-dream'
+                    className='h-[50vh] __b bg-green-600 bg-opacity-50'
+                  />
+                  {/* EYES */}
+                  <div
+                    id='enter-eyes'
+                    className='h-[50vh] __b bg-green-600 bg-opacity-50 -mt-24'
+                  />
+                  <div
+                    id='buffer'
+                    className='h-[50vh] __b bg-yellow-600 bg-opacity-50'
+                  />
+                  {/* EYES */}
+                  <div
+                    id='exit-eyes'
+                    className='h-[50vh] __b bg-red-600 bg-opacity-50'
+                  />
+                  <div className='exit' />
+                </section>
+                <section
+                  id='trigger1'
+                  className='trigger relative w-full h-[110vh]  text-4xl flex justify-center items-center '
+                  data-scroll-section
+                  data-scroll
+                  data-scroll-repeat
+                  data-scroll-call='section2'
+                ></section>
+              </m.main>
+            </LazyMotion>
+          </ScrollTriggerWrapper>
         </div>
       </LocomotiveScrollProvider>
     </Layout>

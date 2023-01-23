@@ -133,6 +133,10 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
             tl[tl.length - 1].to(...a[k]);
           } else if (k === 'from') {
             tl[tl.length - 1].from(...a[k]);
+          } else if (k === 'set') {
+            tl[tl.length - 1].set(...a[k]);
+          } else if (k === 'call') {
+            tl[tl.length - 1].call(a[k]);
           }
         });
       }
@@ -175,7 +179,7 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
         });
 
         // RUN Scrolltrigger MatchMedia
-        ScrollTrigger.matchMedia(stMatchMedia);
+        gsap.matchMedia(stMatchMedia);
 
         // Set ScrollTrigger Save Styles
         let saveStyles = ``;
@@ -191,6 +195,7 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
         // Fill Animation normally, no breakpoints
         resetAnimation();
         currentTL[`global`] = applyAnimation({ anim: animation });
+        console.log(currentTL[`global`]);
       }
     }
     return () => {
