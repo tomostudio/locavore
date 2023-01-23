@@ -24,6 +24,7 @@ import { transition } from '@/helpers/preset/tailwind'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import { PortableText } from '@portabletext/react'
 import { Facebook, Instagram, Whatsapp } from '@/helpers/preset/svg'
+import Script from 'next/script'
 
 // install Swiper modules
 SwiperCore.use([Pagination])
@@ -265,10 +266,10 @@ const FamilySlug = ({
                   <div className="w-full border border-black rounded-2xl h-auto p-5">
                     {family.elfsightCode && (
                       <>
-                        <script
+                        <Script
                           src="https://apps.elfsight.com/p/platform.js"
-                          defer
-                        ></script>
+                          beforeInteractive
+                        />
                         {/* Change the Elfsight Code to Update */}
                         {/* default code elfsight-app-b1b735e6-61b1-4eda-8840-cf78479acb1c */}
                         <div
