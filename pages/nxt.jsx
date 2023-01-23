@@ -171,7 +171,6 @@ export default function Reveal() {
 
   useEffect(() => {
     const BackgroundLocomotiveEvents = (e) => {
-      console.log(e);
       // console.log(enter, target, element, e);
       const { enter, target, element } = e.detail;
       if (enter === 'enter')
@@ -181,6 +180,7 @@ export default function Reveal() {
             break;
           case 'section2':
             setBgColor('#B1BA96');
+            // setBgColor('#FF0000');
             break;
 
           default:
@@ -224,10 +224,11 @@ export default function Reveal() {
         id='reveal_caption'
         className='caption fixed z-50 pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 bottom-4 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl text-md'
       >
-        <div className={`caption_tab px-2 w-fit rotate-0 active`}>
+        {/* SET ACTIVE TO TURN ON */}
+        <div className={`caption_tab px-2 w-fit rotate-0 active`}> 
           WE HAD A DREAM
         </div>
-        <div className={`caption_tab px-2 w-fit rotate-1`}>
+        <div className={`caption_tab px-2 w-fit rotate-1 `}>
           INSPIRED BY NICE THINGS
         </div>
         <div className={`caption_tab px-2 w-fit -rotate-[-.5deg]`}>
@@ -265,6 +266,7 @@ export default function Reveal() {
                 exit='exit'
                 variants={fade}
               >
+                {/* SECTION 0 OPENING SCROLL */}
                 <section
                   id='trigger0'
                   className='trigger w-full h-[110vh] text-4xl'
@@ -282,13 +284,14 @@ export default function Reveal() {
                     </Parallax>
                   </div>
                 </section>
+                {/* SECTION 1 WE HAVE A DREAM */}
                 <section
                   id='trigger1'
                   className='trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center __b '
+                  data-scroll-section
                   data-scroll
                   data-scroll-repeat
                   data-scroll-call='section1'
-                  data-scroll-section
                 >
                   {/* WE HAD A DREAM */}
                   <div
@@ -311,6 +314,7 @@ export default function Reveal() {
                   />
                   <div className='exit' />
                 </section>
+                {/* SECTION 2  */}
                 <section
                   id='trigger1'
                   className='trigger relative w-full h-[110vh]  text-4xl flex justify-center items-center '
