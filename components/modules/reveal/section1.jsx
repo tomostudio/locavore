@@ -199,7 +199,7 @@ export const Section1AnimationOBJ = [
   // EYES ENTER
   () => {
     const id = 'eyes-enter'; // animation id
-    const elem = '#section1_fixed #eyes';
+    const elem = '#eyes';
     const settings = {
       scrollTrigger: {
         id: id,
