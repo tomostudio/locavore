@@ -19,19 +19,19 @@ export const Section2ComponentFixedBack = () => {
   );
 };
 
-const Section2MarkerTop = ({ setCurrentSection, setBgColor }) => {
+const Section2MarkerTop = ({ setCaption, setBgColor }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCurrentSection(2);
+      setCaption(2);
       setBgColor('#B1BA96');
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
       if (scrollDirection.vertical === 'up') {
         // CURRENT
-        setCurrentSection(2);
+        setCaption(2);
         setBgColor('#B1BA96');
       }
     },
@@ -40,12 +40,12 @@ const Section2MarkerTop = ({ setCurrentSection, setBgColor }) => {
   return <div className='w-full h-2 bg-purple-600' ref={observe} />;
 };
 
-const Section2MarkerBottom = ({ setCurrentSection, setBgColor }) => {
+const Section2MarkerBottom = ({ setCaption, setBgColor }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCurrentSection(2);
+      setCaption(2);
       setBgColor('#B1BA96');
     },
     onLeave: ({ scrollDirection, entry }) => {
@@ -54,7 +54,7 @@ const Section2MarkerBottom = ({ setCurrentSection, setBgColor }) => {
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 2
-        setCurrentSection(2);
+        setCaption(2);
         setBgColor('#B1BA96');
       }
     },
@@ -63,7 +63,7 @@ const Section2MarkerBottom = ({ setCurrentSection, setBgColor }) => {
   return <div className='w-full h-2 bg-purple-600' ref={observe} />;
 };
 
-export const Section2ComponentInner = ({ setCurrentSection, setBgColor }) => {
+export const Section2ComponentInner = ({ setCaption, setBgColor }) => {
   return (
     <>
       {/* Section 2 */}
@@ -73,12 +73,12 @@ export const Section2ComponentInner = ({ setCurrentSection, setBgColor }) => {
         data-scroll-section
       >
         <Section2MarkerTop
-          setCurrentSection={setCurrentSection}
+          setCaption={setCaption}
           setBgColor={setBgColor}
         />
         <div className='h-[200vh] flex justify-center flex-col'>SECTION 2</div>
         <Section2MarkerBottom
-          setCurrentSection={setCurrentSection}
+          setCaption={setCaption}
           setBgColor={setBgColor}
         />
       </section>

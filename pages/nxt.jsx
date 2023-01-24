@@ -238,11 +238,13 @@ export default function Reveal() {
                 <Section2ComponentInner
                   setCurrentSection={setCurrentSection}
                   setBgColor={setBgColor}
+                  setCaption={setCaption}
                 />
                 {/* Section 3 */}
                 <Section3ComponentInner
                   setCurrentSection={setCurrentSection}
                   setBgColor={setBgColor}
+                  setCaption={setCaption}
                 />
               </m.main>
             </LazyMotion>

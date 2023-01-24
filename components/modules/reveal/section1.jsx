@@ -45,7 +45,7 @@ const Section1MarkerTop = ({ setCurrentSection, setBgColor, setCaption }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       // setCurrentSection(1);
-        setCaption(1);
+      setCaption(1);
       setBgColor('#BFC29D');
     },
     onLeave: ({ scrollDirection, entry }) => {
@@ -78,8 +78,8 @@ const Section1MarkerBottom = ({
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       // setCurrentSection(1);
-      // setCaption(1);
-      // setBgColor('#BFC29D');
+      setCaption(1);
+      setBgColor('#BFC29D');
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -88,8 +88,8 @@ const Section1MarkerBottom = ({
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 1
         // setCurrentSection(1);
-        // setCaption(1);
-        // setBgColor('#BFC29D');
+        setCaption(1);
+        setBgColor('#BFC29D');
       }
     },
   });

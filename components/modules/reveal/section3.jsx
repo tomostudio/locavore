@@ -17,12 +17,12 @@ export const Section3ComponentFixedBack = () => {
   );
 };
 
-const Section3MarkerTop = ({ setCurrentSection, setBgColor }) => {
+const Section3MarkerTop = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCurrentSection(3);
+      setCaption(3);
       setBgColor('#B1BA96');
     },
     onLeave: ({ scrollDirection, entry }) => {
@@ -30,7 +30,7 @@ const Section3MarkerTop = ({ setCurrentSection, setBgColor }) => {
       // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
-        setCurrentSection(3);
+        setCaption(3);
         setBgColor('#B1BA96');
       }
     },
@@ -39,12 +39,12 @@ const Section3MarkerTop = ({ setCurrentSection, setBgColor }) => {
   return <div className='w-full h-2 bg-purple-600' ref={observe} />;
 };
 
-const Section3MarkerBottom = ({ setCurrentSection, setBgColor }) => {
+const Section3MarkerBottom = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCurrentSection(3);
+      setCaption(3);
       setBgColor('#B1BA96');
     },
     onLeave: ({ scrollDirection, entry }) => {
@@ -53,7 +53,7 @@ const Section3MarkerBottom = ({ setCurrentSection, setBgColor }) => {
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 3
-        setCurrentSection(3);
+        setCaption(3);
         setBgColor('#B1BA96');
       }
     },
@@ -62,7 +62,7 @@ const Section3MarkerBottom = ({ setCurrentSection, setBgColor }) => {
   return <div className='w-full h-2 bg-purple-600' ref={observe} />;
 };
 
-export const Section3ComponentInner = ({ setCurrentSection, setBgColor }) => {
+export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   return (
     <>
       {/* Section 2 */}
@@ -72,12 +72,12 @@ export const Section3ComponentInner = ({ setCurrentSection, setBgColor }) => {
         data-scroll-section
       >
         <Section3MarkerTop
-          setCurrentSection={setCurrentSection}
+          setCaption={setCaption}
           setBgColor={setBgColor}
         />
         <div className='h-[200vh] flex justify-center flex-col'>SECTION 3</div>
         <Section3MarkerBottom
-          setCurrentSection={setCurrentSection}
+          setCaption={setCaption}
           setBgColor={setBgColor}
         />
       </section>
