@@ -4,7 +4,7 @@ import { useInView } from 'react-cool-inview';
 
 export const Section1ComponentFixedFront = () => {
   return (
-    <div id='section1_fixed_front'  >
+    <div id='section1_fixed_front'>
       <div id='s1_exit_group_front'>
         <div
           id='s1_title'
@@ -39,12 +39,13 @@ export const Section1ComponentFixedBack = () => {
   );
 };
 
-const Section1MarkerTop = ({ setCurrentSection, setBgColor }) => {
+const Section1MarkerTop = ({ setCurrentSection, setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCurrentSection(1);
+      // setCurrentSection(1);
+        setCaption(1);
       setBgColor('#BFC29D');
     },
     onLeave: ({ scrollDirection, entry }) => {
@@ -52,11 +53,13 @@ const Section1MarkerTop = ({ setCurrentSection, setBgColor }) => {
       // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
-        setCurrentSection(1);
+        // setCurrentSection(1);
+        setCaption(1);
         setBgColor('#BFC29D');
       } else if (scrollDirection.vertical === 'down') {
         // PREVIOUS
-        setCurrentSection(0);
+        // setCurrentSection(0);
+        setCaption(0);
         setBgColor('#BFC29D');
       }
     },
@@ -65,13 +68,18 @@ const Section1MarkerTop = ({ setCurrentSection, setBgColor }) => {
   return <div className='w-full h-2 bg-blue-600' ref={observe} />;
 };
 
-const Section1MarkerBottom = ({ setCurrentSection, setBgColor }) => {
+const Section1MarkerBottom = ({
+  setCurrentSection,
+  setBgColor,
+  setCaption,
+}) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCurrentSection(1);
-      setBgColor('#BFC29D');
+      // setCurrentSection(1);
+      // setCaption(1);
+      // setBgColor('#BFC29D');
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -79,8 +87,9 @@ const Section1MarkerBottom = ({ setCurrentSection, setBgColor }) => {
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 1
-        setCurrentSection(1);
-        setBgColor('#BFC29D');
+        // setCurrentSection(1);
+        // setCaption(1);
+        // setBgColor('#BFC29D');
       }
     },
   });
@@ -88,7 +97,11 @@ const Section1MarkerBottom = ({ setCurrentSection, setBgColor }) => {
   return <div className='w-full h-2 bg-blue-600' ref={observe} />;
 };
 
-export const Section1ComponentInner = ({ setCurrentSection, setBgColor }) => {
+export const Section1ComponentInner = ({
+  setCurrentSection,
+  setBgColor,
+  setCaption,
+}) => {
   return (
     <>
       <section
@@ -109,6 +122,7 @@ export const Section1ComponentInner = ({ setCurrentSection, setBgColor }) => {
         <Section1MarkerTop
           setCurrentSection={setCurrentSection}
           setBgColor={setBgColor}
+          setCaption={setCaption}
         />
         {/* // ALTERNATIVE CAPTION TRIGGER */}
         {/* <div
@@ -147,6 +161,7 @@ export const Section1ComponentInner = ({ setCurrentSection, setBgColor }) => {
         <Section1MarkerBottom
           setCurrentSection={setCurrentSection}
           setBgColor={setBgColor}
+          setCaption={setCaption}
         />
         <div id='exit-all' className='h-[50vh] __b bg-red-600 bg-opacity-50' />
       </section>

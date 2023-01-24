@@ -94,6 +94,16 @@ export default function Reveal() {
     };
   }, []);
 
+  // ALTERNATIVE CAPTION
+  const setCaption = (n) => {
+    const captions = document.querySelectorAll(
+      '#reveal_caption > .caption_tab'
+    );
+    captions.forEach((caption, index) => {
+      caption.classList.remove('active');
+      if (index + 1 <= n) caption.classList.add('active');
+    });
+  };
   return (
     <Layout>
       <SEO title={'Editorial'} pagelink={router.pathname} />
@@ -127,22 +137,23 @@ export default function Reveal() {
         className='caption fixed z-50 pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 bottom-4 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl text-md'
       >
         {/* CURRENT BUG, JITTER EFFECT DUE TO UPDATING THE STYLE USING USE STATE -> SEEK ALTERNATIVE */}
+        {/* Potential Solution 1: Create Custom Function for Class Trigger */}
         <div
-          className={`caption_tab px-2 w-fit rotate-0 ${
+          className={`caption_tab px-2 w-fit rotate-0 will-change-auto ${
             currentSection >= 1 ? 'active' : ''
           }`}
         >
           WE HAD A DREAM
         </div>
         <div
-          className={`caption_tab px-2 w-fit rotate-1 ${
+          className={`caption_tab px-2 w-fit rotate-1 will-change-auto ${
             currentSection >= 2 ? 'active' : ''
           }`}
         >
           INSPIRED BY NICE THINGS
         </div>
         <div
-          className={`caption_tab px-2 w-fit -rotate-[-.5deg] ${
+          className={`caption_tab px-2 w-fit -rotate-[-.5deg] will-change-auto  ${
             currentSection >= 3 ? 'active' : ''
           }`}
         >
@@ -221,6 +232,7 @@ export default function Reveal() {
                 <Section1ComponentInner
                   setCurrentSection={setCurrentSection}
                   setBgColor={setBgColor}
+                  setCaption={setCaption}
                 />
                 {/* Section 2 */}
                 <Section2ComponentInner
