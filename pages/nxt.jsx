@@ -5,7 +5,6 @@ import { Parallax } from 'react-scroll-parallax';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 
-import Container from '@/components/modules/container';
 import Layout from '@/components/modules/layout';
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger';
 import SEO from '@/components/utils/seo';
@@ -14,178 +13,65 @@ import PushScrollGlobal from '@/helpers/globalscroll';
 import { fade } from '@/helpers/preset/transitions';
 import client from '@/helpers/sanity/client';
 
+import {
+  Section1ComponentFixed,
+  Section1AnimationOBJ,
+  Section1ComponentInner,
+} from '@/components/modules/reveal/section1';
+
+import {
+  Section2ComponentFixed,
+  Section2AnimationOBJ,
+  Section2ComponentInner,
+} from '@/components/modules/reveal/section2';
+
+import {
+  Section3ComponentFixed,
+  Section3AnimationOBJ,
+  Section3ComponentInner,
+} from '@/components/modules/reveal/section3';
+
 export default function Reveal() {
   const router = useRouter();
   const containerRef = useRef(null);
 
   // ANIMATION
   const animationObj = [
-    // SECTION 1
-    // TITLE ENTER
-    () => {
-      // WE HAVE A DREAM COMING IN
-      const id = 'wehaveadream-enter'; // animation id
-      const elem = '#section1_fixed #whd_title';
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: '#enter-dream', // which section will be tracked as the scroll trigger
-          scroller: '#scroll-container', // id of scroll container
-          scrub: true,
-          start: 'top 100%',
-          end: 'bottom 100%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              opacity: 0,
-              scale: 5,
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              opacity: 1,
-              scale: 1,
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // EYES ENTER
-    () => {
-      // WE HAVE A DREAM COMING IN
-      const id = 'eyes-enter'; // animation id
-      const elem = '#eyes';
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: '#enter-eyes', // which section will be tracked as the scroll trigger
-          scroller: '#scroll-container', // id of scroll container
-          scrub: true,
-          start: 'top 100%',
-          end: 'bottom 100%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              opacity: 0,
-              y: 200,
-              ease: 'none',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              opacity: 1,
-              y: 100,
-              ease: 'none',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              opacity: 1,
-              y: 0,
-              ease: 'none',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // EYES EXIT
-    () => {
-      // WE HAVE A DREAM COMING IN
-      const id = 'eyes-enter'; // animation id
-      const elem = '#eyes';
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: '#exit-eyes', // which section will be tracked as the scroll trigger
-          scroller: '#scroll-container', // id of scroll container
-          scrub: true,
-          start: 'top 100%',
-          end: 'bottom 100%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              opacity: 1,
-              y: 0,
-              ease: 'none',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              opacity: 1,
-              y: 100,
-              ease: 'none',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              opacity: 0,
-              y: 200,
-              ease: 'none',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
+    ...Section1AnimationOBJ,
+    ...Section2AnimationOBJ,
+    ...Section3AnimationOBJ,
   ];
 
   const [bgColor, setBgColor] = useState('#BFC29D');
+  const [currentSection, setCurrentSection] = useState(0);
 
   useEffect(() => {
     const BackgroundLocomotiveEvents = (e) => {
-      // console.log(enter, target, element, e);
+      console.log(e.detail);
       const { enter, target, element } = e.detail;
-      if (enter === 'enter')
+      if (enter === 'enter') {
         switch (target) {
+          case 'section0':
+            setCurrentSection(0);
+            setBgColor('#BFC29D');
+            break;
           case 'section1':
+            setCurrentSection(1);
             setBgColor('#BFC29D');
             break;
           case 'section2':
+            setCurrentSection(2);
             setBgColor('#B1BA96');
-            // setBgColor('#FF0000');
+            break;
+          case 'section3':
+            setCurrentSection(3);
+            setBgColor('#B1BA96');
             break;
 
           default:
             break;
         }
+      }
     };
 
     window.addEventListener('LocoCall', BackgroundLocomotiveEvents);
@@ -193,25 +79,18 @@ export default function Reveal() {
       window.removeEventListener('LocoCall', BackgroundLocomotiveEvents);
     };
   }, []);
+
   return (
     <Layout>
       <SEO title={'Editorial'} pagelink={router.pathname} />
       {/* FIXED POSITION */}
       <div className='outercontainer fixed z-50 w-full h-full border pointer-events-none select-none'>
-        {/* SECTION 1 WE HAD A DREAM */}
-        <div id='section1_fixed'>
-          <div
-            id='whd_title'
-            className=' pointer-events-none font-funkturm absolute w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl'
-          >
-            WE HAD
-            <br />A DREAM
-          </div>
-          <div
-            id='eyes'
-            className='opacity-0 h-24 w-[50vh] bg-slate-900 fixed bottom-[15vh] left-1/2 translate-x-[-50%]'
-          />
-        </div>
+        {/* SECTION 1 */}
+        <Section1ComponentFixed />
+        {/* SECTION 2 */}
+        <Section2ComponentFixed />
+        {/* SECTION 3 */}
+        <Section3ComponentFixed />
       </div>
       {/* BACKGROUND COLOR */}
       <div
@@ -224,23 +103,46 @@ export default function Reveal() {
         id='reveal_caption'
         className='caption fixed z-50 pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 bottom-4 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl text-md'
       >
-        {/* SET ACTIVE TO TURN ON */}
-        <div className={`caption_tab px-2 w-fit rotate-0 active`}> 
+        <div
+          className={`caption_tab px-2 w-fit rotate-0 ${
+            currentSection >= 1 ? 'active' : ''
+          }`}
+        >
           WE HAD A DREAM
         </div>
-        <div className={`caption_tab px-2 w-fit rotate-1 `}>
+        <div
+          className={`caption_tab px-2 w-fit rotate-1 ${
+            currentSection >= 2 ? 'active' : ''
+          }`}
+        >
           INSPIRED BY NICE THINGS
         </div>
-        <div className={`caption_tab px-2 w-fit -rotate-[-.5deg]`}>
+        <div
+          className={`caption_tab px-2 w-fit -rotate-[-.5deg] ${
+            currentSection >= 3 ? 'active' : ''
+          }`}
+        >
           AND A BETTER WORLD
         </div>
-        <div className={`caption_tab px-2 w-fit rotate-[-.25deg]`}>
+        <div
+          className={`caption_tab px-2 w-fit rotate-[-.25deg] ${
+            currentSection >= 4 ? 'active' : ''
+          }`}
+        >
           SO WE TOOK THAT DREAM AND MADE IT REAL
         </div>
-        <div className={`caption_tab px-2 w-fit rotate-0`}>
+        <div
+          className={`caption_tab px-2 w-fit rotate-0 ${
+            currentSection >= 5 ? 'active' : ''
+          }`}
+        >
           SO OTHER PEOPLE CAN DREAM TOO
         </div>
-        <div className={`caption_tab px-2 w-fit rotate-1/2`}>
+        <div
+          className={`caption_tab px-2 w-fit rotate-1/2 ${
+            currentSection >= 6 ? 'active' : ''
+          }`}
+        >
           INSPIRED BY OUR NICE THING
         </div>
       </div>
@@ -266,7 +168,7 @@ export default function Reveal() {
                 exit='exit'
                 variants={fade}
               >
-                {/* SECTION 0 OPENING SCROLL */}
+                {/* Section 0 */}
                 <section
                   id='trigger0'
                   className='trigger w-full h-[110vh] text-4xl'
@@ -284,45 +186,21 @@ export default function Reveal() {
                     </Parallax>
                   </div>
                 </section>
-                {/* SECTION 1 WE HAVE A DREAM */}
-                <section
-                  id='trigger1'
-                  className='trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center __b '
-                  data-scroll-section
-                  data-scroll
-                  data-scroll-repeat
-                  data-scroll-call='section1'
-                >
-                  {/* WE HAD A DREAM */}
-                  <div
-                    id='enter-dream'
-                    className='h-[50vh] __b bg-green-600 bg-opacity-50'
-                  />
-                  {/* EYES */}
-                  <div
-                    id='enter-eyes'
-                    className='h-[50vh] __b bg-green-600 bg-opacity-50 -mt-24'
-                  />
-                  <div
-                    id='buffer'
-                    className='h-[50vh] __b bg-yellow-600 bg-opacity-50'
-                  />
-                  {/* EYES */}
-                  <div
-                    id='exit-eyes'
-                    className='h-[50vh] __b bg-red-600 bg-opacity-50'
-                  />
-                  <div className='exit' />
-                </section>
-                {/* SECTION 2  */}
-                <section
-                  id='trigger1'
-                  className='trigger relative w-full h-[110vh]  text-4xl flex justify-center items-center '
-                  data-scroll-section
-                  data-scroll
-                  data-scroll-repeat
-                  data-scroll-call='section2'
-                ></section>
+                {/* Section 1 */}
+                <Section1ComponentInner
+                  setCurrentSection={setCurrentSection}
+                  setBgColor={setBgColor}
+                />
+                {/* Section 2 */}
+                <Section2ComponentInner
+                  setCurrentSection={setCurrentSection}
+                  setBgColor={setBgColor}
+                />
+                {/* Section 3 */}
+                <Section3ComponentInner
+                  setCurrentSection={setCurrentSection}
+                  setBgColor={setBgColor}
+                />
               </m.main>
             </LazyMotion>
           </ScrollTriggerWrapper>
