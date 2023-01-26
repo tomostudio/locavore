@@ -29,7 +29,7 @@ const FancyLink = forwardRef(
     ) : !blank ? (
       (<Link
         href={destination}
-        scroll={true}
+        scroll={false}
         aria-label={a11yText}
         className={`${className} pointer-events-auto`}
         ref={ref}
