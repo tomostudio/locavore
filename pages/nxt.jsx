@@ -34,6 +34,41 @@ import {
   Section3ComponentInner,
 } from '@/components/modules/reveal/section3';
 
+import {
+  Section4ComponentFixedFront,
+  Section4ComponentFixedBack,
+  Section4AnimationOBJ,
+  Section4ComponentInner,
+} from '@/components/modules/reveal/section4';
+
+import {
+  Section5ComponentFixedFront,
+  Section5ComponentFixedBack,
+  Section5AnimationOBJ,
+  Section5ComponentInner,
+} from '@/components/modules/reveal/section5';
+
+import {
+  Section6ComponentFixedFront,
+  Section6ComponentFixedBack,
+  Section6AnimationOBJ,
+  Section6ComponentInner,
+} from '@/components/modules/reveal/section6';
+
+import {
+  Section7ComponentFixedFront,
+  Section7ComponentFixedBack,
+  Section7AnimationOBJ,
+  Section7ComponentInner,
+} from '@/components/modules/reveal/section7';
+
+import {
+  Section8ComponentFixedFront,
+  Section8ComponentFixedBack,
+  Section8AnimationOBJ,
+  Section8ComponentInner,
+} from '@/components/modules/reveal/section8';
+
 export default function Reveal() {
   const router = useRouter();
   const containerRef = useRef(null);
@@ -56,30 +91,6 @@ export default function Reveal() {
           case 'section0':
             setCurrentSection(0);
             setBgColor('#BFC29D');
-            break;
-          case 'section1-bottom':
-            setCurrentSection(1);
-            setBgColor('#BFC29D');
-            break;
-          case 'section1-top':
-            setCurrentSection(1);
-            setBgColor('#BFC29D');
-            break;
-          case 'section2-top':
-            setCurrentSection(2);
-            setBgColor('#B1BA96');
-            break;
-          case 'section2-bottom':
-            setCurrentSection(2);
-            setBgColor('#B1BA96');
-            break;
-          case 'section3-top':
-            setCurrentSection(3);
-            setBgColor('#B1BA96');
-            break;
-          case 'section3-bottom':
-            setCurrentSection(3);
-            setBgColor('#B1BA96');
             break;
 
           default:
@@ -115,6 +126,16 @@ export default function Reveal() {
         <Section2ComponentFixedFront />
         {/* SECTION 3 */}
         <Section3ComponentFixedFront />
+        {/* SECTION 4 */}
+        <Section4ComponentFixedFront />
+        {/* SECTION 5 */}
+        <Section5ComponentFixedFront />
+        {/* SECTION 6 */}
+        <Section6ComponentFixedFront />
+        {/* SECTION 7 */}
+        <Section7ComponentFixedFront />
+        {/* SECTION 8 */}
+        <Section8ComponentFixedFront />
       </div>
       {/* FIXED POSITION BACK*/}
       <div className='outercontainer-back fixed z-2 w-full h-full border pointer-events-none select-none'>
@@ -124,6 +145,16 @@ export default function Reveal() {
         <Section2ComponentFixedBack />
         {/* SECTION 3 */}
         <Section3ComponentFixedBack />
+        {/* SECTION 4 */}
+        <Section4ComponentFixedBack />
+        {/* SECTION 5 */}
+        <Section5ComponentFixedBack />
+        {/* SECTION 6 */}
+        <Section6ComponentFixedBack />
+        {/* SECTION 7 */}
+        <Section7ComponentFixedBack />
+        {/* SECTION 8 */}
+        <Section8ComponentFixedBack />
       </div>
       {/* BACKGROUND COLOR */}
       <div
@@ -229,19 +260,57 @@ export default function Reveal() {
                   data-scroll-repeat
                 />
                 {/* Section 1 */}
+                {/* WE HAD A DREAM */}
                 <Section1ComponentInner
                   setCurrentSection={setCurrentSection}
                   setBgColor={setBgColor}
                   setCaption={setCaption}
                 />
                 {/* Section 2 */}
+                {/* INSPIRED BY NICE THINGS */}
                 <Section2ComponentInner
                   setCurrentSection={setCurrentSection}
                   setBgColor={setBgColor}
                   setCaption={setCaption}
                 />
                 {/* Section 3 */}
+                {/* AND A BETTER WORLD */}
                 <Section3ComponentInner
+                  setCurrentSection={setCurrentSection}
+                  setBgColor={setBgColor}
+                  setCaption={setCaption}
+                />
+                {/* Section 4 */}
+                {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
+                <Section4ComponentInner
+                  setCurrentSection={setCurrentSection}
+                  setBgColor={setBgColor}
+                  setCaption={setCaption}
+                />
+                {/* Section 5 */}
+                {/* SO OTHER PEOPLE CAN DREAM TOO */}
+                <Section5ComponentInner
+                  setCurrentSection={setCurrentSection}
+                  setBgColor={setBgColor}
+                  setCaption={setCaption}
+                />
+                {/* Section 6 */}
+                {/* INSPIRED BY OUR NICE THING */}
+                <Section6ComponentInner
+                  setCurrentSection={setCurrentSection}
+                  setBgColor={setBgColor}
+                  setCaption={setCaption}
+                />
+                {/* Section 7 */}
+                {/* FEED CHANGE */}
+                <Section7ComponentInner
+                  setCurrentSection={setCurrentSection}
+                  setBgColor={setBgColor}
+                  setCaption={setCaption}
+                />
+                {/* Section 8*/}
+                {/* LOCAVORE NEXT */}
+                <Section8ComponentInner
                   setCurrentSection={setCurrentSection}
                   setBgColor={setBgColor}
                   setCaption={setCaption}
