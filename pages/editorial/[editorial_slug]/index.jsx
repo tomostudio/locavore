@@ -36,7 +36,7 @@ export default function Index({ issueAPI, seoAPI }) {
     })
     // white, black, blur-black, blur-white, trans-white, trans-black
 
-    window.scroll(0, 0)
+    // window.scroll(0, 0)
 
     return () => {
       appContext.setHeader({ headerStyle: 'default' })

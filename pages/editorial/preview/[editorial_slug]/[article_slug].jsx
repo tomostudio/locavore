@@ -52,7 +52,7 @@ export default function ArticleSlug({
   }
 
   useEffect(() => {
-    window.scroll(0, 0)
+    // window.scroll(0, 0)
     setBaseUrl(window.location.href)
     return () => {}
   }, [])
