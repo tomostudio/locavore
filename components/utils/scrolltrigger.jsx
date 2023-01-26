@@ -33,6 +33,7 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
       // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
       scroll.on('scroll', ScrollTrigger.update);
 
+
       let scrollerQuery = `#${scroll.el.id}`;
       if (!scrollerQuery) {
         scrollerQuery = `.${scroll.el.className.replace(/ /g, '.')}`;
@@ -41,6 +42,7 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
       // INIT SCROLLTRIGGER
       ScrollTrigger.scrollerProxy(scrollerQuery, {
         scrollTop(value) {
+          console.log('trigger scrollTop')
           return arguments.length
             ? scroll.scrollTo(value, 0, 0)
             : scroll.scroll.instance.scroll.y;
