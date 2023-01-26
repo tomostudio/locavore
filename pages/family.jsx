@@ -144,7 +144,7 @@ export default function Family({
   useEffect(() => {
     resetData();
     window.addEventListener('resize', resetData);
-    // window.scroll(0, 0);
+    window.scroll(0, 0);
     return () => {
       window.removeEventListener('resize', resetData);
     };
