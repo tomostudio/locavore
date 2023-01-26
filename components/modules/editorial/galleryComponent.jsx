@@ -24,6 +24,9 @@ const GalleryComponent = ({ gallery, color }) => {
                         className={`relative w-full block`}
                         style={{
                           backgroundColor: `rgba(208,208,208, 1)`,
+                          aspectRatio: `${
+                            item.image ? useNextSanityImage(client, item.image).width : '16'
+                          }/${item.image ? useNextSanityImage(client, item.image).height : '9'}`,
                         }}
                       >
                         {item.image && item.image.asset ? (

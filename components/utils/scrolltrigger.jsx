@@ -12,6 +12,16 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
   const { children, animation } = props;
   const [scrollInitState, setScrollInit] = useState(false);
 
+  useEffect(() => {
+    ScrollTrigger.enable();
+    return () => {
+      ScrollTrigger.disable();
+      ScrollTrigger.killAll();
+      ScrollTrigger.clearScrollMemory()
+      ScrollTrigger.clearMatchMedia();
+    }
+  },[])
+
   // Initiate Scrolltrigger
   gsap.registerPlugin(ScrollTrigger);
 
@@ -22,6 +32,7 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
 
       // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
       scroll.on('scroll', ScrollTrigger.update);
+
 
       let scrollerQuery = `#${scroll.el.id}`;
       if (!scrollerQuery) {

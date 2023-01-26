@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 // Helpers
 import client from '@/helpers/sanity/client';
+import { useEffect } from 'react';
 
 export default function Editorial({
   issueAPI,
@@ -16,12 +17,20 @@ export default function Editorial({
   const [editorial] = editorialAPI;
   const [footer] = footerAPI;
 
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <>
       <SEO
         title={'Editorial'}
         pagelink={router.pathname}
-        inputSEO={typeof editorial !== 'undefined' && typeof editorial.seo !== 'undefined'  && editorial.seo}
+        inputSEO={
+          typeof editorial !== 'undefined' &&
+          typeof editorial.seo !== 'undefined' &&
+          editorial.seo
+        }
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
