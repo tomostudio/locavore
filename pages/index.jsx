@@ -419,7 +419,7 @@ export default function Home({ issueAPI, seoAPI }) {
         containerRef={containerRef}
         watch={[]}
       >
-        <PushScrollGlobal />
+        {/* <PushScrollGlobal /> */}
         <div
           data-scroll-container
           ref={containerRef}
