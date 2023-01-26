@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 // Helpers
 import client from '@/helpers/sanity/client';
+import { useEffect } from 'react';
 
 export default function Editorial({
   issueAPI,

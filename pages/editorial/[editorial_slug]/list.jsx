@@ -116,15 +116,15 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
   });
 
   useEffect(() => {
-    detectLength();
-    updateScroll();
-    window.addEventListener('resize', detectLength, true);
-    window.addEventListener('resize', updateScrollBar, true);
-    window.scroll(0, 0);
-    return () => {
-      window.removeEventListener('resize', detectLength, true);
-      window.removeEventListener('resize', updateScrollBar, true);
-    };
+    // detectLength();
+    // updateScroll();
+    // window.addEventListener('resize', detectLength, true);
+    // window.addEventListener('resize', updateScrollBar, true);
+    // window.scroll(0, 0);
+    // return () => {
+    //   window.removeEventListener('resize', detectLength, true);
+    //   window.removeEventListener('resize', updateScrollBar, true);
+    // };
   }, []);
 
   //check title word count
