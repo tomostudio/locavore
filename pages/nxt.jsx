@@ -119,7 +119,7 @@ export default function Reveal() {
     <Layout>
       <SEO title={'Editorial'} pagelink={router.pathname} />
       {/* FIXED POSITION FRONT*/}
-      <div className='outercontainer-front fixed z-50 w-full h-full border pointer-events-none select-none'>
+      <div className='outercontainer-front fixed z-40 w-full h-full border pointer-events-none select-none'>
         {/* SECTION 1 */}
         <Section1ComponentFixedFront />
         {/* SECTION 2 */}

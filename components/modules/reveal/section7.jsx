@@ -67,7 +67,7 @@ export const Section7ComponentInner = ({ setBgColor, setCaption }) => {
     <>
       {/* Section 2 */}
       <section
-        id='trigger2'
+        id='trigger4'
         className='trigger relative w-full text-4xl flex flex-col justify-center items-center '
         data-scroll-section
       >
