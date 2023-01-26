@@ -12,6 +12,16 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
   const { children, animation } = props;
   const [scrollInitState, setScrollInit] = useState(false);
 
+  useEffect(() => {
+    ScrollTrigger.enable();
+    return () => {
+      ScrollTrigger.disable();
+      ScrollTrigger.killAll();
+      ScrollTrigger.clearScrollMemory()
+      ScrollTrigger.clearMatchMedia();
+    }
+  },[])
+
   // Initiate Scrolltrigger
   gsap.registerPlugin(ScrollTrigger);
 
