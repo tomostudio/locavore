@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import client from '@/helpers/sanity/client';
 import Footer from '@/components/modules/footer';
 import HeaderGap from '@/components/modules/headerGap';
@@ -9,6 +10,10 @@ import { motion } from 'framer-motion';
 const Error500 = ({ seoAPI, footerAPI }) => {
   const [seo] = seoAPI;
   const [footer] = footerAPI;
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   return (
     <Layout>
       <SEO

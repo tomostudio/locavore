@@ -120,7 +120,7 @@ export default function Issue({ issueAPI, seoAPI, footerAPI }) {
     updateScroll();
     window.addEventListener('resize', detectLength, true);
     window.addEventListener('resize', updateScrollBar, true);
-    // window.scroll(0, 0);
+    window.scroll(0, 0);
     return () => {
       window.removeEventListener('resize', detectLength, true);
       window.removeEventListener('resize', updateScrollBar, true);

@@ -46,7 +46,7 @@ const FamilySlug = ({
 
   useEffect(() => {
     appContext.setHeader({ headerStyle: dark ? 'white' : 'black' })
-    // window.scroll(0, 0)
+    window.scroll(0, 0)
     return () => {
       appContext.setHeader({ headerStyle: 'default' })
     }
