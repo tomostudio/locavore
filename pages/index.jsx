@@ -25,7 +25,8 @@ import { PortableText } from '@portabletext/react'
 export default function Home({ issueAPI, seoAPI }) {
   const router = useRouter()
   const [seo] = seoAPI
-  const [issue] = issueAPI
+  let [issue] = issueAPI
+  issue = issue.issue
   const dark = issue.dark
   const containerRef = useRef(null)
   const appContext = useAppContext()
@@ -36,7 +37,7 @@ export default function Home({ issueAPI, seoAPI }) {
     })
     // white, black, blur-black, blur-white, trans-white, trans-black
 
-    window.scroll(0, 0)
+    // window.scroll(0, 0)
 
     return () => {
       appContext.setHeader({ headerStyle: 'default' })
@@ -500,9 +501,11 @@ export default function Home({ issueAPI, seoAPI }) {
 export async function getStaticProps() {
   const issueAPI = await client.fetch(
     `
-      *[_type == "issue" && slug.current ==  "under-construction"]{
-        ...,
-        "articleCount": count(*[_type=='article' && references(^._id)])
+      *[_type == "home"]{
+        issue-> {
+          ...,
+          "articleCount": count(*[_type=='article' && references(^._id)])
+        }
       }
     `,
   )

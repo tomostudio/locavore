@@ -35,7 +35,7 @@ export default function Social({ seoAPI, socialAPI }) {
 
   useEffect(() => {
     appContext.setHeader({ headerStyle: 'hidden' })
-    window.scroll(0, 0)
+    // window.scroll(0, 0)
     return () => {
       appContext.setHeader({ headerStyle: 'default' })
     }

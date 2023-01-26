@@ -51,7 +51,7 @@ const FamilyMenuMobile = ({
   const checkScroll = () => {
     if (markerRef.current) {
       const checkSticky = markerRef.current.getBoundingClientRect().top;
-      if (checkSticky - window.innerHeight + 120 < 0) {
+      if (checkSticky - (window.innerHeight + -100) < 0) {
         setMenuHide(false);
         setEndScrollShow(true);
       } else {
@@ -75,7 +75,10 @@ const FamilyMenuMobile = ({
     <>
       {useMediaQuery('(max-width: 600px)') && (
         <>
-          <div className='h-0 w-full block' ref={markerRef} />
+          <div
+            className='h-1 w-full block'
+            ref={markerRef}
+          />
           <motion.nav
             className={`group sticky bottom-[-2px] left-0 w-full z-40 hidden max-md:flex flex-col justify-center items-center pt-10 overflow-hidden`}
             {...props}
@@ -109,7 +112,10 @@ const FamilyMenuMobile = ({
             }}
           >
             {familyListAPI.map((familydata, id) => {
-              if (collapse && familydata._id !== familyAPI[0]._id || !collapse)
+              if (
+                (collapse && familydata._id !== familyAPI[0]._id) ||
+                !collapse
+              )
                 return (
                   <FancyLink
                     key={id}

@@ -6,7 +6,7 @@ module.exports = {
         destination: '/editorial/search',
         permanent: true,
       },
-    ]
+    ];
   },
   images: {
     domains: ['cdn.sanity.io'],

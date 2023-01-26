@@ -54,7 +54,7 @@ export default function ArticleSlug({
   };
 
   useEffect(() => {
-    window.scroll(0, 0);
+    // window.scroll(0, 0);
     setBaseUrl(window.location.href);
     return () => {};
   }, []);
@@ -540,7 +540,8 @@ export default function ArticleSlug({
       {/* Button Sticky */}
       <StickyButton
         className={nextArticle === null ? `mb-5 mt-10` : ''}
-        destination={`/editorial/under-construction/list`}
+        // destination={`/editorial/under-construction/list`}
+        destination={`/editorial/${nextArticle.editorial_slug}/list`}
         arrow='left'
       >
         ARTICLE LIST

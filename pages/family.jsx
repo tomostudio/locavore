@@ -171,14 +171,14 @@ export default function Family({
           <HeaderGap />
 
           <HeadingTitle
-            className={`sticky text-center`}
+            className={`sticky text-center z-1`}
             style={{ top: '60px' }}
           >
             <span className='sub'>The</span>Locavore Family
           </HeadingTitle>
           {/* Family Button */}
           <FamilyMenu familyListAPI={familyListAPI} onFamilyHover={true} />
-          <section className='w-full h-full flex flex-col relative'>
+          <section className='w-full h-full flex flex-col relative z-2'>
             <div
               className='relative w-full h-auto flex flex-wrap  '
               id='family-image'
