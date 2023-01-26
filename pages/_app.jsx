@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
     if (history.scrollRestoration) {
-      // history.scrollRestoration = 'manual';
+      history.scrollRestoration = 'manual';
     }
   }, []);
   return (
