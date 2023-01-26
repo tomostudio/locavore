@@ -418,7 +418,7 @@ export default function Index({ issueAPI, seoAPI }) {
         containerRef={containerRef}
         watch={[]}
       >
-        {/* <PushScrollGlobal /> */}
+        <PushScrollGlobal />
         <div
           data-scroll-container
           ref={containerRef}
