@@ -42,7 +42,6 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
       // INIT SCROLLTRIGGER
       ScrollTrigger.scrollerProxy(scrollerQuery, {
         scrollTop(value) {
-          console.log('trigger scrollTop')
           return arguments.length
             ? scroll.scrollTo(value, 0, 0)
             : scroll.scroll.instance.scroll.y;
