@@ -12,11 +12,11 @@ import Head from 'next/head';
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  // useEffect(() => {
-  //   if (history.scrollRestoration) {
-  //     history.scrollRestoration = 'manual';
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+  }, []);
   return (
     <>
       {pageProps.seoAPI && pageProps.seoAPI[0].googleID && (
