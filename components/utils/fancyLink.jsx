@@ -35,7 +35,7 @@ const FancyLink = forwardRef(
         ref={ref}
         onClick={() => {
           onClick()
-          appContext.setMobileMenu(true)
+          appContext.setMobileMenu(false)
         }}
         {...others}>
 

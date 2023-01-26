@@ -40,7 +40,7 @@ export default function Header({ className = '', header, footer }) {
     const checkMenu = () => {
       const { innerWidth: width, innerHeight: height } = window;
       if (width > 850) {
-        appContext.setMobileMenu(true);
+        appContext.setMobileMenu(false);
       }
     };
 
