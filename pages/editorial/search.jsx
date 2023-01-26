@@ -112,7 +112,7 @@ export default function Search({
     if (appContext.category) {
       handleCategory(appContext.category);
     }
-    // window.scroll(0, 0);
+    window.scroll(0, 0);
     return () => {
       appContext.setCategory('');
     };
