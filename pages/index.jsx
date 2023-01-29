@@ -290,8 +290,8 @@ export default function Home({ issueAPI, seoAPI }) {
                   dark === 'white-text' ? 'text-white' : 'text-black'
                 }`}
               >
-                {/* ISSUE {issue.issueNumber} */}
-                WHAT'S NXT?
+                ISSUE {issue.issueNumber}
+                {/* WHAT'S NXT? */}
               </span>
             </Container>
           </div>
