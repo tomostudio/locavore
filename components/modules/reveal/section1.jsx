@@ -17,7 +17,7 @@ export const Section1ComponentFixedFront = () => {
       </div>
       <div
         id="eyes"
-        className="opacity-0 h-24 w-[50vh] fixed z-50 bottom-[15vh] left-1/2 translate-x-[-50%] translate-y-[200px] will-change-auto"
+        className="opacity-0 h-[29.5rem] w-[46.5rem] fixed z-50 bottom-1/2 left-1/2 translate-x-[-49%] translate-y-[180%] will-change-auto"
       >
         <Image src="/nxt/eyes.png" layout="fill" objectFit="contain" />
       </div>
@@ -31,9 +31,15 @@ export const Section1ComponentFixedBack = () => {
       <div id="s1_exit_group_back">
         <div
           id="head"
-          className="opacity-0 h-72 w-72 fixed z-5 top-1/2 translate-y-[-70%] right-[50%] translate-x-[180%] will-change-auto"
+          className="opacity-0 h-72 w-72 fixed z-5 top-1/2 translate-y-[-60%] right-[50%] translate-x-[190%] will-change-auto"
         >
           <Image src="/nxt/head.png" layout="fill" objectFit="contain" />
+        </div>
+        <div
+          id="whatif"
+          className="opacity-0 h-64 w-64 fixed z-5 top-1/2 translate-y-[-135%] right-1/2 translate-x-[170%] will-change-auto"
+        >
+          <Image src="/nxt/whatif.png" layout="fill" objectFit="contain" />
         </div>
       </div>
       <div
@@ -145,6 +151,11 @@ export const Section1ComponentInner = ({
           id="head-trigger"
           className="h-[50vh] __b bg-green-600 bg-opacity-50 mt-24"
         />
+        {/* WHATIF APPEAR */}
+        <div
+          id="whatif-trigger"
+          className="h-[50vh] __b bg-green-600 bg-opacity-50 mt-24"
+        />
         {/* DREAM LEFT TO RIGHT */}
         <div
           id="dream-trigger"
@@ -242,7 +253,7 @@ export const Section1AnimationOBJ = [
           elem,
           {
             opacity: 1,
-            y: 0,
+            y: '92%',
           },
         ],
       },
@@ -258,6 +269,36 @@ export const Section1AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#head-trigger', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+            ease: 'none',
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // WHATIF
+  () => {
+    const id = 'whatif' // animation id
+    const elem = '#whatif'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#whatif-trigger', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
@@ -334,17 +375,7 @@ export const Section1AnimationOBJ = [
           elem,
           {
             opacity: 1,
-            y: 0,
-            ease: 'none',
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            opacity: 1,
-            y: 100,
+            y: '92%',
             ease: 'none',
           },
         ],
@@ -354,7 +385,7 @@ export const Section1AnimationOBJ = [
           elem,
           {
             opacity: 0,
-            y: 200,
+            y: '180%',
             ease: 'none',
           },
         ],
