@@ -78,6 +78,7 @@ export default function Reveal() {
     ...Section1AnimationOBJ,
     ...Section2AnimationOBJ,
     ...Section3AnimationOBJ,
+    ...Section4AnimationOBJ,
   ];
 
   const [bgColor, setBgColor] = useState('#BFC29D');

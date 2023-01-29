@@ -6,20 +6,18 @@ import Image from 'next/legacy/image'
 export const Section2ComponentFixedFront = () => {
   return (
     <div id="section2_fixed_front">
-      <div id="s2_exit_group_front">
-        <div
-          id="s2_title"
-          className="pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl"
-        >
-          <div className="max-w-screen-lg w-full text-left">
-            <span className="block ml-32">
-              INSPIRED
-              <br />
-              BY
-            </span>
-            NICE
-            <span className="block ml-32">THINGS</span>
-          </div>
+      <div
+        id="inspired"
+        className="pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl"
+      >
+        <div className="max-w-screen-lg w-full text-left">
+          <span className="block ml-32">
+            INSPIRED
+            <br />
+            BY
+          </span>
+          NICE
+          <span className="block ml-32">THINGS</span>
         </div>
       </div>
       <div
@@ -152,12 +150,6 @@ export const Section2ComponentInner = ({
         className="trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center __b "
         data-scroll-section
       >
-        <div id="enter2" className="h-[25vh] __b bg-blue-600 bg-opacity-50" />
-        <Section2MarkerTop
-          setCurrentSection={setCurrentSection}
-          setBgColor={setBgColor}
-          setCaption={setCaption}
-        />
         {/* INSPIRED BY NICE THINGS */}
         <div
           id="enter-inspired"
@@ -165,6 +157,11 @@ export const Section2ComponentInner = ({
         >
           INSPIRED ENTER
         </div>
+        <Section2MarkerTop
+          setCurrentSection={setCurrentSection}
+          setBgColor={setBgColor}
+          setCaption={setCaption}
+        />
         {/* BUG FLOWER */}
         <div
           id="enter-bug-flower"
@@ -193,12 +190,6 @@ export const Section2ComponentInner = ({
         >
           ENTER FOREST 2
         </div>
-        {/* // ALTERNATIVE CAPTION TRIGGER */}
-        <Section2MarkerBottom
-          setCurrentSection={setCurrentSection}
-          setBgColor={setBgColor}
-          setCaption={setCaption}
-        />
         <div
           id="exit-group"
           className="h-[50vh] __b bg-blue-600 bg-opacity-50 mt-24"
@@ -211,7 +202,16 @@ export const Section2ComponentInner = ({
           id="exit-worm"
           className="h-[50vh] __b bg-blue-600 bg-opacity-50"
         />
-        <div id="exit-all2" className="h-[50vh] __b bg-red-600 bg-opacity-50 mt-24" />
+        {/* // ALTERNATIVE CAPTION TRIGGER */}
+        <Section2MarkerBottom
+          setCurrentSection={setCurrentSection}
+          setBgColor={setBgColor}
+          setCaption={setCaption}
+        />
+        <div
+          id="exit-inspired"
+          className="h-[50vh] __b bg-red-600 bg-opacity-50 mt-24"
+        />
       </section>
     </>
   )
@@ -222,8 +222,8 @@ export const Section2AnimationOBJ = [
   // TITLE ENTER
   () => {
     // INSPIRED BY NICE THINGS IN
-    const id = 'inspiredbynicethings-enter' // animation id
-    const elem = '#s2_title'
+    const id = 'inspired-enter' // animation id
+    const elem = '#inspired'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -562,14 +562,14 @@ export const Section2AnimationOBJ = [
 
     return { id, elem, settings, animation }
   },
-  // EXIT GROUPED
+  // EXIT INSPIRED
   () => {
-    const id = 'group-exit-front' // animation id
-    const elem = '#s2_exit_group_front'
+    const id = 'exit-inspired' // animation id
+    const elem = '#inspired'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#exit-all2', // which section will be tracked as the scroll trigger
+        trigger: '#exit-inspired', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
