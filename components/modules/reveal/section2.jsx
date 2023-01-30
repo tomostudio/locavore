@@ -22,7 +22,7 @@ export const Section2ComponentFixedFront = () => {
       </div>
       <div
         id="bee_mug"
-        className="s2_exit_group fixed w-full h-full z-50 opacity-0"
+        className=" fixed w-full h-full z-50 opacity-0"
       >
         <div className="w-56 h-56 fixed left-1/2 top-1/2 translate-y-[65%] translate-x-[-70%]">
           <Image src="/nxt/bee_sticker.png" layout="fill" objectFit="contain" />
@@ -45,7 +45,7 @@ export const Section2ComponentFixedBack = () => {
       </div>
       <div
         id="flower_bee_butterfly"
-        className="s2_exit_group fixed w-full max-w-screen-lg h-full z-50 opacity-0"
+        className="fixed w-full max-w-screen-lg h-full z-50 opacity-0"
       >
         <div className="w-28 h-28 fixed left-1/2 translate-x-[-540%] translate-y-[150px]">
           <Image src="/nxt/sunflower02.png" layout="fill" objectFit="contain" />
@@ -148,7 +148,6 @@ export const Section2ComponentInner = ({
       <section
         id="trigger2"
         className="trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center __b "
-        data-scroll-section
       >
         {/* INSPIRED BY NICE THINGS */}
         <div

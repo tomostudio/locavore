@@ -8,7 +8,7 @@ export const Section3ComponentFixedFront = () => {
     <div id="section3_fixed_front">
       <div
         id="better-world"
-        className="exit-group3 pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl"
+        className="pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl"
       >
         <div className="max-w-screen-lg w-full text-right">
           <span className="block mr-[11.5rem]">AND</span>A BETTER
@@ -23,7 +23,7 @@ export const Section3ComponentFixedBack = () => {
     <div id="section3_fixed_back">
       <div
         id="tree"
-        className="exit-group3 fixed w-[32rem] h-[38rem] left-1/2 translate-x-[-120%] top-1/2 translate-y-[-200%]"
+        className="fixed w-[32rem] h-[38rem] left-1/2 translate-x-[-120%] top-1/2 translate-y-[-200%]"
       >
         <Image src="/nxt/tree.png" layout="fill" objectFit="contain" />
         <div className="fixed w-36 h-36 -right-4 top-32">
@@ -32,31 +32,31 @@ export const Section3ComponentFixedBack = () => {
       </div>
       <div
         id="animal"
-        className="exit-group3 w-96 h-96 fixed top-1/2 z-10 translate-y-[-26%] left-1/2 translate-x-[-500%]"
+        className=" w-96 h-96 fixed top-1/2 z-10 translate-y-[-26%] left-1/2 translate-x-[-500%]"
       >
         <Image src="/nxt/animal.png" layout="fill" objectFit="contain" />
       </div>
       <div
         id="nature"
-        className="exit-group3 opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-160%] right-1/2 translate-x-[225%]"
+        className=" opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-160%] right-1/2 translate-x-[225%]"
       >
         <Image src="/nxt/nature.png" layout="fill" objectFit="contain" />
       </div>
       <div
         id="hasthe"
-        className="exit-group3 opacity-0 w-52 h-20 fixed top-1/2 translate-y-[-260%] right-1/2 translate-x-[308%]"
+        className="opacity-0 w-52 h-20 fixed top-1/2 translate-y-[-260%] right-1/2 translate-x-[308%]"
       >
         <Image src="/nxt/hasthe.png" layout="fill" objectFit="contain" />
       </div>
       <div
         id="answer"
-        className="exit-group3 opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-117%] right-1/2 translate-x-[264%]"
+        className=" opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-117%] right-1/2 translate-x-[264%]"
       >
         <Image src="/nxt/answer.png" layout="fill" objectFit="contain" />
       </div>
       <div
         id="arrow"
-        className="exit-group3 opacity-0 w-80 h-48 fixed top-1/2 translate-y-[-145%] right-1/2 translate-x-[85%]"
+        className="opacity-0 w-80 h-48 fixed top-1/2 translate-y-[-145%] right-1/2 translate-x-[85%]"
       >
         <Image src="/nxt/arrow.png" layout="fill" objectFit="contain" />
       </div>
@@ -116,7 +116,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
       <section
         id="trigger3"
         className="trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center"
-        data-scroll-section
+       
       >
         {/* AND A BETTER WORLD */}
         <div

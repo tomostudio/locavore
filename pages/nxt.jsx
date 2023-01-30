@@ -69,9 +69,7 @@ import {
   Section8ComponentInner,
 } from '@/components/modules/reveal/section8';
 
-export default function Reveal({
-  seoAPI,
-})  {
+export default function Reveal({ seoAPI }) {
   const router = useRouter();
   const [seo] = seoAPI;
   const containerRef = useRef(null);
@@ -234,99 +232,101 @@ export default function Reveal({
           id='scroll-container'
           className={`z-1 relative`}
         >
-          <ScrollTriggerWrapper animation={animationObj}>
-            <LazyMotion features={domAnimation}>
-              <m.main
-                className='relative p-0 m-0'
-                initial='initial'
-                animate='enter'
-                exit='exit'
-                variants={fade}
-              >
-                {/* Section 0 */}
-                <section
-                  id='trigger0'
-                  className='trigger w-full h-[110vh] text-4xl'
-                  data-scroll-section
+          <div data-scroll-section>
+            <ScrollTriggerWrapper animation={animationObj}>
+              <LazyMotion features={domAnimation}>
+                <m.main
+                  className='relative p-0 m-0'
+                  initial='initial'
+                  animate='enter'
+                  exit='exit'
+                  variants={fade}
                 >
-                  <div className='flex justify-center items-center w-full h-screen'>
-                    <Parallax speed={-20}>
-                      <div
-                        className={`font-light text-xs text-center tracking-widest animate-fade-down text-black select-none`}
-                      >
-                        SCROLL TO
-                        <br />
-                        BEGIN
-                      </div>
-                    </Parallax>
-                  </div>
-                </section>
-                <div
-                  id='captionmarker_0'
-                  className='w-full h-2 bg-purple-600'
-                  data-scroll
-                  data-scroll-call='section0'
-                  data-scroll-repeat
-                />
-                {/* Section 1 */}
-                {/* WE HAD A DREAM */}
-                <Section1ComponentInner
-                  setCurrentSection={setCurrentSection}
-                  setBgColor={setBgColor}
-                  setCaption={setCaption}
-                />
-                {/* Section 2 */}
-                {/* INSPIRED BY NICE THINGS */}
-                <Section2ComponentInner
-                  setCurrentSection={setCurrentSection}
-                  setBgColor={setBgColor}
-                  setCaption={setCaption}
-                />
-                {/* Section 3 */}
-                {/* AND A BETTER WORLD */}
-                <Section3ComponentInner
-                  setCurrentSection={setCurrentSection}
-                  setBgColor={setBgColor}
-                  setCaption={setCaption}
-                />
-                {/* Section 4 */}
-                {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
-                <Section4ComponentInner
-                  setCurrentSection={setCurrentSection}
-                  setBgColor={setBgColor}
-                  setCaption={setCaption}
-                />
-                {/* Section 5 */}
-                {/* SO OTHER PEOPLE CAN DREAM TOO */}
-                <Section5ComponentInner
-                  setCurrentSection={setCurrentSection}
-                  setBgColor={setBgColor}
-                  setCaption={setCaption}
-                />
-                {/* Section 6 */}
-                {/* INSPIRED BY OUR NICE THING */}
-                <Section6ComponentInner
-                  setCurrentSection={setCurrentSection}
-                  setBgColor={setBgColor}
-                  setCaption={setCaption}
-                />
-                {/* Section 7 */}
-                {/* FEED CHANGE */}
-                <Section7ComponentInner
-                  setCurrentSection={setCurrentSection}
-                  setBgColor={setBgColor}
-                  setCaption={setCaption}
-                />
-                {/* Section 8*/}
-                {/* LOCAVORE NEXT */}
-                <Section8ComponentInner
-                  setCurrentSection={setCurrentSection}
-                  setBgColor={setBgColor}
-                  setCaption={setCaption}
-                />
-              </m.main>
-            </LazyMotion>
-          </ScrollTriggerWrapper>
+                  {/* Section 0 */}
+                  <section
+                    id='trigger0'
+                    className='trigger w-full h-[110vh] text-4xl'
+                    data-scroll-section
+                  >
+                    <div className='flex justify-center items-center w-full h-screen'>
+                      <Parallax speed={-20}>
+                        <div
+                          className={`font-light text-xs text-center tracking-widest animate-fade-down text-black select-none`}
+                        >
+                          SCROLL TO
+                          <br />
+                          BEGIN
+                        </div>
+                      </Parallax>
+                    </div>
+                  </section>
+                  <div
+                    id='captionmarker_0'
+                    className='w-full h-2 bg-purple-600'
+                    data-scroll
+                    data-scroll-call='section0'
+                    data-scroll-repeat
+                  />
+                  {/* Section 1 */}
+                  {/* WE HAD A DREAM */}
+                  <Section1ComponentInner
+                    setCurrentSection={setCurrentSection}
+                    setBgColor={setBgColor}
+                    setCaption={setCaption}
+                  />
+                  {/* Section 2 */}
+                  {/* INSPIRED BY NICE THINGS */}
+                  <Section2ComponentInner
+                    setCurrentSection={setCurrentSection}
+                    setBgColor={setBgColor}
+                    setCaption={setCaption}
+                  />
+                  {/* Section 3 */}
+                  {/* AND A BETTER WORLD */}
+                  <Section3ComponentInner
+                    setCurrentSection={setCurrentSection}
+                    setBgColor={setBgColor}
+                    setCaption={setCaption}
+                  />
+                  {/* Section 4 */}
+                  {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
+                  <Section4ComponentInner
+                    setCurrentSection={setCurrentSection}
+                    setBgColor={setBgColor}
+                    setCaption={setCaption}
+                  />
+                  {/* Section 5 */}
+                  {/* SO OTHER PEOPLE CAN DREAM TOO */}
+                  <Section5ComponentInner
+                    setCurrentSection={setCurrentSection}
+                    setBgColor={setBgColor}
+                    setCaption={setCaption}
+                  />
+                  {/* Section 6 */}
+                  {/* INSPIRED BY OUR NICE THING */}
+                  <Section6ComponentInner
+                    setCurrentSection={setCurrentSection}
+                    setBgColor={setBgColor}
+                    setCaption={setCaption}
+                  />
+                  {/* Section 7 */}
+                  {/* FEED CHANGE */}
+                  <Section7ComponentInner
+                    setCurrentSection={setCurrentSection}
+                    setBgColor={setBgColor}
+                    setCaption={setCaption}
+                  />
+                  {/* Section 8*/}
+                  {/* LOCAVORE NEXT */}
+                  <Section8ComponentInner
+                    setCurrentSection={setCurrentSection}
+                    setBgColor={setBgColor}
+                    setCaption={setCaption}
+                  />
+                </m.main>
+              </LazyMotion>
+            </ScrollTriggerWrapper>
+          </div>
         </div>
       </LocomotiveScrollProvider>
     </Layout>
