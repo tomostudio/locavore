@@ -20,15 +20,25 @@ export const Section2ComponentFixedFront = () => {
           <span className="block ml-32">THINGS</span>
         </div>
       </div>
-      <div
-        id="bee_mug"
-        className="s2_exit_group fixed w-full h-full z-50 opacity-0"
-      >
-        <div className="w-56 h-56 fixed left-1/2 top-1/2 translate-y-[65%] translate-x-[-70%]">
-          <Image src="/nxt/bee_sticker.png" layout="fill" objectFit="contain" />
-        </div>
-        <div className="w-72 h-72 fixed left-1/2 top-1/2 translate-y-[-5%] translate-x-[-3%]">
-          <Image src="/nxt/mug_sticker.png" layout="fill" objectFit="contain" />
+      <div className='s2_exit_group'>
+        <div
+          id="bee_mug"
+          className="fixed w-full h-full z-50 opacity-0"
+        >
+          <div className="w-56 h-56 fixed left-1/2 top-1/2 translate-y-[65%] translate-x-[-70%]">
+            <Image
+              src="/nxt/bee_sticker.png"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+          <div className="w-72 h-72 fixed left-1/2 top-1/2 translate-y-[-5%] translate-x-[-3%]">
+            <Image
+              src="/nxt/mug_sticker.png"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -43,33 +53,55 @@ export const Section2ComponentFixedBack = () => {
           <Image src="/nxt/worm.png" layout="fill" objectFit="contain" />
         </div>
       </div>
-      <div
-        id="flower_bee_butterfly"
-        className="s2_exit_group fixed w-full max-w-screen-lg h-full z-50 opacity-0"
-      >
-        <div className="w-28 h-28 fixed left-1/2 translate-x-[-540%] translate-y-[150px]">
-          <Image src="/nxt/sunflower02.png" layout="fill" objectFit="contain" />
-        </div>
-        <div className="w-20 h-20 fixed left-1/2 translate-x-[100%] translate-y-[45px]">
-          <Image src="/nxt/butterfly02.png" layout="fill" objectFit="contain" />
-        </div>
-        <div className="w-12 h-12 fixed right-1/2 translate-x-[600px] translate-y-[140px]">
-          <Image src="/nxt/bee01.png" layout="fill" objectFit="contain" />
-        </div>
-        <div className="w-20 h-20 fixed right-1/2 translate-x-[554px] translate-y-[215px]">
-          <Image src="/nxt/butterfly01.png" layout="fill" objectFit="contain" />
-        </div>
-        <div className="w-40 h-40 fixed left-1/2 translate-x-[-460%] bottom-0">
-          <Image src="/nxt/sunflower01.png" layout="fill" objectFit="contain" />
-        </div>
-        <div className="w-14 h-14 fixed left-1/2 translate-x-[-1030%] bottom-0 translate-y-[-180%]">
-          <Image src="/nxt/bee03.png" layout="fill" objectFit="contain" />
-        </div>
-        <div className="w-14 h-14 fixed left-1/2 translate-x-[-1220%] bottom-0 translate-y-[-400%]">
-          <Image src="/nxt/bee02.png" layout="fill" objectFit="contain" />
-        </div>
-        <div className="w-28 h-28 fixed right-0 translate-x-[-250%] bottom-0 translate-y-[-100%]">
-          <Image src="/nxt/sunflower03.png" layout="fill" objectFit="contain" />
+      <div className="s2_exit_group">
+        <div
+          id="flower_bee_butterfly"
+          className="fixed w-full max-w-screen-lg h-full z-50 opacity-0"
+        >
+          <div className="w-28 h-28 fixed left-1/2 translate-x-[-540%] translate-y-[150px]">
+            <Image
+              src="/nxt/sunflower02.png"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+          <div className="w-20 h-20 fixed left-1/2 translate-x-[100%] translate-y-[45px]">
+            <Image
+              src="/nxt/butterfly02.png"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+          <div className="w-12 h-12 fixed right-1/2 translate-x-[600px] translate-y-[140px]">
+            <Image src="/nxt/bee01.png" layout="fill" objectFit="contain" />
+          </div>
+          <div className="w-20 h-20 fixed right-1/2 translate-x-[554px] translate-y-[215px]">
+            <Image
+              src="/nxt/butterfly01.png"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+          <div className="w-40 h-40 fixed left-1/2 translate-x-[-460%] bottom-0">
+            <Image
+              src="/nxt/sunflower01.png"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
+          <div className="w-14 h-14 fixed left-1/2 translate-x-[-1030%] bottom-0 translate-y-[-180%]">
+            <Image src="/nxt/bee03.png" layout="fill" objectFit="contain" />
+          </div>
+          <div className="w-14 h-14 fixed left-1/2 translate-x-[-1220%] bottom-0 translate-y-[-400%]">
+            <Image src="/nxt/bee02.png" layout="fill" objectFit="contain" />
+          </div>
+          <div className="w-28 h-28 fixed right-0 translate-x-[-250%] bottom-0 translate-y-[-100%]">
+            <Image
+              src="/nxt/sunflower03.png"
+              layout="fill"
+              objectFit="contain"
+            />
+          </div>
         </div>
       </div>
       <div
@@ -191,7 +223,7 @@ export const Section2ComponentInner = ({
           ENTER FOREST 2
         </div>
         <div
-          id="exit-group"
+          id="exit-group2"
           className="h-[50vh] __b bg-blue-600 bg-opacity-50 mt-24"
         />
         <div
@@ -473,12 +505,12 @@ export const Section2AnimationOBJ = [
   },
   // EXIT GROUP
   () => {
-    const id = 'exit-group' // animation id
+    const id = 'exit-group2' // animation id
     const elem = '.s2_exit_group'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#exit-group', // which section will be tracked as the scroll trigger
+        trigger: '#exit-group2', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',

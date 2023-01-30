@@ -6,13 +6,15 @@ import Image from 'next/legacy/image'
 export const Section3ComponentFixedFront = () => {
   return (
     <div id="section3_fixed_front">
-      <div
-        id="better-world"
-        className="exit-group3 pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl"
-      >
-        <div className="max-w-screen-lg w-full text-right">
-          <span className="block mr-[11.5rem]">AND</span>A BETTER
-          <span className="block mr-6">WORLD</span>
+      <div className="exit_group3">
+        <div
+          id="better_world"
+          className="pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl"
+        >
+          <div className="max-w-screen-lg w-full text-right">
+            <span className="block mr-[11.5rem]">AND</span>A BETTER
+            <span className="block mr-6">WORLD</span>
+          </div>
         </div>
       </div>
     </div>
@@ -21,44 +23,46 @@ export const Section3ComponentFixedFront = () => {
 export const Section3ComponentFixedBack = () => {
   return (
     <div id="section3_fixed_back">
-      <div
-        id="tree"
-        className="exit-group3 fixed w-[32rem] h-[38rem] left-1/2 translate-x-[-120%] top-1/2 translate-y-[-200%]"
-      >
-        <Image src="/nxt/tree.png" layout="fill" objectFit="contain" />
-        <div className="fixed w-36 h-36 -right-4 top-32">
-          <Image src="/nxt/hugger.png" layout="fill" objectFit="contain" />
+      <div className="exit_group3">
+        <div
+          id="tree"
+          className="fixed w-[32rem] h-[38rem] left-1/2 translate-x-[-120%] top-1/2 translate-y-[-200%]"
+        >
+          <Image src="/nxt/tree.png" layout="fill" objectFit="contain" />
+          <div className="fixed w-36 h-36 -right-4 top-32">
+            <Image src="/nxt/hugger.png" layout="fill" objectFit="contain" />
+          </div>
         </div>
-      </div>
-      <div
-        id="animal"
-        className="exit-group3 w-96 h-96 fixed top-1/2 z-10 translate-y-[-26%] left-1/2 translate-x-[-500%]"
-      >
-        <Image src="/nxt/animal.png" layout="fill" objectFit="contain" />
-      </div>
-      <div
-        id="nature"
-        className="exit-group3 opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-160%] right-1/2 translate-x-[225%]"
-      >
-        <Image src="/nxt/nature.png" layout="fill" objectFit="contain" />
-      </div>
-      <div
-        id="hasthe"
-        className="exit-group3 opacity-0 w-52 h-20 fixed top-1/2 translate-y-[-260%] right-1/2 translate-x-[308%]"
-      >
-        <Image src="/nxt/hasthe.png" layout="fill" objectFit="contain" />
-      </div>
-      <div
-        id="answer"
-        className="exit-group3 opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-117%] right-1/2 translate-x-[264%]"
-      >
-        <Image src="/nxt/answer.png" layout="fill" objectFit="contain" />
-      </div>
-      <div
-        id="arrow"
-        className="exit-group3 opacity-0 w-80 h-48 fixed top-1/2 translate-y-[-145%] right-1/2 translate-x-[85%]"
-      >
-        <Image src="/nxt/arrow.png" layout="fill" objectFit="contain" />
+        <div
+          id="animal"
+          className="w-96 h-96 fixed top-1/2 z-10 translate-y-[-26%] left-1/2 translate-x-[-500%]"
+        >
+          <Image src="/nxt/animal.png" layout="fill" objectFit="contain" />
+        </div>
+        <div
+          id="nature"
+          className="opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-160%] right-1/2 translate-x-[225%]"
+        >
+          <Image src="/nxt/nature.png" layout="fill" objectFit="contain" />
+        </div>
+        <div
+          id="hasthe"
+          className="opacity-0 w-52 h-20 fixed top-1/2 translate-y-[-260%] right-1/2 translate-x-[308%]"
+        >
+          <Image src="/nxt/hasthe.png" layout="fill" objectFit="contain" />
+        </div>
+        <div
+          id="answer"
+          className="opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-117%] right-1/2 translate-x-[264%]"
+        >
+          <Image src="/nxt/answer.png" layout="fill" objectFit="contain" />
+        </div>
+        <div
+          id="arrow"
+          className="opacity-0 w-80 h-48 fixed top-1/2 translate-y-[-145%] right-1/2 translate-x-[85%]"
+        >
+          <Image src="/nxt/arrow.png" layout="fill" objectFit="contain" />
+        </div>
       </div>
     </div>
   )
@@ -120,7 +124,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
       >
         {/* AND A BETTER WORLD */}
         <div
-          id="enter-better-world"
+          id="enter_better_world"
           className="h-[100vh] __b bg-red-600 bg-opacity-50 mt-24"
         >
           BETTER WORLD ENTER
@@ -128,48 +132,51 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         <Section3MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         {/* TREE */}
         <div
-          id="enter-tree"
+          id="enter_tree"
           className="h-[100vh] __b bg-green-600 bg-opacity-50"
         >
           ENTER TREE
         </div>
         {/* ENTER ANIMAL */}
         <div
-          id="enter-animal"
+          id="enter_animal"
           className="h-[100vh] __b bg-green-600 bg-opacity-50"
         >
           ENTER ANIMAL
         </div>
         {/* ENTER NATURE */}
         <div
-          id="enter-nature"
+          id="enter_nature"
           className="h-[25vh] __b bg-blue-600 bg-opacity-50 mt-24"
         >
           ENTER NATURE
         </div>
         {/* ENTER HAS THE */}
         <div
-          id="enter-hasthe"
+          id="enter_hasthe"
           className="h-[25vh] __b bg-red-600 bg-opacity-50 mt-24"
         >
           ENTER HAS THE
         </div>
         {/* ENTER ANSWER */}
         <div
-          id="enter-answer"
+          id="enter_answer"
           className="h-[25vh] __b bg-green-600 bg-opacity-50 mt-24"
         >
           ENTER ANSWER
         </div>
         {/* ENTER ARROW */}
         <div
-          id="enter-arrow"
+          id="enter_arrow"
           className="h-[25vh] __b bg-blue-600 bg-opacity-50"
         >
           ENTER ARROW
         </div>
         <Section3MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
-        <div id="exit-all3" className="h-[50vh] __b bg-red-600 bg-opacity-50 mt-24" />
+        <div
+          id="exit_all3"
+          className="h-[50vh] __b bg-red-600 bg-opacity-50 mt-24"
+        >Enter All 3</div>
       </section>
     </>
   )
@@ -178,19 +185,18 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
 export const Section3AnimationOBJ = [
   // AND A BETTER WORLD
   () => {
-    const id = 'better-world-enter' // animation id
-    const elem = '#better-world'
+    const id = 'enter_better_world' // animation id
+    const elem = '#better_world'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter-better-world', // which section will be tracked as the scroll trigger
+        trigger: '#enter_better_world', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
         end: 'bottom 100%',
       },
     }
-
     // Input Animation
     const animation = [
       {
@@ -210,7 +216,6 @@ export const Section3AnimationOBJ = [
         ],
       },
     ]
-
     return { id, elem, settings, animation }
   },
   // TREE
@@ -220,14 +225,13 @@ export const Section3AnimationOBJ = [
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter-tree', // which section will be tracked as the scroll trigger
+        trigger: '#enter_tree', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
         end: 'bottom 100%',
       },
     }
-
     // Input Animation
     const animation = [
       {
@@ -251,24 +255,22 @@ export const Section3AnimationOBJ = [
         ],
       },
     ]
-
     return { id, elem, settings, animation }
   },
   // ANIMAL
   () => {
-    const id = 'enter-animal' // animation id
+    const id = 'enter_animal' // animation id
     const elem = '#animal'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter-animal', // which section will be tracked as the scroll trigger
+        trigger: '#enter_animal', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
         end: 'bottom 100%',
       },
     }
-
     // Input Animation
     const animation = [
       {
@@ -281,24 +283,22 @@ export const Section3AnimationOBJ = [
         ],
       },
     ]
-
     return { id, elem, settings, animation }
   },
   // NATURE
   () => {
-    const id = 'enter-nature' // animation id
+    const id = 'enter_nature' // animation id
     const elem = '#nature'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter-nature', // which section will be tracked as the scroll trigger
+        trigger: '#enter_nature', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
         end: 'bottom 100%',
       },
     }
-
     // Input Animation
     const animation = [
       {
@@ -320,24 +320,22 @@ export const Section3AnimationOBJ = [
         ],
       },
     ]
-
     return { id, elem, settings, animation }
   },
   // HAS THE
   () => {
-    const id = 'enter-hasthe' // animation id
+    const id = 'enter_hasthe' // animation id
     const elem = '#hasthe'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter-hasthe', // which section will be tracked as the scroll trigger
+        trigger: '#enter_hasthe', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
         end: 'bottom 100%',
       },
     }
-
     // Input Animation
     const animation = [
       {
@@ -359,24 +357,22 @@ export const Section3AnimationOBJ = [
         ],
       },
     ]
-
     return { id, elem, settings, animation }
   },
   // ANSWER
   () => {
-    const id = 'enter-answer' // animation id
+    const id = 'enter_answer' // animation id
     const elem = '#answer'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter-answer', // which section will be tracked as the scroll trigger
+        trigger: '#enter_answer', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
         end: 'bottom 100%',
       },
     }
-
     // Input Animation
     const animation = [
       {
@@ -398,24 +394,22 @@ export const Section3AnimationOBJ = [
         ],
       },
     ]
-
     return { id, elem, settings, animation }
   },
   // ARROW
   () => {
-    const id = 'enter-arrow' // animation id
+    const id = 'enter_arrow' // animation id
     const elem = '#arrow'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter-arrow', // which section will be tracked as the scroll trigger
+        trigger: '#enter_arrow', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
         end: 'bottom 100%',
       },
     }
-
     // Input Animation
     const animation = [
       {
@@ -437,35 +431,24 @@ export const Section3AnimationOBJ = [
         ],
       },
     ]
-
     return { id, elem, settings, animation }
   },
   // EXIT GROUP 3
   () => {
-    const id = 'exit-group3' // animation id
-    const elem = '.exit-group3'
+    const id = 'exit_group3' // animation id
+    const elem = '.exit_group3'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#exit-all3', // which section will be tracked as the scroll trigger
+        trigger: '#exit_all3', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
         end: 'bottom 100%',
       },
     }
-
     // Input Animation
     const animation = [
-      {
-        set: [
-          elem,
-          {
-            opacity: 1,
-            ease: 'none',
-          },
-        ],
-      },
       {
         to: [
           elem,
@@ -476,7 +459,6 @@ export const Section3AnimationOBJ = [
         ],
       },
     ]
-
     return { id, elem, settings, animation }
   },
 ]
