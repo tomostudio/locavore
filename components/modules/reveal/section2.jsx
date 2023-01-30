@@ -180,7 +180,6 @@ export const Section2ComponentInner = ({
       <section
         id="trigger2"
         className="trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center __b "
-        data-scroll-section
       >
         {/* INSPIRED BY NICE THINGS */}
         <div

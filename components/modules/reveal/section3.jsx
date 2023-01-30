@@ -120,7 +120,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
       <section
         id="trigger3"
         className="trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center"
-        data-scroll-section
+       
       >
         {/* AND A BETTER WORLD */}
         <div
