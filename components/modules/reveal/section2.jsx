@@ -1,6 +1,7 @@
 import React from 'react'
 import 'intersection-observer' // optional polyfill
 import { useInView } from 'react-cool-inview'
+import Image from 'next/image'
 
 export const Section2ComponentFixedFront = () => {
   return (
@@ -123,7 +124,7 @@ export const Section2ComponentInner = ({
           id="enter-eyes"
           className="h-[100vh] __b bg-green-600 bg-opacity-50"
         />
-        <Section1MarkerTop
+        <Section2MarkerTop
           setCurrentSection={setCurrentSection}
           setBgColor={setBgColor}
           setCaption={setCaption}
@@ -164,7 +165,7 @@ export const Section2ComponentInner = ({
           data-scroll-repeat
         /> */}
         {/* // ALTERNATIVE CAPTION TRIGGER */}
-        <Section1MarkerBottom
+        <Section2MarkerBottom
           setCurrentSection={setCurrentSection}
           setBgColor={setBgColor}
           setCaption={setCaption}

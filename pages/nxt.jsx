@@ -69,8 +69,11 @@ import {
   Section8ComponentInner,
 } from '@/components/modules/reveal/section8';
 
-export default function Reveal() {
+export default function Reveal({
+  seoAPI,
+})  {
   const router = useRouter();
+  const [seo] = seoAPI;
   const containerRef = useRef(null);
 
   // ANIMATION
@@ -117,7 +120,12 @@ export default function Reveal() {
   };
   return (
     <Layout>
-      <SEO title={'Editorial'} pagelink={router.pathname} />
+      <SEO
+        title={'Up NXT'}
+        pagelink={router.pathname}
+        defaultSEO={typeof seo !== 'undefined' && seo.seo}
+        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+      />
       {/* FIXED POSITION FRONT*/}
       <div className='outercontainer-front fixed z-50 w-full h-full border pointer-events-none select-none'>
         {/* SECTION 1 */}
@@ -331,8 +339,12 @@ export async function getStaticProps() {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `);
+  const seoAPI = await client.fetch(`
+  *[_type == "settings"]
+  `);
   return {
     props: {
+      seoAPI,
       headerAPI,
       footerAPI,
     },

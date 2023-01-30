@@ -121,15 +121,15 @@ export const Section1ComponentInner = ({
           id="enter-dream"
           className="h-[100vh] __b bg-green-600 bg-opacity-50"
         />
-        {/* EYES */}
-        <div
-          id="enter-eyes"
-          className="h-[100vh] __b bg-green-600 bg-opacity-50"
-        />
         <Section1MarkerTop
           setCurrentSection={setCurrentSection}
           setBgColor={setBgColor}
           setCaption={setCaption}
+        />
+        {/* EYES */}
+        <div
+          id="enter-eyes"
+          className="h-[100vh] __b bg-green-600 bg-opacity-50"
         />
         {/* // ALTERNATIVE CAPTION TRIGGER */}
         {/* <div
