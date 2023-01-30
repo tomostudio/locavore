@@ -81,6 +81,7 @@ export default function Reveal({
     ...Section1AnimationOBJ,
     ...Section2AnimationOBJ,
     ...Section3AnimationOBJ,
+    ...Section4AnimationOBJ,
   ];
 
   const [bgColor, setBgColor] = useState('#BFC29D');
@@ -127,7 +128,7 @@ export default function Reveal({
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       {/* FIXED POSITION FRONT*/}
-      <div className='outercontainer-front fixed z-50 w-full h-full border pointer-events-none select-none'>
+      <div className='outercontainer-front fixed z-40 w-full h-full border pointer-events-none select-none'>
         {/* SECTION 1 */}
         <Section1ComponentFixedFront />
         {/* SECTION 2 */}
