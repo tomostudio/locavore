@@ -83,22 +83,14 @@ export default function Reveal({ seoAPI }) {
     ...Section5AnimationOBJ,
   ];
 
-  const [bgColor, setBgColor] = useState('#BFC29D');
-  const [currentSection, setCurrentSection] = useState(0);
+  // const [bgColor, setBgColor] = useState('#BFC29D');
 
   useEffect(() => {
     const BackgroundLocomotiveEvents = (e) => {
       const { enter, target } = e.detail;
-      if (enter === 'enter') {
-        switch (target) {
-          case 'section0':
-            setCurrentSection(0);
-            setBgColor('#BFC29D');
-            break;
-
-          default:
-            break;
-        }
+      if (enter === 'enter' && target === 'section0') {
+        setCaption(0);
+        setBgColor('#BFC29D');
       }
     };
 
@@ -118,6 +110,14 @@ export default function Reveal({ seoAPI }) {
       if (index + 1 <= n) caption.classList.add('active');
     });
   };
+
+  // Set Background
+
+  const setBgColor = (color) => {
+    const bgFrame = document.querySelector('#NXTbackground');
+    bgFrame.style.background = color;
+  };
+
   return (
     <Layout>
       <SEO
@@ -168,7 +168,6 @@ export default function Reveal({ seoAPI }) {
       <div
         id='NXTbackground'
         className={`background fixed z-1 w-full h-full pointer-events-none transition-colors duration-1000`}
-        style={{ background: bgColor }}
       />
       {/* CAPTION */}
       <div

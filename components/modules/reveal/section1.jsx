@@ -76,28 +76,25 @@ export const Section1ComponentFixedBack = () => {
   )
 }
 
-const Section1MarkerTop = ({ setCurrentSection, setBgColor, setCaption }) => {
+const Section1MarkerTop = ({  setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      // setCurrentSection(1);
       setCaption(1)
-      // setBgColor('#BFC29D');
+      setBgColor('#BFC29D');
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
       // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
-        // setCurrentSection(1);
         setCaption(1)
-        // setBgColor('#BFC29D');
+        setBgColor('#BFC29D');
       } else if (scrollDirection.vertical === 'down') {
         // PREVIOUS
-        // setCurrentSection(0);
         setCaption(0)
-        // setBgColor('#BFC29D');
+        setBgColor('#BFC29D');
       }
     },
   })
@@ -106,7 +103,6 @@ const Section1MarkerTop = ({ setCurrentSection, setBgColor, setCaption }) => {
 }
 
 const Section1MarkerBottom = ({
-  setCurrentSection,
   setBgColor,
   setCaption,
 }) => {
@@ -114,9 +110,8 @@ const Section1MarkerBottom = ({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      // setCurrentSection(1);
       setCaption(1)
-      // setBgColor('#BFC29D');
+      setBgColor('#BFC29D');
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -124,9 +119,8 @@ const Section1MarkerBottom = ({
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 1
-        // setCurrentSection(1);
         setCaption(1)
-        // setBgColor('#BFC29D');
+        setBgColor('#BFC29D');
       }
     },
   })
@@ -135,7 +129,6 @@ const Section1MarkerBottom = ({
 }
 
 export const Section1ComponentInner = ({
-  setCurrentSection,
   setBgColor,
   setCaption,
 }) => {
@@ -151,7 +144,6 @@ export const Section1ComponentInner = ({
           className="h-[100vh] __b bg-green-600 bg-opacity-50"
         />
         <Section1MarkerTop
-          setCurrentSection={setCurrentSection}
           setBgColor={setBgColor}
           setCaption={setCaption}
         />
@@ -208,7 +200,6 @@ export const Section1ComponentInner = ({
         /> */}
         {/* // ALTERNATIVE CAPTION TRIGGER */}
         <Section1MarkerBottom
-          setCurrentSection={setCurrentSection}
           setBgColor={setBgColor}
           setCaption={setCaption}
         />

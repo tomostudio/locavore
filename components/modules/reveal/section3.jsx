@@ -116,7 +116,7 @@ const Section3MarkerTop = ({ setBgColor, setCaption }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(3)
-      // setBgColor('#B1BA96')
+      setBgColor('#B1BA96')
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -124,7 +124,7 @@ const Section3MarkerTop = ({ setBgColor, setCaption }) => {
       if (scrollDirection.vertical === 'up') {
         // CURRENT
         setCaption(3)
-        // setBgColor('#B1BA96')
+        setBgColor('#B1BA96')
       }
     },
   })
@@ -138,7 +138,7 @@ const Section3MarkerBottom = ({ setBgColor, setCaption }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(3)
-      // setBgColor('#B1BA96')
+      setBgColor('#B1BA96')
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -147,7 +147,7 @@ const Section3MarkerBottom = ({ setBgColor, setCaption }) => {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 3
         setCaption(3)
-        // setBgColor('#B1BA96')
+        setBgColor('#B1BA96')
       }
     },
   })

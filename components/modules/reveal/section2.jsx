@@ -124,14 +124,14 @@ const Section2MarkerTop = ({ setCaption, setBgColor }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(2);
-      // setBgColor('#B1BA96')
+      setBgColor('#B1BA96')
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
       if (scrollDirection.vertical === 'up') {
         // CURRENT
         setCaption(2);
-        // setBgColor('#B1BA96')
+        setBgColor('#B1BA96')
       }
     },
   });
