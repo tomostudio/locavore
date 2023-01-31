@@ -176,46 +176,24 @@ export default function Reveal({ seoAPI }) {
       >
         {/* CURRENT BUG, JITTER EFFECT DUE TO UPDATING THE STYLE USING USE STATE -> SEEK ALTERNATIVE */}
         {/* Potential Solution 1: Create Custom Function for Class Trigger */}
-        <div
-          className={`caption_tab px-2 w-fit rotate-0 will-change-auto ${
-            currentSection >= 1 ? 'active' : ''
-          }`}
-        >
+        <div className={`caption_tab px-2 w-fit rotate-0 will-change-auto`}>
           WE HAD A DREAM
         </div>
-        <div
-          className={`caption_tab px-2 w-fit rotate-1 will-change-auto ${
-            currentSection >= 2 ? 'active' : ''
-          }`}
-        >
+        <div className={`caption_tab px-2 w-fit rotate-1 will-change-auto`}>
           INSPIRED BY NICE THINGS
         </div>
         <div
-          className={`caption_tab px-2 w-fit -rotate-[-.5deg] will-change-auto  ${
-            currentSection >= 3 ? 'active' : ''
-          }`}
+          className={`caption_tab px-2 w-fit -rotate-[-.5deg] will-change-auto`}
         >
           AND A BETTER WORLD
         </div>
-        <div
-          className={`caption_tab px-2 w-fit rotate-[-.25deg] ${
-            currentSection >= 4 ? 'active' : ''
-          }`}
-        >
+        <div className={`caption_tab px-2 w-fit rotate-[-.25deg]`}>
           SO WE TOOK THAT DREAM AND MADE IT REAL
         </div>
-        <div
-          className={`caption_tab px-2 w-fit rotate-0 ${
-            currentSection >= 5 ? 'active' : ''
-          }`}
-        >
+        <div className={`caption_tab px-2 w-fit rotate-0`}>
           SO OTHER PEOPLE CAN DREAM TOO
         </div>
-        <div
-          className={`caption_tab px-2 w-fit rotate-1/2 ${
-            currentSection >= 6 ? 'active' : ''
-          }`}
-        >
+        <div className={`caption_tab px-2 w-fit rotate-1/2 `}>
           INSPIRED BY OUR NICE THING
         </div>
       </div>
