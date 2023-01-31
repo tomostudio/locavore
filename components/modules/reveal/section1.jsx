@@ -4,8 +4,8 @@ import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 
 // IMPORT LOCAL IMAGE
-
 import EyesImage from "@/public/nxt/eyes.png"
+import HeadImage from "@/public/nxt/head.png"
 
 export const Section1ComponentFixedFront = () => {
   return (
@@ -56,7 +56,7 @@ export const Section1ComponentFixedBack = () => {
           className="opacity-0 h-72 w-72 fixed z-5 top-1/2 translate-y-[-60%] right-[50%] translate-x-[190%] will-change-auto"
         >
           <Image
-            src="/nxt/head.png"
+            src={HeadImage}
             fill
             style={{
               objectFit: 'contain',
