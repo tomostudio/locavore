@@ -1,7 +1,7 @@
 import React from 'react'
 import 'intersection-observer' // optional polyfill
 import { useInView } from 'react-cool-inview'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 
 export const Section3ComponentFixedFront = () => {
   return (
@@ -28,40 +28,82 @@ export const Section3ComponentFixedBack = () => {
           id="tree"
           className="fixed w-[32rem] h-[38rem] left-1/2 translate-x-[-120%] top-1/2 translate-y-[-200%]"
         >
-          <Image src="/nxt/tree.png" layout="fill" objectFit="contain" />
+          <Image
+            src="/nxt/tree.png"
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
           <div className="fixed w-36 h-36 -right-4 top-32">
-            <Image src="/nxt/hugger.png" layout="fill" objectFit="contain" />
+            <Image
+              src="/nxt/hugger.png"
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
           </div>
         </div>
         <div
           id="animal"
           className="w-96 h-96 fixed top-1/2 z-10 translate-y-[-26%] left-1/2 translate-x-[-500%]"
         >
-          <Image src="/nxt/animal.png" layout="fill" objectFit="contain" />
+          <Image
+            src="/nxt/animal.png"
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
         </div>
         <div
           id="nature"
           className="opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-160%] right-1/2 translate-x-[225%]"
         >
-          <Image src="/nxt/nature.png" layout="fill" objectFit="contain" />
+          <Image
+            src="/nxt/nature.png"
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
         </div>
         <div
           id="hasthe"
           className="opacity-0 w-52 h-20 fixed top-1/2 translate-y-[-260%] right-1/2 translate-x-[308%]"
         >
-          <Image src="/nxt/hasthe.png" layout="fill" objectFit="contain" />
+          <Image
+            src="/nxt/hasthe.png"
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
         </div>
         <div
           id="answer"
           className="opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-117%] right-1/2 translate-x-[264%]"
         >
-          <Image src="/nxt/answer.png" layout="fill" objectFit="contain" />
+          <Image
+            src="/nxt/answer.png"
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
         </div>
         <div
           id="arrow"
           className="opacity-0 w-80 h-48 fixed top-1/2 translate-y-[-145%] right-1/2 translate-x-[85%]"
         >
-          <Image src="/nxt/arrow.png" layout="fill" objectFit="contain" />
+          <Image
+            src="/nxt/arrow.png"
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
         </div>
       </div>
     </div>
@@ -74,7 +116,7 @@ const Section3MarkerTop = ({ setBgColor, setCaption }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(3)
-      setBgColor('#B1BA96')
+      // setBgColor('#B1BA96')
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -82,7 +124,7 @@ const Section3MarkerTop = ({ setBgColor, setCaption }) => {
       if (scrollDirection.vertical === 'up') {
         // CURRENT
         setCaption(3)
-        setBgColor('#B1BA96')
+        // setBgColor('#B1BA96')
       }
     },
   })
@@ -96,7 +138,7 @@ const Section3MarkerBottom = ({ setBgColor, setCaption }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(3)
-      setBgColor('#B1BA96')
+      // setBgColor('#B1BA96')
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -105,7 +147,7 @@ const Section3MarkerBottom = ({ setBgColor, setCaption }) => {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 3
         setCaption(3)
-        setBgColor('#B1BA96')
+        // setBgColor('#B1BA96')
       }
     },
   })
@@ -120,7 +162,6 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
       <section
         id="trigger3"
         className="trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center"
-       
       >
         {/* AND A BETTER WORLD */}
         <div
@@ -172,11 +213,13 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         >
           ENTER ARROW
         </div>
-        <Section3MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
         <div
           id="exit_all3"
           className="h-[50vh] __b bg-red-600 bg-opacity-50 mt-24"
-        >Enter All 3</div>
+        >
+          EXIT All 3
+        </div>
+        <Section3MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
   )

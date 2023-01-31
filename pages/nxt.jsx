@@ -80,6 +80,7 @@ export default function Reveal({ seoAPI }) {
     ...Section2AnimationOBJ,
     ...Section3AnimationOBJ,
     ...Section4AnimationOBJ,
+    ...Section5AnimationOBJ,
   ];
 
   const [bgColor, setBgColor] = useState('#BFC29D');
