@@ -3,6 +3,10 @@ import 'intersection-observer' // optional polyfill
 import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 
+// IMPORT LOCAL IMAGE
+
+import EyesImage from "@/public/nxt/eyes.png"
+
 export const Section1ComponentFixedFront = () => {
   return (
     <div id="section1_fixed_front">
@@ -20,7 +24,7 @@ export const Section1ComponentFixedFront = () => {
         className="opacity-0 h-[29.5rem] w-[46.5rem] fixed z-50 bottom-1/2 left-1/2 translate-x-[-49%] translate-y-[180%] will-change-auto"
       >
         <Image
-          src="/nxt/eyes.png"
+          src={EyesImage}
           fill
           style={{
             objectFit: 'contain',
