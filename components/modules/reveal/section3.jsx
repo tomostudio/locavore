@@ -4,13 +4,13 @@ import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 
 // Local Images
-import tree from '../../../public/nxt/tree.png'
-import hugger from '../../../public/nxt/hugger.png'
-import animal from '../../../public/nxt/animal.png'
-import nature from '../../../public/nxt/nature.png'
-import hasthe from '../../../public/nxt/hasthe.png'
-import answer from '../../../public/nxt/answer.png'
-import arrow from '../../../public/nxt/arrow.png'
+import tree from '@/public/nxt/tree.png'
+import hugger from '@/public/nxt/hugger.png'
+import animal from '@/public/nxt/animal.png'
+import nature from '@/public/nxt/nature.png'
+import hasthe from '@/public/nxt/hasthe.png'
+import answer from '@/public/nxt/answer.png'
+import arrow from '@/public/nxt/arrow.png'
 
 export const Section3ComponentFixedFront = () => {
   return (

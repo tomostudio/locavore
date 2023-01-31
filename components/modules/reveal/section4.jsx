@@ -4,17 +4,17 @@ import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 
 // Local Images
-import globe from '../../../public/nxt/globe.png'
-import supportYourLocalPlanet from '../../../public/nxt/supportyourlocalplanet.png'
-import beRegenerative from '../../../public/nxt/beregenerative.png'
-import sharingIsCaring from '../../../public/nxt/sharingiscaring.png'
-import box from '../../../public/nxt/box.png'
-import constructionSticker from '../../../public/nxt/construction_sticker.png'
-import pot from '../../../public/nxt/pot.png'
-import construction1 from '../../../public/nxt/construction1.png'
-import construction2 from '../../../public/nxt/construction2.png'
-import blossom from '../../../public/nxt/blossom.png'
-import loading from '../../../public/nxt/loading.gif'
+import globe from '@/public/nxt/globe.png'
+import supportYourLocalPlanet from '@/public/nxt/supportyourlocalplanet.png'
+import beRegenerative from '@/public/nxt/beregenerative.png'
+import sharingIsCaring from '@/public/nxt/sharingiscaring.png'
+import box from '@/public/nxt/box.png'
+import constructionSticker from '@/public/nxt/construction_sticker.png'
+import pot from '@/public/nxt/pot.png'
+import construction1 from '@/public/nxt/construction1.png'
+import construction2 from '@/public/nxt/construction2.png'
+import blossom from '@/public/nxt/blossom.png'
+import loading from '@/public/nxt/loading.gif'
 
 export const Section4ComponentFixedFront = () => {
   return (
