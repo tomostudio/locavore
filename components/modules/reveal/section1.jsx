@@ -3,13 +3,6 @@ import 'intersection-observer' // optional polyfill
 import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 
-// Local Images
-import eyes from '@/public/nxt/eyes.png'
-import head from '@/public/nxt/head.png'
-import whatIf from '@/public/nxt/whatif.png'
-import dream from '@/public/nxt/dream.png'
-import wish from '@/public/nxt/wish.png'
-
 export const Section1ComponentFixedFront = () => {
   return (
     <div id="section1_fixed_front">
@@ -27,7 +20,7 @@ export const Section1ComponentFixedFront = () => {
         className="opacity-0 h-[29.5rem] w-[46.5rem] fixed z-50 bottom-1/2 left-1/2 translate-x-[-49%] translate-y-[180%] will-change-auto"
       >
         <Image
-          src={eyes}
+          src="/nxt/eyes.png"
           fill
           style={{
             objectFit: 'contain',
@@ -39,7 +32,7 @@ export const Section1ComponentFixedFront = () => {
         className="w-96 h-72 fixed top-1/2 z-10 translate-y-[-90%] translate-x-[-25vw]"
       >
         <Image
-          src={dream}
+          src="/nxt/dream.png"
           fill
           style={{
             objectFit: 'contain',
@@ -59,7 +52,7 @@ export const Section1ComponentFixedBack = () => {
           className="opacity-0 h-72 w-72 fixed z-5 top-1/2 translate-y-[-60%] right-[50%] translate-x-[190%] will-change-auto"
         >
           <Image
-            src={head}
+            src="/nxt/head.png"
             fill
             style={{
               objectFit: 'contain',
@@ -71,7 +64,7 @@ export const Section1ComponentFixedBack = () => {
           className="opacity-0 h-64 w-64 fixed z-5 top-1/2 translate-y-[-135%] right-1/2 translate-x-[170%] will-change-auto"
         >
           <Image
-            src={whatIf}
+            src="/nxt/whatif.png"
             fill
             style={{
               objectFit: 'contain',
@@ -195,7 +188,7 @@ export const Section1ComponentInner = ({
         <div id="wish" className="w-full mx-auto max-w-screen-lg mb-40">
           <div className="relative w-96 h-30rem">
             <Image
-              src={wish}
+              src="/nxt/wish.png"
               fill
               style={{
                 objectFit: 'contain',

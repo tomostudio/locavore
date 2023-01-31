@@ -1,10 +1,9 @@
 import React from 'react'
 import 'intersection-observer' // optional polyfill
 import { useInView } from 'react-cool-inview'
+import Image from 'next/image'
 
 // Local Images
-import revolutionSticker from '@/public/nxt/revolution_sticker.png'
-import Image from 'next/image'
 
 export const Section5ComponentFixedFront = () => {
   return (
@@ -31,7 +30,7 @@ export const Section5ComponentFixedBack = () => {
         className="fixed w-52 h-52 opacity-0 top-1/2 left-1/2 translate-y-[50%] translate-x-[105%]"
       >
         <Image
-          src={revolutionSticker}
+          src="/nxt/revolution_sticker.png"
           fill
           style={{
             objectFit: 'contain',

@@ -3,19 +3,6 @@ import 'intersection-observer' // optional polyfill
 import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 
-// Local Images
-import globe from '@/public/nxt/globe.png'
-import supportYourLocalPlanet from '@/public/nxt/supportyourlocalplanet.png'
-import beRegenerative from '@/public/nxt/beregenerative.png'
-import sharingIsCaring from '@/public/nxt/sharingiscaring.png'
-import box from '@/public/nxt/box.png'
-import constructionSticker from '@/public/nxt/construction_sticker.png'
-import pot from '@/public/nxt/pot.png'
-import construction1 from '@/public/nxt/construction1.png'
-import construction2 from '@/public/nxt/construction2.png'
-import blossom from '@/public/nxt/blossom.png'
-import loading from '@/public/nxt/loading.gif'
-
 export const Section4ComponentFixedFront = () => {
   return (
     <div id="section4_fixed_front">
@@ -30,7 +17,7 @@ export const Section4ComponentFixedFront = () => {
           >
             <div className="opacity-50" id="globe">
               <Image
-                src={globe}
+                src="/nxt/globe.png"
                 fill
                 style={{
                   objectFit: 'contain',
@@ -38,7 +25,7 @@ export const Section4ComponentFixedFront = () => {
               />
             </div>
             <Image
-              src={supportYourLocalPlanet}
+              src="/nxt/supportyourlocalplanet.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -52,7 +39,7 @@ export const Section4ComponentFixedFront = () => {
             className="fixed w-96 h-36 top-1/2 left-1/2 translate-x-[-200%] translate-y-[-250%]"
           >
             <Image
-              src={beRegenerative}
+              src="/nxt/beregenerative.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -64,7 +51,7 @@ export const Section4ComponentFixedFront = () => {
             className="fixed w-96 h-36 top-1/2 left-1/2 translate-x-[75%] translate-y-[160%]"
           >
             <Image
-              src={sharingIsCaring}
+              src="/nxt/sharingiscaring.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -89,7 +76,7 @@ export const Section4ComponentFixedFront = () => {
           className="fixed w-56 h-56 opacity-0 top-1/2 left-1/2 translate-y-[-54%] translate-x-[-237%]"
         >
           <Image
-            src={pot}
+            src="/nxt/pot.png"
             fill
             style={{
               objectFit: 'contain',
@@ -102,7 +89,7 @@ export const Section4ComponentFixedFront = () => {
         className="fixed w-96 h-96 top-1/2 left-1/2 translate-y-[-200%] translate-x-[250%]"
       >
         <Image
-          src={construction2}
+          src="/nxt/construction2.png"
           fill
           style={{
             objectFit: 'contain',
@@ -120,7 +107,7 @@ export const Section4ComponentFixedBack = () => {
         className="fixed w-96 h-96 z-10 top-1/2 left-1/2 translate-y-[-225%] translate-x-[250%]"
       >
         <Image
-          src={construction1}
+          src="/nxt/construction1.png"
           fill
           style={{
             objectFit: 'contain',
@@ -133,7 +120,7 @@ export const Section4ComponentFixedBack = () => {
           className="fixed w-[63rem] h-44 opacity-0 top-1/2 left-1/2 translate-x-[-41%] translate-y-[20%]"
         >
           <Image
-            src={box}
+            src="/nxt/box.png"
             fill
             style={{
               objectFit: 'contain',
@@ -145,7 +132,7 @@ export const Section4ComponentFixedBack = () => {
           className="fixed w-[25rem] h-[25rem] opacity-0 top-1/2 left-1/2 translate-x-[-134%] translate-y-[15%]"
         >
           <Image
-            src={constructionSticker}
+            src="/nxt/construction_sticker.png"
             fill
             style={{
               objectFit: 'contain',
@@ -157,7 +144,7 @@ export const Section4ComponentFixedBack = () => {
           className="fixed w-[25rem] h-48 top-1/2 right-1/2 translate-x-[350%] translate-y-[-155%]"
         >
           <Image
-            src={blossom}
+            src="/nxt/blossom.png"
             fill
             style={{
               objectFit: 'contain',
@@ -169,7 +156,7 @@ export const Section4ComponentFixedBack = () => {
           className="fixed w-52 h-20 top-1/2 right-1/2 translate-x-[600%] translate-y-[-120%]"
         >
           <Image
-            src={loading}
+            src="/nxt/loading.gif"
             fill
             style={{
               objectFit: 'contain',

@@ -3,22 +3,6 @@ import 'intersection-observer' // optional polyfill
 import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 
-// Local Images
-import beeSticker from '@/public/nxt/bee_sticker.png'
-import mugSticker from '@/public/nxt/mug_sticker.png'
-import worm from '@/public/nxt/worm.png'
-import sunflower02 from '@/public/nxt/sunflower02.png'
-import butterfly02 from '@/public/nxt/butterfly02.png'
-import bee01 from '@/public/nxt/bee01.png'
-import butterfly01 from '@/public/nxt/butterfly01.png'
-import sunflower01 from '@/public/nxt/sunflower01.png'
-import bee03 from '@/public/nxt/bee03.png'
-import bee02 from '@/public/nxt/bee02.png'
-import sunflower03 from '@/public/nxt/sunflower03.png'
-import forest1 from '@/public/nxt/forest1.png'
-import forest2 from '@/public/nxt/forest2.png'
-import forest3 from '@/public/nxt/forest3.png'
-
 export const Section2ComponentFixedFront = () => {
   return (
     <div id="section2_fixed_front">
@@ -40,7 +24,7 @@ export const Section2ComponentFixedFront = () => {
         <div id="bee_mug" className="fixed w-full h-full z-50 opacity-0">
           <div className="w-56 h-56 fixed left-1/2 top-1/2 translate-y-[65%] translate-x-[-70%]">
             <Image
-              src={beeSticker}
+              src="/nxt/bee_sticker.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -49,7 +33,7 @@ export const Section2ComponentFixedFront = () => {
           </div>
           <div className="w-72 h-72 fixed left-1/2 top-1/2 translate-y-[-5%] translate-x-[-3%]">
             <Image
-              src={mugSticker}
+              src="/nxt/mug_sticker.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -68,7 +52,7 @@ export const Section2ComponentFixedBack = () => {
       <div id="worm" className="fixed w-full h-full z-50 opacity-0">
         <div className="w-28 h-28 fixed left-1/2 top-1/2 translate-x-[-195%] translate-y-[-276%]">
           <Image
-            src={worm}
+            src="/nxt/worm.png"
             fill
             style={{
               objectFit: 'contain',
@@ -83,7 +67,7 @@ export const Section2ComponentFixedBack = () => {
         >
           <div className="w-28 h-28 fixed left-1/2 translate-x-[-540%] translate-y-[150px]">
             <Image
-              src={sunflower02}
+              src="/nxt/sunflower02.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -92,7 +76,7 @@ export const Section2ComponentFixedBack = () => {
           </div>
           <div className="w-20 h-20 fixed left-1/2 translate-x-[100%] translate-y-[45px]">
             <Image
-              src={butterfly02}
+              src="/nxt/butterfly02.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -101,7 +85,7 @@ export const Section2ComponentFixedBack = () => {
           </div>
           <div className="w-12 h-12 fixed right-1/2 translate-x-[600px] translate-y-[140px]">
             <Image
-              src={bee01}
+              src="/nxt/bee01.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -110,7 +94,7 @@ export const Section2ComponentFixedBack = () => {
           </div>
           <div className="w-20 h-20 fixed right-1/2 translate-x-[554px] translate-y-[215px]">
             <Image
-              src={butterfly01}
+              src="/nxt/butterfly01.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -119,7 +103,7 @@ export const Section2ComponentFixedBack = () => {
           </div>
           <div className="w-40 h-40 fixed left-1/2 translate-x-[-460%] bottom-0">
             <Image
-              src={sunflower01}
+              src="/nxt/sunflower01.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -128,7 +112,7 @@ export const Section2ComponentFixedBack = () => {
           </div>
           <div className="w-14 h-14 fixed left-1/2 translate-x-[-1030%] bottom-0 translate-y-[-180%]">
             <Image
-              src={bee03}
+              src="/nxt/bee03.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -137,7 +121,7 @@ export const Section2ComponentFixedBack = () => {
           </div>
           <div className="w-14 h-14 fixed left-1/2 translate-x-[-1220%] bottom-0 translate-y-[-400%]">
             <Image
-              src={bee02}
+              src="/nxt/bee02.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -146,7 +130,7 @@ export const Section2ComponentFixedBack = () => {
           </div>
           <div className="w-28 h-28 fixed right-0 translate-x-[-250%] bottom-0 translate-y-[-100%]">
             <Image
-              src={sunflower03}
+              src="/nxt/sunflower03.png"
               fill
               style={{
                 objectFit: 'contain',
@@ -160,7 +144,7 @@ export const Section2ComponentFixedBack = () => {
         className="fixed w-[32rem] h-[38rem] right-1/2 translate-x-[105%] top-1/2 translate-y-[-200%]"
       >
         <Image
-          src={forest1}
+          src="/nxt/forest1.png"
           fill
           style={{
             objectFit: 'contain',
@@ -172,7 +156,7 @@ export const Section2ComponentFixedBack = () => {
         className="w-[29rem] h-[23rem] fixed top-1/2 z-10 translate-y-[-50%] right-0 translate-x-[25vw]"
       >
         <Image
-          src={forest2}
+          src="/nxt/forest2.png"
           fill
           style={{
             objectFit: 'contain',
@@ -184,7 +168,7 @@ export const Section2ComponentFixedBack = () => {
         className="fixed w-[36rem] h-[30rem] right-1/2 translate-x-[131%] top-1/2 translate-y-[50vh]"
       >
         <Image
-          src={forest3}
+          src="/nxt/forest3.png"
           fill
           style={{
             objectFit: 'contain',
