@@ -270,56 +270,48 @@ export default function Reveal({ seoAPI }) {
                   {/* Section 1 */}
                   {/* WE HAD A DREAM */}
                   <Section1ComponentInner
-                    setCurrentSection={setCurrentSection}
                     setBgColor={setBgColor}
                     setCaption={setCaption}
                   />
                   {/* Section 2 */}
                   {/* INSPIRED BY NICE THINGS */}
                   <Section2ComponentInner
-                    setCurrentSection={setCurrentSection}
                     setBgColor={setBgColor}
                     setCaption={setCaption}
                   />
                   {/* Section 3 */}
                   {/* AND A BETTER WORLD */}
                   <Section3ComponentInner
-                    setCurrentSection={setCurrentSection}
                     setBgColor={setBgColor}
                     setCaption={setCaption}
                   />
                   {/* Section 4 */}
                   {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
                   <Section4ComponentInner
-                    setCurrentSection={setCurrentSection}
                     setBgColor={setBgColor}
                     setCaption={setCaption}
                   />
                   {/* Section 5 */}
                   {/* SO OTHER PEOPLE CAN DREAM TOO */}
                   <Section5ComponentInner
-                    setCurrentSection={setCurrentSection}
                     setBgColor={setBgColor}
                     setCaption={setCaption}
                   />
                   {/* Section 6 */}
                   {/* INSPIRED BY OUR NICE THING */}
                   <Section6ComponentInner
-                    setCurrentSection={setCurrentSection}
                     setBgColor={setBgColor}
                     setCaption={setCaption}
                   />
                   {/* Section 7 */}
                   {/* FEED CHANGE */}
                   <Section7ComponentInner
-                    setCurrentSection={setCurrentSection}
                     setBgColor={setBgColor}
                     setCaption={setCaption}
                   />
                   {/* Section 8*/}
                   {/* LOCAVORE NEXT */}
                   <Section8ComponentInner
-                    setCurrentSection={setCurrentSection}
                     setBgColor={setBgColor}
                     setCaption={setCaption}
                   />
