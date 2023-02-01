@@ -83,18 +83,21 @@ export default function Reveal({ seoAPI }) {
     ...Section5AnimationOBJ,
   ];
 
-  // const [bgColor, setBgColor] = useState('#BFC29D');
-
   useEffect(() => {
     const BackgroundLocomotiveEvents = (e) => {
       const { enter, target } = e.detail;
       if (enter === 'enter' && target === 'section0') {
         setCaption(0);
-        setBgColor('#BFC29D');
+        setBgColor(0);
       }
     };
 
     window.addEventListener('LocoCall', BackgroundLocomotiveEvents);
+
+    // Go to the Top, Set Background Color
+    window.scroll(0, 0);
+    setBgColor(0);
+
     return () => {
       window.removeEventListener('LocoCall', BackgroundLocomotiveEvents);
     };
@@ -113,9 +116,20 @@ export default function Reveal({ seoAPI }) {
 
   // Set Background
 
-  const setBgColor = (color) => {
+  const bgColorSet = [
+    '#BFC29D', //0
+    '#BFC29D', //1
+    '#BFC29D', //2
+    '#B6BD99', //3
+    '#A0B18E', //4
+    '#9EAF8D', //5
+    '#8D9D83', //6
+    '#7B8778', //7
+    '#7B8778', //8
+  ];
+  const setBgColor = ({ color, set = 0 }) => {
     const bgFrame = document.querySelector('#NXTbackground');
-    bgFrame.style.background = color;
+    bgFrame.style.background = bgColorSet[set];
   };
 
   return (
@@ -168,6 +182,7 @@ export default function Reveal({ seoAPI }) {
       <div
         id='NXTbackground'
         className={`background fixed z-1 w-full h-full pointer-events-none transition-colors duration-1000`}
+        style={{ background: bgColorSet[0] }}
       />
       {/* CAPTION */}
       <div

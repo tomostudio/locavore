@@ -23,7 +23,7 @@ const Section8MarkerTop = ({ setBgColor, setCaption }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(8);
-      setBgColor('#B1BA96');
+      setBgColor(8);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -31,7 +31,7 @@ const Section8MarkerTop = ({ setBgColor, setCaption }) => {
       if (scrollDirection.vertical === 'up') {
         // CURRENT
         setCaption(8);
-        setBgColor('#B1BA96');
+        setBgColor(8);
       }
     },
   });
