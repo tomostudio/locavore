@@ -4,6 +4,11 @@ import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 
 // Local Images
+import revolutionSticker from '@/public/nxt/revolution_sticker.png'
+import daisy from '@/public/nxt/daisy.png'
+import yourSelf from '@/public/nxt/yourself.png'
+import bulb from '@/public/nxt/bulb.png'
+import collage from '@/public/nxt/collage.png'
 
 export const Section5ComponentFixedFront = () => {
   return (
@@ -30,7 +35,7 @@ export const Section5ComponentFixedBack = () => {
         className="fixed w-52 h-52 opacity-0 top-1/2 left-1/2 translate-y-[50%] translate-x-[105%]"
       >
         <Image
-          src="/nxt/revolution_sticker.png"
+          src={revolutionSticker}
           fill
           style={{
             objectFit: 'contain',
@@ -42,7 +47,7 @@ export const Section5ComponentFixedBack = () => {
         className="fixed z-10 w-52 h-32 top-1/2 left-1/2 translate-x-[-35%] translate-y-[-450%]"
       >
         <Image
-          src="/nxt/daisy.png"
+          src={daisy}
           fill
           style={{
             objectFit: 'contain',
@@ -54,7 +59,7 @@ export const Section5ComponentFixedBack = () => {
         className="fixed w-96 h-52 top-1/2 left-1/2 translate-x-[-100%] translate-y-[250%]"
       >
         <Image
-          src="/nxt/yourself.png"
+          src={yourSelf}
           fill
           style={{
             objectFit: 'contain',
@@ -66,7 +71,7 @@ export const Section5ComponentFixedBack = () => {
         className="fixed z-10 opacity-0 w-32 h-32 top-1/2 left-1/2 translate-x-[-350%] translate-y-[-190%]"
       >
         <Image
-          src="/nxt/bulb.png"
+          src={bulb}
           fill
           style={{
             objectFit: 'contain',
@@ -148,7 +153,7 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
         >
           <div className="relative w-[28rem] h-[38rem] mr-56">
             <Image
-              src="/nxt/collage.png"
+              src={collage}
               fill
               style={{
                 objectFit: 'contain',

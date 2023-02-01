@@ -3,6 +3,15 @@ import 'intersection-observer' // optional polyfill
 import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 
+// Local Images
+import tree from '@/public/nxt/tree.png'
+import hugger from '@/public/nxt/hugger.png'
+import animal from '@/public/nxt/animal.png'
+import nature from '@/public/nxt/nature.png'
+import hasthe from '@/public/nxt/hasthe.png'
+import answer from '@/public/nxt/answer.png'
+import arrow from '@/public/nxt/arrow.png'
+
 export const Section3ComponentFixedFront = () => {
   return (
     <div id="section3_fixed_front">
@@ -29,7 +38,7 @@ export const Section3ComponentFixedBack = () => {
           className="fixed w-[32rem] h-[38rem] left-1/2 translate-x-[-120%] top-1/2 translate-y-[-200%]"
         >
           <Image
-            src="/nxt/tree.png"
+            src={tree}
             fill
             style={{
               objectFit: 'contain',
@@ -37,7 +46,7 @@ export const Section3ComponentFixedBack = () => {
           />
           <div className="fixed w-36 h-36 -right-4 top-32">
             <Image
-              src="/nxt/hugger.png"
+              src={hugger}
               fill
               style={{
                 objectFit: 'contain',
@@ -50,7 +59,7 @@ export const Section3ComponentFixedBack = () => {
           className="w-96 h-96 fixed top-1/2 z-10 translate-y-[-26%] left-1/2 translate-x-[-500%]"
         >
           <Image
-            src="/nxt/animal.png"
+            src={animal}
             fill
             style={{
               objectFit: 'contain',
@@ -62,7 +71,7 @@ export const Section3ComponentFixedBack = () => {
           className="opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-160%] right-1/2 translate-x-[225%]"
         >
           <Image
-            src="/nxt/nature.png"
+            src={nature}
             fill
             style={{
               objectFit: 'contain',
@@ -74,7 +83,7 @@ export const Section3ComponentFixedBack = () => {
           className="opacity-0 w-52 h-20 fixed top-1/2 translate-y-[-260%] right-1/2 translate-x-[308%]"
         >
           <Image
-            src="/nxt/hasthe.png"
+            src={hasthe}
             fill
             style={{
               objectFit: 'contain',
@@ -86,7 +95,7 @@ export const Section3ComponentFixedBack = () => {
           className="opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-117%] right-1/2 translate-x-[264%]"
         >
           <Image
-            src="/nxt/answer.png"
+            src={answer}
             fill
             style={{
               objectFit: 'contain',
@@ -98,7 +107,7 @@ export const Section3ComponentFixedBack = () => {
           className="opacity-0 w-80 h-48 fixed top-1/2 translate-y-[-145%] right-1/2 translate-x-[85%]"
         >
           <Image
-            src="/nxt/arrow.png"
+            src={arrow}
             fill
             style={{
               objectFit: 'contain',
