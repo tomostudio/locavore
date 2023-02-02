@@ -402,7 +402,6 @@ export const Section5AnimationOBJ = [
           elem,
           {
             opacity: 1,
-<<<<<<< HEAD
           },
         ],
       },
@@ -526,8 +525,6 @@ export const Section5AnimationOBJ = [
             opacity: 0,
             x: '50%',
             y: '-50%',
-=======
->>>>>>> 7a7a659202baee2d6d2e054fd6926c52cbc018e0
           },
         ],
       },
