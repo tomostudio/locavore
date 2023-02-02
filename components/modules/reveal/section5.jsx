@@ -43,66 +43,68 @@ export const Section5ComponentFixedFront = () => {
           </div>
         </div>
       </div>
-      <div className="group_s5_1 opacity-0">
-        <div
-          id="tunnel"
-          className="fixed w-[59.7rem] h-[59.7rem] z-40 top-1/2 left-1/2 translate-x-[-50.2%] translate-y-[-110%]"
-        >
-          <Image
-            src={tunnel}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
-        </div>
-        <div
-          id="second_floor"
-          className="fixed w-[59.7rem] h-[59.7rem] z-30 top-1/2 left-1/2 translate-x-[-50.2%] translate-y-[-90%]"
-        >
-          <Image
-            src={secondFloor}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
-        </div>
-        <div
-          id="first_floor"
-          className="fixed w-[60rem] h-[60rem] z-20 top-1/2 left-1/2 translate-x-[-50.1%] translate-y-[-70%]"
-        >
-          <Image
-            src={firstFloor}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
-        </div>
-        <div
-          id="ground"
-          className="fixed w-[60rem] h-[60rem] z-10 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-25%] scale-[1.4]"
-        >
-          <Image
-            src={ground}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
-        </div>
-        <div
-          id="lower_ground"
-          className="fixed w-[57rem] h-[57rem] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-5%]"
-        >
-          <Image
-            src={lower_ground}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
+      <div className="s5_group_exit_all">
+        <div className="group_s5_1 opacity-0">
+          <div
+            id="tunnel"
+            className="fixed w-[59.7rem] h-[59.7rem] z-40 top-1/2 left-1/2 translate-x-[-50.2%] translate-y-[-110%]"
+          >
+            <Image
+              src={tunnel}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+          <div
+            id="second_floor"
+            className="fixed w-[59.7rem] h-[59.7rem] z-30 top-1/2 left-1/2 translate-x-[-50.2%] translate-y-[-90%]"
+          >
+            <Image
+              src={secondFloor}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+          <div
+            id="first_floor"
+            className="fixed w-[60rem] h-[60rem] z-20 top-1/2 left-1/2 translate-x-[-50.1%] translate-y-[-70%]"
+          >
+            <Image
+              src={firstFloor}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+          <div
+            id="ground"
+            className="fixed w-[60rem] h-[60rem] z-10 top-1/2 left-1/2 translate-x-[-50%] translate-y-[-25%] scale-[1.4]"
+          >
+            <Image
+              src={ground}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+          <div
+            id="lower_ground"
+            className="fixed w-[57rem] h-[57rem] top-1/2 left-1/2 translate-x-[-50%] translate-y-[-5%]"
+          >
+            <Image
+              src={lower_ground}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -236,30 +238,6 @@ export const Section5ComponentFixedBack = () => {
         </div>
       </div>
       <div
-        id="awesome"
-        className="fixed w-72 h-72 top-1/2 left-1/2 translate-x-[0%] translate-y-[-110%] opacity-0"
-      >
-        <Image
-          src={awesome}
-          fill
-          style={{
-            objectFit: 'contain',
-          }}
-        />
-      </div>
-      <div
-        id="landscape"
-        className="fixed w-48 h-64 top-1/2 left-1/2 translate-x-[190%] translate-y-[-85%] opacity-0"
-      >
-        <Image
-          src={landscape}
-          fill
-          style={{
-            objectFit: 'contain',
-          }}
-        />
-      </div>
-      <div
         id="show1"
         className="fixed w-48 h-64 top-1/2 left-1/2 translate-x-[-280%] translate-y-[30%] opacity-0"
       >
@@ -283,25 +261,13 @@ export const Section5ComponentFixedBack = () => {
           }}
         />
       </div>
-      <div
-        id="feed"
-        className="fixed w-52 h-64 top-1/2 left-1/2 translate-x-[-280%] translate-y-[30%] opacity-0"
-      >
-        <Image
-          src={feed}
-          fill
-          style={{
-            objectFit: 'contain',
-          }}
-        />
-      </div>
-      <div id="group_s5_3" className='opacity-0'>
+      <div className="s5_group_exit_all">
         <div
-          id="mushroom"
-          className="fixed w-56 h-64 top-1/2 left-1/2 translate-x-[-50%] translate-y-[30%]"
+          id="awesome"
+          className="fixed w-72 h-72 top-1/2 left-1/2 translate-x-[0%] translate-y-[-110%] opacity-0"
         >
           <Image
-            src={mushroom}
+            src={awesome}
             fill
             style={{
               objectFit: 'contain',
@@ -309,16 +275,54 @@ export const Section5ComponentFixedBack = () => {
           />
         </div>
         <div
-          id="opensource"
-          className="fixed w-52 h-64 top-1/2 left-1/2 translate-x-[-150%] translate-y-[-165%]"
+          id="landscape"
+          className="fixed w-48 h-64 top-1/2 left-1/2 translate-x-[190%] translate-y-[-85%] opacity-0"
         >
           <Image
-            src={opensource}
+            src={landscape}
             fill
             style={{
               objectFit: 'contain',
             }}
           />
+        </div>
+        <div
+          id="feed"
+          className="fixed w-52 h-64 top-1/2 left-1/2 translate-x-[-280%] translate-y-[30%] opacity-0"
+        >
+          <Image
+            src={feed}
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
+        </div>
+        <div id="group_s5_3" className="opacity-0">
+          <div
+            id="mushroom"
+            className="fixed w-56 h-64 top-1/2 left-1/2 translate-x-[-50%] translate-y-[30%]"
+          >
+            <Image
+              src={mushroom}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+          <div
+            id="opensource"
+            className="fixed w-52 h-64 top-1/2 left-1/2 translate-x-[-150%] translate-y-[-165%]"
+          >
+            <Image
+              src={opensource}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -414,6 +418,7 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           id="enter_bulb"
           className="h-[25vh] w-full bg-green-600 bg-opacity-50"
         />
+        <Section5MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         {/* EXIT GROUP 1 */}
         <div
           id="exit_group_s5_1"
@@ -439,8 +444,11 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           id="enter_group_s5_3"
           className="h-[25vh] w-full bg-red-600 bg-opacity-50 mt-24"
         />
-        <Section5MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
-        <div className="h-[200vh] flex justify-center flex-col">SECTION 5</div>
+        {/* EXIT ALL */}
+        <div
+          id="exit_all5"
+          className="h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24"
+        />
         <Section5MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
@@ -1389,6 +1397,43 @@ export const Section5AnimationOBJ = [
           elem,
           {
             opacity: 1,
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // EXIT ALL
+  () => {
+    const id = 's5_group_exit_all' // animation id
+    const elem = '.s5_group_exit_all'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#exit_all5', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 0,
           },
         ],
       },
