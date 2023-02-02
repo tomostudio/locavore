@@ -23,7 +23,7 @@ const Section6MarkerTop = ({ setBgColor, setCaption }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(6);
-      // setBgColor('#B1BA96');
+      setBgColor(6);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -31,7 +31,7 @@ const Section6MarkerTop = ({ setBgColor, setCaption }) => {
       if (scrollDirection.vertical === 'up') {
         // CURRENT
         setCaption(6);
-        // setBgColor('#B1BA96');
+        setBgColor(6);
       }
     },
   });
@@ -45,7 +45,7 @@ const Section6MarkerBottom = ({ setBgColor, setCaption }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(6);
-      // setBgColor('#B1BA96');
+      setBgColor(6);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -54,7 +54,7 @@ const Section6MarkerBottom = ({ setBgColor, setCaption }) => {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 6
         setCaption(6);
-        // setBgColor('#B1BA96');
+        setBgColor(6);
       }
     },
   });
@@ -71,15 +71,9 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
         className='trigger relative w-full text-4xl flex flex-col justify-center items-center '
         data-scroll-section
       >
-        <Section6MarkerTop
-          setCaption={setCaption}
-          setBgColor={setBgColor}
-        />
+        <Section6MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         <div className='h-[200vh] flex justify-center flex-col'>SECTION 6</div>
-        <Section6MarkerBottom
-          setCaption={setCaption}
-          setBgColor={setBgColor}
-        />
+        <Section6MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
   );

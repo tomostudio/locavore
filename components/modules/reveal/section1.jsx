@@ -1,30 +1,30 @@
-import React from 'react'
-import 'intersection-observer' // optional polyfill
-import { useInView } from 'react-cool-inview'
-import Image from 'next/image'
+import React from 'react';
+import 'intersection-observer'; // optional polyfill
+import { useInView } from 'react-cool-inview';
+import Image from 'next/image';
 
 // IMPORT LOCAL IMAGE
-import eyes from '@/public/nxt/eyes.png'
-import head from '@/public/nxt/head.png'
-import whatIf from '@/public/nxt/whatif.png'
-import dream from '@/public/nxt/dream.png'
-import wish from '@/public/nxt/wish.png'
+import eyes from '@/public/nxt/eyes.png';
+import head from '@/public/nxt/head.png';
+import whatIf from '@/public/nxt/whatif.png';
+import dream from '@/public/nxt/dream.png';
+import wish from '@/public/nxt/wish.png';
 
 export const Section1ComponentFixedFront = () => {
   return (
-    <div id="section1_fixed_front">
-      <div id="s1_exit_group_front">
+    <div id='section1_fixed_front'>
+      <div id='s1_exit_group_front'>
         <div
-          id="s1_title"
-          className=" pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl"
+          id='s1_title'
+          className=' pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl'
         >
           WE HAD
           <br />A DREAM
         </div>
       </div>
       <div
-        id="eyes"
-        className="opacity-0 h-[29.5rem] w-[46.5rem] fixed z-50 bottom-1/2 left-1/2 translate-x-[-49%] translate-y-[180%] will-change-auto"
+        id='eyes'
+        className='opacity-0 h-[29.5rem] w-[46.5rem] fixed z-50 bottom-1/2 left-1/2 translate-x-[-49%] translate-y-[180%] will-change-auto'
       >
         <Image
           src={eyes}
@@ -35,8 +35,8 @@ export const Section1ComponentFixedFront = () => {
         />
       </div>
       <div
-        id="dream"
-        className="w-96 h-72 fixed top-1/2 z-10 translate-y-[-90%] translate-x-[-25vw]"
+        id='dream'
+        className='w-96 h-72 fixed top-1/2 z-10 translate-y-[-90%] translate-x-[-25vw]'
       >
         <Image
           src={dream}
@@ -47,16 +47,16 @@ export const Section1ComponentFixedFront = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const Section1ComponentFixedBack = () => {
   return (
-    <div id="section1_fixed_back">
-      <div id="s1_exit_group_back">
+    <div id='section1_fixed_back'>
+      <div id='s1_exit_group_back'>
         <div
-          id="head"
-          className="opacity-0 h-72 w-72 fixed z-5 top-1/2 translate-y-[-60%] right-[50%] translate-x-[190%] will-change-auto"
+          id='head'
+          className='opacity-0 h-72 w-72 fixed z-5 top-1/2 translate-y-[-60%] right-[50%] translate-x-[190%] will-change-auto'
         >
           <Image
             src={head}
@@ -67,8 +67,8 @@ export const Section1ComponentFixedBack = () => {
           />
         </div>
         <div
-          id="whatif"
-          className="opacity-0 h-64 w-64 fixed z-5 top-1/2 translate-y-[-135%] right-1/2 translate-x-[170%] will-change-auto"
+          id='whatif'
+          className='opacity-0 h-64 w-64 fixed z-5 top-1/2 translate-y-[-135%] right-1/2 translate-x-[170%] will-change-auto'
         >
           <Image
             src={whatIf}
@@ -80,44 +80,41 @@ export const Section1ComponentFixedBack = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-const Section1MarkerTop = ({  setBgColor, setCaption }) => {
+const Section1MarkerTop = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCaption(1)
-      setBgColor('#BFC29D');
+      setCaption(1);
+      setBgColor(1);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
       // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
-        setCaption(1)
-        setBgColor('#BFC29D');
+        setCaption(1);
+        setBgColor(1);
       } else if (scrollDirection.vertical === 'down') {
         // PREVIOUS
-        setCaption(0)
-        setBgColor('#BFC29D');
+        setCaption(0);
+        setBgColor(0);
       }
     },
-  })
+  });
 
-  return <div className="w-full h-2 bg-blue-600" ref={observe} />
-}
+  return <div className='w-full h-2 bg-blue-600' ref={observe} />;
+};
 
-const Section1MarkerBottom = ({
-  setBgColor,
-  setCaption,
-}) => {
+const Section1MarkerBottom = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCaption(1)
+      setCaption(1);
       setBgColor('#BFC29D');
     },
     onLeave: ({ scrollDirection, entry }) => {
@@ -126,38 +123,32 @@ const Section1MarkerBottom = ({
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 1
-        setCaption(1)
+        setCaption(1);
         setBgColor('#BFC29D');
       }
     },
-  })
+  });
 
-  return <div className="w-full h-2 bg-blue-600" ref={observe} />
-}
+  return <div className='w-full h-2 bg-blue-600' ref={observe} />;
+};
 
-export const Section1ComponentInner = ({
-  setBgColor,
-  setCaption,
-}) => {
+export const Section1ComponentInner = ({ setBgColor, setCaption }) => {
   return (
     <>
       <section
-        id="trigger1"
-        className="trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center __b "
+        id='trigger1'
+        className='trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center __b '
       >
         {/* WE HAD A DREAM */}
         <div
-          id="enter-dream"
-          className="h-[100vh] __b bg-green-600 bg-opacity-50"
+          id='enter-dream'
+          className='h-[100vh] __b bg-green-600 bg-opacity-50'
         />
-        <Section1MarkerTop
-          setBgColor={setBgColor}
-          setCaption={setCaption}
-        />
+        <Section1MarkerTop setBgColor={setBgColor} setCaption={setCaption} />
         {/* EYES */}
         <div
-          id="enter-eyes"
-          className="h-[100vh] __b bg-green-600 bg-opacity-50"
+          id='enter-eyes'
+          className='h-[100vh] __b bg-green-600 bg-opacity-50'
         />
         {/* // ALTERNATIVE CAPTION TRIGGER */}
         {/* <div
@@ -170,22 +161,22 @@ export const Section1ComponentInner = ({
         {/* // ALTERNATIVE CAPTION TRIGGER */}
         {/* HEAD APPEAR */}
         <div
-          id="head-trigger"
-          className="h-[50vh] __b bg-green-600 bg-opacity-50 mt-24"
+          id='head-trigger'
+          className='h-[50vh] __b bg-green-600 bg-opacity-50 mt-24'
         />
         {/* WHATIF APPEAR */}
         <div
-          id="whatif-trigger"
-          className="h-[50vh] __b bg-green-600 bg-opacity-50 mt-24"
+          id='whatif-trigger'
+          className='h-[50vh] __b bg-green-600 bg-opacity-50 mt-24'
         />
         {/* DREAM LEFT TO RIGHT */}
         <div
-          id="dream-trigger"
-          className="h-[100vh] __b bg-green-600 bg-opacity-50"
+          id='dream-trigger'
+          className='h-[100vh] __b bg-green-600 bg-opacity-50'
         />
         {/* WISH NORMAL*/}
-        <div id="wish" className="w-full mx-auto max-w-screen-lg mb-40">
-          <div className="relative w-96 h-30rem">
+        <div id='wish' className='w-full mx-auto max-w-screen-lg mb-40'>
+          <div className='relative w-96 h-30rem'>
             <Image
               src={wish}
               fill
@@ -196,7 +187,7 @@ export const Section1ComponentInner = ({
           </div>
         </div>
         {/* EYES EXIT*/}
-        <div id="exit-eyes" className="h-[50vh] __b bg-red-600 bg-opacity-50" />
+        <div id='exit-eyes' className='h-[50vh] __b bg-red-600 bg-opacity-50' />
         {/* // ALTERNATIVE CAPTION TRIGGER */}
         {/* <div
           id='captionmarker_bottom'
@@ -206,23 +197,20 @@ export const Section1ComponentInner = ({
           data-scroll-repeat
         /> */}
         {/* // ALTERNATIVE CAPTION TRIGGER */}
-        <Section1MarkerBottom
-          setBgColor={setBgColor}
-          setCaption={setCaption}
-        />
-        <div id="exit-all" className="h-[50vh] __b bg-red-600 bg-opacity-50" />
+        <Section1MarkerBottom setBgColor={setBgColor} setCaption={setCaption} />
+        <div id='exit-all' className='h-[50vh] __b bg-red-600 bg-opacity-50' />
       </section>
     </>
-  )
-}
+  );
+};
 
 export const Section1AnimationOBJ = [
   // SECTION 1
   // TITLE ENTER
   () => {
     // WE HAVE A DREAM COMING IN
-    const id = 'wehaveadream-enter' // animation id
-    const elem = '#s1_title'
+    const id = 'wehaveadream-enter'; // animation id
+    const elem = '#s1_title';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -232,7 +220,7 @@ export const Section1AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -254,14 +242,14 @@ export const Section1AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // EYES ENTER
   () => {
-    const id = 'eyes-enter' // animation id
-    const elem = '#eyes'
+    const id = 'eyes-enter'; // animation id
+    const elem = '#eyes';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -271,7 +259,7 @@ export const Section1AnimationOBJ = [
         start: 'top 125%',
         end: 'bottom 125%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -284,14 +272,14 @@ export const Section1AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // HEAD
   () => {
-    const id = 'head' // animation id
-    const elem = '#head'
+    const id = 'head'; // animation id
+    const elem = '#head';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -301,7 +289,7 @@ export const Section1AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -314,14 +302,14 @@ export const Section1AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // WHATIF
   () => {
-    const id = 'whatif' // animation id
-    const elem = '#whatif'
+    const id = 'whatif'; // animation id
+    const elem = '#whatif';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -331,7 +319,7 @@ export const Section1AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -344,14 +332,14 @@ export const Section1AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // DREAM
   () => {
-    const id = 'dream-horizontal' // animation id
-    const elem = '#dream'
+    const id = 'dream-horizontal'; // animation id
+    const elem = '#dream';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -361,7 +349,7 @@ export const Section1AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -375,15 +363,15 @@ export const Section1AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // EYES EXIT
   () => {
     // WE HAVE A DREAM COMING IN
-    const id = 'eyes-exit' // animation id
-    const elem = '#eyes'
+    const id = 'eyes-exit'; // animation id
+    const elem = '#eyes';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -393,7 +381,7 @@ export const Section1AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -417,14 +405,14 @@ export const Section1AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // EXIT GROUPED
   () => {
-    const id = 'title-exit-front' // animation id
-    const elem = '#s1_exit_group_front'
+    const id = 'title-exit-front'; // animation id
+    const elem = '#s1_exit_group_front';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -434,7 +422,7 @@ export const Section1AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -456,14 +444,14 @@ export const Section1AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // EXIT GROUPED
   () => {
-    const id = 'title-exit-back' // animation id
-    const elem = '#s1_exit_group_back'
+    const id = 'title-exit-back'; // animation id
+    const elem = '#s1_exit_group_back';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -473,7 +461,7 @@ export const Section1AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -495,8 +483,8 @@ export const Section1AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
-]
+];

@@ -1,7 +1,7 @@
-import React from 'react'
-import 'intersection-observer' // optional polyfill
-import { useInView } from 'react-cool-inview'
-import Image from 'next/image'
+import React from 'react';
+import 'intersection-observer'; // optional polyfill
+import { useInView } from 'react-cool-inview';
+import Image from 'next/image';
 
 // Local Images
 import revolutionSticker from '@/public/nxt/revolution_sticker.png'
@@ -29,8 +29,8 @@ export const Section5ComponentFixedFront = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 export const Section5ComponentFixedBack = () => {
   return (
     <div id="section5_fixed_back">
@@ -109,38 +109,38 @@ export const Section5ComponentFixedBack = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Section5MarkerTop = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCaption(5)
-      // setBgColor('#B1BA96');
+      setCaption(5);
+      setBgColor(5);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
       // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
-        setCaption(5)
-        // setBgColor('#B1BA96');
+        setCaption(5);
+        setBgColor(5);
       }
     },
-  })
+  });
 
-  return <div className="w-full h-2 bg-purple-600" ref={observe} />
-}
+  return <div className='w-full h-2 bg-purple-600' ref={observe} />;
+};
 
 const Section5MarkerBottom = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCaption(5)
-      // setBgColor('#B1BA96');
+      setCaption(5);
+      setBgColor(5);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -148,40 +148,40 @@ const Section5MarkerBottom = ({ setBgColor, setCaption }) => {
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 5
-        setCaption(5)
-        // setBgColor('#B1BA96');
+        setCaption(5);
+        setBgColor(5);
       }
     },
-  })
+  });
 
-  return <div className="w-full h-2 bg-purple-600" ref={observe} />
-}
+  return <div className='w-full h-2 bg-purple-600' ref={observe} />;
+};
 
 export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
   return (
     <>
       {/* Section 2 */}
       <section
-        id="trigger3"
-        className="trigger relative w-full text-4xl flex flex-col justify-center items-center "
+        id='trigger3'
+        className='trigger relative w-full text-4xl flex flex-col justify-center items-center '
         data-scroll-section
       >
         {/* SO OTHER PEOPLE CAN DREAM TOO */}
         <div
-          id="enter_text_s5"
-          className="h-[100vh] w-full bg-green-600 bg-opacity-50 mt-24"
+          id='enter_text_s5'
+          className='h-[100vh] w-full bg-green-600 bg-opacity-50 mt-24'
         />
         {/* START A REVOLUTION */}
         <div
-          id="enter_revolution"
-          className="h-[25vh] w-full bg-blue-600 bg-opacity-50 mt-24"
+          id='enter_revolution'
+          className='h-[25vh] w-full bg-blue-600 bg-opacity-50 mt-24'
         />
         {/* COLLAGE NORMAL*/}
         <div
-          id="wish"
-          className="w-full mx-auto flex justify-end max-w-screen-lg mt-24"
+          id='wish'
+          className='w-full mx-auto flex justify-end max-w-screen-lg mt-24'
         >
-          <div className="relative w-[28rem] h-[38rem] mr-56">
+          <div className='relative w-[28rem] h-[38rem] mr-56'>
             <Image
               src={collage}
               fill
@@ -193,13 +193,13 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
         </div>
         {/* DAISY YOURSELF */}
         <div
-          id="enter_daisy_yourself"
-          className="h-[100vh] w-full bg-red-600 bg-opacity-50 mt-24"
+          id='enter_daisy_yourself'
+          className='h-[100vh] w-full bg-red-600 bg-opacity-50 mt-24'
         />
         {/* BULB */}
         <div
-          id="enter_bulb"
-          className="h-[25vh] w-full bg-green-600 bg-opacity-50"
+          id='enter_bulb'
+          className='h-[25vh] w-full bg-green-600 bg-opacity-50'
         />
         {/* EXIT GROUP 1 */}
         <div
@@ -212,18 +212,18 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           className="h-[100vh] w-full bg-red-600 bg-opacity-50"
         />
         <Section5MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
-        <div className="h-[200vh] flex justify-center flex-col">SECTION 5</div>
+        <div className='h-[200vh] flex justify-center flex-col'>SECTION 5</div>
         <Section5MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
-  )
-}
+  );
+};
 
 export const Section5AnimationOBJ = [
   // TITLE ENTER
   () => {
-    const id = 's5_text_enter' // animation id
-    const elem = '#s5_text'
+    const id = 's5_text_enter'; // animation id
+    const elem = '#s5_text';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -233,7 +233,7 @@ export const Section5AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -253,14 +253,14 @@ export const Section5AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // REVOLUTION ENTER
   () => {
-    const id = 'revolution_enter' // animation id
-    const elem = '#revolution'
+    const id = 'revolution_enter'; // animation id
+    const elem = '#revolution';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -270,7 +270,7 @@ export const Section5AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -290,14 +290,14 @@ export const Section5AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // DAISY ENTER
   () => {
-    const id = 'daisy_enter' // animation id
-    const elem = '#daisy'
+    const id = 'daisy_enter'; // animation id
+    const elem = '#daisy';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -307,7 +307,7 @@ export const Section5AnimationOBJ = [
         start: 'top 50%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -329,14 +329,14 @@ export const Section5AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // YOURSELF ENTER
   () => {
-    const id = 'yourself_enter' // animation id
-    const elem = '#yourself'
+    const id = 'yourself_enter'; // animation id
+    const elem = '#yourself';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -346,7 +346,7 @@ export const Section5AnimationOBJ = [
         start: 'top 50%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -368,14 +368,14 @@ export const Section5AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // BULB ENTER
   () => {
-    const id = 'bulb_enter' // animation id
-    const elem = '#bulb'
+    const id = 'bulb_enter'; // animation id
+    const elem = '#bulb';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -385,7 +385,7 @@ export const Section5AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -402,6 +402,7 @@ export const Section5AnimationOBJ = [
           elem,
           {
             opacity: 1,
+<<<<<<< HEAD
           },
         ],
       },
@@ -525,11 +526,13 @@ export const Section5AnimationOBJ = [
             opacity: 0,
             x: '50%',
             y: '-50%',
+=======
+>>>>>>> 7a7a659202baee2d6d2e054fd6926c52cbc018e0
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
-]
+];
