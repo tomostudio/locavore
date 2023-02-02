@@ -18,7 +18,7 @@ export const Section3ComponentFixedFront = () => {
       <div className="exit_group3">
         <div
           id="better_world"
-          className="pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl"
+          className="pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-8xl"
         >
           <div className="max-w-screen-lg w-full text-right">
             <span className="block mr-[11.5rem]">AND</span>A BETTER

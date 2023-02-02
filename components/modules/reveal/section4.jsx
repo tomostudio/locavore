@@ -76,9 +76,9 @@ export const Section4ComponentFixedFront = () => {
       <div className="s4_group_exit_all">
         <div
           id="s4_text"
-          className="opacity-0 pointer-events-none font-funkturm fixed w-full h-full flex justify-center items-center text-center leading-none text-white text-9xl"
+          className="opacity-0 pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex justify-center items-center text-center leading-none text-white text-8xl"
         >
-          <div className="max-w-screen-lg w-full text-left">
+          <div className="max-w-screen-lg w-full text-left ml-20">
             SO WE TOOK
             <span className="block ml-56">THAT DREAM</span>
             AND MADE IT REAL
@@ -86,7 +86,7 @@ export const Section4ComponentFixedFront = () => {
         </div>
         <div
           id="pot"
-          className="fixed w-56 h-56 opacity-0 top-1/2 left-1/2 translate-y-[-54%] translate-x-[-237%]"
+          className="fixed w-44 h-44 opacity-0 top-1/2 left-1/2 translate-y-[-54%] translate-x-[-263%]"
         >
           <Image
             src={pot}
@@ -98,11 +98,11 @@ export const Section4ComponentFixedFront = () => {
         </div>
       </div>
       <div
-        id="construction2"
-        className="fixed w-96 h-96 top-1/2 left-1/2 translate-y-[-200%] translate-x-[250%]"
+        id="construction1"
+        className="fixed w-96 h-96 z-10 top-1/2 left-1/2 translate-y-[-225%] translate-x-[45%]"
       >
         <Image
-          src={construction2}
+          src={construction1}
           fill
           style={{
             objectFit: 'contain',
@@ -116,11 +116,11 @@ export const Section4ComponentFixedBack = () => {
   return (
     <div id="section4_fixed_back">
       <div
-        id="construction1"
-        className="fixed w-96 h-96 z-10 top-1/2 left-1/2 translate-y-[-225%] translate-x-[250%]"
+        id="construction2"
+        className="fixed w-96 h-96 top-1/2 left-1/2 translate-y-[-95%] translate-x-[250%]"
       >
         <Image
-          src={construction1}
+          src={construction2}
           fill
           style={{
             objectFit: 'contain',
@@ -130,7 +130,7 @@ export const Section4ComponentFixedBack = () => {
       <div className="s4_group_exit_all">
         <div
           id="box"
-          className="fixed w-[63rem] h-44 opacity-0 top-1/2 left-1/2 translate-x-[-41%] translate-y-[20%]"
+          className="fixed w-[54rem] h-36 opacity-0 top-1/2 left-1/2 translate-x-[-46%] translate-y-[15%]"
         >
           <Image
             src={box}
@@ -142,7 +142,7 @@ export const Section4ComponentFixedBack = () => {
         </div>
         <div
           id="construction_sticker"
-          className="fixed w-[25rem] h-[25rem] opacity-0 top-1/2 left-1/2 translate-x-[-134%] translate-y-[15%]"
+          className="fixed w-[28rem] h-[28rem] opacity-0 top-1/2 left-1/2 translate-x-[-123%] translate-y-[2%]"
         >
           <Image
             src={constructionSticker}
@@ -166,7 +166,7 @@ export const Section4ComponentFixedBack = () => {
         </div>
         <div
           id="loading"
-          className="fixed w-52 h-20 top-1/2 right-1/2 translate-x-[600%] translate-y-[-120%]"
+          className="fixed w-52 h-20 opacity-0 top-1/2 right-1/2 translate-x-[300%] translate-y-[-120%]"
         >
           <Image
             src={loading}
@@ -707,7 +707,6 @@ export const Section4AnimationOBJ = [
         set: [
           elem,
           {
-            x: '250%',
             y: '-225%',
           },
         ],
@@ -716,17 +715,7 @@ export const Section4AnimationOBJ = [
         to: [
           elem,
           {
-            x: '-125%',
-            y: '-82%',
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            x: '-370%',
-            y: '-82%',
+            y: '120%',
           },
         ],
       },
@@ -754,7 +743,6 @@ export const Section4AnimationOBJ = [
           elem,
           {
             x: '250%',
-            y: '-200%',
           },
         ],
       },
@@ -762,17 +750,7 @@ export const Section4AnimationOBJ = [
         to: [
           elem,
           {
-            x: '69%',
-            y: '15%',
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            x: '69%',
-            y: '120%',
+            x: '-400%',
           },
         ],
       },
@@ -836,8 +814,7 @@ export const Section4AnimationOBJ = [
         set: [
           elem,
           {
-            x: '600%',
-            y: '-120%',
+            opacity: 0,
           },
         ],
       },
@@ -845,8 +822,8 @@ export const Section4AnimationOBJ = [
         to: [
           elem,
           {
+            opacity: 1,
             x: '300%',
-            y: '-120%',
           },
         ],
       },

@@ -9,19 +9,23 @@ import daisy from '@/public/nxt/daisy.png'
 import yourSelf from '@/public/nxt/yourself.png'
 import bulb from '@/public/nxt/bulb.png'
 import collage from '@/public/nxt/collage.png'
+import cloud1 from '@/public/nxt/cloud01.png'
+import cloud2 from '@/public/nxt/cloud02.png'
 
 export const Section5ComponentFixedFront = () => {
   return (
     <div id="section5_fixed_front">
-      <div
-        id="s5_text"
-        className="pointer-events-none opacity-0 font-funkturm tracking-[0.08em] fixed w-full h-full flex justify-center items-center text-center leading-none text-white text-8xl"
-      >
-        <div className="max-w-screen-lg w-full text-left ml-72">
-          <span className="block -ml-24">SO</span>
-          OTHER PEOPLE
-          <br />
-          CAN DREAM TOO
+      <div className="s5_group_exit_1">
+        <div
+          id="s5_text"
+          className="pointer-events-none opacity-0 font-funkturm tracking-[0.08em] fixed w-full h-full flex justify-center items-center text-center leading-none text-white text-8xl"
+        >
+          <div className="max-w-screen-lg w-full text-left ml-72">
+            <span className="block -ml-24">SO</span>
+            OTHER PEOPLE
+            <br />
+            CAN DREAM TOO
+          </div>
         </div>
       </div>
     </div>
@@ -30,12 +34,62 @@ export const Section5ComponentFixedFront = () => {
 export const Section5ComponentFixedBack = () => {
   return (
     <div id="section5_fixed_back">
+      <div className="s5_group_exit_1">
+        <div
+          id="revolution"
+          className="fixed w-52 h-52 opacity-0 top-1/2 left-1/2 translate-y-[50%] translate-x-[105%]"
+        >
+          <Image
+            src={revolutionSticker}
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
+        </div>
+        <div
+          id="daisy"
+          className="fixed z-10 w-52 h-32 top-1/2 left-1/2 translate-x-[-35%] translate-y-[-450%]"
+        >
+          <Image
+            src={daisy}
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
+        </div>
+        <div
+          id="yourself"
+          className="fixed w-96 h-52 top-1/2 left-1/2 translate-x-[-100%] translate-y-[250%]"
+        >
+          <Image
+            src={yourSelf}
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
+        </div>
+        <div
+          id="bulb"
+          className="fixed z-10 opacity-0 w-32 h-32 top-1/2 left-1/2 translate-x-[-350%] translate-y-[-190%]"
+        >
+          <Image
+            src={bulb}
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
+        </div>
+      </div>
       <div
-        id="revolution"
-        className="fixed w-52 h-52 opacity-0 top-1/2 left-1/2 translate-y-[50%] translate-x-[105%]"
+        id="cloud1"
+        className="fixed w-96 h-40 top-1/2 right-1/2 translate-y-[-400%] translate-x-[425%] scale-[2] opacity-100"
       >
         <Image
-          src={revolutionSticker}
+          src={cloud1}
           fill
           style={{
             objectFit: 'contain',
@@ -43,35 +97,11 @@ export const Section5ComponentFixedBack = () => {
         />
       </div>
       <div
-        id="daisy"
-        className="fixed z-10 w-52 h-32 top-1/2 left-1/2 translate-x-[-35%] translate-y-[-450%]"
+        id="cloud2"
+        className="fixed w-96 h-40 top-1/2 right-1/2 translate-y-[305%] translate-x-[-310%] scale-[3] opacity-100"
       >
         <Image
-          src={daisy}
-          fill
-          style={{
-            objectFit: 'contain',
-          }}
-        />
-      </div>
-      <div
-        id="yourself"
-        className="fixed w-96 h-52 top-1/2 left-1/2 translate-x-[-100%] translate-y-[250%]"
-      >
-        <Image
-          src={yourSelf}
-          fill
-          style={{
-            objectFit: 'contain',
-          }}
-        />
-      </div>
-      <div
-        id="bulb"
-        className="fixed z-10 opacity-0 w-32 h-32 top-1/2 left-1/2 translate-x-[-350%] translate-y-[-190%]"
-      >
-        <Image
-          src={bulb}
+          src={cloud2}
           fill
           style={{
             objectFit: 'contain',
@@ -170,6 +200,16 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
         <div
           id="enter_bulb"
           className="h-[25vh] w-full bg-green-600 bg-opacity-50"
+        />
+        {/* EXIT GROUP 1 */}
+        <div
+          id="exit_group_s5_1"
+          className="h-[50vh] w-full bg-blue-600 bg-opacity-50 mt-24"
+        />
+        {/* CLOUD 1 */}
+        <div
+          id="enter_group_s5_1"
+          className="h-[100vh] w-full bg-red-600 bg-opacity-50"
         />
         <Section5MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         <div className="h-[200vh] flex justify-center flex-col">SECTION 5</div>
@@ -353,7 +393,7 @@ export const Section5AnimationOBJ = [
         set: [
           elem,
           {
-            opacity: 0
+            opacity: 0,
           },
         ],
       },
@@ -361,7 +401,130 @@ export const Section5AnimationOBJ = [
         to: [
           elem,
           {
-            opacity: 1
+            opacity: 1,
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // EXIT ALL
+  () => {
+    const id = 'exit_group_s5_1' // animation id
+    const elem = '.s5_group_exit_1'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#exit_group_s5_1', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // ENTER CLOUD1
+  () => {
+    const id = 'enter_cloud1' // animation id
+    const elem = '#cloud1'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            scale: 2,
+            opacity: 1,
+            x: '425%',
+            y: '-400%',
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            scale: 1,
+            opacity: 0,
+            x: '50%',
+            y: '-50%',
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // ENTER CLOUD2
+  () => {
+    const id = 'enter_cloud2' // animation id
+    const elem = '#cloud2'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            scale: 3,
+            opacity: 1,
+            x: '-310%',
+            y: '305%',
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            scale: 1,
+            opacity: 0,
+            x: '50%',
+            y: '-50%',
           },
         ],
       },
