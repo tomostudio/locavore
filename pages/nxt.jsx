@@ -95,7 +95,7 @@ export default function Reveal({ seoAPI }) {
     window.addEventListener('LocoCall', BackgroundLocomotiveEvents);
 
     // Go to the Top, Set Background Color
-    window.scroll(0, 0);
+    // window.scroll(0, 0);
     setBgColor(0);
 
     return () => {
