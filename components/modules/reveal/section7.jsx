@@ -45,7 +45,7 @@ const Section7MarkerBottom = ({ setBgColor, setCaption }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(7);
-      // setBgColor('#B1BA96');
+      setBgColor(7);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -54,7 +54,7 @@ const Section7MarkerBottom = ({ setBgColor, setCaption }) => {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 7
         setCaption(7);
-        // setBgColor('#B1BA96');
+        setBgColor(7);
       }
     },
   });
