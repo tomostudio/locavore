@@ -16,7 +16,7 @@ export const Section1ComponentFixedFront = () => {
       <div id='s1_exit_group_front'>
         <div
           id='s1_title'
-          className=' pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl'
+          className=' pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-8xl'
         >
           WE HAD
           <br />A DREAM
@@ -24,7 +24,7 @@ export const Section1ComponentFixedFront = () => {
       </div>
       <div
         id='eyes'
-        className='opacity-0 h-[29.5rem] w-[46.5rem] fixed z-50 bottom-1/2 left-1/2 translate-x-[-49%] translate-y-[180%] will-change-auto'
+        className='opacity-0 h-[27rem] w-[38.5rem] fixed z-50 bottom-1/2 left-1/2 translate-x-[-50%] translate-y-[180%] will-change-auto'
       >
         <Image
           src={eyes}
@@ -268,7 +268,7 @@ export const Section1AnimationOBJ = [
           elem,
           {
             opacity: 1,
-            y: '92%',
+            y: '86%',
           },
         ],
       },
