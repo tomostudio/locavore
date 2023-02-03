@@ -484,11 +484,10 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           id='enter_group_s5_3'
           className='h-[25vh] w-full bg-red-600 bg-opacity-50 mt-24'
         />
-        <div className='h-[100vh] flex justify-center flex-col'>SECTION 5</div>
         {/* EXITA ALL FEED */}
         <div
           id='exit_group_end_s5'
-          className='h-[25vh] w-full bg-red-600 bg-opacity-50 mt-24'
+          className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
         />
       </section>
     </>
@@ -1463,7 +1462,7 @@ export const Section5AnimationOBJ = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'top 0%',
+        end: 'bottom 100%',
       },
     };
 

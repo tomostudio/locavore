@@ -64,7 +64,7 @@ export const Section2ComponentFixedBack = () => {
   return (
     <div id='section2_fixed_back'>
       <div id='worm' className='opacity-0'>
-        <div className='w-28 h-28 fixed z-50 left-1/2 top-1/2 translate-x-[-220%] translate-y-[-276%]'>
+        <div className='w-28 h-28 fixed z-50 left-1/2 top-1/2 translate-x-[-190%] translate-y-[-225%]'>
           <Image
             src={worm}
             fill
@@ -79,7 +79,7 @@ export const Section2ComponentFixedBack = () => {
           id='flower_bee_butterfly'
           className='fixed w-full max-w-screen-lg h-full z-50 opacity-0'
         >
-          <div className='w-28 h-28 fixed left-1/2 translate-x-[-600%] translate-y-[150px]'>
+          <div className='w-28 h-28 fixed left-1/2 translate-x-[-490%] translate-y-[190px]'>
             <Image
               src={sunflower02}
               fill
