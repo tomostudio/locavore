@@ -8,6 +8,7 @@ import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 import Layout from '@/components/modules/layout';
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger';
 import SEO from '@/components/utils/seo';
+import Footer from '@/components/modules/footer';
 
 import PushScrollGlobal from '@/helpers/globalscroll';
 import { fade } from '@/helpers/preset/transitions';
@@ -69,9 +70,11 @@ import {
   Section8ComponentInner,
 } from '@/components/modules/reveal/section8';
 
-export default function Reveal({ seoAPI }) {
+export default function Reveal({ seoAPI, footerAPI }) {
   const router = useRouter();
   const [seo] = seoAPI;
+  const [footer] = footerAPI;
+
   const containerRef = useRef(null);
 
   // ANIMATION
@@ -83,18 +86,21 @@ export default function Reveal({ seoAPI }) {
     ...Section5AnimationOBJ,
   ];
 
-  // const [bgColor, setBgColor] = useState('#BFC29D');
-
   useEffect(() => {
     const BackgroundLocomotiveEvents = (e) => {
       const { enter, target } = e.detail;
       if (enter === 'enter' && target === 'section0') {
         setCaption(0);
-        setBgColor('#BFC29D');
+        setBgColor(0);
       }
     };
 
     window.addEventListener('LocoCall', BackgroundLocomotiveEvents);
+
+    // Go to the Top, Set Background Color
+    // window.scroll(0, 0);
+    setBgColor(0);
+
     return () => {
       window.removeEventListener('LocoCall', BackgroundLocomotiveEvents);
     };
@@ -109,13 +115,33 @@ export default function Reveal({ seoAPI }) {
       caption.classList.remove('active');
       if (index + 1 <= n) caption.classList.add('active');
     });
+
+    const captionContainer = document.querySelector('#reveal_caption');
+
+    // Hide Caption on Section 7 & 8
+    if (n >= 7) {
+      captionContainer.style.opacity = 0;
+    } else {
+      captionContainer.style.opacity = 1;
+    }
   };
 
   // Set Background
 
-  const setBgColor = (color) => {
+  const bgColorSet = [
+    '#BFC29D', //0
+    '#BFC29D', //1
+    '#B5BD98', //2
+    '#ADB894', //3
+    '#A0B18E', //4
+    '#93A287', //5
+    '#8A9881', //6
+    '#7B8778', //7
+    '#7B8778', //8
+  ];
+  const setBgColor = (set) => {
     const bgFrame = document.querySelector('#NXTbackground');
-    bgFrame.style.background = color;
+    bgFrame.style.background = bgColorSet[set];
   };
 
   return (
@@ -167,13 +193,13 @@ export default function Reveal({ seoAPI }) {
       {/* BACKGROUND COLOR */}
       <div
         id='NXTbackground'
-        className={`background fixed z-1 w-full h-full pointer-events-none transition-colors duration-1000`}
-        style={{ background: '#BFC29D' }}
+        className={`background fixed z-1 w-full h-full pointer-events-none transition-colors duration-[2000ms]`}
+        style={{ background: bgColorSet[0] }}
       />
       {/* CAPTION */}
       <div
         id='reveal_caption'
-        className='caption fixed z-50 pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 bottom-4 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl text-md'
+        className='caption fixed z-50 pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 bottom-4 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl text-md transition-all duration-500'
       >
         {/* CURRENT BUG, JITTER EFFECT DUE TO UPDATING THE STYLE USING USE STATE -> SEEK ALTERNATIVE */}
         {/* Potential Solution 1: Create Custom Function for Class Trigger */}
@@ -294,6 +320,8 @@ export default function Reveal({ seoAPI }) {
                     setBgColor={setBgColor}
                     setCaption={setCaption}
                   />
+
+                  <Footer footer={footer} mailchimp={seo.mailchimpID} />
                 </m.main>
               </LazyMotion>
             </ScrollTriggerWrapper>

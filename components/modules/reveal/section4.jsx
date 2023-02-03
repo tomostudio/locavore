@@ -1,34 +1,34 @@
-import React from 'react'
-import 'intersection-observer' // optional polyfill
-import { useInView } from 'react-cool-inview'
-import Image from 'next/image'
+import React from 'react';
+import 'intersection-observer'; // optional polyfill
+import { useInView } from 'react-cool-inview';
+import Image from 'next/image';
 
 // Local Images
-import globe from '@/public/nxt/globe.png'
-import supportYourLocalPlanet from '@/public/nxt/supportyourlocalplanet.png'
-import beRegenerative from '@/public/nxt/beregenerative.png'
-import sharingIsCaring from '@/public/nxt/sharingiscaring.png'
-import box from '@/public/nxt/box.png'
-import constructionSticker from '@/public/nxt/construction_sticker.png'
-import pot from '@/public/nxt/pot.png'
-import construction1 from '@/public/nxt/construction1.png'
-import construction2 from '@/public/nxt/construction2.png'
-import blossom from '@/public/nxt/blossom.png'
-import loading from '@/public/nxt/loading.gif'
+import globe from '@/public/nxt/globe.png';
+import supportYourLocalPlanet from '@/public/nxt/supportyourlocalplanet.png';
+import beRegenerative from '@/public/nxt/beregenerative.png';
+import sharingIsCaring from '@/public/nxt/sharingiscaring.png';
+import box from '@/public/nxt/box.png';
+import constructionSticker from '@/public/nxt/construction_sticker.png';
+import pot from '@/public/nxt/pot.png';
+import construction1 from '@/public/nxt/construction1.png';
+import construction2 from '@/public/nxt/construction2.png';
+import blossom from '@/public/nxt/blossom.png';
+import loading from '@/public/nxt/loading.gif';
 
 export const Section4ComponentFixedFront = () => {
   return (
-    <div id="section4_fixed_front">
-      <div id="s4_group_exit">
+    <div id='section4_fixed_front'>
+      <div id='s4_group_exit'>
         <div
-          id="globe_rotate"
-          className="fixed w-full h-full pointer-events-none flex justify-center items-center"
+          id='globe_rotate'
+          className='fixed w-full h-full pointer-events-none flex justify-center items-center'
         >
           <div
-            id="globe_support"
-            className="relative w-[26rem] h-[26rem] opacity-0"
+            id='globe_support'
+            className='relative w-[26rem] h-[26rem] opacity-0'
           >
-            <div className="opacity-50" id="globe">
+            <div className='opacity-50' id='globe'>
               <Image
                 src={globe}
                 fill
@@ -46,10 +46,10 @@ export const Section4ComponentFixedFront = () => {
             />
           </div>
         </div>
-        <div id="s4_group_enter" className="w-full h-full fixed scale-[2]">
+        <div id='s4_group_enter' className='w-full h-full fixed scale-[2]'>
           <div
-            id="be_regenerative"
-            className="fixed w-96 h-36 top-1/2 left-1/2 translate-x-[-200%] translate-y-[-250%]"
+            id='be_regenerative'
+            className='fixed w-96 h-36 top-1/2 left-1/2 translate-x-[-200%] translate-y-[-250%]'
           >
             <Image
               src={beRegenerative}
@@ -60,8 +60,8 @@ export const Section4ComponentFixedFront = () => {
             />
           </div>
           <div
-            id="sharing_is_caring"
-            className="fixed w-96 h-36 top-1/2 left-1/2 translate-x-[75%] translate-y-[160%]"
+            id='sharing_is_caring'
+            className='fixed w-96 h-36 top-1/2 left-1/2 translate-x-[75%] translate-y-[160%]'
           >
             <Image
               src={sharingIsCaring}
@@ -73,20 +73,20 @@ export const Section4ComponentFixedFront = () => {
           </div>
         </div>
       </div>
-      <div className="s4_group_exit_all">
+      <div className='s4_group_exit_all'>
         <div
           id="s4_text"
-          className="opacity-0 pointer-events-none font-funkturm fixed w-full h-full flex justify-center items-center text-center leading-none text-white text-9xl"
+          className="opacity-0 pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex justify-center items-center text-center leading-none text-white text-8xl"
         >
-          <div className="max-w-screen-lg w-full text-left">
+          <div className="max-w-screen-lg w-full text-left ml-20">
             SO WE TOOK
-            <span className="block ml-56">THAT DREAM</span>
+            <span className='block ml-56'>THAT DREAM</span>
             AND MADE IT REAL
           </div>
         </div>
         <div
           id="pot"
-          className="fixed w-56 h-56 opacity-0 top-1/2 left-1/2 translate-y-[-54%] translate-x-[-237%]"
+          className="fixed w-44 h-44 opacity-0 top-1/2 left-1/2 translate-y-[-54%] translate-x-[-263%]"
         >
           <Image
             src={pot}
@@ -98,26 +98,8 @@ export const Section4ComponentFixedFront = () => {
         </div>
       </div>
       <div
-        id="construction2"
-        className="fixed w-96 h-96 top-1/2 left-1/2 translate-y-[-200%] translate-x-[250%]"
-      >
-        <Image
-          src={construction2}
-          fill
-          style={{
-            objectFit: 'contain',
-          }}
-        />
-      </div>
-    </div>
-  )
-}
-export const Section4ComponentFixedBack = () => {
-  return (
-    <div id="section4_fixed_back">
-      <div
         id="construction1"
-        className="fixed w-96 h-96 z-10 top-1/2 left-1/2 translate-y-[-225%] translate-x-[250%]"
+        className="fixed w-96 h-96 z-10 top-1/2 left-1/2 translate-y-[-225%] translate-x-[45%]"
       >
         <Image
           src={construction1}
@@ -127,10 +109,28 @@ export const Section4ComponentFixedBack = () => {
           }}
         />
       </div>
-      <div className="s4_group_exit_all">
+    </div>
+  );
+};
+export const Section4ComponentFixedBack = () => {
+  return (
+    <div id='section4_fixed_back'>
+      <div
+        id="construction2"
+        className="fixed w-96 h-96 top-1/2 left-1/2 translate-y-[-95%] translate-x-[250%]"
+      >
+        <Image
+          src={construction2}
+          fill
+          style={{
+            objectFit: 'contain',
+          }}
+        />
+      </div>
+      <div className='s4_group_exit_all'>
         <div
           id="box"
-          className="fixed w-[63rem] h-44 opacity-0 top-1/2 left-1/2 translate-x-[-41%] translate-y-[20%]"
+          className="fixed w-[54rem] h-36 opacity-0 top-1/2 left-1/2 translate-x-[-46%] translate-y-[15%]"
         >
           <Image
             src={box}
@@ -142,7 +142,7 @@ export const Section4ComponentFixedBack = () => {
         </div>
         <div
           id="construction_sticker"
-          className="fixed w-[25rem] h-[25rem] opacity-0 top-1/2 left-1/2 translate-x-[-134%] translate-y-[15%]"
+          className="fixed w-[28rem] h-[28rem] opacity-0 top-1/2 left-1/2 translate-x-[-123%] translate-y-[2%]"
         >
           <Image
             src={constructionSticker}
@@ -153,8 +153,8 @@ export const Section4ComponentFixedBack = () => {
           />
         </div>
         <div
-          id="blossom"
-          className="fixed w-[25rem] h-48 top-1/2 right-1/2 translate-x-[350%] translate-y-[-155%]"
+          id='blossom'
+          className='fixed w-[25rem] h-48 top-1/2 right-1/2 translate-x-[350%] translate-y-[-155%]'
         >
           <Image
             src={blossom}
@@ -166,7 +166,7 @@ export const Section4ComponentFixedBack = () => {
         </div>
         <div
           id="loading"
-          className="fixed w-52 h-20 top-1/2 right-1/2 translate-x-[600%] translate-y-[-120%]"
+          className="fixed w-52 h-20 opacity-0 top-1/2 right-1/2 translate-x-[300%] translate-y-[-120%]"
         >
           <Image
             src={loading}
@@ -178,38 +178,38 @@ export const Section4ComponentFixedBack = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Section4MarkerTop = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCaption(4)
-      // setBgColor('#B1BA96')
+      setCaption(4);
+      setBgColor(4);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
       // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
-        setCaption(4)
-        // setBgColor('#B1BA96')
+        setCaption(4);
+        setBgColor(4);
       }
     },
-  })
+  });
 
-  return <div className="w-full h-2 bg-purple-600" ref={observe} />
-}
+  return <div className='w-full h-2 bg-purple-600' ref={observe} />;
+};
 
 const Section4MarkerBottom = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCaption(4)
-      // setBgColor('#B1BA96')
+      setCaption(4);
+      setBgColor(4);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -217,8 +217,31 @@ const Section4MarkerBottom = ({ setBgColor, setCaption }) => {
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 4
-        setCaption(4)
-        // setBgColor('#B1BA96')
+        setCaption(4);
+        setBgColor(4);
+      }
+    },
+  });
+
+  return <div className='w-full h-2 bg-purple-600' ref={observe} />;
+};
+
+const Section3MarkerBottom = ({ setBgColor, setCaption }) => {
+  const { observe } = useInView({
+    threshold: 1, // Default is 0
+    rootMargin: '-50px 0px',
+    onEnter: ({ scrollDirection, entry }) => {
+      setCaption(3)
+      setBgColor(3)
+    },
+    onLeave: ({ scrollDirection, entry }) => {
+      // Triggered when the target leaves the viewport
+      // console.log('leave', scrollDirection.vertical, entry);
+      if (scrollDirection.vertical === 'up') {
+      } else if (scrollDirection.vertical === 'down') {
+        // RETURN TO SECTION 3
+        setCaption(3)
+        setBgColor(3)
       }
     },
   })
@@ -226,62 +249,64 @@ const Section4MarkerBottom = ({ setBgColor, setCaption }) => {
   return <div className="w-full h-2 bg-purple-600" ref={observe} />
 }
 
+
 export const Section4ComponentInner = ({ setBgColor, setCaption }) => {
   return (
     <>
-      {/* Section 2 */}
+      {/* Section 4 */}
       <section
-        id="trigger4"
-        className="trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center"
+        id='trigger4'
+        className='trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center'
         data-scroll-section
       >
         {/* GLOBE SUPPORT */}
         <div
-          id="enter_globe_support"
-          className="h-[100vh] __b bg-red-600 bg-opacity-50"
+          id='enter_globe_support'
+          className='h-[100vh] __b bg-red-600 bg-opacity-50'
         />
         <div
-          id="enter_globe"
-          className="h-[25vh] __b bg-green-600 bg-opacity-50 mt-24"
+          id='enter_globe'
+          className='h-[25vh] __b bg-green-600 bg-opacity-50 mt-24'
         />
         <div
-          id="enter_globe_rotate"
-          className="h-[100vh] __b bg-blue-600 bg-opacity-50"
+          id='enter_globe_rotate'
+          className='h-[100vh] __b bg-blue-600 bg-opacity-50'
         />
+        <Section3MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
         <div
-          id="enter_s4_text"
-          className="h-[100vh] __b bg-red-600 bg-opacity-50 mt-24"
+          id='enter_s4_text'
+          className='h-[100vh] __b bg-red-600 bg-opacity-50 mt-24'
         />
         <Section4MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         <div
-          id="enter_box"
-          className="h-[25vh] __b bg-green-600 bg-opacity-50 mt-24"
+          id='enter_box'
+          className='h-[25vh] __b bg-green-600 bg-opacity-50 mt-24'
         />
         <div
-          id="enter_construction_sticker"
-          className="h-[25vh] __b bg-blue-600 bg-opacity-50 mt-24"
+          id='enter_construction_sticker'
+          className='h-[25vh] __b bg-blue-600 bg-opacity-50 mt-24'
         />
         <div
-          id="enter_group_s4"
-          className="h-[100vh] __b bg-red-600 bg-opacity-50 mt-24"
+          id='enter_group_s4'
+          className='h-[100vh] __b bg-red-600 bg-opacity-50 mt-24'
         />
         <div
-          id="exit_all4"
-          className="h-[50vh] __b bg-green-600 bg-opacity-50 mt-24"
+          id='exit_all4'
+          className='h-[50vh] __b bg-green-600 bg-opacity-50 mt-24'
         >
           EXIT All 4
         </div>
         <Section4MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
-  )
-}
+  );
+};
 
 export const Section4AnimationOBJ = [
   // GLOBE SUPPORT
   () => {
-    const id = 'globe_support_enter' // animation id
-    const elem = '#globe_support'
+    const id = 'globe_support_enter'; // animation id
+    const elem = '#globe_support';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -291,7 +316,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -313,14 +338,14 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // GLOBE
   () => {
-    const id = 'globe_enter' // animation id
-    const elem = '#globe'
+    const id = 'globe_enter'; // animation id
+    const elem = '#globe';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -330,7 +355,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -350,14 +375,14 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // GLOBE ROTATE
   () => {
-    const id = 'globe_rotate_enter' // animation id
-    const elem = '#globe_rotate'
+    const id = 'globe_rotate_enter'; // animation id
+    const elem = '#globe_rotate';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -367,7 +392,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -389,14 +414,14 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // S4 GROUP ENTER
   () => {
-    const id = 's4_group_enter' // animation id
-    const elem = '#s4_group_enter'
+    const id = 's4_group_enter'; // animation id
+    const elem = '#s4_group_enter';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -406,7 +431,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -426,14 +451,14 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // BE REGENERATIVE ENTER
   () => {
-    const id = 'be_regenerative_enter' // animation id
-    const elem = '#be_regenerative'
+    const id = 'be_regenerative_enter'; // animation id
+    const elem = '#be_regenerative';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -443,7 +468,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -465,14 +490,14 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // SHARING IS CARING ENTER
   () => {
-    const id = 'sharing_is_caring_enter' // animation id
-    const elem = '#sharing_is_caring'
+    const id = 'sharing_is_caring_enter'; // animation id
+    const elem = '#sharing_is_caring';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -482,7 +507,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -504,14 +529,14 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // S4 GROUP EXIT
   () => {
-    const id = 's4_group_exit' // animation id
-    const elem = '#s4_group_exit'
+    const id = 's4_group_exit'; // animation id
+    const elem = '#s4_group_exit';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -521,7 +546,7 @@ export const Section4AnimationOBJ = [
         start: 'top 50%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -541,14 +566,14 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // TEXT ENTER
   () => {
-    const id = 's4_text_enter' // animation id
-    const elem = '#s4_text'
+    const id = 's4_text_enter'; // animation id
+    const elem = '#s4_text';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -558,7 +583,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -578,14 +603,14 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // BOX
   () => {
-    const id = 'enter_box' // animation id
-    const elem = '#box'
+    const id = 'enter_box'; // animation id
+    const elem = '#box';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -595,7 +620,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
     // Input Animation
     const animation = [
       {
@@ -614,13 +639,13 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
-    return { id, elem, settings, animation }
+    ];
+    return { id, elem, settings, animation };
   },
   // CONSTRUCTION STICKER
   () => {
-    const id = 'enter_construction_sticker' // animation id
-    const elem = '#construction_sticker'
+    const id = 'enter_construction_sticker'; // animation id
+    const elem = '#construction_sticker';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -630,7 +655,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
     // Input Animation
     const animation = [
       {
@@ -649,13 +674,13 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
-    return { id, elem, settings, animation }
+    ];
+    return { id, elem, settings, animation };
   },
   // POT
   () => {
-    const id = 'enter_pot' // animation id
-    const elem = '#pot'
+    const id = 'enter_pot'; // animation id
+    const elem = '#pot';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -665,7 +690,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'top 75%',
       },
-    }
+    };
     // Input Animation
     const animation = [
       {
@@ -684,13 +709,13 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
-    return { id, elem, settings, animation }
+    ];
+    return { id, elem, settings, animation };
   },
   // CONSTRUCTION 1
   () => {
-    const id = 'enter_construction1' // animation id
-    const elem = '#construction1'
+    const id = 'enter_construction1'; // animation id
+    const elem = '#construction1';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -700,14 +725,13 @@ export const Section4AnimationOBJ = [
         start: 'top 85%',
         end: 'bottom 100%',
       },
-    }
+    };
     // Input Animation
     const animation = [
       {
         set: [
           elem,
           {
-            x: '250%',
             y: '-225%',
           },
         ],
@@ -716,27 +740,17 @@ export const Section4AnimationOBJ = [
         to: [
           elem,
           {
-            x: '-125%',
-            y: '-82%',
+            y: '120%',
           },
         ],
       },
-      {
-        to: [
-          elem,
-          {
-            x: '-370%',
-            y: '-82%',
-          },
-        ],
-      },
-    ]
-    return { id, elem, settings, animation }
+    ];
+    return { id, elem, settings, animation };
   },
   // CONSTRUCTION 2
   () => {
-    const id = 'enter_construction2' // animation id
-    const elem = '#construction2'
+    const id = 'enter_construction2'; // animation id
+    const elem = '#construction2';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -746,7 +760,7 @@ export const Section4AnimationOBJ = [
         start: 'top 85%',
         end: 'bottom 100%',
       },
-    }
+    };
     // Input Animation
     const animation = [
       {
@@ -754,7 +768,6 @@ export const Section4AnimationOBJ = [
           elem,
           {
             x: '250%',
-            y: '-200%',
           },
         ],
       },
@@ -762,27 +775,17 @@ export const Section4AnimationOBJ = [
         to: [
           elem,
           {
-            x: '69%',
-            y: '15%',
+            x: '-400%',
           },
         ],
       },
-      {
-        to: [
-          elem,
-          {
-            x: '69%',
-            y: '120%',
-          },
-        ],
-      },
-    ]
-    return { id, elem, settings, animation }
+    ];
+    return { id, elem, settings, animation };
   },
   // BLOSSOM
   () => {
-    const id = 'enter_blossom' // animation id
-    const elem = '#blossom'
+    const id = 'enter_blossom'; // animation id
+    const elem = '#blossom';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -792,7 +795,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'top 75%',
       },
-    }
+    };
     // Input Animation
     const animation = [
       {
@@ -813,13 +816,13 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
-    return { id, elem, settings, animation }
+    ];
+    return { id, elem, settings, animation };
   },
   // BLOSSOM
   () => {
-    const id = 'enter_loading' // animation id
-    const elem = '#loading'
+    const id = 'enter_loading'; // animation id
+    const elem = '#loading';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -829,15 +832,14 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'top 75%',
       },
-    }
+    };
     // Input Animation
     const animation = [
       {
         set: [
           elem,
           {
-            x: '600%',
-            y: '-120%',
+            opacity: 0,
           },
         ],
       },
@@ -845,18 +847,18 @@ export const Section4AnimationOBJ = [
         to: [
           elem,
           {
+            opacity: 1,
             x: '300%',
-            y: '-120%',
           },
         ],
       },
-    ]
-    return { id, elem, settings, animation }
+    ];
+    return { id, elem, settings, animation };
   },
   // EXIT ALL
   () => {
-    const id = 'exit_all4' // animation id
-    const elem = '.s4_group_exit_all'
+    const id = 'exit_all4'; // animation id
+    const elem = '.s4_group_exit_all';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -866,7 +868,7 @@ export const Section4AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
     // Input Animation
     const animation = [
       {
@@ -885,7 +887,7 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
-    return { id, elem, settings, animation }
+    ];
+    return { id, elem, settings, animation };
   },
-]
+];

@@ -18,9 +18,9 @@ export const Section3ComponentFixedFront = () => {
       <div className="exit_group3">
         <div
           id="better_world"
-          className="pointer-events-none font-funkturm fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl"
+          className="pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-8xl"
         >
-          <div className="max-w-screen-lg w-full text-right">
+          <div className="max-w-screen-lg w-full text-right mr-24">
             <span className="block mr-[11.5rem]">AND</span>A BETTER
             <span className="block mr-6">WORLD</span>
           </div>
@@ -68,7 +68,7 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="nature"
-          className="opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-160%] right-1/2 translate-x-[225%]"
+          className="opacity-0 w-60 h-48 fixed top-1/2 translate-y-[-140%] right-1/2 translate-x-[215%]"
         >
           <Image
             src={nature}
@@ -80,7 +80,7 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="hasthe"
-          className="opacity-0 w-52 h-20 fixed top-1/2 translate-y-[-260%] right-1/2 translate-x-[308%]"
+          className="opacity-0 w-48 h-20 fixed top-1/2 translate-y-[-218%] right-1/2 translate-x-[297%]"
         >
           <Image
             src={hasthe}
@@ -92,7 +92,7 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="answer"
-          className="opacity-0 w-64 h-48 fixed top-1/2 translate-y-[-117%] right-1/2 translate-x-[264%]"
+          className="opacity-0 w-56 h-48 fixed top-1/2 translate-y-[-101%] right-1/2 translate-x-[262%]"
         >
           <Image
             src={answer}
@@ -104,7 +104,7 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="arrow"
-          className="opacity-0 w-80 h-48 fixed top-1/2 translate-y-[-145%] right-1/2 translate-x-[85%]"
+          className="opacity-0 w-80 h-44 fixed top-1/2 translate-y-[-140%] right-1/2 translate-x-[85%]"
         >
           <Image
             src={arrow}
@@ -125,7 +125,7 @@ const Section3MarkerTop = ({ setBgColor, setCaption }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(3)
-      setBgColor('#B1BA96')
+      setBgColor(3)
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -133,7 +133,7 @@ const Section3MarkerTop = ({ setBgColor, setCaption }) => {
       if (scrollDirection.vertical === 'up') {
         // CURRENT
         setCaption(3)
-        setBgColor('#B1BA96')
+        setBgColor(3)
       }
     },
   })
@@ -147,7 +147,7 @@ const Section3MarkerBottom = ({ setBgColor, setCaption }) => {
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(3)
-      setBgColor('#B1BA96')
+      setBgColor(3)
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -156,7 +156,7 @@ const Section3MarkerBottom = ({ setBgColor, setCaption }) => {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 3
         setCaption(3)
-        setBgColor('#B1BA96')
+        setBgColor(3)
       }
     },
   })
