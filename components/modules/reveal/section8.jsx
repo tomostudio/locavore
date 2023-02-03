@@ -39,29 +39,6 @@ const Section8MarkerTop = ({ setBgColor, setCaption }) => {
   return <div className='w-full h-2 bg-purple-600' ref={observe} />;
 };
 
-const Section8MarkerBottom = ({ setBgColor, setCaption }) => {
-  const { observe } = useInView({
-    threshold: 1, // Default is 0
-    rootMargin: '-50px 0px',
-    onEnter: ({ scrollDirection, entry }) => {
-      setCaption(8);
-      setBgColor('#B1BA96');
-    },
-    onLeave: ({ scrollDirection, entry }) => {
-      // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
-      if (scrollDirection.vertical === 'up') {
-      } else if (scrollDirection.vertical === 'down') {
-        // RETURN TO SECTION 8
-        setCaption(8);
-        setBgColor('#B1BA96');
-      }
-    },
-  });
-
-  return <div className='w-full h-2 bg-purple-600' ref={observe} />;
-};
-
 export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
   return (
     <>
@@ -71,15 +48,47 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
         className='trigger relative w-full text-4xl flex flex-col justify-center items-center '
         data-scroll-section
       >
-        <Section8MarkerTop
-          setCaption={setCaption}
-          setBgColor={setBgColor}
+        <Section8MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
+        <div
+          id='video-enter'
+          className='h-[100vh] w-full bg-blue-600 bg-opacity-50 mt-24'
         />
-        <div className='h-[200vh] flex justify-center flex-col'>SECTION 8</div>
-        <Section8MarkerBottom
-          setCaption={setCaption}
-          setBgColor={setBgColor}
-        />
+        <div className='w-full min-h-[200vh] '>
+          <div className='h-screen bg-slate-400 bg-opacity-20 w-full class sticky top-0 flex justify-center items-center'>
+            {/* CONTENT */}
+            <div className='frame __b w-full max-w-screen-lg h-full flex justify-center items-center'>
+              New Locavore
+            </div>
+          </div>
+          <div
+            id='trigger'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
+          />
+          <div
+            id='trigger'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
+          />
+          <div
+            id='trigger'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
+          />
+          <div
+            id='trigger'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
+          />
+          <div
+            id='trigger'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
+          />
+          <div
+            id='trigger'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
+          />
+          <div
+            id='trigger'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
+          />
+        </div>
       </section>
     </>
   );

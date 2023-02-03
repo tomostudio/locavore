@@ -8,6 +8,7 @@ import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 import Layout from '@/components/modules/layout';
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger';
 import SEO from '@/components/utils/seo';
+import Footer from '@/components/modules/footer';
 
 import PushScrollGlobal from '@/helpers/globalscroll';
 import { fade } from '@/helpers/preset/transitions';
@@ -69,9 +70,11 @@ import {
   Section8ComponentInner,
 } from '@/components/modules/reveal/section8';
 
-export default function Reveal({ seoAPI }) {
+export default function Reveal({ seoAPI, footerAPI }) {
   const router = useRouter();
   const [seo] = seoAPI;
+  const [footer] = footerAPI;
+
   const containerRef = useRef(null);
 
   // ANIMATION
@@ -112,6 +115,15 @@ export default function Reveal({ seoAPI }) {
       caption.classList.remove('active');
       if (index + 1 <= n) caption.classList.add('active');
     });
+
+    const captionContainer = document.querySelector('#reveal_caption');
+
+    // Hide Caption on Section 7 & 8
+    if (n >= 7) {
+      captionContainer.style.opacity = 0;
+    } else {
+      captionContainer.style.opacity = 1;
+    }
   };
 
   // Set Background
@@ -187,7 +199,7 @@ export default function Reveal({ seoAPI }) {
       {/* CAPTION */}
       <div
         id='reveal_caption'
-        className='caption fixed z-50 pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 bottom-4 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl text-md'
+        className='caption fixed z-50 pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 bottom-4 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl text-md transition-all duration-500'
       >
         {/* CURRENT BUG, JITTER EFFECT DUE TO UPDATING THE STYLE USING USE STATE -> SEEK ALTERNATIVE */}
         {/* Potential Solution 1: Create Custom Function for Class Trigger */}
@@ -308,6 +320,8 @@ export default function Reveal({ seoAPI }) {
                     setBgColor={setBgColor}
                     setCaption={setCaption}
                   />
+
+                  <Footer footer={footer} mailchimp={seo.mailchimpID} />
                 </m.main>
               </LazyMotion>
             </ScrollTriggerWrapper>
