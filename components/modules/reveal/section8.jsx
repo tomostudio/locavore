@@ -12,7 +12,7 @@ export const Section8ComponentFixedFront = () => {
 export const Section8ComponentFixedBack = () => {
   return (
     <>
-      <div id='section8_fixed_back'></div>
+      <div id='section8_fixed_back' />
     </>
   );
 };
@@ -52,12 +52,19 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
         <div
           id='video-enter'
           className='h-[100vh] w-full bg-blue-600 bg-opacity-50 mt-24'
-        />
+        >
+          VIDEO ENTER
+        </div>
         <div className='w-full min-h-[200vh] '>
           <div className='h-screen bg-slate-400 bg-opacity-20 w-full class sticky top-0 flex justify-center items-center'>
-            {/* CONTENT */}
-            <div className='frame __b w-full max-w-screen-lg h-full flex justify-center items-center'>
-              New Locavore
+            {/* ANIMATION CONTENT */}
+            <div className='frame __b w-full max-w-screen-lg h-full relative'>
+              <div className='absolute w-full h-full z-5 top-0 left-0 flex justify-center items-center text-red-400'>
+                FRONT CONTENT
+              </div>
+              <div className='absolute w-full h-full z-1 top-0 left-0 flex justify-center items-center text-blue-500  ' >
+                BACK CONTENT
+              </div>
             </div>
           </div>
           <div
