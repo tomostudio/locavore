@@ -36,7 +36,7 @@ export const Section1ComponentFixedFront = () => {
       </div>
       <div
         id="dream"
-        className="w-96 h-72 fixed top-1/2 z-10 translate-y-[-90%] translate-x-[-25vw]"
+        className="w-96 h-72 fixed top-1/2 z-10 translate-y-[-90%] translate-x-[-50vw] left-0"
       >
         <Image
           src={dream}

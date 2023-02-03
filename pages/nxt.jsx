@@ -168,6 +168,7 @@ export default function Reveal({ seoAPI }) {
       <div
         id='NXTbackground'
         className={`background fixed z-1 w-full h-full pointer-events-none transition-colors duration-1000`}
+        style={{ background: '#BFC29D' }}
       />
       {/* CAPTION */}
       <div
