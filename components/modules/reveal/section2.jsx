@@ -24,19 +24,19 @@ export const Section2ComponentFixedFront = () => {
     <div id='section2_fixed_front'>
       <div
         id='inspired'
-        className='pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-9xl'
+        className='pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-8xl'
       >
-        <div className='max-w-screen-lg w-full text-left ml-28'>
+        <div className='max-w-screen-lg w-full text-left pl-44'>
           INSPIRED
           <br />
           BY <br />
-          <span className='block -ml-40'>NICE</span>
+          <span className='block -ml-28'>NICE</span>
           THINGS
         </div>
       </div>
       <div className='s2_exit_group'>
         <div id='bee_mug' className='fixed w-full h-full z-50 opacity-0'>
-          <div className='w-56 h-56 fixed left-1/2 top-1/2 translate-y-[65%] translate-x-[-80%]'>
+          <div className='w-56 h-56 fixed left-1/2 top-1/2 translate-y-[38%] translate-x-[-80%]'>
             <Image
               src={beeSticker}
               fill
