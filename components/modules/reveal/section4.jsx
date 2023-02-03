@@ -226,10 +226,34 @@ const Section4MarkerBottom = ({ setBgColor, setCaption }) => {
   return <div className='w-full h-2 bg-purple-600' ref={observe} />;
 };
 
+const Section3MarkerBottom = ({ setBgColor, setCaption }) => {
+  const { observe } = useInView({
+    threshold: 1, // Default is 0
+    rootMargin: '-50px 0px',
+    onEnter: ({ scrollDirection, entry }) => {
+      setCaption(3)
+      setBgColor(3)
+    },
+    onLeave: ({ scrollDirection, entry }) => {
+      // Triggered when the target leaves the viewport
+      // console.log('leave', scrollDirection.vertical, entry);
+      if (scrollDirection.vertical === 'up') {
+      } else if (scrollDirection.vertical === 'down') {
+        // RETURN TO SECTION 3
+        setCaption(3)
+        setBgColor(3)
+      }
+    },
+  })
+
+  return <div className="w-full h-2 bg-purple-600" ref={observe} />
+}
+
+
 export const Section4ComponentInner = ({ setBgColor, setCaption }) => {
   return (
     <>
-      {/* Section 2 */}
+      {/* Section 4 */}
       <section
         id='trigger4'
         className='trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center'
@@ -248,6 +272,7 @@ export const Section4ComponentInner = ({ setBgColor, setCaption }) => {
           id='enter_globe_rotate'
           className='h-[100vh] __b bg-blue-600 bg-opacity-50'
         />
+        <Section3MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
         <div
           id='enter_s4_text'
           className='h-[100vh] __b bg-red-600 bg-opacity-50 mt-24'

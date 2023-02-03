@@ -131,15 +131,15 @@ export default function Reveal({ seoAPI, footerAPI }) {
   const bgColorSet = [
     '#BFC29D', //0
     '#BFC29D', //1
-    '#BFC29D', //2
-    '#B6BD99', //3
+    '#B5BD98', //2
+    '#ADB894', //3
     '#A0B18E', //4
-    '#9EAF8D', //5
-    '#8D9D83', //6
+    '#93A287', //5
+    '#8A9881', //6
     '#7B8778', //7
     '#7B8778', //8
   ];
-  const setBgColor = ({ color, set = 0 }) => {
+  const setBgColor = (set) => {
     const bgFrame = document.querySelector('#NXTbackground');
     bgFrame.style.background = bgColorSet[set];
   };
@@ -193,7 +193,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* BACKGROUND COLOR */}
       <div
         id='NXTbackground'
-        className={`background fixed z-1 w-full h-full pointer-events-none transition-colors duration-1000`}
+        className={`background fixed z-1 w-full h-full pointer-events-none transition-colors duration-[2000ms]`}
         style={{ background: bgColorSet[0] }}
       />
       {/* CAPTION */}

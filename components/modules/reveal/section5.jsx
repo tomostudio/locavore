@@ -477,7 +477,7 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
         {/* ENTER FEED */}
         <div
           id='enter_feed'
-          className='h-[25vh] w-full bg-blue-600 bg-opacity-50 mt-24'
+          className='h-[25vh] w-full bg-blue-600 bg-opacity-50 -mt-24'
         />
         {/* ENTER FEED */}
         <div
