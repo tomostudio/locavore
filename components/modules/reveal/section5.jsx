@@ -71,7 +71,7 @@ export const Section5ComponentFixedFront = () => {
           </div>
           <div
             id="first_floor"
-            className="fixed w-[60rem] h-[60rem] z-20 top-1/2 left-1/2 translate-x-[-50.1%] translate-y-[-70%]"
+            className="fixed w-[60rem] h-[60rem] z-20 top-1/2 left-1/2 translate-x-[-50.1%]"
           >
             <Image
               src={firstFloor}
@@ -288,7 +288,7 @@ export const Section5ComponentFixedBack = () => {
         </div>
         <div
           id='feed'
-          className='fixed w-52 h-64 top-1/2 left-1/2 translate-x-[-280%] translate-y-[30%] opacity-0'
+          className='fixed w-48 h-64 top-1/2 left-1/2 translate-x-[-280%] translate-y-[30%] opacity-0'
         >
           <Image
             src={feed}
@@ -323,18 +323,6 @@ export const Section5ComponentFixedBack = () => {
               }}
             />
           </div>
-        </div>
-        <div
-          id="feed"
-          className="fixed w-52 h-64 top-1/2 left-1/2 translate-x-[-280%] translate-y-[30%] opacity-0"
-        >
-          <Image
-            src={feed}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
         </div>
         <div id="group_s5_3" className="opacity-0">
           <div
@@ -1112,7 +1100,7 @@ export const Section5AnimationOBJ = [
           elem,
           {
             x: '-50.1%',
-            y: '-70%',
+            y: '-50%',
             scale: 2,
           },
         ],
