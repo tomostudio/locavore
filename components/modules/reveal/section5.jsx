@@ -71,7 +71,7 @@ export const Section5ComponentFixedFront = () => {
           </div>
           <div
             id="first_floor"
-            className="fixed w-[60rem] h-[60rem] z-20 top-1/2 left-1/2 translate-x-[-50.1%] translate-y-[-70%]"
+            className="fixed w-[60rem] h-[60rem] z-20 top-1/2 left-1/2 translate-x-[-50.1%]"
           >
             <Image
               src={firstFloor}
@@ -288,7 +288,7 @@ export const Section5ComponentFixedBack = () => {
         </div>
         <div
           id='feed'
-          className='fixed w-52 h-64 top-1/2 left-1/2 translate-x-[-280%] translate-y-[30%] opacity-0'
+          className='fixed w-48 h-64 top-1/2 left-1/2 translate-x-[-280%] translate-y-[30%] opacity-0'
         >
           <Image
             src={feed}
@@ -323,18 +323,6 @@ export const Section5ComponentFixedBack = () => {
               }}
             />
           </div>
-        </div>
-        <div
-          id="feed"
-          className="fixed w-52 h-64 top-1/2 left-1/2 translate-x-[-280%] translate-y-[30%] opacity-0"
-        >
-          <Image
-            src={feed}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
         </div>
         <div id="group_s5_3" className="opacity-0">
           <div
@@ -463,7 +451,6 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           id='exit_group_s5_1'
           className='h-[50vh] w-full bg-blue-600 bg-opacity-50 mt-24'
         />
-        <Section5MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
         {/* ENTER GROUP 1 */}
         <div
           id='enter_group_s5_1'
@@ -484,12 +471,12 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           id='enter_group_s5_3'
           className='h-[25vh] w-full bg-red-600 bg-opacity-50 mt-24'
         />
-        <div className='h-[100vh] flex justify-center flex-col'>SECTION 5</div>
         {/* EXITA ALL FEED */}
         <div
           id='exit_group_end_s5'
-          className='h-[25vh] w-full bg-red-600 bg-opacity-50 mt-24'
+          className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
         />
+        <Section5MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
   );
@@ -1113,7 +1100,7 @@ export const Section5AnimationOBJ = [
           elem,
           {
             x: '-50.1%',
-            y: '-70%',
+            y: '-50%',
             scale: 2,
           },
         ],
@@ -1463,7 +1450,7 @@ export const Section5AnimationOBJ = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'top 0%',
+        end: 'bottom 100%',
       },
     };
 

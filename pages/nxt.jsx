@@ -84,6 +84,9 @@ export default function Reveal({ seoAPI, footerAPI }) {
     ...Section3AnimationOBJ,
     ...Section4AnimationOBJ,
     ...Section5AnimationOBJ,
+    ...Section6AnimationOBJ,
+    ...Section7AnimationOBJ,
+    ...Section8AnimationOBJ
   ];
 
   useEffect(() => {

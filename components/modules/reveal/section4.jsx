@@ -4,10 +4,6 @@ import { useInView } from 'react-cool-inview';
 import Image from 'next/image';
 
 // Local Images
-import globe from '@/public/nxt/globe.png';
-import supportYourLocalPlanet from '@/public/nxt/supportyourlocalplanet.png';
-import beRegenerative from '@/public/nxt/beregenerative.png';
-import sharingIsCaring from '@/public/nxt/sharingiscaring.png';
 import box from '@/public/nxt/box.png';
 import constructionSticker from '@/public/nxt/construction_sticker.png';
 import pot from '@/public/nxt/pot.png';
@@ -19,60 +15,6 @@ import loading from '@/public/nxt/loading.gif';
 export const Section4ComponentFixedFront = () => {
   return (
     <div id='section4_fixed_front'>
-      <div id='s4_group_exit'>
-        <div
-          id='globe_rotate'
-          className='fixed w-full h-full pointer-events-none flex justify-center items-center'
-        >
-          <div
-            id='globe_support'
-            className='relative w-[26rem] h-[26rem] opacity-0'
-          >
-            <div className='opacity-50' id='globe'>
-              <Image
-                src={globe}
-                fill
-                style={{
-                  objectFit: 'contain',
-                }}
-              />
-            </div>
-            <Image
-              src={supportYourLocalPlanet}
-              fill
-              style={{
-                objectFit: 'contain',
-              }}
-            />
-          </div>
-        </div>
-        <div id='s4_group_enter' className='w-full h-full fixed scale-[2]'>
-          <div
-            id='be_regenerative'
-            className='fixed w-96 h-36 top-1/2 left-1/2 translate-x-[-200%] translate-y-[-250%]'
-          >
-            <Image
-              src={beRegenerative}
-              fill
-              style={{
-                objectFit: 'contain',
-              }}
-            />
-          </div>
-          <div
-            id='sharing_is_caring'
-            className='fixed w-96 h-36 top-1/2 left-1/2 translate-x-[75%] translate-y-[160%]'
-          >
-            <Image
-              src={sharingIsCaring}
-              fill
-              style={{
-                objectFit: 'contain',
-              }}
-            />
-          </div>
-        </div>
-      </div>
       <div className='s4_group_exit_all'>
         <div
           id="s4_text"
@@ -226,30 +168,6 @@ const Section4MarkerBottom = ({ setBgColor, setCaption }) => {
   return <div className='w-full h-2 bg-purple-600' ref={observe} />;
 };
 
-const Section3MarkerBottom = ({ setBgColor, setCaption }) => {
-  const { observe } = useInView({
-    threshold: 1, // Default is 0
-    rootMargin: '-50px 0px',
-    onEnter: ({ scrollDirection, entry }) => {
-      setCaption(3)
-      setBgColor(3)
-    },
-    onLeave: ({ scrollDirection, entry }) => {
-      // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
-      if (scrollDirection.vertical === 'up') {
-      } else if (scrollDirection.vertical === 'down') {
-        // RETURN TO SECTION 3
-        setCaption(3)
-        setBgColor(3)
-      }
-    },
-  })
-
-  return <div className="w-full h-2 bg-purple-600" ref={observe} />
-}
-
-
 export const Section4ComponentInner = ({ setBgColor, setCaption }) => {
   return (
     <>
@@ -259,20 +177,6 @@ export const Section4ComponentInner = ({ setBgColor, setCaption }) => {
         className='trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center'
         data-scroll-section
       >
-        {/* GLOBE SUPPORT */}
-        <div
-          id='enter_globe_support'
-          className='h-[100vh] __b bg-red-600 bg-opacity-50'
-        />
-        <div
-          id='enter_globe'
-          className='h-[25vh] __b bg-green-600 bg-opacity-50 mt-24'
-        />
-        <div
-          id='enter_globe_rotate'
-          className='h-[100vh] __b bg-blue-600 bg-opacity-50'
-        />
-        <Section3MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
         <div
           id='enter_s4_text'
           className='h-[100vh] __b bg-red-600 bg-opacity-50 mt-24'
@@ -303,273 +207,6 @@ export const Section4ComponentInner = ({ setBgColor, setCaption }) => {
 };
 
 export const Section4AnimationOBJ = [
-  // GLOBE SUPPORT
-  () => {
-    const id = 'globe_support_enter'; // animation id
-    const elem = '#globe_support';
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter_globe_support', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    };
-
-    // Input Animation
-    const animation = [
-      {
-        set: [
-          elem,
-          {
-            opacity: 0,
-            scale: 10,
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            opacity: 1,
-            scale: 1,
-          },
-        ],
-      },
-    ];
-
-    return { id, elem, settings, animation };
-  },
-  // GLOBE
-  () => {
-    const id = 'globe_enter'; // animation id
-    const elem = '#globe';
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter_globe', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    };
-
-    // Input Animation
-    const animation = [
-      {
-        set: [
-          elem,
-          {
-            opacity: 0.5,
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            opacity: 1,
-          },
-        ],
-      },
-    ];
-
-    return { id, elem, settings, animation };
-  },
-  // GLOBE ROTATE
-  () => {
-    const id = 'globe_rotate_enter'; // animation id
-    const elem = '#globe_rotate';
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    };
-
-    // Input Animation
-    const animation = [
-      {
-        set: [
-          elem,
-          {
-            rotate: '0deg',
-            ease: 'none',
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            rotate: '360deg',
-            ease: 'none',
-          },
-        ],
-      },
-    ];
-
-    return { id, elem, settings, animation };
-  },
-  // S4 GROUP ENTER
-  () => {
-    const id = 's4_group_enter'; // animation id
-    const elem = '#s4_group_enter';
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    };
-
-    // Input Animation
-    const animation = [
-      {
-        set: [
-          elem,
-          {
-            scale: 2,
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            scale: 1,
-          },
-        ],
-      },
-    ];
-
-    return { id, elem, settings, animation };
-  },
-  // BE REGENERATIVE ENTER
-  () => {
-    const id = 'be_regenerative_enter'; // animation id
-    const elem = '#be_regenerative';
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    };
-
-    // Input Animation
-    const animation = [
-      {
-        set: [
-          elem,
-          {
-            y: '-250%',
-            x: '-200%',
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            y: '-50%',
-            x: '-150%',
-          },
-        ],
-      },
-    ];
-
-    return { id, elem, settings, animation };
-  },
-  // SHARING IS CARING ENTER
-  () => {
-    const id = 'sharing_is_caring_enter'; // animation id
-    const elem = '#sharing_is_caring';
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    };
-
-    // Input Animation
-    const animation = [
-      {
-        set: [
-          elem,
-          {
-            x: '75%',
-            y: '160%',
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            x: '65%',
-            y: '-50%',
-          },
-        ],
-      },
-    ];
-
-    return { id, elem, settings, animation };
-  },
-  // S4 GROUP EXIT
-  () => {
-    const id = 's4_group_exit'; // animation id
-    const elem = '#s4_group_exit';
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 50%',
-        end: 'bottom 100%',
-      },
-    };
-
-    // Input Animation
-    const animation = [
-      {
-        set: [
-          elem,
-          {
-            opacity: 1,
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            opacity: 0,
-          },
-        ],
-      },
-    ];
-
-    return { id, elem, settings, animation };
-  },
   // TEXT ENTER
   () => {
     const id = 's4_text_enter'; // animation id
@@ -829,8 +466,8 @@ export const Section4AnimationOBJ = [
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 100%',
-        end: 'top 75%',
+        start: 'top 50%',
+        end: 'top 25%',
       },
     };
     // Input Animation

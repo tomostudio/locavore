@@ -11,6 +11,10 @@ import nature from '@/public/nxt/nature.png'
 import hasthe from '@/public/nxt/hasthe.png'
 import answer from '@/public/nxt/answer.png'
 import arrow from '@/public/nxt/arrow.png'
+import globe from '@/public/nxt/globe.png'
+import supportYourLocalPlanet from '@/public/nxt/supportyourlocalplanet.png'
+import beRegenerative from '@/public/nxt/beregenerative.png'
+import sharingIsCaring from '@/public/nxt/sharingiscaring.png'
 
 export const Section3ComponentFixedFront = () => {
   return (
@@ -23,6 +27,57 @@ export const Section3ComponentFixedFront = () => {
           <div className="max-w-screen-lg w-full text-right mr-24">
             <span className="block mr-[11.5rem]">AND</span>A BETTER
             <span className="block mr-6">WORLD</span>
+          </div>
+        </div>
+      </div>
+      <div id="s4_group_exit">
+        <div
+          id="globe_rotate"
+          className="fixed w-full h-full pointer-events-none flex justify-center items-center"
+        >
+          <div id="support" className="relative z-2 w-[26rem] h-[26rem] opacity-0">
+            <Image
+              src={supportYourLocalPlanet}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+          <div id="globe" className="absolute w-[26rem] h-[26rem] opacity-0">
+            <Image
+              src={globe}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+        </div>
+        <div id="s4_group_enter" className="w-full h-full fixed scale-[2]">
+          <div
+            id="be_regenerative"
+            className="fixed w-96 h-36 top-1/2 left-1/2 translate-x-[-200%] translate-y-[-250%]"
+          >
+            <Image
+              src={beRegenerative}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+          <div
+            id="sharing_is_caring"
+            className="fixed w-96 h-36 top-1/2 left-1/2 translate-x-[75%] translate-y-[160%]"
+          >
+            <Image
+              src={sharingIsCaring}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
           </div>
         </div>
       </div>
@@ -228,6 +283,19 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         >
           EXIT All 3
         </div>
+        {/* GLOBE SUPPORT */}
+        <div
+          id="enter_support"
+          className="h-[100vh] __b bg-red-600 bg-opacity-50"
+        />
+        <div
+          id="enter_globe"
+          className="h-[25vh] __b bg-green-600 bg-opacity-50 mt-24"
+        />
+        <div
+          id="enter_globe_rotate"
+          className="h-[100vh] __b bg-blue-600 bg-opacity-50"
+        />
         <Section3MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
@@ -511,6 +579,273 @@ export const Section3AnimationOBJ = [
         ],
       },
     ]
+    return { id, elem, settings, animation }
+  },
+  // SUPPORT
+  () => {
+    const id = 'support_enter' // animation id
+    const elem = '#support'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_support', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+            scale: 10,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+            scale: 1,
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // GLOBE
+  () => {
+    const id = 'globe_enter' // animation id
+    const elem = '#globe'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_globe', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // GLOBE ROTATE
+  () => {
+    const id = 'globe_rotate_enter' // animation id
+    const elem = '#globe_rotate'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            rotate: '0deg',
+            ease: 'none',
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            rotate: '360deg',
+            ease: 'none',
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // S4 GROUP ENTER
+  () => {
+    const id = 's4_group_enter' // animation id
+    const elem = '#s4_group_enter'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            scale: 2,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            scale: 1,
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // BE REGENERATIVE ENTER
+  () => {
+    const id = 'be_regenerative_enter' // animation id
+    const elem = '#be_regenerative'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            y: '-250%',
+            x: '-200%',
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            y: '-50%',
+            x: '-150%',
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // SHARING IS CARING ENTER
+  () => {
+    const id = 'sharing_is_caring_enter' // animation id
+    const elem = '#sharing_is_caring'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            x: '75%',
+            y: '160%',
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            x: '65%',
+            y: '-50%',
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // S4 GROUP EXIT
+  () => {
+    const id = 's4_group_exit' // animation id
+    const elem = '#s4_group_exit'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 50%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+    ]
+
     return { id, elem, settings, animation }
   },
 ]
