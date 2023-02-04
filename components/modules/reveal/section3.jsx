@@ -35,21 +35,18 @@ export const Section3ComponentFixedFront = () => {
           id="globe_rotate"
           className="fixed w-full h-full pointer-events-none flex justify-center items-center"
         >
-          <div
-            id="globe_support"
-            className="relative w-[26rem] h-[26rem] opacity-0"
-          >
-            <div className="opacity-50" id="globe">
-              <Image
-                src={globe}
-                fill
-                style={{
-                  objectFit: 'contain',
-                }}
-              />
-            </div>
+          <div id="support" className="relative z-2 w-[26rem] h-[26rem] opacity-0">
             <Image
               src={supportYourLocalPlanet}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
+          <div id="globe" className="absolute w-[26rem] h-[26rem] opacity-0">
+            <Image
+              src={globe}
               fill
               style={{
                 objectFit: 'contain',
@@ -288,7 +285,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         </div>
         {/* GLOBE SUPPORT */}
         <div
-          id="enter_globe_support"
+          id="enter_support"
           className="h-[100vh] __b bg-red-600 bg-opacity-50"
         />
         <div
@@ -584,14 +581,14 @@ export const Section3AnimationOBJ = [
     ]
     return { id, elem, settings, animation }
   },
-  // GLOBE SUPPORT
+  // SUPPORT
   () => {
-    const id = 'globe_support_enter' // animation id
-    const elem = '#globe_support'
+    const id = 'support_enter' // animation id
+    const elem = '#support'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter_globe_support', // which section will be tracked as the scroll trigger
+        trigger: '#enter_support', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
@@ -644,7 +641,7 @@ export const Section3AnimationOBJ = [
         set: [
           elem,
           {
-            opacity: 0.5,
+            opacity: 0,
           },
         ],
       },
