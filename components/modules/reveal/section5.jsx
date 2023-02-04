@@ -463,7 +463,6 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           id='exit_group_s5_1'
           className='h-[50vh] w-full bg-blue-600 bg-opacity-50 mt-24'
         />
-        <Section5MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
         {/* ENTER GROUP 1 */}
         <div
           id='enter_group_s5_1'
@@ -489,6 +488,7 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           id='exit_group_end_s5'
           className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
         />
+        <Section5MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
   );
