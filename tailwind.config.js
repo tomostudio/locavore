@@ -182,5 +182,6 @@ module.exports = {
   plugins: [
     require('tailwindcss-padding-safe'),
     require('@tailwindcss/aspect-ratio'),
+    require('tailwind-clip-path'),
   ],
 }
