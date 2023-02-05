@@ -175,7 +175,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         <Section8ComponentFixedFront />
       </div>
       {/* FIXED POSITION BACK*/}
-      <div className='outercontainer-back fixed z-2 w-full h-full border pointer-events-none select-none'>
+      <div className='outercontainer-back fixed -z-1 w-full h-full border pointer-events-none select-none'>
         {/* SECTION 1 */}
         <Section1ComponentFixedBack />
         {/* SECTION 2 */}
@@ -196,7 +196,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* BACKGROUND COLOR */}
       <div
         id='NXTbackground'
-        className={`background fixed z-1 w-full h-full pointer-events-none transition-colors duration-[2000ms]`}
+        className={`background fixed -z-2 w-full h-full pointer-events-none transition-colors duration-[2000ms]`}
         style={{ background: bgColorSet[0] }}
       />
       {/* CAPTION */}
