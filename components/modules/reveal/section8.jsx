@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import 'intersection-observer'; // optional polyfill
 import { useInView } from 'react-cool-inview';
 import Image from 'next/image';
-import { Waypoint } from 'react-waypoint';
 import FancyLink from '@/components/utils/fancyLink';
 
 // Local Images
@@ -64,9 +63,13 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
 
   useEffect(() => {
     const detectScroll = (e) => {
-      const { y, top } = videoRef.current.getBoundingClientRect();
-      const inviewY = screen.height - y;
-      console.log('scroll', inviewY, screen.height, y);
+      const { y, top, bottom, height } =
+        videoRef.current.getBoundingClientRect();
+      const progress = Math.round(
+        -(y - window.innerHeight / (height + window.innerHeight)) * 100
+      );
+      if (progress > 0 && progress <= 100)
+        console.log('progress', inviewY, progress);
     };
     document.addEventListener('scroll', detectScroll, false);
     return () => {
@@ -96,8 +99,11 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
             className='h-screen bg-slate-400 bg-opacity-20 w-full sticky top-0 flex justify-center items-center'
           >
             {/* ANIMATION CONTENT STICKY */}
-            <div className='frame __b w-full h-full relative'>
-              <div className='absolute w-full h-full z-5 top-0 left-0 text-red-400  __b'>
+            <div className='frame __b w-full h-full relative overflow-hidden'>
+              <div
+                id='sticky_front'
+                className='absolute w-full h-full z-5 top-0 left-0 text-red-400  __b'
+              >
                 <div className='relative max-w-screen-lg w-full h-full flex justify-center items-center __b mx-auto'>
                   <div className='pointer-events-none font-funkturm tracking-[0.08em] absolute w-full h-full flex flex-col justify-center items-center text-center leading-none text-white text-8xl'>
                     <div className='relative flex justify-center items-center w-fit h-fit'>
@@ -145,16 +151,19 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                               behavior: 'smooth',
                             })
                           }
-                          className='mt-28 uppercase text-xs font-default tracking-normal'
+                          className='mt-24 uppercase font-default font-light text-xs text-center tracking-widest text-white select-none'
                         >
-                          Back to top
+                          <div className='block animate-fade-up'>Back to top</div>
                         </FancyLink>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className='absolute w-full h-full z-1 top-0 left-0 flex justify-center items-center text-blue-500   __b'>
+              <div
+                id='sticky_back'
+                className='absolute overflow-hidden w-full h-full z-1 top-0 left-0 flex justify-center items-center text-blue-500   __b'
+              >
                 <div
                   id='cloud1_s8'
                   className='absolute top-1/2 left-1/2 opacity-0 translate-y-[-100%] translate-x-[-100%] w-[27rem] h-40'

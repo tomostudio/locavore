@@ -41,11 +41,23 @@ module.exports = {
             transform: 'translateY(20px)',
           },
         },
+        'fade-up': {
+          '0%, 5%': {
+            opacity: 0,
+            transform: 'translateY(20px)',
+          },
+          '40%, 60%': { opacity: 1 },
+          '95%, 100%': {
+            opacity: 0,
+            transform: 'translateY(-20px)',
+          },
+        },
       },
       animation: {
         'fade-left': 'fade-left 1.5s linear infinite',
         'fade-left-slower': 'fade-left 2.5s linear infinite',
         'fade-down': 'fade-down 1.5s linear infinite',
+        'fade-up': 'fade-up 1.5s linear infinite',
       },
       minHeight: {
         '16rem': '16rem',
