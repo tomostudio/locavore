@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import 'intersection-observer'; // optional polyfill
 import { useInView } from 'react-cool-inview';
 import Image from 'next/image';
+import Lottie from 'lottie-react';
+
 import FancyLink from '@/components/utils/fancyLink';
 
 // Local Images
@@ -26,7 +28,11 @@ import sunflower4 from '@/public/nxt/sunflower04.png';
 import sunflower5 from '@/public/nxt/sunflower05.png';
 
 export const Section8ComponentFixedFront = () => {
-  return <div id='section8_fixed_front'></div>;
+  return (
+    <div id='section8_fixed_front'>
+      <div className='fixed h-[50vh] w-[50vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-500'></div>
+    </div>
+  );
 };
 export const Section8ComponentFixedBack = () => {
   return (
@@ -153,7 +159,9 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                           }
                           className='mt-24 uppercase font-default font-light text-xs text-center tracking-widest text-white select-none'
                         >
-                          <div className='block animate-fade-up'>Back to top</div>
+                          <div className='block animate-fade-up'>
+                            Back to top
+                          </div>
                         </FancyLink>
                       </div>
                     </div>
