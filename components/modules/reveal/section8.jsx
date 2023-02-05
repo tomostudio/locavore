@@ -1,91 +1,113 @@
-import React from 'react'
-import 'intersection-observer' // optional polyfill
-import { useInView } from 'react-cool-inview'
-import Image from 'next/image'
-import FancyLink from '@/components/utils/fancyLink'
+import React, { useEffect, useRef } from 'react';
+import 'intersection-observer'; // optional polyfill
+import { useInView } from 'react-cool-inview';
+import Image from 'next/image';
+import FancyLink from '@/components/utils/fancyLink';
 
 // Local Images
-import nxtLogo from '@/public/nxt/nxt_logo.png'
-import summer from '@/public/nxt/summer.png'
-import cloud1 from '@/public/nxt/cloud01.png'
-import cloud2 from '@/public/nxt/cloud02.png'
-import cloud3 from '@/public/nxt/cloud03.png'
-import cloud4 from '@/public/nxt/cloud04.png'
-import cloud5 from '@/public/nxt/cloud05.png'
-import cloud6 from '@/public/nxt/cloud03.png'
-import worm from '@/public/nxt/worm.png'
-import bee1 from '@/public/nxt/bee01.png'
-import bee2 from '@/public/nxt/bee02.png'
-import bee3 from '@/public/nxt/bee03.png'
-import bee4 from '@/public/nxt/bee01.png'
-import bee5 from '@/public/nxt/bee02.png'
-import butterfly1 from '@/public/nxt/butterfly01.png'
-import butterfly2 from '@/public/nxt/butterfly02.png'
-import sunflower3 from '@/public/nxt/sunflower03.png'
-import sunflower4 from '@/public/nxt/sunflower04.png'
-import sunflower5 from '@/public/nxt/sunflower05.png'
+import nxtLogo from '@/public/nxt/nxt_logo.png';
+import summer from '@/public/nxt/summer.png';
+import cloud1 from '@/public/nxt/cloud01.png';
+import cloud2 from '@/public/nxt/cloud02.png';
+import cloud3 from '@/public/nxt/cloud03.png';
+import cloud4 from '@/public/nxt/cloud04.png';
+import cloud5 from '@/public/nxt/cloud05.png';
+import cloud6 from '@/public/nxt/cloud03.png';
+import worm from '@/public/nxt/worm.png';
+import bee1 from '@/public/nxt/bee01.png';
+import bee2 from '@/public/nxt/bee02.png';
+import bee3 from '@/public/nxt/bee03.png';
+import bee4 from '@/public/nxt/bee01.png';
+import bee5 from '@/public/nxt/bee02.png';
+import butterfly1 from '@/public/nxt/butterfly01.png';
+import butterfly2 from '@/public/nxt/butterfly02.png';
+import sunflower3 from '@/public/nxt/sunflower03.png';
+import sunflower4 from '@/public/nxt/sunflower04.png';
+import sunflower5 from '@/public/nxt/sunflower05.png';
 
 export const Section8ComponentFixedFront = () => {
-  return <div id="section8_fixed_front"></div>
-}
+  return <div id='section8_fixed_front'></div>;
+};
 export const Section8ComponentFixedBack = () => {
   return (
     <>
-      <div id="section8_fixed_back" />
+      <div id='section8_fixed_back' />
     </>
-  )
-}
+  );
+};
 
 const Section8MarkerTop = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCaption(8)
-      setBgColor(8)
+      setCaption(8);
+      setBgColor(8);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
       // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
-        setCaption(8)
-        setBgColor(8)
+        setCaption(8);
+        setBgColor(8);
       }
     },
-  })
+  });
 
-  return <div className="w-full h-2 bg-purple-600" ref={observe} />
-}
+  return <div className='w-full h-2 bg-purple-600' ref={observe} />;
+};
 
 export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
+  const videoRef = useRef();
+
+  useEffect(() => {
+    const detectScroll = (e) => {
+      const { y, top, bottom, height } =
+        videoRef.current.getBoundingClientRect();
+      const progress = Math.round(
+        -(y - window.innerHeight / (height + window.innerHeight)) * 100
+      );
+      if (progress > 0 && progress <= 100)
+        console.log('progress', inviewY, progress);
+    };
+    document.addEventListener('scroll', detectScroll, false);
+    return () => {
+      document.removeEventListener('scroll', detectScroll, false);
+    };
+  }, []);
+
   return (
     <>
       {/* Section 2 */}
       <section
-        id="trigger2"
-        className="trigger relative w-full text-4xl flex flex-col justify-center items-center "
+        id='trigger2'
+        className='trigger relative w-full text-4xl flex flex-col justify-center items-center '
         data-scroll-section
       >
         <Section8MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         <div
-          id="video-enter"
-          className="h-[100vh] w-full bg-blue-600 bg-opacity-50 mt-24"
+          id='video-enter'
+          className='h-[100vh] w-full bg-blue-600 bg-opacity-50'
+          ref={videoRef}
         >
           VIDEO ENTER
         </div>
-        <div className="w-full min-h-[200vh] ">
+        <div className='w-full min-h-[200vh] '>
           <div
-            id="enter_nxt_logo"
-            className="h-screen bg-slate-400 bg-opacity-20 w-full sticky top-0 flex justify-center items-center"
+            id='enter_nxt_logo'
+            className='h-screen bg-slate-400 bg-opacity-20 w-full sticky top-0 flex justify-center items-center'
           >
             {/* ANIMATION CONTENT STICKY */}
-            <div className="frame __b w-full h-full relative">
-              <div className="absolute w-full h-full z-5 top-0 left-0 text-red-400  __b">
-                <div className="relative max-w-screen-lg w-full h-full flex justify-center items-center __b mx-auto">
-                  <div className="pointer-events-none font-funkturm tracking-[0.08em] absolute w-full h-full flex flex-col justify-center items-center text-center leading-none text-white text-8xl">
-                    <div className="relative flex justify-center items-center w-fit h-fit">
-                      <div className="absolute -top-60 w-48 h-48">
+            <div className='frame __b w-full h-full relative overflow-hidden'>
+              <div
+                id='sticky_front'
+                className='absolute w-full h-full z-5 top-0 left-0 text-red-400  __b'
+              >
+                <div className='relative max-w-screen-lg w-full h-full flex justify-center items-center __b mx-auto'>
+                  <div className='pointer-events-none font-funkturm tracking-[0.08em] absolute w-full h-full flex flex-col justify-center items-center text-center leading-none text-white text-8xl'>
+                    <div className='relative flex justify-center items-center w-fit h-fit'>
+                      <div className='absolute -top-60 w-48 h-48'>
                         <Image
                           src={nxtLogo}
                           fill
@@ -95,19 +117,19 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                         />
                       </div>
                     </div>
-                    <div id="new_locavore_exit">
-                      <div id="new_locavore" className="opacity-0">
+                    <div id='new_locavore_exit'>
+                      <div id='new_locavore' className='opacity-0'>
                         THE NEW LOCAVORE
                       </div>
                     </div>
-                    <div id="locavore_nxt" className="absolute opacity-0">
+                    <div id='locavore_nxt' className='absolute opacity-0'>
                       LOCAVORE NXT
                       <div
-                        id="opening"
-                        className="absolute opacity-0 flex flex-col justify-center items-center text-center"
+                        id='opening'
+                        className='absolute opacity-0 flex flex-col justify-center items-center text-center'
                       >
                         OPENING 2023
-                        <div className="absolute top-0 right-44 w-40 h-16">
+                        <div className='absolute top-0 right-44 w-40 h-16'>
                           <Image
                             src={summer}
                             fill
@@ -123,23 +145,28 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                           SHARE
                         </FancyLink>
                         <FancyLink
-                          onClick={() => window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth',
-                          })}
-                          className="mt-28 uppercase text-xs font-default tracking-normal"
+                          onClick={() =>
+                            window.scrollTo({
+                              top: 0,
+                              behavior: 'smooth',
+                            })
+                          }
+                          className='mt-24 uppercase font-default font-light text-xs text-center tracking-widest text-white select-none'
                         >
-                          Back to top
+                          <div className='block animate-fade-up'>Back to top</div>
                         </FancyLink>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="absolute w-full h-full z-1 top-0 left-0 flex justify-center items-center text-blue-500   __b">
+              <div
+                id='sticky_back'
+                className='absolute overflow-hidden w-full h-full z-1 top-0 left-0 flex justify-center items-center text-blue-500   __b'
+              >
                 <div
-                  id="cloud1_s8"
-                  className="absolute top-1/2 left-1/2 opacity-0 translate-y-[-100%] translate-x-[-100%] w-[27rem] h-40"
+                  id='cloud1_s8'
+                  className='absolute top-1/2 left-1/2 opacity-0 translate-y-[-100%] translate-x-[-100%] w-[27rem] h-40'
                 >
                   <Image
                     src={cloud1}
@@ -150,8 +177,8 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   />
                 </div>
                 <div
-                  id="cloud2_s8"
-                  className="absolute top-1/2 left-1/2 opacity-0 translate-y-[210%] translate-x-[-205%] scale-[2] w-[27rem] h-40"
+                  id='cloud2_s8'
+                  className='absolute top-1/2 left-1/2 opacity-0 translate-y-[210%] translate-x-[-205%] scale-[2] w-[27rem] h-40'
                 >
                   <Image
                     src={cloud2}
@@ -162,8 +189,8 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   />
                 </div>
                 <div
-                  id="cloud3_s8"
-                  className="absolute top-1/2 left-1/2 opacity-0 translate-y-[-50%] translate-x-[-70%] w-[27rem] h-40"
+                  id='cloud3_s8'
+                  className='absolute top-1/2 left-1/2 opacity-0 translate-y-[-50%] translate-x-[-70%] w-[27rem] h-40'
                 >
                   <Image
                     src={cloud3}
@@ -174,8 +201,8 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   />
                 </div>
                 <div
-                  id="cloud4_s8"
-                  className="absolute top-1/2 left-1/2 opacity-0 translate-y-[-10%] translate-x-[-90%] w-36 h-36"
+                  id='cloud4_s8'
+                  className='absolute top-1/2 left-1/2 opacity-0 translate-y-[-10%] translate-x-[-90%] w-36 h-36'
                 >
                   <Image
                     src={cloud4}
@@ -186,8 +213,8 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   />
                 </div>
                 <div
-                  id="cloud5_s8"
-                  className="absolute top-1/2 left-1/2 opacity-0 translate-y-[-255%] translate-x-[-130%] w-[27rem] h-40"
+                  id='cloud5_s8'
+                  className='absolute top-1/2 left-1/2 opacity-0 translate-y-[-255%] translate-x-[-130%] w-[27rem] h-40'
                 >
                   <Image
                     src={cloud5}
@@ -198,8 +225,8 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   />
                 </div>
                 <div
-                  id="cloud6_s8"
-                  className="absolute top-1/2 left-1/2 opacity-0 translate-y-[70%] translate-x-[117%] w-[27rem] h-40"
+                  id='cloud6_s8'
+                  className='absolute top-1/2 left-1/2 opacity-0 translate-y-[70%] translate-x-[117%] w-[27rem] h-40'
                 >
                   <Image
                     src={cloud6}
@@ -209,8 +236,8 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                     }}
                   />
                 </div>
-                <div id="group_s8" className="opacity-0">
-                  <div className="absolute top-1/2 left-1/2 translate-y-[113%] translate-x-[-75%] w-28 h-28">
+                <div id='group_s8' className='opacity-0'>
+                  <div className='absolute top-1/2 left-1/2 translate-y-[113%] translate-x-[-75%] w-28 h-28'>
                     <Image
                       src={worm}
                       fill
@@ -219,7 +246,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       }}
                     />
                   </div>
-                  <div className="absolute top-1/2 left-1/2 translate-y-[450%] translate-x-[-700%] w-12 h-12">
+                  <div className='absolute top-1/2 left-1/2 translate-y-[450%] translate-x-[-700%] w-12 h-12'>
                     <Image
                       src={bee1}
                       fill
@@ -228,7 +255,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       }}
                     />
                   </div>
-                  <div className="absolute top-1/2 left-1/2 translate-y-[250%] translate-x-[-900%] w-14 h-14">
+                  <div className='absolute top-1/2 left-1/2 translate-y-[250%] translate-x-[-900%] w-14 h-14'>
                     <Image
                       src={bee2}
                       fill
@@ -237,7 +264,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       }}
                     />
                   </div>
-                  <div className="absolute top-1/2 left-1/2 translate-y-[-500%] translate-x-[-240%] w-14 h-14">
+                  <div className='absolute top-1/2 left-1/2 translate-y-[-500%] translate-x-[-240%] w-14 h-14'>
                     <Image
                       src={bee3}
                       fill
@@ -246,7 +273,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       }}
                     />
                   </div>
-                  <div className="absolute top-1/2 left-1/2 translate-y-[-300%] translate-x-[250%] w-20 h-20">
+                  <div className='absolute top-1/2 left-1/2 translate-y-[-300%] translate-x-[250%] w-20 h-20'>
                     <Image
                       src={butterfly1}
                       fill
@@ -255,7 +282,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       }}
                     />
                   </div>
-                  <div className="absolute top-1/2 left-1/2 translate-y-[-200%] translate-x-[-300%] w-20 h-20">
+                  <div className='absolute top-1/2 left-1/2 translate-y-[-200%] translate-x-[-300%] w-20 h-20'>
                     <Image
                       src={butterfly2}
                       fill
@@ -264,7 +291,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       }}
                     />
                   </div>
-                  <div className="absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[-430%] w-28 h-28">
+                  <div className='absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[-430%] w-28 h-28'>
                     <Image
                       src={sunflower3}
                       fill
@@ -273,7 +300,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       }}
                     />
                   </div>
-                  <div className="absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[450%] w-24 h-24">
+                  <div className='absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[450%] w-24 h-24'>
                     <Image
                       src={sunflower4}
                       fill
@@ -282,7 +309,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       }}
                     />
                   </div>
-                  <div className="absolute top-1/2 left-1/2 translate-y-[280%] translate-x-[380%] w-20 h-20">
+                  <div className='absolute top-1/2 left-1/2 translate-y-[280%] translate-x-[380%] w-20 h-20'>
                     <Image
                       src={sunflower5}
                       fill
@@ -291,7 +318,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       }}
                     />
                   </div>
-                  <div className="absolute top-1/2 left-1/2 translate-y-[-330%] translate-x-[200%] w-12 h-12">
+                  <div className='absolute top-1/2 left-1/2 translate-y-[-330%] translate-x-[200%] w-12 h-12'>
                     <Image
                       src={bee4}
                       fill
@@ -300,7 +327,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       }}
                     />
                   </div>
-                  <div className="absolute top-1/2 left-1/2 translate-y-[-90%] translate-x-[50%] w-14 h-14">
+                  <div className='absolute top-1/2 left-1/2 translate-y-[-90%] translate-x-[50%] w-14 h-14'>
                     <Image
                       src={bee5}
                       fill
@@ -314,44 +341,44 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
             </div>
           </div>
           <div
-            id="enter_locavore_nxt"
-            className="h-[100vh] w-full bg-red-600 bg-opacity-50"
+            id='enter_locavore_nxt'
+            className='h-[100vh] w-full bg-red-600 bg-opacity-50'
           />
           <div
-            id="enter_opening"
-            className="h-[50vh] w-full bg-green-600 bg-opacity-50"
+            id='enter_opening'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50'
           />
           <div
-            id="enter_cloud_bug_flower"
-            className="h-[150vh] w-full bg-blue-600 bg-opacity-50"
+            id='enter_cloud_bug_flower'
+            className='h-[150vh] w-full bg-blue-600 bg-opacity-50'
           />
           <div
-            id="trigger"
-            className="h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24"
+            id='trigger'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
           />
           <div
-            id="trigger"
-            className="h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24"
+            id='trigger'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
           />
           <div
-            id="trigger"
-            className="h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24"
+            id='trigger'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
           />
           <div
-            id="trigger"
-            className="h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24"
+            id='trigger'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
           />
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
 export const Section8AnimationOBJ = [
   // NEW LOCAVORE ENTER
   () => {
-    const id = 'new_locavore_enter' // animation id
-    const elem = '#new_locavore'
+    const id = 'new_locavore_enter'; // animation id
+    const elem = '#new_locavore';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -361,7 +388,7 @@ export const Section8AnimationOBJ = [
         start: 'top 60%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -381,14 +408,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // NEW LOCAVORE EXIT
   () => {
-    const id = 'new_locavore_exit' // animation id
-    const elem = '#new_locavore_exit'
+    const id = 'new_locavore_exit'; // animation id
+    const elem = '#new_locavore_exit';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -398,7 +425,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'top 50%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -418,14 +445,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // LOCAVORE NXT ENTER
   () => {
-    const id = 'locavore_nxt_enter' // animation id
-    const elem = '#locavore_nxt'
+    const id = 'locavore_nxt_enter'; // animation id
+    const elem = '#locavore_nxt';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -435,7 +462,7 @@ export const Section8AnimationOBJ = [
         start: 'top 50%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -455,14 +482,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // OPENING ENTER
   () => {
-    const id = 'opening_enter' // animation id
-    const elem = '#opening'
+    const id = 'opening_enter'; // animation id
+    const elem = '#opening';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -472,7 +499,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -492,14 +519,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // CLOUD1 ENTER
   () => {
-    const id = 'cloud1_s8_enter' // animation id
-    const elem = '#cloud1_s8'
+    const id = 'cloud1_s8_enter'; // animation id
+    const elem = '#cloud1_s8';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -509,7 +536,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'top 60',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -535,14 +562,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // CLOUD2 ENTER
   () => {
-    const id = 'cloud2_s8_enter' // animation id
-    const elem = '#cloud2_s8'
+    const id = 'cloud2_s8_enter'; // animation id
+    const elem = '#cloud2_s8';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -552,7 +579,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'top 60',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -578,14 +605,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // CLOUD3 ENTER
   () => {
-    const id = 'cloud3_s8_enter' // animation id
-    const elem = '#cloud3_s8'
+    const id = 'cloud3_s8_enter'; // animation id
+    const elem = '#cloud3_s8';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -595,7 +622,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'top 60',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -619,14 +646,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // CLOUD4 ENTER
   () => {
-    const id = 'cloud4_s8_enter' // animation id
-    const elem = '#cloud4_s8'
+    const id = 'cloud4_s8_enter'; // animation id
+    const elem = '#cloud4_s8';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -636,7 +663,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'top 60',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -660,14 +687,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // CLOUD5 ENTER
   () => {
-    const id = 'cloud5_s8_enter' // animation id
-    const elem = '#cloud5_s8'
+    const id = 'cloud5_s8_enter'; // animation id
+    const elem = '#cloud5_s8';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -677,7 +704,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'top 60',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -701,14 +728,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // CLOUD6 ENTER
   () => {
-    const id = 'cloud6_s8_enter' // animation id
-    const elem = '#cloud6_s8'
+    const id = 'cloud6_s8_enter'; // animation id
+    const elem = '#cloud6_s8';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -718,7 +745,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'top 60',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -742,14 +769,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
   // GROUP S8 ENTER
   () => {
-    const id = 'group_s8_enter' // animation id
-    const elem = '#group_s8'
+    const id = 'group_s8_enter'; // animation id
+    const elem = '#group_s8';
     const settings = {
       scrollTrigger: {
         id: id,
@@ -759,7 +786,7 @@ export const Section8AnimationOBJ = [
         start: 'top 66%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -779,8 +806,8 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
-]
+];
