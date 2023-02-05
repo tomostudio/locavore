@@ -10,46 +10,51 @@ import heart2 from '@/public/nxt/heart02.png'
 
 export const Section7ComponentFixedFront = () => {
   return (
-    <div id="section7_fixed_front" >
-      <div
-        id="feed_change"
-        className="pointer-events-none font-funkturm tracking-[0.08em] scale-[5] fixed w-full h-full opacity-0 flex flex-col justify-center items-center text-center leading-none text-white text-8xl"
-      >
-        <div className="relative flex justify-center items-center w-fit h-fit">
-          FEED CHANGE.
+    <div id="section7_fixed_front">
+      <div id="exit_group_s7">
+        <div
+          id="feed_change"
+          className="pointer-events-none font-funkturm tracking-[0.08em] scale-[5] fixed w-full h-full opacity-0 flex flex-col justify-center items-center text-center leading-none text-white text-8xl"
+        >
+          <div className="relative flex justify-center items-center w-fit h-fit">
+            FEED CHANGE.
+            <div
+              id="heart1"
+              className="absolute -right-12 -top-5 w-16 h-16 opacity-0"
+            >
+              <Image
+                src={heart1}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
+            <div
+              id="heart2"
+              className="absolute -right-7 -top-20 w-16 h-16 opacity-0"
+            >
+              <Image
+                src={heart2}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
+          </div>
           <div
-            id="heart1"
-            className="absolute -right-12 -top-5 w-16 h-16 opacity-0"
+            id="underline"
+            className="relative w-[43rem] h-4 mr-16 mt-2 clip-path-inset-[0%_100%_0%_0]"
           >
             <Image
-              src={heart1}
+              src={underline}
               fill
               style={{
                 objectFit: 'contain',
               }}
             />
           </div>
-          <div id="heart2" className="absolute -right-7 -top-20 w-16 h-16 opacity-0">
-            <Image
-              src={heart2}
-              fill
-              style={{
-                objectFit: 'contain',
-              }}
-            />
-          </div>
-        </div>
-        <div
-          id="underline"
-          className="relative w-[43rem] h-4 mr-16 mt-2 clip-path-inset-[0%_100%_0%_0]"
-        >
-          <Image
-            src={underline}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
         </div>
       </div>
     </div>
@@ -134,7 +139,12 @@ export const Section7ComponentInner = ({ setBgColor, setCaption }) => {
           className="h-[25vh] w-full bg-blue-600 bg-opacity-50 mt-24"
         />
         <Section7MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
-        <div className="h-[200vh] flex justify-center flex-col">SECTION 7</div>
+        <div
+          id="exit_all_s7"
+          className="h-[100vh] flex justify-center flex-col mt-24"
+        >
+          SECTION 7
+        </div>
         <Section7MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
@@ -285,6 +295,43 @@ export const Section7AnimationOBJ = [
           elem,
           {
             opacity: 1,
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // EXIT ALL
+  () => {
+    const id = 'exit_group_s7' // animation id
+    const elem = '#exit_group_s7'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#exit_all_s7', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 0,
           },
         ],
       },

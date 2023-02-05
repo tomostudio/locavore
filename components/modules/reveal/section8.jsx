@@ -14,30 +14,19 @@ import cloud4 from '@/public/nxt/cloud04.png'
 import cloud5 from '@/public/nxt/cloud05.png'
 import cloud6 from '@/public/nxt/cloud03.png'
 import worm from '@/public/nxt/worm.png'
+import bee1 from '@/public/nxt/bee01.png'
+import bee2 from '@/public/nxt/bee02.png'
+import bee3 from '@/public/nxt/bee03.png'
+import bee4 from '@/public/nxt/bee01.png'
+import bee5 from '@/public/nxt/bee02.png'
+import butterfly1 from '@/public/nxt/butterfly01.png'
+import butterfly2 from '@/public/nxt/butterfly02.png'
+import sunflower3 from '@/public/nxt/sunflower03.png'
+import sunflower4 from '@/public/nxt/sunflower04.png'
+import sunflower5 from '@/public/nxt/sunflower05.png'
 
 export const Section8ComponentFixedFront = () => {
-  return (
-    <div id="section8_fixed_front">
-      {/* <div
-        id="feed_change"
-        className="pointer-events-none font-funkturm tracking-[0.08em] scale-[5] fixed w-full h-full opacity-0 flex flex-col justify-center items-center text-center leading-none text-white text-8xl"
-      >
-        <div
-          id="nxtLogo"
-          className="relative w-20 h-20 mb-20"
-        >
-          <Image
-            src={nxtLogo}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
-        </div>
-        THE NEW LOCAVORE
-      </div> */}
-    </div>
-  )
+  return <div id="section8_fixed_front"></div>
 }
 export const Section8ComponentFixedBack = () => {
   return (
@@ -134,7 +123,10 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                           SHARE
                         </FancyLink>
                         <FancyLink
-                          destination="/"
+                          onClick={() => window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth',
+                          })}
                           className="mt-28 uppercase text-xs font-default tracking-normal"
                         >
                           Back to top
@@ -149,10 +141,6 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   id="cloud1_s8"
                   className="absolute top-1/2 left-1/2 opacity-0 translate-y-[-100%] translate-x-[-100%] w-[27rem] h-40"
                 >
-                  {/* <div
-                  id="cloud1_s8"
-                  className="absolute top-1/2 left-1/2 translate-y-[-281%] translate-x-[102%] scale-[1.5] w-[27rem] h-40"
-                > */}
                   <Image
                     src={cloud1}
                     fill
@@ -161,10 +149,6 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                     }}
                   />
                 </div>
-                {/* <div
-                  id="cloud2_s8"
-                  className="absolute top-1/2 left-1/2 translate-y-[30%] translate-x-[-70%] w-[27rem] h-40"
-                > */}
                 <div
                   id="cloud2_s8"
                   className="absolute top-1/2 left-1/2 opacity-0 translate-y-[210%] translate-x-[-205%] scale-[2] w-[27rem] h-40"
@@ -181,10 +165,6 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   id="cloud3_s8"
                   className="absolute top-1/2 left-1/2 opacity-0 translate-y-[-50%] translate-x-[-70%] w-[27rem] h-40"
                 >
-                  {/* <div
-                  id="cloud3_s8"
-                  className="absolute top-1/2 left-1/2 translate-y-[-100%] translate-x-[-213%] w-[27rem] h-40"
-                > */}
                   <Image
                     src={cloud3}
                     fill
@@ -197,10 +177,6 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   id="cloud4_s8"
                   className="absolute top-1/2 left-1/2 opacity-0 translate-y-[-10%] translate-x-[-90%] w-36 h-36"
                 >
-                  {/* <div
-                  id="cloud4_s8"
-                  className="absolute top-1/2 left-1/2 translate-y-[10%] translate-x-[260%] w-36 h-36"
-                > */}
                   <Image
                     src={cloud4}
                     fill
@@ -209,10 +185,6 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                     }}
                   />
                 </div>
-                {/* <div
-                  id="cloud5_s8"
-                  className="absolute top-1/2 left-1/2 translate-y-[-80%] translate-x-[-70%] w-[27rem] h-40"
-                > */}
                 <div
                   id="cloud5_s8"
                   className="absolute top-1/2 left-1/2 opacity-0 translate-y-[-255%] translate-x-[-130%] w-[27rem] h-40"
@@ -225,10 +197,6 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                     }}
                   />
                 </div>
-                {/* <div
-                  id="cloud6_s8"
-                  className="absolute top-1/2 left-1/2 translate-y-[40%] translate-x-[-45%] w-[27rem] h-40"
-                > */}
                 <div
                   id="cloud6_s8"
                   className="absolute top-1/2 left-1/2 opacity-0 translate-y-[70%] translate-x-[117%] w-[27rem] h-40"
@@ -241,10 +209,100 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                     }}
                   />
                 </div>
-                <div id="group_s8" className='opacity-0'>
+                <div id="group_s8" className="opacity-0">
                   <div className="absolute top-1/2 left-1/2 translate-y-[113%] translate-x-[-75%] w-28 h-28">
                     <Image
                       src={worm}
+                      fill
+                      style={{
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 translate-y-[450%] translate-x-[-700%] w-12 h-12">
+                    <Image
+                      src={bee1}
+                      fill
+                      style={{
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 translate-y-[250%] translate-x-[-900%] w-14 h-14">
+                    <Image
+                      src={bee2}
+                      fill
+                      style={{
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 translate-y-[-500%] translate-x-[-240%] w-14 h-14">
+                    <Image
+                      src={bee3}
+                      fill
+                      style={{
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 translate-y-[-300%] translate-x-[250%] w-20 h-20">
+                    <Image
+                      src={butterfly1}
+                      fill
+                      style={{
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 translate-y-[-200%] translate-x-[-300%] w-20 h-20">
+                    <Image
+                      src={butterfly2}
+                      fill
+                      style={{
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[-430%] w-28 h-28">
+                    <Image
+                      src={sunflower3}
+                      fill
+                      style={{
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[450%] w-24 h-24">
+                    <Image
+                      src={sunflower4}
+                      fill
+                      style={{
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 translate-y-[280%] translate-x-[380%] w-20 h-20">
+                    <Image
+                      src={sunflower5}
+                      fill
+                      style={{
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 translate-y-[-330%] translate-x-[200%] w-12 h-12">
+                    <Image
+                      src={bee4}
+                      fill
+                      style={{
+                        objectFit: 'contain',
+                      }}
+                    />
+                  </div>
+                  <div className="absolute top-1/2 left-1/2 translate-y-[-90%] translate-x-[50%] w-14 h-14">
+                    <Image
+                      src={bee5}
                       fill
                       style={{
                         objectFit: 'contain',
@@ -300,7 +358,6 @@ export const Section8AnimationOBJ = [
         trigger: '#enter_nxt_logo', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        markers: true,
         start: 'top 60%',
         end: 'bottom 100%',
       },
@@ -557,7 +614,7 @@ export const Section8AnimationOBJ = [
           elem,
           {
             x: '-213%',
-            y: '-100%',
+            y: '-50%',
             opacity: 1,
           },
         ],
