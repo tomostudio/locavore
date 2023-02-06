@@ -202,7 +202,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* CAPTION */}
       <div
         id='reveal_caption'
-        className='caption fixed z-50 pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 bottom-4 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl text-md transition-all duration-500'
+        className='caption fixed z-50 text-sm pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500'
       >
         {/* CURRENT BUG, JITTER EFFECT DUE TO UPDATING THE STYLE USING USE STATE -> SEEK ALTERNATIVE */}
         {/* Potential Solution 1: Create Custom Function for Class Trigger */}

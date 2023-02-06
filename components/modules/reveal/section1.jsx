@@ -24,7 +24,7 @@ export const Section1ComponentFixedFront = () => {
       </div>
       <div
         id='eyes'
-        className='opacity-0 h-[27rem] w-[38.5rem] fixed z-50 bottom-1/2 left-1/2 translate-x-[-50%] translate-y-[180%] will-change-auto'
+        className='opacity-0 h-[27rem] w-[38.5rem] fixed z-10 bottom-1/2 left-1/2 translate-x-[-50%] translate-y-[180%] will-change-auto'
       >
         <Image
           src={eyes}
@@ -36,15 +36,17 @@ export const Section1ComponentFixedFront = () => {
       </div>
       <div
         id='dream'
-        className='w-96 h-72 fixed top-1/2 z-10 translate-y-[-90%] translate-x-[-120%]'
+        className='fixed top-1/2 z-[11] __b h-0 w-0 overflow-visible'
       >
-        <Image
-          src={dream}
-          fill
-          style={{
-            objectFit: 'contain',
-          }}
-        />
+        <div className='w-96 h-72 relative top-1/2 translate-y-[-50%] translate-x-[-100%]'>
+          <Image
+            src={dream}
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
+        </div>
       </div>
     </div>
   );
@@ -359,6 +361,36 @@ export const Section1AnimationOBJ = [
           {
             opacity: 1,
             x: '100vw',
+            ease: 'none',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // DREAM INNER
+  () => {
+    const id = 'dream-horizontal-inner'; // animation id
+    const elem = '#dream > div';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#dream-trigger', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            x: '100%',
             ease: 'none',
           },
         ],

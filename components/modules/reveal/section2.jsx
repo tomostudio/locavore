@@ -77,7 +77,7 @@ export const Section2ComponentFixedBack = () => {
       <div className='s2_exit_group'>
         <div
           id='flower_bee_butterfly'
-          className='fixed w-full max-w-screen-lg h-full z-50 opacity-0'
+          className='fixed w-full max-w-screen-lg h-full z-1 opacity-0'
         >
           <div className='w-28 h-28 fixed left-1/2 translate-x-[-490%] translate-y-[190px]'>
             <Image
@@ -106,7 +106,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className='w-20 h-20 fixed right-1/2 translate-x-[554px] translate-y-[215px]'>
+          <div className='w-20 h-20 fixed z-1 right-1/2 translate-x-[554px] translate-y-[215px]'>
             <Image
               src={butterfly01}
               fill
@@ -155,15 +155,17 @@ export const Section2ComponentFixedBack = () => {
       </div>
       <div
         id='forest1'
-        className='fixed w-[32rem] h-[38rem] right-1/2 translate-x-[105%] top-1/2 translate-y-[-200%]'
+        className='fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[-100vh] __b overflow-visible'
       >
-        <Image
-          src={forest1}
-          fill
-          style={{
-            objectFit: 'contain',
-          }}
-        />
+        <div className='absolute w-[32rem] h-[38rem] top-1/2 left-0 translate-y-[-50%]'>
+          <Image
+            src={forest1}
+            fill
+            style={{
+              objectFit: 'contain',
+            }}
+          />
+        </div>
       </div>
       <div
         id='forest2'
@@ -247,7 +249,7 @@ export const Section2ComponentInner = ({ setBgColor, setCaption }) => {
         {/* INSPIRED BY NICE THINGS */}
         <div
           id='enter-inspired'
-          className='h-[100vh] __b bg-green-600 bg-opacity-50 mt-24'
+          className='h-[100vh] __b bg-green-600 bg-opacity-10 mt-24'
         >
           INSPIRED ENTER
         </div>
@@ -255,48 +257,49 @@ export const Section2ComponentInner = ({ setBgColor, setCaption }) => {
         {/* BUG FLOWER */}
         <div
           id='enter-bug-flower'
-          className='h-[100vh] __b bg-green-600 bg-opacity-50'
+          className='h-[100vh] __b bg-green-600 bg-opacity-10'
         >
           ENTER BUG FLOWER
         </div>
         {/* FOREST 1 */}
         <div
           id='enter-forest1'
-          className='h-[100vh] __b bg-green-600 bg-opacity-50'
+          className='h-[100vh] __b bg-green-600 bg-opacity-10'
         >
           ENTER FOREST 1
         </div>
         {/* BEE MUG */}
         <div
           id='enter-bee-mug'
-          className='h-[100vh] __b bg-blue-600 bg-opacity-50'
+          className='h-[100vh] __b bg-blue-600 bg-opacity-10'
         >
           ENTER BEE MUG
         </div>
         {/* FOREST 2 */}
         <div
           id='enter-forest2'
-          className='h-[100vh] __b bg-green-600 bg-opacity-50'
+          className='h-[100vh] __b bg-green-600 bg-opacity-10'
         >
           ENTER FOREST 2
         </div>
+        <div className='h-[50vh] __b bg-yellow-600 bg-opacity-10' />
         <div
           id='exit-group2'
-          className='h-[50vh] __b bg-blue-600 bg-opacity-50 mt-24'
+          className='h-[50vh] __b bg-blue-600 bg-opacity-10 mt-24'
         />
         <div
           id='exit-forest1'
-          className='h-[50vh] __b bg-green-600 bg-opacity-50 mt-24'
+          className='h-[50vh] __b bg-green-600 bg-opacity-10 -mt-24'
         />
         <div
           id='exit-worm'
-          className='h-[50vh] __b bg-blue-600 bg-opacity-50'
+          className='h-[50vh] __b bg-blue-600 bg-opacity-10'
         />
         {/* // ALTERNATIVE CAPTION TRIGGER */}
         <Section2MarkerBottom setBgColor={setBgColor} setCaption={setCaption} />
         <div
           id='exit-inspired'
-          className='h-[50vh] __b bg-red-600 bg-opacity-50 mt-24'
+          className='h-[50vh] __b bg-red-600 bg-opacity-10 mt-24'
         />
       </section>
     </>
@@ -439,7 +442,8 @@ export const Section2AnimationOBJ = [
           elem,
           {
             opacity: 1,
-            y: '-200%',
+            y: '-100vh',
+            x:0,
             ease: 'none',
           },
         ],
@@ -449,7 +453,8 @@ export const Section2AnimationOBJ = [
           elem,
           {
             opacity: 1,
-            y: '-45%',
+            y: '0vh',
+            x:0,
             ease: 'none',
           },
         ],
@@ -609,7 +614,8 @@ export const Section2AnimationOBJ = [
           elem,
           {
             opacity: 1,
-            y: '100%',
+            y: '100vh',
+            x:0,
             ease: 'none',
           },
         ],
