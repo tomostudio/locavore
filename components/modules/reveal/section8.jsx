@@ -55,7 +55,7 @@ export const Section8ComponentFixedFront = () => {
   }, []);
   return (
     <div id='section8_fixed_front'>
-      <div className='fixed h-[50vh] w-[50vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-500'>
+      <div className='fixed w-[50vw] aspect-[16/9] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-500'>
         <Lottie
           lottieRef={lottieRef}
           animationData={LottieLve}

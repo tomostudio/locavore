@@ -28,14 +28,14 @@ const Footer = ({ className = '', footer, mailchimp = '' }) => {
       <Container className="flex max-md:flex-col max-md:px-6">
         <div className="h-full w-full max-md:w-full flex flex-col">
           <div className="w-full mb-8">
-            <span className="text-sm">
+            {/* <span className="text-sm">
               UBUD{' '}
               {time.toLocaleTimeString([], {
                 hour: '2-digit',
                 minute: '2-digit',
                 timeZone: 'Asia/Makassar',
               })}
-            </span>
+            </span> */}
           </div>
           {/* Subscription Form  */}
           <MailchimpSubscribe
