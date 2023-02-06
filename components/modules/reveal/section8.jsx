@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Lottie from 'lottie-react';
 
 import FancyLink from '@/components/utils/fancyLink';
+import LottieLve from '@/public/nxt/lottie/lve-lottie.json';
 
 // Local Images
 import nxtLogo from '@/public/nxt/nxt_logo.png';
@@ -28,9 +29,40 @@ import sunflower4 from '@/public/nxt/sunflower04.png';
 import sunflower5 from '@/public/nxt/sunflower05.png';
 
 export const Section8ComponentFixedFront = () => {
+  const lottieRef = useRef();
+  useEffect(() => {
+    const detectScroll = (e) => {
+      const videoMarker = document.querySelector('#video-marker');
+      if (videoMarker !== null) {
+        const { y, top, bottom, height } = videoMarker.getBoundingClientRect();
+        const progress =
+          Math.round(
+            (-(y - window.innerHeight) / (height + window.innerHeight)) * 10000
+          ) / 10000;
+        if (progress >= 0 && progress <= 1) {
+          lottieRef.current.goToAndStop(
+            Math.round(359 * progress),
+            true
+          );
+          console.log('progress', progress);
+        }
+      }
+    };
+    document.addEventListener('scroll', detectScroll, false);
+    return () => {
+      document.removeEventListener('scroll', detectScroll, false);
+    };
+  }, []);
   return (
     <div id='section8_fixed_front'>
-      <div className='fixed h-[50vh] w-[50vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-500'></div>
+      <div className='fixed h-[50vh] w-[50vw] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-red-500'>
+        <Lottie
+          lottieRef={lottieRef}
+          animationData={LottieLve}
+          autoplay={false}
+          loop={false}
+        />
+      </div>
     </div>
   );
 };
@@ -65,24 +97,6 @@ const Section8MarkerTop = ({ setBgColor, setCaption }) => {
 };
 
 export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
-  const videoRef = useRef();
-
-  useEffect(() => {
-    const detectScroll = (e) => {
-      const { y, top, bottom, height } =
-        videoRef.current.getBoundingClientRect();
-      const progress = Math.round(
-        -(y - window.innerHeight / (height + window.innerHeight)) * 100
-      );
-      if (progress > 0 && progress <= 100)
-        console.log('progress', inviewY, progress);
-    };
-    document.addEventListener('scroll', detectScroll, false);
-    return () => {
-      document.removeEventListener('scroll', detectScroll, false);
-    };
-  }, []);
-
   return (
     <>
       {/* Section 2 */}
@@ -93,9 +107,8 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
       >
         <Section8MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         <div
-          id='video-enter'
-          className='h-[100vh] w-full bg-blue-600 bg-opacity-50'
-          ref={videoRef}
+          id='video-marker'
+          className='h-[200vh] w-full bg-blue-600 bg-opacity-50'
         >
           VIDEO ENTER
         </div>
