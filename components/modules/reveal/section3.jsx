@@ -35,7 +35,10 @@ export const Section3ComponentFixedFront = () => {
           id="globe_rotate"
           className="fixed w-full h-full pointer-events-none flex justify-center items-center"
         >
-          <div id="support" className="relative z-2 w-[26rem] h-[26rem] opacity-0">
+          <div
+            id="support"
+            className="relative z-2 w-[26rem] h-[26rem] opacity-0"
+          >
             <Image
               src={supportYourLocalPlanet}
               fill
@@ -90,23 +93,25 @@ export const Section3ComponentFixedBack = () => {
       <div className="exit_group3">
         <div
           id="tree"
-          className="fixed w-[32rem] h-[38rem] left-1/2 translate-x-[-120%] top-1/2 translate-y-[-200%]"
+          className="fixed h-0 w-0 top-1/2 left-1/2 translate-y-[85vh]  __b overflow-visible"
         >
-          <Image
-            src={tree}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
-          <div className="fixed w-36 h-36 -right-4 top-32">
+          <div className="w-[32rem] h-[37rem] absolute top-1/2 right-1/2 translate-y-[-50%] translate-x-[-20%]">
             <Image
-              src={hugger}
+              src={tree}
               fill
               style={{
                 objectFit: 'contain',
               }}
             />
+            <div className="fixed w-36 h-36 -right-4 top-32">
+              <Image
+                src={hugger}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
           </div>
         </div>
         <div
@@ -355,22 +360,10 @@ export const Section3AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
-          elem,
-          {
-            opacity: 1,
-            y: '-200%',
-            ease: 'none',
-          },
-        ],
-      },
-      {
         to: [
           elem,
           {
-            opacity: 1,
-            y: '-60%',
-            ease: 'none',
+            y: '-9vh',
           },
         ],
       },
