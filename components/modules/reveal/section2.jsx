@@ -71,7 +71,7 @@ export const Section2ComponentFixedBack = () => {
           id="flower_bee_butterfly"
           className="fixed w-full max-w-screen-lg h-full z-1 opacity-0"
         >
-          <div className="w-28 h-28 fixed left-1/2 translate-x-[-490%] translate-y-[190px]">
+          <div className="w-28 h-28 fixed left-1/2 top-1/2 translate-x-[-490%] translate-y-[-220%]">
             <Image
               src={sunflower02}
               fill
@@ -107,7 +107,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className="w-40 h-40 fixed left-1/2 translate-x-[-460%] bottom-0">
+          <div className="w-40 h-40 fixed left-1/2 translate-x-[-410%] bottom-0">
             <Image
               src={sunflower01}
               fill
@@ -116,7 +116,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className="w-14 h-14 fixed left-1/2 translate-x-[-1030%] bottom-0 translate-y-[-180%]">
+          <div className="w-14 h-14 fixed left-1/2 translate-x-[-870%] bottom-0 translate-y-[-180%]">
             <Image
               src={bee03}
               fill
@@ -125,7 +125,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className="w-14 h-14 fixed left-1/2 translate-x-[-1220%] bottom-0 translate-y-[-400%]">
+          <div className="w-14 h-14 fixed left-1/2 translate-x-[-1060%] bottom-0 translate-y-[-350%]">
             <Image
               src={bee02}
               fill

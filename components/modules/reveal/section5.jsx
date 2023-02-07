@@ -154,7 +154,7 @@ export const Section5ComponentFixedBack = () => {
         </div>
         <div
           id="yourself"
-          className="fixed h-0 w-0 top-1/2 right-1/2 translate-y-[80vh] __b overflow-visible"
+          className="fixed h-0 w-0 top-1/2 right-1/2 translate-y-[85vh] __b overflow-visible"
         >
           <div className="w-96 h-52 absolute top-1/2 left-1/2 translate-x-[-97%] translate-y-[-113%]">
             <Image

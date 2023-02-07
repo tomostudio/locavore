@@ -516,7 +516,6 @@ export const Section6AnimationOBJ = [
         trigger: '#enter_inspire5', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        markers: true,
         start: 'top 30%',
         end: 'top 10%',
       },

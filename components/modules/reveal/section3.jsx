@@ -97,9 +97,9 @@ export const Section3ComponentFixedBack = () => {
       <div className="exit_group3">
         <div
           id="tree"
-          className="fixed h-0 w-0 top-1/2 left-1/2 translate-y-[-80vh]  __b overflow-visible"
+          className="fixed h-0 w-0 top-0 left-1/2  __b overflow-visible"
         >
-          <div className="w-[32rem] h-[35rem] absolute top-1/2 right-1/2 translate-y-[-61%] translate-x-[-20%]">
+          <div className="w-[32rem] h-[35rem] absolute top-1/2 right-1/2 translate-y-[-100%] translate-x-[-20%]">
             <Image
               src={tree}
               fill
@@ -376,7 +376,34 @@ export const Section3AnimationOBJ = [
         to: [
           elem,
           {
-            y: '0vh',
+            top: '50%',
+          },
+        ],
+      },
+    ]
+    return { id, elem, settings, animation }
+  },
+  // TREE INNER
+  () => {
+    const id = 'enter_tree_inner' // animation id
+    const elem = '#tree > div'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_tree', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            y: '-61%',
           },
         ],
       },
