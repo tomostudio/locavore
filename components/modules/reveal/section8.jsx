@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Lottie from 'lottie-react';
 
 import FancyLink from '@/components/utils/fancyLink';
-import LottieLve from '@/public/nxt/lottie/lve-lottie.json';
+import LottieLve from '@/public/nxt/lottie/lve-lottie-jpg.json';
 
 // Local Images
 import nxtLogo from '@/public/nxt/nxt_logo.png';
@@ -39,9 +39,12 @@ export const Section8ComponentFixedFront = () => {
           Math.round(
             (-(y - window.innerHeight) / (height + window.innerHeight)) * 10000
           ) / 10000;
-        if (progress >= 0 && progress <= 1) {
-          lottieRef.current.goToAndStop(Math.round(359 * progress), true);
-          console.log('progress', progress);
+        if (progress > 0 && progress <= 1) {
+          lottieRef.current.goToAndStop(Math.round(358 * progress), true);
+        } else if (progress <= 0) {
+          lottieRef.current.goToAndStop(0, true);
+        } else if (progress > 1) {
+          lottieRef.current.goToAndStop(358, true);
         }
       }
     };
@@ -50,16 +53,20 @@ export const Section8ComponentFixedFront = () => {
       document.removeEventListener('scroll', detectScroll, false);
     };
   }, []);
+
   return (
     <div id='section8_fixed_front'>
-      <div className='fixed w-screen top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 max-w-screen-xl'>
-        <div className='w-full aspect-[4/3] md:aspect-[16/9] bg-red-500 overflow-hidden rounded-xl'>
+      <div className='fixed w-screen z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 max-w-screen-xl'>
+        <div id="lottie-frame" className='w-full aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-xl'>
           <Lottie
             lottieRef={lottieRef}
             animationData={LottieLve}
             autoplay={false}
             loop={false}
-            style={{objectFit: 'fill'}}
+            rendererSettings={{
+              preserveAspectRatio: 'xMidYMid slice',
+            }}
+            style={{ objectFit: 'fill', width: '100%', height: '100%' }}
           />
         </div>
       </div>

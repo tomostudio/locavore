@@ -227,7 +227,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         className='caption fixed z-50 text-sm pointer-events-none __b overflow-hidden w-full px-20 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500'
       >
         <div
-          className='flex md:flex-wrap md:justify-center gap-1 relative md:!translate-x-0'
+          className='flex md:flex-wrap md:justify-center gap-2 md:gap-1 relative md:!translate-x-0'
           style={{ transform: 'translate(50%, 0%)' }}
         >
           <div
