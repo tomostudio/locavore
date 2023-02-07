@@ -32,7 +32,7 @@ export const Section7ComponentFixedFront = () => {
             </div>
             <div
               id="heart2"
-              className="absolute -right-7 -top-20 w-16 h-16 opacity-0"
+              className="absolute -right-6 -top-16 w-14 h-14 opacity-0"
             >
               <Image
                 src={heart2}
