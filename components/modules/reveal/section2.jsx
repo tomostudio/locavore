@@ -80,7 +80,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className="w-20 h-20 fixed left-1/2 translate-x-[100%] translate-y-[45px]">
+          <div className="w-20 h-20 fixed left-1/2 translate-x-[45%] translate-y-[45px]">
             <Image
               src={butterfly02}
               fill
@@ -149,7 +149,7 @@ export const Section2ComponentFixedBack = () => {
         id="forest1"
         className="fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[85vh] __b overflow-visible"
       >
-        <div className="absolute w-[32rem] h-[38rem] top-1/2 left-0 translate-y-[-50%]">
+        <div className="absolute w-[30rem] h-[35rem] top-1/2 left-6 translate-y-[-50%]">
           <Image
             src={forest1}
             fill
@@ -160,7 +160,7 @@ export const Section2ComponentFixedBack = () => {
           <div className="s2_exit_group">
             <div
               id="mug"
-              className="w-72 h-72 fixed -left-9 bottom-16 opacity-0"
+              className="w-72 h-72 fixed -left-9 bottom-24 opacity-0"
             >
               <Image
                 src={mugSticker}
@@ -453,7 +453,7 @@ export const Section2AnimationOBJ = [
           elem,
           {
             opacity: 1,
-            y: '0vh',
+            y: '4vh',
             x: 0,
             ease: 'none',
           },

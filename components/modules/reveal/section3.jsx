@@ -24,7 +24,7 @@ export const Section3ComponentFixedFront = () => {
           id="better_world"
           className="pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-8xl"
         >
-          <div className="max-w-screen-lg w-full text-right mr-24">
+          <div className="max-w-screen-lg w-full text-right mr-36">
             <span className="block mr-[11.5rem]">AND</span>A BETTER
             <span className="block mr-6">WORLD</span>
           </div>
@@ -93,9 +93,9 @@ export const Section3ComponentFixedBack = () => {
       <div className="exit_group3">
         <div
           id="tree"
-          className="fixed h-0 w-0 top-1/2 left-1/2 translate-y-[85vh]  __b overflow-visible"
+          className="fixed h-0 w-0 top-1/2 left-1/2 translate-y-[-85vh]  __b overflow-visible"
         >
-          <div className="w-[32rem] h-[37rem] absolute top-1/2 right-1/2 translate-y-[-50%] translate-x-[-20%]">
+          <div className="w-[32rem] h-[34rem] absolute top-1/2 right-1/2 translate-y-[-50%] translate-x-[-20%]">
             <Image
               src={tree}
               fill
@@ -103,7 +103,10 @@ export const Section3ComponentFixedBack = () => {
                 objectFit: 'contain',
               }}
             />
-            <div className="fixed w-36 h-36 -right-4 top-32">
+            <div
+              id="hugger"
+              className="fixed w-32 h-32 right-1 top-28 opacity-0"
+            >
               <Image
                 src={hugger}
                 fill
@@ -116,19 +119,21 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="animal"
-          className="w-96 h-96 fixed top-1/2 z-10 translate-y-[-26%] left-1/2 translate-x-[-500%]"
+          className="fixed h-0 w-0 top-1/2 left-0 z-10 __b overflow-visible"
         >
-          <Image
-            src={animal}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
+          <div className="w-[22rem] h-[22rem] absolute top-1/2 translate-y-[-24%] translate-x-[-100%]">
+            <Image
+              src={animal}
+              fill
+              style={{
+                objectFit: 'contain',
+              }}
+            />
+          </div>
         </div>
         <div
           id="nature"
-          className="opacity-0 w-60 h-48 fixed top-1/2 translate-y-[-140%] right-1/2 translate-x-[215%]"
+          className="opacity-0 w-60 h-48 fixed top-1/2 translate-y-[-140%] right-1/2 translate-x-[205%]"
         >
           <Image
             src={nature}
@@ -140,7 +145,7 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="hasthe"
-          className="opacity-0 w-48 h-20 fixed top-1/2 translate-y-[-218%] right-1/2 translate-x-[297%]"
+          className="opacity-0 w-48 h-20 fixed top-1/2 translate-y-[-218%] right-1/2 translate-x-[285%]"
         >
           <Image
             src={hasthe}
@@ -152,7 +157,7 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="answer"
-          className="opacity-0 w-56 h-48 fixed top-1/2 translate-y-[-101%] right-1/2 translate-x-[262%]"
+          className="opacity-0 w-56 h-48 fixed top-1/2 translate-y-[-101%] right-1/2 translate-x-[251%]"
         >
           <Image
             src={answer}
@@ -164,7 +169,7 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="arrow"
-          className="opacity-0 w-80 h-44 fixed top-1/2 translate-y-[-140%] right-1/2 translate-x-[85%]"
+          className="opacity-0 w-80 h-44 fixed top-1/2 translate-y-[-140%] right-1/2 translate-x-[78%]"
         >
           <Image
             src={arrow}
@@ -345,7 +350,7 @@ export const Section3AnimationOBJ = [
   },
   // TREE
   () => {
-    const id = 'tree' // animation id
+    const id = 'enter_tree' // animation id
     const elem = '#tree'
     const settings = {
       scrollTrigger: {
@@ -363,7 +368,34 @@ export const Section3AnimationOBJ = [
         to: [
           elem,
           {
-            y: '-9vh',
+            y: '-7vh',
+          },
+        ],
+      },
+    ]
+    return { id, elem, settings, animation }
+  },
+  // HUGGER
+  () => {
+    const id = 'enter_hugger' // animation id
+    const elem = '#hugger'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_tree', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 20%',
+        end: 'bottom 100%',
+      },
+    }
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            opacity: 1
           },
         ],
       },
@@ -390,8 +422,7 @@ export const Section3AnimationOBJ = [
         to: [
           elem,
           {
-            x: '-62%',
-            ease: 'none',
+            x: '56.5vw',
           },
         ],
       },
