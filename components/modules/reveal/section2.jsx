@@ -149,7 +149,7 @@ export const Section2ComponentFixedBack = () => {
         id="forest1"
         className="fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[85vh] __b overflow-visible"
       >
-        <div className="absolute w-[30rem] h-[35rem] top-1/2 left-6 translate-y-[-50%]">
+        <div className="absolute w-[30rem] h-[35rem] top-1/2 left-6 translate-y-[-45%]">
           <Image
             src={forest1}
             fill
@@ -453,7 +453,7 @@ export const Section2AnimationOBJ = [
           elem,
           {
             opacity: 1,
-            y: '4vh',
+            y: '0vh',
             x: 0,
             ease: 'none',
           },

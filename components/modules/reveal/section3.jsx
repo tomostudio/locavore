@@ -97,9 +97,9 @@ export const Section3ComponentFixedBack = () => {
       <div className="exit_group3">
         <div
           id="tree"
-          className="fixed h-0 w-0 top-1/2 left-1/2 translate-y-[-85vh]  __b overflow-visible"
+          className="fixed h-0 w-0 top-1/2 left-1/2 translate-y-[-80vh]  __b overflow-visible"
         >
-          <div className="w-[32rem] h-[35rem] absolute top-1/2 right-1/2 translate-y-[-50%] translate-x-[-20%]">
+          <div className="w-[32rem] h-[35rem] absolute top-1/2 right-1/2 translate-y-[-61%] translate-x-[-20%]">
             <Image
               src={tree}
               fill
@@ -376,7 +376,7 @@ export const Section3AnimationOBJ = [
         to: [
           elem,
           {
-            y: '-7vh',
+            y: '0vh',
           },
         ],
       },
