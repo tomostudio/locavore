@@ -86,7 +86,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
     ...Section5AnimationOBJ,
     ...Section6AnimationOBJ,
     ...Section7AnimationOBJ,
-    ...Section8AnimationOBJ
+    ...Section8AnimationOBJ,
   ];
 
   useEffect(() => {
@@ -127,6 +127,8 @@ export default function Reveal({ seoAPI, footerAPI }) {
     } else {
       captionContainer.style.opacity = 1;
     }
+
+    //ADJUST CENTERING FOR MOBILE
   };
 
   // Set Background
@@ -202,29 +204,39 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* CAPTION */}
       <div
         id='reveal_caption'
-        className='caption fixed z-50 text-sm pointer-events-none w-full px-20 flex flex-wrap justify-center gap-1 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500'
+        className='caption fixed z-50 text-sm pointer-events-none __b overflow-hidden w-full px-20 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500'
       >
-        {/* CURRENT BUG, JITTER EFFECT DUE TO UPDATING THE STYLE USING USE STATE -> SEEK ALTERNATIVE */}
-        {/* Potential Solution 1: Create Custom Function for Class Trigger */}
-        <div className={`caption_tab px-2 w-fit rotate-0 will-change-auto`}>
-          WE HAD A DREAM
-        </div>
-        <div className={`caption_tab px-2 w-fit rotate-1 will-change-auto`}>
-          INSPIRED BY NICE THINGS
-        </div>
-        <div
-          className={`caption_tab px-2 w-fit -rotate-[-.5deg] will-change-auto`}
-        >
-          AND A BETTER WORLD
-        </div>
-        <div className={`caption_tab px-2 w-fit rotate-[-.25deg]`}>
-          SO WE TOOK THAT DREAM AND MADE IT REAL
-        </div>
-        <div className={`caption_tab px-2 w-fit rotate-0`}>
-          SO OTHER PEOPLE CAN DREAM TOO
-        </div>
-        <div className={`caption_tab px-2 w-fit rotate-1/2 `}>
-          INSPIRED BY OUR NICE THING
+        <div className='flex md:flex-wrap md:justify-center gap-1 relative md:!translate-x-0' style={{transform: 'translate(50%, 0%)'}}>
+          <div
+            className={`caption_tab px-2 w-fit rotate-0 will-change-auto text-center shrink-0 max-w-[80vw]`}
+          >
+            WE HAD A DREAM
+          </div>
+          <div
+            className={`caption_tab px-2 w-fit rotate-1 will-change-auto text-center shrink-0 max-w-[80vw]`}
+          >
+            INSPIRED BY NICE THINGS
+          </div>
+          <div
+            className={`caption_tab px-2 w-fit -rotate-[-.5deg] will-change-auto text-center shrink-0 max-w-[80vw]`}
+          >
+            AND A BETTER WORLD
+          </div>
+          <div
+            className={`caption_tab px-2 w-fit rotate-[-.25deg] text-center shrink-0 max-w-[80vw]`}
+          >
+            SO WE TOOK THAT DREAM AND MADE IT REAL
+          </div>
+          <div
+            className={`caption_tab px-2 w-fit rotate-0 text-center shrink-0 max-w-[80vw]`}
+          >
+            SO OTHER PEOPLE CAN DREAM TOO
+          </div>
+          <div
+            className={`caption_tab px-2 w-fit rotate-1/2 text-center shrink-0 max-w-[80vw]`}
+          >
+            INSPIRED BY OUR NICE THING
+          </div>
         </div>
       </div>
 
