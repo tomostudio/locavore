@@ -60,27 +60,31 @@ export const Section3ComponentFixedFront = () => {
         <div id="s4_group_enter" className="w-full h-full fixed scale-[2]">
           <div
             id="be_regenerative"
-            className="fixed w-96 h-36 top-1/2 left-1/2 translate-x-[-200%] translate-y-[-250%]"
+            className="fixed h-0 w-0 top-1/2 left-1/2 translate-y-[-30vh] __b overflow-visible"
           >
-            <Image
-              src={beRegenerative}
-              fill
-              style={{
-                objectFit: 'contain',
-              }}
-            />
+            <div className="w-96 h-36 absolute top-1/2 right-1/2 translate-y-[-50%] translate-x-[-50%]">
+              <Image
+                src={beRegenerative}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
           </div>
           <div
             id="sharing_is_caring"
-            className="fixed w-96 h-36 top-1/2 left-1/2 translate-x-[75%] translate-y-[160%]"
+            className="fixed h-0 w-0 top-1/2 right-1/2 translate-y-[30vh]  __b overflow-visible"
           >
-            <Image
-              src={sharingIsCaring}
-              fill
-              style={{
-                objectFit: 'contain',
-              }}
-            />
+            <div className="w-80 h-36 absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[50%]">
+              <Image
+                src={sharingIsCaring}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -95,7 +99,7 @@ export const Section3ComponentFixedBack = () => {
           id="tree"
           className="fixed h-0 w-0 top-1/2 left-1/2 translate-y-[-85vh]  __b overflow-visible"
         >
-          <div className="w-[32rem] h-[34rem] absolute top-1/2 right-1/2 translate-y-[-50%] translate-x-[-20%]">
+          <div className="w-[32rem] h-[35rem] absolute top-1/2 right-1/2 translate-y-[-50%] translate-x-[-20%]">
             <Image
               src={tree}
               fill
@@ -306,6 +310,10 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
           id="enter_globe_rotate"
           className="h-[100vh] __b bg-blue-600 bg-opacity-50"
         />
+        <div
+          id="exit_all_s3"
+          className="h-[25vh] __b bg-red-600 bg-opacity-50"
+        />
         <Section3MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
@@ -395,7 +403,7 @@ export const Section3AnimationOBJ = [
         to: [
           elem,
           {
-            opacity: 1
+            opacity: 1,
           },
         ],
       },
@@ -422,7 +430,34 @@ export const Section3AnimationOBJ = [
         to: [
           elem,
           {
-            x: '56.5vw',
+            x: '50vw',
+          },
+        ],
+      },
+    ]
+    return { id, elem, settings, animation }
+  },
+  // ANIMAL INNER
+  () => {
+    const id = 'enter_animal_inner' // animation id
+    const elem = '#animal > div'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_animal', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            x: '-65%',
           },
         ],
       },
@@ -775,20 +810,10 @@ export const Section3AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
-          elem,
-          {
-            y: '-250%',
-            x: '-200%',
-          },
-        ],
-      },
-      {
         to: [
           elem,
           {
-            y: '-50%',
-            x: '-150%',
+            y: '0vh',
           },
         ],
       },
@@ -814,20 +839,39 @@ export const Section3AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
+        to: [
           elem,
           {
-            x: '75%',
-            y: '160%',
+            y: '0vh',
           },
         ],
       },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // SHARING IS CARING INNER ENTER
+  () => {
+    const id = 'sharing_is_caring_inner_enter' // animation id
+    const elem = '#sharing_is_caring > div'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
       {
         to: [
           elem,
           {
-            x: '65%',
-            y: '-50%',
+            x: '75%',
           },
         ],
       },
@@ -842,10 +886,10 @@ export const Section3AnimationOBJ = [
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
+        trigger: '#exit_all_s3', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 50%',
+        start: 'top 100%',
         end: 'bottom 100%',
       },
     }
