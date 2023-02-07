@@ -486,6 +486,7 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
   )
 }
 
+export const Section5AnimationOBJMobile = [];
 export const Section5AnimationOBJ = [
   // TITLE ENTER
   () => {

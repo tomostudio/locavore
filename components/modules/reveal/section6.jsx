@@ -138,18 +138,18 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
         {/* INSPIRE1 */}
         <div
           id="enter_inspire1"
-          className="relative h-[40rem] w-full bg-green-600 bg-opacity-50 flex justify-center items-center"
+          className="relative h-[100vh] w-full bg-green-600 bg-opacity-50 flex justify-start items-center"
         >
-          <div className="relative max-w-screen-xl border w-full h-full">
+          <div className="relative max-w-screen-xl border w-[80vw] min-w-[400px] aspect-[16/9]">
             <div
               id="inspire1d"
-              className="absolute w-[60rem] h-fit bottom-0 left-0"
+              className="absolute w-full bottom-0 left-0"
             >
               <Image src={inspire9} />
             </div>
             <div
               id="inspire1n"
-              className="absolute w-[60rem] h-fit bottom-0 left-0 opacity-0"
+              className="absolute w-full bottom-0 left-0 opacity-0"
             >
               <Image src={inspire10} />
             </div>
@@ -246,6 +246,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
   )
 }
 
+export const Section6AnimationOBJMobile = [];
 export const Section6AnimationOBJ = [
   // TITLE ENTER
   () => {

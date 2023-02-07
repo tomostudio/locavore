@@ -18,6 +18,7 @@ import {
   Section1ComponentFixedFront,
   Section1ComponentFixedBack,
   Section1AnimationOBJ,
+  Section1AnimationOBJMobile,
   Section1ComponentInner,
 } from '@/components/modules/reveal/section1';
 
@@ -25,6 +26,7 @@ import {
   Section2ComponentFixedFront,
   Section2ComponentFixedBack,
   Section2AnimationOBJ,
+  Section2AnimationOBJMobile,
   Section2ComponentInner,
 } from '@/components/modules/reveal/section2';
 
@@ -32,6 +34,7 @@ import {
   Section3ComponentFixedFront,
   Section3ComponentFixedBack,
   Section3AnimationOBJ,
+  Section3AnimationOBJMobile,
   Section3ComponentInner,
 } from '@/components/modules/reveal/section3';
 
@@ -39,6 +42,7 @@ import {
   Section4ComponentFixedFront,
   Section4ComponentFixedBack,
   Section4AnimationOBJ,
+  Section4AnimationOBJMobile,
   Section4ComponentInner,
 } from '@/components/modules/reveal/section4';
 
@@ -46,6 +50,7 @@ import {
   Section5ComponentFixedFront,
   Section5ComponentFixedBack,
   Section5AnimationOBJ,
+  Section5AnimationOBJMobile,
   Section5ComponentInner,
 } from '@/components/modules/reveal/section5';
 
@@ -53,6 +58,7 @@ import {
   Section6ComponentFixedFront,
   Section6ComponentFixedBack,
   Section6AnimationOBJ,
+  Section6AnimationOBJMobile,
   Section6ComponentInner,
 } from '@/components/modules/reveal/section6';
 
@@ -60,6 +66,7 @@ import {
   Section7ComponentFixedFront,
   Section7ComponentFixedBack,
   Section7AnimationOBJ,
+  Section7AnimationOBJMobile,
   Section7ComponentInner,
 } from '@/components/modules/reveal/section7';
 
@@ -67,6 +74,7 @@ import {
   Section8ComponentFixedFront,
   Section8ComponentFixedBack,
   Section8AnimationOBJ,
+  Section8AnimationOBJMobile,
   Section8ComponentInner,
 } from '@/components/modules/reveal/section8';
 
@@ -78,16 +86,28 @@ export default function Reveal({ seoAPI, footerAPI }) {
   const containerRef = useRef(null);
 
   // ANIMATION
-  const animationObj = [
-    ...Section1AnimationOBJ,
-    ...Section2AnimationOBJ,
-    ...Section3AnimationOBJ,
-    ...Section4AnimationOBJ,
-    ...Section5AnimationOBJ,
-    ...Section6AnimationOBJ,
-    ...Section7AnimationOBJ,
-    ...Section8AnimationOBJ,
-  ];
+  const animationObj = {
+    '(min-width: 751px)': [
+      ...Section1AnimationOBJ,
+      // ...Section2AnimationOBJ,
+      // ...Section3AnimationOBJ,
+      // ...Section4AnimationOBJ,
+      // ...Section5AnimationOBJ,
+      ...Section6AnimationOBJ,
+      // ...Section7AnimationOBJ,
+      // ...Section8AnimationOBJ,
+    ],
+    '(max-width: 750px)': [
+      ...Section1AnimationOBJMobile,
+      ...Section2AnimationOBJMobile,
+      ...Section3AnimationOBJMobile,
+      ...Section4AnimationOBJMobile,
+      ...Section5AnimationOBJMobile,
+      ...Section6AnimationOBJMobile,
+      ...Section7AnimationOBJMobile,
+      ...Section8AnimationOBJMobile,
+    ],
+  };
 
   useEffect(() => {
     const BackgroundLocomotiveEvents = (e) => {
@@ -112,7 +132,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
   // ALTERNATIVE CAPTION
   const setCaption = (n) => {
     const captions = document.querySelectorAll(
-      '#reveal_caption > .caption_tab'
+      '#reveal_caption > div > .caption_tab'
     );
     captions.forEach((caption, index) => {
       caption.classList.remove('active');
@@ -158,42 +178,42 @@ export default function Reveal({ seoAPI, footerAPI }) {
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       {/* FIXED POSITION FRONT*/}
-      <div className='outercontainer-front fixed z-40 w-full h-full border pointer-events-none select-none'>
+      <div className='outercontainer-front fixed z-40 w-full h-full border pointer-events-none select-none overflow-hidden'>
         {/* SECTION 1 */}
         <Section1ComponentFixedFront />
         {/* SECTION 2 */}
-        <Section2ComponentFixedFront />
+        {/* <Section2ComponentFixedFront /> */}
         {/* SECTION 3 */}
-        <Section3ComponentFixedFront />
+        {/* <Section3ComponentFixedFront /> */}
         {/* SECTION 4 */}
-        <Section4ComponentFixedFront />
+        {/* <Section4ComponentFixedFront /> */}
         {/* SECTION 5 */}
-        <Section5ComponentFixedFront />
+        {/* <Section5ComponentFixedFront /> */}
         {/* SECTION 6 */}
         <Section6ComponentFixedFront />
         {/* SECTION 7 */}
-        <Section7ComponentFixedFront />
+        {/* <Section7ComponentFixedFront /> */}
         {/* SECTION 8 */}
         <Section8ComponentFixedFront />
       </div>
       {/* FIXED POSITION BACK*/}
-      <div className='outercontainer-back fixed -z-1 w-full h-full border pointer-events-none select-none'>
+      <div className='outercontainer-back fixed -z-1 w-full h-full border pointer-events-none select-none overflow-hidden'>
         {/* SECTION 1 */}
         <Section1ComponentFixedBack />
         {/* SECTION 2 */}
-        <Section2ComponentFixedBack />
+        {/* <Section2ComponentFixedBack /> */}
         {/* SECTION 3 */}
-        <Section3ComponentFixedBack />
+        {/* <Section3ComponentFixedBack /> */}
         {/* SECTION 4 */}
-        <Section4ComponentFixedBack />
+        {/* <Section4ComponentFixedBack /> */}
         {/* SECTION 5 */}
-        <Section5ComponentFixedBack />
+        {/* <Section5ComponentFixedBack /> */}
         {/* SECTION 6 */}
         <Section6ComponentFixedBack />
         {/* SECTION 7 */}
-        <Section7ComponentFixedBack />
+        {/* <Section7ComponentFixedBack /> */}
         {/* SECTION 8 */}
-        <Section8ComponentFixedBack />
+        {/* <Section8ComponentFixedBack /> */}
       </div>
       {/* BACKGROUND COLOR */}
       <div
@@ -206,7 +226,10 @@ export default function Reveal({ seoAPI, footerAPI }) {
         id='reveal_caption'
         className='caption fixed z-50 text-sm pointer-events-none __b overflow-hidden w-full px-20 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500'
       >
-        <div className='flex md:flex-wrap md:justify-center gap-1 relative md:!translate-x-0' style={{transform: 'translate(50%, 0%)'}}>
+        <div
+          className='flex md:flex-wrap md:justify-center gap-1 relative md:!translate-x-0'
+          style={{ transform: 'translate(50%, 0%)' }}
+        >
           <div
             className={`caption_tab px-2 w-fit rotate-0 will-change-auto text-center shrink-0 max-w-[80vw]`}
           >
@@ -295,28 +318,28 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   />
                   {/* Section 2 */}
                   {/* INSPIRED BY NICE THINGS */}
-                  <Section2ComponentInner
+                  {/* <Section2ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  />
+                  /> */}
                   {/* Section 3 */}
                   {/* AND A BETTER WORLD */}
-                  <Section3ComponentInner
+                  {/* <Section3ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  />
+                  /> */}
                   {/* Section 4 */}
                   {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
-                  <Section4ComponentInner
+                  {/* <Section4ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  />
+                  /> */}
                   {/* Section 5 */}
                   {/* SO OTHER PEOPLE CAN DREAM TOO */}
-                  <Section5ComponentInner
+                  {/* <Section5ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  />
+                  /> */}
                   {/* Section 6 */}
                   {/* INSPIRED BY OUR NICE THING */}
                   <Section6ComponentInner

@@ -320,6 +320,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   )
 }
 
+export const Section3AnimationOBJMobile = [];
 export const Section3AnimationOBJ = [
   // AND A BETTER WORLD
   () => {

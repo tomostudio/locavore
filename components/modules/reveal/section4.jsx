@@ -214,6 +214,7 @@ export const Section4ComponentInner = ({ setBgColor, setCaption }) => {
   )
 }
 
+export const Section4AnimationOBJMobile = [];
 export const Section4AnimationOBJ = [
   // TEXT ENTER
   () => {

@@ -17,10 +17,10 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
     return () => {
       ScrollTrigger.disable();
       ScrollTrigger.killAll();
-      ScrollTrigger.clearScrollMemory()
+      ScrollTrigger.clearScrollMemory();
       ScrollTrigger.clearMatchMedia();
-    }
-  },[])
+    };
+  }, []);
 
   // Initiate Scrolltrigger
   gsap.registerPlugin(ScrollTrigger);
@@ -32,7 +32,6 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
 
       // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
       scroll.on('scroll', ScrollTrigger.update);
-
 
       let scrollerQuery = `#${scroll.el.id}`;
       if (!scrollerQuery) {
@@ -127,7 +126,6 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
             });
           });
         }
-
         return tl;
       } else if (isFunction(anim)) {
         // pull object
@@ -155,53 +153,63 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
 
     if (scrollInitState && animation) {
       if (animation instanceof Object && !(animation instanceof Array)) {
+        console.log('set annimation with media');
         const _property = Object.getOwnPropertyNames(animation);
 
         //Create Array for Match Media
-        const stMatchMedia = {};
+        const stMatchMedia = [];
 
         // fill animation
         _property.forEach((p, id) => {
           // push animation to object
-          stMatchMedia[`${p}`] = function () {
-            //run apply animation function
 
-            currentTL[`${p}`] = applyAnimation({
-              anim: animation[p],
-              ss: tlSaveStyle,
-            });
+          const pushData = {
+            media: p,
+            function: function () {
+              //run apply animation function
 
-            return () => {
-              tlSaveStyle.forEach((ss) => {
-                gsap.set(ss, { clearProps: true });
+              currentTL[`${p}`] = applyAnimation({
+                anim: animation[p],
+                ss: tlSaveStyle,
               });
 
-              ScrollTrigger.refresh(true);
-              //Kill All Timeline during breakpoint
-              if (currentTL[`${p}`])
-                currentTL[`${p}`].forEach((eachTL) => {
-                  eachTL.pause(0).kill();
-                  eachTL.clear();
+              return () => {
+                tlSaveStyle.forEach((ss) => {
+                  gsap.set(ss, { clearProps: true });
                 });
 
-              delete currentTL[`${p}`];
-            };
+                ScrollTrigger.refresh(true);
+                //Kill All Timeline during breakpoint
+                if (currentTL[`${p}`])
+                  currentTL[`${p}`].forEach((eachTL) => {
+                    eachTL.pause(0).kill();
+                    eachTL.clear();
+                  });
+
+                delete currentTL[`${p}`];
+              };
+            },
           };
+          stMatchMedia.push(pushData);
         });
 
         // RUN Scrolltrigger MatchMedia
-        gsap.matchMedia(stMatchMedia);
+        let mm = gsap.matchMedia();
+
+        stMatchMedia.forEach((mediaQuery) => {
+          mm.add(mediaQuery.media, mediaQuery.function);
+        });
 
         // Set ScrollTrigger Save Styles
-        let saveStyles = ``;
-        tlSaveStyle.forEach((tl) => {
-          saveStyles += `${tl} ,`;
-        });
-        if (saveStyles.slice(-2) === ' ,') {
-          saveStyles = saveStyles.slice(0, -2);
-        }
+        // let saveStyles = ``;
+        // tlSaveStyle.forEach((tl) => {
+        //   saveStyles += `${tl} ,`;
+        // });
+        // if (saveStyles.slice(-2) === ' ,') {
+        //   saveStyles = saveStyles.slice(0, -2);
+        // }
 
-        ScrollTrigger.saveStyles(saveStyles);
+        // ScrollTrigger.saveStyles(saveStyles);
       } else {
         // Fill Animation normally, no breakpoints
         resetAnimation();
