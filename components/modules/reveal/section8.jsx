@@ -199,46 +199,48 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                           id="opening"
                           className="absolute opacity-0 flex flex-col justify-center items-center text-center"
                         >
-                          <div className="flex flex-row justify-center items-center text-center">
-                            OPENING
-                            <div className="h-0 w-4 relative">
-                              <div
-                                id="summer"
-                                className="absolute top-[calc(50%-20px)] translate-y-[-50%] left-1/2 translate-x-[-50%] w-40 h-16 opacity-0"
-                              >
-                                <Image
-                                  src={summer}
-                                  fill
-                                  style={{
-                                    objectFit: 'contain',
-                                  }}
-                                />
+                          <div className="relative w-full flex flex-col">
+                            <div className="relative flex flex-row justify-center items-center text-center">
+                              OPENING
+                              <div className="h-0 w-4 relative">
+                                <div
+                                  id="summer"
+                                  className="absolute top-[calc(50%-20px)] translate-y-[-50%] left-1/2 translate-x-[-50%] w-40 h-16 opacity-0"
+                                >
+                                  <Image
+                                    src={summer}
+                                    fill
+                                    style={{
+                                      objectFit: 'contain',
+                                    }}
+                                  />
+                                </div>
                               </div>
+                              2023
                             </div>
-                            2023
+                            <div className="relative w-full">
+                              <FancyLink
+                                destination={`/share`}
+                                className={`absolute left-1/2 translate-x-[-50%] mt-14 w-fit py-4 px-6 text-xl font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                              >
+                                SHARE
+                              </FancyLink>
+                            </div>
                           </div>
-                          <FancyLink
-                            destination={`/share`}
-                            className={`mt-14 w-fit py-4 px-6 text-xl font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-                          >
-                            SHARE
-                          </FancyLink>
-                          <FancyLink
-                            onClick={() =>
-                              window.scrollTo({
-                                top: 0,
-                                behavior: 'smooth',
-                              })
-                            }
-                            className="mt-24 uppercase font-default font-light text-xs text-center tracking-widest text-white select-none"
-                          >
-                            <div className="block animate-fade-up">
-                              Back to top
-                            </div>
-                          </FancyLink>
                         </div>
                       </div>
                     </div>
+                    <FancyLink
+                      onClick={() =>
+                        window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth',
+                        })
+                      }
+                      className="absolute bottom-12 mr-9 uppercase font-default font-light text-xs text-center tracking-widest text-white select-none"
+                    >
+                      <div className="block animate-fade-up">Back to top</div>
+                    </FancyLink>
                   </div>
                 </div>
               </div>
@@ -825,7 +827,7 @@ export const Section8AnimationOBJ = [
         to: [
           elem,
           {
-            opacity: 1
+            opacity: 1,
           },
         ],
       },
