@@ -107,26 +107,6 @@ export default function Reveal({ seoAPI, footerAPI }) {
       ...Section7AnimationOBJMobile,
       ...Section8AnimationOBJMobile,
     ],
-    '(min-width: 600px)': [
-      ...Section1AnimationOBJ,
-      ...Section2AnimationOBJ,
-      ...Section3AnimationOBJ,
-      ...Section4AnimationOBJ,
-      ...Section5AnimationOBJ,
-      ...Section6AnimationOBJ,
-      ...Section7AnimationOBJ,
-      ...Section8AnimationOBJ,
-    ],
-    '':[
-      ...Section1AnimationOBJ,
-      ...Section2AnimationOBJ,
-      ...Section3AnimationOBJ,
-      ...Section4AnimationOBJ,
-      ...Section5AnimationOBJ,
-      ...Section6AnimationOBJ,
-      ...Section7AnimationOBJ,
-      ...Section8AnimationOBJ,
-    ]
   };
 
   useEffect(() => {
