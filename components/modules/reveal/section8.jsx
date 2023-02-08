@@ -112,10 +112,10 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   <div className="relativve w-full h-full flex flex-col">
                     <HeaderGap />
                     <div className="pointer-events-none font-funkturm tracking-[0.08em] relative w-full h-full flex flex-col justify-center items-center text-center leading-none text-white text-8xl">
-                      <div className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-50%] w-full px-10">
+                      <div className="absolute w-full h-full px-10 py-14 flex items-center">
                         <div
                           id="video"
-                          className="w-full z-10 aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-xl"
+                          className="w-full h-full z-10 aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-xl"
                         >
                           <Lottie
                             lottieRef={lottieRef}
