@@ -53,7 +53,7 @@ export const Section1ComponentFixedBack = () => {
       <div className='s1_exit_group'>
         <div
           id='s1_title'
-          className=' pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 scale- justify-center items-center text-center leading-none text-white text-5xl md:text-8xl sm:text-6xl'
+          className=' pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0  justify-center items-center text-center leading-none text-white text-5xl md:text-8xl sm:text-6xl'
         >
           WE HAD
           <br />A DREAM

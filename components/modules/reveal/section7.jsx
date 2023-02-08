@@ -17,39 +17,59 @@ export const Section7ComponentFixedFront = () => {
       >
         <div
           id='feed_change'
-          className='pointer-events-none font-funkturm tracking-[0.08em] scale-[5] fixed w-full h-fit opacity-0 flex flex-col justify-center items-center text-center leading-none text-white text-8xl'
+          className='pointer-events-none font-funkturm tracking-[0.08em] scale-[5] fixed w-full h-fit opacity-0 flex flex-col justify-center items-center text-center leading-none text-white'
         >
-          <div className='relative flex justify-center items-center w-fit h-fit'>
-            FEED CHANGE.
-            <div id='hearts' className='absolute right-4 -top-10 opacity-1'>
-              <div id='heart1' className='absolute w-16 h-16 animate-fade'>
+          <div className='relative flex gap-4 md:gap-6 flex-col md:flex-row justify-center items-center w-fit h-fit text-5xl md:text-8xl sm:text-6xl'>
+            <span className='relative block'>
+              FEED
+              <div
+                id='underline-mobile-1'
+                className='absolute clip-path-inset-[0%_100%_0%_0] w-full h-2 bottom-0 left-[-5px] translate-y-[15px] block md:hidden'
+              >
                 <Image
-                  src={heart1}
+                  src={underline}
                   fill
                   style={{
-                    objectFit: 'contain',
+                    objectFit: 'cover',
+                    objectPosition: 'left',
                   }}
-                  alt=''
                 />
+              </div>
+            </span>
+            <span className='relative block'>
+              CHANGE.
+              <div
+                id='underline-mobile-2'
+                className='absolute clip-path-inset-[0%_100%_0%_0] w-full h-2 bottom-0 left-[-5px] translate-y-[15px] block md:hidden'
+              >
+                <Image
+                  src={underline}
+                  fill
+                  style={{
+                    objectFit: 'cover',
+                    objectPosition: 'left',
+                  }}
+                />
+              </div>
+            </span>
+            <div
+              id='hearts'
+              className='absolute right-2 md:right-4 bottom-18 md:bottom-auto md:-top-10 opacity-0'
+            >
+              <div id='heart1' className='absolute w-10 md:w-16 animate-fade'>
+                <Image src={heart1} alt='' />
               </div>
               <div
                 id='heart2'
-                className='absolute w-14 h-14 translate-x-[-40%] translate-y-[-80%] animate-fade-delay'
+                className='absolute w-8 md:w-14 translate-x-[-40%] translate-y-[-80%] animate-fade-delay'
               >
-                <Image
-                  src={heart2}
-                  fill
-                  style={{
-                    objectFit: 'contain',
-                  }}
-                  alt=''
-                />
+                <Image src={heart2} alt='' />
               </div>
             </div>
           </div>
           <div
             id='underline'
-            className='relative w-[43rem] h-4 mr-16 mt-2 clip-path-inset-[0%_100%_0%_0]'
+            className='relative w-[43rem] h-4 mr-16 mt-2 clip-path-inset-[0%_100%_0%_0] hidden md:block'
           >
             <Image
               src={underline}
@@ -87,7 +107,7 @@ const Section7MarkerTop = ({ setBgColor, setCaption }) => {
     },
   });
 
-  return <div className='w-full h-2 bg-purple-600' ref={observe} />;
+  return <div className='w-full h-0' ref={observe} />;
 };
 
 const Section7MarkerBottom = ({ setBgColor, setCaption }) => {
@@ -110,7 +130,7 @@ const Section7MarkerBottom = ({ setBgColor, setCaption }) => {
     },
   });
 
-  return <div className='w-full h-2 bg-purple-600' ref={observe} />;
+  return <div className='w-full h-0' ref={observe} />;
 };
 
 export const Section7ComponentInner = ({ setBgColor, setCaption }) => {
@@ -122,28 +142,18 @@ export const Section7ComponentInner = ({ setBgColor, setCaption }) => {
         className='trigger relative w-full text-4xl flex flex-col justify-center items-center '
         data-scroll-section
       >
-        {/* FEED CHANGE */}
-        <div
-          id='enter_feed_change'
-          className='h-[100vh] w-full bg-red-600 bg-opacity-50'
-        />
-        {/* UNDERLINE */}
-        <div
-          id='enter_underline'
-          className='h-[25vh] w-full bg-green-600 bg-opacity-50 mt-24'
-        />
-        {/* HEART1 */}
-        <div
-          id='enter_hearts'
-          className='h-[25vh] w-full bg-blue-600 bg-opacity-50 mt-24'
-        />
         <Section7MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
-        <div
-          id='exit_all_s7'
-          className='h-[50vh] flex justify-center flex-col mt-24'
-        >
-          SECTION 7
+        {/* FEED CHANGE */}
+        <div id='enter_feed_change' className='h-[100vh] w-full' />
+        {/* UNDERLINE */}
+        <div id='enter_underline' className='h-[50vh] w-full'>
+          <div id='enter_underline_m_1' className='h-[50%] w-full ' />
+          <div id='enter_underline_m_2' className='h-[50%] w-full ' />
         </div>
+        {/* HEART1 */}
+        <div id='enter_hearts' className='h-[25vh] w-full mt-24' />
+        <div className='h-[100vh] md:h-[50vh]' />
+        <div id='exit_all_s7' className='h-[50vh]' />
         <Section7MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
@@ -192,16 +202,53 @@ export const Section7AnimationOBJMobile = [
   },
   // UNDERLINE ENTER
   () => {
-    const id = 'underline_enter'; // animation id
-    const elem = '#underline';
+    const id = 'underline_enter_m_1'; // animation id
+    const elem = '#underline-mobile-1';
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter_underline', // which section will be tracked as the scroll trigger
+        trigger: '#enter_underline_m_1', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 100%',
+        end: 'top 0%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            clipPath: 'inset(0% 100% 0% 0%)',
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            clipPath: 'inset(0% 0% 0% 0%)',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // UNDERLINE 2 ENTER
+  () => {
+    const id = 'underline_enter_m_2'; // animation id
+    const elem = '#underline-mobile-2';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_underline_m_2', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'top 0%',
       },
     };
 
@@ -237,8 +284,8 @@ export const Section7AnimationOBJMobile = [
         trigger: '#enter_hearts', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
+        start: 'top 50%',
+        end: 'top 0%',
       },
     };
 
@@ -274,7 +321,7 @@ export const Section7AnimationOBJMobile = [
         trigger: '#exit_all_s7', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 100%',
+        start: 'top 100%',
         end: 'bottom 0%',
       },
     };
@@ -418,7 +465,7 @@ export const Section7AnimationOBJ = [
         trigger: '#exit_all_s7', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 100%',
+        start: 'top 100%',
         end: 'bottom 0%',
       },
     };

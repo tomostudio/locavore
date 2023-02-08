@@ -89,20 +89,20 @@ export default function Reveal({ seoAPI, footerAPI }) {
   const animationObj = {
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
-      ...Section2AnimationOBJ,
-      ...Section3AnimationOBJ,
-      ...Section4AnimationOBJ,
-      ...Section5AnimationOBJ,
+      // ...Section2AnimationOBJ,
+      // ...Section3AnimationOBJ,
+      // ...Section4AnimationOBJ,
+      // ...Section5AnimationOBJ,
       ...Section6AnimationOBJ,
       ...Section7AnimationOBJ,
       ...Section8AnimationOBJ,
     ],
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
-      ...Section2AnimationOBJMobile,
-      ...Section3AnimationOBJMobile,
-      ...Section4AnimationOBJMobile,
-      ...Section5AnimationOBJMobile,
+      // ...Section2AnimationOBJMobile,
+      // ...Section3AnimationOBJMobile,
+      // ...Section4AnimationOBJMobile,
+      // ...Section5AnimationOBJMobile,
       ...Section6AnimationOBJMobile,
       ...Section7AnimationOBJMobile,
       ...Section8AnimationOBJMobile,
@@ -124,12 +124,14 @@ export default function Reveal({ seoAPI, footerAPI }) {
     window.addEventListener('LocoCall', BackgroundLocomotiveEvents);
 
     // Go to the Top, Set Background Color
+    // TURN ON AFTER TESTING
     // window.scroll(0, 0);
-    setCaption(0);
-    setBgColor(0);
+    // setCaption(0);
+    // setBgColor(0);
 
     const resizeFunction = () => {
       setCaption(currentCaption);
+      setBgColor(currentCaption);
     };
     window.addEventListener('resize', resizeFunction);
 
@@ -227,7 +229,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 6 */}
         {/* <Section6ComponentFixedFront /> */}
         {/* SECTION 7 */}
-        {/* <Section7ComponentFixedFront /> */}
+        <Section7ComponentFixedFront />
         {/* SECTION 8 */}
         <Section8ComponentFixedFront />
       </div>
@@ -246,7 +248,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 6 */}
         {/* <Section6ComponentFixedBack /> */}
         {/* SECTION 7 */}
-        {/* <Section7ComponentFixedBack /> */}
+        <Section7ComponentFixedBack />
         {/* SECTION 8 */}
         <Section8ComponentFixedBack />
       </div>
@@ -359,34 +361,34 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   />
                   {/* Section 2 */}
                   {/* INSPIRED BY NICE THINGS */}
-                  <Section2ComponentInner
+                  {/* <Section2ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  />
+                  /> */}
                   {/* Section 3 */}
                   {/* AND A BETTER WORLD */}
-                  <Section3ComponentInner
+                  {/* <Section3ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  />
+                  /> */}
                   {/* Section 4 */}
                   {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
-                  <Section4ComponentInner
+                  {/* <Section4ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  />
+                  /> */}
                   {/* Section 5 */}
                   {/* SO OTHER PEOPLE CAN DREAM TOO */}
-                  <Section5ComponentInner
+                  {/* <Section5ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  />
+                  /> */}
                   {/* Section 6 */}
                   {/* INSPIRED BY OUR NICE THING */}
-                  <Section6ComponentInner
+                  {/* <Section6ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  />
+                  /> */}
                   {/* Section 7 */}
                   {/* FEED CHANGE */}
                   <Section7ComponentInner

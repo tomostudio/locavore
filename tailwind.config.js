@@ -86,6 +86,7 @@ module.exports = {
         md: '850px',
         lg: '1200px',
         xl: '1280px',
+        reveal_end_md: '950px',
         betterhover: { raw: '(hover: hover)' },
       },
       zIndex: {

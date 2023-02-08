@@ -153,7 +153,6 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
 
     if (scrollInitState && animation) {
       if (animation instanceof Object && !(animation instanceof Array)) {
-        console.log('set annimation with media');
         const _property = Object.getOwnPropertyNames(animation);
 
         //Create Array for Match Media
