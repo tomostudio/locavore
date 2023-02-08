@@ -87,7 +87,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
   // ANIMATION
   const animationObj = {
-    '(min-width: 769px)': [
+    '(min-width: 851px)': [
       ...Section1AnimationOBJ,
       ...Section2AnimationOBJ,
       ...Section3AnimationOBJ,
@@ -97,7 +97,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       ...Section7AnimationOBJ,
       ...Section8AnimationOBJ,
     ],
-    '(max-width: 768px)': [
+    '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
       ...Section2AnimationOBJMobile,
       ...Section3AnimationOBJMobile,
@@ -128,11 +128,18 @@ export default function Reveal({ seoAPI, footerAPI }) {
     setCaption(0);
     setBgColor(0);
 
+    const resizeFunction = () => {
+      setCaption(currentCaption);
+    };
+    window.addEventListener('resize', resizeFunction);
+
     return () => {
       window.removeEventListener('LocoCall', BackgroundLocomotiveEvents);
+      window.removeEventListener('resize', resizeFunction);
     };
   }, []);
 
+  let currentCaption = 0;
   // ALTERNATIVE CAPTION
   const setCaption = (n) => {
     const captions = document.querySelectorAll(
@@ -163,7 +170,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       captions.forEach((caption, index) => {
         const setN = n >= 6 ? 6 : n;
         if (index < setN - 1) {
-          offsetX = offsetX + caption.offsetWidth + 12;
+          offsetX = offsetX + caption.offsetWidth + 8;
         }
         if (index === setN - 1) {
           offsetX = offsetX + caption.offsetWidth / 2;
@@ -176,6 +183,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       top: 0,
       behavior: 'smooth',
     });
+    currentCaption = n;
   };
 
   // Set Background
@@ -209,17 +217,17 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 1 */}
         <Section1ComponentFixedFront />
         {/* SECTION 2 */}
-        <Section2ComponentFixedFront />
+        {/* <Section2ComponentFixedFront /> */}
         {/* SECTION 3 */}
-        <Section3ComponentFixedFront />
+        {/* <Section3ComponentFixedFront /> */}
         {/* SECTION 4 */}
-        <Section4ComponentFixedFront />
+        {/* <Section4ComponentFixedFront /> */}
         {/* SECTION 5 */}
-        <Section5ComponentFixedFront />
+        {/* <Section5ComponentFixedFront /> */}
         {/* SECTION 6 */}
-        <Section6ComponentFixedFront />
+        {/* <Section6ComponentFixedFront /> */}
         {/* SECTION 7 */}
-        <Section7ComponentFixedFront />
+        {/* <Section7ComponentFixedFront /> */}
         {/* SECTION 8 */}
         <Section8ComponentFixedFront />
       </div>
@@ -228,17 +236,17 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 1 */}
         <Section1ComponentFixedBack />
         {/* SECTION 2 */}
-        <Section2ComponentFixedBack />
+        {/* <Section2ComponentFixedBack /> */}
         {/* SECTION 3 */}
-        <Section3ComponentFixedBack />
+        {/* <Section3ComponentFixedBack /> */}
         {/* SECTION 4 */}
-        <Section4ComponentFixedBack />
+        {/* <Section4ComponentFixedBack /> */}
         {/* SECTION 5 */}
-        <Section5ComponentFixedBack />
+        {/* <Section5ComponentFixedBack /> */}
         {/* SECTION 6 */}
-        <Section6ComponentFixedBack />
+        {/* <Section6ComponentFixedBack /> */}
         {/* SECTION 7 */}
-        <Section7ComponentFixedBack />
+        {/* <Section7ComponentFixedBack /> */}
         {/* SECTION 8 */}
         <Section8ComponentFixedBack />
       </div>
@@ -251,37 +259,37 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* CAPTION */}
       <div
         id='reveal_caption'
-        className='caption flex flex-row md:justify-center items-center hide-scrollbar fixed z-50 text-sm pointer-events-none overflow-x-auto overflow-y-hidden md:overflow-x-auto w-full md:px-20 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500 opacity-0'
+        className='caption flex flex-row md:justify-center items-center hide-scrollbar fixed z-50 text-sm pointer-events-none overflow-x-auto py-8 md:py-0 md:overflow-x-auto w-full md:px-20 bottom-2 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500 opacity-0'
       >
         <div className='md:hidden block w-[50vw] shrink-0' />
-        <div className='captions_wrapper flex md:flex-wrap md:justify-center gap-2 md:gap-1 relative md:!translate-x-0 transition-transform shrink-0 md:shrink'>
+        <div className='captions_wrapper flex md:flex-wrap justify-center items-center gap-2 md:gap-1 relative md:!translate-x-0 transition-transform shrink-0 md:shrink'>
           <div
-            className={`caption_tab px-2 w-fit rotate-0 will-change-auto text-center shrink-0 max-w-[80vw]`}
+            className={`caption_tab px-2 w-fit h-fit rotate-0 will-change-auto text-center shrink-0 max-w-[80vw]`}
           >
             WE HAD A DREAM
           </div>
           <div
-            className={`caption_tab px-2 w-fit rotate-1 will-change-auto text-center shrink-0 max-w-[80vw]`}
+            className={`caption_tab px-2 w-fit h-fit rotate-1 will-change-auto text-center shrink-0 max-w-[80vw]`}
           >
             INSPIRED BY NICE THINGS
           </div>
           <div
-            className={`caption_tab px-2 w-fit -rotate-[-.5deg] will-change-auto text-center shrink-0 max-w-[80vw]`}
+            className={`caption_tab px-2 w-fit h-fit -rotate-[-.5deg] will-change-auto text-center shrink-0 max-w-[80vw]`}
           >
             AND A BETTER WORLD
           </div>
           <div
-            className={`caption_tab px-2 w-fit rotate-[-.25deg] text-center shrink-0 max-w-[80vw]`}
+            className={`caption_tab px-2 w-fit h-fit rotate-[-.25deg] text-center shrink-0 max-w-[80vw]`}
           >
             SO WE TOOK THAT DREAM AND MADE IT REAL
           </div>
           <div
-            className={`caption_tab px-2 w-fit rotate-0 text-center shrink-0 max-w-[80vw]`}
+            className={`caption_tab px-2 w-fit h-fit rotate-0 text-center shrink-0 max-w-[80vw]`}
           >
             SO OTHER PEOPLE CAN DREAM TOO
           </div>
           <div
-            className={`caption_tab px-2 w-fit rotate-1/2 text-center shrink-0 max-w-[80vw]`}
+            className={`caption_tab px-2 w-fit h-fit rotate-1/2 text-center shrink-0 max-w-[80vw]`}
           >
             INSPIRED BY OUR NICE THING
           </div>
