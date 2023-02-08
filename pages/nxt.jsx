@@ -227,7 +227,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 5 */}
         {/* <Section5ComponentFixedFront /> */}
         {/* SECTION 6 */}
-        {/* <Section6ComponentFixedFront /> */}
+        <Section6ComponentFixedFront />
         {/* SECTION 7 */}
         <Section7ComponentFixedFront />
         {/* SECTION 8 */}
@@ -246,7 +246,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 5 */}
         {/* <Section5ComponentFixedBack /> */}
         {/* SECTION 6 */}
-        {/* <Section6ComponentFixedBack /> */}
+        <Section6ComponentFixedBack />
         {/* SECTION 7 */}
         <Section7ComponentFixedBack />
         {/* SECTION 8 */}
@@ -385,10 +385,10 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   /> */}
                   {/* Section 6 */}
                   {/* INSPIRED BY OUR NICE THING */}
-                  {/* <Section6ComponentInner
+                  <Section6ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  /> */}
+                  />
                   {/* Section 7 */}
                   {/* FEED CHANGE */}
                   <Section7ComponentInner
