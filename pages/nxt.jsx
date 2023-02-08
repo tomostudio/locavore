@@ -254,7 +254,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* CAPTION */}
       <div
         id='reveal_caption'
-        className='caption flex flex-row  justify-center items-center hide-scrollbar fixed z-50 text-sm pointer-events-none overflow-x-auto overflow-y-hidden md:overflow-x-auto w-full md:px-20 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500'
+        className='caption flex flex-row  justify-center items-center hide-scrollbar fixed z-50 text-sm pointer-events-none overflow-x-auto overflow-y-hidden md:overflow-x-auto w-full md:px-20 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500 opacity-0'
       >
         <div className='md:hidden block w-[50vw] shrink-0' />
         <div className='captions_wrapper flex md:flex-wrap md:justify-center gap-2 md:gap-1 relative md:!translate-x-0 transition-transform shrink-0 md:shrink'>
