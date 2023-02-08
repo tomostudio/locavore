@@ -87,18 +87,18 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
   // ANIMATION
   const animationObj = {
-    '(min-width: 751px)': [
+    '(min-width: 1200px)': [
       ...Section1AnimationOBJ,
-      // ...Section2AnimationOBJ,
-      // ...Section3AnimationOBJ,
-      // ...Section4AnimationOBJ,
-      // ...Section5AnimationOBJ,
+      ...Section2AnimationOBJ,
+      ...Section3AnimationOBJ,
+      ...Section4AnimationOBJ,
+      ...Section5AnimationOBJ,
       ...Section6AnimationOBJ,
       ...Section7AnimationOBJ,
       ...Section8AnimationOBJ,
     ],
-    '(max-width: 750px)': [
-      ...Section1AnimationOBJMobile,
+    '(min-width: 850px)': [
+      ...Section1AnimationOBJ,
       ...Section2AnimationOBJMobile,
       ...Section3AnimationOBJMobile,
       ...Section4AnimationOBJMobile,
@@ -107,6 +107,26 @@ export default function Reveal({ seoAPI, footerAPI }) {
       ...Section7AnimationOBJMobile,
       ...Section8AnimationOBJMobile,
     ],
+    '(min-width: 600px)': [
+      ...Section1AnimationOBJ,
+      ...Section2AnimationOBJ,
+      ...Section3AnimationOBJ,
+      ...Section4AnimationOBJ,
+      ...Section5AnimationOBJ,
+      ...Section6AnimationOBJ,
+      ...Section7AnimationOBJ,
+      ...Section8AnimationOBJ,
+    ],
+    '':[
+      ...Section1AnimationOBJ,
+      ...Section2AnimationOBJ,
+      ...Section3AnimationOBJ,
+      ...Section4AnimationOBJ,
+      ...Section5AnimationOBJ,
+      ...Section6AnimationOBJ,
+      ...Section7AnimationOBJ,
+      ...Section8AnimationOBJ,
+    ]
   };
 
   useEffect(() => {
@@ -210,15 +230,15 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* FIXED POSITION FRONT*/}
       <div className='outercontainer-front fixed z-40 w-full h-full border pointer-events-none select-none overflow-hidden'>
         {/* SECTION 1 */}
-        {/* <Section1ComponentFixedFront /> */}
+        <Section1ComponentFixedFront />
         {/* SECTION 2 */}
-        {/* <Section2ComponentFixedFront /> */}
+        <Section2ComponentFixedFront />
         {/* SECTION 3 */}
-        {/* <Section3ComponentFixedFront /> */}
+        <Section3ComponentFixedFront />
         {/* SECTION 4 */}
-        {/* <Section4ComponentFixedFront /> */}
+        <Section4ComponentFixedFront />
         {/* SECTION 5 */}
-        {/* <Section5ComponentFixedFront /> */}
+        <Section5ComponentFixedFront />
         {/* SECTION 6 */}
         <Section6ComponentFixedFront />
         {/* SECTION 7 */}
@@ -229,15 +249,15 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* FIXED POSITION BACK*/}
       <div className='outercontainer-back fixed -z-1 w-full h-full border pointer-events-none select-none overflow-hidden'>
         {/* SECTION 1 */}
-        {/* <Section1ComponentFixedBack /> */}
+        <Section1ComponentFixedBack />
         {/* SECTION 2 */}
-        {/* <Section2ComponentFixedBack /> */}
+        <Section2ComponentFixedBack />
         {/* SECTION 3 */}
-        {/* <Section3ComponentFixedBack /> */}
+        <Section3ComponentFixedBack />
         {/* SECTION 4 */}
-        {/* <Section4ComponentFixedBack /> */}
+        <Section4ComponentFixedBack />
         {/* SECTION 5 */}
-        {/* <Section5ComponentFixedBack /> */}
+        <Section5ComponentFixedBack />
         {/* SECTION 6 */}
         <Section6ComponentFixedBack />
         {/* SECTION 7 */}
@@ -366,16 +386,16 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   />
                   {/* Section 4 */}
                   {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
-                  {/* <Section4ComponentInner
+                  <Section4ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  /> */}
+                  />
                   {/* Section 5 */}
                   {/* SO OTHER PEOPLE CAN DREAM TOO */}
-                  {/* <Section5ComponentInner
+                  <Section5ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  /> */}
+                  />
                   {/* Section 6 */}
                   {/* INSPIRED BY OUR NICE THING */}
                   <Section6ComponentInner

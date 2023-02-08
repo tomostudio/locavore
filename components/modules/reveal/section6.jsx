@@ -143,7 +143,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           <div className="relative max-w-screen-xl border w-full h-full">
             <div
               id="inspire1d"
-              className="absolute w-[80%] min-w-[400px] bottom-0 left-0 aspect-[16/9]"
+              className="absolute w-[80%] bottom-0 left-0 aspect-[16/9]"
             >
               <Image
                 src={inspire9}
@@ -155,7 +155,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             </div>
             <div
               id="inspire1n"
-              className="absolute w-[80%] min-w-[400px] bottom-0 left-0 aspect-[16/9] opacity-0"
+              className="absolute w-[80%] bottom-0 left-0 aspect-[16/9] opacity-0"
             >
               <Image
                 src={inspire10}
@@ -175,7 +175,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           <div className="relative max-w-screen-xl border w-full h-full">
             <div
               id="inspire2d"
-              className="absolute w-[60%] min-w-[400px] top-0 right-0 aspect-[16/9]"
+              className="absolute w-[60%] top-0 right-0 aspect-[16/9]"
             >
               <Image
                 src={inspire7}
@@ -187,7 +187,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             </div>
             <div
               id="inspire2n"
-              className="absolute w-[60%] min-w-[400px] top-0 right-0 aspect-[16/9] opacity-0"
+              className="absolute w-[60%] top-0 right-0 aspect-[16/9] opacity-0"
             >
               <Image
                 src={inspire8}
@@ -207,7 +207,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           <div className="relative max-w-screen-xl border w-full h-full">
             <div
               id="inspire3d"
-              className="absolute w-[70%] min-w-[400px] top-0 left-1/2 translate-x-[-50%] aspect-[16/9]"
+              className="absolute w-[70%] top-0 left-1/2 translate-x-[-50%] aspect-[16/9]"
             >
               <Image
                 src={inspire5}
@@ -219,7 +219,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             </div>
             <div
               id="inspire3n"
-              className="absolute w-[70%] min-w-[400px] top-0 left-1/2 translate-x-[-50%] aspect-[16/9] opacity-0"
+              className="absolute w-[70%] top-0 left-1/2 translate-x-[-50%] aspect-[16/9] opacity-0"
             >
               <Image
                 src={inspire6}
@@ -237,7 +237,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           className="relative h-screen w-full bg-blue-600 bg-opacity-50 flex justify-center items-center"
         >
           <div className="relative max-w-screen-xl border w-full h-full">
-            <div id="inspire4d" className="absolute w-full h-full min-w-[400px] top-0">
+            <div id="inspire4d" className="absolute w-full h-full top-0">
               <Image
                 src={inspire3}
                 fill
@@ -248,7 +248,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             </div>
             <div
               id="inspire4n"
-              className="absolute w-full h-full min-w-[400px] top-0 opacity-0"
+              className="absolute w-full h-full top-0 opacity-0"
             >
               <Image
                 src={inspire4}
@@ -268,7 +268,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           <div className="relative max-w-screen-xl border w-full h-full">
             <div
               id="inspire5d"
-              className="absolute w-[80%] h-full min-w-[400px] top-0 left-1/2 translate-x-[-50%]"
+              className="absolute w-[80%] h-full top-0 left-1/2 translate-x-[-50%]"
             >
               <Image
                 src={inspire1}
@@ -280,7 +280,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             </div>
             <div
               id="inspire5n"
-              className="absolute w-[80%] h-full min-w-[400px] top-0 left-1/2 translate-x-[-50%] opacity-0"
+              className="absolute w-[80%] h-full top-0 left-1/2 translate-x-[-50%] opacity-0"
             >
               <Image
                 src={inspire2}
