@@ -24,16 +24,16 @@ export const Section2ComponentFixedFront = () => {
     <div id='section2_fixed_front'>
       <div
         id='inspired'
-        className='pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-8xl'
+        className='pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-5xl md:text-8xl sm:text-6xl'
       >
-        <div className='relative max-w-screen-lg w-full text-left pl-44'>
+        <div className='relative max-w-screen-lg w-fit md:w-full text-left md:pl-44'>
           INSPIRED
           <br />
           BY <br />
-          <span className='block -ml-28'>NICE</span>
+          <span className='block md:-ml-28 -ml-14'>NICE</span>
           THINGS
           <div id='worm' className='opacity-0'>
-            <div className='w-28 h-28 absolute z-50 left-1/2 top-1/2 translate-x-[-190%] translate-y-[-225%]'>
+            <div className='w-20 h-20 md:w-28 md:h-28 absolute z-50 left-1/2 top-1/2 translate-x-[-50%] translate-y-[-176%] md:translate-x-[-190%] md:translate-y-[-225%]'>
               <Image
                 src={worm}
                 fill
@@ -46,7 +46,7 @@ export const Section2ComponentFixedFront = () => {
           <div className='s2_exit_group'>
             <div
               id='bee'
-              className='absolute w-56 h-56 left-1/2 top-1/2 translate-y-[38%] translate-x-[-80%] opacity-0'
+              className='absolute w-36 h-36 md:w-56 md:h-56 left-1/2 top-1/2 translate-y-[-190%] translate-x-[-10%] md:translate-y-[38%] md:translate-x-[-80%] opacity-0'
             >
               <Image
                 src={beeSticker}
@@ -71,7 +71,7 @@ export const Section2ComponentFixedBack = () => {
           id='flower_bee_butterfly'
           className='fixed w-full max-w-screen-lg h-full z-1 opacity-0'
         >
-          <div className='w-28 h-28 fixed left-1/2 top-1/2 translate-x-[-490%] translate-y-[-220%]'>
+          <div className='w-20 h-20 md:w-28 md:h-28 fixed left-1/2 top-1/2 translate-x-[-230%] translate-y-[-185%] md:translate-x-[-490%] md:translate-y-[-220%]'>
             <Image
               src={sunflower02}
               fill
@@ -80,7 +80,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className='w-20 h-20 fixed left-1/2 translate-x-[45%] translate-y-[45px]'>
+          <div className='w-16 h-16 md:w-20 md:h-20 fixed left-1/2 translate-x-[-125%] translate-y-[45px] md:translate-x-[45%]'>
             <Image
               src={butterfly02}
               fill
@@ -89,7 +89,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className='w-12 h-12 fixed right-1/2 translate-x-[600px] translate-y-[140px]'>
+          <div className='w-9 h-9 md:w-12 md:h-12 fixed top-1/2 md:top-0 right-1/2 translate-x-[-200%] translate-y-[-460%] md:translate-x-[600px] md:translate-y-[140px]'>
             <Image
               src={bee01}
               fill
@@ -98,7 +98,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className='w-20 h-20 fixed z-1 right-1/2 translate-x-[554px] translate-y-[215px]'>
+          <div className='w-14 h-14 md:w-20 md:h-20 fixed z-1 top-1/2 md:top-0 right-1/2 translate-x-[250%] translate-y-[-320%] md:translate-x-[554px] md:translate-y-[215px]'>
             <Image
               src={butterfly01}
               fill
@@ -107,7 +107,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className='w-40 h-40 fixed left-1/2 translate-x-[-410%] bottom-0'>
+          <div className='w-28 h-28 md:w-40 md:h-40 fixed left-1/2 translate-x-[-170%] md:translate-x-[-410%] bottom-0'>
             <Image
               src={sunflower01}
               fill
@@ -116,7 +116,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className='w-14 h-14 fixed left-1/2 translate-x-[-870%] bottom-0 translate-y-[-180%]'>
+          <div className='w-9 h-9 md:w-14 md:h-14 fixed left-1/2 translate-x-[-250%] translate-y-[-240%] md:translate-x-[-870%] bottom-0 md:translate-y-[-180%]'>
             <Image
               src={bee03}
               fill
@@ -125,7 +125,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className='w-14 h-14 fixed left-1/2 translate-x-[-1060%] bottom-0 translate-y-[-350%]'>
+          <div className='w-11 h-11 md:w-14 md:h-14 fixed left-1/2 translate-x-[-350%] translate-y-[-400%] md:translate-x-[-1060%] bottom-0 md:translate-y-[-350%]'>
             <Image
               src={bee02}
               fill
@@ -134,7 +134,7 @@ export const Section2ComponentFixedBack = () => {
               }}
             />
           </div>
-          <div className='w-28 h-28 fixed right-0 translate-x-[-290%] bottom-0 translate-y-[-100%]'>
+          <div className='w-20 h-20 md:w-28 md:h-28 fixed bottom-1/2 right-1/2 md:right-0 translate-x-[170%] translate-y-[215%] md:translate-x-[-90%] md:bottom-0 md:translate-y-[-100%]'>
             <Image
               src={sunflower03}
               fill
@@ -149,7 +149,7 @@ export const Section2ComponentFixedBack = () => {
         id='forest1'
         className='fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[85vh] __b overflow-visible'
       >
-        <div className='absolute w-[30rem] h-[35rem] top-1/2 left-6 translate-y-[-45%]'>
+        <div className='absolute w-[18rem] h-[16rem] md:w-[30rem] md:h-[35rem] -left-20 top-1/2 md:left-6 translate-y-[-27%] md:translate-y-[-45%]'>
           <Image
             src={forest1}
             fill
@@ -160,7 +160,7 @@ export const Section2ComponentFixedBack = () => {
           <div className='s2_exit_group'>
             <div
               id='mug'
-              className='w-72 h-72 fixed -left-9 bottom-24 opacity-0'
+              className='w-40 h-40 md:w-72 md:h-72 fixed left-20 -bottom-10 md:-left-9 md:bottom-24 opacity-0'
             >
               <Image
                 src={mugSticker}
