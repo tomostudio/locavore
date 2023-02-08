@@ -30,11 +30,7 @@ import sunflower5 from '@/public/nxt/sunflower05.png'
 import HeaderGap from '../headerGap'
 
 export const Section8ComponentFixedFront = () => {
-
-  return (
-    <div id="section8_fixed_front">
-    </div>
-  )
+  return <div id="section8_fixed_front"></div>
 }
 export const Section8ComponentFixedBack = () => {
   return (
@@ -138,7 +134,10 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                         </div>
                       </div>
                       <div className="absolute top-1/2 -z-1 translate-y-[-50%] w-64 h-64">
-                        <div id="logo" className="w-full h-full absolute top-1/2 translate-y-[-50%]">
+                        <div
+                          id="logo"
+                          className="w-full h-full absolute top-1/2 translate-y-[-50%]"
+                        >
                           <div className="opacity-0 w-full h-full">
                             <Image
                               src={nxtLogo}
@@ -154,7 +153,10 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                         id="new_locavore_exit"
                         className="absolute -z-1 top-1/2 translate-y-[-50%] w-full"
                       >
-                        <div id="new_locavore" className="absolute top-1/2 translate-y-[100%] w-full opacity-0">
+                        <div
+                          id="new_locavore"
+                          className="absolute top-1/2 translate-y-[100%] w-full opacity-0"
+                        >
                           THE NEW LOCAVORE
                         </div>
                       </div>
@@ -178,9 +180,18 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                           </div>
                           <FancyLink
                             destination={`/share`}
-                            className={`mt-14 w-fit py-4 px-6 text-xl font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                            className={`relative mt-14 w-fit py-4 px-6 text-xl font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
                           >
                             SHARE
+                            <div className="group_s8 absolute -top-10 -left-5 w-28 h-12 opacity-0">
+                              <Image
+                                src={worm}
+                                fill
+                                style={{
+                                  objectFit: 'contain',
+                                }}
+                              />
+                            </div>
                           </FancyLink>
                           <FancyLink
                             onClick={() =>
@@ -278,15 +289,6 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   />
                 </div>
                 <div className="group_s8 opacity-0">
-                  <div className="absolute top-1/2 left-1/2 translate-y-[113%] translate-x-[-75%] w-28 h-28">
-                    <Image
-                      src={worm}
-                      fill
-                      style={{
-                        objectFit: 'contain',
-                      }}
-                    />
-                  </div>
                   <div className="absolute top-1/2 left-1/2 translate-y-[450%] translate-x-[-700%] w-12 h-12">
                     <Image
                       src={bee1}
@@ -510,7 +512,7 @@ export const Section8AnimationOBJ = [
         to: [
           elem,
           {
-            y: '-85%'
+            y: '-85%',
           },
         ],
       },
@@ -540,7 +542,7 @@ export const Section8AnimationOBJ = [
           elem,
           {
             opacity: 1,
-            y: '-50%'
+            y: '-50%',
           },
         ],
       },
