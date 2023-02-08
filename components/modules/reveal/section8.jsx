@@ -8,7 +8,6 @@ import FancyLink from '@/components/utils/fancyLink'
 import LottieLve from '@/public/nxt/lottie/lve-lottie-jpg.json'
 
 // Local Images
-import nxtLogo from '@/public/nxt/nxt_logo.png'
 import summer from '@/public/nxt/summer.png'
 import cloud1 from '@/public/nxt/cloud01.png'
 import cloud2 from '@/public/nxt/cloud02.png'
@@ -202,8 +201,11 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                         >
                           <div className="flex flex-row justify-center items-center text-center">
                             OPENING
-                            <div className="group_s8 h-0 w-4 relative">
-                              <div className="absolute top-[calc(50%-20px)] translate-y-[-50%] left-1/2 translate-x-[-50%] w-40 h-16">
+                            <div className="h-0 w-4 relative">
+                              <div
+                                id="summer"
+                                className="absolute top-[calc(50%-20px)] translate-y-[-50%] left-1/2 translate-x-[-50%] w-40 h-16 opacity-0"
+                              >
                                 <Image
                                   src={summer}
                                   fill
@@ -445,7 +447,11 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
           />
           <div
             id="enter_opening"
-            className="h-[50vh] w-full bg-green-600 bg-opacity-50 mt-[-25vh]"
+            className="h-[25vh] w-full bg-green-600 bg-opacity-50 "
+          />
+          <div
+            id="enter_summer"
+            className="h-[25vh] w-full bg-red-600 bg-opacity-50"
           />
           <div
             id="enter_cloud_bug_flower"
@@ -790,6 +796,36 @@ export const Section8AnimationOBJ = [
           elem,
           {
             opacity: 1,
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // SUMMER ENTER
+  () => {
+    const id = 'enter_summer' // animation id
+    const elem = '#summer'
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_summer', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        markers: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            opacity: 1
           },
         ],
       },

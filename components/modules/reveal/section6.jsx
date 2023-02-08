@@ -145,13 +145,25 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
               id="inspire1d"
               className="absolute w-[80%] min-w-[400px] bottom-0 left-0 aspect-[16/9]"
             >
-              <Image src={inspire9} />
+              <Image
+                src={inspire9}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
             </div>
             <div
               id="inspire1n"
               className="absolute w-[80%] min-w-[400px] bottom-0 left-0 aspect-[16/9] opacity-0"
             >
-              <Image src={inspire10} />
+              <Image
+                src={inspire10}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
             </div>
           </div>
         </div>
@@ -165,13 +177,25 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
               id="inspire2d"
               className="absolute w-[60%] min-w-[400px] top-0 right-0 aspect-[16/9]"
             >
-              <Image src={inspire7} />
+              <Image
+                src={inspire7}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
             </div>
             <div
               id="inspire2n"
               className="absolute w-[60%] min-w-[400px] top-0 right-0 aspect-[16/9] opacity-0"
             >
-              <Image src={inspire8} />
+              <Image
+                src={inspire8}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
             </div>
           </div>
         </div>
@@ -185,13 +209,25 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
               id="inspire3d"
               className="absolute w-[70%] min-w-[400px] top-0 left-1/2 translate-x-[-50%] aspect-[16/9]"
             >
-              <Image src={inspire5} />
+              <Image
+                src={inspire5}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
             </div>
             <div
               id="inspire3n"
               className="absolute w-[70%] min-w-[400px] top-0 left-1/2 translate-x-[-50%] aspect-[16/9] opacity-0"
             >
-              <Image src={inspire6} />
+              <Image
+                src={inspire6}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
             </div>
           </div>
         </div>
@@ -201,17 +237,26 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           className="relative h-screen w-full bg-blue-600 bg-opacity-50 flex justify-center items-center"
         >
           <div className="relative max-w-screen-xl border w-full h-full">
-            <div
-              id="inspire4d"
-              className="absolute w-full min-w-[400px] top-0"
-            >
-              <Image src={inspire3} />
+            <div id="inspire4d" className="absolute w-full h-full min-w-[400px] top-0">
+              <Image
+                src={inspire3}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
             </div>
             <div
               id="inspire4n"
-              className="absolute w-full min-w-[400px] top-0 opacity-0"
+              className="absolute w-full h-full min-w-[400px] top-0 opacity-0"
             >
-              <Image src={inspire4} />
+              <Image
+                src={inspire4}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
             </div>
           </div>
         </div>
@@ -223,15 +268,27 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           <div className="relative max-w-screen-xl border w-full h-full">
             <div
               id="inspire5d"
-              className="absolute w-[80%] min-w-[400px] top-0 left-1/2 translate-x-[-50%]"
+              className="absolute w-[80%] h-full min-w-[400px] top-0 left-1/2 translate-x-[-50%]"
             >
-              <Image src={inspire1} />
+              <Image
+                src={inspire1}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
             </div>
             <div
               id="inspire5n"
-              className="absolute w-[80%] min-w-[400px] top-0 left-1/2 translate-x-[-50%] opacity-0"
+              className="absolute w-[80%] h-full min-w-[400px] top-0 left-1/2 translate-x-[-50%] opacity-0"
             >
-              <Image src={inspire2} />
+              <Image
+                src={inspire2}
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+              />
             </div>
           </div>
         </div>
@@ -246,7 +303,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
   )
 }
 
-export const Section6AnimationOBJMobile = [];
+export const Section6AnimationOBJMobile = []
 export const Section6AnimationOBJ = [
   // TITLE ENTER
   () => {
@@ -480,8 +537,8 @@ export const Section6AnimationOBJ = [
         trigger: '#enter_inspire4', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 30%',
-        end: 'top 10%',
+        start: 'top 20%',
+        end: 'top 0%',
       },
     }
 
@@ -518,7 +575,7 @@ export const Section6AnimationOBJ = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 20%',
-        end: 'top 00%',
+        end: 'top 0%',
       },
     }
 
