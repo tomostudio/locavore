@@ -93,7 +93,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       // ...Section3AnimationOBJ,
       // ...Section4AnimationOBJ,
       // ...Section5AnimationOBJ,
-      // ...Section6AnimationOBJ,
+      ...Section6AnimationOBJ,
       ...Section7AnimationOBJ,
       ...Section8AnimationOBJ,
     ],
@@ -180,7 +180,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* FIXED POSITION FRONT*/}
       <div className='outercontainer-front fixed z-40 w-full h-full border pointer-events-none select-none overflow-hidden'>
         {/* SECTION 1 */}
-        <Section1ComponentFixedFront />
+        {/* <Section1ComponentFixedFront /> */}
         {/* SECTION 2 */}
         {/* <Section2ComponentFixedFront /> */}
         {/* SECTION 3 */}
@@ -190,7 +190,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 5 */}
         {/* <Section5ComponentFixedFront /> */}
         {/* SECTION 6 */}
-        {/* <Section6ComponentFixedFront /> */}
+        <Section6ComponentFixedFront />
         {/* SECTION 7 */}
         <Section7ComponentFixedFront />
         {/* SECTION 8 */}
@@ -199,7 +199,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* FIXED POSITION BACK*/}
       <div className='outercontainer-back fixed -z-1 w-full h-full border pointer-events-none select-none overflow-hidden'>
         {/* SECTION 1 */}
-        <Section1ComponentFixedBack />
+        {/* <Section1ComponentFixedBack /> */}
         {/* SECTION 2 */}
         {/* <Section2ComponentFixedBack /> */}
         {/* SECTION 3 */}
@@ -209,7 +209,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 5 */}
         {/* <Section5ComponentFixedBack /> */}
         {/* SECTION 6 */}
-        {/* <Section6ComponentFixedBack /> */}
+        <Section6ComponentFixedBack />
         {/* SECTION 7 */}
         <Section7ComponentFixedBack />
         {/* SECTION 8 */}
@@ -342,10 +342,10 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   /> */}
                   {/* Section 6 */}
                   {/* INSPIRED BY OUR NICE THING */}
-                  {/* <Section6ComponentInner
+                  <Section6ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  /> */}
+                  />
                   {/* Section 7 */}
                   {/* FEED CHANGE */}
                   <Section7ComponentInner

@@ -10,11 +10,14 @@ import heart2 from '@/public/nxt/heart02.png';
 
 export const Section7ComponentFixedFront = () => {
   return (
-    <div id='section7_fixed_front'>
-      <div id='exit_group_s7'>
+    <div id="section7_fixed_front">
+      <div
+        id="exit_group_s7"
+        className="fixed top-1/2 left-1/2 w-full h-fit translate-y-[-50%] translate-x-[-50%]"
+      >
         <div
-          id='feed_change'
-          className='pointer-events-none font-funkturm tracking-[0.08em] scale-[5] fixed w-full h-full opacity-0 flex flex-col justify-center items-center text-center leading-none text-white text-8xl'
+          id="feed_change"
+          className="pointer-events-none font-funkturm tracking-[0.08em] scale-[5] fixed w-full h-fit opacity-0 flex flex-col justify-center items-center text-center leading-none text-white text-8xl"
         >
           <div className='relative flex justify-center items-center w-fit h-fit'>
             FEED CHANGE.
@@ -133,8 +136,8 @@ export const Section7ComponentInner = ({ setBgColor, setCaption }) => {
         />
         <Section7MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         <div
-          id='exit_all_s7'
-          className='h-[100vh] flex justify-center flex-col mt-24'
+          id="exit_all_s7"
+          className="h-[50vh] flex justify-center flex-col mt-24"
         >
           SECTION 7
         </div>
@@ -269,26 +272,18 @@ export const Section7AnimationOBJ = [
         trigger: '#exit_all_s7', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
+        start: 'bottom 100%',
+        end: 'bottom 0%',
       },
     };
 
     // Input Animation
     const animation = [
       {
-        set: [
-          elem,
-          {
-            opacity: 1,
-          },
-        ],
-      },
-      {
         to: [
           elem,
           {
-            opacity: 0,
+            y: '-100vh'
           },
         ],
       },

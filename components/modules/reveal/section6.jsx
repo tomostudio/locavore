@@ -138,18 +138,18 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
         {/* INSPIRE1 */}
         <div
           id="enter_inspire1"
-          className="relative h-[100vh] w-full bg-green-600 bg-opacity-50 flex justify-start items-center"
+          className="relative h-[100vh] w-full bg-green-600 bg-opacity-50 flex justify-center items-center"
         >
-          <div className="relative max-w-screen-xl border w-[80vw] min-w-[400px] aspect-[16/9]">
+          <div className="relative max-w-screen-xl border w-full h-full">
             <div
               id="inspire1d"
-              className="absolute w-full bottom-0 left-0"
+              className="absolute w-[80%] min-w-[400px] bottom-0 left-0 aspect-[16/9]"
             >
               <Image src={inspire9} />
             </div>
             <div
               id="inspire1n"
-              className="absolute w-full bottom-0 left-0 opacity-0"
+              className="absolute w-[80%] min-w-[400px] bottom-0 left-0 aspect-[16/9] opacity-0"
             >
               <Image src={inspire10} />
             </div>
@@ -158,18 +158,18 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
         {/* INSPIRE2 */}
         <div
           id="enter_inspire2"
-          className="relative h-[30rem] w-full bg-blue-600 bg-opacity-50 flex justify-center items-center"
+          className="relative h-screen w-full bg-blue-600 bg-opacity-50 flex justify-center items-center"
         >
           <div className="relative max-w-screen-xl border w-full h-full">
             <div
               id="inspire2d"
-              className="absolute w-[45rem] h-[45rem] top-0 right-0"
+              className="absolute w-[60%] min-w-[400px] top-0 right-0 aspect-[16/9]"
             >
               <Image src={inspire7} />
             </div>
             <div
               id="inspire2n"
-              className="absolute w-[45rem] h-[45rem] top-0 right-0 opacity-0"
+              className="absolute w-[60%] min-w-[400px] top-0 right-0 aspect-[16/9] opacity-0"
             >
               <Image src={inspire8} />
             </div>
@@ -178,18 +178,18 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
         {/* INSPIRE3 */}
         <div
           id="enter_inspire3"
-          className="relative h-[30rem] w-full bg-blue-600 bg-opacity-50 flex justify-center items-center"
+          className="relative h-screen w-full bg-blue-600 bg-opacity-50 flex justify-center items-center"
         >
           <div className="relative max-w-screen-xl border w-full h-full">
             <div
               id="inspire3d"
-              className="absolute w-[45rem] h-fit top-0 left-1/2 translate-x-[-50%]"
+              className="absolute w-[70%] min-w-[400px] top-0 left-1/2 translate-x-[-50%] aspect-[16/9]"
             >
               <Image src={inspire5} />
             </div>
             <div
               id="inspire3n"
-              className="absolute w-[45rem] h-fit top-0 left-1/2 translate-x-[-50%] opacity-0"
+              className="absolute w-[70%] min-w-[400px] top-0 left-1/2 translate-x-[-50%] aspect-[16/9] opacity-0"
             >
               <Image src={inspire6} />
             </div>
@@ -198,18 +198,18 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
         {/* INSPIRE4 */}
         <div
           id="enter_inspire4"
-          className="relative h-[50rem] w-full bg-blue-600 bg-opacity-50 flex justify-center items-center"
+          className="relative h-screen w-full bg-blue-600 bg-opacity-50 flex justify-center items-center"
         >
           <div className="relative max-w-screen-xl border w-full h-full">
             <div
               id="inspire4d"
-              className="absolute w-full h-full top-0"
+              className="absolute w-full min-w-[400px] top-0"
             >
               <Image src={inspire3} />
             </div>
             <div
               id="inspire4n"
-              className="absolute w-full h-full top-0 opacity-0"
+              className="absolute w-full min-w-[400px] top-0 opacity-0"
             >
               <Image src={inspire4} />
             </div>
@@ -218,18 +218,18 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
         {/* INSPIRE5 */}
         <div
           id="enter_inspire5"
-          className="relative h-[43rem] w-full bg-blue-600 bg-opacity-50 flex justify-center items-center"
+          className="relative h-screen w-full bg-blue-600 bg-opacity-50 flex justify-center items-center"
         >
           <div className="relative max-w-screen-xl border w-full h-full">
             <div
               id="inspire5d"
-              className="absolute w-full h-full px-24 top-0"
+              className="absolute w-[80%] min-w-[400px] top-0 left-1/2 translate-x-[-50%]"
             >
               <Image src={inspire1} />
             </div>
             <div
               id="inspire5n"
-              className="absolute w-full h-full px-24 top-0 opacity-0"
+              className="absolute w-[80%] min-w-[400px] top-0 left-1/2 translate-x-[-50%] opacity-0"
             >
               <Image src={inspire2} />
             </div>
@@ -369,8 +369,8 @@ export const Section6AnimationOBJ = [
         trigger: '#enter_inspire1', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 20%',
-        end: 'top 0%',
+        start: 'bottom 90%',
+        end: 'bottom 70%',
       },
     }
 
@@ -406,8 +406,8 @@ export const Section6AnimationOBJ = [
         trigger: '#enter_inspire2', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 40%',
-        end: 'top 20%',
+        start: 'top 30%',
+        end: 'top 10%',
       },
     }
 
@@ -443,8 +443,8 @@ export const Section6AnimationOBJ = [
         trigger: '#enter_inspire3', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 40%',
-        end: 'top 20%',
+        start: 'top 30%',
+        end: 'top 10%',
       },
     }
 
@@ -517,8 +517,8 @@ export const Section6AnimationOBJ = [
         trigger: '#enter_inspire5', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 30%',
-        end: 'top 10%',
+        start: 'top 20%',
+        end: 'top 00%',
       },
     }
 
