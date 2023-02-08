@@ -124,7 +124,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
     window.addEventListener('LocoCall', BackgroundLocomotiveEvents);
 
     // Go to the Top, Set Background Color
-    window.scroll(0, 0);
+    // window.scroll(0, 0);
     setCaption(0);
     setBgColor(0);
 
