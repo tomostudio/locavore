@@ -89,7 +89,7 @@ export const Section8ComponentFixedFront = () => {
           {/* ANIMATION CONTENT STICKY */}
           <div
             id="logo-end"
-            className="frame __b w-full aspect-[4/3] sm:aspect-[16/9] relative overflow-hidden rounded-xl"
+            className="frame w-full aspect-[4/3] sm:aspect-[16/9] relative overflow-hidden rounded-xl"
           >
             <Image
               src={NXT_Logo_Bumper}
@@ -166,7 +166,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
         <div className="w-full ">
           <div className="h-screen bg-slate-400 bg-opacity-20 w-full sticky top-0 flex justify-center items-center">
             {/* ANIMATION CONTENT STICKY */}
-            <div className="frame __b w-full h-full relative overflow-hidden">
+            <div className="frame w-full h-full relative overflow-hidden">
               <div
                 id="sticky_front"
                 className="absolute w-full h-full z-5 top-0 left-0 text-red-400  __b overflow-hidden"
@@ -813,7 +813,6 @@ export const Section8AnimationOBJ = [
         trigger: '#enter_summer', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        markers: true,
         start: 'top 100%',
         end: 'bottom 100%',
       },

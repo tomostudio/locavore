@@ -87,7 +87,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
   // ANIMATION
   const animationObj = {
-    '(min-width: 751px)': [
+    '(min-width: 769px)': [
       ...Section1AnimationOBJ,
       // ...Section2AnimationOBJ,
       // ...Section3AnimationOBJ,
@@ -97,7 +97,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       ...Section7AnimationOBJ,
       ...Section8AnimationOBJ,
     ],
-    '(max-width: 750px)': [
+    '(max-width: 768px)': [
       ...Section1AnimationOBJMobile,
       ...Section2AnimationOBJMobile,
       ...Section3AnimationOBJMobile,
@@ -141,7 +141,6 @@ export default function Reveal({ seoAPI, footerAPI }) {
     captions.forEach((caption, index) => {
       caption.classList.remove('active');
       if (index + 1 <= n) caption.classList.add('active');
-      console.log(caption.offsetWidth);
     });
 
     const captionContainer = document.querySelector('#reveal_caption');
@@ -165,11 +164,9 @@ export default function Reveal({ seoAPI, footerAPI }) {
         const setN = n >= 6 ? 6 : n;
         if (index < setN - 1) {
           offsetX = offsetX + caption.offsetWidth + 12;
-          console.log(setN, index, offsetX);
         }
         if (index === setN - 1) {
           offsetX = offsetX + caption.offsetWidth / 2;
-          console.log(setN, index, offsetX);
         }
       });
     }
@@ -210,7 +207,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* FIXED POSITION FRONT*/}
       <div className='outercontainer-front fixed z-40 w-full h-full border pointer-events-none select-none overflow-hidden'>
         {/* SECTION 1 */}
-        {/* <Section1ComponentFixedFront /> */}
+        <Section1ComponentFixedFront />
         {/* SECTION 2 */}
         {/* <Section2ComponentFixedFront /> */}
         {/* SECTION 3 */}
@@ -229,7 +226,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* FIXED POSITION BACK*/}
       <div className='outercontainer-back fixed -z-1 w-full h-full border pointer-events-none select-none overflow-hidden'>
         {/* SECTION 1 */}
-        {/* <Section1ComponentFixedBack /> */}
+        <Section1ComponentFixedBack />
         {/* SECTION 2 */}
         {/* <Section2ComponentFixedBack /> */}
         {/* SECTION 3 */}
@@ -254,7 +251,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* CAPTION */}
       <div
         id='reveal_caption'
-        className='caption flex flex-row  justify-center items-center hide-scrollbar fixed z-50 text-sm pointer-events-none overflow-x-auto overflow-y-hidden md:overflow-x-auto w-full md:px-20 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500 opacity-0'
+        className='caption flex flex-row md:justify-center items-center hide-scrollbar fixed z-50 text-sm pointer-events-none overflow-x-auto overflow-y-hidden md:overflow-x-auto w-full md:px-20 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500 opacity-0'
       >
         <div className='md:hidden block w-[50vw] shrink-0' />
         <div className='captions_wrapper flex md:flex-wrap md:justify-center gap-2 md:gap-1 relative md:!translate-x-0 transition-transform shrink-0 md:shrink'>
@@ -317,7 +314,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   {/* Section 0 */}
                   <div
                     id='captionmarker_0'
-                    className='w-full h-1 bg-purple-600'
+                    className='w-full h-0'
                     data-scroll
                     data-scroll-call='sectionstart'
                     data-scroll-repeat
@@ -341,7 +338,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   </section>
                   <div
                     id='captionmarker_0'
-                    className='w-full h-2 bg-purple-600'
+                    className='w-full h-0'
                     data-scroll
                     data-scroll-call='section0'
                     data-scroll-repeat
