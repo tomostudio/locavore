@@ -16,7 +16,7 @@ export const Section1ComponentFixedFront = () => {
       <div className="s1_exit_group">
         <div
           id="s1_title"
-          className=" pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 scale- justify-center items-center text-center leading-none text-white text-8xl"
+          className=" pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 scale- justify-center items-center text-center leading-none text-white text-5xl md:text-8xl sm:text-6xl"
         >
           WE HAD
           <br />A DREAM
@@ -26,7 +26,7 @@ export const Section1ComponentFixedFront = () => {
         id="eyes"
         className="fixed top-1/2 right-1/2 translate-y-[45vh] __b h-0 w-0 overflow-visible z-10 opacity-0"
       >
-        <div className="h-[27rem] w-[38.5rem] absolute top-1/2 right-1/2 translate-x-[50%] translate-y-[-14%]">
+        <div className="h-[13.5rem] w-[20rem] md:h-[27rem] md:w-[38.5rem] sm:h-[16.5rem] sm:w-[23.5rem] absolute top-1/2 right-1/2 translate-x-[50%] translate-y-[-14%]">
           <Image
             src={eyes}
             fill
@@ -40,7 +40,7 @@ export const Section1ComponentFixedFront = () => {
         id="dream"
         className="fixed top-1/2 left-0 z-[11] __b h-0 w-0 overflow-visible"
       >
-        <div className="w-96 h-72 absolute top-1/2 translate-y-[-50%] translate-x-[-100%]">
+        <div className="w-48 h-32 md:w-96 md:h-72 sm:w-72 sm:h-44 absolute top-1/2 md:translate-y-[-90%] sm:translate-y-[-95%] translate-y-[-180%] translate-x-[-100%]">
           <Image
             src={dream}
             fill
@@ -62,7 +62,7 @@ export const Section1ComponentFixedBack = () => {
           id="head"
           className="fixed top-1/2 right-1/2 __b h-0 w-0 overflow-visible opacity-0"
         >
-          <div className="h-56 w-56 absolute top-1/2 right-1/2 translate-x-[210%] translate-y-[-60%] will-change-auto">
+          <div className="h-24 w-24 md:h-56 md:w-56 sm:h-[8.5rem] sm:w-[8.5rem] absolute top-1/2 right-1/2 translate-x-[170%] translate-y-[-130%] sm:translate-x-[210%] sm:translate-y-[-60%] will-change-auto">
             <Image
               src={head}
               fill
@@ -76,9 +76,7 @@ export const Section1ComponentFixedBack = () => {
           id="whatif"
           className="fixed top-1/2 right-1/2 __b h-0 w-0 overflow-visible opacity-0"
         >
-          <div
-            className="w-52 h-52 absolute top-1/2 right-1/2 translate-y-[-135%] translate-x-[180%] will-change-auto"
-          >
+          <div className="w-[5rem] h-[5rem] md:w-52 md:h-52 sm:w-[8rem] sm:h-[8rem] absolute top-1/2 right-1/2 translate-y-[-220%] translate-x-[155%] sm:translate-y-[-135%] sm:translate-x-[180%] will-change-auto">
             <Image
               src={whatIf}
               fill
@@ -103,7 +101,6 @@ const Section1MarkerTop = ({ setBgColor, setCaption }) => {
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
         setCaption(1)
@@ -160,15 +157,6 @@ export const Section1ComponentInner = ({ setBgColor, setCaption }) => {
           id="enter-eyes"
           className="h-[100vh] __b bg-green-600 bg-opacity-50"
         />
-        {/* // ALTERNATIVE CAPTION TRIGGER */}
-        {/* <div
-          id='captionmarker_top'
-          className='w-full h-2 bg-purple-600'
-          data-scroll
-          data-scroll-call='section1-top'
-          data-scroll-repeat
-        /> */}
-        {/* // ALTERNATIVE CAPTION TRIGGER */}
         {/* HEAD APPEAR */}
         <div
           id="head-trigger"
@@ -185,8 +173,11 @@ export const Section1ComponentInner = ({ setBgColor, setCaption }) => {
           className="h-[100vh] __b bg-green-600 bg-opacity-50"
         />
         {/* WISH NORMAL*/}
-        <div id="wish" className="w-full mx-auto max-w-screen-lg mb-40">
-          <div className="relative w-96 h-30rem">
+        <div
+          id="wish"
+          className="h-screen w-full mx-auto max-w-screen-lg md:pl-24 sm:pl-20 pl-12 mb-40"
+        >
+          <div className="relative w-40 h-52 md:w-72 md:h-[22rem] sm:w-44 sm:h-60">
             <Image
               src={wish}
               fill
@@ -199,14 +190,6 @@ export const Section1ComponentInner = ({ setBgColor, setCaption }) => {
         {/* EYES EXIT*/}
         <div id="exit-eyes" className="h-[50vh] __b bg-red-600 bg-opacity-50" />
         {/* // ALTERNATIVE CAPTION TRIGGER */}
-        {/* <div
-          id='captionmarker_bottom'
-          className='w-full h-2 bg-purple-600'
-          data-scroll
-          data-scroll-call='section1-bottom'
-          data-scroll-repeat
-        /> */}
-        {/* // ALTERNATIVE CAPTION TRIGGER */}
         <Section1MarkerBottom setBgColor={setBgColor} setCaption={setCaption} />
         <div id="exit-all" className="h-[50vh] __b bg-red-600 bg-opacity-50" />
       </section>
@@ -214,7 +197,6 @@ export const Section1ComponentInner = ({ setBgColor, setCaption }) => {
   )
 }
 
-export const Section1AnimationOBJMobile = [];
 export const Section1AnimationOBJ = [
   // SECTION 1
   // TITLE ENTER
@@ -279,9 +261,9 @@ export const Section1AnimationOBJ = [
           elem,
           {
             opacity: 0,
-            y: '45vh'
-          }
-        ]
+            y: '45vh',
+          },
+        ],
       },
       {
         to: [
