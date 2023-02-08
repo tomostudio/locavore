@@ -40,14 +40,13 @@ export const Section8ComponentFixedFront = () => {
           Math.round(
             (-(y - window.innerHeight) / (height + window.innerHeight)) * 10000
           ) / 10000;
-        if (lottieRef.current)
-          if (progress > 0 && progress <= 1) {
-            lottieRef.current.goToAndStop(Math.round(358 * progress), true);
-          } else if (progress <= 0) {
-            lottieRef.current.goToAndStop(0, true);
-          } else if (progress > 1) {
-            lottieRef.current.goToAndStop(358, true);
-          }
+        if (progress > 0 && progress <= 1) {
+          lottieRef.current.goToAndStop(Math.round(358 * progress), true);
+        } else if (progress <= 0) {
+          lottieRef.current.goToAndStop(0, true);
+        } else if (progress > 1) {
+          lottieRef.current.goToAndStop(358, true);
+        }
       }
     };
     document.addEventListener('scroll', detectScroll, false);
@@ -130,7 +129,6 @@ const Section8MarkerTop = ({ setBgColor, setCaption }) => {
 };
 
 export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
-
   return (
     <>
       {/* Section 8 */}
@@ -185,10 +183,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                         THE NEW LOCAVORE
                       </div>
                     </div>
-                    <div
-                      id='locavore_nxt'
-                      className='absolute opacity-0 flex flex-col items-center'
-                    >
+                    <div id='locavore_nxt' className='absolute opacity-0 flex flex-col items-center'>
                       LOCAVORE NXT
                       <div
                         id='opening'
@@ -314,7 +309,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   />
                 </div>
                 <div className='group_s8 opacity-0'>
-                  <div className='absolute top-1/2 left-1/2 translate-y-[450%] translate-x-[-700%] w-12 h-12'>
+                  <div className='absolute top-1/2 left-1/2 translate-y-[113%] translate-x-[-75%] w-28 h-28'>
                     <Image
                       alt=''
                       src={worm}
@@ -441,8 +436,8 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
             className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-[-25vh]'
           />
           <div
-            id='enter_locavore_nxt'
-            className='h-[50vh] w-full bg-yellow-600 bg-opacity-50'
+            id='enter_cloud_bug_flower'
+            className='h-[150vh] w-full bg-blue-600 bg-opacity-50'
           />
           <div
             id='gap'
@@ -644,114 +639,34 @@ export const Section8AnimationOBJ = [
   },
   // NEW LOCAVORE ENTER
   () => {
-    const id = 'video_exit'; // animation id
-    const elem = '#video';
+    const id = 'new_locavore_enter'; // animation id
+    const elem = '#new_locavore';
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter_logo', // which section will be tracked as the scroll trigger
+        trigger: '#enter_nxt_logo', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 25%',
-        end: 'top 0%',
+        start: 'top 60%',
+        end: 'bottom 100%',
       },
     };
 
     // Input Animation
     const animation = [
       {
-        to: [
+        set: [
           elem,
           {
             opacity: 0,
           },
         ],
       },
-    ];
-
-    return { id, elem, settings, animation };
-  },
-  // LOGO ENTER
-  () => {
-    const id = 'logo_enter'; // animation id
-    const elem = '#logo > div';
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter_logo', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'top 25%',
-      },
-    };
-
-    // Input Animation
-    const animation = [
       {
         to: [
           elem,
           {
             opacity: 1,
-          },
-        ],
-      },
-    ];
-
-    return { id, elem, settings, animation };
-  },
-  // LOGO EXIT
-  () => {
-    const id = 'logo_exit'; // animation id
-    const elem = '#logo';
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter_logo', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 0%',
-        end: 'bottom 70%',
-      },
-    };
-
-    // Input Animation
-    const animation = [
-      {
-        to: [
-          elem,
-          {
-            y: '-85%',
-          },
-        ],
-      },
-    ];
-
-    return { id, elem, settings, animation };
-  },
-  // NEW LOCAVORE ENTER
-  () => {
-    const id = 'new_locavore_enter'; // animation id
-    const elem = '#new_locavore';
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter_locavore_new', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'top 75%',
-      },
-    };
-
-    // Input Animation
-    const animation = [
-      {
-        to: [
-          elem,
-          {
-            opacity: 1,
-            y: '-50%',
           },
         ],
       },
@@ -766,16 +681,24 @@ export const Section8AnimationOBJ = [
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter_locavore_new', // which section will be tracked as the scroll trigger
+        trigger: '#enter_locavore_nxt', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 50%',
-        end: 'top 0%',
+        start: 'top 100%',
+        end: 'top 50%',
       },
     };
 
     // Input Animation
     const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
       {
         to: [
           elem,
