@@ -197,6 +197,7 @@ export const Section1ComponentInner = ({ setBgColor, setCaption }) => {
   )
 }
 
+export const Section1AnimationOBJMobile = [];
 export const Section1AnimationOBJ = [
   // SECTION 1
   // TITLE ENTER

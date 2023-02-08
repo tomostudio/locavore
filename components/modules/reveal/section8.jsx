@@ -27,6 +27,7 @@ import butterfly2 from '@/public/nxt/butterfly02.png';
 import sunflower3 from '@/public/nxt/sunflower03.png';
 import sunflower4 from '@/public/nxt/sunflower04.png';
 import sunflower5 from '@/public/nxt/sunflower05.png';
+import NXT_Logo_Bumper from '@/public/nxt/LVLNXT-LOGO.png';
 
 export const Section8ComponentFixedFront = () => {
   const lottieRef = useRef();
@@ -56,8 +57,14 @@ export const Section8ComponentFixedFront = () => {
 
   return (
     <div id='section8_fixed_front'>
-      <div className='fixed w-screen z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 max-w-screen-xl'>
-        <div id="lottie-frame" className='w-full aspect-[4/3] md:aspect-[16/9] overflow-hidden rounded-xl'>
+      <div
+        id='video-frame'
+        className='fixed w-screen z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 md:max-w-screen-md lg:max-w-screen-xl max-h-[100vh] pt-20 pb-8'
+      >
+        <div
+          id='lottie-frame'
+          className='w-full aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-xl opacity-0'
+        >
           <Lottie
             lottieRef={lottieRef}
             animationData={LottieLve}
@@ -67,6 +74,24 @@ export const Section8ComponentFixedFront = () => {
               preserveAspectRatio: 'xMidYMid slice',
             }}
             style={{ objectFit: 'fill', width: '100%', height: '100%' }}
+          />
+        </div>
+      </div>
+      <div
+        id='logo-frame'
+        className='fixed w-screen z-[49] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 md:max-w-screen-md max-w-screen-xl opacity-0 pt-20 pb-8'
+      >
+        {/* ANIMATION CONTENT STICKY */}
+        <div
+          id='logo-end'
+          className='frame __b w-full aspect-[4/3] sm:aspect-[16/9] relative overflow-hidden rounded-xl'
+        >
+          <Image
+            src={NXT_Logo_Bumper}
+            fill
+            style={{
+              objectFit: 'cover',
+            }}
           />
         </div>
       </div>
@@ -113,17 +138,27 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
         data-scroll-section
       >
         <Section8MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
+
         <div
-          id='video-marker'
-          className='h-[200vh] w-full bg-blue-600 bg-opacity-50'
+          id='video-enter'
+          className='w-full bg-blue-600 bg-opacity-10 min-h-[100vh]'
         >
           VIDEO ENTER
         </div>
-        <div className='w-full min-h-[200vh] '>
-          <div
-            id='enter_nxt_logo'
-            className='h-screen bg-slate-400 bg-opacity-20 w-full sticky top-0 flex justify-center items-center'
-          >
+        <div
+          id='video-marker'
+          className='h-[200vh] w-full bg-blue-600 bg-opacity-10'
+        >
+          VIDEO PLAY
+        </div>
+        <div id='video-to-logo' className='w-full min-h-[100vh]'>
+          LOGO ENTER
+        </div>
+        <div id='logo-moveup' className='w-full h-screen'>
+          LOGO EXIT
+        </div>
+        <div className='w-full '>
+          <div className='h-screen bg-slate-400 bg-opacity-20 w-full sticky top-0 flex justify-center items-center'>
             {/* ANIMATION CONTENT STICKY */}
             <div className='frame __b w-full h-full relative overflow-hidden'>
               <div
@@ -133,7 +168,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                 <div className='relative max-w-screen-lg w-full h-full flex justify-center items-center __b mx-auto'>
                   <div className='pointer-events-none font-funkturm tracking-[0.08em] absolute w-full h-full flex flex-col justify-center items-center text-center leading-none text-white text-8xl'>
                     <div className='relative flex justify-center items-center w-fit h-fit'>
-                      <div className='absolute -top-60 w-48 h-48'>
+                      {/* <div className='absolute -top-60 w-48 h-48'>
                         <Image
                           src={nxtLogo}
                           fill
@@ -141,30 +176,33 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                             objectFit: 'contain',
                           }}
                         />
-                      </div>
+                      </div> */}
                     </div>
                     <div id='new_locavore_exit'>
                       <div id='new_locavore' className='opacity-0'>
                         THE NEW LOCAVORE
                       </div>
                     </div>
-                    <div id='locavore_nxt' className='absolute opacity-0'>
+                    <div id='locavore_nxt' className='absolute opacity-0 flex flex-col items-center'>
                       LOCAVORE NXT
                       <div
                         id='opening'
                         className='absolute opacity-0 flex flex-col justify-center items-center text-center'
                       >
-                        OPENING 2023
-                        <div className='group_s8'>
-                          <div className='absolute top-0 right-44 w-40 h-16'>
-                            <Image
-                              src={summer}
-                              fill
-                              style={{
-                                objectFit: 'contain',
-                              }}
-                            />
+                        <div className='flex flex-row justify-center items-center text-center'>
+                          OPENING
+                          <div className='group_s8 h-0 w-4 relative'>
+                            <div className='absolute top-[calc(50%-20px)] translate-y-[-50%] left-1/2 translate-x-[-50%] w-40 h-16'>
+                              <Image
+                                src={summer}
+                                fill
+                                style={{
+                                  objectFit: 'contain',
+                                }}
+                              />
+                            </div>
                           </div>
+                          2023
                         </div>
                         <FancyLink
                           destination={`/share`}
@@ -228,6 +266,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                     style={{
                       objectFit: 'contain',
                     }}
+                    alt=''
                   />
                 </div>
                 <div
@@ -235,6 +274,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   className='absolute top-1/2 left-1/2 opacity-0 translate-y-[-10%] translate-x-[-90%] w-36 h-36'
                 >
                   <Image
+                    alt=''
                     src={cloud4}
                     fill
                     style={{
@@ -247,6 +287,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   className='absolute top-1/2 left-1/2 opacity-0 translate-y-[-255%] translate-x-[-130%] w-[27rem] h-40'
                 >
                   <Image
+                    alt=''
                     src={cloud5}
                     fill
                     style={{
@@ -259,6 +300,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   className='absolute top-1/2 left-1/2 opacity-0 translate-y-[70%] translate-x-[117%] w-[27rem] h-40'
                 >
                   <Image
+                    alt=''
                     src={cloud6}
                     fill
                     style={{
@@ -269,6 +311,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                 <div className='group_s8 opacity-0'>
                   <div className='absolute top-1/2 left-1/2 translate-y-[113%] translate-x-[-75%] w-28 h-28'>
                     <Image
+                      alt=''
                       src={worm}
                       fill
                       style={{
@@ -278,6 +321,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   </div>
                   <div className='absolute top-1/2 left-1/2 translate-y-[450%] translate-x-[-700%] w-12 h-12'>
                     <Image
+                      alt=''
                       src={bee1}
                       fill
                       style={{
@@ -287,6 +331,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   </div>
                   <div className='absolute top-1/2 left-1/2 translate-y-[250%] translate-x-[-900%] w-14 h-14'>
                     <Image
+                      alt=''
                       src={bee2}
                       fill
                       style={{
@@ -296,6 +341,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   </div>
                   <div className='absolute top-1/2 left-1/2 translate-y-[-500%] translate-x-[-240%] w-14 h-14'>
                     <Image
+                      alt=''
                       src={bee3}
                       fill
                       style={{
@@ -305,6 +351,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   </div>
                   <div className='absolute top-1/2 left-1/2 translate-y-[-300%] translate-x-[250%] w-20 h-20'>
                     <Image
+                      alt=''
                       src={butterfly1}
                       fill
                       style={{
@@ -314,6 +361,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   </div>
                   <div className='absolute top-1/2 left-1/2 translate-y-[-200%] translate-x-[-300%] w-20 h-20'>
                     <Image
+                      alt=''
                       src={butterfly2}
                       fill
                       style={{
@@ -323,6 +371,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   </div>
                   <div className='absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[-430%] w-28 h-28'>
                     <Image
+                      alt=''
                       src={sunflower3}
                       fill
                       style={{
@@ -332,6 +381,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   </div>
                   <div className='absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[450%] w-24 h-24'>
                     <Image
+                      alt=''
                       src={sunflower4}
                       fill
                       style={{
@@ -341,6 +391,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   </div>
                   <div className='absolute top-1/2 left-1/2 translate-y-[280%] translate-x-[380%] w-20 h-20'>
                     <Image
+                      alt=''
                       src={sunflower5}
                       fill
                       style={{
@@ -350,6 +401,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   </div>
                   <div className='absolute top-1/2 left-1/2 translate-y-[-330%] translate-x-[200%] w-12 h-12'>
                     <Image
+                      alt=''
                       src={bee4}
                       fill
                       style={{
@@ -359,6 +411,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   </div>
                   <div className='absolute top-1/2 left-1/2 translate-y-[-90%] translate-x-[50%] w-14 h-14'>
                     <Image
+                      alt=''
                       src={bee5}
                       fill
                       style={{
@@ -371,32 +424,24 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
             </div>
           </div>
           <div
+            id='enter_nxt_logo'
+            className='h-[100vh] w-full bg-red-600 bg-opacity-50 mt-[-75vh]'
+          />
+          <div
             id='enter_locavore_nxt'
             className='h-[100vh] w-full bg-red-600 bg-opacity-50'
           />
           <div
             id='enter_opening'
-            className='h-[50vh] w-full bg-green-600 bg-opacity-50'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-[-25vh]'
           />
           <div
             id='enter_cloud_bug_flower'
             className='h-[150vh] w-full bg-blue-600 bg-opacity-50'
           />
           <div
-            id='trigger'
-            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
-          />
-          <div
-            id='trigger'
-            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
-          />
-          <div
-            id='trigger'
-            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
-          />
-          <div
-            id='trigger'
-            className='h-[50vh] w-full bg-green-600 bg-opacity-50 mt-24'
+            id='gap'
+            className='h-[50vh] w-full bg-green-600 bg-opacity-50'
           />
         </div>
       </section>
@@ -406,6 +451,192 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
 
 export const Section8AnimationOBJMobile = [];
 export const Section8AnimationOBJ = [
+  // VIDEO ENTER
+  () => {
+    const id = 'video-enter'; // animation id
+    const elem = '#lottie-frame';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#video-enter', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'top 0%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+            y: '100vh',
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+            y: '0vh',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // VIDEO TO LOGO
+  () => {
+    const id = 'video-to-logo'; // animation id
+    const elem = '#video-frame';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#video-to-logo', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'bottom 100%',
+        end: 'bottom 0%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  }, // LOGO APPEAR
+  () => {
+    const id = 'logo-appear'; // animation id
+    const elem = '#logo-frame';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#video-to-logo', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'top 50%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // NEW LOCAVORE ENTER (LOGO)
+  () => {
+    const id = 'new_locavore_enter'; // animation id
+    const elem = '#new_locavore';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_nxt_logo', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 60%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // LOGO PUSH UP
+  () => {
+    const id = 'logo-up'; // animation id
+    const elem = '#logo-end';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#logo-moveup', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'bottom 100%',
+        end: 'bottom 0%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            y: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            y: '-200px',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
   // NEW LOCAVORE ENTER
   () => {
     const id = 'new_locavore_enter'; // animation id
@@ -490,8 +721,8 @@ export const Section8AnimationOBJ = [
         trigger: '#enter_locavore_nxt', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 50%',
-        end: 'bottom 100%',
+        start: 'top 75%',
+        end: 'top 25%',
       },
     };
 

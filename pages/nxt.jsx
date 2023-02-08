@@ -87,18 +87,18 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
   // ANIMATION
   const animationObj = {
-    '(min-width: 1200px)': [
+    '(min-width: 751px)': [
       ...Section1AnimationOBJ,
       // ...Section2AnimationOBJ,
       // ...Section3AnimationOBJ,
       // ...Section4AnimationOBJ,
       // ...Section5AnimationOBJ,
       // ...Section6AnimationOBJ,
-      // ...Section7AnimationOBJ,
-      // ...Section8AnimationOBJ,
+      ...Section7AnimationOBJ,
+      ...Section8AnimationOBJ,
     ],
-    '(min-width: 850px)': [
-      ...Section1AnimationOBJ,
+    '(max-width: 750px)': [
+      ...Section1AnimationOBJMobile,
       ...Section2AnimationOBJMobile,
       ...Section3AnimationOBJMobile,
       ...Section4AnimationOBJMobile,
@@ -107,12 +107,6 @@ export default function Reveal({ seoAPI, footerAPI }) {
       ...Section7AnimationOBJMobile,
       ...Section8AnimationOBJMobile,
     ],
-    '(min-width: 600px)': [
-      ...Section1AnimationOBJ,
-    ],
-    '':[
-      ...Section1AnimationOBJ
-    ]
   };
 
   useEffect(() => {
@@ -127,7 +121,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
     window.addEventListener('LocoCall', BackgroundLocomotiveEvents);
 
     // Go to the Top, Set Background Color
-    // window.scroll(0, 0);
+    window.scroll(0, 0);
     setBgColor(0);
 
     return () => {
@@ -198,9 +192,9 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 6 */}
         {/* <Section6ComponentFixedFront /> */}
         {/* SECTION 7 */}
-        {/* <Section7ComponentFixedFront /> */}
+        <Section7ComponentFixedFront />
         {/* SECTION 8 */}
-        {/* <Section8ComponentFixedFront /> */}
+        <Section8ComponentFixedFront />
       </div>
       {/* FIXED POSITION BACK*/}
       <div className='outercontainer-back fixed -z-1 w-full h-full border pointer-events-none select-none overflow-hidden'>
@@ -217,9 +211,9 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 6 */}
         {/* <Section6ComponentFixedBack /> */}
         {/* SECTION 7 */}
-        {/* <Section7ComponentFixedBack /> */}
+        <Section7ComponentFixedBack />
         {/* SECTION 8 */}
-        {/* <Section8ComponentFixedBack /> */}
+        <Section8ComponentFixedBack />
       </div>
       {/* BACKGROUND COLOR */}
       <div
@@ -354,10 +348,10 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   /> */}
                   {/* Section 7 */}
                   {/* FEED CHANGE */}
-                  {/* <Section7ComponentInner
+                  <Section7ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  /> */}
+                  />
                   {/* Section 8*/}
                   {/* LOCAVORE NEXT */}
                   <Section8ComponentInner
