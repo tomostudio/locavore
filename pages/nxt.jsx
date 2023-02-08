@@ -115,6 +115,9 @@ export default function Reveal({ seoAPI, footerAPI }) {
       if (enter === 'enter' && target === 'section0') {
         setCaption(0);
         setBgColor(0);
+      } else if (target === 'sectionstart') {
+        setBgColor(0);
+        setCaption(-1);
       }
     };
 
@@ -122,6 +125,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
     // Go to the Top, Set Background Color
     window.scroll(0, 0);
+    setCaption(0);
     setBgColor(0);
 
     return () => {
@@ -132,23 +136,49 @@ export default function Reveal({ seoAPI, footerAPI }) {
   // ALTERNATIVE CAPTION
   const setCaption = (n) => {
     const captions = document.querySelectorAll(
-      '#reveal_caption > div > .caption_tab'
+      '#reveal_caption > div.captions_wrapper > .caption_tab'
     );
     captions.forEach((caption, index) => {
       caption.classList.remove('active');
       if (index + 1 <= n) caption.classList.add('active');
+      console.log(caption.offsetWidth);
     });
 
     const captionContainer = document.querySelector('#reveal_caption');
 
     // Hide Caption on Section 7 & 8
-    if (n >= 7) {
+    if (n >= 7 || n === -1) {
       captionContainer.style.opacity = 0;
     } else {
       captionContainer.style.opacity = 1;
     }
 
     //ADJUST CENTERING FOR MOBILE
+    let offsetX = 0;
+
+    if (n <= 1) {
+      offsetX = captions[0].offsetWidth / 2;
+    } else {
+      // offsetX =
+      // moving for 2 or 3 or 4 or 5
+      captions.forEach((caption, index) => {
+        const setN = n >= 6 ? 6 : n;
+        if (index < setN - 1) {
+          offsetX = offsetX + caption.offsetWidth + 12;
+          console.log(setN, index, offsetX);
+        }
+        if (index === setN - 1) {
+          offsetX = offsetX + caption.offsetWidth / 2;
+          console.log(setN, index, offsetX);
+        }
+      });
+    }
+
+    document.querySelector('#reveal_caption').scroll({
+      left: offsetX,
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   // Set Background
@@ -224,12 +254,10 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* CAPTION */}
       <div
         id='reveal_caption'
-        className='caption fixed z-50 text-sm pointer-events-none __b overflow-hidden w-full px-20 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500'
+        className='caption flex flex-row  justify-center items-center hide-scrollbar fixed z-50 text-sm pointer-events-none overflow-x-auto overflow-y-hidden md:overflow-x-auto w-full md:px-20 bottom-6 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500'
       >
-        <div
-          className='flex md:flex-wrap md:justify-center gap-2 md:gap-1 relative md:!translate-x-0'
-          style={{ transform: 'translate(50%, 0%)' }}
-        >
+        <div className='md:hidden block w-[50vw] shrink-0' />
+        <div className='captions_wrapper flex md:flex-wrap md:justify-center gap-2 md:gap-1 relative md:!translate-x-0 transition-transform shrink-0 md:shrink'>
           <div
             className={`caption_tab px-2 w-fit rotate-0 will-change-auto text-center shrink-0 max-w-[80vw]`}
           >
@@ -261,6 +289,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
             INSPIRED BY OUR NICE THING
           </div>
         </div>
+        <div className='md:hidden block w-[50vw] shrink-0' />
       </div>
 
       <LocomotiveScrollProvider
@@ -286,6 +315,13 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   variants={fade}
                 >
                   {/* Section 0 */}
+                  <div
+                    id='captionmarker_0'
+                    className='w-full h-1 bg-purple-600'
+                    data-scroll
+                    data-scroll-call='sectionstart'
+                    data-scroll-repeat
+                  />
                   <section
                     id='trigger0'
                     className='trigger w-full h-[110vh] text-4xl'
@@ -318,16 +354,16 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   />
                   {/* Section 2 */}
                   {/* INSPIRED BY NICE THINGS */}
-                  {/* <Section2ComponentInner
+                  <Section2ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  /> */}
+                  />
                   {/* Section 3 */}
                   {/* AND A BETTER WORLD */}
-                  {/* <Section3ComponentInner
+                  <Section3ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  /> */}
+                  />
                   {/* Section 4 */}
                   {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
                   {/* <Section4ComponentInner
