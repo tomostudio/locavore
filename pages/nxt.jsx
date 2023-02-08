@@ -322,7 +322,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   {/* Section 0 */}
                   <div
                     id='captionmarker_0'
-                    className='w-full h-0'
+                    className='w-full h-1'
                     data-scroll
                     data-scroll-call='sectionstart'
                     data-scroll-repeat
@@ -346,7 +346,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   </section>
                   <div
                     id='captionmarker_0'
-                    className='w-full h-0'
+                    className='w-full h-1'
                     data-scroll
                     data-scroll-call='section0'
                     data-scroll-repeat
