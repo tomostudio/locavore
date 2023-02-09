@@ -238,7 +238,7 @@ export const Section5ComponentFixedBack = () => {
           </div>
           <div
             id='opensource'
-            className='fixed w-52 top-1/2 right-1/2 md:right-auto md:left-1/2 translate-y-[200%] md:translate-x-[-150%] md:translate-y-[-165%]'
+            className='fixed w-52 top-1/2 right-1/2 md:right-auto md:left-1/2 translate-y-[200%] md:translate-x-[-150%] md:translate-y-[-350%]'
           >
             <Image src={opensource} alt='' />
           </div>
