@@ -28,6 +28,7 @@ export const Section7ComponentFixedFront = () => {
               >
                 <Image
                   src={underline}
+                  placeholder="blur"
                   fill
                   style={{
                     objectFit: 'cover',
@@ -44,6 +45,7 @@ export const Section7ComponentFixedFront = () => {
               >
                 <Image
                   src={underline}
+                  placeholder="blur"
                   fill
                   style={{
                     objectFit: 'cover',
@@ -57,13 +59,13 @@ export const Section7ComponentFixedFront = () => {
               className='absolute right-2 md:right-4 bottom-18 md:bottom-auto md:-top-10 opacity-0'
             >
               <div id='heart1' className='absolute w-10 md:w-16 animate-fade'>
-                <Image src={heart1} alt='' />
+                <Image src={heart1} placeholder="blur" alt='' />
               </div>
               <div
                 id='heart2'
                 className='absolute w-8 md:w-14 translate-x-[-40%] translate-y-[-80%] animate-fade-delay'
               >
-                <Image src={heart2} alt='' />
+                <Image src={heart2} placeholder="blur" alt='' />
               </div>
             </div>
           </div>
@@ -73,6 +75,7 @@ export const Section7ComponentFixedFront = () => {
           >
             <Image
               src={underline}
+              placeholder="blur"
               fill
               style={{
                 objectFit: 'contain',
