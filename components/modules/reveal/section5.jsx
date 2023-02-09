@@ -200,8 +200,8 @@ export const Section5ComponentFixedBack = () => {
           </div>
         </div>
         <div
-          // id='awesome'
-          className='fixed w-60 md:w-72  top-1/2 left-1/2 translate-x-[0%] translate-y-[-180%] md:translate-y-[-170%]'
+          id='awesome'
+          className='fixed w-60 md:w-72  top-1/2 left-1/2 translate-x-[0%] translate-y-[-180%] md:translate-y-[-170%] opacity-0'
         >
           <Image src={awesome} alt=' ' />
         </div>
