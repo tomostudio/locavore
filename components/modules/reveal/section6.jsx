@@ -41,7 +41,7 @@ export const Section6ComponentFixedBack = () => {
                     id='circle'
                     className='absolute w-[12rem] md:w-[19rem] opacity-0 translate-y-[-15%] translate-x-[-18%] md:translate-x-[-20%] '
                   >
-                    <Image src={circle} placeholder="blur" alt='' />
+                    <Image src={circle} alt='' />
                   </div>
                   OUR NICE
                 </span>
@@ -52,7 +52,7 @@ export const Section6ComponentFixedBack = () => {
                       id='home'
                       className='relative w-[16rem] md:w-[26rem] opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
                     >
-                      <Image src={home} placeholder="blur" alt='' />
+                      <Image src={home} alt='' />
                     </div>
                   </div>
                 </span>
@@ -127,7 +127,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
         {/* HOME */}
         <div id='enter_home' className='h-[25vh] w-full' />
         {/* INSPIRE1 */}
-        <div id='home_spin' className='w-full relative'>
+        <div id='home_spin' className='w-full relative z-50'>
           <div
             id='enter_inspire1'
             className='relative h-[100vh] w-full flex justify-center items-center'
@@ -135,15 +135,15 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             <div className='relative max-w-screen-xl mx-auto w-full h-full'>
               <div
                 id='inspire1d'
-                className='absolute w-[90%] md:w-[80%] bottom-0 left-0 aspect-[16/9]'
+                className='absolute w-[90%] md:w-[80%] bottom-0 left-0 aspect-[16/9] z-1'
               >
-                <Image src={inspire9} placeholder="blur" alt='' />
+                <Image src={inspire9} alt='' priority />
               </div>
               <div
                 id='inspire1n'
-                className='absolute w-[90%] md:w-[80%] bottom-0 left-0 aspect-[16/9] opacity-0'
+                className='absolute w-[90%] md:w-[80%] bottom-0 left-0 aspect-[16/9] opacity-0 z-10 stop-flickering will-change-auto '
               >
-                <Image src={inspire10} placeholder="blur" alt='' />
+                <Image src={inspire10} alt='' priority />
               </div>
             </div>
           </div>
@@ -154,39 +154,36 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             className='relative h-screen w-full  flex justify-center items-center'
           >
             <div className='relative max-w-screen-xl w-full h-full'>
-              <Parallax speed={-10} className='relative w-full h-full'>
-                <div
-                  id='inspire2d'
-                  className='absolute w-[80%] md:w-[60%] top-0 right-0 aspect-[16/9]'
-                >
-                  <Image src={inspire7} placeholder="blur" alt='' />
-                </div>
-                <div
-                  id='inspire2n'
-                  className='absolute w-[80%] md:w-[60%] top-0 right-0 aspect-[16/9] opacity-0'
-                >
-                  <Image src={inspire8} placeholder="blur" alt='' />
-                </div>
-              </Parallax>
+              {/* <Parallax speed={-10} className='relative w-full h-full'> */}
+              <div
+                id='inspire2d'
+                className='absolute w-[80%] md:w-[60%] top-0 right-0 aspect-[16/9] z-1'
+              >
+                <Image src={inspire7} alt='' priority />
+              </div>
+              <div
+                id='inspire2n'
+                className='absolute w-[80%] md:w-[60%] top-0 right-0 aspect-[16/9] opacity-0 z-10 stop-flickering will-change-auto'
+              >
+                <Image src={inspire8} alt='' priority />
+              </div>
+              {/* </Parallax> */}
             </div>
           </div>
           {/* INSPIRE3 */}
           <div
             id='enter_inspire3'
-            className='relative h-screen w-full  flex justify-center items-center'
+            className='relative h-screen w-full flex justify-center items-center'
           >
-            <div className='relative max-w-screen-xl w-full h-full mx-auto'>
-              <div
-                id='inspire3d'
-                className='absolute w-[80%] md:w-[70%] top-0 left-1/2 translate-x-[-50%] aspect-[16/9]'
-              >
-                <Image src={inspire5} placeholder="blur" alt='' />
+            <div className='relative max-w-screen-xl w-[80%] md:w-[70%] aspect-[16/9] mx-auto'>
+              <div id='inspire3d' className='relative w-full h-full z-1 block'>
+                <Image src={inspire5} alt='' priority />
               </div>
               <div
                 id='inspire3n'
-                className='absolute w-[80%] md:w-[70%] top-0 left-1/2 translate-x-[-50%] aspect-[16/9] opacity-0'
+                className='absolute  w-full h-full top-0 left-0 opacity-0 z-10 stop-flickering will-change-auto block'
               >
-                <Image src={inspire6} placeholder="blur" alt='' />
+                <Image src={inspire6} alt='' priority />
               </div>
             </div>
           </div>
@@ -195,31 +192,31 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             id='enter_inspire4'
             className='relative h-screen w-full  flex justify-center items-center'
           >
-            <Parallax speed={-20} className='relative w-full h-full'>
-              <div className='relative max-w-screen-xl w-full h-full mx-auto'>
-                <div id='inspire4d' className='absolute w-full  top-0'>
-                  <Image src={inspire3} placeholder="blur" alt='' />
-                </div>
-                <div id='inspire4n' className='absolute w-full top-0 opacity-0'>
-                  <Image src={inspire4} placeholder="blur" alt='' />
-                </div>
+            {/* <Parallax speed={-20} className='relative w-full h-full'> */}
+            <div className='relative max-w-screen-xl w-full h-full mx-auto'>
+              <div id='inspire4d' className='absolute w-full top-0 z-1'>
+                <Image src={inspire3} alt='' priority />
               </div>
-            </Parallax>
+              <div
+                id='inspire4n'
+                className='absolute w-full top-0 opacity-0  z-10 will-change-auto stop-flickering'
+              >
+                <Image src={inspire4} alt='' priority />
+              </div>
+            </div>
+            {/* </Parallax> */}
           </div>
           {/* INSPIRE5 */}
           <div className='relative h-screen w-full  flex justify-center items-center'>
-            <div className='relative max-w-screen-xl mx-auto w-full h-full'>
-              <div
-                id='inspire5d'
-                className='absolute w-[80%] top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%]'
-              >
-                <Image src={inspire1} placeholder="blur" alt='' />
+            <div className='relative max-w-screen-xl mx-auto w-[80%] '>
+              <div id='inspire5d' className='absolute w-full h-full z-1'>
+                <Image src={inspire1} alt='' priority />
               </div>
               <div
                 id='inspire5n'
-                className='absolute w-[80%] top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] opacity-0'
+                className='absolute w-full h-full  opacity-0  z-10  stop-flickering will-change-auto'
               >
-                <Image src={inspire2} placeholder="blur" alt='' />
+                <Image src={inspire2} alt='' priority />
               </div>
             </div>
           </div>
@@ -251,7 +248,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
+        from: [
           elem,
           {
             opacity: 0,
@@ -288,7 +285,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
+        from: [
           elem,
           {
             opacity: 0,
@@ -325,7 +322,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
+        from: [
           elem,
           {
             opacity: 0,
@@ -362,7 +359,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
+        from: [
           elem,
           {
             opacity: 0,
@@ -399,7 +396,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
+        from: [
           elem,
           {
             opacity: 0,
@@ -436,7 +433,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
+        from: [
           elem,
           {
             opacity: 0,
@@ -473,7 +470,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
+        from: [
           elem,
           {
             opacity: 0,
@@ -510,7 +507,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
+        from: [
           elem,
           {
             opacity: 0,
@@ -547,7 +544,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
+        from: [
           elem,
           {
             rotate: '0deg',
@@ -584,7 +581,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
+        from: [
           elem,
           {
             opacity: 1,

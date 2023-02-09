@@ -191,16 +191,12 @@ export const Section2ComponentFixedBack = () => {
       </div>
       <div
         id='forest1'
-        className='fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[85vh] overflow-visible'
+        className='fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[-100vh] overflow-visible'
       >
-        <div className='absolute w-[18rem] h-[16rem] md:w-[30rem] md:h-[35rem] -left-20 top-1/2 md:left-6 translate-y-[-27%] md:translate-y-[-45%]'>
+        <div className='absolute w-[18rem] md:w-[26rem] -left-20 top-1/2 md:left-6 translate-y-[-27%] md:translate-y-[-45%]'>
           <Image
             src={forest1}
             placeholder='blur'
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
             alt=''
           />
           <div
