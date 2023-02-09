@@ -26,7 +26,7 @@ import butterfly2 from '@/public/nxt/butterfly02.webp';
 import sunflower3 from '@/public/nxt/sunflower03.webp';
 import sunflower4 from '@/public/nxt/sunflower04.webp';
 import sunflower5 from '@/public/nxt/sunflower05.webp';
-import NXT_Logo_Bumper from '@/public/nxt/LVLNXT-LOGO.webp';
+// import NXT_Logo_Bumper from '@/public/nxt/LVLNXT-LOGO.webp';
 import HeaderGap from '../headerGap';
 
 export const Section8ComponentFixedFront = () => {
@@ -91,14 +91,14 @@ export const Section8ComponentFixedFront = () => {
             id='logo-end'
             className='frame w-full aspect-[4/3] sm:aspect-[16/9] relative overflow-hidden rounded-xl'
           >
-            <Image
+            {/* <Image
               src={NXT_Logo_Bumper}
               fill
               style={{
                 objectFit: 'cover',
               }}
               alt=''
-            />
+            /> */}
           </div>
         </div>
       </div>
