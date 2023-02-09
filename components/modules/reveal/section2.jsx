@@ -177,7 +177,7 @@ export const Section2ComponentFixedBack = () => {
         id='forest2'
         className='fixed z-2 h-0 w-0 top-1/2 right-0 __b overflow-visible'
       >
-        <div className='w-[18rem] h-[13rem] absolute top-1/2 translate-y-[25%] md:translate-y-[-50%] translate-x-[100%]'>
+        <div className='w-[18rem] h-[13rem] md:w-[29rem] md:h-[23rem] absolute top-1/2 translate-y-[25%] md:translate-y-[-50%] translate-x-[100%]'>
           <Image
             src={forest2}
             fill
@@ -191,7 +191,7 @@ export const Section2ComponentFixedBack = () => {
         id='forest3'
         className='fixed z-3 h-0 w-0 bottom-0 right-1/2 __b overflow-visible'
       >
-        <div className='w-[25rem] h-[20rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[100%]'>
+        <div className='w-[25rem] h-[20rem] md:w-[36rem] md:h-[30rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[100%]'>
           <Image
             src={forest3}
             fill
