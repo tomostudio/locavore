@@ -4,8 +4,8 @@ import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 import Lottie from 'lottie-react'
 
-import FancyLink from '@/components/utils/fancyLink'
-import LottieLve from '@/public/nxt/lottie/lve-lottie-jpg.json'
+import FancyLink from '@/components/utils/fancyLink';
+import LottieLve from '@/public/nxt/lottie/lve-lottie-jpg-2.json';
 
 // Local Images
 import summer from '@/public/nxt/summer.webp';
