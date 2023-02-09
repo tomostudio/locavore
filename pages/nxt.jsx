@@ -398,6 +398,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   {/* Section 8*/}
                   {/* LOCAVORE NEXT */}
                   <Section8ComponentInner
+                    general={seo}
                     setBgColor={setBgColor}
                     setCaption={setCaption}
                   />
