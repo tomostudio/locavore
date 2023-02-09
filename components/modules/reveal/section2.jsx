@@ -177,14 +177,8 @@ export const Section2ComponentFixedBack = () => {
         id='forest2'
         className='fixed z-2 h-0 w-0 top-1/2 right-0 overflow-visible'
       >
-        <div className='w-[18rem] h-[13rem] md:w-[29rem] md:h-[23rem] absolute top-1/2 translate-y-[25%] md:translate-y-[-50%] translate-x-[100%]'>
-          <Image
-            src={forest2}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
-          />
+        <div className='w-[20rem] md:w-[28rem]  absolute top-1/2 translate-y-[25%] md:translate-y-[-50%] translate-x-[100%]'>
+          <Image src={forest2} alt='' />
         </div>
       </div>
       <div
@@ -257,49 +251,25 @@ export const Section2ComponentInner = ({ setBgColor, setCaption }) => {
         className='trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center '
       >
         {/* INSPIRED BY NICE THINGS */}
-        <div
-          id='enter-inspired'
-          className='h-[100vh] mt-24'
-        />
+        <div id='enter-inspired' className='h-[100vh] mt-24' />
         <Section2MarkerTop setBgColor={setBgColor} setCaption={setCaption} />
         {/* BUG FLOWER */}
-        <div
-          id='enter-bug-flower'
-          className='h-[100vh]'
-        />
+        <div id='enter-bug-flower' className='h-[100vh]' />
         {/* FOREST 1 */}
-        <div
-          id='enter-forest1'
-          className='h-[100vh]'
-        />
+        <div id='enter-forest1' className='h-[100vh]' />
         {/* MUG */}
-        <div id='enter_mug' className='h-[50vh] '/>
+        <div id='enter_mug' className='h-[50vh] ' />
         {/* BEE */}
-        <div id='enter_bee' className='h-[50vh] '/>
+        <div id='enter_bee' className='h-[50vh] ' />
         {/* FOREST 2 */}
-        <div
-          id='enter-forest2'
-          className='h-[100vh]'
-        />
+        <div id='enter-forest2' className='h-[100vh]' />
         <div className='h-[50vh]' />
-        <div
-          id='exit-group2'
-          className='h-[50vh]  mt-24'
-        />
-        <div
-          id='exit-forest1'
-          className='h-[50vh] mt-24'
-        />
-        <div
-          id='exit-worm'
-          className='h-[50vh]'
-        />
+        <div id='exit-group2' className='h-[50vh]  mt-24' />
+        <div id='exit-forest1' className='h-[50vh] mt-24' />
+        <div id='exit-worm' className='h-[50vh]' />
         {/* // ALTERNATIVE CAPTION TRIGGER */}
         <Section2MarkerBottom setBgColor={setBgColor} setCaption={setCaption} />
-        <div
-          id='exit-inspired'
-          className='h-[50vh] mt-24'
-        />
+        <div id='exit-inspired' className='h-[50vh] mt-24' />
       </section>
     </>
   );
