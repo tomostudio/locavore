@@ -189,7 +189,7 @@ export const Section2ComponentFixedBack = () => {
           />
           <div
             id='mug'
-            className='w-40 h-40 md:w-72 md:h-72 fixed left-20 -bottom-10 md:-left-9 md:bottom-24 opacity-0'
+            className='w-40 h-40 md:w-72 md:h-72 fixed left-20 -bottom-5 md:-left-20 md:bottom-24 opacity-0'
           >
             <Image
               src={mugSticker}
