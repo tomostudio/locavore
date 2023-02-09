@@ -4,30 +4,33 @@ import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 import Lottie from 'lottie-react'
 
-import FancyLink from '@/components/utils/fancyLink';
-import LottieLve from '@/public/nxt/lottie/lve-lottie-jpg-2.json';
+import FancyLink from '@/components/utils/fancyLink'
+import LottieLve from '@/public/nxt/lottie/lve-lottie-jpg-2.json'
 
 // Local Images
-import summer from '@/public/nxt/summer.webp';
-import cloud1 from '@/public/nxt/cloud01.webp';
-import cloud2 from '@/public/nxt/cloud02.webp';
-import cloud3 from '@/public/nxt/cloud03.webp';
-import cloud4 from '@/public/nxt/cloud04.webp';
-import cloud5 from '@/public/nxt/cloud05.webp';
-import cloud6 from '@/public/nxt/cloud03.webp';
-import worm from '@/public/nxt/worm.webp';
-import bee1 from '@/public/nxt/bee01.webp';
-import bee2 from '@/public/nxt/bee02.webp';
-import bee3 from '@/public/nxt/bee03.webp';
-import bee4 from '@/public/nxt/bee01.webp';
-import bee5 from '@/public/nxt/bee02.webp';
-import butterfly1 from '@/public/nxt/butterfly01.webp';
-import butterfly2 from '@/public/nxt/butterfly02.webp';
-import sunflower3 from '@/public/nxt/sunflower03.webp';
-import sunflower4 from '@/public/nxt/sunflower04.webp';
-import sunflower5 from '@/public/nxt/sunflower05.webp';
+import summer from '@/public/nxt/summer.webp'
+import cloud1 from '@/public/nxt/cloud01.webp'
+import cloud2 from '@/public/nxt/cloud02.webp'
+import cloud3 from '@/public/nxt/cloud03.webp'
+import cloud4 from '@/public/nxt/cloud04.webp'
+import cloud5 from '@/public/nxt/cloud05.webp'
+import cloud6 from '@/public/nxt/cloud03.webp'
+import worm from '@/public/nxt/worm.webp'
+import bee1 from '@/public/nxt/bee01.webp'
+import bee2 from '@/public/nxt/bee02.webp'
+import bee3 from '@/public/nxt/bee03.webp'
+import bee4 from '@/public/nxt/bee01.webp'
+import bee5 from '@/public/nxt/bee02.webp'
+import butterfly1 from '@/public/nxt/butterfly01.webp'
+import butterfly2 from '@/public/nxt/butterfly02.webp'
+import sunflower3 from '@/public/nxt/sunflower03.webp'
+import sunflower4 from '@/public/nxt/sunflower04.webp'
+import sunflower5 from '@/public/nxt/sunflower05.webp'
 // import NXT_Logo_Bumper from '@/public/nxt/LVLNXT-LOGO.webp';
-import HeaderGap from '../headerGap';
+import HeaderGap from '../headerGap'
+import { Snackbar, Tooltip } from '@mui/material'
+import { Facebook, Link, Mail, Twitter } from '@/helpers/preset/svg'
+import { transition } from '@/helpers/preset/tailwind'
 
 export const Section8ComponentFixedFront = () => {
   const lottieRef = useRef()
@@ -229,54 +232,54 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                         </div>
 
                         <div className="relative w-full">
-                          {showShare ? (
-                            <FancyLink
-                              onClick={handleShareButton}
-                              className={`absolute left-1/2 translate-x-[-50%] mt-14 w-fit py-4 px-6 text-xl font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-                            >
-                              <div
-                                id="worm"
-                                className="absolute top-[-100%] left-0 pointer-events-none w-28 h-28 opacity-0"
-                              >
-                                <Image
-                                  alt=""
-                                  src={worm}
-                                  placeholder="blur"
-                                  fill
-                                  style={{
-                                    objectFit: 'contain',
-                                  }}
-                                />
+                          <div
+                            id="opening"
+                            className="opacity-0 flex flex-col justify-center items-center text-center"
+                          >
+                            <div className="relative w-full flex flex-col mt-4 ">
+                              <div className="relative flex flex-col lg:flex-row gap-4 lg:gap-8 justify-center items-center text-center">
+                                <span>OPENING</span>
+                                <span className="relative">
+                                  <div
+                                    id="summer"
+                                    className="absolute top-0 lg:top-1/2 translate-y-[-30%] lg:translate-y-[-50%] translate-x-[-60%] lg:translate-x-[-50%] w-40 h-16 opacity-0"
+                                  >
+                                    <Image
+                                      src={summer}
+                                      placeholder="blur"
+                                      fill
+                                      style={{
+                                        objectFit: 'contain',
+                                      }}
+                                      alt=""
+                                    />
+                                  </div>
+                                  2023
+                                </span>
                               </div>
-                              SHARE
-                            </FancyLink>
-                          ) : (
-                            <div
-                              id="opening"
-                              className="opacity-0 flex flex-col justify-center items-center text-center"
-                            >
-                              <div className="relative w-full flex flex-col mt-4 ">
-                                <div className="relative flex flex-col lg:flex-row gap-4 lg:gap-8 justify-center items-center text-center">
-                                  <span>OPENING</span>
-                                  <span className="relative">
+                              <div className="relative w-full flex justify-center">
+                                {showShare ? (
+                                  <FancyLink
+                                    onClick={handleShareButton}
+                                    className={`absolute left-1/2 translate-x-[-50%] mt-14 w-fit py-4 px-6 text-xl font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                                  >
                                     <div
-                                      id="summer"
-                                      className="absolute top-0 lg:top-1/2 translate-y-[-30%] lg:translate-y-[-50%] translate-x-[-60%] lg:translate-x-[-50%] w-40 h-16 opacity-0"
+                                      id="worm"
+                                      className="absolute top-[-100%] left-0 pointer-events-none w-28 h-28 opacity-0"
                                     >
                                       <Image
-                                        src={summer}
+                                        alt=""
+                                        src={worm}
                                         placeholder="blur"
                                         fill
                                         style={{
                                           objectFit: 'contain',
                                         }}
-                                        alt=""
                                       />
                                     </div>
-                                    2023
-                                  </span>
-                                </div>
-                                <div className="relative w-full flex justify-center">
+                                    SHARE
+                                  </FancyLink>
+                                ) : (
                                   <div className="flex space-x-7 mt-12">
                                     <Tooltip
                                       title="Facebook"
@@ -355,10 +358,10 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                       message="LINK COPIED"
                                     />
                                   </div>
-                                </div>
+                                )}
                               </div>
                             </div>
-                          )}
+                          </div>
                         </div>
                       </div>
                     </div>
