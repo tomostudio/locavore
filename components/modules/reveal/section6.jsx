@@ -354,8 +354,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire1n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 90%',
-        end: 'bottom 70%',
+        start: 'bottom 110%',
+        end: 'bottom 40%',
       },
     };
 
@@ -391,8 +391,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire2n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 90%',
-        end: 'bottom 70%',
+        start: 'bottom 110%',
+        end: 'bottom 40%',
       },
     };
 
@@ -428,8 +428,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire3n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 90%',
-        end: 'bottom 70%',
+        start: 'bottom 110%',
+        end: 'bottom 40%',
       },
     };
 
@@ -465,8 +465,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire4n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 90%',
-        end: 'bottom 70%',
+        start: 'bottom 110%',
+        end: 'bottom 40%',
       },
     };
 
@@ -502,8 +502,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire5n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 90%',
-        end: 'bottom 70%',
+        start: 'bottom 110%',
+        end: 'bottom 40%',
       },
     };
 
