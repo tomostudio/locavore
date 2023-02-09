@@ -41,7 +41,7 @@ export const Section6ComponentFixedBack = () => {
                     id='circle'
                     className='absolute w-[12rem] md:w-[19rem] opacity-0 translate-y-[-15%] translate-x-[-18%] md:translate-x-[-20%] '
                   >
-                    <Image src={circle} alt='' />
+                    <Image src={circle} placeholder="blur" alt='' />
                   </div>
                   OUR NICE
                 </span>
@@ -52,7 +52,7 @@ export const Section6ComponentFixedBack = () => {
                       id='home'
                       className='relative w-[16rem] md:w-[26rem] opacity-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
                     >
-                      <Image src={home} alt='' />
+                      <Image src={home} placeholder="blur" alt='' />
                     </div>
                   </div>
                 </span>
@@ -137,13 +137,13 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
                 id='inspire1d'
                 className='absolute w-[90%] md:w-[80%] bottom-0 left-0 aspect-[16/9]'
               >
-                <Image src={inspire9} alt='' />
+                <Image src={inspire9} placeholder="blur" alt='' />
               </div>
               <div
                 id='inspire1n'
                 className='absolute w-[90%] md:w-[80%] bottom-0 left-0 aspect-[16/9] opacity-0'
               >
-                <Image src={inspire10} alt='' />
+                <Image src={inspire10} placeholder="blur" alt='' />
               </div>
             </div>
           </div>
@@ -159,13 +159,13 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
                   id='inspire2d'
                   className='absolute w-[80%] md:w-[60%] top-0 right-0 aspect-[16/9]'
                 >
-                  <Image src={inspire7} alt='' />
+                  <Image src={inspire7} placeholder="blur" alt='' />
                 </div>
                 <div
                   id='inspire2n'
                   className='absolute w-[80%] md:w-[60%] top-0 right-0 aspect-[16/9] opacity-0'
                 >
-                  <Image src={inspire8} alt='' />
+                  <Image src={inspire8} placeholder="blur" alt='' />
                 </div>
               </Parallax>
             </div>
@@ -180,13 +180,13 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
                 id='inspire3d'
                 className='absolute w-[80%] md:w-[70%] top-0 left-1/2 translate-x-[-50%] aspect-[16/9]'
               >
-                <Image src={inspire5} alt='' />
+                <Image src={inspire5} placeholder="blur" alt='' />
               </div>
               <div
                 id='inspire3n'
                 className='absolute w-[80%] md:w-[70%] top-0 left-1/2 translate-x-[-50%] aspect-[16/9] opacity-0'
               >
-                <Image src={inspire6} alt='' />
+                <Image src={inspire6} placeholder="blur" alt='' />
               </div>
             </div>
           </div>
@@ -198,10 +198,10 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             <Parallax speed={-20} className='relative w-full h-full'>
               <div className='relative max-w-screen-xl w-full h-full mx-auto'>
                 <div id='inspire4d' className='absolute w-full  top-0'>
-                  <Image src={inspire3} alt='' />
+                  <Image src={inspire3} placeholder="blur" alt='' />
                 </div>
                 <div id='inspire4n' className='absolute w-full top-0 opacity-0'>
-                  <Image src={inspire4} alt='' />
+                  <Image src={inspire4} placeholder="blur" alt='' />
                 </div>
               </div>
             </Parallax>
@@ -213,13 +213,13 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
                 id='inspire5d'
                 className='absolute w-[80%] top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%]'
               >
-                <Image src={inspire1} alt='' />
+                <Image src={inspire1} placeholder="blur" alt='' />
               </div>
               <div
                 id='inspire5n'
                 className='absolute w-[80%] top-1/2 translate-y-[-50%] left-1/2 translate-x-[-50%] opacity-0'
               >
-                <Image src={inspire2} alt='' />
+                <Image src={inspire2} placeholder="blur" alt='' />
               </div>
             </div>
           </div>
@@ -354,8 +354,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire1n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 90%',
-        end: 'bottom 70%',
+        start: 'bottom 110%',
+        end: 'bottom 40%',
       },
     };
 
@@ -391,8 +391,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire2n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 90%',
-        end: 'bottom 70%',
+        start: 'bottom 110%',
+        end: 'bottom 40%',
       },
     };
 
@@ -428,8 +428,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire3n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 90%',
-        end: 'bottom 70%',
+        start: 'bottom 110%',
+        end: 'bottom 40%',
       },
     };
 
@@ -465,8 +465,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire4n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 90%',
-        end: 'bottom 70%',
+        start: 'bottom 110%',
+        end: 'bottom 40%',
       },
     };
 
@@ -502,8 +502,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire5n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 90%',
-        end: 'bottom 70%',
+        start: 'bottom 110%',
+        end: 'bottom 40%',
       },
     };
 

@@ -93,6 +93,7 @@ export const Section8ComponentFixedFront = () => {
           >
             <Image
               src={NXT_Logo_Bumper}
+              placeholder="blur"
               fill
               style={{
                 objectFit: 'cover',
@@ -192,6 +193,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                                   >
                                     <Image
                                       src={summer}
+                                      placeholder="blur"
                                       fill
                                       style={{
                                         objectFit: 'contain',
@@ -214,6 +216,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                                     <Image
                                       alt=''
                                       src={worm}
+                                      placeholder="blur"
                                       fill
                                       style={{
                                         objectFit: 'contain',
@@ -256,6 +259,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   >
                     <Image
                       src={cloud1}
+                      placeholder="blur"
                       fill
                       style={{
                         objectFit: 'contain',
@@ -269,6 +273,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   >
                     <Image
                       src={cloud2}
+                      placeholder="blur"
                       fill
                       style={{
                         objectFit: 'contain',
@@ -282,6 +287,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                   >
                     <Image
                       src={cloud3}
+                      placeholder="blur"
                       fill
                       style={{
                         objectFit: 'contain',
@@ -296,6 +302,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                     <Image
                       alt=''
                       src={cloud4}
+                      placeholder="blur"
                       fill
                       style={{
                         objectFit: 'contain',
@@ -309,6 +316,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                     <Image
                       alt=''
                       src={cloud5}
+                      placeholder="blur"
                       fill
                       style={{
                         objectFit: 'contain',
@@ -322,6 +330,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                     <Image
                       alt=''
                       src={cloud6}
+                      placeholder="blur"
                       fill
                       style={{
                         objectFit: 'contain',
@@ -335,6 +344,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       <Image
                         alt=''
                         src={bee1}
+                        placeholder="blur"
                         fill
                         style={{
                           objectFit: 'contain',
@@ -345,6 +355,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       <Image
                         alt=''
                         src={bee2}
+                        placeholder="blur"
                         fill
                         style={{
                           objectFit: 'contain',
@@ -355,6 +366,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       <Image
                         alt=''
                         src={bee3}
+                        placeholder="blur"
                         fill
                         style={{
                           objectFit: 'contain',
@@ -367,6 +379,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       <Image
                         alt=''
                         src={butterfly1}
+                        placeholder="blur"
                         fill
                         style={{
                           objectFit: 'contain',
@@ -377,6 +390,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       <Image
                         alt=''
                         src={butterfly2}
+                        placeholder="blur"
                         fill
                         style={{
                           objectFit: 'contain',
@@ -387,6 +401,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       <Image
                         alt=''
                         src={sunflower3}
+                        placeholder="blur"
                         fill
                         style={{
                           objectFit: 'contain',
@@ -397,6 +412,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       <Image
                         alt=''
                         src={sunflower4}
+                        placeholder="blur"
                         fill
                         style={{
                           objectFit: 'contain',
@@ -409,6 +425,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       <Image
                         alt=''
                         src={sunflower5}
+                        placeholder="blur"
                         fill
                         style={{
                           objectFit: 'contain',
@@ -419,6 +436,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       <Image
                         alt=''
                         src={bee4}
+                        placeholder="blur"
                         fill
                         style={{
                           objectFit: 'contain',
@@ -429,6 +447,7 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                       <Image
                         alt=''
                         src={bee5}
+                        placeholder="blur"
                         fill
                         style={{
                           objectFit: 'contain',

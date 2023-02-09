@@ -30,6 +30,7 @@ export const Section4ComponentFixedFront = () => {
             >
               <Image
                 src={pot}
+                placeholder="blur"
                 fill
                 style={{
                   objectFit: 'contain',
@@ -43,6 +44,7 @@ export const Section4ComponentFixedFront = () => {
             >
               <Image
                 src={box}
+                placeholder="blur"
                 fill
                 style={{
                   objectFit: 'contain',
@@ -60,6 +62,7 @@ export const Section4ComponentFixedFront = () => {
         <div className="w-96 h-96 z-10 absolute right-1/2 translate-y-[-100%] translate-x-[145%]">
           <Image
             src={construction1}
+            placeholder="blur"
             fill
             style={{
               objectFit: 'contain',
@@ -81,6 +84,7 @@ export const Section4ComponentFixedBack = () => {
         <div className="w-96 h-96 absolute top-1/2 left-1/2 translate-y-[-95%] translate-x-[100%]">
           <Image
             src={construction2}
+            placeholder="blur"
             fill
             style={{
               objectFit: 'contain',
@@ -95,6 +99,7 @@ export const Section4ComponentFixedBack = () => {
         >
           <Image
             src={constructionSticker}
+            placeholder="blur"
             fill
             style={{
               objectFit: 'contain',
@@ -109,6 +114,7 @@ export const Section4ComponentFixedBack = () => {
           <div className="w-[25rem] h-48 absolute top-1/2 translate-y-[-135%] translate-x-[37%]">
             <Image
               src={blossom}
+              placeholder="blur"
               fill
               style={{
                 objectFit: 'contain',
