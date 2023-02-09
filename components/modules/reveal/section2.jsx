@@ -391,7 +391,7 @@ export const Section2AnimationOBJMobile = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 100%',
+        end: 'top 0%',
       },
     }
 
@@ -497,7 +497,7 @@ export const Section2AnimationOBJMobile = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 100%',
+        end: 'top 0%',
       },
     }
 
@@ -526,7 +526,7 @@ export const Section2AnimationOBJMobile = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 100%',
+        end: 'top 0%',
       },
     }
 
@@ -555,7 +555,7 @@ export const Section2AnimationOBJMobile = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 80%',
-        end: 'bottom 100%',
+        end: 'top 0%',
       },
     }
 
@@ -584,7 +584,7 @@ export const Section2AnimationOBJMobile = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 80%',
-        end: 'bottom 100%',
+        end: 'top 0%',
       },
     }
 
@@ -643,7 +643,7 @@ export const Section2AnimationOBJMobile = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 100%',
+        end: 'top 0%',
       },
     }
 
@@ -976,7 +976,7 @@ export const Section2AnimationOBJ = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 80%',
-        end: 'bottom 100%',
+        end: 'top 0%',
       },
     }
 
@@ -1035,7 +1035,7 @@ export const Section2AnimationOBJ = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 100%',
+        end: 'top 0%',
       },
     }
 
