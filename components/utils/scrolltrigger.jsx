@@ -9,7 +9,7 @@ import React from 'react';
 
 const ScrollTriggerWrapper = forwardRef((props, ref) => {
   const { scroll } = useLocomotiveScroll();
-  const { children, animation } = props;
+  const { children, animation, locomotive = true } = props;
   const [scrollInitState, setScrollInit] = useState(false);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
       setScrollInit(true);
 
       // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
-      scroll.on('scroll', ScrollTrigger.update);
+      if(locomotive) scroll.on('scroll', ScrollTrigger.update);
 
       let scrollerQuery = `#${scroll.el.id}`;
       if (!scrollerQuery) {

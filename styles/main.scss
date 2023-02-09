@@ -1,28 +1,29 @@
 /* Tailwind base/components */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 /* Webfonts */
-@import "_fonts.scss";
-@import "_utils.scss";
+@import '_fonts.scss';
+@import '_utils.scss';
 
 /* Custom Style Imports */
-@import "_typography.scss";
+@import '_typography.scss';
 // @import '_locomotive.scss';
 
 /* Other Styling */
-@import "_global.scss";
+@import '_global.scss';
 
 /* Page Specific Styling */
-@import "_editorial.scss";
-@import "_family.scss";
-@import "_reveal.scss";
+@import '_editorial.scss';
+@import '_family.scss';
+@import '_reveal.scss';
 
 /* Simple defaults */
 body {
   @apply font-default tracking-wide font-normal antialiased text-black bg-white;
   overscroll-behavior: none;
+  scroll-behavior: smooth;
 }
 
 .__b {
