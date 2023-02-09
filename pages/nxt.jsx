@@ -109,17 +109,21 @@ export default function Reveal({ seoAPI, footerAPI }) {
     ],
   }
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     router.events.on('routeChangeStart', () => setLoading(true))
-    router.events.on('routeChangeComplete', () => setLoading(false))
-    router.events.on('routeChangeError', () => setLoading(false))
+    router.events.on('routeChangeComplete', () => setTimeout(() => setLoading(false), 1500))
+    router.events.on('routeChangeError', () => setTimeout(() => setLoading(false), 1500))
     return () => {
       router.events.off('routeChangeStart', () => setLoading(true))
-      router.events.off('routeChangeComplete', () => setLoading(false))
-      router.events.off('routeChangeError', () => setLoading(false))
+      router.events.off('routeChangeComplete', () => setTimeout(() => setLoading(false), 1500))
+      router.events.off('routeChangeError', () => setTimeout(() => setLoading(false), 1500))
     }
   }, [router.events])
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1500)
+  }, [])
 
   useEffect(() => {
     const BackgroundLocomotiveEvents = (e) => {
