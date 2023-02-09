@@ -18,7 +18,7 @@ export const Section4ComponentFixedFront = () => {
       <div className="s4_group_exit_all">
         <div
           id="s4_text"
-          className="opacity-0 pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex justify-center items-center text-center leading-none text-white text-8xl"
+          className="opacity-0 pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex justify-center items-center text-center leading-none text-white text-5xl md:text-8xl sm:text-6x"
         >
           <div className="relative max-w-screen-lg w-full text-left ml-20">
             SO WE TOOK
@@ -225,7 +225,6 @@ export const Section4ComponentInner = ({ setBgColor, setCaption }) => {
   )
 }
 
-export const Section4AnimationOBJMobile = [];
 export const Section4AnimationOBJ = [
   // TEXT ENTER
   () => {
@@ -567,3 +566,5 @@ export const Section4AnimationOBJ = [
     return { id, elem, settings, animation }
   },
 ]
+
+export const Section4AnimationOBJMobile = [...Section4AnimationOBJ];

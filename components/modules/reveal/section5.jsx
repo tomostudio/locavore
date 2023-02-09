@@ -43,9 +43,9 @@ export const Section5ComponentFixedFront = () => {
             </div>
             <div className="mobile flex flex-col lg:hidden gap-4 md:gap-0">
               <span className="block shrink-0">SO OTHER</span>
-              <span className=" ml-44">PEOPLE</span>
+              <span className="ml-28">PEOPLE</span>
               <span>CAN</span>
-              <span className="ml-44">
+              <span className="ml-28">
                 DREAM
                 <br />
                 TOO
