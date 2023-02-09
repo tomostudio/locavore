@@ -83,6 +83,7 @@ export const Section3ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
             <div
               id="hugger"
@@ -95,6 +96,7 @@ export const Section3ComponentFixedBack = () => {
                 style={{
                   objectFit: 'contain',
                 }}
+                alt=""
               />
             </div>
           </div>
@@ -111,6 +113,7 @@ export const Section3ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
         </div>
@@ -125,6 +128,7 @@ export const Section3ComponentFixedBack = () => {
             style={{
               objectFit: 'contain',
             }}
+            alt=""
           />
         </div>
         <div
@@ -138,6 +142,7 @@ export const Section3ComponentFixedBack = () => {
             style={{
               objectFit: 'contain',
             }}
+            alt=""
           />
         </div>
         <div
@@ -151,6 +156,7 @@ export const Section3ComponentFixedBack = () => {
             style={{
               objectFit: 'contain',
             }}
+            alt=""
           />
         </div>
         <div
@@ -164,6 +170,7 @@ export const Section3ComponentFixedBack = () => {
             style={{
               objectFit: 'contain',
             }}
+            alt=""
           />
         </div>
       </div>

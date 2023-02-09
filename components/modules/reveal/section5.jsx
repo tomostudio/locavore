@@ -137,6 +137,7 @@ export const Section5ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div
@@ -150,6 +151,7 @@ export const Section5ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div
@@ -163,6 +165,7 @@ export const Section5ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div
@@ -176,6 +179,7 @@ export const Section5ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div
@@ -189,6 +193,7 @@ export const Section5ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div
@@ -202,6 +207,7 @@ export const Section5ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
         </div>
