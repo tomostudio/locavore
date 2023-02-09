@@ -103,7 +103,7 @@ export const Section5ComponentFixedBack = () => {
       <div className="s5_group_exit_1">
         <div
           id="daisy"
-          className="fixed h-0 w-0 z-10 top-1/2 right-1/2 translate-y-0 translate-x-[100vw] lg:translate-x-0 lg:translate-y-[-100vh]  overflow-visible"
+          className="fixed h-0 w-0 z-10 top-1/2 right-1/2 translate-y-0 translate-x-[200vw] lg:translate-x-0 lg:translate-y-[-100vh]  overflow-visible"
         >
           <div className="w-52 absolute top-1/2 right-1/2 lg:right-0 lg:left-1/2 translate-x-[0%] translate-y-[250%] lg:translate-x-[-5%] lg:translate-y-[-175%]">
             <Image src={daisy} placeholder="blur" alt=" " />
@@ -111,7 +111,7 @@ export const Section5ComponentFixedBack = () => {
         </div>
         <div
           id="yourself"
-          className="fixed h-0 w-0 top-1/2 right-1/2 translate-y-0 translate-x-[-100vw] lg:translate-x-0 lg:translate-y-[100vh]  overflow-visible"
+          className="fixed h-0 w-0 top-1/2 right-1/2 translate-y-0 translate-x-[-200vw] lg:translate-x-0 lg:translate-y-[100vh]  overflow-visible"
         >
           <div className=" w-80 lg:w-96 absolute top-1/2 left-1/2 translate-y-[-200%] lg:translate-x-[-85%] lg:translate-y-[-140%]">
             <Image src={yourSelf} placeholder="blur" alt="" />
@@ -329,7 +329,7 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           </div>
         </div>
         {/* DAISY YOURSELF */}
-        <div id="enter_daisy_yourself" className="h-[100vh] w-full " />
+        <div id="enter_daisy_yourself" className="h-[200vh] w-full " />
         {/* BULB */}
         <div id="enter_bulb" className="h-[25vh] w-full -mt-24" />
         <Section5MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
@@ -449,7 +449,7 @@ export const Section5AnimationOBJMobile = [
         set: [
           elem,
           {
-            x: '100vw',
+            x: '200vw',
             y: 0,
           },
         ],
@@ -488,7 +488,7 @@ export const Section5AnimationOBJMobile = [
         set: [
           elem,
           {
-            x: '-100vw',
+            x: '-200vw',
             y: 0,
           },
         ],

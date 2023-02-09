@@ -31,7 +31,7 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
       setScrollInit(true);
 
       // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
-      if(locomotive) scroll.on('scroll', ScrollTrigger.update);
+      scroll.on('scroll', ScrollTrigger.update);
 
       let scrollerQuery = `#${scroll.el.id}`;
       if (!scrollerQuery) {
