@@ -4,20 +4,20 @@ import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 
 //IMAGE SERIES
-import beeSticker from '@/public/nxt/bee-sticker.webp';
-import mugSticker from '@/public/nxt/mug-sticker.webp';
-import worm from '@/public/nxt/worm.webp';
-import sunflower02 from '@/public/nxt/sunflower02.webp';
-import butterfly02 from '@/public/nxt/butterfly02.webp';
-import bee01 from '@/public/nxt/bee01.webp';
-import butterfly01 from '@/public/nxt/butterfly01.webp';
-import sunflower01 from '@/public/nxt/sunflower01.webp';
-import bee03 from '@/public/nxt/bee03.webp';
-import bee02 from '@/public/nxt/bee02.webp';
-import sunflower03 from '@/public/nxt/sunflower03.webp';
-import forest1 from '@/public/nxt/forest1.webp';
-import forest2 from '@/public/nxt/forest2.webp';
-import forest3 from '@/public/nxt/forest3.webp';
+import beeSticker from '@/public/nxt/bee-sticker.webp'
+import mugSticker from '@/public/nxt/mug-sticker.webp'
+import worm from '@/public/nxt/worm.webp'
+import sunflower02 from '@/public/nxt/sunflower02.webp'
+import butterfly02 from '@/public/nxt/butterfly02.webp'
+import bee01 from '@/public/nxt/bee01.webp'
+import butterfly01 from '@/public/nxt/butterfly01.webp'
+import sunflower01 from '@/public/nxt/sunflower01.webp'
+import bee03 from '@/public/nxt/bee03.webp'
+import bee02 from '@/public/nxt/bee02.webp'
+import sunflower03 from '@/public/nxt/sunflower03.webp'
+import forest1 from '@/public/nxt/forest1.webp'
+import forest2 from '@/public/nxt/forest2.webp'
+import forest3 from '@/public/nxt/forest3.webp'
 
 export const Section2ComponentFixedFront = () => {
   return (
@@ -26,14 +26,14 @@ export const Section2ComponentFixedFront = () => {
         id="inspired"
         className="pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-5xl md:text-8xl sm:text-6xl"
       >
-        <div className="relative max-w-screen-lg w-fit md:w-full text-left md:pl-44">
+        <div className="relative max-w-screen-lg w-fit sm:w-full text-left sm:pl-44">
           INSPIRED
           <br />
           BY <br />
-          <span className="block md:-ml-28 -ml-14">NICE</span>
+          <span className="block -ml-14 sm:-ml-[4.5rem] md:-ml-28">NICE</span>
           THINGS
           <div>
-            <div className="w-20 h-20 md:w-28 md:h-28 absolute z-50 left-1/2 top-1/2 translate-x-[-50%] translate-y-[-176%] sm:translate-x-[-50%] sm:translate-y-[-205%] md:translate-x-[-190%] md:translate-y-[-225%]">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 absolute z-50 left-1/2 top-1/2 translate-x-[-50%] translate-y-[-176%] sm:translate-x-[-135%] sm:translate-y-[-180%] md:translate-x-[-190%] md:translate-y-[-225%]">
               <Image
                 src={worm}
                 placeholder="blur"
@@ -48,7 +48,7 @@ export const Section2ComponentFixedFront = () => {
           <div className="s2_exit_group">
             <div
               id="bee"
-              className="absolute w-36 h-36 md:w-56 md:h-56 left-1/2 top-1/2 translate-y-[-190%] translate-x-[-10%] md:translate-y-[38%] md:translate-x-[-80%] opacity-0"
+              className="absolute w-36 h-36 sm:w-40 sm:h-40 md:w-56 md:h-56 left-1/2 top-1/2 translate-y-[-190%] translate-x-[-10%] sm:translate-y-[30%] sm:translate-x-[-70%] md:translate-y-[38%] md:translate-x-[-80%] opacity-0"
             >
               <Image
                 src={beeSticker}
@@ -75,18 +75,20 @@ export const Section2ComponentFixedBack = () => {
           id="flower_bee_butterfly"
           className="fixed w-full max-w-screen-lg h-full z-1 opacity-0"
         >
-          <div className="w-20 h-20 md:w-28 md:h-28 fixed left-1/2 top-1/2 translate-x-[-230%] translate-y-[-185%] md:translate-x-[-490%] md:translate-y-[-220%]">
-            <Image
-              src={sunflower02}
-              placeholder="blur"
-              fill
-              style={{
-                objectFit: 'contain',
-              }}
-              alt=""
-            />
+          <div className='fixed top-1/2 left-1/2 -translate-x-1/2 translate-y-1/2'>
+            <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 fixed left-1/2 top-1/2 translate-x-[-230%] translate-y-[-185%] sm:translate-x-[-330%] sm:translate-y-[-185%] md:translate-x-[-490%] md:translate-y-[-220%]">
+              <Image
+                src={sunflower02}
+                placeholder="blur"
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+                alt=""
+              />
+            </div>
           </div>
-          <div className="w-16 h-16 md:w-20 md:h-20 fixed left-1/2 translate-x-[-125%] translate-y-[45px] md:translate-x-[45%]">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 fixed left-1/2 translate-x-[-125%] translate-y-[45px] sm:translate-x-[45%]">
             <Image
               src={butterfly02}
               placeholder="blur"
@@ -97,7 +99,7 @@ export const Section2ComponentFixedBack = () => {
               alt=""
             />
           </div>
-          <div className="w-9 h-9 md:w-12 md:h-12 fixed top-1/2 md:top-0 right-1/2 translate-x-[-200%] translate-y-[-460%] md:translate-x-[600px] md:translate-y-[140px]">
+          <div className="w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 fixed top-1/2 md:top-0 right-1/2 translate-x-[-200%] translate-y-[-460%] sm:translate-y-[-680%] sm:translate-x-[650%] md:translate-x-[600px] md:translate-y-[140px]">
             <Image
               src={bee01}
               placeholder="blur"
@@ -108,7 +110,7 @@ export const Section2ComponentFixedBack = () => {
               alt=""
             />
           </div>
-          <div className="w-14 h-14 md:w-20 md:h-20 fixed z-1 top-1/2 md:top-0 right-1/2 translate-x-[250%] translate-y-[-320%] md:translate-x-[554px] md:translate-y-[215px]">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 fixed z-1 top-1/2 md:top-0 right-1/2 translate-x-[250%] translate-y-[-320%] sm:translate-x-[400%] sm:translate-y-[-370%] md:translate-x-[554px] md:translate-y-[215px]">
             <Image
               src={butterfly01}
               placeholder="blur"
@@ -119,7 +121,7 @@ export const Section2ComponentFixedBack = () => {
               alt=""
             />
           </div>
-          <div className="w-28 h-28 md:w-40 md:h-40 fixed left-1/2 translate-x-[-170%] md:translate-x-[-410%] bottom-0">
+          <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 fixed left-1/2 translate-x-[-170%] sm:translate-x-[-250%] md:translate-x-[-410%] bottom-0">
             <Image
               src={sunflower01}
               placeholder="blur"
@@ -130,7 +132,7 @@ export const Section2ComponentFixedBack = () => {
               alt=""
             />
           </div>
-          <div className="w-9 h-9 md:w-14 md:h-14 fixed left-1/2 translate-x-[-250%] translate-y-[-240%] md:translate-x-[-870%] bottom-0 md:translate-y-[-180%]">
+          <div className="w-9 h-9 sm:w-12 sm:h-12 md:w-14 md:h-14 fixed left-1/2 bottom-0 translate-x-[-250%] translate-y-[-240%] sm:translate-x-[-450%] sm:translate-y-[-190%] md:translate-x-[-870%] md:translate-y-[-180%]">
             <Image
               src={bee03}
               placeholder="blur"
@@ -141,7 +143,7 @@ export const Section2ComponentFixedBack = () => {
               alt=""
             />
           </div>
-          <div className="w-11 h-11 md:w-14 md:h-14 fixed left-1/2 translate-x-[-350%] translate-y-[-400%] md:translate-x-[-1060%] bottom-0 md:translate-y-[-350%]">
+          <div className="w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 fixed left-1/2 translate-x-[-350%] translate-y-[-400%] sm:translate-x-[-630%] sm:translate-y-[-430%] md:translate-x-[-1060%] bottom-0 md:translate-y-[-350%]">
             <Image
               src={bee02}
               placeholder="blur"
@@ -152,7 +154,7 @@ export const Section2ComponentFixedBack = () => {
               alt=""
             />
           </div>
-          <div className="w-20 h-20 md:w-28 md:h-28 fixed bottom-1/2 right-1/2 md:right-0 translate-x-[170%] translate-y-[215%] md:translate-x-[-90%] md:bottom-0 md:translate-y-[-100%]">
+          <div className="w-20 h-20 sm:w-28 sm:h-28 md:w-28 md:h-28 fixed bottom-1/2 right-1/2 md:right-0 translate-x-[170%] translate-y-[310%] sm:translate-x-[280%] md:bottom-0 sm:translate-y-[250%] md:translate-y-[-100%]">
             <Image
               src={sunflower03}
               placeholder="blur"
@@ -169,7 +171,7 @@ export const Section2ComponentFixedBack = () => {
         id="forest1"
         className="fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[85vh] overflow-visible"
       >
-        <div className="absolute w-[18rem] h-[16rem] md:w-[30rem] md:h-[35rem] -left-20 top-1/2 md:left-6 translate-y-[-27%] md:translate-y-[-45%]">
+        <div className="absolute w-[18rem] h-[16rem] sm:w-[16rem] sm:h-[35rem] md:w-[30rem] md:h-[35rem] -left-20 top-1/2 sm:left-12 md:left-6 translate-y-[-27%] sm:translate-y-[-45%]">
           <Image
             src={forest1}
             placeholder="blur"
@@ -182,7 +184,7 @@ export const Section2ComponentFixedBack = () => {
           <div className="s2_exit_group">
             <div
               id="mug"
-              className="w-40 h-40 md:w-72 md:h-72 fixed left-20 -bottom-10 md:-left-9 md:bottom-24 opacity-0"
+              className="w-40 h-40 sm:w-52 sm:h-52 md:w-72 md:h-72 fixed left-20 -bottom-10 sm:-left-16 md:-left-9 sm:bottom-36 md:bottom-24 opacity-0"
             >
               <Image
                 src={mugSticker}
@@ -201,7 +203,7 @@ export const Section2ComponentFixedBack = () => {
         id="forest2"
         className="fixed z-2 h-0 w-0 top-1/2 right-0 overflow-visible"
       >
-        <div className="w-[20rem] md:w-[28rem]  absolute top-1/2 translate-y-[25%] md:translate-y-[-50%] translate-x-[100%]">
+        <div className="w-[20rem] sm:w-[28rem]  absolute top-1/2 translate-y-[25%] sm:translate-y-[-50%] translate-x-[100%]">
           <Image src={forest2} placeholder="blur" alt="" />
         </div>
       </div>
@@ -209,7 +211,7 @@ export const Section2ComponentFixedBack = () => {
         id="forest3"
         className="fixed z-3 h-0 w-0 bottom-0 right-1/2 overflow-visible"
       >
-        <div className="w-[25rem] h-[20rem] md:w-[36rem] md:h-[30rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[100%]">
+        <div className="w-[25rem] h-[20rem] sm:w-[36rem] sm:h-[30rem] absolute right-1/2 translate-x-[30%] sm:translate-x-[115%] translate-y-[100%]">
           <Image
             src={forest3}
             placeholder="blur"
