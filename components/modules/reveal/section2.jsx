@@ -259,58 +259,46 @@ export const Section2ComponentInner = ({ setBgColor, setCaption }) => {
         {/* INSPIRED BY NICE THINGS */}
         <div
           id='enter-inspired'
-          className='h-[100vh] __b bg-green-600 bg-opacity-10 mt-24'
-        >
-          INSPIRED ENTER
-        </div>
+          className='h-[100vh] mt-24'
+        />
         <Section2MarkerTop setBgColor={setBgColor} setCaption={setCaption} />
         {/* BUG FLOWER */}
         <div
           id='enter-bug-flower'
-          className='h-[100vh] __b bg-green-600 bg-opacity-10'
-        >
-          ENTER BUG FLOWER
-        </div>
+          className='h-[100vh]'
+        />
         {/* FOREST 1 */}
         <div
           id='enter-forest1'
-          className='h-[100vh] __b bg-green-600 bg-opacity-10'
-        >
-          ENTER FOREST 1
-        </div>
+          className='h-[100vh]'
+        />
         {/* MUG */}
-        <div id='enter_mug' className='h-[50vh] __b bg-blue-600 bg-opacity-10'>
-          ENTER MUG
-        </div>
+        <div id='enter_mug' className='h-[50vh] '/>
         {/* BEE */}
-        <div id='enter_bee' className='h-[50vh] __b bg-red-600 bg-opacity-10'>
-          ENTER BEE
-        </div>
+        <div id='enter_bee' className='h-[50vh] '/>
         {/* FOREST 2 */}
         <div
           id='enter-forest2'
-          className='h-[100vh] __b bg-green-600 bg-opacity-10'
-        >
-          ENTER FOREST 2
-        </div>
-        <div className='h-[50vh] __b bg-yellow-600 bg-opacity-10' />
+          className='h-[100vh]'
+        />
+        <div className='h-[50vh]' />
         <div
           id='exit-group2'
-          className='h-[50vh] __b bg-blue-600 bg-opacity-10 mt-24'
+          className='h-[50vh]  mt-24'
         />
         <div
           id='exit-forest1'
-          className='h-[50vh] __b bg-green-600 bg-opacity-10 mt-24'
+          className='h-[50vh] mt-24'
         />
         <div
           id='exit-worm'
-          className='h-[50vh] __b bg-blue-600 bg-opacity-10'
+          className='h-[50vh]'
         />
         {/* // ALTERNATIVE CAPTION TRIGGER */}
         <Section2MarkerBottom setBgColor={setBgColor} setCaption={setCaption} />
         <div
           id='exit-inspired'
-          className='h-[50vh] __b bg-red-600 bg-opacity-10 mt-24'
+          className='h-[50vh] __b mt-24'
         />
       </section>
     </>

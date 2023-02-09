@@ -187,27 +187,25 @@ export const Section4ComponentInner = ({ setBgColor, setCaption }) => {
       >
         <div
           id="enter_s4_text"
-          className="h-[100vh] __b bg-red-600 bg-opacity-50 mt-24"
+          className="h-[100vh] mt-24"
         />
         <Section4MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         <div
           id="enter_box"
-          className="h-[25vh] __b bg-green-600 bg-opacity-50 mt-24"
+          className="h-[25vh] mt-24"
         />
         <div
           id="enter_construction_sticker"
-          className="h-[25vh] __b bg-blue-600 bg-opacity-50 mt-24"
+          className="h-[25vh] mt-24"
         />
         <div
           id="enter_group_s4"
-          className="h-[100vh] __b bg-red-600 bg-opacity-50 mt-24"
+          className="h-[100vh] mt-24"
         />
         <div
           id="exit_all4"
-          className="h-[50vh] __b bg-green-600 bg-opacity-50 mt-24"
-        >
-          EXIT All 4
-        </div>
+          className="h-[50vh] mt-24"
+        />
         <Section4MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
