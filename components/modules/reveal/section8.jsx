@@ -26,7 +26,7 @@ import butterfly2 from '@/public/nxt/butterfly02.webp';
 import sunflower3 from '@/public/nxt/sunflower03.webp';
 import sunflower4 from '@/public/nxt/sunflower04.webp';
 import sunflower5 from '@/public/nxt/sunflower05.webp';
-import NXT_Logo_Bumper from '@/public/nxt/LVLNXT-LOGO.webp';
+import NXT_Logo_Bumper from '@/public/nxt/lvlnxt-logo.webp';
 
 import HeaderGap from '../headerGap';
 import { Snackbar, Tooltip } from '@mui/material';
