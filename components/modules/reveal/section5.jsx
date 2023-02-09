@@ -225,7 +225,7 @@ export const Section5ComponentFixedBack = () => {
         </div>
         <div
           id='feed'
-          className='fixed w-48 translate-y-[-50%] bottom-4 md:bottom-auto md:top-1/2 left-1/2 md:translate-x-[-280%] md:translate-y-[30%] opacity-0'
+          className='fixed w-48 translate-y-[-50%] bottom-4 md:bottom-4 md:top-1/2 left-1/2 md:translate-x-[-280%] md:translate-y-[30%] opacity-0'
         >
           <Image src={feed} alt='' />
         </div>
