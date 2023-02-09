@@ -4,17 +4,17 @@ import { useInView } from 'react-cool-inview';
 import Image from 'next/image';
 
 // Local Images
-import tree from '@/public/nxt/tree.png';
-import hugger from '@/public/nxt/hugger.png';
-import animal from '@/public/nxt/animal.png';
-import nature from '@/public/nxt/nature.png';
-import hasthe from '@/public/nxt/hasthe.png';
-import answer from '@/public/nxt/answer.png';
-import arrow from '@/public/nxt/arrow.png';
-import globe from '@/public/nxt/globe.png';
-import supportYourLocalPlanet from '@/public/nxt/supportyourlocalplanet.png';
-import beRegenerative from '@/public/nxt/beregenerative.png';
-import sharingIsCaring from '@/public/nxt/sharingiscaring.png';
+import tree from '@/public/nxt/tree.webp';
+import hugger from '@/public/nxt/hugger.webp';
+import animal from '@/public/nxt/animal.webp';
+import nature from '@/public/nxt/nature.webp';
+import hasthe from '@/public/nxt/hasthe.webp';
+import answer from '@/public/nxt/answer.webp';
+import arrow from '@/public/nxt/arrow.webp';
+import globe from '@/public/nxt/globe.webp';
+import supportYourLocalPlanet from '@/public/nxt/supportyourlocalplanet.webp';
+import beRegenerative from '@/public/nxt/beregenerative.webp';
+import sharingIsCaring from '@/public/nxt/sharingiscaring.webp';
 
 export const Section3ComponentFixedFront = () => {
   return (

@@ -4,11 +4,11 @@ import { useInView } from 'react-cool-inview';
 import Image from 'next/image';
 
 // IMPORT LOCAL IMAGE
-import eyes from '@/public/nxt/eyes.png';
-import head from '@/public/nxt/head.png';
-import whatIf from '@/public/nxt/whatif.png';
-import dream from '@/public/nxt/dream.png';
-import wish from '@/public/nxt/wish.png';
+import eyes from '@/public/nxt/eyes.webp';
+import head from '@/public/nxt/head.webp';
+import whatIf from '@/public/nxt/whatif.webp';
+import dream from '@/public/nxt/dream.webp';
+import wish from '@/public/nxt/wish.webp';
 
 export const Section1ComponentFixedFront = () => {
   return (

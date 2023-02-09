@@ -5,18 +5,18 @@ import Image from 'next/image';
 import { Parallax } from 'react-scroll-parallax';
 
 // Local Images
-import circle from '@/public/nxt/circle.png';
-import home from '@/public/nxt/home.png';
-import inspire1 from '@/public/nxt/inspire1.jpg';
-import inspire2 from '@/public/nxt/inspire2.jpg';
-import inspire3 from '@/public/nxt/inspire3.jpg';
-import inspire4 from '@/public/nxt/inspire4.jpg';
-import inspire5 from '@/public/nxt/inspire5.jpg';
-import inspire6 from '@/public/nxt/inspire6.jpg';
-import inspire7 from '@/public/nxt/inspire7.jpg';
-import inspire8 from '@/public/nxt/inspire8.jpg';
-import inspire9 from '@/public/nxt/inspire9.jpg';
-import inspire10 from '@/public/nxt/inspire10.jpg';
+import circle from '@/public/nxt/circle.webp';
+import home from '@/public/nxt/home.webp';
+import inspire1 from '@/public/nxt/inspire1.webp';
+import inspire2 from '@/public/nxt/inspire2.webp';
+import inspire3 from '@/public/nxt/inspire3.webp';
+import inspire4 from '@/public/nxt/inspire4.webp';
+import inspire5 from '@/public/nxt/inspire5.webp';
+import inspire6 from '@/public/nxt/inspire6.webp';
+import inspire7 from '@/public/nxt/inspire7.webp';
+import inspire8 from '@/public/nxt/inspire8.webp';
+import inspire9 from '@/public/nxt/inspire9.webp';
+import inspire10 from '@/public/nxt/inspire10.webp';
 
 export const Section6ComponentFixedFront = () => {
   return <div id='section6_fixed_front'></div>;

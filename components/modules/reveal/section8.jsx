@@ -8,25 +8,25 @@ import FancyLink from '@/components/utils/fancyLink';
 import LottieLve from '@/public/nxt/lottie/lve-lottie-jpg.json';
 
 // Local Images
-import summer from '@/public/nxt/summer.png';
-import cloud1 from '@/public/nxt/cloud01.png';
-import cloud2 from '@/public/nxt/cloud02.png';
-import cloud3 from '@/public/nxt/cloud03.png';
-import cloud4 from '@/public/nxt/cloud04.png';
-import cloud5 from '@/public/nxt/cloud05.png';
-import cloud6 from '@/public/nxt/cloud03.png';
-import worm from '@/public/nxt/worm.png';
-import bee1 from '@/public/nxt/bee01.png';
-import bee2 from '@/public/nxt/bee02.png';
-import bee3 from '@/public/nxt/bee03.png';
-import bee4 from '@/public/nxt/bee01.png';
-import bee5 from '@/public/nxt/bee02.png';
-import butterfly1 from '@/public/nxt/butterfly01.png';
-import butterfly2 from '@/public/nxt/butterfly02.png';
-import sunflower3 from '@/public/nxt/sunflower03.png';
-import sunflower4 from '@/public/nxt/sunflower04.png';
-import sunflower5 from '@/public/nxt/sunflower05.png';
-import NXT_Logo_Bumper from '@/public/nxt/LVLNXT-LOGO.png';
+import summer from '@/public/nxt/summer.webp';
+import cloud1 from '@/public/nxt/cloud01.webp';
+import cloud2 from '@/public/nxt/cloud02.webp';
+import cloud3 from '@/public/nxt/cloud03.webp';
+import cloud4 from '@/public/nxt/cloud04.webp';
+import cloud5 from '@/public/nxt/cloud05.webp';
+import cloud6 from '@/public/nxt/cloud03.webp';
+import worm from '@/public/nxt/worm.webp';
+import bee1 from '@/public/nxt/bee01.webp';
+import bee2 from '@/public/nxt/bee02.webp';
+import bee3 from '@/public/nxt/bee03.webp';
+import bee4 from '@/public/nxt/bee01.webp';
+import bee5 from '@/public/nxt/bee02.webp';
+import butterfly1 from '@/public/nxt/butterfly01.webp';
+import butterfly2 from '@/public/nxt/butterfly02.webp';
+import sunflower3 from '@/public/nxt/sunflower03.webp';
+import sunflower4 from '@/public/nxt/sunflower04.webp';
+import sunflower5 from '@/public/nxt/sunflower05.webp';
+import NXT_Logo_Bumper from '@/public/nxt/LVLNXT-LOGO.webp';
 import HeaderGap from '../headerGap';
 
 export const Section8ComponentFixedFront = () => {
