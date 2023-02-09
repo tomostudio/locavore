@@ -32,8 +32,8 @@ export const Section2ComponentFixedFront = () => {
           BY <br />
           <span className='block md:-ml-28 -ml-14'>NICE</span>
           THINGS
-          <div id='worm' className='opacity-0'>
-            <div className='w-20 h-20 md:w-28 md:h-28 absolute z-50 left-1/2 top-1/2 translate-x-[-50%] translate-y-[-176%] md:translate-x-[-190%] md:translate-y-[-225%]'>
+          <div>
+            <div className='w-20 h-20 md:w-28 md:h-28 absolute z-50 left-1/2 top-1/2 translate-x-[-50%] translate-y-[-176%] sm:translate-x-[-50%] sm:translate-y-[-205%] md:translate-x-[-190%] md:translate-y-[-225%]'>
               <Image
                 src={worm}
                 fill
@@ -177,7 +177,7 @@ export const Section2ComponentFixedBack = () => {
         id='forest2'
         className='fixed z-2 h-0 w-0 top-1/2 right-0 __b overflow-visible'
       >
-        <div className='w-[29rem] h-[23rem] absolute top-1/2 translate-y-[-50%] translate-x-[100%]'>
+        <div className='w-[18rem] h-[13rem] absolute top-1/2 translate-y-[25%] md:translate-y-[-50%] translate-x-[100%]'>
           <Image
             src={forest2}
             fill
@@ -191,7 +191,7 @@ export const Section2ComponentFixedBack = () => {
         id='forest3'
         className='fixed z-3 h-0 w-0 bottom-0 right-1/2 __b overflow-visible'
       >
-        <div className='w-[36rem] h-[30rem] absolute right-1/2 translate-x-[115%] translate-y-[100%]'>
+        <div className='w-[25rem] h-[20rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[100%]'>
           <Image
             src={forest3}
             fill
@@ -317,7 +317,465 @@ export const Section2ComponentInner = ({ setBgColor, setCaption }) => {
   );
 };
 
-export const Section2AnimationOBJMobile = [];
+export const Section2AnimationOBJMobile = [
+  // SECTION 2
+  // TITLE ENTER
+  () => {
+    // INSPIRED BY NICE THINGS IN
+    const id = 'inspired-enter'; // animation id
+    const elem = '#inspired';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter-inspired', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // BUG FLOWER ENTER
+  () => {
+    const id = 'bug-flower-enter'; // animation id
+    const elem = '#flower_bee_butterfly';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter-bug-flower', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // WORM ENTER
+  () => {
+    const id = 'worm-enter'; // animation id
+    const elem = '#worm';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter-bug-flower', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // FOREST 1
+  () => {
+    const id = 'forest1-vertical'; // animation id
+    const elem = '#forest1';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter-forest1', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+            y: '0vh',
+            x: 0,
+            ease: 'none',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // MUG
+  () => {
+    const id = 'mug_enter'; // animation id
+    const elem = '#mug';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_mug', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // BEE
+  () => {
+    const id = 'bee_enter'; // animation id
+    const elem = '#bee';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_bee', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // FOREST 2
+  () => {
+    const id = 'forest2-horizontal'; // animation id
+    const elem = '#forest2';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            x: '-100vw',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // FOREST 2 INNER
+  () => {
+    const id = 'forest2-horizontal-inner'; // animation id
+    const elem = '#forest2 > div';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            x: '-100%',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // FOREST 3
+  () => {
+    const id = 'forest3-horizontal'; // animation id
+    const elem = '#forest3';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 80%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            y: '-100vh',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // FOREST 3 INNER
+  () => {
+    const id = 'forest3-horizontal-inner'; // animation id
+    const elem = '#forest3 > div';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 80%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            y: '-100%',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // EXIT GROUP
+  () => {
+    const id = 'exit-group2'; // animation id
+    const elem = '.s2_exit_group';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#exit-group2', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            opacity: 0,
+            ease: 'none',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // EXIT FOREST 1
+  () => {
+    const id = 'exit-forest1'; // animation id
+    const elem = '#forest1';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#exit-forest1', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+            y: '100vh',
+            x: 0,
+            ease: 'none',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // EXIT WORM
+  () => {
+    const id = 'exit-worm'; // animation id
+    const elem = '#worm';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#exit-worm', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            opacity: 0,
+            ease: 'none',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // EXIT INSPIRED
+  () => {
+    const id = 'exit-inspired'; // animation id
+    const elem = '#inspired';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#exit-inspired', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            opacity: 0,
+            ease: 'none',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+];
 export const Section2AnimationOBJ = [
   // SECTION 2
   // TITLE ENTER

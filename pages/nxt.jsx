@@ -89,7 +89,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
   const animationObj = {
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
-      // ...Section2AnimationOBJ,
+      ...Section2AnimationOBJ,
       // ...Section3AnimationOBJ,
       // ...Section4AnimationOBJ,
       ...Section5AnimationOBJ,
@@ -99,7 +99,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
     ],
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
-      // ...Section2AnimationOBJMobile,
+      ...Section2AnimationOBJMobile,
       // ...Section3AnimationOBJMobile,
       // ...Section4AnimationOBJMobile,
       ...Section5AnimationOBJMobile,
@@ -219,7 +219,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 1 */}
         <Section1ComponentFixedFront />
         {/* SECTION 2 */}
-        {/* <Section2ComponentFixedFront /> */}
+        <Section2ComponentFixedFront />
         {/* SECTION 3 */}
         {/* <Section3ComponentFixedFront /> */}
         {/* SECTION 4 */}
@@ -238,7 +238,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 1 */}
         <Section1ComponentFixedBack />
         {/* SECTION 2 */}
-        {/* <Section2ComponentFixedBack /> */}
+        <Section2ComponentFixedBack />
         {/* SECTION 3 */}
         {/* <Section3ComponentFixedBack /> */}
         {/* SECTION 4 */}
@@ -361,10 +361,10 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   />
                   {/* Section 2 */}
                   {/* INSPIRED BY NICE THINGS */}
-                  {/* <Section2ComponentInner
+                  <Section2ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  /> */}
+                  />
                   {/* Section 3 */}
                   {/* AND A BETTER WORLD */}
                   {/* <Section3ComponentInner
