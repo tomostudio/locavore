@@ -4,28 +4,28 @@ import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 
 // Local Images
-import revolutionSticker from '@/public/nxt/revolution_sticker.png'
-import daisy from '@/public/nxt/daisy.png'
-import yourSelf from '@/public/nxt/yourself.png'
-import bulb from '@/public/nxt/bulb.png'
-import collage from '@/public/nxt/collage.png'
-import cloud1 from '@/public/nxt/cloud01.png'
-import cloud2 from '@/public/nxt/cloud02.png'
-import cloud3 from '@/public/nxt/cloud03.png'
-import cloud4 from '@/public/nxt/cloud04.png'
-import cloud6 from '@/public/nxt/cloud06.png'
-import lower_ground from '@/public/nxt/lower_ground.png'
-import ground from '@/public/nxt/ground.png'
-import firstFloor from '@/public/nxt/1st_floor.png'
-import secondFloor from '@/public/nxt/2nd_floor.png'
-import tunnel from '@/public/nxt/tunnel.png'
-import awesome from '@/public/nxt/awesome.png'
-import landscape from '@/public/nxt/landscape.png'
-import show1 from '@/public/nxt/show01.png'
-import show2 from '@/public/nxt/show02.png'
-import feed from '@/public/nxt/feed.png'
-import mushroom from '@/public/nxt/mushroom.png'
-import opensource from '@/public/nxt/opensource.png'
+import revolutionSticker from '@/public/nxt/revolution-sticker.webp';
+import daisy from '@/public/nxt/daisy.webp';
+import yourSelf from '@/public/nxt/yourself.webp';
+import bulb from '@/public/nxt/bulb.webp';
+import collage from '@/public/nxt/collage.webp';
+import cloud1 from '@/public/nxt/cloud01.webp';
+import cloud2 from '@/public/nxt/cloud02.webp';
+import cloud3 from '@/public/nxt/cloud03.webp';
+import cloud4 from '@/public/nxt/cloud04.webp';
+import cloud6 from '@/public/nxt/cloud06.webp';
+import lower_ground from '@/public/nxt/lower-ground.webp';
+import ground from '@/public/nxt/ground.webp';
+import firstFloor from '@/public/nxt/1st-floor.webp';
+import secondFloor from '@/public/nxt/2nd-floor.webp';
+import tunnel from '@/public/nxt/tunnel.webp';
+import awesome from '@/public/nxt/awesome.webp';
+import landscape from '@/public/nxt/landscape.webp';
+import show1 from '@/public/nxt/show01.webp';
+import show2 from '@/public/nxt/show02.webp';
+import feed from '@/public/nxt/feed.webp';
+import mushroom from '@/public/nxt/mushroom.webp';
+import opensource from '@/public/nxt/opensource.webp';
 
 export const Section5ComponentFixedFront = () => {
   return (

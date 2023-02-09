@@ -4,9 +4,9 @@ import { useInView } from 'react-cool-inview';
 import Image from 'next/image';
 
 // Local Images
-import underline from '@/public/nxt/underline.png';
-import heart1 from '@/public/nxt/heart01.png';
-import heart2 from '@/public/nxt/heart02.png';
+import underline from '@/public/nxt/underline.webp';
+import heart1 from '@/public/nxt/heart01.webp';
+import heart2 from '@/public/nxt/heart02.webp';
 
 export const Section7ComponentFixedFront = () => {
   return (
