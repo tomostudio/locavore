@@ -124,10 +124,10 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
         <Section6MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         {/* CIRCLE */}
         <div id='enter_circle' className='h-[25vh] w-full ' />
-        {/* HOME */}
-        <div id='enter_home' className='h-[25vh] w-full' />
         {/* INSPIRE1 */}
         <div id='home_spin' className='w-full relative z-50'>
+          {/* HOME */}
+          <div id='enter_home' className='h-[25vh] w-full' />
           <div
             id='enter_inspire1'
             className='relative h-[100vh] w-full flex justify-center items-center'
@@ -248,7 +248,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        from: [
+        set: [
           elem,
           {
             opacity: 0,
@@ -285,7 +285,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        from: [
+        set: [
           elem,
           {
             opacity: 0,
@@ -322,7 +322,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        from: [
+        set: [
           elem,
           {
             opacity: 0,
@@ -359,7 +359,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        from: [
+        set: [
           elem,
           {
             opacity: 0,
@@ -396,7 +396,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        from: [
+        set: [
           elem,
           {
             opacity: 0,
@@ -433,7 +433,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        from: [
+        set: [
           elem,
           {
             opacity: 0,
@@ -470,7 +470,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        from: [
+        set: [
           elem,
           {
             opacity: 0,
@@ -507,7 +507,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        from: [
+        set: [
           elem,
           {
             opacity: 0,
@@ -544,7 +544,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        from: [
+        set: [
           elem,
           {
             rotate: '0deg',
@@ -581,7 +581,7 @@ export const Section6AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        from: [
+        set: [
           elem,
           {
             opacity: 1,

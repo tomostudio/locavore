@@ -31,29 +31,6 @@ import HeaderGap from '../headerGap';
 
 export const Section8ComponentFixedFront = () => {
   const lottieRef = useRef();
-  useEffect(() => {
-    const detectScroll = (e) => {
-      const videoMarker = document.querySelector('#video-marker');
-      if (videoMarker !== null) {
-        const { y, height } = videoMarker.getBoundingClientRect();
-        const progress =
-          Math.round(
-            (-(y - window.innerHeight) / (height + window.innerHeight)) * 10000
-          ) / 10000;
-        if (progress > 0 && progress <= 1) {
-          lottieRef.current.goToAndStop(Math.round(358 * progress), true);
-        } else if (progress <= 0) {
-          lottieRef.current.goToAndStop(0, true);
-        } else if (progress > 1) {
-          lottieRef.current.goToAndStop(358, true);
-        }
-      }
-    };
-    document.addEventListener('scroll', detectScroll, false);
-    return () => {
-      document.removeEventListener('scroll', detectScroll, false);
-    };
-  }, []);
 
   return (
     <div id='section8_fixed_front'>
