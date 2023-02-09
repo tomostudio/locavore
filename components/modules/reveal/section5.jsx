@@ -106,7 +106,7 @@ export const Section5ComponentFixedBack = () => {
           className="fixed h-0 w-0 z-10 top-1/2 right-1/2 translate-y-0 translate-x-[200vw] lg:translate-x-0 lg:translate-y-[-100vh]  overflow-visible"
         >
           <div className="w-52 absolute top-1/2 right-1/2 lg:right-0 lg:left-1/2 translate-x-[0%] translate-y-[250%] lg:translate-x-[-5%] lg:translate-y-[-175%]">
-            <Image src={daisy} placeholder="blur" alt=" " />
+            <Image src={daisy} alt=" " />
           </div>
         </div>
         <div
@@ -114,12 +114,12 @@ export const Section5ComponentFixedBack = () => {
           className="fixed h-0 w-0 top-1/2 right-1/2 translate-y-0 translate-x-[-200vw] lg:translate-x-0 lg:translate-y-[100vh]  overflow-visible"
         >
           <div className=" w-80 lg:w-96 absolute top-1/2 left-1/2 translate-y-[-200%] lg:translate-x-[-85%] lg:translate-y-[-140%]">
-            <Image src={yourSelf} placeholder="blur" alt="" />
+            <Image src={yourSelf} alt="" />
             <div
               id="bulb"
               className="z-10 w-32 h-32 opacity-0 absolute top-2 left-0 translate-x-[-50%]"
             >
-              <Image src={bulb} placeholder="blur" alt=" " />
+              <Image src={bulb} alt=" " />
             </div>
           </div>
         </div>
@@ -132,7 +132,6 @@ export const Section5ComponentFixedBack = () => {
           >
             <Image
               src={cloud1}
-              placeholder="blur"
               fill
               style={{
                 objectFit: 'contain',
@@ -146,7 +145,6 @@ export const Section5ComponentFixedBack = () => {
           >
             <Image
               src={cloud2}
-              placeholder="blur"
               fill
               style={{
                 objectFit: 'contain',
@@ -160,7 +158,6 @@ export const Section5ComponentFixedBack = () => {
           >
             <Image
               src={cloud3}
-              placeholder="blur"
               fill
               style={{
                 objectFit: 'contain',
@@ -174,7 +171,6 @@ export const Section5ComponentFixedBack = () => {
           >
             <Image
               src={cloud4}
-              placeholder="blur"
               fill
               style={{
                 objectFit: 'contain',
@@ -188,7 +184,6 @@ export const Section5ComponentFixedBack = () => {
           >
             <Image
               src={cloud3}
-              placeholder="blur"
               fill
               style={{
                 objectFit: 'contain',
@@ -202,7 +197,6 @@ export const Section5ComponentFixedBack = () => {
           >
             <Image
               src={cloud6}
-              placeholder="blur"
               fill
               style={{
                 objectFit: 'contain',
@@ -215,44 +209,44 @@ export const Section5ComponentFixedBack = () => {
           id="awesome"
           className="fixed w-60 md:w-72  top-1/2 left-1/2 translate-x-[0%] translate-y-[-180%] md:translate-y-[-170%] opacity-0"
         >
-          <Image src={awesome} placeholder="blur" alt=" " />
+          <Image src={awesome} alt=" " />
         </div>
         <div
           id="landscape"
           className="fixed w-32 md:w-48 top-12 md:top-1/2 md:left-1/2 translate-x-[20%] translate-y-[20%] md:translate-x-[190%] md:translate-y-[-85%] opacity-0"
         >
-          <Image src={landscape} placeholder="blur" alt=" " />
+          <Image src={landscape} alt=" " />
         </div>
         <div
           id="show1"
           className="fixed w-48 translate-y-[-50%] bottom-4 md:top-1/2 left-1/2 md:translate-x-[-280%] md:translate-y-[30%] opacity-0"
         >
-          <Image src={show1} placeholder="blur" alt=" " />
+          <Image src={show1} alt=" " />
         </div>
         <div
           id="show2"
           className="fixed w-48 translate-y-[-50%] bottom-4 md:top-1/2 left-1/2 md:translate-x-[-280%] md:translate-y-[30%] opacity-0"
         >
-          <Image src={show2} placeholder="blur" alt="" />
+          <Image src={show2} alt="" />
         </div>
         <div
           id="feed"
           className="fixed w-48 translate-y-[-50%] bottom-4 md:bottom-4 md:top-1/2 left-1/2 md:translate-x-[-280%] md:translate-y-[30%] opacity-0"
         >
-          <Image src={feed} placeholder="blur" alt="" />
+          <Image src={feed} alt="" />
         </div>
         <div id="group_s5_3" className="opacity-0">
           <div
             id="mushroom"
             className="fixed w-44 md:w-56  top-1/2 left-1/2 translate-x-[-50%] translate-y-[30%] md:translate-y-[30%]"
           >
-            <Image src={mushroom} placeholder="blur" alt="" />
+            <Image src={mushroom} alt="" />
           </div>
           <div
             id="opensource"
             className="fixed w-52 top-1/2 right-1/2 md:right-auto md:left-1/2 translate-y-[200%] md:translate-x-[-150%] md:translate-y-[-350%]"
           >
-            <Image src={opensource} placeholder="blur" alt="" />
+            <Image src={opensource} alt="" />
           </div>
         </div>
       </div>
@@ -325,7 +319,7 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           className="w-full mx-auto flex justify-end max-w-screen-lg"
         >
           <div className="relative w-[28rem] lg:mr-56 lg:ml-0 ml-auto mr-auto">
-            <Image src={collage} placeholder="blur" alt=" " />
+            <Image src={collage} alt=" " />
           </div>
         </div>
         {/* DAISY YOURSELF */}

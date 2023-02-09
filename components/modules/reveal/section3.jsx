@@ -40,10 +40,10 @@ export const Section3ComponentFixedFront = () => {
             id='support'
             className='relative z-2 w-72 lg:w-[26rem]  opacity-0'
           >
-            <Image src={supportYourLocalPlanet} placeholder='blur' alt=' ' />
+            <Image src={supportYourLocalPlanet} alt=' ' />
           </div>
           <div id='globe' className='absolute  w-72 lg:w-[26rem]  opacity-0'>
-            <Image src={globe} placeholder='blur' alt='' />
+            <Image src={globe} alt='' />
           </div>
         </div>
         <div id='s3_group_enter' className='w-full h-full fixed'>
@@ -52,7 +52,7 @@ export const Section3ComponentFixedFront = () => {
             className='fixed h-0 w-0 top-1/2 left-1/2 translate-y-[-50vh] translate-x-[-50vw] overflow-visible'
           >
             <div className=' w-72 lg:w-96 absolute bottom-1/2 lg:bottom-auto lg:top-1/2 left-1/2 lg:left-auto lg:right-1/2 translate-y-[calc(-50%-100px)] translate-x-[-50%] lg:translate-y-[-50%] lg:translate-x-[calc(-50%-25px)]'>
-              <Image src={beRegenerative} placeholder='blur' alt='' />
+              <Image src={beRegenerative} alt='' />
             </div>
           </div>
           <div
@@ -60,7 +60,7 @@ export const Section3ComponentFixedFront = () => {
             className='fixed h-0 w-0 top-1/2 right-1/2 translate-y-[50vh] translate-x-[50vw]  overflow-visible'
           >
             <div className='w-72 lg:w-96 absolute top-1/2 left-1/2 translate-y-[calc(100%+100px)] translate-x-[-50%] lg:translate-y-[-50%] lg:translate-x-[calc(50%+50px)]'>
-              <Image src={sharingIsCaring} placeholder='blur' alt='' />
+              <Image src={sharingIsCaring} alt='' />
             </div>
           </div>
         </div>
@@ -78,14 +78,13 @@ export const Section3ComponentFixedBack = () => {
         >
           <div className='w-[18rem] md:w-[24rem] absolute top-0 md:top-1/2 right-0 md:right-1/2 translate-y-[0%] md:translate-y-[-60%] '>
             <div className='relative md:translate-x-[-30%] lg:translate-x-[-50%] w-full h-auto'>
-              <Image src={tree} placeholder='blur' alt='' />
+              <Image src={tree} alt='' />
               <div
                 id='hugger'
                 className='fixed w-24 md:w-32 left-0 md:left-auto md:right-0 translate-x-[-20%] md:translate-x-[20%] bottom-24 md:bottom-auto md:top-28 opacity-0'
               >
                 <Image
                   src={hugger}
-                  placeholder='blur'
                   alt=''
                 />
               </div>
@@ -97,7 +96,7 @@ export const Section3ComponentFixedBack = () => {
           className='fixed h-0 w-0 top-1/2 left-0 translate-x-[-50vw] z-10  overflow-visible'
         >
           <div className=' w-[15rem] md:w-[22rem] absolute md:top-1/2 translate-y-[-60%] md:translate-y-[-20%] bottom-0 md:bottom-auto md:right-auto right-0 md:translate-x-[-80%] lg:translate-x-[-100%]'>
-            <Image src={animal} placeholder='blur' alt='' />
+            <Image src={animal} alt='' />
           </div>
         </div>
         <div className='fixed right-0 md:right-auto translate-y-[-120px] translate-x-[-120px] md:left-1/2 top-1/2 md:translate-x-[200px] md:translate-y-[-220px] scale-50 md:scale-75 lg:scale-100 lg:translate-x-[350px] lg:translate-y-[-180px] overflow-visible'>
@@ -105,19 +104,19 @@ export const Section3ComponentFixedBack = () => {
             id='nature'
             className='opacity-0 w-60 absolute translate-y-[-110%] translate-x-[-40%]'
           >
-            <Image src={nature} placeholder='blur' alt='' />
+            <Image src={nature} alt='' />
           </div>
           <div
             id='hasthe'
             className='opacity-0 w-48 absolute translate-y-[-50%]'
           >
-            <Image src={hasthe} placeholder='blur' alt='' />
+            <Image src={hasthe} alt='' />
           </div>
           <div
             id='answer'
             className='opacity-0 w-56 absolute translate-y-[20%] translate-x-[-10%]'
           >
-            <Image src={answer} placeholder='blur' alt='' />
+            <Image src={answer} alt='' />
           </div>
           <div
             id='arrow'
@@ -125,7 +124,6 @@ export const Section3ComponentFixedBack = () => {
           >
             <Image
               src={arrow}
-              placeholder='blur'
               fill
               style={{
                 objectFit: 'contain',

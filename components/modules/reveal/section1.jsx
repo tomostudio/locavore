@@ -20,7 +20,6 @@ export const Section1ComponentFixedFront = () => {
         <div className="w-48 h-32 md:w-96 md:h-72 sm:w-72 sm:h-44 absolute top-1/2 md:translate-y-[-90%] sm:translate-y-[-95%] translate-y-[-180%] translate-x-[-100%]">
           <Image
             src={dream}
-            placeholder="blur"
             fill
             style={{
               objectFit: 'contain',
@@ -43,7 +42,6 @@ export const Section1ComponentFixedBack = () => {
         <div className="h-[13.5rem] w-[20rem] md:h-[27rem] md:w-[38.5rem] sm:h-[16.5rem] sm:w-[23.5rem] absolute top-1/2 right-1/2 translate-x-[50%] translate-y-[-14%]">
           <Image
             src={eyes}
-            placeholder="blur"
             fill
             style={{
               objectFit: 'contain',
@@ -67,7 +65,6 @@ export const Section1ComponentFixedBack = () => {
           <div className="h-28 w-28 md:h-56 md:w-56 sm:h-[8.5rem] sm:w-[8.5rem] absolute top-1/2 right-1/2 translate-x-[180%] translate-y-[-100%] sm:translate-x-[210%] sm:translate-y-[-60%] will-change-auto">
             <Image
               src={head}
-              placeholder="blur"
               fill
               style={{
                 objectFit: 'contain',
@@ -83,7 +80,6 @@ export const Section1ComponentFixedBack = () => {
           <div className="w-[6rem] h-[6rem] md:w-52 md:h-52 sm:w-[8rem] sm:h-[8rem] absolute top-1/2 right-1/2 translate-y-[-190%] translate-x-[160%] sm:translate-y-[-135%] sm:translate-x-[180%] will-change-auto">
             <Image
               src={whatIf}
-              placeholder="blur"
               fill
               style={{
                 objectFit: 'contain',
@@ -169,7 +165,7 @@ export const Section1ComponentInner = ({ setBgColor, setCaption }) => {
           className="h-screen relative z-50 w-full mx-auto max-w-screen-lg md:pl-24 sm:pl-20 pl-12 mb-40"
         >
           <div className="absolute  left-[calc(50%-15vw)] md:left-[calc(50%-30vw)] top-0 translate-x-[-50%] w-40 md:w-[25vw] sm:w-52 ">
-            <Image src={wish} placeholder="blur" alt="" />
+            <Image src={wish} alt="" />
           </div>
         </div>
         {/* EYES EXIT*/}
