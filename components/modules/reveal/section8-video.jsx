@@ -91,14 +91,14 @@ export const Section8ComponentFixedFront = () => {
             id='logo-end'
             className='frame w-full aspect-[4/3] sm:aspect-[16/9] relative overflow-hidden rounded-xl'
           >
-            <Image
+            {/* <Image
               src={NXT_Logo_Bumper}
               fill
               style={{
                 objectFit: 'cover',
               }}
               alt=''
-            />
+            /> */}
           </div>
         </div>
       </div>
