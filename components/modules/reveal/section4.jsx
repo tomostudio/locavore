@@ -89,6 +89,7 @@ export const Section4ComponentFixedBack = () => {
             style={{
               objectFit: 'contain',
             }}
+            alt=""
           />
         </div>
       </div>

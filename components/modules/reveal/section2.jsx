@@ -94,6 +94,7 @@ export const Section2ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div className="w-9 h-9 md:w-12 md:h-12 fixed top-1/2 md:top-0 right-1/2 translate-x-[-200%] translate-y-[-460%] md:translate-x-[600px] md:translate-y-[140px]">
