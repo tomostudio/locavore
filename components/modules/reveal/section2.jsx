@@ -378,43 +378,6 @@ export const Section2AnimationOBJMobile = [
 
     return { id, elem, settings, animation }
   },
-  // WORM ENTER
-  () => {
-    const id = 'worm-enter' // animation id
-    const elem = '#worm'
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter-bug-flower', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    }
-
-    // Input Animation
-    const animation = [
-      {
-        set: [
-          elem,
-          {
-            opacity: 0,
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            opacity: 1,
-          },
-        ],
-      },
-    ]
-
-    return { id, elem, settings, animation }
-  },
   // FOREST 1
   () => {
     const id = 'forest1-vertical' // animation id
@@ -691,36 +654,6 @@ export const Section2AnimationOBJMobile = [
             opacity: 1,
             y: '100vh',
             x: 0,
-            ease: 'none',
-          },
-        ],
-      },
-    ]
-
-    return { id, elem, settings, animation }
-  },
-  // EXIT WORM
-  () => {
-    const id = 'exit-worm' // animation id
-    const elem = '#worm'
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#exit-worm', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    }
-
-    // Input Animation
-    const animation = [
-      {
-        to: [
-          elem,
-          {
-            opacity: 0,
             ease: 'none',
           },
         ],
@@ -837,43 +770,6 @@ export const Section2AnimationOBJ = [
 
     return { id, elem, settings, animation }
   },
-  // WORM ENTER
-  () => {
-    const id = 'worm-enter' // animation id
-    const elem = '#worm'
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#enter-bug-flower', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    }
-
-    // Input Animation
-    const animation = [
-      {
-        set: [
-          elem,
-          {
-            opacity: 0,
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            opacity: 1,
-          },
-        ],
-      },
-    ]
-
-    return { id, elem, settings, animation }
-  },
   // FOREST 1
   () => {
     const id = 'forest1-vertical' // animation id
@@ -1150,36 +1046,6 @@ export const Section2AnimationOBJ = [
             opacity: 1,
             y: '100vh',
             x: 0,
-            ease: 'none',
-          },
-        ],
-      },
-    ]
-
-    return { id, elem, settings, animation }
-  },
-  // EXIT WORM
-  () => {
-    const id = 'exit-worm' // animation id
-    const elem = '#worm'
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#exit-worm', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    }
-
-    // Input Animation
-    const animation = [
-      {
-        to: [
-          elem,
-          {
-            opacity: 0,
             ease: 'none',
           },
         ],
