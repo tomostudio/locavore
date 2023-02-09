@@ -22,11 +22,11 @@ export const Section3ComponentFixedFront = () => {
       <div className="exit_group3">
         <div
           id="better_world"
-          className="pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-8xl"
+          className="pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-5xl md:text-8xl sm:text-6xl"
         >
-          <div className="max-w-screen-lg w-full text-right mr-36">
-            <span className="block mr-[11.5rem]">AND</span>A BETTER
-            <span className="block mr-6">WORLD</span>
+          <div className="md:max-w-screen-lg md:w-full mx-auto md:m-auto text-left md:text-right md:mr-36">
+            <span className="block ml-14 md:mr-[11.5rem]">AND</span>A BETTER
+            <span className="block md:mr-6">WORLD</span>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@ export const Section3ComponentFixedBack = () => {
           id="tree"
           className="fixed h-0 w-0 top-0 left-1/2   overflow-visible"
         >
-          <div className="w-[32rem] h-[35rem] absolute top-1/2 right-1/2 translate-y-[-100%] translate-x-[-20%]">
+          <div className="w-80 h-80 md:w-[32rem] md:h-[35rem] absolute top-1/2 right-1/2 translate-y-[-100%] translate-x-[70%] md:translate-x-[-20%]">
             <Image
               src={tree}
               placeholder="blur"
@@ -87,7 +87,7 @@ export const Section3ComponentFixedBack = () => {
             />
             <div
               id="hugger"
-              className="fixed w-32 h-32 right-1 top-28 opacity-0"
+              className="fixed w-24 h-24 md:w-32 md:h-32 left-2 md:left-auto md:right-1 top-28 opacity-0"
             >
               <Image
                 src={hugger}
@@ -105,7 +105,7 @@ export const Section3ComponentFixedBack = () => {
           id="animal"
           className="fixed h-0 w-0 top-1/2 left-0 z-10  overflow-visible"
         >
-          <div className="w-[22rem] h-[22rem] absolute top-1/2 translate-y-[-24%] translate-x-[-100%]">
+          <div className="w-44 h-44 md:w-[22rem] md:h-[22rem] absolute top-1/2 translate-y-[-152%] md:translate-y-[-24%] translate-x-[-100%]">
             <Image
               src={animal}
               placeholder="blur"
@@ -119,7 +119,7 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="nature"
-          className="opacity-0 w-60 h-48 fixed top-1/2 translate-y-[-140%] right-1/2 translate-x-[205%]"
+          className="opacity-0 w-28 h-16 md:w-60 md:h-48 fixed top-1/2 right-1/2 translate-y-[-195%] translate-x-[100%] md:translate-y-[-140%] md:translate-x-[205%]"
         >
           <Image
             src={nature}
@@ -133,7 +133,7 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="hasthe"
-          className="opacity-0 w-48 h-20 fixed top-1/2 translate-y-[-218%] right-1/2 translate-x-[285%]"
+          className="opacity-0 w-[6rem] h-12 md:w-48 md:h-20 fixed top-1/2 right-1/2 translate-y-[-208%] translate-x-[150%] md:translate-y-[-218%] md:translate-x-[285%]"
         >
           <Image
             src={hasthe}
@@ -147,7 +147,7 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="answer"
-          className="opacity-0 w-56 h-48 fixed top-1/2 translate-y-[-101%] right-1/2 translate-x-[251%]"
+          className="opacity-0 w-28 h-14 md:w-56 md:h-48 fixed top-1/2 right-1/2 translate-y-[-150%] translate-x-[138%] md:translate-y-[-101%] md:translate-x-[251%]"
         >
           <Image
             src={answer}
@@ -161,7 +161,7 @@ export const Section3ComponentFixedBack = () => {
         </div>
         <div
           id="arrow"
-          className="opacity-0 w-80 h-44 fixed top-1/2 translate-y-[-140%] right-1/2 translate-x-[78%]"
+          className="opacity-0 w-36 h-16 rotate-[80deg] md:rotate-0 md:w-80 md:h-44 fixed top-1/2 right-1/2 translate-y-[-280%] translate-x-[125%] md:translate-y-[-140%] md:translate-x-[78%]"
         >
           <Image
             src={arrow}
@@ -318,7 +318,7 @@ export const Section3AnimationOBJMobile = [
         to: [
           elem,
           {
-            top: '50%',
+            top: '74%',
           },
         ],
       },
@@ -399,7 +399,7 @@ export const Section3AnimationOBJMobile = [
         to: [
           elem,
           {
-            x: '50vw',
+            x: '48vw',
           },
         ],
       },
