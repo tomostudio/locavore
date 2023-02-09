@@ -4,7 +4,7 @@ import { useInView } from 'react-cool-inview';
 import Image from 'next/image';
 
 // Local Images
-import revolutionSticker from '@/public/nxt/revolution_sticker.webp';
+import revolutionSticker from '@/public/nxt/revolution-sticker.webp';
 import daisy from '@/public/nxt/daisy.webp';
 import yourSelf from '@/public/nxt/yourself.webp';
 import bulb from '@/public/nxt/bulb.webp';
@@ -14,10 +14,10 @@ import cloud2 from '@/public/nxt/cloud02.webp';
 import cloud3 from '@/public/nxt/cloud03.webp';
 import cloud4 from '@/public/nxt/cloud04.webp';
 import cloud6 from '@/public/nxt/cloud06.webp';
-import lower_ground from '@/public/nxt/lower_ground.webp';
+import lower_ground from '@/public/nxt/lower-ground.webp';
 import ground from '@/public/nxt/ground.webp';
-import firstFloor from '@/public/nxt/1st_floor.webp';
-import secondFloor from '@/public/nxt/2nd_floor.webp';
+import firstFloor from '@/public/nxt/1st-floor.webp';
+import secondFloor from '@/public/nxt/2nd-floor.webp';
 import tunnel from '@/public/nxt/tunnel.webp';
 import awesome from '@/public/nxt/awesome.webp';
 import landscape from '@/public/nxt/landscape.webp';

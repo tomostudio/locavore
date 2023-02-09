@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 // Local Images
 import box from '@/public/nxt/box.webp'
-import constructionSticker from '@/public/nxt/construction_sticker.webp'
+import constructionSticker from '@/public/nxt/construction-sticker.webp'
 import pot from '@/public/nxt/pot.webp'
 import construction1 from '@/public/nxt/construction1.webp'
 import construction2 from '@/public/nxt/construction2.webp'
@@ -34,6 +34,7 @@ export const Section4ComponentFixedFront = () => {
                 style={{
                   objectFit: 'contain',
                 }}
+                alt=""
               />
             </div>
             <div
@@ -46,6 +47,7 @@ export const Section4ComponentFixedFront = () => {
                 style={{
                   objectFit: 'contain',
                 }}
+                alt=""
               />
             </div>
           </div>
@@ -62,6 +64,7 @@ export const Section4ComponentFixedFront = () => {
             style={{
               objectFit: 'contain',
             }}
+            alt=""
           />
         </div>
       </div>
@@ -96,6 +99,7 @@ export const Section4ComponentFixedBack = () => {
             style={{
               objectFit: 'contain',
             }}
+            alt=""
           />
         </div>
         <div
@@ -109,6 +113,7 @@ export const Section4ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
         </div>
@@ -123,6 +128,7 @@ export const Section4ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
         </div>
