@@ -223,7 +223,7 @@ const Section2MarkerTop = ({ setCaption, setBgColor }) => {
     },
   });
 
-  return <div className='w-full h-2 bg-purple-600' ref={observe} />;
+  return <div className='w-full h-0' ref={observe} />;
 };
 
 const Section2MarkerBottom = ({ setCaption, setBgColor }) => {
@@ -246,7 +246,7 @@ const Section2MarkerBottom = ({ setCaption, setBgColor }) => {
     },
   });
 
-  return <div className='w-full h-2 bg-purple-600' ref={observe} />;
+  return <div className='w-full h-0' ref={observe} />;
 };
 
 export const Section2ComponentInner = ({ setBgColor, setCaption }) => {

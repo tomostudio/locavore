@@ -150,7 +150,7 @@ const Section4MarkerTop = ({ setBgColor, setCaption }) => {
     },
   })
 
-  return <div className="w-full h-2 bg-purple-600" ref={observe} />
+  return <div className="w-full h-0" ref={observe} />
 }
 
 const Section4MarkerBottom = ({ setBgColor, setCaption }) => {
@@ -173,7 +173,7 @@ const Section4MarkerBottom = ({ setBgColor, setCaption }) => {
     },
   })
 
-  return <div className="w-full h-2 bg-purple-600" ref={observe} />
+  return <div className="w-full h-0" ref={observe} />
 }
 
 export const Section4ComponentInner = ({ setBgColor, setCaption }) => {

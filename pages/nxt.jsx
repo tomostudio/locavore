@@ -92,7 +92,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       // ...Section2AnimationOBJ,
       // ...Section3AnimationOBJ,
       // ...Section4AnimationOBJ,
-      // ...Section5AnimationOBJ,
+      ...Section5AnimationOBJ,
       ...Section6AnimationOBJ,
       ...Section7AnimationOBJ,
       ...Section8AnimationOBJ,
@@ -102,7 +102,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       // ...Section2AnimationOBJMobile,
       // ...Section3AnimationOBJMobile,
       // ...Section4AnimationOBJMobile,
-      // ...Section5AnimationOBJMobile,
+      ...Section5AnimationOBJMobile,
       ...Section6AnimationOBJMobile,
       ...Section7AnimationOBJMobile,
       ...Section8AnimationOBJMobile,
@@ -225,7 +225,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 4 */}
         {/* <Section4ComponentFixedFront /> */}
         {/* SECTION 5 */}
-        {/* <Section5ComponentFixedFront /> */}
+        <Section5ComponentFixedFront />
         {/* SECTION 6 */}
         <Section6ComponentFixedFront />
         {/* SECTION 7 */}
@@ -244,7 +244,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 4 */}
         {/* <Section4ComponentFixedBack /> */}
         {/* SECTION 5 */}
-        {/* <Section5ComponentFixedBack /> */}
+        <Section5ComponentFixedBack />
         {/* SECTION 6 */}
         <Section6ComponentFixedBack />
         {/* SECTION 7 */}
@@ -379,10 +379,10 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   /> */}
                   {/* Section 5 */}
                   {/* SO OTHER PEOPLE CAN DREAM TOO */}
-                  {/* <Section5ComponentInner
+                  <Section5ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  /> */}
+                  />
                   {/* Section 6 */}
                   {/* INSPIRED BY OUR NICE THING */}
                   <Section6ComponentInner
