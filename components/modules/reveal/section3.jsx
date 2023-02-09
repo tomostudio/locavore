@@ -100,7 +100,7 @@ export const Section3ComponentFixedBack = () => {
             <Image src={animal} placeholder='blur' alt='' />
           </div>
         </div>
-        <div className='fixed h-0 w-0 right-0 md:right-auto translate-y-[-120px]  translate-x-[-120px] md:left-1/2 top-1/2 md:translate-x-[200px] md:translate-y-[-220px] scale-50 md:scale-75 lg:scale-100 lg:translate-x-[350px] lg:translate-y-[-180px] overflow-visible'>
+        <div className='fixed right-0 md:right-auto translate-y-[-120px] translate-x-[-120px] md:left-1/2 top-1/2 md:translate-x-[200px] md:translate-y-[-220px] scale-50 md:scale-75 lg:scale-100 lg:translate-x-[350px] lg:translate-y-[-180px] overflow-visible'>
           <div
             id='nature'
             className='opacity-0 w-60 absolute translate-y-[-110%] translate-x-[-40%]'
