@@ -53,7 +53,7 @@ export const Section4ComponentFixedFront = () => {
       </div>
       <div
         id="construction1"
-        className="fixed h-0 w-0 top-0 right-1/2 __b overflow-visible"
+        className="fixed h-0 w-0 top-0 right-1/2 overflow-visible"
       >
         <div className="w-96 h-96 z-10 absolute right-1/2 translate-y-[-100%] translate-x-[145%]">
           <Image
@@ -73,7 +73,7 @@ export const Section4ComponentFixedBack = () => {
     <div id="section4_fixed_back">
       <div
         id="construction2"
-        className="fixed h-0 w-0 top-1/2 right-0 __b overflow-visible"
+        className="fixed h-0 w-0 top-1/2 right-0 overflow-visible"
       >
         <div className="w-96 h-96 absolute top-1/2 left-1/2 translate-y-[-95%] translate-x-[100%]">
           <Image
@@ -100,7 +100,7 @@ export const Section4ComponentFixedBack = () => {
         </div>
         <div
           id="blossom"
-          className="fixed h-0 w-0 top-1/2 right-0 __b overflow-visible"
+          className="fixed h-0 w-0 top-1/2 right-0 overflow-visible"
         >
           <div className="w-[25rem] h-48 absolute top-1/2 translate-y-[-135%] translate-x-[37%]">
             <Image
@@ -114,7 +114,7 @@ export const Section4ComponentFixedBack = () => {
         </div>
         <div
           id="loading"
-          className="fixed h-0 w-0 top-1/2 right-1/2 __b overflow-visible opacity-0"
+          className="fixed h-0 w-0 top-1/2 right-1/2 overflow-visible opacity-0"
         >
           <div className="w-52 h-20 absolute top-1/2 translate-y-[-88%] translate-x-[180%]">
             <Image

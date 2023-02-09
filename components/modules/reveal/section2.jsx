@@ -147,7 +147,7 @@ export const Section2ComponentFixedBack = () => {
       </div>
       <div
         id='forest1'
-        className='fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[85vh] __b overflow-visible'
+        className='fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[85vh] overflow-visible'
       >
         <div className='absolute w-[18rem] h-[16rem] md:w-[30rem] md:h-[35rem] -left-20 top-1/2 md:left-6 translate-y-[-27%] md:translate-y-[-45%]'>
           <Image
@@ -175,7 +175,7 @@ export const Section2ComponentFixedBack = () => {
       </div>
       <div
         id='forest2'
-        className='fixed z-2 h-0 w-0 top-1/2 right-0 __b overflow-visible'
+        className='fixed z-2 h-0 w-0 top-1/2 right-0 overflow-visible'
       >
         <div className='w-[18rem] h-[13rem] md:w-[29rem] md:h-[23rem] absolute top-1/2 translate-y-[25%] md:translate-y-[-50%] translate-x-[100%]'>
           <Image
@@ -189,7 +189,7 @@ export const Section2ComponentFixedBack = () => {
       </div>
       <div
         id='forest3'
-        className='fixed z-3 h-0 w-0 bottom-0 right-1/2 __b overflow-visible'
+        className='fixed z-3 h-0 w-0 bottom-0 right-1/2 overflow-visible'
       >
         <div className='w-[25rem] h-[20rem] md:w-[36rem] md:h-[30rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[100%]'>
           <Image
@@ -254,7 +254,7 @@ export const Section2ComponentInner = ({ setBgColor, setCaption }) => {
     <>
       <section
         id='trigger2'
-        className='trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center __b '
+        className='trigger relative w-full min-h-[110vh] text-4xl flex flex-col justify-center '
       >
         {/* INSPIRED BY NICE THINGS */}
         <div
@@ -298,7 +298,7 @@ export const Section2ComponentInner = ({ setBgColor, setCaption }) => {
         <Section2MarkerBottom setBgColor={setBgColor} setCaption={setCaption} />
         <div
           id='exit-inspired'
-          className='h-[50vh] __b mt-24'
+          className='h-[50vh] mt-24'
         />
       </section>
     </>
