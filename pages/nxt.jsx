@@ -312,7 +312,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
           className={`z-1 relative`}
         >
           <div data-scroll-section>
-            <ScrollTriggerWrapper animation={animationObj}>
+            <ScrollTriggerWrapper animation={animationObj} locomotive={false}>
               <LazyMotion features={domAnimation}>
                 <m.main
                   className='relative p-0 m-0'
