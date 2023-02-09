@@ -41,6 +41,7 @@ export const Section2ComponentFixedFront = () => {
                 style={{
                   objectFit: 'contain',
                 }}
+                alt=""
               />
             </div>
           </div>
@@ -56,6 +57,7 @@ export const Section2ComponentFixedFront = () => {
                 style={{
                   objectFit: 'contain',
                 }}
+                alt=""
               />
             </div>
           </div>
@@ -81,6 +83,7 @@ export const Section2ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div className="w-16 h-16 md:w-20 md:h-20 fixed left-1/2 translate-x-[-125%] translate-y-[45px] md:translate-x-[45%]">
@@ -91,6 +94,7 @@ export const Section2ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div className="w-9 h-9 md:w-12 md:h-12 fixed top-1/2 md:top-0 right-1/2 translate-x-[-200%] translate-y-[-460%] md:translate-x-[600px] md:translate-y-[140px]">
@@ -101,6 +105,7 @@ export const Section2ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div className="w-14 h-14 md:w-20 md:h-20 fixed z-1 top-1/2 md:top-0 right-1/2 translate-x-[250%] translate-y-[-320%] md:translate-x-[554px] md:translate-y-[215px]">
@@ -111,6 +116,7 @@ export const Section2ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div className="w-28 h-28 md:w-40 md:h-40 fixed left-1/2 translate-x-[-170%] md:translate-x-[-410%] bottom-0">
@@ -121,6 +127,7 @@ export const Section2ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div className="w-9 h-9 md:w-14 md:h-14 fixed left-1/2 translate-x-[-250%] translate-y-[-240%] md:translate-x-[-870%] bottom-0 md:translate-y-[-180%]">
@@ -131,6 +138,7 @@ export const Section2ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div className="w-11 h-11 md:w-14 md:h-14 fixed left-1/2 translate-x-[-350%] translate-y-[-400%] md:translate-x-[-1060%] bottom-0 md:translate-y-[-350%]">
@@ -141,6 +149,7 @@ export const Section2ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
           <div className="w-20 h-20 md:w-28 md:h-28 fixed bottom-1/2 right-1/2 md:right-0 translate-x-[170%] translate-y-[215%] md:translate-x-[-90%] md:bottom-0 md:translate-y-[-100%]">
@@ -151,6 +160,7 @@ export const Section2ComponentFixedBack = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
         </div>
@@ -167,6 +177,7 @@ export const Section2ComponentFixedBack = () => {
             style={{
               objectFit: 'contain',
             }}
+            alt=""
           />
           <div className="s2_exit_group">
             <div
@@ -180,6 +191,7 @@ export const Section2ComponentFixedBack = () => {
                 style={{
                   objectFit: 'contain',
                 }}
+                alt=""
               />
             </div>
           </div>
@@ -205,6 +217,7 @@ export const Section2ComponentFixedBack = () => {
             style={{
               objectFit: 'contain',
             }}
+            alt=""
           />
         </div>
       </div>

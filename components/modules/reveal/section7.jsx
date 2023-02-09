@@ -34,6 +34,7 @@ export const Section7ComponentFixedFront = () => {
                     objectFit: 'cover',
                     objectPosition: 'left',
                   }}
+                  alt=""
                 />
               </div>
             </span>
@@ -51,6 +52,7 @@ export const Section7ComponentFixedFront = () => {
                     objectFit: 'cover',
                     objectPosition: 'left',
                   }}
+                  alt=""
                 />
               </div>
             </span>
@@ -80,6 +82,7 @@ export const Section7ComponentFixedFront = () => {
               style={{
                 objectFit: 'contain',
               }}
+              alt=""
             />
           </div>
         </div>
