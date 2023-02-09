@@ -90,7 +90,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
       // ...Section2AnimationOBJ,
-      // ...Section3AnimationOBJ,
+      ...Section3AnimationOBJ,
       // ...Section4AnimationOBJ,
       ...Section5AnimationOBJ,
       ...Section6AnimationOBJ,
@@ -100,7 +100,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
       // ...Section2AnimationOBJMobile,
-      // ...Section3AnimationOBJMobile,
+      ...Section3AnimationOBJMobile,
       // ...Section4AnimationOBJMobile,
       ...Section5AnimationOBJMobile,
       ...Section6AnimationOBJMobile,
@@ -194,7 +194,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
     '#BFC29D', //0
     '#BFC29D', //1
     '#B5BD98', //2
-    '#ADB894', //3
+    '#A2B08D', //3
     '#A0B18E', //4
     '#93A287', //5
     '#8A9881', //6
@@ -221,7 +221,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 2 */}
         {/* <Section2ComponentFixedFront /> */}
         {/* SECTION 3 */}
-        {/* <Section3ComponentFixedFront /> */}
+        <Section3ComponentFixedFront />
         {/* SECTION 4 */}
         {/* <Section4ComponentFixedFront /> */}
         {/* SECTION 5 */}
@@ -240,7 +240,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 2 */}
         {/* <Section2ComponentFixedBack /> */}
         {/* SECTION 3 */}
-        {/* <Section3ComponentFixedBack /> */}
+        <Section3ComponentFixedBack />
         {/* SECTION 4 */}
         {/* <Section4ComponentFixedBack /> */}
         {/* SECTION 5 */}
@@ -367,10 +367,10 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   /> */}
                   {/* Section 3 */}
                   {/* AND A BETTER WORLD */}
-                  {/* <Section3ComponentInner
+                  <Section3ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  /> */}
+                  />
                   {/* Section 4 */}
                   {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
                   {/* <Section4ComponentInner
