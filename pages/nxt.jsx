@@ -90,8 +90,8 @@ export default function Reveal({ seoAPI, footerAPI }) {
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
       ...Section2AnimationOBJ,
-      // ...Section3AnimationOBJ,
-      // ...Section4AnimationOBJ,
+      ...Section3AnimationOBJ,
+      ...Section4AnimationOBJ,
       ...Section5AnimationOBJ,
       ...Section6AnimationOBJ,
       ...Section7AnimationOBJ,
@@ -100,8 +100,8 @@ export default function Reveal({ seoAPI, footerAPI }) {
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
       ...Section2AnimationOBJMobile,
-      // ...Section3AnimationOBJMobile,
-      // ...Section4AnimationOBJMobile,
+      ...Section3AnimationOBJMobile,
+      ...Section4AnimationOBJMobile,
       ...Section5AnimationOBJMobile,
       ...Section6AnimationOBJMobile,
       ...Section7AnimationOBJMobile,
@@ -125,7 +125,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
     // Go to the Top, Set Background Color
     // TURN ON AFTER TESTING
-    // window.scroll(0, 0);
+    window.scroll(0, 0);
     // setCaption(0);
     // setBgColor(0);
 
@@ -215,7 +215,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
       {/* FIXED POSITION FRONT*/}
-      <div className='outercontainer-front fixed z-40 w-full h-full border pointer-events-none select-none overflow-hidden'>
+      <div className='outercontainer-front fixed z-40 w-full h-full pointer-events-none select-none overflow-hidden'>
         {/* SECTION 1 */}
         <Section1ComponentFixedFront />
         {/* SECTION 2 */}
@@ -223,7 +223,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 3 */}
         <Section3ComponentFixedFront />
         {/* SECTION 4 */}
-        {/* <Section4ComponentFixedFront /> */}
+        <Section4ComponentFixedFront />
         {/* SECTION 5 */}
         <Section5ComponentFixedFront />
         {/* SECTION 6 */}
@@ -234,7 +234,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         <Section8ComponentFixedFront />
       </div>
       {/* FIXED POSITION BACK*/}
-      <div className='outercontainer-back fixed -z-1 w-full h-full border pointer-events-none select-none overflow-hidden'>
+      <div className='outercontainer-back fixed -z-1 w-full h-full pointer-events-none select-none overflow-hidden'>
         {/* SECTION 1 */}
         <Section1ComponentFixedBack />
         {/* SECTION 2 */}
@@ -242,7 +242,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
         {/* SECTION 3 */}
         <Section3ComponentFixedBack />
         {/* SECTION 4 */}
-        {/* <Section4ComponentFixedBack /> */}
+        <Section4ComponentFixedBack />
         {/* SECTION 5 */}
         <Section5ComponentFixedBack />
         {/* SECTION 6 */}
@@ -373,10 +373,10 @@ export default function Reveal({ seoAPI, footerAPI }) {
                   />
                   {/* Section 4 */}
                   {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
-                  {/* <Section4ComponentInner
+                  <Section4ComponentInner
                     setBgColor={setBgColor}
                     setCaption={setCaption}
-                  /> */}
+                  />
                   {/* Section 5 */}
                   {/* SO OTHER PEOPLE CAN DREAM TOO */}
                   <Section5ComponentInner
