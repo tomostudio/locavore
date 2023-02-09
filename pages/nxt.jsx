@@ -146,8 +146,13 @@ export default function Reveal({ seoAPI, footerAPI }) {
     // Go to the Top, Set Background Color
     // TURN ON AFTER TESTING
     // window.scroll(0, 0)
+<<<<<<< HEAD
     setCaption(0);
     setBgColor(0);
+=======
+    // setCaption(0);
+    // setBgColor(0);
+>>>>>>> 3e081de492e5224b51f9348a2ff50e91bbb44a50
 
     const resizeFunction = () => {
       setCaption(currentCaption);

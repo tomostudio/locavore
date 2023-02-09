@@ -4,20 +4,20 @@ import { useInView } from 'react-cool-inview';
 import Image from 'next/image';
 
 //IMAGE SERIES
-import beeSticker from '@/public/nxt/bee-sticker.webp';
-import mugSticker from '@/public/nxt/mug-sticker.webp';
-import worm from '@/public/nxt/worm.webp';
-import sunflower02 from '@/public/nxt/sunflower02.webp';
-import butterfly02 from '@/public/nxt/butterfly02.webp';
-import bee01 from '@/public/nxt/bee01.webp';
-import butterfly01 from '@/public/nxt/butterfly01.webp';
-import sunflower01 from '@/public/nxt/sunflower01.webp';
-import bee03 from '@/public/nxt/bee03.webp';
-import bee02 from '@/public/nxt/bee02.webp';
-import sunflower03 from '@/public/nxt/sunflower03.webp';
-import forest1 from '@/public/nxt/forest1.webp';
-import forest2 from '@/public/nxt/forest2.webp';
-import forest3 from '@/public/nxt/forest3.webp';
+import beeSticker from '@/public/nxt/bee-sticker.webp'
+import mugSticker from '@/public/nxt/mug-sticker.webp'
+import worm from '@/public/nxt/worm.webp'
+import sunflower02 from '@/public/nxt/sunflower02.webp'
+import butterfly02 from '@/public/nxt/butterfly02.webp'
+import bee01 from '@/public/nxt/bee01.webp'
+import butterfly01 from '@/public/nxt/butterfly01.webp'
+import sunflower01 from '@/public/nxt/sunflower01.webp'
+import bee03 from '@/public/nxt/bee03.webp'
+import bee02 from '@/public/nxt/bee02.webp'
+import sunflower03 from '@/public/nxt/sunflower03.webp'
+import forest1 from '@/public/nxt/forest1.webp'
+import forest2 from '@/public/nxt/forest2.webp'
+import forest3 from '@/public/nxt/forest3.webp'
 
 export const Section2ComponentFixedFront = () => {
   return (
