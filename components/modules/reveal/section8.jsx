@@ -280,7 +280,21 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                     SHARE
                                   </FancyLink>
                                 ) : (
-                                  <div className="flex space-x-7 mt-12">
+                                  <div className="relative flex space-x-7 mt-12">
+                                    <div
+                                      id="worm"
+                                      className="absolute top-[-400%] left-1/2 translate-x-[-50%] pointer-events-none w-20 h-20 opacity-0"
+                                    >
+                                      <Image
+                                        alt=""
+                                        src={worm}
+                                        placeholder="blur"
+                                        fill
+                                        style={{
+                                          objectFit: 'contain',
+                                        }}
+                                      />
+                                    </div>
                                     <Tooltip
                                       title="Facebook"
                                       classes={{ tooltip: 'tooltip' }}

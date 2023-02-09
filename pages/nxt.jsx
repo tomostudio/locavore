@@ -77,9 +77,11 @@ import {
   Section8AnimationOBJMobile,
   Section8ComponentInner,
 } from '@/components/modules/reveal/section8'
+import { useAppContext } from 'context/state'
 
 export default function Reveal({ seoAPI, footerAPI }) {
   const router = useRouter()
+  const appContext = useAppContext();
   const [seo] = seoAPI
   const [footer] = footerAPI
 
@@ -112,17 +114,19 @@ export default function Reveal({ seoAPI, footerAPI }) {
   const [loading, setLoading] = useState(true)
   useEffect(() => {
     router.events.on('routeChangeStart', () => setLoading(true))
-    router.events.on('routeChangeComplete', () => setTimeout(() => setLoading(false), 1500))
-    router.events.on('routeChangeError', () => setTimeout(() => setLoading(false), 1500))
+    router.events.on('routeChangeComplete', () =>  setLoading(false))
+    router.events.on('routeChangeError', () => setLoading(false))
     return () => {
       router.events.off('routeChangeStart', () => setLoading(true))
-      router.events.off('routeChangeComplete', () => setTimeout(() => setLoading(false), 1500))
-      router.events.off('routeChangeError', () => setTimeout(() => setLoading(false), 1500))
+      router.events.off('routeChangeComplete', () => setLoading(false))
+      router.events.off('routeChangeError', () => setLoading(false))
     }
   }, [router.events])
 
   useEffect(() => {
-    setTimeout(() => setLoading(false), 1500)
+    if(appContext.history.length === 0) {
+      setTimeout(() => setLoading(false), 1500)
+    }
   }, [])
 
   useEffect(() => {
