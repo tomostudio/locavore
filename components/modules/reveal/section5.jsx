@@ -61,7 +61,7 @@ export const Section5ComponentFixedFront = () => {
         </div>
       </div>
       <div className="s5_group_exit_2 opacity-1 w-full h-full">
-        <div className="group_s5_1 opacity-0 w-full h-full fixed md:w-[60rem] left-1/2 translate-x-[-50%]">
+        <div className="group_s5_1 opacity-0 sm:w-[80%] w-full h-full fixed md:w-[60rem] left-1/2 translate-x-[-50%]">
           <div
             id="tunnel"
             className="absolute w-[100%] z-40 top-1/2  translate-y-[-110%]"
@@ -207,44 +207,44 @@ export const Section5ComponentFixedBack = () => {
         </div>
         <div
           id="awesome"
-          className="fixed w-60 md:w-72  top-1/2 left-1/2 translate-x-[0%] translate-y-[-180%] md:translate-y-[-170%] opacity-0"
+          className="fixed w-40 sm:w-56 md:w-72 top-1/2 left-1/2 translate-x-[0%] translate-y-[-170%] sm:translate-y-[-180%] md:translate-y-[-170%] opacity-0"
         >
           <Image src={awesome} alt=" " />
         </div>
         <div
           id="landscape"
-          className="fixed w-32 md:w-48 top-12 md:top-1/2 md:left-1/2 translate-x-[20%] translate-y-[20%] md:translate-x-[190%] md:translate-y-[-85%] opacity-0"
+          className="fixed w-24 sm:w-28 md:w-48 top-12 md:top-1/2 md:left-1/2 translate-x-[50%] sm:translate-x-[40%] translate-y-[40%] sm:translate-y-[20%] md:translate-x-[190%] md:translate-y-[-85%] opacity-0"
         >
           <Image src={landscape} alt=" " />
         </div>
         <div
           id="show1"
-          className="fixed w-48 translate-y-[-50%] bottom-4 md:top-1/2 left-1/2 md:translate-x-[-280%] md:translate-y-[30%] opacity-0"
+          className="fixed w-28 sm:w-32 md:w-48 translate-y-[-50%] bottom-10 sm:bottom-4 md:top-1/2 left-1/2 md:translate-x-[-280%] md:translate-y-[30%] opacity-0"
         >
           <Image src={show1} alt=" " />
         </div>
         <div
           id="show2"
-          className="fixed w-48 translate-y-[-50%] bottom-4 md:top-1/2 left-1/2 md:translate-x-[-280%] md:translate-y-[30%] opacity-0"
+          className="fixed w-28 sm:w-32 md:w-48 translate-y-[-50%] bottom-10 sm:bottom-4 md:top-1/2 left-1/2 md:translate-x-[-280%] md:translate-y-[30%] opacity-0"
         >
           <Image src={show2} alt="" />
         </div>
         <div
           id="feed"
-          className="fixed w-48 translate-y-[-50%] bottom-4 md:bottom-4 md:top-1/2 left-1/2 md:translate-x-[-280%] md:translate-y-[30%] opacity-0"
+          className="fixed w-28 sm:w-32 md:w-48 translate-y-[-50%] bottom-10 sm:bottom-4 md:bottom-4 md:top-1/2 left-1/2 md:translate-x-[-280%] md:translate-y-[30%] opacity-0"
         >
           <Image src={feed} alt="" />
         </div>
         <div id="group_s5_3" className="opacity-0">
           <div
             id="mushroom"
-            className="fixed w-44 md:w-56  top-1/2 left-1/2 translate-x-[-50%] translate-y-[30%] md:translate-y-[30%]"
+            className="fixed w-36 sm:w-44 md:w-56  top-1/2 left-1/2 translate-x-[-50%] translate-y-[30%] md:translate-y-[30%]"
           >
             <Image src={mushroom} alt="" />
           </div>
           <div
             id="opensource"
-            className="fixed w-52 top-1/2 right-1/2 md:right-auto md:left-1/2 translate-y-[200%] md:translate-x-[-150%] md:translate-y-[-350%]"
+            className="fixed w-36 sm:w-52 top-1/2 right-1/2 md:right-auto md:left-1/2  translate-x-[-15%] translate-y-[260%] sm:translate-y-[200%] sm:translate-x-[-30%] md:translate-x-[-150%] md:translate-y-[-350%]"
           >
             <Image src={opensource} alt="" />
           </div>

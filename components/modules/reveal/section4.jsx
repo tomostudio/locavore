@@ -471,7 +471,7 @@ export const Section4AnimationOBJ = [
         to: [
           elem,
           {
-            x: '0vw',
+            x: '-50vw',
           },
         ],
       },
