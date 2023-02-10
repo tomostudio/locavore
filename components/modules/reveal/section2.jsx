@@ -96,7 +96,7 @@ export const Section2ComponentFixedBack = () => {
           id='flower_bee_butterfly'
           className='fixed w-full max-w-screen-lg h-full z-1 opacity-0'
         >
-          <div className='w-20 h-20 md:w-28 md:h-28 fixed left-1/2 top-1/2 translate-x-[-230%] translate-y-[-185%] md:translate-x-[-490%] md:translate-y-[-220%]'>
+          <div className='w-20 h-20 md:w-28 md:h-28 fixed left-1/2 top-1/2 translate-x-[-230%] sm:translate-x-[-270%] translate-y-[-185%] md:translate-x-[-490%] md:translate-y-[-220%]'>
             <Image
               src={sunflower02}
               fill
@@ -166,7 +166,7 @@ export const Section2ComponentFixedBack = () => {
               alt=''
             />
           </div>
-          <div className='w-20 h-20 md:w-28 md:h-28 fixed bottom-1/2 right-1/2 md:right-0 translate-x-[170%] translate-y-[215%] md:translate-x-[-90%] md:bottom-0 md:translate-y-[-100%]'>
+          <div className='w-20 h-20 md:w-28 md:h-28 fixed bottom-1/2 right-1/2 md:right-0 translate-x-[170%] translate-y-[410%] sm:translate-y-[445%] md:translate-x-[-90%] md:bottom-0 md:translate-y-[-100%]'>
             <Image
               src={sunflower03}
               fill
@@ -182,7 +182,7 @@ export const Section2ComponentFixedBack = () => {
         id='forest1'
         className='fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[-100vh] overflow-visible'
       >
-        <div className='absolute w-[18rem] md:w-[26rem] -left-20 top-1/2 md:left-6 translate-y-[-27%] md:translate-y-[-45%]'>
+        <div className='absolute w-64 sm:w-[18rem] md:w-[26rem] -left-20 top-1/2 md:left-6 translate-y-[-27%] md:translate-y-[-45%]'>
           <Image
             src={forest1}
             alt=''
