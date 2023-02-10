@@ -53,7 +53,7 @@ export const Section5ComponentFixedFront = () => {
             </div>
             <div
               id="revolution"
-              className="w-44 lg:w-52 opacity-0 absolute -bottom-[8rem] right-0"
+              className="w-32 sm:w-44 lg:w-52 opacity-0 absolute -bottom-20 sm:-bottom-[8rem] right-0"
             >
               <Image src={revolutionSticker} alt=" " />
             </div>
@@ -105,7 +105,7 @@ export const Section5ComponentFixedBack = () => {
           id="daisy"
           className="fixed h-0 w-0 z-10 top-1/2 right-1/2 translate-y-0 translate-x-[200vw] lg:translate-x-0 lg:translate-y-[-100vh]  overflow-visible"
         >
-          <div className="w-52 absolute top-1/2 right-1/2 lg:right-0 lg:left-1/2 translate-x-[0%] translate-y-[250%] lg:translate-x-[-5%] lg:translate-y-[-260%]">
+          <div className="w-32 sm:w-52 absolute top-1/2 right-1/2 lg:right-0 lg:left-1/2 translate-x-[0%] translate-y-[250%] lg:translate-x-[-5%] lg:translate-y-[-260%]">
             <Image src={daisy} alt=" " />
           </div>
         </div>
@@ -113,11 +113,11 @@ export const Section5ComponentFixedBack = () => {
           id="yourself"
           className="fixed h-0 w-0 top-1/2 right-1/2 translate-y-0 translate-x-[-200vw] lg:translate-x-0 lg:translate-y-[100vh]  overflow-visible"
         >
-          <div className=" w-80 lg:w-96 absolute top-1/2 left-1/2 translate-y-[-200%] lg:translate-x-[-85%] lg:translate-y-[-140%]">
+          <div className="w-52 sm:w-80 lg:w-96 absolute top-1/2 left-1/2 translate-y-[-230%] sm:translate-y-[-200%] lg:translate-x-[-85%] lg:translate-y-[-140%]">
             <Image src={yourSelf} alt="" />
             <div
               id="bulb"
-              className="z-10 w-32 h-32 opacity-0 absolute top-2 left-0 translate-x-[-50%]"
+              className="z-10 w-20 sm:w-32 opacity-0 absolute top-2 left-0 translate-x-[-50%]"
             >
               <Image src={bulb} alt=" " />
             </div>
@@ -491,7 +491,7 @@ export const Section5AnimationOBJMobile = [
         to: [
           elem,
           {
-            x: '0vw',
+            x: '-15vw',
             y: 0,
           },
         ],
