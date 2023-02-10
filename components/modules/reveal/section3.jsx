@@ -24,7 +24,7 @@ export const Section3ComponentFixedFront = () => {
           id='better_world'
           className='pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex opacity-0 justify-center items-center text-center leading-none text-white text-5xl md:text-8xl sm:text-6xl'
         >
-          <div className='absolute top-1/2 -translate-y-1/2 -translate-x-1/2 gap-4 md:gap-2 left-1/2 md:translate-x-0 w-fit text-left flex flex-col '>
+          <div className='absolute top-1/2 -translate-y-1/2 -translate-x-1/2 gap-4 md:gap-2 left-1/2 md:translate-x-0 w-64 sm:w-[35rem] text-left flex flex-col '>
             <span className='block ml-16 md:ml-28'>AND</span>
             <span className='block'>A BETTER</span>
             <span className='block md:ml-28'>WORLD</span>
@@ -76,7 +76,7 @@ export const Section3ComponentFixedBack = () => {
           id='tree'
           className='fixed h-0 w-0 top-1/2 right-0 md:right-auto md:left-1/2 overflow-visible translate-y-[-100vh]'
         >
-          <div className='w-[18rem] md:w-[24rem] absolute top-0 md:top-1/2 right-0 md:right-1/2 translate-y-[0%] md:translate-y-[-60%] '>
+          <div className='w-48 sm:w-[18rem] md:w-[24rem] absolute top-0 md:top-1/2 right-0 md:right-1/2 translate-y-[0%] md:translate-y-[-60%] '>
             <div className='relative md:translate-x-[-30%] lg:translate-x-[-50%] w-full h-auto'>
               <Image src={tree} alt='' />
               <div
@@ -95,32 +95,32 @@ export const Section3ComponentFixedBack = () => {
           id='animal'
           className='fixed h-0 w-0 top-1/2 left-0 translate-x-[-50vw] z-10  overflow-visible'
         >
-          <div className='w-[15rem] md:w-[22rem] absolute md:top-1/2 translate-y-[-60%] md:translate-y-[-20%] lg:translate-y-[-17%] bottom-0 md:bottom-auto md:right-auto right-0 md:translate-x-[-80%] lg:translate-x-[-80%]'>
+          <div className='w-40 sm:w-[15rem] md:w-[22rem] absolute md:top-1/2 translate-y-[-90%] sm:translate-y-[-60%] md:translate-y-[-20%] lg:translate-y-[-17%] bottom-0 md:bottom-auto md:right-auto right-0 md:translate-x-[-80%] lg:translate-x-[-80%]'>
             <Image src={animal} alt='' />
           </div>
         </div>
         <div className='fixed right-0 md:right-auto translate-y-[-120px] translate-x-[-120px] md:left-1/2 top-1/2 md:translate-x-[200px] md:translate-y-[-220px] scale-50 md:scale-75 lg:scale-100 lg:translate-x-[350px] lg:translate-y-[-180px] overflow-visible'>
           <div
             id='nature'
-            className='opacity-0 w-60 absolute translate-y-[-110%] translate-x-[-40%] lg:translate-x-[-50%] lg:translate-y-[-50%]'
+            className='opacity-0 w-60 absolute translate-y-[-5%] sm:translate-y-[-110%] translate-x-[-50%] sm:translate-x-[-140%] md:translate-x-[-40%] lg:translate-x-[-50%] lg:translate-y-[-50%]'
           >
             <Image src={nature} alt='' />
           </div>
           <div
             id='hasthe'
-            className='opacity-0 w-48 absolute translate-y-[-50%] lg:translate-x-[-10%] lg:translate-y-[50%]'
+            className='opacity-0 w-48 absolute translate-y-[160%] translate-x-[-10%] sm:translate-x-[-123%] sm:translate-y-[-80%] md:translate-y-[-50%] md:translate-x-[-10%] lg:translate-y-[50%]'
           >
             <Image src={hasthe} alt='' />
           </div>
           <div
             id='answer'
-            className='opacity-0 w-56 absolute translate-y-[20%] translate-x-[-10%] lg:translate-x-[-15%] lg:translate-y-[73%]'
+            className='opacity-0 w-56 absolute translate-y-[150%] translate-x-[-15%] sm:translate-x-[-113%] sm:translate-y-[-2%] md:translate-y-[20%] md:translate-x-[-10%] lg:translate-x-[-15%] lg:translate-y-[73%]'
           >
             <Image src={answer} alt='' />
           </div>
           <div
             id='arrow'
-            className='opacity-0 w-80 h-44 absolute right-0 bottom-0 md:bottom-auto md:top-0 translate-y-[-100px] md:translate-x-[-10%] md:translate-y-[-0%] lg:translate-x-[-40%] lg:translate-y-[-40%] rotate-[50deg] md:-rotate-12 lg:rotate-0'
+            className='opacity-0 w-64 sm:w-80 h-44 absolute right-0 bottom-0 md:bottom-auto md:top-0 translate-y-[-40px] sm:translate-y-[-100px] translate-x-[50%] sm:translate-x-[-10%] md:translate-x-[-10%] md:translate-y-[-0%] lg:translate-x-[-40%] lg:translate-y-[-40%] rotate-[70deg] sm:rotate-[50deg] md:-rotate-12 lg:rotate-0'
           >
             <Image
               src={arrow}
