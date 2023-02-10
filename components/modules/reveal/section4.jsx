@@ -21,16 +21,16 @@ export const Section4ComponentFixedFront = () => {
           id="s4_text"
           className="opacity-0 pointer-events-none font-funkturm tracking-[0.08em] fixed w-full h-full flex justify-center items-center text-center leading-none text-white text-5xl md:text-8xl sm:text-6xl"
         >
-          <div className="relative max-w-screen-lg w-full leading-tight text-center md:text-left md:ml-20">
-            SO <br className="block md:hidden" /> WE TOOK
-            <span className="block md:ml-56">
-              THAT <br className="block md:hidden" /> DREAM
+          <div className="relative max-w-screen-lg w-full leading-tight sm:leading-none text-center sm:text-left sm:ml-20">
+            SO <br className="block sm:hidden" /> WE TOOK
+            <span className="block sm:ml-32 md:ml-56">
+              THAT <br className="block sm:hidden" /> DREAM
             </span>
-            AND MADE <br className="block md:hidden" />
+            AND MADE <br className="block sm:hidden" />
             IT REAL
             <div
               id="pot"
-              className="absolute w-20 h-20 md:w-44 md:h-44 opacity-0 top-1/2 left-1/2 translate-x-[70%] md:translate-x-0 md:left-24 translate-y-[-55%]"
+              className="absolute w-20 h-20 md:w-44 md:h-44 opacity-0 top-1/2 left-1/2 md:left-24 translate-x-[70%] sm:translate-x-[-390%] md:translate-x-0 translate-y-[-55%]"
             >
               <Image
                 src={pot}
@@ -43,7 +43,7 @@ export const Section4ComponentFixedFront = () => {
             </div>
             <div
               id="box"
-              className="block md:hidden w-[17.5rem] opacity-0 absolute top-1/2 left-1/2 translate-x-[-42%] translate-y-[37.5%]"
+              className="block sm:hidden w-[17.5rem] opacity-0 absolute top-1/2 left-1/2 translate-x-[-42%] translate-y-[37.5%]"
             >
               <div className="relative w-full h-full">
                 <Image src={boxMobile} alt="" />
@@ -51,7 +51,7 @@ export const Section4ComponentFixedFront = () => {
             </div>
             <div
               id="box"
-              className="absolute w-[53.5rem] h-36 hidden md:block opacity-0 top-1/2 left-1/2 translate-x-[-51%] translate-y-[15%]"
+              className="absolute w-[33.5rem] h-36 md:w-[53.5rem] md:h-36 hidden sm:block opacity-0 top-1/2 left-1/2 translate-x-[-53%] translate-y-[-10%] md:translate-x-[-51%] md:translate-y-[30%]"
             >
               <Image
                 src={box}
@@ -104,7 +104,7 @@ export const Section4ComponentFixedBack = () => {
       <div className="s4_group_exit_all">
         <div
           id="construction_sticker"
-          className="fixed w-72 h-72 md:w-[28rem] md:h-[28rem] opacity-0 top-1/2 left-1/2 translate-x-[-50%] translate-y-[42%] md:translate-x-[-123%] md:translate-y-[2%]"
+          className="fixed w-72 h-72 md:w-[28rem] md:h-[28rem] opacity-0 top-1/2 left-1/2 translate-x-[-50%] translate-y-[42%] sm:translate-x-[-120%] sm:translate-y-[0%] md:translate-x-[-123%] md:translate-y-[2%]"
         >
           <Image
             src={constructionSticker}
@@ -119,7 +119,7 @@ export const Section4ComponentFixedBack = () => {
           id="blossom"
           className="fixed h-0 w-0 top-1/2 right-0 overflow-visible"
         >
-          <div className="w-64 h-48 md:w-[25rem] md:h-48 absolute top-1/2 left-1/2 md:left-auto translate-y-[-180%] translate-x-[37%] md:translate-y-[-135%] md:translate-x-[37%]">
+          <div className="w-64 h-48 sm:w-72 md:w-[25rem] absolute top-1/2 left-1/2 md:left-auto translate-y-[-180%] translate-x-[37%] sm:translate-y-[-110%] md:translate-y-[-135%]">
             <Image
               src={blossom}
               fill
@@ -134,7 +134,7 @@ export const Section4ComponentFixedBack = () => {
           id="loading"
           className="fixed h-0 w-0 top-1/2 right-1/2 overflow-visible opacity-0"
         >
-          <div className="w-36 h-20 md:w-52 md:h-20 absolute top-1/2 left-1/2 md:left-auto translate-x-[30%] translate-y-[-250%] md:translate-y-[-88%] md:translate-x-[180%]">
+          <div className="w-36 h-20 sm:w-40 sm:h-24 md:w-52 md:h-20 absolute top-1/2 left-1/2 md:left-auto translate-x-[30%] translate-y-[-250%] sm:translate-y-[-60%] sm:translate-x-[150%] md:translate-y-[-88%] md:translate-x-[180%]">
             <Image
               src={loading}
               fill
