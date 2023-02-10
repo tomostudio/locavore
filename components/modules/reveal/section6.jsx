@@ -175,7 +175,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             id='enter_inspire3'
             className='relative h-screen w-full flex justify-center items-center'
           >
-            <div className='relative max-w-screen-xl w-[80%] md:w-[70%] aspect-[16/9] mx-auto'>
+            <div className='relative max-w-screen-xl w-[80%] md:w-[50%] aspect-[16/9] mx-auto'>
               <div id='inspire3d' className='relative w-full h-full z-1 block'>
                 <Image src={inspire5} alt='' priority />
               </div>
@@ -209,12 +209,12 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           {/* INSPIRE5 */}
           <div className='relative h-screen w-full  flex justify-center items-center'>
             <div className='relative max-w-screen-xl mx-auto w-[80%] '>
-              <div id='inspire5d' className='absolute w-full h-full z-1'>
+              <div id='inspire5d' className='absolute w-full h-full px-20 z-1'>
                 <Image src={inspire1} alt='' priority />
               </div>
               <div
                 id='inspire5n'
-                className='absolute w-full h-full  opacity-0  z-10  stop-flickering will-change-auto'
+                className='absolute w-full h-full  opacity-0 px-20 z-10  stop-flickering will-change-auto'
               >
                 <Image src={inspire2} alt='' priority />
               </div>
@@ -351,8 +351,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire1n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 110%',
-        end: 'bottom 40%',
+        start: 'top 25%',
+        end: 'top 0%',
       },
     };
 
@@ -388,8 +388,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire2n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 110%',
-        end: 'bottom 40%',
+        start: 'top 35%',
+        end: 'top 10%',
       },
     };
 
@@ -425,8 +425,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire3n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 110%',
-        end: 'bottom 40%',
+        start: 'top 25%',
+        end: 'top 0%',
       },
     };
 
@@ -462,8 +462,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire4n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 110%',
-        end: 'bottom 40%',
+        start: 'top 20%',
+        end: 'top -5%',
       },
     };
 
@@ -499,8 +499,8 @@ export const Section6AnimationOBJ = [
         trigger: '#inspire5n', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'bottom 110%',
-        end: 'bottom 40%',
+        start: 'top 25%',
+        end: 'top 0%',
       },
     };
 

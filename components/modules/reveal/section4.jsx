@@ -113,7 +113,7 @@ export const Section4ComponentFixedBack = () => {
       <div className='s4_group_exit_all'>
         <div
           id='blossom'
-          className='fixed h-0 w-0 top-28 md:top-1/2 right-0 overflow-visible translate-x-[100vw]'
+          className='fixed h-0 w-0 -z-1 top-28 md:top-1/2 right-0 overflow-visible translate-x-[100vw]'
         >
           <div className='w-64 md:w-[28rem] absolute top-1/2 right-0 md:right-auto md:left-auto translate-y-[0%] translate-x-[-20%] md:translate-y-[-220%] lg:translate-y-[-150%] md:translate-x-[0%] lg:translate-x-[50%]'>
             <Image src={blossom} alt='' />
@@ -190,7 +190,7 @@ export const Section4ComponentInner = ({ setBgColor, setCaption }) => {
         <Section4MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         <div id='enter_box' className='h-[25vh]' />
         <div id='enter_construction_sticker' className='h-[25vh] ' />
-        <div id='enter_group_s4' className='h-[150vh] ' />
+        <div id='enter_group_s4' className='h-[150vh] bg-red-600 opacity-50' />
         <div className='h-[100vh]' />
         <div id='exit_all4' className='h-[100vh]' />
         <Section4MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
@@ -390,7 +390,7 @@ export const Section4AnimationOBJ = [
         to: [
           elem,
           {
-            y: '100%',
+            y: '0%',
           },
         ],
       },
@@ -462,7 +462,7 @@ export const Section4AnimationOBJ = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'top 75%',
+        end: 'top 60%',
       },
     };
     // Input Animation
@@ -732,7 +732,7 @@ export const Section4AnimationOBJMobile = [
         to: [
           elem,
           {
-            y: '100%',
+            y: '0%',
           },
         ],
       },

@@ -65,7 +65,7 @@ export const Section2ComponentFixedFront = () => {
         id='forest2'
         className='fixed z-2 h-0 w-0 top-1/2 right-0 overflow-visible'
       >
-        <div className='w-[20rem] md:w-[28rem]  absolute top-1/2 translate-y-[25%] md:translate-y-[-50%] translate-x-[100%]'>
+        <div className='w-[20rem] md:w-[28rem]  absolute top-1/2 translate-y-[25%] md:translate-y-[-50%] translate-x-[0%]'>
           <Image src={forest2} alt='' />
         </div>
       </div>
@@ -73,7 +73,7 @@ export const Section2ComponentFixedFront = () => {
         id='forest3'
         className='fixed z-3 h-0 w-0 bottom-0 right-1/2 overflow-visible'
       >
-        <div className='w-[25rem] h-[20rem] md:w-[36rem] md:h-[30rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[100%]'>
+        <div className='w-[25rem] h-[20rem] md:w-[36rem] md:h-[30rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[0%]'>
           <Image
             src={forest3}
             fill
@@ -934,7 +934,7 @@ export const Section2AnimationOBJ = [
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 80%',
+        start: 'top 90%',
         end: 'bottom 0%',
       },
     };
@@ -963,7 +963,7 @@ export const Section2AnimationOBJ = [
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 80%',
+        start: 'top 90%',
         end: 'bottom 0%',
       },
     };

@@ -323,9 +323,9 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           </div>
         </div>
         {/* DAISY YOURSELF */}
-        <div id="enter_daisy_yourself" className="h-[200vh] w-full " />
+        <div id="enter_daisy_yourself" className="h-[200vh] w-full bg-red-600 opacity-50" />
         {/* BULB */}
-        <div id="enter_bulb" className="h-[25vh] w-full -mt-24" />
+        <div id="enter_bulb" className="h-[25vh] w-full mt-24" />
         <Section5MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         <div className="h-screen w-full" />
         {/* EXIT GROUP 1 */}
@@ -1423,15 +1423,6 @@ export const Section5AnimationOBJ = [
     // Input Animation
     const animation = [
       {
-        set: [
-          elem,
-          {
-            y: '-100vh',
-            x: 0,
-          },
-        ],
-      },
-      {
         to: [
           elem,
           {
@@ -1461,15 +1452,6 @@ export const Section5AnimationOBJ = [
 
     // Input Animation
     const animation = [
-      {
-        to: [
-          elem,
-          {
-            y: '100vh',
-            x: 0,
-          },
-        ],
-      },
       {
         to: [
           elem,

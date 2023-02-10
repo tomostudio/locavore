@@ -158,13 +158,13 @@ export const Section1ComponentInner = ({ setBgColor, setCaption }) => {
         {/* WHATIF APPEAR */}
         <div id="whatif-trigger" className="h-[50vh]" />
         {/* DREAM LEFT TO RIGHT */}
-        <div id="dream-trigger" className="h-[100vh] " />
+        <div id="dream-trigger" className="h-[100vh] bg-red-600 bg-opacity-50" />
         {/* WISH NORMAL*/}
         <div
           id="wish"
           className="h-screen relative z-50 w-full mx-auto max-w-screen-lg md:pl-24 sm:pl-20 pl-12 mb-40"
         >
-          <div className="absolute  left-[calc(50%-15vw)] md:left-[calc(50%-30vw)] top-0 translate-x-[-50%] w-40 md:w-[25vw] sm:w-52 ">
+          <div className="absolute left-[calc(50%-15vw)] md:left-[calc(50%-30vw)] top-1/2 translate-x-[-50%] w-40 md:w-[25vw] sm:w-52 ">
             <Image src={wish} alt="" />
           </div>
         </div>
@@ -383,7 +383,7 @@ export const Section1AnimationOBJMobile = [
         to: [
           elem,
           {
-            x: '100%',
+            x: '0%',
             ease: 'none',
           },
         ],
@@ -666,7 +666,7 @@ export const Section1AnimationOBJ = [
         to: [
           elem,
           {
-            x: '100%',
+            x: '0%',
             ease: 'none',
           },
         ],
