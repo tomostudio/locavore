@@ -97,7 +97,7 @@ export const Section4ComponentFixedBack = () => {
     <div id='section4_fixed_back'>
       <div
         id='construction2'
-        className='fixed h-0 w-0 top-1/2 right-0 overflow-visible'
+        className='fixed z-1 h-0 w-0 top-1/2 right-0 overflow-visible'
       >
         <div className='w-64 h-64 md:w-96 md:h-96 absolute top-1/2 left-1/2 translate-y-[-95%] translate-x-[100%]'>
           <Image
