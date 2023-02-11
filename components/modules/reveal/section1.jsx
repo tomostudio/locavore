@@ -158,7 +158,7 @@ export const Section1ComponentInner = ({ setBgColor, setCaption }) => {
         {/* WHATIF APPEAR */}
         <div id="whatif-trigger" className="h-[50vh]" />
         {/* DREAM LEFT TO RIGHT */}
-        <div id="dream-trigger" className="h-[100vh] bg-red-600 bg-opacity-50" />
+        <div id="dream-trigger" className="h-[100vh]" />
         {/* WISH NORMAL*/}
         <div
           id="wish"

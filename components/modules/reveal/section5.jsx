@@ -323,7 +323,7 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
           </div>
         </div>
         {/* DAISY YOURSELF */}
-        <div id="enter_daisy_yourself" className="h-[200vh] w-full bg-red-600 opacity-50" />
+        <div id="enter_daisy_yourself" className="h-[200vh] w-full" />
         {/* BULB */}
         <div id="enter_bulb" className="h-[25vh] w-full mt-24" />
         <Section5MarkerTop setCaption={setCaption} setBgColor={setBgColor} />

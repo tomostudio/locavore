@@ -190,7 +190,7 @@ export const Section4ComponentInner = ({ setBgColor, setCaption }) => {
         <Section4MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         <div id='enter_box' className='h-[25vh]' />
         <div id='enter_construction_sticker' className='h-[25vh] ' />
-        <div id='enter_group_s4' className='h-[150vh] bg-red-600 opacity-50' />
+        <div id='enter_group_s4' className='h-[150vh]' />
         <div className='h-[100vh]' />
         <div id='exit_all4' className='h-[100vh]' />
         <Section4MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
