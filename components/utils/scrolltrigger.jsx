@@ -17,10 +17,10 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
     return () => {
       ScrollTrigger.disable();
       ScrollTrigger.killAll();
-      ScrollTrigger.clearScrollMemory()
+      ScrollTrigger.clearScrollMemory();
       ScrollTrigger.clearMatchMedia();
-    }
-  },[])
+    };
+  }, []);
 
   // Initiate Scrolltrigger
   gsap.registerPlugin(ScrollTrigger);
@@ -33,7 +33,6 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
       // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
       scroll.on('scroll', ScrollTrigger.update);
 
-
       let scrollerQuery = `#${scroll.el.id}`;
       if (!scrollerQuery) {
         scrollerQuery = `.${scroll.el.className.replace(/ /g, '.')}`;
@@ -43,7 +42,7 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
       ScrollTrigger.scrollerProxy(scrollerQuery, {
         scrollTop(value) {
           return arguments.length
-            ? scroll.scrollTo(value, 0, 0)
+            ? scroll.scrollTo(value, { duration: 0, disableLerp: true })
             : scroll.scroll.instance.scroll.y;
         }, // we don't have to define a scrollLeft because we're only scrolling vertically.
         getBoundingClientRect() {
