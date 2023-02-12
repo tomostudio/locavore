@@ -78,13 +78,9 @@ export const Section4ComponentFixedFront = () => {
         id='construction1'
         className='fixed h-0 w-0 top-0 right-1/2 overflow-visible'
       >
-        <div className='h-64 w-64 md:w-96 md:h-96 z-10 absolute right-1/2 translate-x-[100%] translate-y-[-100%] md:translate-x-[145%]'>
+        <div className='w-52 md:w-96 z-10 absolute right-1/2 translate-x-[100%] translate-y-[-100%] md:translate-x-[145%]'>
           <Image
             src={construction1}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
             alt=''
           />
         </div>
@@ -99,13 +95,9 @@ export const Section4ComponentFixedBack = () => {
         id='construction2'
         className='fixed z-1 h-0 w-0 top-1/2 right-0 overflow-visible'
       >
-        <div className='w-64 h-64 md:w-96 md:h-96 absolute top-1/2 left-1/2 translate-y-[-95%] translate-x-[100%]'>
+        <div className='w-52 md:w-96 absolute top-1/2 left-1/2 translate-y-[-95%] translate-x-[100%]'>
           <Image
             src={construction2}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
             alt=''
           />
         </div>
@@ -113,17 +105,17 @@ export const Section4ComponentFixedBack = () => {
       <div className='s4_group_exit_all'>
         <div
           id='blossom'
-          className='fixed h-0 w-0 -z-1 top-28 md:top-1/2 right-0 overflow-visible translate-x-[100vw]'
+          className='fixed h-0 w-0 -z-1 top-16 md:top-1/2 right-0 overflow-visible translate-x-[100vw]'
         >
-          <div className='w-64 md:w-[28rem] absolute top-1/2 right-0 md:right-auto md:left-auto translate-y-[0%] translate-x-[-20%] md:translate-y-[-220%] lg:translate-y-[-150%] md:translate-x-[0%] lg:translate-x-[50%]'>
+          <div className='w-56 md:w-[28rem] absolute top-1/2 right-0 md:right-auto md:left-auto translate-y-[0%] translate-x-[-20%] md:translate-y-[-220%] lg:translate-y-[-150%] md:translate-x-[0%] lg:translate-x-[50%]'>
             <Image src={blossom} alt='' />
           </div>
         </div>
         <div
           id='loading'
-          className='fixed h-0 w-0 top-[230px] md:top-1/2 right-0 md:right-1/2 overflow-visible opacity-0'
+          className='fixed h-0 w-0 top-44 md:top-1/2 right-0 md:right-1/2 overflow-visible opacity-0'
         >
-          <div className='w-28 md:w-44 lg:w-52 absolute top-1/2 right-24 md:right-auto md:left-auto md:translate-y-[-200px] lg:translate-y-[-140%] md:translate-x-[150%] lg:translate-x-[200%]'>
+          <div className='w-24 md:w-44 lg:w-52 absolute top-1/2 right-14 md:right-auto md:left-auto md:translate-y-[-200px] lg:translate-y-[-140%] md:translate-x-[150%] lg:translate-x-[200%]'>
             <Image src={loading} alt='' />
           </div>
         </div>

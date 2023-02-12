@@ -113,7 +113,7 @@ export const Section5ComponentFixedBack = () => {
           id="yourself"
           className="fixed h-0 w-0 top-1/2 right-1/2 translate-y-0 translate-x-[-200vw] lg:translate-x-0 lg:translate-y-[100vh]  overflow-visible"
         >
-          <div className="w-52 sm:w-80 lg:w-96 absolute top-1/2 left-1/2 translate-y-[-230%] sm:translate-y-[-200%] lg:translate-x-[-85%] lg:translate-y-[-140%]">
+          <div className="w-52 sm:w-80 lg:w-[22rem] absolute top-1/2 left-1/2 translate-y-[-230%] sm:translate-y-[-200%] lg:translate-x-[-85%] lg:translate-y-[-140%]">
             <Image src={yourSelf} alt="" />
             <div
               id="bulb"
@@ -1426,7 +1426,7 @@ export const Section5AnimationOBJ = [
         to: [
           elem,
           {
-            y: '0vh',
+            y: '2vh',
             x: 0,
           },
         ],
