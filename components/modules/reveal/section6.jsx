@@ -208,13 +208,13 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           </div>
           {/* INSPIRE5 */}
           <div className='relative h-screen w-full  flex justify-center items-center'>
-            <div className='relative max-w-screen-xl mx-auto w-[80%] '>
-              <div id='inspire5d' className='absolute w-full h-full px-20 z-1'>
+            <div className='relative max-w-screen-xl mx-auto w-full '>
+              <div id='inspire5d' className='absolute w-full h-full px-10 sm:px-20 z-1'>
                 <Image src={inspire1} alt='' priority />
               </div>
               <div
                 id='inspire5n'
-                className='absolute w-full h-full  opacity-0 px-20 z-10  stop-flickering will-change-auto'
+                className='absolute w-full h-full  opacity-0 px-10 sm:px-20 z-10  stop-flickering will-change-auto'
               >
                 <Image src={inspire2} alt='' priority />
               </div>
