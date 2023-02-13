@@ -269,7 +269,7 @@ export const Section2ComponentInner = ({ setBgColor, setCaption }) => {
         {/* BEE */}
         <div id='enter_bee' className='h-[50vh] ' />
         {/* FOREST 2 */}
-        <div id='enter-forest2' className='h-[150vh]' />
+        <div id='enter-forest2' className='h-[150vh] mt-24' />
         <div className='h-[50vh]' />
         <div id='exit-group2' className='h-[50vh]  mt-24' />
         <div id='exit-forest1' className='h-[50vh] mt-24' />
