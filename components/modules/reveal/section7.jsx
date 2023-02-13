@@ -147,7 +147,7 @@ export const Section7ComponentInner = ({ setBgColor, setCaption }) => {
       >
         <Section7MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         {/* FEED CHANGE */}
-        <div id='enter_feed_change' className='h-[100vh] w-full' />
+        <div id='enter_feed_change' className='h-[100vh] w-full mt:24 sm:mt-0' />
         {/* UNDERLINE */}
         <div id='enter_underline' className='h-[50vh] w-full'>
           <div id='enter_underline_m_1' className='h-[50%] w-full ' />

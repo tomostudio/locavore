@@ -129,7 +129,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           <div id='enter_home' className='h-[25vh] w-full' />
           <div
             id='enter_inspire1'
-            className='relative h-[100vh] w-full flex justify-center items-center'
+            className='relative h-[50vh] w-full flex justify-center items-center'
           >
             <div className='relative max-w-screen-xl mx-auto w-full h-full'>
               <div
@@ -150,7 +150,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           <div className='relative h-[25vh] w-full' />
           <div
             id='enter_inspire2'
-            className='relative h-screen w-full  flex justify-center items-center'
+            className='relative h-[50vh] md:h-screen w-full  flex justify-center items-center'
           >
             <div className='relative max-w-screen-xl w-full h-full'>
               <div
@@ -170,7 +170,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           {/* INSPIRE3 */}
           <div
             id='enter_inspire3'
-            className='relative h-screen w-full flex justify-center items-center'
+            className='relative h-[50vh] md:h-screen w-full flex justify-center items-center'
           >
             <div className='relative max-w-screen-xl w-[80%] md:w-[50%] aspect-[16/9] mx-auto'>
               <div id='inspire3d' className='relative w-full h-full z-1 block'>
@@ -187,7 +187,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
           {/* INSPIRE4 */}
           <div
             id='enter_inspire4'
-            className='relative h-screen w-full  flex justify-center items-center'
+            className='relative h-[50vh] md:h-screen w-full  flex justify-center items-center'
           >
             <div className='relative max-w-screen-xl w-full h-full mx-auto'>
               <div id='inspire4d' className='absolute w-full top-0 z-1'>
@@ -202,7 +202,7 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             </div>
           </div>
           {/* INSPIRE5 */}
-          <div className='relative h-screen w-full  flex justify-center items-center'>
+          <div className='relative h-[50vh] md:h-screen w-full  flex justify-center items-center'>
             <div className='relative max-w-screen-xl mx-auto w-full '>
               <div id='inspire5d' className='absolute w-full h-full px-10 sm:px-20 z-1'>
                 <Image src={inspire1} alt='' priority />
@@ -597,4 +597,376 @@ export const Section6AnimationOBJ = [
   },
 ];
 
-export const Section6AnimationOBJMobile = [...Section6AnimationOBJ];
+export const Section6AnimationOBJMobile = [
+  // TITLE ENTER
+  () => {
+    const id = 's6_text_enter'; // animation id
+    const elem = '#s6_text';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_text_s6', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // CIRCLE ENTER
+  () => {
+    const id = 'circle_enter'; // animation id
+    const elem = '#circle';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_circle', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // HOME ENTER
+  () => {
+    const id = 'home_enter'; // animation id
+    const elem = '#home';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_home', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // INSPIRE1 SWITCH
+  () => {
+    const id = 'inspire1_switch'; // animation id
+    const elem = '#inspire1n';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#inspire1n', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 35%',
+        end: 'top 10%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // INSPIRE2 SWITCH
+  () => {
+    const id = 'inspire2_switch'; // animation id
+    const elem = '#inspire2n';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#inspire2n', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 35%',
+        end: 'top 10%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // INSPIRE3 SWITCH
+  () => {
+    const id = 'inspire3_switch'; // animation id
+    const elem = '#inspire3n';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#inspire3n', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 25%',
+        end: 'top 0%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // INSPIRE4 SWITCH
+  () => {
+    const id = 'inspire4_switch'; // animation id
+    const elem = '#inspire4n';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#inspire4n', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 40%',
+        end: 'top 15%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // INSPIRE5 SWITCH
+  () => {
+    const id = 'inspire5_switch'; // animation id
+    const elem = '#inspire5n';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#inspire5n', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        markers: true,
+        start: 'top 35%',
+        end: 'top 10%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // EXIT ALL
+  () => {
+    const id = 'home_spin'; // animation id
+    const elem = '#home';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#home_spin', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'bottom 0%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            rotate: '0deg',
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            rotate: '720deg',
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+  // EXIT ALL
+  () => {
+    const id = 'exit_group_s6'; // animation id
+    const elem = '#exit_group_s6';
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#exit_all_s6', // which section will be tracked as the scroll trigger
+        scroller: '#scroll-container', // id of scroll container
+        scrub: true,
+        start: 'top 100%',
+        end: 'top 0%',
+      },
+    };
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+    ];
+
+    return { id, elem, settings, animation };
+  },
+];

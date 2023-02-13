@@ -242,9 +242,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                     id="summer"
                                     className="w-28 sm:w-32 md:w-40 absolute top-0 lg:top-1/2 translate-y-[60%] lg:translate-y-[30%] translate-x-[-60%] lg:translate-x-[-30%] opacity-0"
                                   >
-                                    <Image
-                                      src={summer}
-                                    />
+                                    <Image src={summer} />
                                   </div>
                                   2023
                                 </span>
@@ -253,7 +251,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                 {showShare ? (
                                   <FancyLink
                                     onClick={handleShareButton}
-                                    className={`absolute left-1/2 translate-x-[-50%] mt-14 w-fit py-4 px-6 text-xl font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                                    className={`absolute left-1/2 translate-x-[-50%] mt-14 w-fit py-4 px-6 text-sm md:text-xl font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
                                   >
                                     <div
                                       id="worm"
