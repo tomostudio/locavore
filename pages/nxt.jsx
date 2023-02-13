@@ -130,6 +130,13 @@ export default function Reveal({ seoAPI, footerAPI }) {
     if (appContext.history.length === 0) {
       setTimeout(() => setLoading(false), 1500)
     }
+    appContext.setHeader({
+      headerStyle: 'blur',
+    });    
+    
+    return () => {
+      appContext.setHeader({ headerStyle: 'default' });
+    };
   }, [])
 
   useEffect(() => {
