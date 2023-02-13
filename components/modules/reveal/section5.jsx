@@ -338,9 +338,8 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
         <div id="enter_feed" className="h-[25vh] w-full -mt-24" />
         {/* ENTER FEED */}
         <div id="enter_group_s5_3" className="h-[25vh] w-full mt-24" />
-        <div className="h-screen w-full" />
         {/* EXIT ALL FEED */}
-        <div id="exit_group_end_s5" className="h-[50vh] w-full mt-24" />
+        <div id="exit_group_end_s5" className="h-[50vh] w-full" />
         <Section5MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>

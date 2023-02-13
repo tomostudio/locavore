@@ -2,7 +2,6 @@ import React from 'react';
 import 'intersection-observer'; // optional polyfill
 import { useInView } from 'react-cool-inview';
 import Image from 'next/image';
-import { Parallax } from 'react-scroll-parallax';
 
 // Local Images
 import circle from '@/public/nxt/circle.webp';
@@ -154,7 +153,6 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             className='relative h-screen w-full  flex justify-center items-center'
           >
             <div className='relative max-w-screen-xl w-full h-full'>
-              {/* <Parallax speed={-10} className='relative w-full h-full'> */}
               <div
                 id='inspire2d'
                 className='absolute w-[80%] md:w-[60%] top-0 right-0 aspect-[16/9] z-1'
@@ -167,7 +165,6 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
               >
                 <Image src={inspire8} alt='' priority />
               </div>
-              {/* </Parallax> */}
             </div>
           </div>
           {/* INSPIRE3 */}
@@ -192,7 +189,6 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
             id='enter_inspire4'
             className='relative h-screen w-full  flex justify-center items-center'
           >
-            {/* <Parallax speed={-20} className='relative w-full h-full'> */}
             <div className='relative max-w-screen-xl w-full h-full mx-auto'>
               <div id='inspire4d' className='absolute w-full top-0 z-1'>
                 <Image src={inspire3} alt='' priority />
@@ -204,7 +200,6 @@ export const Section6ComponentInner = ({ setBgColor, setCaption }) => {
                 <Image src={inspire4} alt='' priority />
               </div>
             </div>
-            {/* </Parallax> */}
           </div>
           {/* INSPIRE5 */}
           <div className='relative h-screen w-full  flex justify-center items-center'>
