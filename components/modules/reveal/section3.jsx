@@ -193,7 +193,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         {/* TREE */}
         <div id="enter_tree" className="h-[150vh]  " />
         {/* ENTER ANIMAL */}
-        <div id="enter_animal" className="h-[100vh]  " />
+        <div id="enter_animal" className="h-[100vh]" />
         {/* ENTER NATURE */}
         <div id="enter_nature" className="h-[25vh] " />
         {/* ENTER HAS THE */}
@@ -327,7 +327,7 @@ export const Section3AnimationOBJMobile = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 100%',
+        end: 'bottom 0%',
       },
     }
     // Input Animation
@@ -867,7 +867,7 @@ export const Section3AnimationOBJ = [
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 100%',
+        end: 'bottom 0%',
       },
     }
     // Input Animation

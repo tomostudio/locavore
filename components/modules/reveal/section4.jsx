@@ -372,8 +372,8 @@ export const Section4AnimationOBJ = [
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 85%',
-        end: 'bottom 0%',
+        start: 'top 100%',
+        end: 'bottom 50%',
       },
     };
     // Input Animation
