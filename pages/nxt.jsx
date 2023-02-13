@@ -155,7 +155,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
     // Go to the Top, Set Background Color
     // TURN ON AFTER TESTING
-    // window.scroll(0, 0)
+    window.scroll(0, 0)
     setCaption(0)
     setBgColor(0)
 
