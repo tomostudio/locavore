@@ -141,7 +141,7 @@ export const Section7ComponentInner = ({ setBgColor, setCaption }) => {
     <>
       {/* Section 2 */}
       <section
-        id='trigger4'
+        id='trigger7'
         className='trigger relative w-full text-4xl flex flex-col justify-center items-center '
         data-scroll-section
       >
@@ -156,7 +156,6 @@ export const Section7ComponentInner = ({ setBgColor, setCaption }) => {
         {/* HEART1 */}
         <div id='enter_hearts' className='h-[25vh] w-full mt-24' />
         <div className='h-[100vh] md:h-[50vh]' />
-        <div id='exit_all_s7' className='h-[50vh]' />
         <Section7MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
@@ -321,11 +320,11 @@ export const Section7AnimationOBJMobile = [
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#exit_all_s7', // which section will be tracked as the scroll trigger
+        trigger: '#trigger8', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 0%',
+        end: 'top 0%',
       },
     };
 
@@ -465,11 +464,11 @@ export const Section7AnimationOBJ = [
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#exit_all_s7', // which section will be tracked as the scroll trigger
+        trigger: '#trigger8', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 0%',
+        end: 'top 0%',
       },
     };
 

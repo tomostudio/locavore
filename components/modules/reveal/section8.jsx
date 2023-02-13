@@ -1,276 +1,266 @@
-import React, { useEffect, useRef, useState } from 'react';
-import 'intersection-observer'; // optional polyfill
-import { useInView } from 'react-cool-inview';
-import Image from 'next/image';
-import Lottie from 'lottie-react';
+import React, { useEffect, useRef, useState } from 'react'
+import 'intersection-observer' // optional polyfill
+import { useInView } from 'react-cool-inview'
+import Image from 'next/image'
+import Lottie from 'lottie-react'
 
-import FancyLink from '@/components/utils/fancyLink';
-import LottieLve from '@/public/nxt/lottie/lve-lottie-jpg-2.json';
+import FancyLink from '@/components/utils/fancyLink'
+import LottieLve from '@/public/nxt/lottie/lve-lottie-jpg-2.json'
 
 // Local Images
-import summer from '@/public/nxt/summer.webp';
-import cloud1 from '@/public/nxt/cloud01.webp';
-import cloud2 from '@/public/nxt/cloud02.webp';
-import cloud3 from '@/public/nxt/cloud03.webp';
-import cloud4 from '@/public/nxt/cloud04.webp';
-import cloud5 from '@/public/nxt/cloud05.webp';
-import cloud6 from '@/public/nxt/cloud03.webp';
-import worm from '@/public/nxt/worm.webp';
-import bee1 from '@/public/nxt/bee01.webp';
-import bee2 from '@/public/nxt/bee02.webp';
-import bee3 from '@/public/nxt/bee03.webp';
-import bee4 from '@/public/nxt/bee01.webp';
-import bee5 from '@/public/nxt/bee02.webp';
-import butterfly1 from '@/public/nxt/butterfly01.webp';
-import butterfly2 from '@/public/nxt/butterfly02.webp';
-import sunflower3 from '@/public/nxt/sunflower03.webp';
-import sunflower4 from '@/public/nxt/sunflower04.webp';
-import sunflower5 from '@/public/nxt/sunflower05.webp';
-import NXT_Logo_Bumper from '@/public/nxt/lvlnxt-logo.webp';
+import summer from '@/public/nxt/summer.webp'
+import cloud1 from '@/public/nxt/cloud01.webp'
+import cloud2 from '@/public/nxt/cloud02.webp'
+import cloud3 from '@/public/nxt/cloud03.webp'
+import cloud4 from '@/public/nxt/cloud04.webp'
+import cloud5 from '@/public/nxt/cloud05.webp'
+import cloud6 from '@/public/nxt/cloud03.webp'
+import worm from '@/public/nxt/worm.webp'
+import bee1 from '@/public/nxt/bee01.webp'
+import bee2 from '@/public/nxt/bee02.webp'
+import bee3 from '@/public/nxt/bee03.webp'
+import bee4 from '@/public/nxt/bee01.webp'
+import bee5 from '@/public/nxt/bee02.webp'
+import butterfly1 from '@/public/nxt/butterfly01.webp'
+import butterfly2 from '@/public/nxt/butterfly02.webp'
+import sunflower3 from '@/public/nxt/sunflower03.webp'
+import sunflower4 from '@/public/nxt/sunflower04.webp'
+import sunflower5 from '@/public/nxt/sunflower05.webp'
+import NXT_Logo_Bumper from '@/public/nxt/lvlnxt-logo.webp'
 
-import HeaderGap from '../headerGap';
-import { Snackbar, Tooltip } from '@mui/material';
-import { Facebook, Link, Mail, Twitter } from '@/helpers/preset/svg';
-import { transition } from '@/helpers/preset/tailwind';
+import HeaderGap from '../headerGap'
+import { Snackbar, Tooltip } from '@mui/material'
+import { Facebook, Link, Mail, Twitter } from '@/helpers/preset/svg'
+import { transition } from '@/helpers/preset/tailwind'
 
 export const Section8ComponentFixedFront = () => {
-  const lottieRef = useRef();
-  useEffect(() => {
-    const detectScroll = (e) => {
-      const videoMarker = document.querySelector('#video-marker');
-      if (videoMarker !== null) {
-        const { y, height } = videoMarker.getBoundingClientRect();
-        const progress =
-          Math.round(
-            (-(y - window.innerHeight) / (height + window.innerHeight)) * 10000
-          ) / 10000;
-        if (progress > 0 && progress <= 1) {
-          lottieRef.current.goToAndStop(Math.round(358 * progress), true);
-        } else if (progress <= 0) {
-          lottieRef.current.goToAndStop(0, true);
-        } else if (progress > 1) {
-          lottieRef.current.goToAndStop(358, true);
-        }
-      }
-    };
-    document.addEventListener('scroll', detectScroll, false);
-    return () => {
-      document.removeEventListener('scroll', detectScroll, false);
-    };
-  }, []);
-
-  return (
-    <div id='section8_fixed_front'>
-      <div
-        id='video-frame'
-        className='fixed w-screen flex flex-col h-full z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 md:px-20 sm:max-w-screen-sm md:max-w-[1000px] lg:max-w-screen-xl max-h-[100vh]'
-      >
-        <HeaderGap />
-        <div className='w-full h-full flex justify-center items-center'>
-          <div
-            id='lottie-frame'
-            className='w-full h-fit aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-xl opacity-0'
-          >
-            <Lottie
-              lottieRef={lottieRef}
-              animationData={LottieLve}
-              autoplay={false}
-              loop={false}
-              rendererSettings={{
-                preserveAspectRatio: 'xMidYMid slice',
-              }}
-              style={{ objectFit: 'fill', width: '100%', height: '100%' }}
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        id='logo-frame'
-        className='fixed w-screen flex flex-col z-[49] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 md:px-20 sm:max-w-screen-sm md:max-w-[1000px] lg:max-w-screen-xl opacity-0 max-h-[100vh]'
-      >
-        <HeaderGap />
-        <div className='w-full h-full flex justify-center items-center'>
-          {/* ANIMATION CONTENT STICKY */}
-          <div
-            id='logo-end'
-            className='frame w-full aspect-[4/3] sm:aspect-[16/9] relative overflow-hidden rounded-xl'
-          >
-            <Image
-              src={NXT_Logo_Bumper}
-              fill
-              style={{
-                objectFit: 'cover',
-              }}
-              alt=''
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+  return <div id="section8_fixed_front"></div>
+}
 export const Section8ComponentFixedBack = () => {
   return (
     <>
-      <div id='section8_fixed_back' />
+      <div id="section8_fixed_back" />
     </>
-  );
-};
+  )
+}
 
 const Section8MarkerTop = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
     rootMargin: '-50px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCaption(8);
-      setBgColor(8);
+      setCaption(8)
+      setBgColor(8)
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
       // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
-        setCaption(8);
-        setBgColor(8);
+        setCaption(8)
+        setBgColor(8)
       }
     },
-  });
+  })
 
-  return <div className='w-full h-0' ref={observe} />;
-};
+  return <div className="w-full h-0" ref={observe} />
+}
 
 export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
-  const [baseUrl, setBaseUrl] = useState();
-  const [snackBar, setSnackBar] = useState(false);
-  const [showShare, setShare] = useState(false);
+  const [baseUrl, setBaseUrl] = useState()
+  const [snackBar, setSnackBar] = useState(false)
+  const [showShare, setShare] = useState(false)
+  const lottieRef = useRef()
+
+  useEffect(() => {
+    const detectScroll = (e) => {
+      const videoMarker = document.querySelector('#video-marker')
+      if (videoMarker !== null) {
+        const { y, height } = videoMarker.getBoundingClientRect()
+        const progress =
+          Math.round(
+            (-(y - window.innerHeight) / (height + window.innerHeight)) * 10000,
+          ) / 10000
+        if (progress > 0 && progress <= 1) {
+          lottieRef.current.goToAndStop(Math.round(358 * progress), true)
+        } else if (progress <= 0) {
+          lottieRef.current.goToAndStop(0, true)
+        } else if (progress > 1) {
+          lottieRef.current.goToAndStop(358, true)
+        }
+      }
+    }
+    document.addEventListener('scroll', detectScroll, false)
+    return () => {
+      document.removeEventListener('scroll', detectScroll, false)
+    }
+  }, [])
 
   const handleClick = (newState) => () => {
-    copy();
-    setSnackBar(true);
-  };
+    copy()
+    setSnackBar(true)
+  }
 
   const handleClose = () => {
-    setSnackBar(false);
-  };
+    setSnackBar(false)
+  }
 
   const copy = () => {
-    const el = document.createElement('input');
-    el.value = baseUrl;
-    document.body.appendChild(el);
-    el.select();
+    const el = document.createElement('input')
+    el.value = baseUrl
+    document.body.appendChild(el)
+    el.select()
     // document.execCommand('copy');
     navigator.clipboard.writeText(baseUrl)
-    document.body.removeChild(el);
-  };
+    document.body.removeChild(el)
+  }
 
   const handleShareButton = () => {
     const shareData = {
       title: `Locavore® — Revealing NXT `,
       text: `Opening Summer 2023`,
       url: baseUrl,
-    };
+    }
 
     if (navigator.share) {
-      navigator.share(shareData);
+      navigator.share(shareData)
     }
-  };
+  }
 
   const resize = () => {
-    console.log(resize);
+    console.log(resize)
     if (navigator.share) {
-      setShare(true);
+      setShare(true)
     } else {
-      setShare(false);
+      setShare(false)
     }
-  };
+  }
 
   useEffect(() => {
-    setBaseUrl(window.location.href);
-    resize();
-    window.addEventListener('resize', resize, true);
+    setBaseUrl(window.location.href)
+    resize()
+    window.addEventListener('resize', resize, true)
     return () => {
-      window.removeEventListener('resize', resize, true);
-    };
-  }, []);
+      window.removeEventListener('resize', resize, true)
+    }
+  }, [])
 
   return (
     <>
       {/* Section 8 */}
       <section
-        id='trigger8'
-        className='trigger relative w-full text-4xl flex flex-col justify-center items-center '
+        id="trigger8"
+        className="trigger relative w-full text-4xl flex flex-col justify-center items-center "
         data-scroll-section
       >
         <Section8MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
-
-        <div id='video-enter' className='w-full min-h-[100vh]' />
-        <div id='video-marker' className='h-[200vh] w-full ' />
-        <div id='video-to-logo' className='w-full min-h-[100vh]' />
-        <div id='logo-moveup' className='w-full h-screen' />
-        <div className='w-full '>
-          <div className='h-screen w-full sticky z-5 top-0 flex justify-center items-center'>
+        <div className="w-full ">
+          <div className="h-screen w-full sticky z-5 top-0 flex justify-center items-center">
             {/* ANIMATION CONTENT STICKY */}
-            <div className='frame w-full h-full relative overflow-hidden'>
+            <div className="frame w-full h-full relative overflow-hidden">
               <div
-                id='sticky_front'
-                className='absolute w-full h-full z-5 top-0 left-0 text-red-400 overflow-hidden'
+                id="sticky_front"
+                className="absolute w-full h-full z-5 top-0 left-0 text-red-400 overflow-hidden"
               >
-                <div className='relative max-w-screen-lg w-full h-full flex justify-center items-center mx-auto'>
-                  <div className='pointer-events-none font-funkturm tracking-[0.08em] absolute w-full h-full flex flex-col justify-center items-center text-center leading-none text-white  text-5xl md:text-8xl sm:text-6xl'>
-                    <div className='relative translate-y-[-70%] md:translate-y-[-25%]'>
-                      <div id='new_locavore_exit'>
-                        <div id='new_locavore' className='opacity-0'>
-                          <div className='flex flex-col gap-4 lg:flex-row lg:gap-8'>
+                <div className="relative max-w-screen-lg w-full h-full flex justify-center items-center mx-auto">
+                  <div className="pointer-events-none font-funkturm tracking-[0.08em] absolute w-full h-full flex flex-col justify-center items-center text-center leading-none text-white  text-5xl md:text-8xl sm:text-6xl">
+                    <div
+                      id="video-frame"
+                      className="absolute w-screen flex flex-col h-full z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 md:px-20 sm:max-w-screen-sm md:max-w-[1000px] lg:max-w-screen-xl max-h-[100vh]"
+                    >
+                      <div className="w-full h-full flex justify-center items-center">
+                        <div
+                          id="lottie-frame"
+                          className="w-full h-fit aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-xl opacity-0"
+                        >
+                          <Lottie
+                            lottieRef={lottieRef}
+                            animationData={LottieLve}
+                            autoplay={false}
+                            loop={false}
+                            rendererSettings={{
+                              preserveAspectRatio: 'xMidYMid slice',
+                            }}
+                            style={{
+                              objectFit: 'fill',
+                              width: '100%',
+                              height: '100%',
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      id="logo-frame"
+                      className="absolute w-screen flex flex-col z-[49] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 md:px-20 sm:max-w-screen-sm md:max-w-[1000px] lg:max-w-screen-xl opacity-0 max-h-[100vh]"
+                    >
+                      <div className="w-full h-full flex justify-center items-center">
+                        {/* ANIMATION CONTENT STICKY */}
+                        <div
+                          id="logo-end"
+                          className="frame w-full aspect-[4/3] sm:aspect-[16/9] relative overflow-hidden rounded-xl"
+                        >
+                          <Image
+                            src={NXT_Logo_Bumper}
+                            fill
+                            style={{
+                              objectFit: 'cover',
+                            }}
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="relative translate-y-[-70%] md:translate-y-[-25%]">
+                      <div id="new_locavore_exit">
+                        <div id="new_locavore" className="opacity-0">
+                          <div className="flex flex-col gap-4 lg:flex-row lg:gap-8">
                             <span>THE NEW</span> <span>LOCAVORE</span>
                           </div>
                         </div>
                       </div>
                       <div
-                        id='locavore_nxt'
-                        className='absolute opacity-0 flex flex-col items-center top-0 left-1/2 translate-x-[-50%]'
+                        id="locavore_nxt"
+                        className="absolute opacity-0 flex flex-col items-center top-0 left-1/2 translate-x-[-50%]"
                       >
-                        <div className='flex w-fit flex-col gap-4 lg:flex-row lg:gap-8'>
-                          <span className='block grow-[0]'>LOCAVORE</span>{' '}
-                          <span className='block grow-[0]'>NXT</span>
+                        <div className="flex w-fit flex-col gap-4 lg:flex-row lg:gap-8">
+                          <span className="block grow-[0]">LOCAVORE</span>{' '}
+                          <span className="block grow-[0]">NXT</span>
                         </div>
 
-                        <div className='relative w-full'>
+                        <div className="relative w-full">
                           <div
-                            id='opening'
-                            className='opacity-0 flex flex-col justify-center items-center text-center'
+                            id="opening"
+                            className="opacity-0 flex flex-col justify-center items-center text-center"
                           >
-                            <div className='relative w-full flex flex-col mt-4 '>
-                              <div className='relative flex flex-col lg:flex-row gap-4 lg:gap-8 justify-center items-center text-center'>
+                            <div className="relative w-full flex flex-col mt-4 ">
+                              <div className="relative flex flex-col lg:flex-row gap-4 lg:gap-8 justify-center items-center text-center">
                                 <span>OPENING</span>
-                                <span className='relative'>
+                                <span className="relative">
                                   <div
-                                    id='summer'
-                                    className='absolute top-0 lg:top-1/2 translate-y-[-30%] lg:translate-y-[-50%] translate-x-[-60%] lg:translate-x-[-50%] w-40 h-16 opacity-0'
+                                    id="summer"
+                                    className="w-28 sm:w-32 md:w-40 absolute top-0 lg:top-1/2 translate-y-[60%] lg:translate-y-[30%] translate-x-[-60%] lg:translate-x-[-30%] opacity-0"
                                   >
                                     <Image
                                       src={summer}
-                                      fill
-                                      style={{
-                                        objectFit: 'contain',
-                                      }}
-                                      alt=''
                                     />
                                   </div>
                                   2023
                                 </span>
                               </div>
-                              <div className='relative w-full flex justify-center'>
+                              <div className="relative w-full flex justify-center">
                                 {showShare ? (
                                   <FancyLink
                                     onClick={handleShareButton}
                                     className={`absolute left-1/2 translate-x-[-50%] mt-14 w-fit py-4 px-6 text-xl font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
                                   >
                                     <div
-                                      id='worm'
-                                      className='absolute top-[-100%] left-0 pointer-events-none w-28 h-28 opacity-0'
+                                      id="worm"
+                                      className="absolute top-[-100%] left-0 pointer-events-none w-28 h-28 opacity-0"
                                     >
                                       <Image
-                                        alt=''
+                                        alt=""
                                         src={worm}
                                         fill
                                         style={{
@@ -281,13 +271,13 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                     SHARE
                                   </FancyLink>
                                 ) : (
-                                  <div className='relative flex space-x-7 mt-12'>
+                                  <div className="relative flex space-x-7 mt-12">
                                     <div
-                                      id='worm'
-                                      className='absolute top-[-400%] left-1/2 translate-x-[-50%] pointer-events-none w-20 h-20 opacity-0'
+                                      id="worm"
+                                      className="absolute top-[-400%] left-1/2 translate-x-[-50%] pointer-events-none w-20 h-20 opacity-0"
                                     >
                                       <Image
-                                        alt=''
+                                        alt=""
                                         src={worm}
                                         fill
                                         style={{
@@ -296,7 +286,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                       />
                                     </div>
                                     <Tooltip
-                                      title='Facebook'
+                                      title="Facebook"
                                       classes={{ tooltip: 'tooltip' }}
                                     >
                                       <FancyLink
@@ -311,7 +301,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                       </FancyLink>
                                     </Tooltip>
                                     <Tooltip
-                                      title='Twitter'
+                                      title="Twitter"
                                       classes={{ tooltip: 'tooltip' }}
                                     >
                                       <FancyLink
@@ -326,7 +316,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                       </FancyLink>
                                     </Tooltip>
                                     <Tooltip
-                                      title='Email'
+                                      title="Email"
                                       classes={{ tooltip: 'tooltip' }}
                                     >
                                       <FancyLink
@@ -340,7 +330,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                       </FancyLink>
                                     </Tooltip>
                                     <Tooltip
-                                      title='Copy Link'
+                                      title="Copy Link"
                                       classes={{ tooltip: 'tooltip' }}
                                     >
                                       <FancyLink
@@ -369,7 +359,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                       }}
                                       open={snackBar}
                                       onClose={handleClose}
-                                      message='LINK COPIED'
+                                      message="LINK COPIED"
                                     />
                                   </div>
                                 )}
@@ -386,24 +376,24 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                           behavior: 'auto',
                         })
                       }
-                      className='absolute bottom-10 uppercase pointer-events-auto font-default font-light text-xs text-center tracking-widest text-white select-none'
+                      className="absolute bottom-10 uppercase pointer-events-auto font-default font-light text-xs text-center tracking-widest text-white select-none"
                     >
-                      <div className='block animate-fade-up'>Back to top</div>
+                      <div className="block animate-fade-up">Back to top</div>
                     </FancyLink>
                   </div>
                 </div>
               </div>
               <div
-                id='sticky_back'
-                className='absolute overflow-hidden w-full h-full z-1 top-0 left-0 flex justify-center items-center'
+                id="sticky_back"
+                className="absolute overflow-hidden w-full h-full z-1 top-0 left-0 flex justify-center items-center"
               >
                 <div
-                  id='cloud_group'
-                  className='absolute w-full h-full opacity-0'
+                  id="cloud_group"
+                  className="absolute w-full h-full opacity-0"
                 >
                   <div
-                    id='cloud1_s8'
-                    className='absolute top-1/2 left-1/2 translate-y-[-100%] translate-x-[-100%] w-[27rem] h-40'
+                    id="cloud1_s8"
+                    className="absolute top-1/2 left-1/2 translate-y-[-100%] translate-x-[-100%] w-[27rem] h-40"
                   >
                     <Image
                       src={cloud1}
@@ -411,12 +401,12 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                       style={{
                         objectFit: 'contain',
                       }}
-                      alt=''
+                      alt=""
                     />
                   </div>
                   <div
-                    id='cloud2_s8'
-                    className='absolute top-1/2 left-1/2 translate-y-[210%] translate-x-[-205%] scale-[2] w-[27rem] h-40'
+                    id="cloud2_s8"
+                    className="absolute top-1/2 left-1/2 translate-y-[210%] translate-x-[-205%] scale-[2] w-[27rem] h-40"
                   >
                     <Image
                       src={cloud2}
@@ -424,12 +414,12 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                       style={{
                         objectFit: 'contain',
                       }}
-                      alt=''
+                      alt=""
                     />
                   </div>
                   <div
-                    id='cloud3_s8'
-                    className='absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-70%] w-[27rem] h-40'
+                    id="cloud3_s8"
+                    className="absolute top-1/2 left-1/2 translate-y-[-50%] translate-x-[-70%] w-[27rem] h-40"
                   >
                     <Image
                       src={cloud3}
@@ -437,15 +427,15 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                       style={{
                         objectFit: 'contain',
                       }}
-                      alt=''
+                      alt=""
                     />
                   </div>
                   <div
-                    id='cloud4_s8'
-                    className='absolute top-1/2 left-1/2 translate-y-[-10%] translate-x-[-90%] w-36 h-36'
+                    id="cloud4_s8"
+                    className="absolute top-1/2 left-1/2 translate-y-[-10%] translate-x-[-90%] w-36 h-36"
                   >
                     <Image
-                      alt=''
+                      alt=""
                       src={cloud4}
                       fill
                       style={{
@@ -454,11 +444,11 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                     />
                   </div>
                   <div
-                    id='cloud5_s8'
-                    className='absolute top-1/2 left-1/2  translate-y-[-255%] translate-x-[-130%] w-[27rem] h-40'
+                    id="cloud5_s8"
+                    className="absolute top-1/2 left-1/2  translate-y-[-255%] translate-x-[-130%] w-[27rem] h-40"
                   >
                     <Image
-                      alt=''
+                      alt=""
                       src={cloud5}
                       fill
                       style={{
@@ -467,11 +457,11 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                     />
                   </div>
                   <div
-                    id='cloud6_s8'
-                    className='absolute top-1/2 left-1/2 translate-y-[70%] translate-x-[117%] w-[27rem] h-40'
+                    id="cloud6_s8"
+                    className="absolute top-1/2 left-1/2 translate-y-[70%] translate-x-[117%] w-[27rem] h-40"
                   >
                     <Image
-                      alt=''
+                      alt=""
                       src={cloud6}
                       fill
                       style={{
@@ -480,11 +470,11 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                     />
                   </div>
                 </div>
-                <div className='group_s8'>
-                  <div id='group_s8_1' className=' opacity-0'>
-                    <div className='absolute top-1/2 left-1/2 translate-y-[450%] translate-x-[-700%] w-12 h-12'>
+                <div className="group_s8">
+                  <div id="group_s8_1" className=" opacity-0">
+                    <div className="absolute top-1/2 left-1/2 translate-y-[450%] translate-x-[-700%] w-12 h-12">
                       <Image
-                        alt=''
+                        alt=""
                         src={bee1}
                         fill
                         style={{
@@ -492,9 +482,9 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                         }}
                       />
                     </div>
-                    <div className='absolute top-1/2 left-1/2 translate-y-[250%] translate-x-[-900%] w-14 h-14'>
+                    <div className="absolute top-1/2 left-1/2 translate-y-[250%] translate-x-[-900%] w-14 h-14">
                       <Image
-                        alt=''
+                        alt=""
                         src={bee2}
                         fill
                         style={{
@@ -502,9 +492,9 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                         }}
                       />
                     </div>
-                    <div className='absolute top-1/2 left-1/2 translate-y-[-500%] translate-x-[-240%] w-14 h-14'>
+                    <div className="absolute top-1/2 left-1/2 translate-y-[-500%] translate-x-[-240%] w-14 h-14">
                       <Image
-                        alt=''
+                        alt=""
                         src={bee3}
                         fill
                         style={{
@@ -513,10 +503,10 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                       />
                     </div>
                   </div>
-                  <div id='group_s8_2' className=' opacity-0'>
-                    <div className='absolute top-1/2 left-1/2 translate-y-[-300%] translate-x-[250%] w-20 h-20'>
+                  <div id="group_s8_2" className=" opacity-0">
+                    <div className="absolute top-1/2 left-1/2 translate-y-[-300%] translate-x-[250%] w-20 h-20">
                       <Image
-                        alt=''
+                        alt=""
                         src={butterfly1}
                         fill
                         style={{
@@ -524,9 +514,9 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                         }}
                       />
                     </div>
-                    <div className='absolute top-1/2 left-1/2 translate-y-[-200%] translate-x-[-300%] w-20 h-20'>
+                    <div className="absolute top-1/2 left-1/2 translate-y-[-200%] translate-x-[-300%] w-20 h-20">
                       <Image
-                        alt=''
+                        alt=""
                         src={butterfly2}
                         fill
                         style={{
@@ -534,9 +524,9 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                         }}
                       />
                     </div>
-                    <div className='absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[-430%] w-28 h-28'>
+                    <div className="absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[-430%] w-28 h-28">
                       <Image
-                        alt=''
+                        alt=""
                         src={sunflower3}
                         fill
                         style={{
@@ -544,9 +534,9 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                         }}
                       />
                     </div>
-                    <div className='absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[450%] w-24 h-24'>
+                    <div className="absolute top-1/2 left-1/2 translate-y-[-140%] translate-x-[450%] w-24 h-24">
                       <Image
-                        alt=''
+                        alt=""
                         src={sunflower4}
                         fill
                         style={{
@@ -555,10 +545,10 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                       />
                     </div>
                   </div>
-                  <div id='group_s8_3' className=' opacity-0'>
-                    <div className='absolute top-1/2 left-1/2 translate-y-[280%] translate-x-[380%] w-20 h-20'>
+                  <div id="group_s8_3" className=" opacity-0">
+                    <div className="absolute top-1/2 left-1/2 translate-y-[280%] translate-x-[380%] w-20 h-20">
                       <Image
-                        alt=''
+                        alt=""
                         src={sunflower5}
                         fill
                         style={{
@@ -566,9 +556,9 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                         }}
                       />
                     </div>
-                    <div className='absolute top-1/2 left-1/2 translate-y-[-330%] translate-x-[200%] w-12 h-12'>
+                    <div className="absolute top-1/2 left-1/2 translate-y-[-330%] translate-x-[200%] w-12 h-12">
                       <Image
-                        alt=''
+                        alt=""
                         src={bee4}
                         fill
                         style={{
@@ -576,9 +566,9 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                         }}
                       />
                     </div>
-                    <div className='absolute top-1/2 left-1/2 translate-y-[-90%] translate-x-[50%] w-14 h-14'>
+                    <div className="absolute top-1/2 left-1/2 translate-y-[-90%] translate-x-[50%] w-14 h-14">
                       <Image
-                        alt=''
+                        alt=""
                         src={bee5}
                         fill
                         style={{
@@ -591,62 +581,56 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
               </div>
             </div>
           </div>
-          <div id='enter_nxt_logo' className='h-[100vh] w-full mt-[-75vh]' />
-          <div id='enter_locavore_nxt' className='h-[100vh] w-full' />
-          <div id='enter_opening' className='h-[25vh] w-full ' />
+          <div id="video-marker" className="h-[200vh] w-full " />
+          <div id="video-to-logo" className="w-full min-h-[100vh]" />
+          <div id="logo-moveup" className="w-full h-screen" />
+          <div id="enter_nxt_logo" className="h-[100vh] w-full" />
+          <div id="enter_locavore_nxt" className="h-[100vh] w-full" />
+          <div id="enter_opening" className="h-[25vh] w-full " />
           <div
-            id='enter_summer'
-            className='h-[25vh] w-full pointer-events-none'
+            id="enter_summer"
+            className="h-[25vh] w-full pointer-events-none"
           />
-          <div id='enter_cloud' className='relative w-full  '>
+          <div id="enter_cloud" className="relative w-full  ">
             <div
-              id='enter_cloud_opacity'
-              className='absolute h-[100vh] w-full top-0'
+              id="enter_cloud_opacity"
+              className="absolute h-[100vh] w-full top-0"
             />
             <div
-              id='enter_bug_flower'
-              className='relative h-[150vh] w-full mt-[25vh] '
+              id="enter_bug_flower"
+              className="relative h-[150vh] w-full mt-[25vh] "
             >
               <div
-                id='worm_enter'
-                className='h-[25vh] w-full absolute top-[100vh]'
+                id="worm_enter"
+                className="h-[25vh] w-full absolute top-[100vh]"
               />
             </div>
-            <div id='gap' className='h-[50vh] w-full' />
+            <div id="gap" className="h-[50vh] w-full" />
           </div>
         </div>
       </section>
     </>
-  );
-};
+  )
+}
 
 export const Section8AnimationOBJMobile = [
   // VIDEO ENTER
   () => {
-    const id = 'video-enter'; // animation id
-    const elem = '#lottie-frame';
+    const id = 'video-enter' // animation id
+    const elem = '#lottie-frame'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#video-enter', // which section will be tracked as the scroll trigger
+        trigger: '#trigger8', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
         end: 'top 0%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
-      {
-        set: [
-          elem,
-          {
-            opacity: 0,
-            y: '100vh',
-          },
-        ],
-      },
       {
         to: [
           elem,
@@ -656,14 +640,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // VIDEO TO LOGO
   () => {
-    const id = 'video-to-logo'; // animation id
-    const elem = '#video-frame';
+    const id = 'video-to-logo' // animation id
+    const elem = '#video-frame'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -673,7 +657,7 @@ export const Section8AnimationOBJMobile = [
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -693,13 +677,13 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   }, // LOGO APPEAR
   () => {
-    const id = 'logo-appear'; // animation id
-    const elem = '#logo-frame';
+    const id = 'logo-appear' // animation id
+    const elem = '#logo-frame'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -709,7 +693,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'top 50%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -729,14 +713,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // NEW LOCAVORE ENTER (LOGO)
   () => {
-    const id = 'new_locavore_enter'; // animation id
-    const elem = '#new_locavore';
+    const id = 'new_locavore_enter' // animation id
+    const elem = '#new_locavore'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -746,7 +730,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 60%',
         end: 'bottom 100%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -766,14 +750,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // LOGO PUSH UP
   () => {
-    const id = 'logo-up'; // animation id
-    const elem = '#logo-end';
+    const id = 'logo-up' // animation id
+    const elem = '#logo-end'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -783,7 +767,7 @@ export const Section8AnimationOBJMobile = [
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -803,14 +787,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // NEW LOCAVORE ENTER
   () => {
-    const id = 'new_locavore_enter'; // animation id
-    const elem = '#new_locavore';
+    const id = 'new_locavore_enter' // animation id
+    const elem = '#new_locavore'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -820,7 +804,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 60%',
         end: 'bottom 100%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -840,14 +824,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // NEW LOCAVORE EXIT
   () => {
-    const id = 'new_locavore_exit'; // animation id
-    const elem = '#new_locavore_exit';
+    const id = 'new_locavore_exit' // animation id
+    const elem = '#new_locavore_exit'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -857,7 +841,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'top 50%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -877,14 +861,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // LOCAVORE NXT ENTER
   () => {
-    const id = 'locavore_nxt_enter'; // animation id
-    const elem = '#locavore_nxt';
+    const id = 'locavore_nxt_enter' // animation id
+    const elem = '#locavore_nxt'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -894,7 +878,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 75%',
         end: 'top 25%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -914,14 +898,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // OPENING ENTER
   () => {
-    const id = 'opening_enter'; // animation id
-    const elem = '#opening';
+    const id = 'opening_enter' // animation id
+    const elem = '#opening'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -931,7 +915,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -951,14 +935,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // SUMMER ENTER
   () => {
-    const id = 'enter_summer'; // animation id
-    const elem = '#summer';
+    const id = 'enter_summer' // animation id
+    const elem = '#summer'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -968,7 +952,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -980,14 +964,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD OPACITY ENTER
   () => {
-    const id = 'cloud-opacity-in'; // animation id
-    const elem = '#cloud_group';
+    const id = 'cloud-opacity-in' // animation id
+    const elem = '#cloud_group'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -997,7 +981,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1017,14 +1001,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD1 ENTER
   () => {
-    const id = 'cloud1_s8_enter'; // animation id
-    const elem = '#cloud1_s8';
+    const id = 'cloud1_s8_enter' // animation id
+    const elem = '#cloud1_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1034,7 +1018,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1058,14 +1042,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD2 ENTER
   () => {
-    const id = 'cloud2_s8_enter'; // animation id
-    const elem = '#cloud2_s8';
+    const id = 'cloud2_s8_enter' // animation id
+    const elem = '#cloud2_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1075,7 +1059,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1099,14 +1083,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD3 ENTER
   () => {
-    const id = 'cloud3_s8_enter'; // animation id
-    const elem = '#cloud3_s8';
+    const id = 'cloud3_s8_enter' // animation id
+    const elem = '#cloud3_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1116,7 +1100,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1138,14 +1122,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD4 ENTER
   () => {
-    const id = 'cloud4_s8_enter'; // animation id
-    const elem = '#cloud4_s8';
+    const id = 'cloud4_s8_enter' // animation id
+    const elem = '#cloud4_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1155,7 +1139,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1177,14 +1161,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD5 ENTER
   () => {
-    const id = 'cloud5_s8_enter'; // animation id
-    const elem = '#cloud5_s8';
+    const id = 'cloud5_s8_enter' // animation id
+    const elem = '#cloud5_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1194,7 +1178,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1216,14 +1200,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD6 ENTER
   () => {
-    const id = 'cloud6_s8_enter'; // animation id
-    const elem = '#cloud6_s8';
+    const id = 'cloud6_s8_enter' // animation id
+    const elem = '#cloud6_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1233,7 +1217,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1255,14 +1239,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // GROUP S8 1 ENTER
   () => {
-    const id = 'group_s8_1_enter'; // animation id
-    const elem = '#group_s8_1';
+    const id = 'group_s8_1_enter' // animation id
+    const elem = '#group_s8_1'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1272,7 +1256,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 66%',
         end: 'top 44%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1292,14 +1276,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // GROUP S8 2 ENTER
   () => {
-    const id = 'group_s8_2_enter'; // animation id
-    const elem = '#group_s8_2';
+    const id = 'group_s8_2_enter' // animation id
+    const elem = '#group_s8_2'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1309,7 +1293,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 44%',
         end: 'top 22%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1329,14 +1313,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // GROUP S8 3 ENTER
   () => {
-    const id = 'group_s8_3_enter'; // animation id
-    const elem = '#group_s8_3';
+    const id = 'group_s8_3_enter' // animation id
+    const elem = '#group_s8_3'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1346,7 +1330,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 22%',
         end: 'top 0%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1366,14 +1350,14 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // WORM ENTER
   () => {
-    const id = 'worm_enter'; // animation id
-    const elem = '#worm';
+    const id = 'worm_enter' // animation id
+    const elem = '#worm'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1383,7 +1367,7 @@ export const Section8AnimationOBJMobile = [
         start: 'top 100%',
         end: 'top 50%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1403,38 +1387,29 @@ export const Section8AnimationOBJMobile = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
-];
+]
 export const Section8AnimationOBJ = [
   // VIDEO ENTER
   () => {
-    const id = 'video-enter'; // animation id
-    const elem = '#lottie-frame';
+    const id = 'video-enter' // animation id
+    const elem = '#lottie-frame'
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#video-enter', // which section will be tracked as the scroll trigger
+        trigger: '#trigger8', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
         end: 'top 0%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
-      {
-        set: [
-          elem,
-          {
-            opacity: 0,
-            y: '100vh',
-          },
-        ],
-      },
       {
         to: [
           elem,
@@ -1444,14 +1419,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // VIDEO TO LOGO
   () => {
-    const id = 'video-to-logo'; // animation id
-    const elem = '#video-frame';
+    const id = 'video-to-logo' // animation id
+    const elem = '#video-frame'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1461,7 +1436,7 @@ export const Section8AnimationOBJ = [
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1481,13 +1456,13 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   }, // LOGO APPEAR
   () => {
-    const id = 'logo-appear'; // animation id
-    const elem = '#logo-frame';
+    const id = 'logo-appear' // animation id
+    const elem = '#logo-frame'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1497,7 +1472,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'top 50%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1517,14 +1492,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // NEW LOCAVORE ENTER (LOGO)
   () => {
-    const id = 'new_locavore_enter'; // animation id
-    const elem = '#new_locavore';
+    const id = 'new_locavore_enter' // animation id
+    const elem = '#new_locavore'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1534,7 +1509,7 @@ export const Section8AnimationOBJ = [
         start: 'top 60%',
         end: 'bottom 100%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1554,14 +1529,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // LOGO PUSH UP
   () => {
-    const id = 'logo-up'; // animation id
-    const elem = '#logo-end';
+    const id = 'logo-up' // animation id
+    const elem = '#logo-end'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1571,7 +1546,7 @@ export const Section8AnimationOBJ = [
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1591,14 +1566,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // NEW LOCAVORE ENTER
   () => {
-    const id = 'new_locavore_enter'; // animation id
-    const elem = '#new_locavore';
+    const id = 'new_locavore_enter' // animation id
+    const elem = '#new_locavore'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1608,7 +1583,7 @@ export const Section8AnimationOBJ = [
         start: 'top 60%',
         end: 'bottom 100%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1628,14 +1603,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // NEW LOCAVORE EXIT
   () => {
-    const id = 'new_locavore_exit'; // animation id
-    const elem = '#new_locavore_exit';
+    const id = 'new_locavore_exit' // animation id
+    const elem = '#new_locavore_exit'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1645,7 +1620,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'top 50%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1665,14 +1640,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // LOCAVORE NXT ENTER
   () => {
-    const id = 'locavore_nxt_enter'; // animation id
-    const elem = '#locavore_nxt';
+    const id = 'locavore_nxt_enter' // animation id
+    const elem = '#locavore_nxt'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1682,7 +1657,7 @@ export const Section8AnimationOBJ = [
         start: 'top 75%',
         end: 'top 25%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1702,14 +1677,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // OPENING ENTER
   () => {
-    const id = 'opening_enter'; // animation id
-    const elem = '#opening';
+    const id = 'opening_enter' // animation id
+    const elem = '#opening'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1719,7 +1694,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1739,14 +1714,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // SUMMER ENTER
   () => {
-    const id = 'enter_summer'; // animation id
-    const elem = '#summer';
+    const id = 'enter_summer' // animation id
+    const elem = '#summer'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1756,7 +1731,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 100%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1768,14 +1743,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD OPACITY ENTER
   () => {
-    const id = 'cloud-opacity-in'; // animation id
-    const elem = '#cloud_group';
+    const id = 'cloud-opacity-in' // animation id
+    const elem = '#cloud_group'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1785,7 +1760,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1805,14 +1780,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD1 ENTER
   () => {
-    const id = 'cloud1_s8_enter'; // animation id
-    const elem = '#cloud1_s8';
+    const id = 'cloud1_s8_enter' // animation id
+    const elem = '#cloud1_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1822,7 +1797,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1846,14 +1821,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD2 ENTER
   () => {
-    const id = 'cloud2_s8_enter'; // animation id
-    const elem = '#cloud2_s8';
+    const id = 'cloud2_s8_enter' // animation id
+    const elem = '#cloud2_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1863,7 +1838,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1887,14 +1862,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD3 ENTER
   () => {
-    const id = 'cloud3_s8_enter'; // animation id
-    const elem = '#cloud3_s8';
+    const id = 'cloud3_s8_enter' // animation id
+    const elem = '#cloud3_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1904,7 +1879,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1926,14 +1901,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD4 ENTER
   () => {
-    const id = 'cloud4_s8_enter'; // animation id
-    const elem = '#cloud4_s8';
+    const id = 'cloud4_s8_enter' // animation id
+    const elem = '#cloud4_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1943,7 +1918,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -1965,14 +1940,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD5 ENTER
   () => {
-    const id = 'cloud5_s8_enter'; // animation id
-    const elem = '#cloud5_s8';
+    const id = 'cloud5_s8_enter' // animation id
+    const elem = '#cloud5_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1982,7 +1957,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -2004,14 +1979,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // CLOUD6 ENTER
   () => {
-    const id = 'cloud6_s8_enter'; // animation id
-    const elem = '#cloud6_s8';
+    const id = 'cloud6_s8_enter' // animation id
+    const elem = '#cloud6_s8'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -2021,7 +1996,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'bottom 52%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -2043,14 +2018,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // GROUP S8 1 ENTER
   () => {
-    const id = 'group_s8_1_enter'; // animation id
-    const elem = '#group_s8_1';
+    const id = 'group_s8_1_enter' // animation id
+    const elem = '#group_s8_1'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -2060,7 +2035,7 @@ export const Section8AnimationOBJ = [
         start: 'top 66%',
         end: 'top 44%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -2080,14 +2055,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // GROUP S8 2 ENTER
   () => {
-    const id = 'group_s8_2_enter'; // animation id
-    const elem = '#group_s8_2';
+    const id = 'group_s8_2_enter' // animation id
+    const elem = '#group_s8_2'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -2097,7 +2072,7 @@ export const Section8AnimationOBJ = [
         start: 'top 44%',
         end: 'top 22%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -2117,14 +2092,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // GROUP S8 3 ENTER
   () => {
-    const id = 'group_s8_3_enter'; // animation id
-    const elem = '#group_s8_3';
+    const id = 'group_s8_3_enter' // animation id
+    const elem = '#group_s8_3'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -2134,7 +2109,7 @@ export const Section8AnimationOBJ = [
         start: 'top 22%',
         end: 'top 0%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -2154,14 +2129,14 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // WORM ENTER
   () => {
-    const id = 'worm_enter'; // animation id
-    const elem = '#worm';
+    const id = 'worm_enter' // animation id
+    const elem = '#worm'
     const settings = {
       scrollTrigger: {
         id: id,
@@ -2171,7 +2146,7 @@ export const Section8AnimationOBJ = [
         start: 'top 100%',
         end: 'top 50%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -2191,8 +2166,8 @@ export const Section8AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
-];
+]
