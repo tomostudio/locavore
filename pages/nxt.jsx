@@ -161,8 +161,6 @@ export default function Reveal({ seoAPI, footerAPI }) {
   }, [loading]);
 
   useEffect(() => {
-    // window.addEventListener('LocoCall', BackgroundLocomotiveEvents);
-
     // Go to the Top, Set Background Color
     // TURN ON AFTER TESTING
     window.scroll(0, 0);
@@ -176,7 +174,6 @@ export default function Reveal({ seoAPI, footerAPI }) {
     window.addEventListener('resize', resizeFunction);
 
     return () => {
-      // window.removeEventListener('LocoCall', BackgroundLocomotiveEvents);
       window.removeEventListener('resize', resizeFunction);
     };
   }, []);
@@ -439,9 +436,9 @@ export default function Reveal({ seoAPI, footerAPI }) {
 const Section0MarkerTop = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
-    rootMargin: '-50px 0px',
+    rootMargin: '0px 0px',
     onEnter: ({ scrollDirection, entry }) => {
-      setCaption(0);
+      setCaption(-1);
       setBgColor(0);
     },
     onLeave: ({ scrollDirection, entry }) => {
@@ -459,12 +456,12 @@ const Section0MarkerTop = ({ setBgColor, setCaption }) => {
     },
   });
 
-  return <div className='w-full h-0' ref={observe} />;
+  return <div className='w-full h-[2px]' ref={observe} />;
 };
 const Section0MarkerBottom = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
     threshold: 1, // Default is 0
-    rootMargin: '-50px 0px',
+    rootMargin: '0px 0px',
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(0);
       setBgColor(0);
