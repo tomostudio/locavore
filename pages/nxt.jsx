@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { Parallax } from 'react-scroll-parallax';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
+import 'intersection-observer'; // optional polyfill
+import { useInView } from 'react-cool-inview';
 
 import Layout from '@/components/modules/layout';
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger';
@@ -116,6 +118,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
     ],
   };
 
+  // Loading Function
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     router.events.on('routeChangeStart', () => setLoading(true));
@@ -141,29 +144,32 @@ export default function Reveal({ seoAPI, footerAPI }) {
     });
     return () => {
       appContext.setHeader({ headerStyle: 'default' });
-      scrollTriggerAnimation.revert();
+      setLoading(true);
     };
   }, []);
 
   useEffect(() => {
-    // REMOVE AND REDO CAPTION 0
-    const BackgroundLocomotiveEvents = (e) => {
-      const { enter, target } = e.detail;
-      if (enter === 'enter' && target === 'section0') {
-        setCaption(0);
-        setBgColor(0);
-      } else if (target === 'sectionstart') {
-        setBgColor(0);
-        setCaption(-1);
-      }
+    let scrollTriggerAnimation = null;
+    if (!loading) {
+      scrollTriggerAnimation = applyScrollTrigger({
+        animation: animationObj,
+      });
+      setCaption(-1);
+      setBgColor(0);
+    }
+    return () => {
+      if (scrollTriggerAnimation != null && !loading)
+        scrollTriggerAnimation.revert();
     };
+  }, [loading]);
 
+  useEffect(() => {
     // window.addEventListener('LocoCall', BackgroundLocomotiveEvents);
 
     // Go to the Top, Set Background Color
     // TURN ON AFTER TESTING
     window.scroll(0, 0);
-    setCaption(0);
+    setCaption(-1);
     setBgColor(0);
 
     const resizeFunction = () => {
@@ -354,13 +360,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
           variants={fade}
         >
           {/* Section 0 */}
-          <div
-            id='captionmarker_0'
-            className='w-full h-1'
-            data-scroll
-            data-scroll-call='sectionstart'
-            data-scroll-repeat
-          />
+          <Section0MarkerTop setBgColor={setBgColor} setCaption={setCaption} />
           <section
             id='trigger0'
             className='trigger w-full h-[110vh] text-4xl'
@@ -378,12 +378,9 @@ export default function Reveal({ seoAPI, footerAPI }) {
               </Parallax>
             </div>
           </section>
-          <div
-            id='captionmarker_0'
-            className='w-full h-1'
-            data-scroll
-            data-scroll-call='section0'
-            data-scroll-repeat
+          <Section0MarkerBottom
+            setBgColor={setBgColor}
+            setCaption={setCaption}
           />
           {/* Section 1 */}
           {/* WE HAD A DREAM */}
@@ -441,6 +438,76 @@ export default function Reveal({ seoAPI, footerAPI }) {
     </Layout>
   );
 }
+
+const Section5MarkerTop = ({ setBgColor, setCaption }) => {
+  const { observe } = useInView({
+    threshold: 1, // Default is 0
+    rootMargin: '-50px 0px',
+    onEnter: ({ scrollDirection, entry }) => {
+      setCaption(5);
+      setBgColor(5);
+    },
+    onLeave: ({ scrollDirection, entry }) => {
+      // Triggered when the target leaves the viewport
+      // console.log('leave', scrollDirection.vertical, entry);
+      if (scrollDirection.vertical === 'up') {
+        // CURRENT
+        setCaption(5);
+        setBgColor(5);
+      }
+    },
+  });
+
+  return <div className='w-full h-0' ref={observe} />;
+};
+
+const Section0MarkerTop = ({ setBgColor, setCaption }) => {
+  const { observe } = useInView({
+    threshold: 1, // Default is 0
+    rootMargin: '-50px 0px',
+    onEnter: ({ scrollDirection, entry }) => {
+      setCaption(0);
+      setBgColor(0);
+    },
+    onLeave: ({ scrollDirection, entry }) => {
+      // Triggered when the target leaves the viewport
+      // console.log('leave', scrollDirection.vertical, entry);
+      if (scrollDirection.vertical === 'up') {
+        // GO TO SECTION 0
+        setCaption(0);
+        setBgColor(0);
+      } else if (scrollDirection.vertical === 'down') {
+        // RETURN TO SECTION START
+        setCaption(-1);
+        setBgColor(0);
+      }
+    },
+  });
+
+  return <div className='w-full h-0' ref={observe} />;
+};
+const Section0MarkerBottom = ({ setBgColor, setCaption }) => {
+  const { observe } = useInView({
+    threshold: 1, // Default is 0
+    rootMargin: '-50px 0px',
+    onEnter: ({ scrollDirection, entry }) => {
+      setCaption(0);
+      setBgColor(0);
+    },
+    onLeave: ({ scrollDirection, entry }) => {
+      // Triggered when the target leaves the viewport
+      // console.log('leave', scrollDirection.vertical, entry);
+      if (scrollDirection.vertical === 'up') {
+      } else if (scrollDirection.vertical === 'down') {
+        // RETURN TO SECTION 0
+        setCaption(0);
+        setBgColor(0);
+      }
+    },
+  });
+
+  return <div className='w-full h-0' ref={observe} />;
+};
 
 export async function getStaticProps() {
   const headerAPI = await client.fetch(`

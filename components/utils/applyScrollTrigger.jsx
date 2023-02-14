@@ -7,6 +7,7 @@ const applyScrollTrigger = ({ animation }) => {
     // tl = timeline to push
     // ss = save style
     let tl = [];
+    let ss = [];
     if (anim) {
       // check if there are multiple animation
       if (anim instanceof Array) {
@@ -26,8 +27,10 @@ const applyScrollTrigger = ({ animation }) => {
             } else if (k === 'set') {
               _tl.set(...a[k]);
             } else if (k === 'call') {
-              _tl.call(a[k]);
+              _tl.call(...a[k]);
             }
+
+            ss.push(a[k][0]);
           });
 
           tl.push(_tl);
@@ -49,11 +52,13 @@ const applyScrollTrigger = ({ animation }) => {
         } else if (k === 'set') {
           _tl.set(...a[k]);
         } else if (k === 'call') {
-          _tl.call(a[k]);
+          _tl.call(...a[k]);
         }
+        ss.push(a[k][0]);
       });
       tl.push(_tl);
     }
+    ScrollTrigger.saveStyles(ss);
     return tl;
   };
 
@@ -75,7 +80,7 @@ const applyScrollTrigger = ({ animation }) => {
             anim: animation[p],
           });
 
-          console.log('each', animation)
+          console.log('each', animation);
 
           return () => {};
         },
