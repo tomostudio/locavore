@@ -269,7 +269,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                     SHARE
                                   </FancyLink>
                                 ) : (
-                                  <div className='relative flex space-x-7 mt-12'>
+                                  <div className='relative mt-12'>
                                     <div
                                       id='worm'
                                       className='absolute top-[-400%] left-1/2 translate-x-[-50%] pointer-events-none w-20 h-20 opacity-0'
@@ -283,82 +283,84 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                         }}
                                       />
                                     </div>
-                                    <Tooltip
-                                      title='Facebook'
-                                      classes={{ tooltip: 'tooltip' }}
-                                    >
-                                      <FancyLink
-                                        blank={true}
-                                        destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
-                                        className={`relative w-4 h-4 ${transition.fade}`}
+                                    <div className='relative flex space-x-7 '>
+                                      <Tooltip
+                                        title='Facebook'
+                                        classes={{ tooltip: 'tooltip' }}
                                       >
-                                        <Facebook
-                                          fill={'#fff'}
-                                          className={'w-full h-full'}
-                                        />
-                                      </FancyLink>
-                                    </Tooltip>
-                                    <Tooltip
-                                      title='Twitter'
-                                      classes={{ tooltip: 'tooltip' }}
-                                    >
-                                      <FancyLink
-                                        blank={true}
-                                        destination={`https://twitter.com/share?url=${baseUrl}`}
-                                        className={`relative w-4 h-4 ${transition.fade}`}
+                                        <FancyLink
+                                          blank={true}
+                                          destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                                          className={`relative w-4 h-4 ${transition.fade}`}
+                                        >
+                                          <Facebook
+                                            fill={'#fff'}
+                                            className={'w-full h-full'}
+                                          />
+                                        </FancyLink>
+                                      </Tooltip>
+                                      <Tooltip
+                                        title='Twitter'
+                                        classes={{ tooltip: 'tooltip' }}
                                       >
-                                        <Twitter
-                                          fill={'#fff'}
-                                          className={'w-full h-full'}
-                                        />
-                                      </FancyLink>
-                                    </Tooltip>
-                                    <Tooltip
-                                      title='Email'
-                                      classes={{ tooltip: 'tooltip' }}
-                                    >
-                                      <FancyLink
-                                        destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
-                                        className={`relative w-4 h-4 ${transition.fade}`}
+                                        <FancyLink
+                                          blank={true}
+                                          destination={`https://twitter.com/share?url=${baseUrl}`}
+                                          className={`relative w-4 h-4 ${transition.fade}`}
+                                        >
+                                          <Twitter
+                                            fill={'#fff'}
+                                            className={'w-full h-full'}
+                                          />
+                                        </FancyLink>
+                                      </Tooltip>
+                                      <Tooltip
+                                        title='Email'
+                                        classes={{ tooltip: 'tooltip' }}
                                       >
-                                        <Mail
-                                          fill={'#fff'}
-                                          className={'w-full h-full'}
-                                        />
-                                      </FancyLink>
-                                    </Tooltip>
-                                    <Tooltip
-                                      title='Copy Link'
-                                      classes={{ tooltip: 'tooltip' }}
-                                    >
-                                      <FancyLink
-                                        onClick={handleClick({
-                                          vertical: 'top',
+                                        <FancyLink
+                                          destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
+                                          className={`relative w-4 h-4 ${transition.fade}`}
+                                        >
+                                          <Mail
+                                            fill={'#fff'}
+                                            className={'w-full h-full'}
+                                          />
+                                        </FancyLink>
+                                      </Tooltip>
+                                      <Tooltip
+                                        title='Copy Link'
+                                        classes={{ tooltip: 'tooltip' }}
+                                      >
+                                        <FancyLink
+                                          onClick={handleClick({
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                          })}
+                                          className={`relative min-w-1rem min-h-1rem w-4 h-4 p-[1px] ${transition.fade}`}
+                                        >
+                                          <Link
+                                            fill={'#fff'}
+                                            className={'w-full h-full'}
+                                          />
+                                        </FancyLink>
+                                      </Tooltip>
+                                      <Snackbar
+                                        autoHideDuration={3000}
+                                        anchorOrigin={{
+                                          vertical: 'bottom',
                                           horizontal: 'center',
-                                        })}
-                                        className={`relative min-w-1rem min-h-1rem w-4 h-4 p-[1px] ${transition.fade}`}
-                                      >
-                                        <Link
-                                          fill={'#fff'}
-                                          className={'w-full h-full'}
-                                        />
-                                      </FancyLink>
-                                    </Tooltip>
-                                    <Snackbar
-                                      autoHideDuration={3000}
-                                      anchorOrigin={{
-                                        vertical: 'bottom',
-                                        horizontal: 'center',
-                                      }}
-                                      ContentProps={{
-                                        classes: {
-                                          root: 'snackbar',
-                                        },
-                                      }}
-                                      open={snackBar}
-                                      onClose={handleClose}
-                                      message='LINK COPIED'
-                                    />
+                                        }}
+                                        ContentProps={{
+                                          classes: {
+                                            root: 'snackbar',
+                                          },
+                                        }}
+                                        open={snackBar}
+                                        onClose={handleClose}
+                                        message='LINK COPIED'
+                                      />
+                                    </div>
                                   </div>
                                 )}
                               </div>
@@ -779,7 +781,7 @@ export const Section8AnimationOBJMobile = [
           elem,
           {
             y: '-30vh',
-            scale: .75,
+            scale: 0.75,
           },
         ],
       },

@@ -145,9 +145,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
   useEffect(() => {
     let scrollTriggerAnimation = null;
-    console.log('init', loading);
     if (!loading) {
-      console.log('init', loading);
       scrollTriggerAnimation = applyScrollTrigger({
         animation: animationObj,
       });
@@ -155,7 +153,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       setBgColor(0);
     }
     return () => {
-      if (scrollTriggerAnimation != null && !loading)
+      if (scrollTriggerAnimation != null)
         scrollTriggerAnimation.revert();
     };
   }, [loading]);

@@ -127,8 +127,8 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
       >
         <Section8MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
 
-        <div id="video-enter" className="w-full min-h-[100vh]" />
-        <div id="video-marker" className="h-[200vh] w-full " />
+        <div id="video-enter" className="w-full min-h-[50vh]" />
+        <div id="video-marker" className="h-[50vh] w-full " />
         <div id="video-to-logo" className="w-full min-h-[100vh]" />
         <div id="logo-moveup" className="w-full h-screen" />
         <div className="w-full ">
