@@ -228,18 +228,12 @@ export const Section6AnimationOBJ = [
   // TITLE ENTER
   () => {
     const id = 's6_text_enter'; // animation id
-    const elem = '#s6_text';
+    const elem = document.querySelector('#s6_text');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_text_s6', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -270,18 +264,12 @@ export const Section6AnimationOBJ = [
   // CIRCLE ENTER
   () => {
     const id = 'circle_enter'; // animation id
-    const elem = '#circle';
+    const elem = document.querySelector('#circle');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_circle', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -312,18 +300,12 @@ export const Section6AnimationOBJ = [
   // HOME ENTER
   () => {
     const id = 'home_enter'; // animation id
-    const elem = '#home';
+    const elem = document.querySelector('#home');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_home', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -354,18 +336,12 @@ export const Section6AnimationOBJ = [
   // INSPIRE1 SWITCH
   () => {
     const id = 'inspire1_switch'; // animation id
-    const elem = '#inspire1n';
+    const elem = document.querySelector('#inspire1n');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#inspire1n', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 25%',
         end: 'top 0%',
       },
@@ -396,18 +372,12 @@ export const Section6AnimationOBJ = [
   // INSPIRE2 SWITCH
   () => {
     const id = 'inspire2_switch'; // animation id
-    const elem = '#inspire2n';
+    const elem = document.querySelector('#inspire2n');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#inspire2n', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 35%',
         end: 'top 10%',
       },
@@ -438,18 +408,12 @@ export const Section6AnimationOBJ = [
   // INSPIRE3 SWITCH
   () => {
     const id = 'inspire3_switch'; // animation id
-    const elem = '#inspire3n';
+    const elem = document.querySelector('#inspire3n');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#inspire3n', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 25%',
         end: 'top 0%',
       },
@@ -480,18 +444,12 @@ export const Section6AnimationOBJ = [
   // INSPIRE4 SWITCH
   () => {
     const id = 'inspire4_switch'; // animation id
-    const elem = '#inspire4n';
+    const elem = document.querySelector('#inspire4n');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#inspire4n', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 20%',
         end: 'top -5%',
       },
@@ -522,18 +480,12 @@ export const Section6AnimationOBJ = [
   // INSPIRE5 SWITCH
   () => {
     const id = 'inspire5_switch'; // animation id
-    const elem = '#inspire5n';
+    const elem = document.querySelector('#inspire5n');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#inspire5n', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 25%',
         end: 'top 0%',
       },
@@ -564,18 +516,12 @@ export const Section6AnimationOBJ = [
   // EXIT ALL
   () => {
     const id = 'home_spin'; // animation id
-    const elem = '#home';
+    const elem = document.querySelector('#home');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#home_spin', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -606,18 +552,12 @@ export const Section6AnimationOBJ = [
   // EXIT ALL
   () => {
     const id = 'exit_group_s6'; // animation id
-    const elem = '#exit_group_s6';
+    const elem = document.querySelector('#exit_group_s6');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_all_s6', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -651,18 +591,12 @@ export const Section6AnimationOBJMobile = [
   // TITLE ENTER
   () => {
     const id = 's6_text_enter'; // animation id
-    const elem = '#s6_text';
+    const elem = document.querySelector('#s6_text');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_text_s6', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -693,18 +627,12 @@ export const Section6AnimationOBJMobile = [
   // CIRCLE ENTER
   () => {
     const id = 'circle_enter'; // animation id
-    const elem = '#circle';
+    const elem = document.querySelector('#circle');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_circle', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -735,18 +663,12 @@ export const Section6AnimationOBJMobile = [
   // HOME ENTER
   () => {
     const id = 'home_enter'; // animation id
-    const elem = '#home';
+    const elem = document.querySelector('#home');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_home', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -777,18 +699,12 @@ export const Section6AnimationOBJMobile = [
   // INSPIRE1 SWITCH
   () => {
     const id = 'inspire1_switch'; // animation id
-    const elem = '#inspire1n';
+    const elem = document.querySelector('#inspire1n');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#inspire1n', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 35%',
         end: 'top 10%',
       },
@@ -819,18 +735,12 @@ export const Section6AnimationOBJMobile = [
   // INSPIRE2 SWITCH
   () => {
     const id = 'inspire2_switch'; // animation id
-    const elem = '#inspire2n';
+    const elem = document.querySelector('#inspire2n');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#inspire2n', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 35%',
         end: 'top 10%',
       },
@@ -861,18 +771,12 @@ export const Section6AnimationOBJMobile = [
   // INSPIRE3 SWITCH
   () => {
     const id = 'inspire3_switch'; // animation id
-    const elem = '#inspire3n';
+    const elem = document.querySelector('#inspire3n');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#inspire3n', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 25%',
         end: 'top 0%',
       },
@@ -903,18 +807,12 @@ export const Section6AnimationOBJMobile = [
   // INSPIRE4 SWITCH
   () => {
     const id = 'inspire4_switch'; // animation id
-    const elem = '#inspire4n';
+    const elem = document.querySelector('#inspire4n');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#inspire4n', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 40%',
         end: 'top 15%',
       },
@@ -945,18 +843,12 @@ export const Section6AnimationOBJMobile = [
   // INSPIRE5 SWITCH
   () => {
     const id = 'inspire5_switch'; // animation id
-    const elem = '#inspire5n';
+    const elem = document.querySelector('#inspire5n');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#inspire5n', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 35%',
         end: 'top 10%',
       },
@@ -987,18 +879,12 @@ export const Section6AnimationOBJMobile = [
   // EXIT ALL
   () => {
     const id = 'home_spin'; // animation id
-    const elem = '#home';
+    const elem = document.querySelector('#home');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#home_spin', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -1029,18 +915,12 @@ export const Section6AnimationOBJMobile = [
   // EXIT ALL
   () => {
     const id = 'exit_group_s6'; // animation id
-    const elem = '#exit_group_s6';
+    const elem = document.querySelector('#exit_group_s6');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_all_s6', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },

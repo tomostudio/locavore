@@ -16,8 +16,6 @@ import client from '@/helpers/sanity/client';
 
 import loadingImage from '@/public/loading.png';
 
-import applyScrollTrigger from '@/components/utils/applyScrollTrigger';
-
 import {
   Section1ComponentFixedFront,
   Section1ComponentFixedBack,

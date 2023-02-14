@@ -184,17 +184,12 @@ export const Section1AnimationOBJMobile = [
   () => {
     // WE HAVE A DREAM COMING IN
     const id = 'wehaveadream-enter' // animation id
-    const elem = '#s1_title'
+    const elem =  document.querySelector('#s1_title');
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter-dream', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
+        trigger: document.querySelector('#enter-dream'), // which section will be tracked as the scroll trigger
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -227,17 +222,12 @@ export const Section1AnimationOBJMobile = [
   // EYES ENTER
   () => {
     const id = 'eyes-enter' // animation id
-    const elem = '#eyes'
+    const elem =  document.querySelector('#eyes');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-eyes', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 125%',
         end: 'bottom 125%',
       },
@@ -270,17 +260,12 @@ export const Section1AnimationOBJMobile = [
   // HEAD
   () => {
     const id = 'head' // animation id
-    const elem = '#head'
+    const elem =  document.querySelector('#head');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#head-trigger', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -311,17 +296,12 @@ export const Section1AnimationOBJMobile = [
   // WHATIF
   () => {
     const id = 'whatif' // animation id
-    const elem = '#whatif'
+    const elem =  document.querySelector('#whatif');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#whatif-trigger', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -352,17 +332,12 @@ export const Section1AnimationOBJMobile = [
   // DREAM
   () => {
     const id = 'dream-horizontal' // animation id
-    const elem = '#dream'
+    const elem =  document.querySelector('#dream');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#dream-trigger', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -385,17 +360,12 @@ export const Section1AnimationOBJMobile = [
   // DREAM INNER
   () => {
     const id = 'dream-horizontal-inner' // animation id
-    const elem = '#dream > div'
+    const elem =  document.querySelector('#dream > div');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#dream-trigger', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -420,17 +390,12 @@ export const Section1AnimationOBJMobile = [
   () => {
     // WE HAVE A DREAM COMING IN
     const id = 'eyes-exit' // animation id
-    const elem = '#eyes'
+    const elem =  document.querySelector('#eyes');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit-eyes', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 125%',
         end: 'top -25%',
       },
@@ -454,17 +419,12 @@ export const Section1AnimationOBJMobile = [
   // EXIT ALL
   () => {
     const id = 's1_exit_group' // animation id
-    const elem = '.s1_exit_group'
+    const elem = document.querySelector('.s1_exit_group');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit-all', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 125%',
         end: 'bottom 100%',
       },
@@ -499,17 +459,12 @@ export const Section1AnimationOBJ = [
   () => {
     // WE HAVE A DREAM COMING IN
     const id = 'wehaveadream-enter' // animation id
-    const elem = '#s1_title'
+    const elem = document.querySelector('#s1_title');
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter-dream', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
+        trigger: document.querySelector('#enter-dream'), // which section will be tracked as the scroll trigger
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -542,17 +497,12 @@ export const Section1AnimationOBJ = [
   // EYES ENTER
   () => {
     const id = 'eyes-enter' // animation id
-    const elem = '#eyes'
+    const elem = document.querySelector('#eyes');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-eyes', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 125%',
         end: 'bottom 125%',
       },
@@ -585,17 +535,12 @@ export const Section1AnimationOBJ = [
   // HEAD
   () => {
     const id = 'head' // animation id
-    const elem = '#head'
+    const elem = document.querySelector('#head');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#head-trigger', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -626,17 +571,12 @@ export const Section1AnimationOBJ = [
   // WHATIF
   () => {
     const id = 'whatif' // animation id
-    const elem = '#whatif'
+    const elem = document.querySelector('#whatif');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#whatif-trigger', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -667,17 +607,12 @@ export const Section1AnimationOBJ = [
   // DREAM
   () => {
     const id = 'dream-horizontal' // animation id
-    const elem = '#dream'
+    const elem = document.querySelector('#dream');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#dream-trigger', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -700,17 +635,12 @@ export const Section1AnimationOBJ = [
   // DREAM INNER
   () => {
     const id = 'dream-horizontal-inner' // animation id
-    const elem = '#dream > div'
+    const elem = document.querySelector('#dream > div');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#dream-trigger', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -735,17 +665,12 @@ export const Section1AnimationOBJ = [
   () => {
     // WE HAVE A DREAM COMING IN
     const id = 'eyes-exit' // animation id
-    const elem = '#eyes'
+    const elem = document.querySelector('#eyes');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit-eyes', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 125%',
         end: 'top -25%',
       },
@@ -769,17 +694,12 @@ export const Section1AnimationOBJ = [
   // EXIT ALL
   () => {
     const id = 's1_exit_group' // animation id
-    const elem = '.s1_exit_group'
+    const elem = document.querySelector('.s1_exit_group');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit-all', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 125%',
         end: 'bottom 100%',
       },

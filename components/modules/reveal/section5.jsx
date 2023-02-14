@@ -350,18 +350,12 @@ export const Section5AnimationOBJMobile = [
   // TITLE ENTER
   () => {
     const id = 's5_text_enter' // animation id
-    const elem = '#s5_text'
+    const elem = document.querySelector('#s5_text')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_text_s5', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -392,18 +386,12 @@ export const Section5AnimationOBJMobile = [
   // REVOLUTION ENTER
   () => {
     const id = 'revolution_enter' // animation id
-    const elem = '#revolution'
+    const elem = document.querySelector('#revolution')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_revolution', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -434,18 +422,12 @@ export const Section5AnimationOBJMobile = [
   // DAISY ENTER
   () => {
     const id = 'daisy_enter' // animation id
-    const elem = '#daisy'
+    const elem = document.querySelector('#daisy')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_daisy_yourself', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 50%',
         end: 'bottom 100%',
       },
@@ -478,18 +460,12 @@ export const Section5AnimationOBJMobile = [
   // YOURSELF ENTER
   () => {
     const id = 'yourself_enter' // animation id
-    const elem = '#yourself'
+    const elem = document.querySelector('#yourself')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_daisy_yourself', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 50%',
         end: 'bottom 100%',
       },
@@ -522,18 +498,12 @@ export const Section5AnimationOBJMobile = [
   // BULB ENTER
   () => {
     const id = 'bulb_enter' // animation id
-    const elem = '#bulb'
+    const elem = document.querySelector('#bulb')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_bulb', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -564,18 +534,12 @@ export const Section5AnimationOBJMobile = [
   // EXIT GROUP 1
   () => {
     const id = 'exit_group_s5_1' // animation id
-    const elem = '.s5_group_exit_1'
+    const elem = document.querySelector('.s5_group_exit_1')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -606,18 +570,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER GROUP 1
   () => {
     const id = 'enter_group_s5_1' // animation id
-    const elem = '.group_s5_1'
+    const elem = document.querySelector('.group_s5_1')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -648,18 +606,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER CLOUD1
   () => {
     const id = 'enter_cloud1' // animation id
-    const elem = '#cloud1'
+    const elem = document.querySelector('#cloud1')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -696,18 +648,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER CLOUD2
   () => {
     const id = 'enter_cloud2' // animation id
-    const elem = '#cloud2'
+    const elem = document.querySelector('#cloud2')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 25%',
       },
@@ -744,18 +690,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER CLOUD3
   () => {
     const id = 'enter_cloud3' // animation id
-    const elem = '#cloud3'
+    const elem = document.querySelector('#cloud3')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 25%',
       },
@@ -790,18 +730,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER CLOUD4
   () => {
     const id = 'enter_cloud4' // animation id
-    const elem = '#cloud4'
+    const elem = document.querySelector('#cloud4')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 25%',
       },
@@ -836,18 +770,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER CLOUD5
   () => {
     const id = 'enter_cloud5' // animation id
-    const elem = '#cloud5'
+    const elem = document.querySelector('#cloud5')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 25%',
       },
@@ -882,18 +810,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER CLOUD6
   () => {
     const id = 'enter_cloud6' // animation id
-    const elem = '#cloud6'
+    const elem = document.querySelector('#cloud6')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 25%',
       },
@@ -928,18 +850,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER GROUND
   () => {
     const id = 'enter_ground' // animation id
-    const elem = '#ground'
+    const elem = document.querySelector('#ground')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -972,18 +888,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER LOWER GROUND
   () => {
     const id = 'enter_lower_round' // animation id
-    const elem = '#lower_ground'
+    const elem = document.querySelector('#lower_ground')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -1016,18 +926,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER FIRST FLOOR
   () => {
     const id = 'enter_first_floor' // animation id
-    const elem = '#first_floor'
+    const elem = document.querySelector('#first_floor')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -1058,18 +962,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER SECOND FLOOR
   () => {
     const id = 'enter_second_floor' // animation id
-    const elem = '#second_floor'
+    const elem = document.querySelector('#second_floor')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -1102,18 +1000,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER TUNNEL
   () => {
     const id = 'enter_tunnel' // animation id
-    const elem = '#tunnel'
+    const elem = document.querySelector('#tunnel')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -1146,18 +1038,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER AWESOME
   () => {
     const id = 'enter_awesome' // animation id
-    const elem = '#awesome'
+    const elem = document.querySelector('#awesome')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 25%',
         end: 'bottom 100%',
       },
@@ -1188,18 +1074,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER LANDSCAPE
   () => {
     const id = 'enter_landscape' // animation id
-    const elem = '#landscape'
+    const elem = document.querySelector('#landscape')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_2', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 75%',
       },
@@ -1230,18 +1110,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER SHOW1
   () => {
     const id = 'enter_show1' // animation id
-    const elem = '#show1'
+    const elem = document.querySelector('#show1')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_2', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 75%',
         end: 'bottom 100%',
       },
@@ -1280,18 +1154,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER SHOW2
   () => {
     const id = 'enter_show2' // animation id
-    const elem = '#show2'
+    const elem = document.querySelector('#show2')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_2', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 50%',
         end: 'bottom 100%',
       },
@@ -1330,18 +1198,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER FEED
   () => {
     const id = 'enter_feed' // animation id
-    const elem = '#feed'
+    const elem = document.querySelector('#feed')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_feed', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1372,18 +1234,12 @@ export const Section5AnimationOBJMobile = [
   // ENTER GROUP 3
   () => {
     const id = 'enter_group_s5_3' // animation id
-    const elem = '#group_s5_3'
+    const elem = document.querySelector('#group_s5_3')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_3', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1414,18 +1270,12 @@ export const Section5AnimationOBJMobile = [
   // EXIT GROUP 3
   () => {
     const id = 'exit_group_end_s5' // animation id
-    const elem = '.s5_group_exit_2'
+    const elem = document.querySelector('.s5_group_exit_2')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_group_end_s5', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1458,18 +1308,12 @@ export const Section5AnimationOBJ = [
   // TITLE ENTER
   () => {
     const id = 's5_text_enter' // animation id
-    const elem = '#s5_text'
+    const elem = document.querySelector('#s5_text')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_text_s5', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1500,18 +1344,12 @@ export const Section5AnimationOBJ = [
   // REVOLUTION ENTER
   () => {
     const id = 'revolution_enter' // animation id
-    const elem = '#revolution'
+    const elem = document.querySelector('#revolution')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_revolution', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1542,18 +1380,12 @@ export const Section5AnimationOBJ = [
   // DAISY ENTER
   () => {
     const id = 'daisy_enter' // animation id
-    const elem = '#daisy'
+    const elem = document.querySelector('#daisy')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_daisy_yourself', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 50%',
         end: 'bottom 100%',
       },
@@ -1577,18 +1409,12 @@ export const Section5AnimationOBJ = [
   // YOURSELF ENTER
   () => {
     const id = 'yourself_enter' // animation id
-    const elem = '#yourself'
+    const elem = document.querySelector('#yourself')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_daisy_yourself', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 50%',
         end: 'bottom 100%',
       },
@@ -1612,18 +1438,12 @@ export const Section5AnimationOBJ = [
   // BULB ENTER
   () => {
     const id = 'bulb_enter' // animation id
-    const elem = '#bulb'
+    const elem = document.querySelector('#bulb')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_bulb', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1654,18 +1474,12 @@ export const Section5AnimationOBJ = [
   // EXIT GROUP 1
   () => {
     const id = 'exit_group_s5_1' // animation id
-    const elem = '.s5_group_exit_1'
+    const elem = document.querySelector('.s5_group_exit_1')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1696,18 +1510,12 @@ export const Section5AnimationOBJ = [
   // ENTER GROUP 1
   () => {
     const id = 'enter_group_s5_1' // animation id
-    const elem = '.group_s5_1'
+    const elem = document.querySelector('.group_s5_1')
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
+        trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger  
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -1738,18 +1546,12 @@ export const Section5AnimationOBJ = [
   // ENTER CLOUD1
   () => {
     const id = 'enter_cloud1' // animation id
-    const elem = '#cloud1'
+    const elem = document.querySelector('#cloud1')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -1786,18 +1588,12 @@ export const Section5AnimationOBJ = [
   // ENTER CLOUD2
   () => {
     const id = 'enter_cloud2' // animation id
-    const elem = '#cloud2'
+    const elem = document.querySelector('#cloud2')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 25%',
       },
@@ -1834,18 +1630,12 @@ export const Section5AnimationOBJ = [
   // ENTER CLOUD3
   () => {
     const id = 'enter_cloud3' // animation id
-    const elem = '#cloud3'
+    const elem = document.querySelector('#cloud3')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 25%',
       },
@@ -1880,18 +1670,12 @@ export const Section5AnimationOBJ = [
   // ENTER CLOUD4
   () => {
     const id = 'enter_cloud4' // animation id
-    const elem = '#cloud4'
+    const elem = document.querySelector('#cloud4')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 25%',
       },
@@ -1926,18 +1710,12 @@ export const Section5AnimationOBJ = [
   // ENTER CLOUD5
   () => {
     const id = 'enter_cloud5' // animation id
-    const elem = '#cloud5'
+    const elem = document.querySelector('#cloud5')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 25%',
       },
@@ -1972,18 +1750,12 @@ export const Section5AnimationOBJ = [
   // ENTER CLOUD6
   () => {
     const id = 'enter_cloud6' // animation id
-    const elem = '#cloud6'
+    const elem = document.querySelector('#cloud6')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 25%',
       },
@@ -2018,18 +1790,12 @@ export const Section5AnimationOBJ = [
   // ENTER GROUND
   () => {
     const id = 'enter_ground' // animation id
-    const elem = '#ground'
+    const elem = document.querySelector('#ground')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -2062,18 +1828,12 @@ export const Section5AnimationOBJ = [
   // ENTER LOWER GROUND
   () => {
     const id = 'enter_lower_round' // animation id
-    const elem = '#lower_ground'
+    const elem = document.querySelector('#lower_ground')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -2106,18 +1866,12 @@ export const Section5AnimationOBJ = [
   // ENTER FIRST FLOOR
   () => {
     const id = 'enter_first_floor' // animation id
-    const elem = '#first_floor'
+    const elem = document.querySelector('#first_floor')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -2148,18 +1902,12 @@ export const Section5AnimationOBJ = [
   // ENTER SECOND FLOOR
   () => {
     const id = 'enter_second_floor' // animation id
-    const elem = '#second_floor'
+    const elem = document.querySelector('#second_floor')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -2192,18 +1940,12 @@ export const Section5AnimationOBJ = [
   // ENTER TUNNEL
   () => {
     const id = 'enter_tunnel' // animation id
-    const elem = '#tunnel'
+    const elem = document.querySelector('#tunnel')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -2236,18 +1978,12 @@ export const Section5AnimationOBJ = [
   // ENTER AWESOME
   () => {
     const id = 'enter_awesome' // animation id
-    const elem = '#awesome'
+    const elem = document.querySelector('#awesome')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_1', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 25%',
         end: 'bottom 100%',
       },
@@ -2278,18 +2014,12 @@ export const Section5AnimationOBJ = [
   // ENTER LANDSCAPE
   () => {
     const id = 'enter_landscape' // animation id
-    const elem = '#landscape'
+    const elem = document.querySelector('#landscape')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_2', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 75%',
       },
@@ -2320,18 +2050,12 @@ export const Section5AnimationOBJ = [
   // ENTER SHOW1
   () => {
     const id = 'enter_show1' // animation id
-    const elem = '#show1'
+    const elem = document.querySelector('#show1')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_2', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 75%',
         end: 'bottom 100%',
       },
@@ -2370,18 +2094,12 @@ export const Section5AnimationOBJ = [
   // ENTER SHOW2
   () => {
     const id = 'enter_show2' // animation id
-    const elem = '#show2'
+    const elem = document.querySelector('#show2')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_2', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 50%',
         end: 'bottom 100%',
       },
@@ -2420,18 +2138,12 @@ export const Section5AnimationOBJ = [
   // ENTER FEED
   () => {
     const id = 'enter_feed' // animation id
-    const elem = '#feed'
+    const elem = document.querySelector('#feed')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_feed', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -2462,18 +2174,12 @@ export const Section5AnimationOBJ = [
   // ENTER GROUP 3
   () => {
     const id = 'enter_group_s5_3' // animation id
-    const elem = '#group_s5_3'
+    const elem = document.querySelector('#group_s5_3')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s5_3', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -2504,18 +2210,12 @@ export const Section5AnimationOBJ = [
   // EXIT GROUP 3
   () => {
     const id = 'exit_group_end_s5' // animation id
-    const elem = '.s5_group_exit_2'
+    const elem = document.querySelector('.s5_group_exit_2')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_group_end_s5', // which section will be tracked as the scroll trigger
-<<<<<<< HEAD
-        
         scrub: 0.5,
-=======
-         // id of scroll container
-        scrub: .5,
->>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
