@@ -620,8 +620,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#trigger8', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -650,8 +650,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#video-to-logo', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
@@ -686,8 +686,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#video-to-logo', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -723,8 +723,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_nxt_logo', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 60%',
         end: 'bottom 100%',
       },
@@ -760,8 +760,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#logo-moveup', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
@@ -797,8 +797,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_nxt_logo', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 60%',
         end: 'bottom 100%',
       },
@@ -834,8 +834,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_locavore_nxt', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -871,8 +871,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_locavore_nxt', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 75%',
         end: 'top 25%',
       },
@@ -908,8 +908,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_opening', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -945,8 +945,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_summer', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -974,8 +974,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud_opacity', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1011,8 +1011,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1052,8 +1052,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1093,8 +1093,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1132,8 +1132,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1171,8 +1171,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1210,8 +1210,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1249,8 +1249,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 66%',
         end: 'top 44%',
       },
@@ -1286,8 +1286,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 44%',
         end: 'top 22%',
       },
@@ -1323,8 +1323,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 22%',
         end: 'top 0%',
       },
@@ -1360,8 +1360,8 @@ export const Section8AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#worm_enter', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -1399,8 +1399,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#trigger8', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -1429,8 +1429,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#video-to-logo', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
@@ -1465,8 +1465,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#video-to-logo', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -1502,8 +1502,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_nxt_logo', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 60%',
         end: 'bottom 100%',
       },
@@ -1539,8 +1539,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#logo-moveup', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
@@ -1576,8 +1576,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_nxt_logo', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 60%',
         end: 'bottom 100%',
       },
@@ -1613,8 +1613,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_locavore_nxt', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -1650,8 +1650,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_locavore_nxt', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 75%',
         end: 'top 25%',
       },
@@ -1687,8 +1687,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_opening', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1724,8 +1724,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_summer', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1753,8 +1753,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud_opacity', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1790,8 +1790,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1831,8 +1831,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1872,8 +1872,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1911,8 +1911,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1950,8 +1950,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1989,8 +1989,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -2028,8 +2028,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 66%',
         end: 'top 44%',
       },
@@ -2065,8 +2065,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 44%',
         end: 'top 22%',
       },
@@ -2102,8 +2102,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 22%',
         end: 'top 0%',
       },
@@ -2139,8 +2139,8 @@ export const Section8AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#worm_enter', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'top 50%',
       },

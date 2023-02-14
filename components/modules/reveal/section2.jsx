@@ -293,8 +293,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-inspired', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -330,8 +330,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-bug-flower', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -367,8 +367,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest1', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -408,8 +408,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_mug', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -445,8 +445,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_bee', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -482,8 +482,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -511,8 +511,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -540,8 +540,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 80%',
         end: 'bottom 0%',
       },
@@ -569,8 +569,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 80%',
         end: 'bottom 0%',
       },
@@ -598,8 +598,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#exit-group2', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -628,8 +628,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#exit-forest1', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -660,8 +660,8 @@ export const Section2AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#exit-inspired', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -694,8 +694,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-inspired', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -731,8 +731,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-bug-flower', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -768,8 +768,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest1', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -800,8 +800,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_mug', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -837,8 +837,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_bee', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -874,8 +874,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -903,8 +903,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -932,8 +932,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 90%',
         end: 'bottom 0%',
       },
@@ -961,8 +961,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 90%',
         end: 'bottom 0%',
       },
@@ -990,8 +990,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#exit-group2', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1020,8 +1020,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#exit-forest1', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -1052,8 +1052,8 @@ export const Section2AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#exit-inspired', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+         // id of scroll container
+        scrub: .5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
