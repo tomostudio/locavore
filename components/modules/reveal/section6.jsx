@@ -233,8 +233,8 @@ export const Section6AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_text_s6', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -270,8 +270,8 @@ export const Section6AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_circle', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -307,8 +307,8 @@ export const Section6AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_home', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -344,8 +344,8 @@ export const Section6AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#inspire1n', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 25%',
         end: 'top 0%',
       },
@@ -381,8 +381,8 @@ export const Section6AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#inspire2n', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 35%',
         end: 'top 10%',
       },
@@ -418,8 +418,8 @@ export const Section6AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#inspire3n', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 25%',
         end: 'top 0%',
       },
@@ -455,8 +455,8 @@ export const Section6AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#inspire4n', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 20%',
         end: 'top -5%',
       },
@@ -492,8 +492,8 @@ export const Section6AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#inspire5n', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 25%',
         end: 'top 0%',
       },
@@ -529,8 +529,8 @@ export const Section6AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#home_spin', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -566,8 +566,8 @@ export const Section6AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#exit_all_s6', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -606,8 +606,8 @@ export const Section6AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_text_s6', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -643,8 +643,8 @@ export const Section6AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_circle', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -680,8 +680,8 @@ export const Section6AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_home', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -717,8 +717,8 @@ export const Section6AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#inspire1n', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 35%',
         end: 'top 10%',
       },
@@ -754,8 +754,8 @@ export const Section6AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#inspire2n', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 35%',
         end: 'top 10%',
       },
@@ -791,8 +791,8 @@ export const Section6AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#inspire3n', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 25%',
         end: 'top 0%',
       },
@@ -828,8 +828,8 @@ export const Section6AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#inspire4n', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 40%',
         end: 'top 15%',
       },
@@ -865,8 +865,8 @@ export const Section6AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#inspire5n', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 35%',
         end: 'top 10%',
       },
@@ -902,8 +902,8 @@ export const Section6AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#home_spin', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -939,8 +939,8 @@ export const Section6AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#exit_all_s6', // which section will be tracked as the scroll trigger
-        scroller: '#scroll-container', // id of scroll container
-        scrub: true,
+        
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },

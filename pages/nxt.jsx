@@ -81,6 +81,7 @@ import {
 } from '@/components/modules/reveal/section8'
 import { useAppContext } from 'context/state'
 import Image from 'next/image'
+import applyScrollTrigger from '@/components/utils/applyScrollTrigger'
 
 export default function Reveal({ seoAPI, footerAPI }) {
   const router = useRouter()
@@ -132,11 +133,16 @@ export default function Reveal({ seoAPI, footerAPI }) {
     }
     appContext.setHeader({
       headerStyle: 'blur',
-    });    
-    
+    })
+
+    const scrollTriggerAnimation = applyScrollTrigger({
+      animation: animationObj,
+    });
+
     return () => {
-      appContext.setHeader({ headerStyle: 'default' });
-    };
+      appContext.setHeader({ headerStyle: 'default' })
+      scrollTriggerAnimation.revert();
+    }
   }, [])
 
   useEffect(() => {
@@ -243,7 +249,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       <div className="relative w-16 animate-spin">
         <Image src={loadingImage} alt="" />
       </div>
-      <span className='uppercase block font-default mt-5 text-xs'>LOADING</span>
+      <span className="uppercase block font-default mt-5 text-xs">LOADING</span>
     </div>
   ) : (
     <Layout>
@@ -338,117 +344,99 @@ export default function Reveal({ seoAPI, footerAPI }) {
         <div className="md:hidden block w-[50vw] shrink-0" />
       </div>
 
-      <LocomotiveScrollProvider
-        options={{ smooth: false, lerp: 0.05 }}
-        containerRef={containerRef}
-        watch={[]}
-      >
-        <PushScrollGlobal />
-        <div
-          data-scroll-container
-          ref={containerRef}
-          id="scroll-container"
-          className={`z-1 relative`}
+      <LazyMotion features={domAnimation}>
+        <m.main
+          className="relative p-0 m-0"
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          variants={fade}
         >
-          <div data-scroll-section>
-            <ScrollTriggerWrapper animation={animationObj} locomotive={false}>
-              <LazyMotion features={domAnimation}>
-                <m.main
-                  className="relative p-0 m-0"
-                  initial="initial"
-                  animate="enter"
-                  exit="exit"
-                  variants={fade}
+          {/* Section 0 */}
+          <div
+            id="captionmarker_0"
+            className="w-full h-1"
+            data-scroll
+            data-scroll-call="sectionstart"
+            data-scroll-repeat
+          />
+          <section
+            id="trigger0"
+            className="trigger w-full h-[110vh] text-4xl"
+            data-scroll-section
+          >
+            <div className="flex justify-center items-center w-full h-screen">
+              <Parallax speed={-20}>
+                <div
+                  className={`font-light text-xs text-center tracking-widest animate-fade-down text-black select-none`}
                 >
-                  {/* Section 0 */}
-                  <div
-                    id="captionmarker_0"
-                    className="w-full h-1"
-                    data-scroll
-                    data-scroll-call="sectionstart"
-                    data-scroll-repeat
-                  />
-                  <section
-                    id="trigger0"
-                    className="trigger w-full h-[110vh] text-4xl"
-                    data-scroll-section
-                  >
-                    <div className="flex justify-center items-center w-full h-screen">
-                      <Parallax speed={-20}>
-                        <div
-                          className={`font-light text-xs text-center tracking-widest animate-fade-down text-black select-none`}
-                        >
-                          SCROLL TO
-                          <br />
-                          BEGIN
-                        </div>
-                      </Parallax>
-                    </div>
-                  </section>
-                  <div
-                    id="captionmarker_0"
-                    className="w-full h-1"
-                    data-scroll
-                    data-scroll-call="section0"
-                    data-scroll-repeat
-                  />
-                  {/* Section 1 */}
-                  {/* WE HAD A DREAM */}
-                  <Section1ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 2 */}
-                  {/* INSPIRED BY NICE THINGS */}
-                  <Section2ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 3 */}
-                  {/* AND A BETTER WORLD */}
-                  <Section3ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 4 */}
-                  {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
-                  <Section4ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 5 */}
-                  {/* SO OTHER PEOPLE CAN DREAM TOO */}
-                  <Section5ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 6 */}
-                  {/* INSPIRED BY OUR NICE THING */}
-                  <Section6ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 7 */}
-                  {/* FEED CHANGE */}
-                  <Section7ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 8*/}
-                  {/* LOCAVORE NEXT */}
-                  <Section8ComponentInner
-                    general={seo}
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
+                  SCROLL TO
+                  <br />
+                  BEGIN
+                </div>
+              </Parallax>
+            </div>
+          </section>
+          <div
+            id="captionmarker_0"
+            className="w-full h-1"
+            data-scroll
+            data-scroll-call="section0"
+            data-scroll-repeat
+          />
+          {/* Section 1 */}
+          {/* WE HAD A DREAM */}
+          <Section1ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 2 */}
+          {/* INSPIRED BY NICE THINGS */}
+          <Section2ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 3 */}
+          {/* AND A BETTER WORLD */}
+          <Section3ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 4 */}
+          {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
+          <Section4ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 5 */}
+          {/* SO OTHER PEOPLE CAN DREAM TOO */}
+          <Section5ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 6 */}
+          {/* INSPIRED BY OUR NICE THING */}
+          <Section6ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 7 */}
+          {/* FEED CHANGE */}
+          <Section7ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 8*/}
+          {/* LOCAVORE NEXT */}
+          <Section8ComponentInner
+            general={seo}
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
 
-                  <Footer footer={footer} mailchimp={seo.mailchimpID} />
-                </m.main>
-              </LazyMotion>
-            </ScrollTriggerWrapper>
-          </div>
-        </div>
-      </LocomotiveScrollProvider>
+          <Footer footer={footer} mailchimp={seo.mailchimpID} />
+        </m.main>
+      </LazyMotion>
     </Layout>
   )
 }
