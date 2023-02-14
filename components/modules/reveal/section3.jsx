@@ -494,7 +494,7 @@ export const Section3AnimationOBJMobile = [
   // EXIT GROUP 3
   () => {
     const id = 'exit_group3' // animation id
-    const elem = document.querySelector('.exit_group3')
+    const elem = document.querySelectorAll('.exit_group3')
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1019,7 +1019,7 @@ export const Section3AnimationOBJ = [
   // EXIT GROUP 3
   () => {
     const id = 'exit_group3' // animation id
-    const elem = document.querySelector('.exit_group3')
+    const elem = document.querySelectorAll('.exit_group3')
     const settings = {
       scrollTrigger: {
         id: id,

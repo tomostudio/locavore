@@ -30,7 +30,13 @@ const applyScrollTrigger = ({ animation }) => {
               _tl.call(...a[k]);
             }
 
-            ss.push(a[k][0]);
+            if (a[k][0] instanceof Array) {
+              a[k][0].forEach((elem) => {
+                ss.push(elem);
+              });
+            } else {
+              ss.push(a[k][0]);
+            }
           });
 
           tl.push(_tl);

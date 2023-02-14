@@ -144,7 +144,6 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
     return () => {
       appContext.setHeader({ headerStyle: 'default' });
-      setLoading(true);
     };
   }, []);
 
