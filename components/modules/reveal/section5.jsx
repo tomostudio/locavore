@@ -534,7 +534,7 @@ export const Section5AnimationOBJMobile = [
   // EXIT GROUP 1
   () => {
     const id = 'exit_group_s5_1' // animation id
-    const elem = document.querySelector('.s5_group_exit_1')
+    const elem = document.querySelectorAll('.s5_group_exit_1')
     const settings = {
       scrollTrigger: {
         id: id,
@@ -570,7 +570,7 @@ export const Section5AnimationOBJMobile = [
   // ENTER GROUP 1
   () => {
     const id = 'enter_group_s5_1' // animation id
-    const elem = document.querySelector('.group_s5_1')
+    const elem = document.querySelectorAll('.group_s5_1')
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1270,7 +1270,7 @@ export const Section5AnimationOBJMobile = [
   // EXIT GROUP 3
   () => {
     const id = 'exit_group_end_s5' // animation id
-    const elem = document.querySelector('.s5_group_exit_2')
+    const elem = document.querySelectorAll('.s5_group_exit_2')
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1474,7 +1474,7 @@ export const Section5AnimationOBJ = [
   // EXIT GROUP 1
   () => {
     const id = 'exit_group_s5_1' // animation id
-    const elem = document.querySelector('.s5_group_exit_1')
+    const elem = document.querySelectorAll('.s5_group_exit_1')
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1510,7 +1510,7 @@ export const Section5AnimationOBJ = [
   // ENTER GROUP 1
   () => {
     const id = 'enter_group_s5_1' // animation id
-    const elem = document.querySelector('.group_s5_1')
+    const elem = document.querySelectorAll('.group_s5_1')
     const settings = {
       scrollTrigger: {
         id: id,
@@ -2210,7 +2210,7 @@ export const Section5AnimationOBJ = [
   // EXIT GROUP 3
   () => {
     const id = 'exit_group_end_s5' // animation id
-    const elem = document.querySelector('.s5_group_exit_2')
+    const elem = document.querySelectorAll('.s5_group_exit_2')
     const settings = {
       scrollTrigger: {
         id: id,

@@ -360,7 +360,7 @@ export const Section1AnimationOBJMobile = [
   // DREAM INNER
   () => {
     const id = 'dream-horizontal-inner' // animation id
-    const elem =  document.querySelector('#dream > div');
+    const elem =  document.querySelectorAll('#dream > div');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -419,7 +419,7 @@ export const Section1AnimationOBJMobile = [
   // EXIT ALL
   () => {
     const id = 's1_exit_group' // animation id
-    const elem = document.querySelector('.s1_exit_group');
+    const elem = document.querySelectorAll('.s1_exit_group');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -635,7 +635,7 @@ export const Section1AnimationOBJ = [
   // DREAM INNER
   () => {
     const id = 'dream-horizontal-inner' // animation id
-    const elem = document.querySelector('#dream > div');
+    const elem = document.querySelectorAll('#dream > div');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -694,7 +694,7 @@ export const Section1AnimationOBJ = [
   // EXIT ALL
   () => {
     const id = 's1_exit_group' // animation id
-    const elem = document.querySelector('.s1_exit_group');
+    const elem = document.querySelectorAll('.s1_exit_group');
     const settings = {
       scrollTrigger: {
         id: id,

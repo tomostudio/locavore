@@ -360,7 +360,7 @@ export const Section4AnimationOBJ = [
   // CONSTRUCTION 1 INNER
   () => {
     const id = 'enter_construction1_inner'; // animation id
-    const elem = document.querySelector('#construction1 > div');
+    const elem = document.querySelectorAll('#construction1 > div');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -412,7 +412,7 @@ export const Section4AnimationOBJ = [
   // CONSTRUCTION 2 INNER
   () => {
     const id = 'enter_construction2_inner'; // animation id
-    const elem = document.querySelector('#construction2 > div');
+    const elem = document.querySelectorAll('#construction2 > div');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -490,7 +490,7 @@ export const Section4AnimationOBJ = [
   // EXIT ALL
   () => {
     const id = 'exit_all4'; // animation id
-    const elem = document.querySelector('.s4_group_exit_all');
+    const elem = document.querySelectorAll('.s4_group_exit_all');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -691,7 +691,7 @@ export const Section4AnimationOBJMobile = [
   // CONSTRUCTION 1 INNER
   () => {
     const id = 'enter_construction1_inner'; // animation id
-    const elem = document.querySelector('#construction1 > div');
+    const elem = document.querySelectorAll('#construction1 > div');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -743,7 +743,7 @@ export const Section4AnimationOBJMobile = [
   // CONSTRUCTION 2 INNER
   () => {
     const id = 'enter_construction2_inner'; // animation id
-    const elem = document.querySelector('#construction2 > div');
+    const elem = document.querySelectorAll('#construction2 > div');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -821,7 +821,7 @@ export const Section4AnimationOBJMobile = [
   // EXIT ALL
   () => {
     const id = 'exit_all4'; // animation id
-    const elem = document.querySelector('.s4_group_exit_all');
+    const elem = document.querySelectorAll('.s4_group_exit_all');
     const settings = {
       scrollTrigger: {
         id: id,

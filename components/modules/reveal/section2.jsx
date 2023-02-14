@@ -500,7 +500,7 @@ export const Section2AnimationOBJMobile = [
   // FOREST 2 INNER
   () => {
     const id = 'forest2-horizontal-inner'; // animation id
-    const elem = document.querySelector('#forest2 > div');
+    const elem = document.querySelectorAll('#forest2 > div');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -556,7 +556,7 @@ export const Section2AnimationOBJMobile = [
   // FOREST 3 INNER
   () => {
     const id = 'forest3-horizontal-inner'; // animation id
-    const elem = document.querySelector('#forest3 > div');
+    const elem = document.querySelectorAll('#forest3 > div');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -584,7 +584,7 @@ export const Section2AnimationOBJMobile = [
   // EXIT GROUP
   () => {
     const id = 'exit-group2'; // animation id
-    const elem = document.querySelector('.s2_exit_group');
+    const elem = document.querySelectorAll('.s2_exit_group');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -880,7 +880,7 @@ export const Section2AnimationOBJ = [
   // FOREST 2 INNER
   () => {
     const id = 'forest2-horizontal-inner'; // animation id
-    const elem = document.querySelector('#forest2 > div');
+    const elem = document.querySelectorAll('#forest2 > div');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -936,7 +936,7 @@ export const Section2AnimationOBJ = [
   // FOREST 3 INNER
   () => {
     const id = 'forest3-horizontal-inner'; // animation id
-    const elem = document.querySelector('#forest3 > div');
+    const elem = document.querySelectorAll('#forest3 > div');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -964,7 +964,7 @@ export const Section2AnimationOBJ = [
   // EXIT GROUP
   () => {
     const id = 'exit-group2'; // animation id
-    const elem = document.querySelector('.s2_exit_group');
+    const elem = document.querySelectorAll('.s2_exit_group');
     const settings = {
       scrollTrigger: {
         id: id,
