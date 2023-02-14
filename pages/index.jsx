@@ -27,7 +27,8 @@ import applyScrollTrigger from '@/components/utils/applyScrollTrigger';
 export default function Home({ issueAPI, seoAPI }) {
   const router = useRouter();
   const [seo] = seoAPI;
-  const [issue] = issueAPI;
+  let [issue] = issueAPI;
+  issue = issue.issue
   const dark = issue.dark;
   const containerRef = useRef(null);
   const appContext = useAppContext();
