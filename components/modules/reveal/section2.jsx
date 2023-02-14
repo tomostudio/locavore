@@ -4,20 +4,20 @@ import { useInView } from 'react-cool-inview';
 import Image from 'next/image';
 
 //IMAGE SERIES
-import beeSticker from '@/public/nxt/bee-sticker.webp'
-import mugSticker from '@/public/nxt/mug-sticker.webp'
-import worm from '@/public/nxt/worm.webp'
-import sunflower02 from '@/public/nxt/sunflower02.webp'
-import butterfly02 from '@/public/nxt/butterfly02.webp'
-import bee01 from '@/public/nxt/bee01.webp'
-import butterfly01 from '@/public/nxt/butterfly01.webp'
-import sunflower01 from '@/public/nxt/sunflower01.webp'
-import bee03 from '@/public/nxt/bee03.webp'
-import bee02 from '@/public/nxt/bee02.webp'
-import sunflower03 from '@/public/nxt/sunflower03.webp'
-import forest1 from '@/public/nxt/forest1.webp'
-import forest2 from '@/public/nxt/forest2.webp'
-import forest3 from '@/public/nxt/forest3.webp'
+import beeSticker from '@/public/nxt/bee-sticker.webp';
+import mugSticker from '@/public/nxt/mug-sticker.webp';
+import worm from '@/public/nxt/worm.webp';
+import sunflower02 from '@/public/nxt/sunflower02.webp';
+import butterfly02 from '@/public/nxt/butterfly02.webp';
+import bee01 from '@/public/nxt/bee01.webp';
+import butterfly01 from '@/public/nxt/butterfly01.webp';
+import sunflower01 from '@/public/nxt/sunflower01.webp';
+import bee03 from '@/public/nxt/bee03.webp';
+import bee02 from '@/public/nxt/bee02.webp';
+import sunflower03 from '@/public/nxt/sunflower03.webp';
+import forest1 from '@/public/nxt/forest1.webp';
+import forest2 from '@/public/nxt/forest2.webp';
+import forest3 from '@/public/nxt/forest3.webp';
 
 export const Section2ComponentFixedFront = () => {
   return (
@@ -183,10 +183,7 @@ export const Section2ComponentFixedBack = () => {
         className='fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[-100vh] overflow-visible'
       >
         <div className='absolute w-64 sm:w-[18rem] md:w-[26rem] -left-20 top-1/2 md:left-6 translate-y-[-27%] md:translate-y-[-45%]'>
-          <Image
-            src={forest1}
-            alt=''
-          />
+          <Image src={forest1} alt='' />
           <div
             id='mug'
             className='w-40 h-40 md:w-72 md:h-72 fixed left-20 -bottom-5 md:-left-20 md:bottom-24 opacity-0'
