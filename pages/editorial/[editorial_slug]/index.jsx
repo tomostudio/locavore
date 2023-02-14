@@ -66,7 +66,7 @@ export default function Index({ issueAPI, seoAPI }) {
     () => {
       // Issue No Animation
       const id = 'issueNo';
-      const elem = '#issueNo';
+      const elem = document.querySelector('#issueNo');
       const settings = {
         scrollTrigger: {
           id: id,
@@ -97,7 +97,7 @@ export default function Index({ issueAPI, seoAPI }) {
     () => {
       // Start Background
       const id = 'First BG';
-      const elem = '#firstBG';
+      const elem = document.querySelector('#firstBG');
       const settings = {
         scrollTrigger: {
           id: id,
@@ -128,7 +128,7 @@ export default function Index({ issueAPI, seoAPI }) {
     () => {
       // Start Background
       const id = 'End BG';
-      const elem = '#endBg';
+      const elem = document.querySelector('#endBg');
       const settings = {
         scrollTrigger: {
           id: id,
@@ -158,7 +158,7 @@ export default function Index({ issueAPI, seoAPI }) {
     () => {
       // Scroller Dissapear
       const id = 'scrollIndicator';
-      const elem = '#scrollIndicator';
+      const elem = document.querySelector('#scrollIndicator');
       const settings = {
         scrollTrigger: {
           id: id,
@@ -422,7 +422,7 @@ export default function Index({ issueAPI, seoAPI }) {
       </LazyMotion>
       <LazyMotion features={domAnimation}>
         <m.main
-          className='relative p-0 m-0'
+          className='relative p-0 m-0 z-2'
           initial='initial'
           animate='enter'
           exit='exit'
