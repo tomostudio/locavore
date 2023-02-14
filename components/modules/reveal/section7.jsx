@@ -28,7 +28,6 @@ export const Section7ComponentFixedFront = () => {
               >
                 <Image
                   src={underline}
-                  placeholder="blur"
                   fill
                   style={{
                     objectFit: 'cover',
@@ -46,7 +45,6 @@ export const Section7ComponentFixedFront = () => {
               >
                 <Image
                   src={underline}
-                  placeholder="blur"
                   fill
                   style={{
                     objectFit: 'cover',
@@ -61,13 +59,13 @@ export const Section7ComponentFixedFront = () => {
               className='absolute right-2 md:right-4 bottom-18 md:bottom-auto md:-top-10 opacity-0'
             >
               <div id='heart1' className='absolute w-10 md:w-16 animate-fade'>
-                <Image src={heart1} placeholder="blur" alt='' />
+                <Image src={heart1} alt='' />
               </div>
               <div
                 id='heart2'
                 className='absolute w-8 md:w-14 translate-x-[-40%] translate-y-[-80%] animate-fade-delay'
               >
-                <Image src={heart2} placeholder="blur" alt='' />
+                <Image src={heart2} alt='' />
               </div>
             </div>
           </div>
@@ -77,7 +75,6 @@ export const Section7ComponentFixedFront = () => {
           >
             <Image
               src={underline}
-              placeholder="blur"
               fill
               style={{
                 objectFit: 'contain',
@@ -144,13 +141,13 @@ export const Section7ComponentInner = ({ setBgColor, setCaption }) => {
     <>
       {/* Section 2 */}
       <section
-        id='trigger4'
+        id='trigger7'
         className='trigger relative w-full text-4xl flex flex-col justify-center items-center '
         data-scroll-section
       >
         <Section7MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         {/* FEED CHANGE */}
-        <div id='enter_feed_change' className='h-[100vh] w-full' />
+        <div id='enter_feed_change' className='h-[100vh] w-full mt:24 sm:mt-0' />
         {/* UNDERLINE */}
         <div id='enter_underline' className='h-[50vh] w-full'>
           <div id='enter_underline_m_1' className='h-[50%] w-full ' />
@@ -159,7 +156,6 @@ export const Section7ComponentInner = ({ setBgColor, setCaption }) => {
         {/* HEART1 */}
         <div id='enter_hearts' className='h-[25vh] w-full mt-24' />
         <div className='h-[100vh] md:h-[50vh]' />
-        <div id='exit_all_s7' className='h-[50vh]' />
         <Section7MarkerBottom setCaption={setCaption} setBgColor={setBgColor} />
       </section>
     </>
@@ -324,11 +320,11 @@ export const Section7AnimationOBJMobile = [
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#exit_all_s7', // which section will be tracked as the scroll trigger
+        trigger: '#trigger8', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 0%',
+        end: 'top 0%',
       },
     };
 
@@ -468,11 +464,11 @@ export const Section7AnimationOBJ = [
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#exit_all_s7', // which section will be tracked as the scroll trigger
+        trigger: '#trigger8', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
         start: 'top 100%',
-        end: 'bottom 0%',
+        end: 'top 0%',
       },
     };
 

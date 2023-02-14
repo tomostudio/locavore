@@ -36,7 +36,6 @@ export const Section2ComponentFixedFront = () => {
             <div className='w-20 h-20 md:w-28 md:h-28 absolute z-50 left-1/2 top-1/2 translate-x-[-50%] translate-y-[-176%] sm:translate-x-[-50%] sm:translate-y-[-205%] md:translate-x-[-190%] md:translate-y-[-225%]'>
               <Image
                 src={worm}
-                placeholder='blur'
                 fill
                 style={{
                   objectFit: 'contain',
@@ -52,7 +51,6 @@ export const Section2ComponentFixedFront = () => {
             >
               <Image
                 src={beeSticker}
-                placeholder='blur'
                 fill
                 style={{
                   objectFit: 'contain',
@@ -67,18 +65,17 @@ export const Section2ComponentFixedFront = () => {
         id='forest2'
         className='fixed z-2 h-0 w-0 top-1/2 right-0 overflow-visible'
       >
-        <div className='w-[20rem] md:w-[28rem]  absolute top-1/2 translate-y-[25%] md:translate-y-[-50%] translate-x-[100%]'>
-          <Image src={forest2} placeholder='blur' alt='' />
+        <div className='w-[20rem] md:w-[28rem]  absolute top-1/2 translate-y-[25%] md:translate-y-[-50%] translate-x-[0%]'>
+          <Image src={forest2} alt='' />
         </div>
       </div>
       <div
         id='forest3'
         className='fixed z-3 h-0 w-0 bottom-0 right-1/2 overflow-visible'
       >
-        <div className='w-[25rem] h-[20rem] md:w-[36rem] md:h-[30rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[100%]'>
+        <div className='w-[25rem] h-[20rem] md:w-[36rem] md:h-[30rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[0%]'>
           <Image
             src={forest3}
-            placeholder='blur'
             fill
             style={{
               objectFit: 'contain',
@@ -99,10 +96,9 @@ export const Section2ComponentFixedBack = () => {
           id='flower_bee_butterfly'
           className='fixed w-full max-w-screen-lg h-full z-1 opacity-0'
         >
-          <div className='w-20 h-20 md:w-28 md:h-28 fixed left-1/2 top-1/2 translate-x-[-230%] translate-y-[-185%] md:translate-x-[-490%] md:translate-y-[-220%]'>
+          <div className='w-20 h-20 md:w-28 md:h-28 fixed left-1/2 top-1/2 translate-x-[-230%] sm:translate-x-[-270%] translate-y-[-185%] md:translate-x-[-490%] md:translate-y-[-220%]'>
             <Image
               src={sunflower02}
-              placeholder='blur'
               fill
               style={{
                 objectFit: 'contain',
@@ -113,7 +109,6 @@ export const Section2ComponentFixedBack = () => {
           <div className='w-16 h-16 md:w-20 md:h-20 fixed left-1/2 translate-x-[-125%] translate-y-[45px] md:translate-x-[45%]'>
             <Image
               src={butterfly02}
-              placeholder='blur'
               fill
               style={{
                 objectFit: 'contain',
@@ -124,7 +119,6 @@ export const Section2ComponentFixedBack = () => {
           <div className='w-9 h-9 md:w-12 md:h-12 fixed top-1/2 md:top-0 right-1/2 translate-x-[-200%] translate-y-[-460%] md:translate-x-[600px] md:translate-y-[140px]'>
             <Image
               src={bee01}
-              placeholder='blur'
               fill
               style={{
                 objectFit: 'contain',
@@ -135,7 +129,6 @@ export const Section2ComponentFixedBack = () => {
           <div className='w-14 h-14 md:w-20 md:h-20 fixed z-1 top-1/2 md:top-0 right-1/2 translate-x-[250%] translate-y-[-320%] md:translate-x-[554px] md:translate-y-[215px]'>
             <Image
               src={butterfly01}
-              placeholder='blur'
               fill
               style={{
                 objectFit: 'contain',
@@ -146,7 +139,6 @@ export const Section2ComponentFixedBack = () => {
           <div className='w-28 h-28 md:w-40 md:h-40 fixed left-0 md:left-1/2 translate-x-[20%] md:translate-x-[-410%] bottom-0'>
             <Image
               src={sunflower01}
-              placeholder='blur'
               fill
               style={{
                 objectFit: 'contain',
@@ -157,7 +149,6 @@ export const Section2ComponentFixedBack = () => {
           <div className='w-9 h-9 md:w-14 md:h-14 fixed left-1/2 translate-x-[-250%] translate-y-[-240%] md:translate-x-[-870%] bottom-0 md:translate-y-[-180%]'>
             <Image
               src={bee03}
-              placeholder='blur'
               fill
               style={{
                 objectFit: 'contain',
@@ -168,7 +159,6 @@ export const Section2ComponentFixedBack = () => {
           <div className='w-11 h-11 md:w-14 md:h-14 fixed left-1/2 translate-x-[-350%] translate-y-[-400%] md:translate-x-[-1060%] bottom-0 md:translate-y-[-350%]'>
             <Image
               src={bee02}
-              placeholder='blur'
               fill
               style={{
                 objectFit: 'contain',
@@ -176,10 +166,9 @@ export const Section2ComponentFixedBack = () => {
               alt=''
             />
           </div>
-          <div className='w-20 h-20 md:w-28 md:h-28 fixed bottom-1/2 right-1/2 md:right-0 translate-x-[170%] translate-y-[215%] md:translate-x-[-90%] md:bottom-0 md:translate-y-[-100%]'>
+          <div className='w-20 h-20 md:w-28 md:h-28 fixed bottom-1/2 right-1/2 md:right-0 translate-x-[170%] translate-y-[410%] sm:translate-y-[445%] md:translate-x-[-90%] md:bottom-0 md:translate-y-[-100%]'>
             <Image
               src={sunflower03}
-              placeholder='blur'
               fill
               style={{
                 objectFit: 'contain',
@@ -193,19 +182,17 @@ export const Section2ComponentFixedBack = () => {
         id='forest1'
         className='fixed z-2 h-0 w-0 right-1/2 top-1/2 translate-y-[-100vh] overflow-visible'
       >
-        <div className='absolute w-[18rem] md:w-[26rem] -left-20 top-1/2 md:left-6 translate-y-[-27%] md:translate-y-[-45%]'>
+        <div className='absolute w-64 sm:w-[18rem] md:w-[26rem] -left-20 top-1/2 md:left-6 translate-y-[-27%] md:translate-y-[-45%]'>
           <Image
             src={forest1}
-            placeholder='blur'
             alt=''
           />
           <div
             id='mug'
-            className='w-40 h-40 md:w-72 md:h-72 fixed left-20 -bottom-10 md:-left-9 md:bottom-24 opacity-0'
+            className='w-40 h-40 md:w-72 md:h-72 fixed left-20 -bottom-5 md:-left-20 md:bottom-24 opacity-0'
           >
             <Image
               src={mugSticker}
-              placeholder='blur'
               fill
               style={{
                 objectFit: 'contain',
@@ -282,7 +269,7 @@ export const Section2ComponentInner = ({ setBgColor, setCaption }) => {
         {/* BEE */}
         <div id='enter_bee' className='h-[50vh] ' />
         {/* FOREST 2 */}
-        <div id='enter-forest2' className='h-[150vh]' />
+        <div id='enter-forest2' className='h-[150vh] mt-24' />
         <div className='h-[50vh]' />
         <div id='exit-group2' className='h-[50vh]  mt-24' />
         <div id='exit-forest1' className='h-[50vh] mt-24' />
@@ -947,7 +934,7 @@ export const Section2AnimationOBJ = [
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 80%',
+        start: 'top 90%',
         end: 'bottom 0%',
       },
     };
@@ -976,7 +963,7 @@ export const Section2AnimationOBJ = [
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
         scroller: '#scroll-container', // id of scroll container
         scrub: true,
-        start: 'top 80%',
+        start: 'top 90%',
         end: 'bottom 0%',
       },
     };
