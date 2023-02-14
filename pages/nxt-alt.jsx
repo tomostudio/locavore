@@ -1,9 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { Parallax } from 'react-scroll-parallax';
 import { LazyMotion, domAnimation, m } from 'framer-motion';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
+import 'intersection-observer'; // optional polyfill
+import { useInView } from 'react-cool-inview';
 
 import Layout from '@/components/modules/layout';
 import ScrollTriggerWrapper from '@/components/utils/scrolltrigger';
@@ -13,6 +15,8 @@ import Footer from '@/components/modules/footer';
 import PushScrollGlobal from '@/helpers/globalscroll';
 import { fade } from '@/helpers/preset/transitions';
 import client from '@/helpers/sanity/client';
+
+import loadingImage from '@/public/loading.png';
 
 import {
   Section1ComponentFixedFront,
@@ -77,9 +81,13 @@ import {
   Section8AnimationOBJMobile,
   Section8ComponentInner,
 } from '@/components/modules/reveal/section8-video';
+import { useAppContext } from 'context/state';
+import Image from 'next/image';
+import applyScrollTrigger from '@/components/utils/applyScrollTrigger';
 
 export default function Reveal({ seoAPI, footerAPI }) {
   const router = useRouter();
+  const appContext = useAppContext();
   const [seo] = seoAPI;
   const [footer] = footerAPI;
 
@@ -109,25 +117,53 @@ export default function Reveal({ seoAPI, footerAPI }) {
     ],
   };
 
+  // Loading Function
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const BackgroundLocomotiveEvents = (e) => {
-      const { enter, target } = e.detail;
-      if (enter === 'enter' && target === 'section0') {
-        setCaption(0);
-        setBgColor(0);
-      } else if (target === 'sectionstart') {
-        setBgColor(0);
-        setCaption(-1);
-      }
+    router.events.on('routeChangeStart', () => setLoading(true));
+    router.events.on('routeChangeComplete', () => setLoading(false));
+    router.events.on('routeChangeError', () => setLoading(false));
+    return () => {
+      router.events.off('routeChangeStart', () => setLoading(true));
+      router.events.off('routeChangeComplete', () => setLoading(false));
+      router.events.off('routeChangeError', () => setLoading(false));
     };
+  }, [router.events]);
 
-    window.addEventListener('LocoCall', BackgroundLocomotiveEvents);
+  useEffect(() => {
+    if (appContext.history.length === 0) {
+      setTimeout(() => setLoading(false), 1500);
+    }
+    appContext.setHeader({
+      headerStyle: 'blur',
+    });
 
+    return () => {
+      appContext.setHeader({ headerStyle: 'default' });
+    };
+  }, []);
+
+  useEffect(() => {
+    let scrollTriggerAnimation = null;
+    if (!loading) {
+      scrollTriggerAnimation = applyScrollTrigger({
+        animation: animationObj,
+      });
+      setCaption(-1);
+      setBgColor(0);
+    }
+    return () => {
+      if (scrollTriggerAnimation != null)
+        scrollTriggerAnimation.revert();
+    };
+  }, [loading]);
+
+  useEffect(() => {
     // Go to the Top, Set Background Color
     // TURN ON AFTER TESTING
-    window.scroll(0, 0);
-    // setCaption(0);
-    // setBgColor(0);
+    // window.scroll(0, 0);
+    setCaption(-1);
+    setBgColor(0);
 
     const resizeFunction = () => {
       setCaption(currentCaption);
@@ -136,7 +172,6 @@ export default function Reveal({ seoAPI, footerAPI }) {
     window.addEventListener('resize', resizeFunction);
 
     return () => {
-      window.removeEventListener('LocoCall', BackgroundLocomotiveEvents);
       window.removeEventListener('resize', resizeFunction);
     };
   }, []);
@@ -156,36 +191,38 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
     // Hide Caption on Section 7 & 8
     if (n >= 7 || n === -1) {
-      captionContainer.style.opacity = 0;
+      if (captionContainer) captionContainer.style.opacity = 0;
     } else {
-      captionContainer.style.opacity = 1;
+      if (captionContainer) captionContainer.style.opacity = 1;
     }
 
-    //ADJUST CENTERING FOR MOBILE
-    let offsetX = 0;
+    if (captions.length > 0) {
+      //ADJUST CENTERING FOR MOBILE
+      let offsetX = 0;
 
-    if (n <= 1) {
-      offsetX = captions[0].offsetWidth / 2;
-    } else {
-      // offsetX =
-      // moving for 2 or 3 or 4 or 5
-      captions.forEach((caption, index) => {
-        const setN = n >= 6 ? 6 : n;
-        if (index < setN - 1) {
-          offsetX = offsetX + caption.offsetWidth + 8;
-        }
-        if (index === setN - 1) {
-          offsetX = offsetX + caption.offsetWidth / 2;
-        }
+      if (n <= 1) {
+        offsetX = captions[0].offsetWidth / 2;
+      } else {
+        // offsetX =
+        // moving for 2 or 3 or 4 or 5
+        captions.forEach((caption, index) => {
+          const setN = n >= 6 ? 6 : n;
+          if (index < setN - 1) {
+            offsetX = offsetX + caption.offsetWidth + 8;
+          }
+          if (index === setN - 1) {
+            offsetX = offsetX + caption.offsetWidth / 2;
+          }
+        });
+      }
+
+      document.querySelector('#reveal_caption').scroll({
+        left: offsetX,
+        top: 0,
+        behavior: 'smooth',
       });
+      currentCaption = n;
     }
-
-    document.querySelector('#reveal_caption').scroll({
-      left: offsetX,
-      top: 0,
-      behavior: 'smooth',
-    });
-    currentCaption = n;
   };
 
   // Set Background
@@ -203,10 +240,17 @@ export default function Reveal({ seoAPI, footerAPI }) {
   ];
   const setBgColor = (set) => {
     const bgFrame = document.querySelector('#NXTbackground');
-    bgFrame.style.background = bgColorSet[set];
+    if (bgFrame) bgFrame.style.background = bgColorSet[set];
   };
 
-  return (
+  return loading ? (
+    <div className='h-screen w-screen flex flex-col justify-center items-center bg-[#BFC29D]'>
+      <div className='relative w-16 animate-spin'>
+        <Image src={loadingImage} alt='' />
+      </div>
+      <span className='uppercase block font-default mt-5 text-xs'>LOADING</span>
+    </div>
+  ) : (
     <Layout>
       <SEO
         title={'Up NXT'}
@@ -261,7 +305,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       {/* CAPTION */}
       <div
         id='reveal_caption'
-        className='caption flex flex-row md:justify-center items-center hide-scrollbar fixed z-50 text-sm pointer-events-none overflow-x-auto py-8 md:py-0 md:overflow-x-auto w-full md:px-20 bottom-2 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500 opacity-0'
+        className='caption flex flex-row md:justify-center items-center hide-scrollbar fixed z-50 text-sm pointer-events-none overflow-x-auto py-8 md:py-0 md:overflow-x-visible md:overflow-y-visible w-full md:px-20 bottom-2 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500 opacity-0'
       >
         <div className='md:hidden block w-[50vw] shrink-0' />
         <div className='captions_wrapper flex md:flex-wrap justify-center items-center gap-2 md:gap-1 relative md:!translate-x-0 transition-transform shrink-0 md:shrink'>
@@ -299,119 +343,141 @@ export default function Reveal({ seoAPI, footerAPI }) {
         <div className='md:hidden block w-[50vw] shrink-0' />
       </div>
 
-      <LocomotiveScrollProvider
-        options={{ smooth: false, lerp: 0.05 }}
-        containerRef={containerRef}
-        watch={[]}
-      >
-        <PushScrollGlobal />
-        <div
-          data-scroll-container
-          ref={containerRef}
-          id='scroll-container'
-          className={`z-1 relative`}
+      <LazyMotion features={domAnimation}>
+        <m.main
+          className='relative p-0 m-0'
+          initial='initial'
+          animate='enter'
+          exit='exit'
+          variants={fade}
         >
-          <div data-scroll-section>
-            <ScrollTriggerWrapper animation={animationObj}>
-              <LazyMotion features={domAnimation}>
-                <m.main
-                  className='relative p-0 m-0'
-                  initial='initial'
-                  animate='enter'
-                  exit='exit'
-                  variants={fade}
+          {/* Section 0 */}
+          <Section0MarkerTop setBgColor={setBgColor} setCaption={setCaption} />
+          <section
+            id='trigger0'
+            className='trigger w-full h-[110vh] text-4xl'
+            data-scroll-section
+          >
+            <div className='flex justify-center items-center w-full h-screen'>
+              <Parallax speed={-20}>
+                <div
+                  className={`font-light text-xs text-center tracking-widest animate-fade-down text-black select-none`}
                 >
-                  {/* Section 0 */}
-                  <div
-                    id='captionmarker_0'
-                    className='w-full h-1'
-                    data-scroll
-                    data-scroll-call='sectionstart'
-                    data-scroll-repeat
-                  />
-                  <section
-                    id='trigger0'
-                    className='trigger w-full h-[110vh] text-4xl'
-                    data-scroll-section
-                  >
-                    <div className='flex justify-center items-center w-full h-screen'>
-                      <Parallax speed={-20}>
-                        <div
-                          className={`font-light text-xs text-center tracking-widest animate-fade-down text-black select-none`}
-                        >
-                          SCROLL TO
-                          <br />
-                          BEGIN
-                        </div>
-                      </Parallax>
-                    </div>
-                  </section>
-                  <div
-                    id='captionmarker_0'
-                    className='w-full h-1'
-                    data-scroll
-                    data-scroll-call='section0'
-                    data-scroll-repeat
-                  />
-                  {/* Section 1 */}
-                  {/* WE HAD A DREAM */}
-                  <Section1ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 2 */}
-                  {/* INSPIRED BY NICE THINGS */}
-                  <Section2ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 3 */}
-                  {/* AND A BETTER WORLD */}
-                  <Section3ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 4 */}
-                  {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
-                  <Section4ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 5 */}
-                  {/* SO OTHER PEOPLE CAN DREAM TOO */}
-                  <Section5ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 6 */}
-                  {/* INSPIRED BY OUR NICE THING */}
-                  <Section6ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 7 */}
-                  {/* FEED CHANGE */}
-                  <Section7ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
-                  {/* Section 8*/}
-                  {/* LOCAVORE NEXT */}
-                  <Section8ComponentInner
-                    setBgColor={setBgColor}
-                    setCaption={setCaption}
-                  />
+                  SCROLL TO
+                  <br />
+                  BEGIN
+                </div>
+              </Parallax>
+            </div>
+          </section>
+          <Section0MarkerBottom
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 1 */}
+          {/* WE HAD A DREAM */}
+          <Section1ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 2 */}
+          {/* INSPIRED BY NICE THINGS */}
+          <Section2ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 3 */}
+          {/* AND A BETTER WORLD */}
+          <Section3ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 4 */}
+          {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
+          <Section4ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 5 */}
+          {/* SO OTHER PEOPLE CAN DREAM TOO */}
+          <Section5ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 6 */}
+          {/* INSPIRED BY OUR NICE THING */}
+          <Section6ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 7 */}
+          {/* FEED CHANGE */}
+          <Section7ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 8*/}
+          {/* LOCAVORE NEXT */}
+          <Section8ComponentInner
+            general={seo}
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
 
-                  <Footer footer={footer} mailchimp={seo.mailchimpID} />
-                </m.main>
-              </LazyMotion>
-            </ScrollTriggerWrapper>
-          </div>
-        </div>
-      </LocomotiveScrollProvider>
+          <Footer footer={footer} mailchimp={seo.mailchimpID} />
+        </m.main>
+      </LazyMotion>
     </Layout>
   );
 }
+
+const Section0MarkerTop = ({ setBgColor, setCaption }) => {
+  const { observe } = useInView({
+    threshold: 1, // Default is 0
+    rootMargin: '0px 0px',
+    onEnter: ({ scrollDirection, entry }) => {
+      setCaption(-1);
+      setBgColor(0);
+    },
+    onLeave: ({ scrollDirection, entry }) => {
+      // Triggered when the target leaves the viewport
+      // console.log('leave', scrollDirection.vertical, entry);
+      if (scrollDirection.vertical === 'up') {
+        // GO TO SECTION 0
+        setCaption(0);
+        setBgColor(0);
+      } else if (scrollDirection.vertical === 'down') {
+        // RETURN TO SECTION START
+        setCaption(-1);
+        setBgColor(0);
+      }
+    },
+  });
+
+  return <div className='w-full h-[2px]' ref={observe} />;
+};
+const Section0MarkerBottom = ({ setBgColor, setCaption }) => {
+  const { observe } = useInView({
+    threshold: 1, // Default is 0
+    rootMargin: '0px 0px',
+    onEnter: ({ scrollDirection, entry }) => {
+      setCaption(0);
+      setBgColor(0);
+    },
+    onLeave: ({ scrollDirection, entry }) => {
+      // Triggered when the target leaves the viewport
+      // console.log('leave', scrollDirection.vertical, entry);
+      if (scrollDirection.vertical === 'up') {
+      } else if (scrollDirection.vertical === 'down') {
+        // RETURN TO SECTION 0
+        setCaption(0);
+        setBgColor(0);
+      }
+    },
+  });
+
+  return <div className='w-full h-0' ref={observe} />;
+};
 
 export async function getStaticProps() {
   const headerAPI = await client.fetch(`

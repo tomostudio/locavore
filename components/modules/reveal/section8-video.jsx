@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import 'intersection-observer' // optional polyfill
 import { useInView } from 'react-cool-inview'
 import Image from 'next/image'
 import Lottie from 'lottie-react'
 
 import FancyLink from '@/components/utils/fancyLink'
-import LottieLve from '@/public/nxt/lottie/lve-lottie-jpg.json'
+import LottieLve from '@/public/nxt/lottie/lve-lottie-jpg-2.json'
 
 // Local Images
 import summer from '@/public/nxt/summer.webp'
@@ -26,65 +26,15 @@ import butterfly2 from '@/public/nxt/butterfly02.webp'
 import sunflower3 from '@/public/nxt/sunflower03.webp'
 import sunflower4 from '@/public/nxt/sunflower04.webp'
 import sunflower5 from '@/public/nxt/sunflower05.webp'
-import NXT_Logo_Bumper from '@/public/nxt/lvlnxt-logo.webp';
+import NXT_Logo_Bumper from '@/public/nxt/lvlnxt-logo.webp'
+
 import HeaderGap from '../headerGap'
+import { Snackbar, Tooltip } from '@mui/material'
+import { Facebook, Link, Mail, Twitter } from '@/helpers/preset/svg'
+import { transition } from '@/helpers/preset/tailwind'
 
 export const Section8ComponentFixedFront = () => {
-  const lottieRef = useRef()
-
-  return (
-    <div id="section8_fixed_front">
-      <div
-        id="video-frame"
-        className="pointer-events-auto fixed w-screen flex flex-col h-full z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 md:px-20 sm:max-w-screen-sm md:max-w-[1000px] lg:max-w-screen-xl max-h-[100vh]"
-      >
-        <HeaderGap />
-        <div className="w-full h-full flex justify-center items-center">
-          <div
-            id="lottie-frame"
-            className="w-full h-fit aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-xl opacity-0"
-          >
-            <video className="w-full h-full object-contain" controls>
-              <source src="/nxt/video/nxt.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            {/* <Lottie
-              lottieRef={lottieRef}
-              animationData={LottieLve}
-              autoplay={false}
-              loop={false}
-              rendererSettings={{
-                preserveAspectRatio: 'xMidYMid slice',
-              }}
-              style={{ objectFit: 'fill', width: '100%', height: '100%' }}
-            /> */}
-          </div>
-        </div>
-      </div>
-      <div
-        id="logo-frame"
-        className="fixed w-screen flex flex-col z-[49] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 md:px-20 sm:max-w-screen-sm md:max-w-[1000px] lg:max-w-screen-xl opacity-0"
-      >
-        <HeaderGap />
-        <div className="w-full h-full flex justify-center items-center">
-          {/* ANIMATION CONTENT STICKY */}
-          <div
-            id="logo-end"
-            className="frame w-full aspect-[4/3] sm:aspect-[16/9] relative overflow-hidden rounded-xl"
-          >
-            <Image
-              src={NXT_Logo_Bumper}
-              fill
-              style={{
-                objectFit: 'cover',
-              }}
-              alt=''
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+  return <div id="section8_fixed_front"></div>
 }
 export const Section8ComponentFixedBack = () => {
   return (
@@ -116,7 +66,67 @@ const Section8MarkerTop = ({ setBgColor, setCaption }) => {
   return <div className="w-full h-0" ref={observe} />
 }
 
-export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
+export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
+  const [baseUrl, setBaseUrl] = useState()
+  const [snackBar, setSnackBar] = useState(false)
+  const [showShare, setShare] = useState(false)
+  const [statusVideo, setStatusVideo] = useState(false);
+
+  const handleClick = (newState) => () => {
+    copy()
+    setSnackBar(true)
+  }
+
+  const handleClose = () => {
+    setSnackBar(false)
+  }
+
+  const copy = () => {
+    const el = document.createElement('input')
+    el.value = baseUrl
+    document.body.appendChild(el)
+    el.select()
+    // document.execCommand('copy');
+    navigator.clipboard.writeText(baseUrl)
+    document.body.removeChild(el)
+  }
+
+  const handleShareButton = () => {
+    const shareData = {
+      title: `Locavore® — Revealing NXT `,
+      text: `Opening Summer 2023`,
+      url: baseUrl,
+    }
+
+    if (navigator.share) {
+      navigator.share(shareData)
+    }
+  }
+
+  const resize = () => {
+    console.log(resize)
+    if (navigator.share) {
+      setShare(true)
+    } else {
+      setShare(false)
+    }
+  }
+
+  const playVid = () => {
+    const vid = document.getElementById("nxt-video");
+    setStatusVideo(true)
+    vid.play()
+  }
+
+  useEffect(() => {
+    setBaseUrl(window.location.href)
+    resize()
+    window.addEventListener('resize', resize, true)
+    return () => {
+      window.removeEventListener('resize', resize, true)
+    }
+  }, [])
+
   return (
     <>
       {/* Section 8 */}
@@ -126,11 +136,6 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
         data-scroll-section
       >
         <Section8MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
-
-        <div id="video-enter" className="w-full min-h-[50vh]" />
-        <div id="video-marker" className="h-[50vh] w-full " />
-        <div id="video-to-logo" className="w-full min-h-[100vh]" />
-        <div id="logo-moveup" className="w-full h-screen" />
         <div className="w-full ">
           <div className="h-screen w-full sticky z-5 top-0 flex justify-center items-center">
             {/* ANIMATION CONTENT STICKY */}
@@ -141,6 +146,49 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
               >
                 <div className="relative max-w-screen-lg w-full h-full flex justify-center items-center mx-auto">
                   <div className="pointer-events-none font-funkturm tracking-[0.08em] absolute w-full h-full flex flex-col justify-center items-center text-center leading-none text-white  text-5xl md:text-8xl sm:text-6xl">
+                    <div className="pointer-events-auto absolute w-screen flex flex-col h-full z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 md:px-20 sm:max-w-screen-sm md:max-w-[1000px] lg:max-w-screen-xl max-h-[100vh]">
+                      <div className="w-full h-full flex justify-center items-center">
+                        <div
+                          id="video-frame"
+                          className="relative w-full h-fit aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-xl opacity-0"
+                        >
+                          <video id="nxt-video" className="w-full h-full object-contain">
+                            <source src="/nxt/video/nxt.mp4" type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                          <div id="nxt-bg" className={`absolute top-0 left-0 z-2 transition-all duration-300 bg-black w-full h-full flex justify-center items-center pointer-events-none ${statusVideo ? 'hidden' : ''}`}>
+                            <FancyLink
+                              onClick={playVid}
+                              className="text-2xl transition-all ease-linear hover:opacity-50"
+                            >
+                              PLAY
+                            </FancyLink>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      id="logo-frame"
+                      className="absolute w-screen flex flex-col z-[49] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 md:px-20 sm:max-w-screen-sm md:max-w-[1000px] lg:max-w-screen-xl opacity-0 max-h-[100vh]"
+                    >
+                      <div className="w-full h-full flex justify-center items-center">
+                        {/* ANIMATION CONTENT STICKY */}
+                        <div
+                          id="logo-end"
+                          className="frame w-full aspect-[4/3] sm:aspect-[16/9] relative overflow-hidden rounded-xl"
+                        >
+                          <Image
+                            src={NXT_Logo_Bumper}
+                            fill
+                            style={{
+                              objectFit: 'cover',
+                            }}
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                    </div>
+
                     <div className="relative translate-y-[-70%] md:translate-y-[-25%]">
                       <div id="new_locavore_exit">
                         <div id="new_locavore" className="opacity-0">
@@ -169,40 +217,129 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                                 <span className="relative">
                                   <div
                                     id="summer"
-                                    className="absolute top-0 lg:top-1/2 translate-y-[-30%] lg:translate-y-[-50%] translate-x-[-60%] lg:translate-x-[-50%] w-40 h-16 opacity-0"
+                                    className="w-28 sm:w-32 md:w-40 absolute top-0 lg:top-1/2 translate-y-[60%] lg:translate-y-[30%] translate-x-[-60%] lg:translate-x-[-30%] opacity-0"
                                   >
-                                    <Image
-                                      src={summer}
-                                      fill
-                                      style={{
-                                        objectFit: 'contain',
-                                      }}
-                                      alt=""
-                                    />
+                                    <Image src={summer} />
                                   </div>
                                   2023
                                 </span>
                               </div>
-                              <div className="relative w-full">
-                                <FancyLink
-                                  destination={`/share`}
-                                  className={`absolute left-1/2 translate-x-[-50%] mt-14 w-fit py-4 px-6 text-xl font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-                                >
-                                  <div
-                                    id="worm"
-                                    className="absolute top-[-100%] left-0 pointer-events-none w-28 h-28 opacity-0"
+                              <div className="relative w-full flex justify-center">
+                                {showShare ? (
+                                  <FancyLink
+                                    onClick={handleShareButton}
+                                    className={`absolute left-1/2 translate-x-[-50%] mt-14 w-fit py-4 px-6 text-sm md:text-xl font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
                                   >
-                                    <Image
-                                      alt=""
-                                      src={worm}
-                                      fill
-                                      style={{
-                                        objectFit: 'contain',
-                                      }}
-                                    />
+                                    <div
+                                      id="worm"
+                                      className="absolute top-[-100%] left-0 pointer-events-none w-28 h-28 opacity-0"
+                                    >
+                                      <Image
+                                        alt=""
+                                        src={worm}
+                                        fill
+                                        style={{
+                                          objectFit: 'contain',
+                                        }}
+                                      />
+                                    </div>
+                                    SHARE
+                                  </FancyLink>
+                                ) : (
+                                  <div className="relative mt-12">
+                                    <div
+                                      id="worm"
+                                      className="absolute top-[-400%] left-1/2 translate-x-[-50%] pointer-events-none w-20 h-20 opacity-0"
+                                    >
+                                      <Image
+                                        alt=""
+                                        src={worm}
+                                        fill
+                                        style={{
+                                          objectFit: 'contain',
+                                        }}
+                                      />
+                                    </div>
+                                    <div className="relative flex space-x-7 ">
+                                      <Tooltip
+                                        title="Facebook"
+                                        classes={{ tooltip: 'tooltip' }}
+                                      >
+                                        <FancyLink
+                                          blank={true}
+                                          destination={`https://www.facebook.com/sharer/sharer.php?u=${baseUrl}`}
+                                          className={`relative w-4 h-4 ${transition.fade}`}
+                                        >
+                                          <Facebook
+                                            fill={'#fff'}
+                                            className={'w-full h-full'}
+                                          />
+                                        </FancyLink>
+                                      </Tooltip>
+                                      <Tooltip
+                                        title="Twitter"
+                                        classes={{ tooltip: 'tooltip' }}
+                                      >
+                                        <FancyLink
+                                          blank={true}
+                                          destination={`https://twitter.com/share?url=${baseUrl}`}
+                                          className={`relative w-4 h-4 ${transition.fade}`}
+                                        >
+                                          <Twitter
+                                            fill={'#fff'}
+                                            className={'w-full h-full'}
+                                          />
+                                        </FancyLink>
+                                      </Tooltip>
+                                      <Tooltip
+                                        title="Email"
+                                        classes={{ tooltip: 'tooltip' }}
+                                      >
+                                        <FancyLink
+                                          destination={`mailto:?subject=${general.share.title}&body=${general.share.message} %0D%0A${baseUrl}`}
+                                          className={`relative w-4 h-4 ${transition.fade}`}
+                                        >
+                                          <Mail
+                                            fill={'#fff'}
+                                            className={'w-full h-full'}
+                                          />
+                                        </FancyLink>
+                                      </Tooltip>
+                                      <Tooltip
+                                        title="Copy Link"
+                                        classes={{ tooltip: 'tooltip' }}
+                                      >
+                                        <FancyLink
+                                          onClick={handleClick({
+                                            vertical: 'top',
+                                            horizontal: 'center',
+                                          })}
+                                          className={`relative min-w-1rem min-h-1rem w-4 h-4 p-[1px] ${transition.fade}`}
+                                        >
+                                          <Link
+                                            fill={'#fff'}
+                                            className={'w-full h-full'}
+                                          />
+                                        </FancyLink>
+                                      </Tooltip>
+                                      <Snackbar
+                                        autoHideDuration={3000}
+                                        anchorOrigin={{
+                                          vertical: 'bottom',
+                                          horizontal: 'center',
+                                        }}
+                                        ContentProps={{
+                                          classes: {
+                                            root: 'snackbar',
+                                          },
+                                        }}
+                                        open={snackBar}
+                                        onClose={handleClose}
+                                        message="LINK COPIED"
+                                      />
+                                    </div>
                                   </div>
-                                  SHARE
-                                </FancyLink>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -216,9 +353,10 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
                           behavior: 'auto',
                         })
                       }
-                      className="absolute bottom-10 uppercase pointer-events-auto font-default font-light text-xs text-center tracking-widest text-white select-none"
+                      id="backtotop"
+                      className="absolute bottom-10 z-50 uppercase pointer-events-auto font-default font-light text-xs text-center tracking-widest text-white select-none"
                     >
-                      <div className="block animate-fade-up">Back to top</div>
+                      <div className="block animate-fade-up">Back to Top</div>
                     </FancyLink>
                   </div>
                 </div>
@@ -421,7 +559,10 @@ export const Section8ComponentInner = ({ setBgColor, setCaption }) => {
               </div>
             </div>
           </div>
-          <div id="enter_nxt_logo" className="h-[100vh] w-full mt-[-75vh]" />
+          <div id="video-marker" className="h-[200vh] w-full " />
+          <div id="video-to-logo" className="w-full min-h-[100vh]" />
+          <div id="logo-moveup" className="w-full h-screen" />
+          <div id="enter_nxt_logo" className="h-[100vh] w-full" />
           <div id="enter_locavore_nxt" className="h-[100vh] w-full" />
           <div id="enter_opening" className="h-[25vh] w-full " />
           <div
@@ -454,11 +595,11 @@ export const Section8AnimationOBJMobile = [
   // VIDEO ENTER
   () => {
     const id = 'video-enter' // animation id
-    const elem = document.querySelector('#lottie-frame')
+    const elem = document.querySelector('#video-frame')
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#video-enter', // which section will be tracked as the scroll trigger
+        trigger: '#trigger8', // which section will be tracked as the scroll trigger
         scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
@@ -467,15 +608,6 @@ export const Section8AnimationOBJMobile = [
 
     // Input Animation
     const animation = [
-      {
-        set: [
-          elem,
-          {
-            opacity: 0,
-            y: '100vh',
-          },
-        ],
-      },
       {
         to: [
           elem,
@@ -617,6 +749,7 @@ export const Section8AnimationOBJMobile = [
           elem,
           {
             y: 0,
+            scale: 1,
           },
         ],
       },
@@ -625,6 +758,7 @@ export const Section8AnimationOBJMobile = [
           elem,
           {
             y: '-30vh',
+            scale: 0.75,
           },
         ],
       },
@@ -744,6 +878,42 @@ export const Section8AnimationOBJMobile = [
   () => {
     const id = 'opening_enter' // animation id
     const elem = document.querySelector('#opening')
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_opening', // which section will be tracked as the scroll trigger
+        scrub: 0.5,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // BACK TO TOP ENTER
+  () => {
+    const id = 'opening-btt' // animation id
+    const elem = document.querySelector('#backtotop')
     const settings = {
       scrollTrigger: {
         id: id,
@@ -1221,11 +1391,11 @@ export const Section8AnimationOBJ = [
   // VIDEO ENTER
   () => {
     const id = 'video-enter' // animation id
-    const elem = document.querySelector('#lottie-frame')
+    const elem = document.querySelector('#video-frame')
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#video-enter', // which section will be tracked as the scroll trigger
+        trigger: '#trigger8', // which section will be tracked as the scroll trigger
         scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
@@ -1234,15 +1404,6 @@ export const Section8AnimationOBJ = [
 
     // Input Animation
     const animation = [
-      {
-        set: [
-          elem,
-          {
-            opacity: 0,
-            y: '100vh',
-          },
-        ],
-      },
       {
         to: [
           elem,
@@ -1384,6 +1545,7 @@ export const Section8AnimationOBJ = [
           elem,
           {
             y: 0,
+            scale: 1,
           },
         ],
       },
@@ -1392,6 +1554,7 @@ export const Section8AnimationOBJ = [
           elem,
           {
             y: '-30vh',
+            scale: 0.5,
           },
         ],
       },
@@ -1482,6 +1645,42 @@ export const Section8AnimationOBJ = [
         scrub: 0.5,
         start: 'top 75%',
         end: 'top 25%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        set: [
+          elem,
+          {
+            opacity: 0,
+          },
+        ],
+      },
+      {
+        to: [
+          elem,
+          {
+            opacity: 1,
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // BACK TO TOP ENTER
+  () => {
+    const id = 'opening-btt' // animation id
+    const elem = document.querySelector('#backtotop')
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_opening', // which section will be tracked as the scroll trigger
+        scrub: 0.5,
+        start: 'top 100%',
+        end: 'bottom 100%',
       },
     }
 
