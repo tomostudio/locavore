@@ -201,8 +201,13 @@ export const Section4AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_s4_text', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -238,8 +243,13 @@ export const Section4AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_box', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -273,8 +283,13 @@ export const Section4AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_construction_sticker', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -308,8 +323,13 @@ export const Section4AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 75%',
       },
@@ -343,8 +363,13 @@ export const Section4AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 50%',
       },
@@ -370,8 +395,13 @@ export const Section4AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 50%',
       },
@@ -397,8 +427,13 @@ export const Section4AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 50%',
       },
@@ -424,8 +459,13 @@ export const Section4AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 50%',
       },
@@ -451,8 +491,13 @@ export const Section4AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 60%',
       },
@@ -478,8 +523,13 @@ export const Section4AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 50%',
         end: 'top 25%',
       },
@@ -505,8 +555,13 @@ export const Section4AnimationOBJ = [
       scrollTrigger: {
         id: id,
         trigger: '#exit_all4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -543,8 +598,13 @@ export const Section4AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_s4_text', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -580,8 +640,13 @@ export const Section4AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_box', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -615,8 +680,13 @@ export const Section4AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_construction_sticker', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -650,8 +720,13 @@ export const Section4AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -685,8 +760,13 @@ export const Section4AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 85%',
         end: 'bottom 0%',
       },
@@ -712,8 +792,13 @@ export const Section4AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 85%',
         end: 'bottom 0%',
       },
@@ -739,8 +824,13 @@ export const Section4AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 85%',
         end: 'bottom 0%',
       },
@@ -766,8 +856,13 @@ export const Section4AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 85%',
         end: 'bottom 0%',
       },
@@ -793,8 +888,13 @@ export const Section4AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -820,8 +920,13 @@ export const Section4AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 50%',
         end: 'top 0%',
       },
@@ -847,8 +952,13 @@ export const Section4AnimationOBJMobile = [
       scrollTrigger: {
         id: id,
         trigger: '#exit_all4', // which section will be tracked as the scroll trigger
+<<<<<<< HEAD
         
        scrub: 0.5,
+=======
+         // id of scroll container
+        scrub: .5,
+>>>>>>> e70c056d764232dee511fda0d3c57e8b2fa01523
         start: 'top 100%',
         end: 'bottom 0%',
       },
