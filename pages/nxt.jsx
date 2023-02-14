@@ -80,10 +80,10 @@ import {
   Section8AnimationOBJ,
   Section8AnimationOBJMobile,
   Section8ComponentInner,
-} from '@/components/modules/reveal/section8'
-import { useAppContext } from 'context/state'
-import Image from 'next/image'
-import applyScrollTrigger from '@/components/utils/applyScrollTrigger'
+} from '@/components/modules/reveal/section8';
+import { useAppContext } from 'context/state';
+import Image from 'next/image';
+import applyScrollTrigger from '@/components/utils/applyScrollTrigger';
 
 export default function Reveal({ seoAPI, footerAPI }) {
   const router = useRouter();
@@ -136,10 +136,6 @@ export default function Reveal({ seoAPI, footerAPI }) {
     }
     appContext.setHeader({
       headerStyle: 'blur',
-    })
-
-    const scrollTriggerAnimation = applyScrollTrigger({
-      animation: animationObj,
     });
 
     return () => {
@@ -149,7 +145,9 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
   useEffect(() => {
     let scrollTriggerAnimation = null;
+    console.log('init', loading);
     if (!loading) {
+      console.log('init', loading);
       scrollTriggerAnimation = applyScrollTrigger({
         animation: animationObj,
       });
@@ -255,7 +253,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       <div className='relative w-16 animate-spin'>
         <Image src={loadingImage} alt='' />
       </div>
-      <span className="uppercase block font-default mt-5 text-xs">LOADING</span>
+      <span className='uppercase block font-default mt-5 text-xs'>LOADING</span>
     </div>
   ) : (
     <Layout>
@@ -352,20 +350,20 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
       <LazyMotion features={domAnimation}>
         <m.main
-          className="relative p-0 m-0"
-          initial="initial"
-          animate="enter"
-          exit="exit"
+          className='relative p-0 m-0'
+          initial='initial'
+          animate='enter'
+          exit='exit'
           variants={fade}
         >
           {/* Section 0 */}
           <Section0MarkerTop setBgColor={setBgColor} setCaption={setCaption} />
           <section
-            id="trigger0"
-            className="trigger w-full h-[110vh] text-4xl"
+            id='trigger0'
+            className='trigger w-full h-[110vh] text-4xl'
             data-scroll-section
           >
-            <div className="flex justify-center items-center w-full h-screen">
+            <div className='flex justify-center items-center w-full h-screen'>
               <Parallax speed={-20}>
                 <div
                   className={`font-light text-xs text-center tracking-widest animate-fade-down text-black select-none`}
@@ -437,28 +435,6 @@ export default function Reveal({ seoAPI, footerAPI }) {
     </Layout>
   );
 }
-
-const Section5MarkerTop = ({ setBgColor, setCaption }) => {
-  const { observe } = useInView({
-    threshold: 1, // Default is 0
-    rootMargin: '-50px 0px',
-    onEnter: ({ scrollDirection, entry }) => {
-      setCaption(5);
-      setBgColor(5);
-    },
-    onLeave: ({ scrollDirection, entry }) => {
-      // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
-      if (scrollDirection.vertical === 'up') {
-        // CURRENT
-        setCaption(5);
-        setBgColor(5);
-      }
-    },
-  });
-
-  return <div className='w-full h-0' ref={observe} />;
-};
 
 const Section0MarkerTop = ({ setBgColor, setCaption }) => {
   const { observe } = useInView({
