@@ -22,6 +22,8 @@ import urlFor from '@/helpers/sanity/urlFor';
 import checkMonth from '@/helpers/functional/checkMonth';
 import { PortableText } from '@portabletext/react';
 
+import applyScrollTrigger from '@/components/utils/applyScrollTrigger';
+
 export default function Index({ issueAPI, seoAPI }) {
   const router = useRouter();
   const [seo] = seoAPI;
@@ -38,8 +40,13 @@ export default function Index({ issueAPI, seoAPI }) {
 
     window.scroll(0, 0);
 
+    const scrollTriggerAnimation = applyScrollTrigger({
+      animation: animationObj,
+    });
+
     return () => {
       appContext.setHeader({ headerStyle: 'default' });
+      scrollTriggerAnimation.revert();
     };
   }, []);
 
@@ -64,8 +71,8 @@ export default function Index({ issueAPI, seoAPI }) {
         scrollTrigger: {
           id: id,
           trigger: '#trigger1', // which section will be tracked as the scroll trigger
-          scroller: '#scroll-container', // id of scroll container
-          scrub: true,
+          // id of scroll container
+          scrub: 0.5,
           start: 'top 0%',
           end: 'bottom -0%',
         },
@@ -95,8 +102,8 @@ export default function Index({ issueAPI, seoAPI }) {
         scrollTrigger: {
           id: id,
           trigger: '#trigger1', // which section will be tracked as the scroll trigger
-          scroller: '#scroll-container', // id of scroll container
-          scrub: true,
+          // id of scroll container
+          scrub: 0.5,
           start: 'top 0%',
           end: 'bottom 0%',
         },
@@ -126,8 +133,8 @@ export default function Index({ issueAPI, seoAPI }) {
         scrollTrigger: {
           id: id,
           trigger: '#trigger1', // which section will be tracked as the scroll trigger
-          scroller: '#scroll-container', // id of scroll container
-          scrub: true,
+          // id of scroll container
+          scrub: 0.5,
           start: 'top 0%',
           end: 'bottom 0%',
         },
@@ -156,8 +163,8 @@ export default function Index({ issueAPI, seoAPI }) {
         scrollTrigger: {
           id: id,
           trigger: '#trigger1', // which section will be tracked as the scroll trigger
-          scroller: '#scroll-container', // id of scroll container
-          scrub: true,
+          // id of scroll container
+          scrub: 0.5,
           start: 'top -10%',
           end: 'bottom 50%',
         },
@@ -413,86 +420,65 @@ export default function Index({ issueAPI, seoAPI }) {
           </div>
         </m.div>
       </LazyMotion>
-      <LocomotiveScrollProvider
-        options={{ smooth: false, lerp: 0.05 }}
-        containerRef={containerRef}
-        watch={[]}
-      >
-        <PushScrollGlobal />
-        <div
-          data-scroll-container
-          ref={containerRef}
-          id='scroll-container'
-          className={`z-1 relative`}
+      <LazyMotion features={domAnimation}>
+        <m.main
+          className='relative p-0 m-0'
+          initial='initial'
+          animate='enter'
+          exit='exit'
+          variants={fade}
         >
-          <div data-scroll-section>
-            <ScrollTriggerWrapper animation={animationObj}>
-              <LazyMotion features={domAnimation}>
-                <m.main
-                  className='relative p-0 m-0'
-                  initial='initial'
-                  animate='enter'
-                  exit='exit'
-                  variants={fade}
+          <div id='trigger1' className='w-full h-[150vh] mx-md:h-screen' />
+          <div id='trigger2' className='w-full min-h-screen '>
+            <div className='h-[50vh] w-full' />
+            <section className='w-full'>
+              <Container
+                className={`max-md:px-6 pb-24 pb-24-safe flex flex-col justify-between min-h-[65vh] content-center items-center ${
+                  dark === 'white-text' ? 'text-white' : 'text-black'
+                }`}
+              >
+                <span
+                  id='issueNoInside'
+                  className='font-serif font-normal italic text-5xl max-md:text-3xl'
                 >
-                  <div
-                    id='trigger1'
-                    className='w-full h-[150vh] mx-md:h-screen'
+                  Issue {issue.issueNumber}
+                </span>
+                <h1
+                  className={`title-issue font-sans font-normal  text-center leading-none ${
+                    titleS
+                      ? 'text-[2.5rem] sm:text-6xl md:text-6xl lg:text-8xl'
+                      : 'text-7xl sm:text-8xl'
+                  }`}
+                >
+                  {issue.title}
+                </h1>
+                <span className=' w-full text-center mt-5 max-md:mt-2 mb-auto'>
+                  {checkMonth(new Date(issue.date).getMonth())}{' '}
+                  {new Date(issue.date).getFullYear()}
+                  <span className='mx-4 inline-block'>•</span>
+                  {issue.articleCount} ARTICLES
+                </span>
+                <div className='content-issue editor-styling max-w-lg text-center mt-16'>
+                  <PortableText
+                    value={issue.description}
+                    components={serializers}
                   />
-                  <div id='trigger2' className='w-full min-h-screen '>
-                    <div className='h-[50vh] w-full' />
-                    <section className='w-full'>
-                      <Container
-                        className={`max-md:px-6 pb-24 pb-24-safe flex flex-col justify-between min-h-[65vh] content-center items-center ${
-                          dark === 'white-text' ? 'text-white' : 'text-black'
-                        }`}
-                      >
-                        <span
-                          id='issueNoInside'
-                          className='font-serif font-normal italic text-5xl max-md:text-3xl'
-                        >
-                          Issue {issue.issueNumber}
-                        </span>
-                        <h1
-                          className={`title-issue font-sans font-normal  text-center leading-none ${
-                            titleS
-                              ? 'text-[2.5rem] sm:text-6xl md:text-6xl lg:text-8xl'
-                              : 'text-7xl sm:text-8xl'
-                          }`}
-                        >
-                          {issue.title}
-                        </h1>
-                        <span className=' w-full text-center mt-5 max-md:mt-2 mb-auto'>
-                          {checkMonth(new Date(issue.date).getMonth())}{' '}
-                          {new Date(issue.date).getFullYear()}
-                          <span className='mx-4 inline-block'>•</span>
-                          {issue.articleCount} ARTICLES
-                        </span>
-                        <div className='content-issue editor-styling max-w-lg text-center mt-16'>
-                          <PortableText
-                            value={issue.description}
-                            components={serializers}
-                          />
-                        </div>
-                        <FancyLink
-                          destination={`/editorial/${issue.slug.current}/list`}
-                          className={` mt-10 py-4 px-6 text-xs tracking-widest transition-all ease-linear ${
-                            dark === 'white-text'
-                              ? 'hover:bg-white border hover:text-black border-white rounded-xl'
-                              : 'hover:bg-black border hover:text-white border-black rounded-xl'
-                          }`}
-                        >
-                          READ ISSUE
-                        </FancyLink>
-                      </Container>
-                    </section>
-                  </div>
-                </m.main>
-              </LazyMotion>
-            </ScrollTriggerWrapper>
+                </div>
+                <FancyLink
+                  destination={`/editorial/${issue.slug.current}/list`}
+                  className={` mt-10 py-4 px-6 text-xs tracking-widest transition-all ease-linear ${
+                    dark === 'white-text'
+                      ? 'hover:bg-white border hover:text-black border-white rounded-xl'
+                      : 'hover:bg-black border hover:text-white border-black rounded-xl'
+                  }`}
+                >
+                  READ ISSUE
+                </FancyLink>
+              </Container>
+            </section>
           </div>
-        </div>
-      </LocomotiveScrollProvider>
+        </m.main>
+      </LazyMotion>
     </Layout>
   );
 }
