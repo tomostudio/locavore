@@ -333,7 +333,7 @@ export const Section5ComponentInner = ({ setBgColor, setCaption }) => {
         {/* ENTER GROUP 1 */}
         <div id="enter_group_s5_1" className="h-[250vh] w-full" />
         {/* ENTER GROUP 2 */}
-        <div id="enter_group_s5_2" className="h-[100vh] w-full" />
+        <div id="enter_group_s5_2" className="h-[100vh] w-full mt-24" />
         {/* ENTER FEED */}
         <div id="enter_feed" className="h-[25vh] w-full -mt-24" />
         {/* ENTER FEED */}
