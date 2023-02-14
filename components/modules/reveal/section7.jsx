@@ -166,13 +166,12 @@ export const Section7AnimationOBJMobile = [
   // TITLE ENTER
   () => {
     const id = 'feed_change_enter'; // animation id
-    const elem = '#feed_change';
+    const elem = document.querySelector('#feed_change');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_feed_change', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -205,13 +204,12 @@ export const Section7AnimationOBJMobile = [
   // UNDERLINE ENTER
   () => {
     const id = 'underline_enter_m_1'; // animation id
-    const elem = '#underline-mobile-1';
+    const elem = document.querySelector('#underline-mobile-1');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_underline_m_1', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -242,13 +240,12 @@ export const Section7AnimationOBJMobile = [
   // UNDERLINE 2 ENTER
   () => {
     const id = 'underline_enter_m_2'; // animation id
-    const elem = '#underline-mobile-2';
+    const elem = document.querySelector('#underline-mobile-2');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_underline_m_2', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -279,13 +276,12 @@ export const Section7AnimationOBJMobile = [
   // HEART1 ENTER
   () => {
     const id = 'hearts_enter'; // animation id
-    const elem = '#hearts';
+    const elem = document.querySelector('#hearts');
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter_hearts', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        trigger: '#enter_hearts', // which section will be tracked as the scroll trigger  
+        scrub: 0.5,
         start: 'top 50%',
         end: 'top 0%',
       },
@@ -316,13 +312,12 @@ export const Section7AnimationOBJMobile = [
   // EXIT ALL
   () => {
     const id = 'exit_group_s7'; // animation id
-    const elem = '#exit_group_s7';
+    const elem = document.querySelector('#exit_group_s7');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#trigger8', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -347,13 +342,12 @@ export const Section7AnimationOBJ = [
   // TITLE ENTER
   () => {
     const id = 'feed_change_enter'; // animation id
-    const elem = '#feed_change';
+    const elem = document.querySelector('#feed_change');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_feed_change', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -386,13 +380,12 @@ export const Section7AnimationOBJ = [
   // UNDERLINE ENTER
   () => {
     const id = 'underline_enter'; // animation id
-    const elem = '#underline';
+    const elem = document.querySelector('#underline');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_underline', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -423,13 +416,12 @@ export const Section7AnimationOBJ = [
   // HEART1 ENTER
   () => {
     const id = 'hearts_enter'; // animation id
-    const elem = '#hearts';
+    const elem = document.querySelector('#hearts');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_hearts', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -460,13 +452,12 @@ export const Section7AnimationOBJ = [
   // EXIT ALL
   () => {
     const id = 'exit_group_s7'; // animation id
-    const elem = '#exit_group_s7';
+    const elem = document.querySelector('#exit_group_s7');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#trigger8', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },

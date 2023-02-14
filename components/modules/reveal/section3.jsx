@@ -222,13 +222,12 @@ export const Section3AnimationOBJMobile = [
   // AND A BETTER WORLD
   () => {
     const id = 'enter_better_world' // animation id
-    const elem = '#better_world'
+    const elem = document.querySelector('#better_world')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_better_world', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -257,13 +256,12 @@ export const Section3AnimationOBJMobile = [
   // TREE
   () => {
     const id = 'enter_tree' // animation id
-    const elem = '#tree'
+    const elem = document.querySelector('#tree')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_tree', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -292,13 +290,12 @@ export const Section3AnimationOBJMobile = [
   // HUGGER
   () => {
     const id = 'enter_hugger' // animation id
-    const elem = '#hugger'
+    const elem = document.querySelector('#hugger')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_tree', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 20%',
         end: 'bottom 0%',
       },
@@ -319,13 +316,12 @@ export const Section3AnimationOBJMobile = [
   // ANIMAL
   () => {
     const id = 'enter_animal' // animation id
-    const elem = '#animal'
+    const elem = document.querySelector('#animal')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_animal', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -354,13 +350,12 @@ export const Section3AnimationOBJMobile = [
   // NATURE
   () => {
     const id = 'enter_nature' // animation id
-    const elem = '#nature'
+    const elem = document.querySelector('#nature')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_nature', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -391,13 +386,12 @@ export const Section3AnimationOBJMobile = [
   // HAS THE
   () => {
     const id = 'enter_hasthe' // animation id
-    const elem = '#hasthe'
+    const elem = document.querySelector('#hasthe')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_hasthe', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -428,13 +422,12 @@ export const Section3AnimationOBJMobile = [
   // ANSWER
   () => {
     const id = 'enter_answer' // animation id
-    const elem = '#answer'
+    const elem = document.querySelector('#answer')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_answer', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -465,13 +458,12 @@ export const Section3AnimationOBJMobile = [
   // ARROW
   () => {
     const id = 'enter_arrow' // animation id
-    const elem = '#arrow'
+    const elem = document.querySelector('#arrow')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_arrow', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -502,13 +494,12 @@ export const Section3AnimationOBJMobile = [
   // EXIT GROUP 3
   () => {
     const id = 'exit_group3' // animation id
-    const elem = '.exit_group3'
+    const elem = document.querySelector('.exit_group3')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_all3', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -530,13 +521,12 @@ export const Section3AnimationOBJMobile = [
   // SUPPORT
   () => {
     const id = 'support_enter' // animation id
-    const elem = '#support'
+    const elem = document.querySelector('#support')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_support', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -569,13 +559,12 @@ export const Section3AnimationOBJMobile = [
   // GLOBE
   () => {
     const id = 'globe_enter' // animation id
-    const elem = '#globe'
+    const elem = document.querySelector('#globe')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_globe', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -606,13 +595,12 @@ export const Section3AnimationOBJMobile = [
   // GLOBE ROTATE
   () => {
     const id = 'globe_rotate_enter' // animation id
-    const elem = '#globe_rotate'
+    const elem = document.querySelector('#globe_rotate')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -645,13 +633,12 @@ export const Section3AnimationOBJMobile = [
   // BE REGENERATIVE ENTER
   () => {
     const id = 'be_regenerative_enter' // animation id
-    const elem = '#be_regenerative'
+    const elem = document.querySelector('#be_regenerative')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_text_globe', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -684,13 +671,12 @@ export const Section3AnimationOBJMobile = [
   // SHARING IS CARING ENTER
   () => {
     const id = 'sharing_is_caring_enter' // animation id
-    const elem = '#sharing_is_caring'
+    const elem = document.querySelector('#sharing_is_caring')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_text_globe', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -723,13 +709,12 @@ export const Section3AnimationOBJMobile = [
   // S4 GROUP EXIT
   () => {
     const id = 's3_group_exit' // animation id
-    const elem = '#s3_group_exit'
+    const elem = document.querySelector('#s3_group_exit')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_all_s3', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -762,13 +747,12 @@ export const Section3AnimationOBJ = [
   // AND A BETTER WORLD
   () => {
     const id = 'enter_better_world' // animation id
-    const elem = '#better_world'
+    const elem = document.querySelector('#better_world')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_better_world', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -797,13 +781,12 @@ export const Section3AnimationOBJ = [
   // TREE
   () => {
     const id = 'enter_tree' // animation id
-    const elem = '#tree'
+    const elem = document.querySelector('#tree')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_tree', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -832,13 +815,12 @@ export const Section3AnimationOBJ = [
   // HUGGER
   () => {
     const id = 'enter_hugger' // animation id
-    const elem = '#hugger'
+    const elem = document.querySelector('#hugger')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_tree', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 20%',
         end: 'bottom 100%',
       },
@@ -859,13 +841,12 @@ export const Section3AnimationOBJ = [
   // ANIMAL
   () => {
     const id = 'enter_animal' // animation id
-    const elem = '#animal'
+    const elem = document.querySelector('#animal')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_animal', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -894,13 +875,12 @@ export const Section3AnimationOBJ = [
   // NATURE
   () => {
     const id = 'enter_nature' // animation id
-    const elem = '#nature'
+    const elem = document.querySelector('#nature')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_nature', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -931,13 +911,12 @@ export const Section3AnimationOBJ = [
   // HAS THE
   () => {
     const id = 'enter_hasthe' // animation id
-    const elem = '#hasthe'
+    const elem = document.querySelector('#hasthe')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_hasthe', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -968,13 +947,12 @@ export const Section3AnimationOBJ = [
   // ANSWER
   () => {
     const id = 'enter_answer' // animation id
-    const elem = '#answer'
+    const elem = document.querySelector('#answer')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_answer', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1005,13 +983,12 @@ export const Section3AnimationOBJ = [
   // ARROW
   () => {
     const id = 'enter_arrow' // animation id
-    const elem = '#arrow'
+    const elem = document.querySelector('#arrow')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_arrow', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1042,13 +1019,13 @@ export const Section3AnimationOBJ = [
   // EXIT GROUP 3
   () => {
     const id = 'exit_group3' // animation id
-    const elem = '.exit_group3'
+    const elem = document.querySelector('.exit_group3')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_all3', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1070,13 +1047,12 @@ export const Section3AnimationOBJ = [
   // SUPPORT
   () => {
     const id = 'support_enter' // animation id
-    const elem = '#support'
+    const elem = document.querySelector('#support')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_support', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1109,13 +1085,12 @@ export const Section3AnimationOBJ = [
   // GLOBE
   () => {
     const id = 'globe_enter' // animation id
-    const elem = '#globe'
+    const elem = document.querySelector('#globe')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_globe', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1146,13 +1121,12 @@ export const Section3AnimationOBJ = [
   // GLOBE ROTATE
   () => {
     const id = 'globe_rotate_enter' // animation id
-    const elem = '#globe_rotate'
+    const elem = document.querySelector('#globe_rotate')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_globe_rotate', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1185,13 +1159,12 @@ export const Section3AnimationOBJ = [
   // BE REGENERATIVE ENTER
   () => {
     const id = 'be_regenerative_enter' // animation id
-    const elem = '#be_regenerative'
+    const elem = document.querySelector('#be_regenerative')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_text_globe', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1224,13 +1197,12 @@ export const Section3AnimationOBJ = [
   // SHARING IS CARING ENTER
   () => {
     const id = 'sharing_is_caring_enter' // animation id
-    const elem = '#sharing_is_caring'
+    const elem = document.querySelector('#sharing_is_caring')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_text_globe', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1263,13 +1235,12 @@ export const Section3AnimationOBJ = [
   // S4 GROUP EXIT
   () => {
     const id = 's3_group_exit' // animation id
-    const elem = '#s3_group_exit'
+    const elem = document.querySelector('#s3_group_exit')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_all_s3', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },

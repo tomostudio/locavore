@@ -288,13 +288,12 @@ export const Section2AnimationOBJMobile = [
   () => {
     // INSPIRED BY NICE THINGS IN
     const id = 'inspired-enter'; // animation id
-    const elem = '#inspired';
+    const elem = document.querySelector('#inspired');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-inspired', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -325,13 +324,12 @@ export const Section2AnimationOBJMobile = [
   // BUG FLOWER ENTER
   () => {
     const id = 'bug-flower-enter'; // animation id
-    const elem = '#flower_bee_butterfly';
+    const elem = document.querySelector('#flower_bee_butterfly');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-bug-flower', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -362,13 +360,12 @@ export const Section2AnimationOBJMobile = [
   // FOREST 1
   () => {
     const id = 'forest1-vertical'; // animation id
-    const elem = '#forest1';
+    const elem = document.querySelector('#forest1');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest1', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -403,13 +400,12 @@ export const Section2AnimationOBJMobile = [
   // MUG
   () => {
     const id = 'mug_enter'; // animation id
-    const elem = '#mug';
+    const elem = document.querySelector('#mug');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_mug', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -440,13 +436,12 @@ export const Section2AnimationOBJMobile = [
   // BEE
   () => {
     const id = 'bee_enter'; // animation id
-    const elem = '#bee';
+    const elem = document.querySelector('#bee');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_bee', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -477,13 +472,12 @@ export const Section2AnimationOBJMobile = [
   // FOREST 2
   () => {
     const id = 'forest2-horizontal'; // animation id
-    const elem = '#forest2';
+    const elem = document.querySelector('#forest2');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -506,13 +500,12 @@ export const Section2AnimationOBJMobile = [
   // FOREST 2 INNER
   () => {
     const id = 'forest2-horizontal-inner'; // animation id
-    const elem = '#forest2 > div';
+    const elem = document.querySelector('#forest2 > div');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -535,13 +528,12 @@ export const Section2AnimationOBJMobile = [
   // FOREST 3
   () => {
     const id = 'forest3-horizontal'; // animation id
-    const elem = '#forest3';
+    const elem = document.querySelector('#forest3');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 80%',
         end: 'bottom 0%',
       },
@@ -564,13 +556,12 @@ export const Section2AnimationOBJMobile = [
   // FOREST 3 INNER
   () => {
     const id = 'forest3-horizontal-inner'; // animation id
-    const elem = '#forest3 > div';
+    const elem = document.querySelector('#forest3 > div');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 80%',
         end: 'bottom 0%',
       },
@@ -593,13 +584,12 @@ export const Section2AnimationOBJMobile = [
   // EXIT GROUP
   () => {
     const id = 'exit-group2'; // animation id
-    const elem = '.s2_exit_group';
+    const elem = document.querySelector('.s2_exit_group');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit-group2', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -623,13 +613,12 @@ export const Section2AnimationOBJMobile = [
   // EXIT FOREST 1
   () => {
     const id = 'exit-forest1'; // animation id
-    const elem = '#forest1';
+    const elem = document.querySelector('#forest1');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit-forest1', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -655,13 +644,12 @@ export const Section2AnimationOBJMobile = [
   // EXIT INSPIRED
   () => {
     const id = 'exit-inspired'; // animation id
-    const elem = '#inspired';
+    const elem = document.querySelector('#inspired');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit-inspired', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -689,13 +677,12 @@ export const Section2AnimationOBJ = [
   () => {
     // INSPIRED BY NICE THINGS IN
     const id = 'inspired-enter'; // animation id
-    const elem = '#inspired';
+    const elem = document.querySelector('#inspired');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-inspired', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -726,13 +713,12 @@ export const Section2AnimationOBJ = [
   // BUG FLOWER ENTER
   () => {
     const id = 'bug-flower-enter'; // animation id
-    const elem = '#flower_bee_butterfly';
+    const elem = document.querySelector('#flower_bee_butterfly');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-bug-flower', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -763,13 +749,12 @@ export const Section2AnimationOBJ = [
   // FOREST 1
   () => {
     const id = 'forest1-vertical'; // animation id
-    const elem = '#forest1';
+    const elem = document.querySelector('#forest1');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest1', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -795,13 +780,12 @@ export const Section2AnimationOBJ = [
   // MUG
   () => {
     const id = 'mug_enter'; // animation id
-    const elem = '#mug';
+    const elem = document.querySelector('#mug');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_mug', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -832,13 +816,12 @@ export const Section2AnimationOBJ = [
   // BEE
   () => {
     const id = 'bee_enter'; // animation id
-    const elem = '#bee';
+    const elem = document.querySelector('#bee');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_bee', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -869,13 +852,12 @@ export const Section2AnimationOBJ = [
   // FOREST 2
   () => {
     const id = 'forest2-horizontal'; // animation id
-    const elem = '#forest2';
+    const elem = document.querySelector('#forest2');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -898,13 +880,12 @@ export const Section2AnimationOBJ = [
   // FOREST 2 INNER
   () => {
     const id = 'forest2-horizontal-inner'; // animation id
-    const elem = '#forest2 > div';
+    const elem = document.querySelector('#forest2 > div');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 0%',
       },
@@ -927,13 +908,12 @@ export const Section2AnimationOBJ = [
   // FOREST 3
   () => {
     const id = 'forest3-horizontal'; // animation id
-    const elem = '#forest3';
+    const elem = document.querySelector('#forest3');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 90%',
         end: 'bottom 0%',
       },
@@ -956,13 +936,12 @@ export const Section2AnimationOBJ = [
   // FOREST 3 INNER
   () => {
     const id = 'forest3-horizontal-inner'; // animation id
-    const elem = '#forest3 > div';
+    const elem = document.querySelector('#forest3 > div');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter-forest2', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 90%',
         end: 'bottom 0%',
       },
@@ -985,13 +964,12 @@ export const Section2AnimationOBJ = [
   // EXIT GROUP
   () => {
     const id = 'exit-group2'; // animation id
-    const elem = '.s2_exit_group';
+    const elem = document.querySelector('.s2_exit_group');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit-group2', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1015,13 +993,12 @@ export const Section2AnimationOBJ = [
   // EXIT FOREST 1
   () => {
     const id = 'exit-forest1'; // animation id
-    const elem = '#forest1';
+    const elem = document.querySelector('#forest1');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit-forest1', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -1047,13 +1024,12 @@ export const Section2AnimationOBJ = [
   // EXIT INSPIRED
   () => {
     const id = 'exit-inspired'; // animation id
-    const elem = '#inspired';
+    const elem = document.querySelector('#inspired');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit-inspired', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },

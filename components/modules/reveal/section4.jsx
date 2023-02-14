@@ -196,13 +196,12 @@ export const Section4AnimationOBJ = [
   // TEXT ENTER
   () => {
     const id = 's4_text_enter'; // animation id
-    const elem = '#s4_text';
+    const elem = document.querySelector('#s4_text');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_s4_text', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+       scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -233,13 +232,12 @@ export const Section4AnimationOBJ = [
   // BOX
   () => {
     const id = 'enter_box'; // animation id
-    const elem = '#box';
+    const elem = document.querySelector('#box');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_box', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+       scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -268,13 +266,12 @@ export const Section4AnimationOBJ = [
   // CONSTRUCTION STICKER
   () => {
     const id = 'enter_construction_sticker'; // animation id
-    const elem = '#construction_sticker';
+    const elem = document.querySelector('#construction_sticker');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_construction_sticker', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+       scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -303,13 +300,12 @@ export const Section4AnimationOBJ = [
   // POT
   () => {
     const id = 'enter_pot'; // animation id
-    const elem = '#pot';
+    const elem = document.querySelector('#pot');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+       scrub: 0.5,
         start: 'top 100%',
         end: 'top 75%',
       },
@@ -338,13 +334,12 @@ export const Section4AnimationOBJ = [
   // CONSTRUCTION 1
   () => {
     const id = 'enter_construction1'; // animation id
-    const elem = '#construction1';
+    const elem = document.querySelector('#construction1');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+       scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 50%',
       },
@@ -365,13 +360,12 @@ export const Section4AnimationOBJ = [
   // CONSTRUCTION 1 INNER
   () => {
     const id = 'enter_construction1_inner'; // animation id
-    const elem = '#construction1 > div';
+    const elem = document.querySelector('#construction1 > div');
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        trigger: '#enter_group_s4', // which section will be tracked as the scroll triggerdocument.querySelector(
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 50%',
       },
@@ -392,13 +386,12 @@ export const Section4AnimationOBJ = [
   // CONSTRUCTION 2
   () => {
     const id = 'enter_construction2'; // animation id
-    const elem = '#construction2';
+    const elem = document.querySelector('#construction2');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 50%',
       },
@@ -419,13 +412,12 @@ export const Section4AnimationOBJ = [
   // CONSTRUCTION 2 INNER
   () => {
     const id = 'enter_construction2_inner'; // animation id
-    const elem = '#construction2 > div';
+    const elem = document.querySelector('#construction2 > div');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 50%',
       },
@@ -446,13 +438,12 @@ export const Section4AnimationOBJ = [
   // BLOSSOM
   () => {
     const id = 'enter_blossom'; // animation id
-    const elem = '#blossom';
+    const elem = document.querySelector('#blossom');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 60%',
       },
@@ -473,13 +464,12 @@ export const Section4AnimationOBJ = [
   // LOADING
   () => {
     const id = 'enter_loading'; // animation id
-    const elem = '#loading';
+    const elem = document.querySelector('#loading');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 50%',
         end: 'top 25%',
       },
@@ -500,13 +490,12 @@ export const Section4AnimationOBJ = [
   // EXIT ALL
   () => {
     const id = 'exit_all4'; // animation id
-    const elem = '.s4_group_exit_all';
+    const elem = document.querySelector('.s4_group_exit_all');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_all4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -538,13 +527,12 @@ export const Section4AnimationOBJMobile = [
   // TEXT ENTER
   () => {
     const id = 's4_text_enter'; // animation id
-    const elem = '#s4_text';
+    const elem = document.querySelector('#s4_text');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_s4_text', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -575,13 +563,12 @@ export const Section4AnimationOBJMobile = [
   // BOX
   () => {
     const id = 'enter_box'; // animation id
-    const elem = '#box';
+    const elem = document.querySelector('#box');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_box', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -610,13 +597,12 @@ export const Section4AnimationOBJMobile = [
   // CONSTRUCTION STICKER
   () => {
     const id = 'enter_construction_sticker'; // animation id
-    const elem = '#construction_sticker';
+    const elem = document.querySelector('#construction_sticker');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_construction_sticker', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -645,13 +631,12 @@ export const Section4AnimationOBJMobile = [
   // POT
   () => {
     const id = 'enter_pot'; // animation id
-    const elem = '#pot';
+    const elem = document.querySelector('#pot');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -680,13 +665,12 @@ export const Section4AnimationOBJMobile = [
   // CONSTRUCTION 1
   () => {
     const id = 'enter_construction1'; // animation id
-    const elem = '#construction1';
+    const elem = document.querySelector('#construction1');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 85%',
         end: 'bottom 0%',
       },
@@ -707,13 +691,12 @@ export const Section4AnimationOBJMobile = [
   // CONSTRUCTION 1 INNER
   () => {
     const id = 'enter_construction1_inner'; // animation id
-    const elem = '#construction1 > div';
+    const elem = document.querySelector('#construction1 > div');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 85%',
         end: 'bottom 0%',
       },
@@ -734,13 +717,12 @@ export const Section4AnimationOBJMobile = [
   // CONSTRUCTION 2
   () => {
     const id = 'enter_construction2'; // animation id
-    const elem = '#construction2';
+    const elem = document.querySelector('#construction2');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 85%',
         end: 'bottom 0%',
       },
@@ -761,13 +743,12 @@ export const Section4AnimationOBJMobile = [
   // CONSTRUCTION 2 INNER
   () => {
     const id = 'enter_construction2_inner'; // animation id
-    const elem = '#construction2 > div';
+    const elem = document.querySelector('#construction2 > div');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 85%',
         end: 'bottom 0%',
       },
@@ -788,13 +769,12 @@ export const Section4AnimationOBJMobile = [
   // BLOSSOM
   () => {
     const id = 'enter_blossom'; // animation id
-    const elem = '#blossom';
+    const elem = document.querySelector('#blossom');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -815,13 +795,12 @@ export const Section4AnimationOBJMobile = [
   // LOADING
   () => {
     const id = 'enter_loading'; // animation id
-    const elem = '#loading';
+    const elem = document.querySelector('#loading');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_group_s4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 50%',
         end: 'top 0%',
       },
@@ -842,13 +821,12 @@ export const Section4AnimationOBJMobile = [
   // EXIT ALL
   () => {
     const id = 'exit_all4'; // animation id
-    const elem = '.s4_group_exit_all';
+    const elem = document.querySelector('.s4_group_exit_all');
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#exit_all4', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 0%',
       },

@@ -18,8 +18,6 @@ import client from '@/helpers/sanity/client';
 
 import loadingImage from '@/public/loading.png';
 
-import applyScrollTrigger from '@/components/utils/applyScrollTrigger';
-
 import {
   Section1ComponentFixedFront,
   Section1ComponentFixedBack,
@@ -82,9 +80,10 @@ import {
   Section8AnimationOBJ,
   Section8AnimationOBJMobile,
   Section8ComponentInner,
-} from '@/components/modules/reveal/section8';
-import { useAppContext } from 'context/state';
-import Image from 'next/image';
+} from '@/components/modules/reveal/section8'
+import { useAppContext } from 'context/state'
+import Image from 'next/image'
+import applyScrollTrigger from '@/components/utils/applyScrollTrigger'
 
 export default function Reveal({ seoAPI, footerAPI }) {
   const router = useRouter();
@@ -137,11 +136,12 @@ export default function Reveal({ seoAPI, footerAPI }) {
     }
     appContext.setHeader({
       headerStyle: 'blur',
-    });
+    })
 
     const scrollTriggerAnimation = applyScrollTrigger({
       animation: animationObj,
     });
+
     return () => {
       appContext.setHeader({ headerStyle: 'default' });
       setLoading(true);
@@ -256,7 +256,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
       <div className='relative w-16 animate-spin'>
         <Image src={loadingImage} alt='' />
       </div>
-      <span className='uppercase block font-default mt-5 text-xs'>LOADING</span>
+      <span className="uppercase block font-default mt-5 text-xs">LOADING</span>
     </div>
   ) : (
     <Layout>
@@ -353,20 +353,20 @@ export default function Reveal({ seoAPI, footerAPI }) {
 
       <LazyMotion features={domAnimation}>
         <m.main
-          className='relative p-0 m-0'
-          initial='initial'
-          animate='enter'
-          exit='exit'
+          className="relative p-0 m-0"
+          initial="initial"
+          animate="enter"
+          exit="exit"
           variants={fade}
         >
           {/* Section 0 */}
           <Section0MarkerTop setBgColor={setBgColor} setCaption={setCaption} />
           <section
-            id='trigger0'
-            className='trigger w-full h-[110vh] text-4xl'
+            id="trigger0"
+            className="trigger w-full h-[110vh] text-4xl"
             data-scroll-section
           >
-            <div className='flex justify-center items-center w-full h-screen'>
+            <div className="flex justify-center items-center w-full h-screen">
               <Parallax speed={-20}>
                 <div
                   className={`font-light text-xs text-center tracking-widest animate-fade-down text-black select-none`}

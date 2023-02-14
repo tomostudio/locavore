@@ -454,13 +454,12 @@ export const Section8AnimationOBJMobile = [
   // VIDEO ENTER
   () => {
     const id = 'video-enter' // animation id
-    const elem = '#lottie-frame'
+    const elem = document.querySelector('#lottie-frame')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#video-enter', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -493,13 +492,12 @@ export const Section8AnimationOBJMobile = [
   // VIDEO TO LOGO
   () => {
     const id = 'video-to-logo' // animation id
-    const elem = '#video-frame'
+    const elem = document.querySelector('#video-frame')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#video-to-logo', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
@@ -529,13 +527,12 @@ export const Section8AnimationOBJMobile = [
   }, // LOGO APPEAR
   () => {
     const id = 'logo-appear' // animation id
-    const elem = '#logo-frame'
+    const elem = document.querySelector('#logo-frame')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#video-to-logo', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -566,13 +563,12 @@ export const Section8AnimationOBJMobile = [
   // NEW LOCAVORE ENTER (LOGO)
   () => {
     const id = 'new_locavore_enter' // animation id
-    const elem = '#new_locavore'
+    const elem = document.querySelector('#new_locavore')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_nxt_logo', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 60%',
         end: 'bottom 100%',
       },
@@ -603,13 +599,12 @@ export const Section8AnimationOBJMobile = [
   // LOGO PUSH UP
   () => {
     const id = 'logo-up' // animation id
-    const elem = '#logo-end'
+    const elem = document.querySelector('#logo-end')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#logo-moveup', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
@@ -640,13 +635,12 @@ export const Section8AnimationOBJMobile = [
   // NEW LOCAVORE ENTER
   () => {
     const id = 'new_locavore_enter' // animation id
-    const elem = '#new_locavore'
+    const elem = document.querySelector('#new_locavore')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_nxt_logo', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 60%',
         end: 'bottom 100%',
       },
@@ -677,13 +671,12 @@ export const Section8AnimationOBJMobile = [
   // NEW LOCAVORE EXIT
   () => {
     const id = 'new_locavore_exit' // animation id
-    const elem = '#new_locavore_exit'
+    const elem = document.querySelector('#new_locavore_exit')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_locavore_nxt', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -714,13 +707,12 @@ export const Section8AnimationOBJMobile = [
   // LOCAVORE NXT ENTER
   () => {
     const id = 'locavore_nxt_enter' // animation id
-    const elem = '#locavore_nxt'
+    const elem = document.querySelector('#locavore_nxt')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_locavore_nxt', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 75%',
         end: 'top 25%',
       },
@@ -751,13 +743,12 @@ export const Section8AnimationOBJMobile = [
   // OPENING ENTER
   () => {
     const id = 'opening_enter' // animation id
-    const elem = '#opening'
+    const elem = document.querySelector('#opening')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_opening', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -788,13 +779,12 @@ export const Section8AnimationOBJMobile = [
   // SUMMER ENTER
   () => {
     const id = 'enter_summer' // animation id
-    const elem = '#summer'
+    const elem = document.querySelector('#summer')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_summer', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -817,13 +807,12 @@ export const Section8AnimationOBJMobile = [
   // CLOUD OPACITY ENTER
   () => {
     const id = 'cloud-opacity-in' // animation id
-    const elem = '#cloud_group'
+    const elem = document.querySelector('#cloud_group')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud_opacity', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -854,13 +843,12 @@ export const Section8AnimationOBJMobile = [
   // CLOUD1 ENTER
   () => {
     const id = 'cloud1_s8_enter' // animation id
-    const elem = '#cloud1_s8'
+    const elem = document.querySelector('#cloud1_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -895,13 +883,12 @@ export const Section8AnimationOBJMobile = [
   // CLOUD2 ENTER
   () => {
     const id = 'cloud2_s8_enter' // animation id
-    const elem = '#cloud2_s8'
+    const elem = document.querySelector('#cloud2_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -936,13 +923,12 @@ export const Section8AnimationOBJMobile = [
   // CLOUD3 ENTER
   () => {
     const id = 'cloud3_s8_enter' // animation id
-    const elem = '#cloud3_s8'
+    const elem = document.querySelector('#cloud3_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -975,13 +961,12 @@ export const Section8AnimationOBJMobile = [
   // CLOUD4 ENTER
   () => {
     const id = 'cloud4_s8_enter' // animation id
-    const elem = '#cloud4_s8'
+    const elem = document.querySelector('#cloud4_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1014,13 +999,12 @@ export const Section8AnimationOBJMobile = [
   // CLOUD5 ENTER
   () => {
     const id = 'cloud5_s8_enter' // animation id
-    const elem = '#cloud5_s8'
+    const elem = document.querySelector('#cloud5_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1053,13 +1037,12 @@ export const Section8AnimationOBJMobile = [
   // CLOUD6 ENTER
   () => {
     const id = 'cloud6_s8_enter' // animation id
-    const elem = '#cloud6_s8'
+    const elem = document.querySelector('#cloud6_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1092,13 +1075,12 @@ export const Section8AnimationOBJMobile = [
   // GROUP S8 1 ENTER
   () => {
     const id = 'group_s8_1_enter' // animation id
-    const elem = '#group_s8_1'
+    const elem = document.querySelector('#group_s8_1')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 66%',
         end: 'top 44%',
       },
@@ -1129,13 +1111,12 @@ export const Section8AnimationOBJMobile = [
   // GROUP S8 2 ENTER
   () => {
     const id = 'group_s8_2_enter' // animation id
-    const elem = '#group_s8_2'
+    const elem = document.querySelector('#group_s8_2')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 44%',
         end: 'top 22%',
       },
@@ -1166,13 +1147,12 @@ export const Section8AnimationOBJMobile = [
   // GROUP S8 3 ENTER
   () => {
     const id = 'group_s8_3_enter' // animation id
-    const elem = '#group_s8_3'
+    const elem = document.querySelector('#group_s8_3')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 22%',
         end: 'top 0%',
       },
@@ -1203,13 +1183,12 @@ export const Section8AnimationOBJMobile = [
   // WORM ENTER
   () => {
     const id = 'worm_enter' // animation id
-    const elem = '#worm'
+    const elem = document.querySelector('#worm')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#worm_enter', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -1242,13 +1221,12 @@ export const Section8AnimationOBJ = [
   // VIDEO ENTER
   () => {
     const id = 'video-enter' // animation id
-    const elem = '#lottie-frame'
+    const elem = document.querySelector('#lottie-frame')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#video-enter', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 0%',
       },
@@ -1281,13 +1259,12 @@ export const Section8AnimationOBJ = [
   // VIDEO TO LOGO
   () => {
     const id = 'video-to-logo' // animation id
-    const elem = '#video-frame'
+    const elem = document.querySelector('#video-frame')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#video-to-logo', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
@@ -1317,13 +1294,12 @@ export const Section8AnimationOBJ = [
   }, // LOGO APPEAR
   () => {
     const id = 'logo-appear' // animation id
-    const elem = '#logo-frame'
+    const elem = document.querySelector('#logo-frame')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#video-to-logo', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -1354,13 +1330,12 @@ export const Section8AnimationOBJ = [
   // NEW LOCAVORE ENTER (LOGO)
   () => {
     const id = 'new_locavore_enter' // animation id
-    const elem = '#new_locavore'
+    const elem = document.querySelector('#new_locavore')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_nxt_logo', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 60%',
         end: 'bottom 100%',
       },
@@ -1391,13 +1366,12 @@ export const Section8AnimationOBJ = [
   // LOGO PUSH UP
   () => {
     const id = 'logo-up' // animation id
-    const elem = '#logo-end'
+    const elem = document.querySelector('#logo-end')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#logo-moveup', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'bottom 100%',
         end: 'bottom 0%',
       },
@@ -1428,13 +1402,12 @@ export const Section8AnimationOBJ = [
   // NEW LOCAVORE ENTER
   () => {
     const id = 'new_locavore_enter' // animation id
-    const elem = '#new_locavore'
+    const elem = document.querySelector('#new_locavore')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_nxt_logo', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 60%',
         end: 'bottom 100%',
       },
@@ -1465,13 +1438,12 @@ export const Section8AnimationOBJ = [
   // NEW LOCAVORE EXIT
   () => {
     const id = 'new_locavore_exit' // animation id
-    const elem = '#new_locavore_exit'
+    const elem = document.querySelector('#new_locavore_exit')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_locavore_nxt', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 50%',
       },
@@ -1502,13 +1474,12 @@ export const Section8AnimationOBJ = [
   // LOCAVORE NXT ENTER
   () => {
     const id = 'locavore_nxt_enter' // animation id
-    const elem = '#locavore_nxt'
+    const elem = document.querySelector('#locavore_nxt')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_locavore_nxt', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 75%',
         end: 'top 25%',
       },
@@ -1539,13 +1510,12 @@ export const Section8AnimationOBJ = [
   // OPENING ENTER
   () => {
     const id = 'opening_enter' // animation id
-    const elem = '#opening'
+    const elem = document.querySelector('#opening')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_opening', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1576,13 +1546,12 @@ export const Section8AnimationOBJ = [
   // SUMMER ENTER
   () => {
     const id = 'enter_summer' // animation id
-    const elem = '#summer'
+    const elem = document.querySelector('#summer')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_summer', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',
       },
@@ -1605,13 +1574,12 @@ export const Section8AnimationOBJ = [
   // CLOUD OPACITY ENTER
   () => {
     const id = 'cloud-opacity-in' // animation id
-    const elem = '#cloud_group'
+    const elem = document.querySelector('#cloud_group')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud_opacity', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1642,13 +1610,12 @@ export const Section8AnimationOBJ = [
   // CLOUD1 ENTER
   () => {
     const id = 'cloud1_s8_enter' // animation id
-    const elem = '#cloud1_s8'
+    const elem = document.querySelector('#cloud1_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1683,13 +1650,12 @@ export const Section8AnimationOBJ = [
   // CLOUD2 ENTER
   () => {
     const id = 'cloud2_s8_enter' // animation id
-    const elem = '#cloud2_s8'
+    const elem = document.querySelector('#cloud2_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1724,13 +1690,12 @@ export const Section8AnimationOBJ = [
   // CLOUD3 ENTER
   () => {
     const id = 'cloud3_s8_enter' // animation id
-    const elem = '#cloud3_s8'
+    const elem = document.querySelector('#cloud3_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1763,13 +1728,12 @@ export const Section8AnimationOBJ = [
   // CLOUD4 ENTER
   () => {
     const id = 'cloud4_s8_enter' // animation id
-    const elem = '#cloud4_s8'
+    const elem = document.querySelector('#cloud4_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1802,13 +1766,12 @@ export const Section8AnimationOBJ = [
   // CLOUD5 ENTER
   () => {
     const id = 'cloud5_s8_enter' // animation id
-    const elem = '#cloud5_s8'
+    const elem = document.querySelector('#cloud5_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1841,13 +1804,12 @@ export const Section8AnimationOBJ = [
   // CLOUD6 ENTER
   () => {
     const id = 'cloud6_s8_enter' // animation id
-    const elem = '#cloud6_s8'
+    const elem = document.querySelector('#cloud6_s8')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_cloud', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 52%',
       },
@@ -1880,13 +1842,12 @@ export const Section8AnimationOBJ = [
   // GROUP S8 1 ENTER
   () => {
     const id = 'group_s8_1_enter' // animation id
-    const elem = '#group_s8_1'
+    const elem = document.querySelector('#group_s8_1')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 66%',
         end: 'top 44%',
       },
@@ -1917,13 +1878,12 @@ export const Section8AnimationOBJ = [
   // GROUP S8 2 ENTER
   () => {
     const id = 'group_s8_2_enter' // animation id
-    const elem = '#group_s8_2'
+    const elem = document.querySelector('#group_s8_2')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 44%',
         end: 'top 22%',
       },
@@ -1954,13 +1914,12 @@ export const Section8AnimationOBJ = [
   // GROUP S8 3 ENTER
   () => {
     const id = 'group_s8_3_enter' // animation id
-    const elem = '#group_s8_3'
+    const elem = document.querySelector('#group_s8_3')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#enter_bug_flower', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 22%',
         end: 'top 0%',
       },
@@ -1991,13 +1950,12 @@ export const Section8AnimationOBJ = [
   // WORM ENTER
   () => {
     const id = 'worm_enter' // animation id
-    const elem = '#worm'
+    const elem = document.querySelector('#worm')
     const settings = {
       scrollTrigger: {
         id: id,
         trigger: '#worm_enter', // which section will be tracked as the scroll trigger
-         // id of scroll container
-        scrub: .5,
+        scrub: 0.5,
         start: 'top 100%',
         end: 'top 50%',
       },
