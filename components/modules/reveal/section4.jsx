@@ -490,7 +490,7 @@ export const Section4AnimationOBJ = [
   // EXIT ALL
   () => {
     const id = 'exit_all4'; // animation id
-    const elem = document.querySelector('.s4_group_exit_all');
+    const elem = document.querySelectorAll('.s4_group_exit_all');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -821,7 +821,7 @@ export const Section4AnimationOBJMobile = [
   // EXIT ALL
   () => {
     const id = 'exit_all4'; // animation id
-    const elem = document.querySelector('.s4_group_exit_all');
+    const elem = document.querySelectorAll('.s4_group_exit_all');
     const settings = {
       scrollTrigger: {
         id: id,
