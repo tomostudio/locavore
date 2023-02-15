@@ -17,7 +17,7 @@ export const Section7ComponentFixedFront = () => {
       >
         <div
           id='feed_change'
-          className='pointer-events-none font-funkturm tracking-[0.08em] scale-[5] fixed w-full h-fit opacity-0 flex flex-col justify-center items-center text-center leading-none text-white'
+          className='pointer-events-none font-funkturm tracking-[0.08em] scale-[5] absolute top-1/2 translate-y-[-50%] w-full h-fit opacity-0 flex flex-col justify-center items-center text-center leading-none text-white'
         >
           <div className='relative flex gap-4 md:gap-6 flex-col md:flex-row justify-center items-center w-fit h-fit text-5xl md:text-8xl sm:text-6xl'>
             <span className='relative block'>

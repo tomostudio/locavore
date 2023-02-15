@@ -234,7 +234,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                     <div className='relative translate-y-[-70%] md:translate-y-[-25%] '>
                       <div
                         id='logo-end'
-                        className='absolute opacity-0 top-0 translate-y-[0%] left-1/2 translate-x-[-50%] frame w-44'
+                        className='absolute opacity-0 top-0 translate-y-[0%] left-1/2 translate-x-[-50%] frame w-32 md:w-44'
                       >
                         <Image src={NXT_Logo_Small} alt='' />
                       </div>
