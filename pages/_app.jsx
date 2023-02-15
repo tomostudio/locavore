@@ -61,31 +61,6 @@ export default function App({ Component, pageProps }) {
           </noscript>
         </>
       )}
-      <DefaultSeo
-        // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
-        // noindex={true}
-        // REMOVE THIS BEFORE LAUNCH !!!!!!!!!
-        defaultTitle='Locavore®'
-        description='Description'
-        openGraph={{
-          type: 'website',
-          locale: 'en_ID',
-          url: 'website.site',
-          site_name: 'Swwim',
-          images: [
-            {
-              url: '/images/social-share.jpg',
-              width: 800,
-              height: 600,
-            },
-          ],
-        }}
-        twitter={{
-          handle: '@twitter',
-          site: '@site',
-          cardType: 'summary_large_image',
-        }}
-      />
 
       <Head>
         {/* FAVICON  */}

@@ -73,13 +73,9 @@ export const Section2ComponentFixedFront = () => {
         id='forest3'
         className='fixed z-3 h-0 w-0 bottom-0 right-1/2 overflow-visible'
       >
-        <div className='w-[25rem] h-[20rem] md:w-[36rem] md:h-[30rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[0%]'>
+        <div className='w-[25rem] md:w-[36rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[0%]'>
           <Image
             src={forest3}
-            fill
-            style={{
-              objectFit: 'contain',
-            }}
             alt=''
           />
         </div>
@@ -570,7 +566,7 @@ export const Section2AnimationOBJMobile = [
         to: [
           elem,
           {
-            y: '-100%',
+            y: '-150%',
           },
         ],
       },
