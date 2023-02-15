@@ -377,7 +377,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                         })
                       }
                       id='backtotop'
-                      className='absolute bottom-10 uppercase pointer-events-auto font-default font-light text-xs text-center tracking-widest text-white select-none'
+                      className='absolute opacity-0 bottom-10 uppercase pointer-events-auto font-default font-light text-xs text-center tracking-widest text-white select-none'
                     >
                       <div className='block animate-fade-up'>Back to Top</div>
                     </FancyLink>
