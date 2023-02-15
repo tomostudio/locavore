@@ -66,7 +66,7 @@ export const Section4ComponentFixedFront = () => {
             <div className='s4_group_exit_all'>
               <div
                 id='construction_sticker'
-                className='absolute w-72 md:w-[28rem] -z-2  opacity-0 translate-x-[-10vw] lg:translate-x-[0vw] translate-y-[30px] md:top-full md:left-0 md:translate-y-[-20%]'
+                className='absolute w-72 md:w-[26rem] -z-2  opacity-0 translate-x-[-10vw] lg:translate-x-[0vw] translate-y-[30px] md:top-full md:left-0 md:translate-y-[-30%]'
               >
                 <Image src={constructionSticker} alt='' />
               </div>

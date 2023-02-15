@@ -53,7 +53,7 @@ export const Section5ComponentFixedFront = () => {
             </div>
             <div
               id="revolution"
-              className="w-32 sm:w-44 lg:w-52 opacity-0 absolute -bottom-20 sm:-bottom-[8rem] right-0"
+              className="w-32 sm:w-44 lg:w-48 opacity-0 absolute -bottom-20 sm:-bottom-[8rem] md:-bottom-20 -right-40"
             >
               <Image src={revolutionSticker} alt=" " />
             </div>

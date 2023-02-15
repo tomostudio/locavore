@@ -161,7 +161,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
   useEffect(() => {
     // Go to the Top, Set Background Color
     // TURN ON AFTER TESTING
-    // window.scroll(0, 0);
+    window.scroll(0, 0);
     setCaption(-1);
     setBgColor(0);
 
