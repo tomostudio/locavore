@@ -131,15 +131,16 @@ const Section4MarkerTop = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(4);
       setBgColor(4);
+      console.log('enter 4 top', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
         setCaption(4);
         setBgColor(4);
       }
+      console.log('leave 4 top', scrollDirection.vertical);
     },
   });
 
@@ -153,16 +154,17 @@ const Section4MarkerBottom = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(4);
       setBgColor(4);
+      console.log('enter 4 bottom', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 4
         setCaption(4);
         setBgColor(4);
       }
+      console.log('leave 4 bottom', scrollDirection.vertical);
     },
   });
 

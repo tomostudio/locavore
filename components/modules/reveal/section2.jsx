@@ -226,16 +226,17 @@ const Section2MarkerBottom = ({ setCaption, setBgColor }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(2);
       setBgColor(2);
+      console.log('enter 2 bottom', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 2
         setCaption(2);
         setBgColor(2);
       }
+      console.log('leave 2 bottom', scrollDirection.vertical);
     },
   });
 

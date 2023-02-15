@@ -141,15 +141,16 @@ const Section3MarkerTop = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(3)
       setBgColor(3)
+      console.log('enter 3 top', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
         setCaption(3)
         setBgColor(3)
       }
+      console.log('leave 3 top', scrollDirection.vertical);
     },
   })
 
@@ -163,16 +164,17 @@ const Section3MarkerBottom = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(3)
       setBgColor(3)
+      console.log('enter 3 bottom', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 3
         setCaption(3)
         setBgColor(3)
       }
+      console.log('leave 3 bottom', scrollDirection.vertical);
     },
   })
 

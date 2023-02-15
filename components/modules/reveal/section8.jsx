@@ -51,15 +51,16 @@ const Section8MarkerTop = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(8);
       setBgColor(8);
+      console.log('enter 8 top', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // CURRENT
         setCaption(8);
         setBgColor(8);
       }
+      console.log('leave 8 top', scrollDirection.vertical);
     },
   });
 

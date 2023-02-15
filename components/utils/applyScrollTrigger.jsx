@@ -86,22 +86,18 @@ const applyScrollTrigger = ({ animation }) => {
             anim: animation[p],
           });
 
-          console.log('each', animation);
-
           return () => {};
         },
       };
       stMatchMedia.push(pushData);
     });
 
-    console.log('match media', stMatchMedia);
     // RUN Scrolltrigger MatchMedia
     let mm = gsap.matchMedia();
 
     stMatchMedia.forEach((mediaQuery) => {
       mm.add(mediaQuery.media, mediaQuery.function);
     });
-    console.log('result', mm);
 
     return mm;
   } else {

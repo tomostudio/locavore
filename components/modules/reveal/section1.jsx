@@ -131,7 +131,6 @@ const Section1MarkerBottom = ({ setBgColor, setCaption }) => {
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 1

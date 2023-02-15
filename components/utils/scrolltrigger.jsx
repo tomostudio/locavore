@@ -213,7 +213,6 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
         // Fill Animation normally, no breakpoints
         resetAnimation();
         currentTL[`global`] = applyAnimation({ anim: animation });
-        // console.log(currentTL[`global`]);
       }
     }
     return () => {

@@ -438,10 +438,10 @@ const Section0MarkerTop = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(-1);
       setBgColor(0);
+      console.log('enter 0 top', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
         // GO TO SECTION 0
         setCaption(0);
@@ -451,6 +451,7 @@ const Section0MarkerTop = ({ setBgColor, setCaption }) => {
         setCaption(-1);
         setBgColor(0);
       }
+      console.log('leave 0 top', scrollDirection.vertical);
     },
   });
 
@@ -463,16 +464,17 @@ const Section0MarkerBottom = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(0);
       setBgColor(0);
+      console.log('enter 0 bottom', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
-      // console.log('leave', scrollDirection.vertical, entry);
       if (scrollDirection.vertical === 'up') {
       } else if (scrollDirection.vertical === 'down') {
         // RETURN TO SECTION 0
         setCaption(0);
         setBgColor(0);
       }
+      console.log('leave 0 bottom', scrollDirection.vertical);
     },
   });
 
