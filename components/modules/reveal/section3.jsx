@@ -842,7 +842,6 @@ export const Section3AnimationOBJ = [
         id: id,
         trigger: '#enter_hugger', // which section will be tracked as the scroll trigger
         scrub: 0.5,
-        markers: true,
         start: 'top 100%',
         end: 'bottom 100%',
       },

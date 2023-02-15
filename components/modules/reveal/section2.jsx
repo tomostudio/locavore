@@ -74,10 +74,7 @@ export const Section2ComponentFixedFront = () => {
         className='fixed z-3 h-0 w-0 bottom-0 right-1/2 overflow-visible'
       >
         <div className='w-[25rem] md:w-[36rem] absolute right-1/2 translate-x-[30%] md:translate-x-[115%] translate-y-[0%]'>
-          <Image
-            src={forest3}
-            alt=''
-          />
+          <Image src={forest3} alt='' />
         </div>
       </div>
     </div>
@@ -206,6 +203,7 @@ const Section2MarkerTop = ({ setCaption, setBgColor }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(2);
       setBgColor(2);
+      console.log('enter 2 top', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -214,6 +212,7 @@ const Section2MarkerTop = ({ setCaption, setBgColor }) => {
         setCaption(2);
         setBgColor(2);
       }
+      console.log('leave 2 top', scrollDirection.vertical);
     },
   });
 
