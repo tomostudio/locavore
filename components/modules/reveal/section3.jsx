@@ -76,7 +76,7 @@ export const Section3ComponentFixedBack = () => {
           id="tree"
           className="fixed h-0 w-0 top-1/2 right-0 md:right-auto md:left-1/2 overflow-visible translate-y-[-100vh]"
         >
-          <div className="w-48 sm:w-[18rem] md:w-[24rem] absolute top-0 md:top-1/2 right-0 md:right-1/2 translate-y-[0%] md:translate-y-[-60%] ">
+          <div className="w-48 sm:w-[18rem] md:w-[24rem] absolute top-0 md:top-1/2 right-0 md:right-1/2 translate-y-[-50%] md:translate-y-[-60%] ">
             <div className="relative md:translate-x-[-30%] lg:translate-x-[-50%] w-full h-auto">
               <Image src={tree} alt="" />
               <div
