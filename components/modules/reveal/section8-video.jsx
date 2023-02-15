@@ -354,7 +354,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                         })
                       }
                       id="backtotop"
-                      className="absolute bottom-10 z-50 uppercase pointer-events-auto font-default font-light text-xs text-center tracking-widest text-white select-none"
+                      className="absolute opacity-0 bottom-10 z-50 uppercase pointer-events-auto font-default font-light text-xs text-center tracking-widest text-white select-none"
                     >
                       <div className="block animate-fade-up">Back to Top</div>
                     </FancyLink>
@@ -559,7 +559,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
               </div>
             </div>
           </div>
-          <div id="video-marker" className="h-[200vh] w-full " />
+          <div id="video-marker" className="h-[50vh] w-full " />
           <div id="video-to-logo" className="w-full min-h-[100vh]" />
           <div id="logo-moveup" className="w-full h-screen" />
           <div id="enter_nxt_logo" className="h-[100vh] w-full" />
