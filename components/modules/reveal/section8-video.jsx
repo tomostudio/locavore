@@ -260,7 +260,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                                     id="summer"
                                     className="w-28 sm:w-32 md:w-40 absolute top-0 lg:top-1/2 translate-y-[60%] lg:translate-y-[30%] translate-x-[-60%] lg:translate-x-[-30%] opacity-0"
                                   >
-                                    <Image src={summer} />
+                                    <Image src={summer} alt="" />
                                   </div>
                                   2023
                                 </span>
