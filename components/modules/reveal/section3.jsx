@@ -74,9 +74,9 @@ export const Section3ComponentFixedBack = () => {
       <div className="exit_group3">
         <div
           id="tree"
-          className="fixed h-0 w-0 top-1/2 right-0 md:right-auto md:left-1/2 overflow-visible translate-y-[-100vh]"
+          className="fixed h-0 w-0 top-0 md:top-1/2 right-0 md:right-auto md:left-1/2 overflow-visible translate-y-[-50%] md:translate-y-[-100vh]"
         >
-          <div className="w-48 sm:w-[18rem] md:w-[24rem] absolute top-0 md:top-1/2 right-0 md:right-1/2 translate-y-[-50%] md:translate-y-[-60%] ">
+          <div className="w-48 sm:w-[16rem] md:w-[24rem] absolute top-1/2 right-0 md:right-1/2 translate-y-[-100%] md:translate-y-[-60%] ">
             <div className="relative md:translate-x-[-30%] lg:translate-x-[-50%] w-full h-auto">
               <Image src={tree} alt="" />
               <div
@@ -269,18 +269,36 @@ export const Section3AnimationOBJMobile = [
     // Input Animation
     const animation = [
       {
-        set: [
+        to: [
           elem,
           {
-            y: '-100vh',
+            top: '50%'
           },
         ],
       },
+    ]
+    return { id, elem, settings, animation }
+  },
+  // TREE INNER
+  () => {
+    const id = 'enter_tree_inner' // animation id
+    const elem = document.querySelectorAll('#tree > div')
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: '#enter_tree', // which section will be tracked as the scroll trigger
+        scrub: 0.5,
+        start: 'top 100%',
+        end: 'bottom 0%',
+      },
+    }
+    // Input Animation
+    const animation = [
       {
         to: [
           elem,
           {
-            y: '0vh',
+            y: '0%'
           },
         ],
       },
