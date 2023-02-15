@@ -192,6 +192,9 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         <Section3MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
         {/* TREE */}
         <div id="enter_tree" className="h-[150vh]  " />
+        {/* TREE */}
+        <div className="h-[50vh] " />
+        <div id="enter_hugger" className="h-[50vh]" />
         {/* ENTER ANIMAL */}
         <div id="enter_animal" className="h-[100vh]" />
         {/* ENTER NATURE */}
@@ -312,10 +315,10 @@ export const Section3AnimationOBJMobile = [
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter_tree', // which section will be tracked as the scroll trigger
+        trigger: '#enter_hugger', // which section will be tracked as the scroll trigger
         scrub: 0.5,
-        start: 'top 20%',
-        end: 'bottom 0%',
+        start: 'top 100%',
+        end: 'bottom 100%',
       },
     }
     // Input Animation
@@ -837,9 +840,10 @@ export const Section3AnimationOBJ = [
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: '#enter_tree', // which section will be tracked as the scroll trigger
+        trigger: '#enter_hugger', // which section will be tracked as the scroll trigger
         scrub: 0.5,
-        start: 'top 20%',
+        markers: true,
+        start: 'top 100%',
         end: 'bottom 100%',
       },
     }
