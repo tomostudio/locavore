@@ -70,7 +70,9 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
   const [baseUrl, setBaseUrl] = useState()
   const [snackBar, setSnackBar] = useState(false)
   const [showShare, setShare] = useState(false)
-  const [statusVideo, setStatusVideo] = useState(false);
+  const [statusVideo, setStatusVideo] = useState(false)
+  const logoUp = useRef()
+  const videoMarker = useRef()
 
   const handleClick = (newState) => () => {
     copy()
@@ -113,17 +115,45 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
   }
 
   const playVid = () => {
-    const vid = document.getElementById("nxt-video");
-    setStatusVideo(true)
-    vid.play()
+    const vid = document.getElementById('nxt-video')
+    if (statusVideo) {
+      vid.pause()
+      vid.currentTime = 0
+      setStatusVideo(false)
+    } else {
+      vid.play()
+      setStatusVideo(true)
+    }
+  }
+
+  const scrollFunction = () => {
+    if (videoMarker) {
+      if (videoMarker.current.getBoundingClientRect().top > 0) {
+          const vid = document.getElementById('nxt-video')
+          vid.pause()
+          vid.currentTime = 0
+          setStatusVideo(false)
+      }
+    }
+
+    if (logoUp) {
+      if (logoUp.current.getBoundingClientRect().top < 0) {
+          const vid = document.getElementById('nxt-video')
+          vid.pause()
+          vid.currentTime = 0
+          setStatusVideo(false)
+      }
+    }
   }
 
   useEffect(() => {
     setBaseUrl(window.location.href)
     resize()
     window.addEventListener('resize', resize, true)
+    document.addEventListener('scroll', scrollFunction, false)
     return () => {
       window.removeEventListener('resize', resize, true)
+      document.removeEventListener('scroll', scrollFunction, false)
     }
   }, [])
 
@@ -131,8 +161,9 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
     <>
       {/* Section 8 */}
       <section
+        ref={videoMarker}
         id="trigger8"
-        className="trigger relative w-full text-4xl flex flex-col justify-center items-center "
+        className="trigger relative w-full text-4xl flex flex-col justify-center items-center"
         data-scroll-section
       >
         <Section8MarkerTop setCaption={setCaption} setBgColor={setBgColor} />
@@ -152,18 +183,28 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                           id="video-frame"
                           className="relative w-full h-fit aspect-[4/3] sm:aspect-[16/9] overflow-hidden rounded-xl opacity-0"
                         >
-                          <video id="nxt-video" className="w-full h-full object-contain">
+                          <video
+                            id="nxt-video"
+                            className="w-full h-full object-contain"
+                          >
                             <source src="/nxt/video/nxt.mp4" type="video/mp4" />
                             Your browser does not support the video tag.
                           </video>
-                          <div id="nxt-bg" className={`absolute top-0 left-0 z-2 transition-all duration-300 bg-black w-full h-full flex justify-center items-center pointer-events-none ${statusVideo ? 'hidden' : ''}`}>
-                            <FancyLink
-                              onClick={playVid}
-                              className="text-2xl transition-all ease-linear hover:opacity-50"
+                          <FancyLink
+                            onClick={playVid}
+                            className={`absolute top-0 left-0 w-full h-full z-2 pointer-events-auto transition-all duration-300 ${
+                              statusVideo ? 'opacity-0' : ''
+                            }`}
+                          >
+                            <div
+                              id="nxt-bg"
+                              className="transition-all duration-300 bg-black w-full h-full flex justify-center items-center"
                             >
-                              PLAY
-                            </FancyLink>
-                          </div>
+                              <span className="text-2xl transition-all ease-linear hover:opacity-50">
+                                PLAY
+                              </span>
+                            </div>
+                          </FancyLink>
                         </div>
                       </div>
                     </div>
@@ -175,7 +216,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
                         {/* ANIMATION CONTENT STICKY */}
                         <div
                           id="logo-end"
-                          className="frame w-full aspect-[4/3] sm:aspect-[16/9] relative overflow-hidden rounded-xl"
+                          className="frame w-full scale-[0.75] md:scale-[0.5] md:translate-y-[-30vh] aspect-[4/3] sm:aspect-[16/9] relative overflow-hidden rounded-xl"
                         >
                           <Image
                             src={NXT_Logo_Bumper}
@@ -559,9 +600,8 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
               </div>
             </div>
           </div>
-          <div id="video-marker" className="h-[200vh] w-full " />
           <div id="video-to-logo" className="w-full min-h-[100vh]" />
-          <div id="logo-moveup" className="w-full h-screen" />
+          <div ref={logoUp} id="logo-moveup" className="w-full h-screen" />
           <div id="enter_nxt_logo" className="h-[100vh] w-full" />
           <div id="enter_locavore_nxt" className="h-[100vh] w-full" />
           <div id="enter_opening" className="h-[25vh] w-full " />
@@ -721,44 +761,6 @@ export const Section8AnimationOBJMobile = [
           elem,
           {
             opacity: 1,
-          },
-        ],
-      },
-    ]
-
-    return { id, elem, settings, animation }
-  },
-  // LOGO PUSH UP
-  () => {
-    const id = 'logo-up' // animation id
-    const elem = document.querySelector('#logo-end')
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#logo-moveup', // which section will be tracked as the scroll trigger
-        scrub: 0.5,
-        start: 'bottom 100%',
-        end: 'bottom 0%',
-      },
-    }
-
-    // Input Animation
-    const animation = [
-      {
-        set: [
-          elem,
-          {
-            y: 0,
-            scale: 1,
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            y: '-30vh',
-            scale: 0.75,
           },
         ],
       },
@@ -1517,44 +1519,6 @@ export const Section8AnimationOBJ = [
           elem,
           {
             opacity: 1,
-          },
-        ],
-      },
-    ]
-
-    return { id, elem, settings, animation }
-  },
-  // LOGO PUSH UP
-  () => {
-    const id = 'logo-up' // animation id
-    const elem = document.querySelector('#logo-end')
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: '#logo-moveup', // which section will be tracked as the scroll trigger
-        scrub: 0.5,
-        start: 'bottom 100%',
-        end: 'bottom 0%',
-      },
-    }
-
-    // Input Animation
-    const animation = [
-      {
-        set: [
-          elem,
-          {
-            y: 0,
-            scale: 1,
-          },
-        ],
-      },
-      {
-        to: [
-          elem,
-          {
-            y: '-30vh',
-            scale: 0.5,
           },
         ],
       },
