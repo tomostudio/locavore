@@ -153,30 +153,28 @@ export default function Reveal({ seoAPI, footerAPI }) {
       setBgColor(0);
     }
     return () => {
-      if (scrollTriggerAnimation != null)
-        scrollTriggerAnimation.revert();
+      if (scrollTriggerAnimation != null) scrollTriggerAnimation.revert();
     };
   }, [loading]);
 
-  useEffect(() => {
-    // Go to the Top, Set Background Color
-    // TURN ON AFTER TESTING
-    window.scroll(0, 0);
-    setCaption(-1);
-    setBgColor(0);
+  const [curCaptionState, setCaptionState] = useState(-1);
 
+  let currentCaption = 0;
+  const captionData = { state: 0 };
+
+  useEffect(() => {
     const resizeFunction = () => {
-      setCaption(currentCaption);
-      setBgColor(currentCaption);
+      setCaption(curCaptionState);
+      setBgColor(curCaptionState);
     };
+
     window.addEventListener('resize', resizeFunction);
 
     return () => {
       window.removeEventListener('resize', resizeFunction);
     };
-  }, []);
+  }, [curCaptionState]);
 
-  let currentCaption = 0;
   // ALTERNATIVE CAPTION
   const setCaption = (n) => {
     const captions = document.querySelectorAll(
@@ -222,6 +220,8 @@ export default function Reveal({ seoAPI, footerAPI }) {
         behavior: 'smooth',
       });
       currentCaption = n;
+      setCaptionState(n);
+      captionData.state = n;
     }
   };
 
@@ -438,7 +438,7 @@ const Section0MarkerTop = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(-1);
       setBgColor(0);
-      console.log('enter 0 top', scrollDirection.vertical);
+      console.log('enter 0 top', scrollDirection);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
