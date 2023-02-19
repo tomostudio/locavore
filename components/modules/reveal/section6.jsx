@@ -71,7 +71,7 @@ const Section6MarkerTop = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(6);
       setBgColor(6);
-      console.log('enter 6 top', scrollDirection.vertical);
+      // console.log('enter 6 top', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -80,7 +80,7 @@ const Section6MarkerTop = ({ setBgColor, setCaption }) => {
         setCaption(6);
         setBgColor(6);
       }
-      console.log('leave 6 top', scrollDirection.vertical);
+      // console.log('leave 6 top', scrollDirection.vertical);
     },
   });
 
@@ -94,7 +94,7 @@ const Section6MarkerBottom = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(6);
       setBgColor(6);
-      console.log('enter 6 bottom', scrollDirection.vertical);
+      // console.log('enter 6 bottom', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -104,7 +104,7 @@ const Section6MarkerBottom = ({ setBgColor, setCaption }) => {
         setCaption(6);
         setBgColor(6);
       }
-      console.log('leave 6 bottom', scrollDirection.vertical);
+      // console.log('leave 6 bottom', scrollDirection.vertical);
     },
   });
 

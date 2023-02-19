@@ -52,7 +52,7 @@ const Section8MarkerTop = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(8);
       setBgColor(8);
-      console.log('enter 8 top', scrollDirection.vertical);
+      // console.log('enter 8 top', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -61,7 +61,7 @@ const Section8MarkerTop = ({ setBgColor, setCaption }) => {
         setCaption(8);
         setBgColor(8);
       }
-      console.log('leave 8 top', scrollDirection.vertical);
+      // console.log('leave 8 top', scrollDirection.vertical);
     },
   });
 
@@ -108,7 +108,7 @@ export const Section8ComponentInner = ({ general, setBgColor, setCaption }) => {
   };
 
   const resize = () => {
-    console.log(resize);
+    // console.log(resize);
     if (navigator.share) {
       setShare(true);
     } else {

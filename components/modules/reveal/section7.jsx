@@ -98,7 +98,7 @@ const Section7MarkerTop = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(7);
       setBgColor(7);
-      console.log('enter 7 top', scrollDirection.vertical);
+      // console.log('enter 7 top', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -107,7 +107,7 @@ const Section7MarkerTop = ({ setBgColor, setCaption }) => {
         setCaption(7);
         setBgColor(7);
       }
-      console.log('leave 7 top', scrollDirection.vertical);
+      // console.log('leave 7 top', scrollDirection.vertical);
     },
   });
 
@@ -121,7 +121,7 @@ const Section7MarkerBottom = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(7);
       setBgColor(7);
-      console.log('enter 7 bottom', scrollDirection.vertical);
+      // console.log('enter 7 bottom', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -131,7 +131,7 @@ const Section7MarkerBottom = ({ setBgColor, setCaption }) => {
         setCaption(7);
         setBgColor(7);
       }
-      console.log('leave 7 bottom', scrollDirection.vertical);
+      // console.log('leave 7 bottom', scrollDirection.vertical);
     },
   });
 

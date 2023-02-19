@@ -261,7 +261,7 @@ const Section5MarkerTop = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(5)
       setBgColor(5)
-      console.log('enter 5 top', scrollDirection.vertical);
+      // console.log('enter 5 top', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -270,7 +270,7 @@ const Section5MarkerTop = ({ setBgColor, setCaption }) => {
         setCaption(5)
         setBgColor(5)
       }
-      console.log('leave 5 top', scrollDirection.vertical);
+      // console.log('leave 5 top', scrollDirection.vertical);
     },
   })
 
@@ -284,7 +284,7 @@ const Section5MarkerBottom = ({ setBgColor, setCaption }) => {
     onEnter: ({ scrollDirection, entry }) => {
       setCaption(5)
       setBgColor(5)
-      console.log('enter 5 bottom', scrollDirection.vertical);
+      // console.log('enter 5 bottom', scrollDirection.vertical);
     },
     onLeave: ({ scrollDirection, entry }) => {
       // Triggered when the target leaves the viewport
@@ -294,7 +294,7 @@ const Section5MarkerBottom = ({ setBgColor, setCaption }) => {
         setCaption(5)
         setBgColor(5)
       }
-      console.log('leave 5 bottom', scrollDirection.vertical);
+      // console.log('leave 5 bottom', scrollDirection.vertical);
     },
   })
 
