@@ -1,513 +1,498 @@
-import { useEffect, useRef, useState } from 'react';
-import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
-import { LazyMotion, domAnimation, m } from 'framer-motion';
-import { fade } from '@/helpers/preset/transitions';
-import Image from 'next/legacy/image';
+import { useEffect, useRef, useState, useLayoutEffect } from 'react';
 import { useRouter } from 'next/router';
 
-// Layout
+import { Parallax } from 'react-scroll-parallax';
+import { LazyMotion, domAnimation, m } from 'framer-motion';
+import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
+import 'intersection-observer'; // optional polyfill
+import { useInView } from 'react-cool-inview';
+
 import Layout from '@/components/modules/layout';
-import Container from '@/components/modules/container';
-
-// Components
-import ScrollTriggerWrapper from '@/components/utils/scrolltrigger.jsx';
-import FancyLink from '@/components/utils/fancyLink';
+import ScrollTriggerWrapper from '@/components/utils/scrolltrigger';
 import SEO from '@/components/utils/seo';
+import Footer from '@/components/modules/footer';
 
-// Helpers
 import PushScrollGlobal from '@/helpers/globalscroll';
-import { useAppContext } from 'context/state';
+import { fade } from '@/helpers/preset/transitions';
 import client from '@/helpers/sanity/client';
-import urlFor from '@/helpers/sanity/urlFor';
-import checkMonth from '@/helpers/functional/checkMonth';
-import { PortableText } from '@portabletext/react';
 
+import loadingImage from '@/public/loading.png';
+
+import {
+  Section1ComponentFixedFront,
+  Section1ComponentFixedBack,
+  Section1AnimationOBJ,
+  Section1AnimationOBJMobile,
+  Section1ComponentInner,
+} from '@/components/modules/reveal/section1';
+
+import {
+  Section2ComponentFixedFront,
+  Section2ComponentFixedBack,
+  Section2AnimationOBJ,
+  Section2AnimationOBJMobile,
+  Section2ComponentInner,
+} from '@/components/modules/reveal/section2';
+
+import {
+  Section3ComponentFixedFront,
+  Section3ComponentFixedBack,
+  Section3AnimationOBJ,
+  Section3AnimationOBJMobile,
+  Section3ComponentInner,
+} from '@/components/modules/reveal/section3';
+
+import {
+  Section4ComponentFixedFront,
+  Section4ComponentFixedBack,
+  Section4AnimationOBJ,
+  Section4AnimationOBJMobile,
+  Section4ComponentInner,
+} from '@/components/modules/reveal/section4';
+
+import {
+  Section5ComponentFixedFront,
+  Section5ComponentFixedBack,
+  Section5AnimationOBJ,
+  Section5AnimationOBJMobile,
+  Section5ComponentInner,
+} from '@/components/modules/reveal/section5';
+
+import {
+  Section6ComponentFixedFront,
+  Section6ComponentFixedBack,
+  Section6AnimationOBJ,
+  Section6AnimationOBJMobile,
+  Section6ComponentInner,
+} from '@/components/modules/reveal/section6';
+
+import {
+  Section7ComponentFixedFront,
+  Section7ComponentFixedBack,
+  Section7AnimationOBJ,
+  Section7AnimationOBJMobile,
+  Section7ComponentInner,
+} from '@/components/modules/reveal/section7';
+
+import {
+  Section8ComponentFixedFront,
+  Section8ComponentFixedBack,
+  Section8AnimationOBJ,
+  Section8AnimationOBJMobile,
+  Section8ComponentInner,
+} from '@/components/modules/reveal/section8';
+import { useAppContext } from 'context/state';
+import Image from 'next/image';
 import applyScrollTrigger from '@/components/utils/applyScrollTrigger';
 
-export default function Home({ issueAPI, seoAPI }) {
+export default function Reveal({ seoAPI, footerAPI }) {
   const router = useRouter();
-  const [seo] = seoAPI;
-  let [issue] = issueAPI;
-  issue = issue.issue
-  const dark = issue.dark;
-  const containerRef = useRef(null);
   const appContext = useAppContext();
+  const [seo] = seoAPI;
+  const [footer] = footerAPI;
+
+  const containerRef = useRef(null);
+
+  // ANIMATION
+  const animationObj = {
+    '(min-width: 851px)': [
+      ...Section1AnimationOBJ,
+      ...Section2AnimationOBJ,
+      ...Section3AnimationOBJ,
+      ...Section4AnimationOBJ,
+      ...Section5AnimationOBJ,
+      ...Section6AnimationOBJ,
+      ...Section7AnimationOBJ,
+      ...Section8AnimationOBJ,
+    ],
+    '(max-width: 850px)': [
+      ...Section1AnimationOBJMobile,
+      ...Section2AnimationOBJMobile,
+      ...Section3AnimationOBJMobile,
+      ...Section4AnimationOBJMobile,
+      ...Section5AnimationOBJMobile,
+      ...Section6AnimationOBJMobile,
+      ...Section7AnimationOBJMobile,
+      ...Section8AnimationOBJMobile,
+    ],
+  };
+
+  // Loading Function
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    router.events.on('routeChangeStart', () => setLoading(true));
+    router.events.on('routeChangeComplete', () => setLoading(false));
+    router.events.on('routeChangeError', () => setLoading(false));
+    return () => {
+      router.events.off('routeChangeStart', () => setLoading(true));
+      router.events.off('routeChangeComplete', () => setLoading(false));
+      router.events.off('routeChangeError', () => setLoading(false));
+    };
+  }, [router.events]);
 
   useEffect(() => {
+    if (appContext.history.length === 0) {
+      setTimeout(() => setLoading(false), 1500);
+    }
     appContext.setHeader({
-      headerStyle: issue.headerOption ? issue.headerOption : 'default',
-    });
-    // white, black, blur-black, blur-white, trans-white, trans-black
-
-    window.scroll(0, 0);
-
-    const scrollTriggerAnimation = applyScrollTrigger({
-      animation: animationObj,
+      headerStyle: 'blur',
     });
 
     return () => {
       appContext.setHeader({ headerStyle: 'default' });
-      scrollTriggerAnimation.revert();
     };
   }, []);
 
-  //check title word count
-  const maxLetter = 10;
-  const [titleS, setSize] = useState(false);
   useEffect(() => {
-    const splitTitle = issue.title.split(' ');
+    let scrollTriggerAnimation = null;
+    if (!loading) {
+      scrollTriggerAnimation = applyScrollTrigger({
+        animation: animationObj,
+      });
+      setCaption(-1);
+      setBgColor(0);
+    }
+    return () => {
+      if (scrollTriggerAnimation != null) scrollTriggerAnimation.revert();
+    };
+  }, [loading]);
 
-    splitTitle.forEach((word) => {
-      setSize(word.length > maxLetter);
+  const [curCaptionState, setCaptionState] = useState(-1);
+
+  let currentCaption = 0;
+  const captionData = { state: 0 };
+
+  useEffect(() => {
+    const resizeFunction = () => {
+      setCaption(curCaptionState);
+      setBgColor(curCaptionState);
+    };
+
+    window.addEventListener('resize', resizeFunction);
+
+    return () => {
+      window.removeEventListener('resize', resizeFunction);
+    };
+  }, [curCaptionState]);
+
+  // ALTERNATIVE CAPTION
+  const setCaption = (n) => {
+    const captions = document.querySelectorAll(
+      '#reveal_caption > div.captions_wrapper > .caption_tab'
+    );
+    captions.forEach((caption, index) => {
+      caption.classList.remove('active');
+      if (index + 1 <= n) caption.classList.add('active');
     });
-  }, []);
 
-  // ANIMATION
-  const animationObj = [
-    () => {
-      // Issue No Animation
-      const id = 'issueNo';
-      const elem = document.querySelector('#issueNo');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: '#trigger1', // which section will be tracked as the scroll trigger
-          // id of scroll container
-          scrub: 0.5,
-          start: 'top 0%',
-          end: 'bottom -0%',
-        },
-      };
+    const captionContainer = document.querySelector('#reveal_caption');
 
-      // Input Animation
-      const animation = [
-        {
-          to: [
-            elem,
-            {
-              y: '90%',
-              scale: 4.5,
-              ease: 'none',
-            },
-          ],
-        },
-      ];
+    // Hide Caption on Section 7 & 8
+    if (n >= 7 || n === -1) {
+      if (captionContainer) captionContainer.style.opacity = 0;
+    } else {
+      if (captionContainer) captionContainer.style.opacity = 1;
+    }
 
-      return { id, elem, settings, animation };
-    },
-    () => {
-      // Start Background
-      const id = 'First BG';
-      const elem = document.querySelector('#firstBG');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: '#trigger1', // which section will be tracked as the scroll trigger
-          // id of scroll container
-          scrub: 0.5,
-          start: 'top 0%',
-          end: 'bottom 0%',
-        },
-      };
+    if (captions.length > 0) {
+      //ADJUST CENTERING FOR MOBILE
+      let offsetX = 0;
 
-      // Input Animation
-      const animation = [
-        {
-          to: [
-            elem,
-            {
-              opacity: 0,
-              scale: 1.25,
-              ease: 'none',
-            },
-          ],
-        },
-      ];
+      if (n <= 1) {
+        offsetX = captions[0].offsetWidth / 2;
+      } else {
+        // offsetX =
+        // moving for 2 or 3 or 4 or 5
+        captions.forEach((caption, index) => {
+          const setN = n >= 6 ? 6 : n;
+          if (index < setN - 1) {
+            offsetX = offsetX + caption.offsetWidth + 8;
+          }
+          if (index === setN - 1) {
+            offsetX = offsetX + caption.offsetWidth / 2;
+          }
+        });
+      }
 
-      return { id, elem, settings, animation };
-    },
-    () => {
-      // Start Background
-      const id = 'End BG';
-      const elem = document.querySelector('#endBg');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: '#trigger1', // which section will be tracked as the scroll trigger
-          // id of scroll container
-          scrub: 0.5,
-          start: 'top 0%',
-          end: 'bottom 0%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          to: [
-            elem,
-            {
-              scale: 1.1,
-              ease: 'none',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    () => {
-      // Scroller Dissapear
-      const id = 'scrollIndicator';
-      const elem = document.querySelector('#scrollIndicator');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: '#trigger1', // which section will be tracked as the scroll trigger
-          // id of scroll container
-          scrub: 0.5,
-          start: 'top -10%',
-          end: 'bottom 50%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          to: [
-            elem,
-            {
-              opacity: 0,
-              ease: 'none',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-  ];
-
-  const serializers = {
-    block: {
-      normal: ({ children }) =>
-        children[0] === '' ? <br /> : <p align='center'>{children}</p>,
-      h1: ({ children }) => <h1>{children}</h1>,
-      h2: ({ children }) => <h2>{children}</h2>,
-      h3: ({ children }) => <h3>{children}</h3>,
-      h4: ({ children }) => <h4>{children}</h4>,
-      h5: ({ children }) => <h5>{children}</h5>,
-      center: ({ children }) => <p align='center'>{children}</p>,
-      left: ({ children }) => <p align='left'>{children}</p>,
-      right: ({ children }) => <p align='right'>{children}</p>,
-    },
-    list: {
-      number: ({ children }) => <ol className='list-decimal'>{children}</ol>,
-    },
-    types: {
-      code: (props) => (
-        <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
-      ),
-    },
-    marks: {
-      add_ann: (props) =>
-        props.value?.link ? (
-          <FancyLink
-            destination={props.value.link}
-            blank={props.value.target_blank}
-            style={{
-              color: props.value?.textColor
-                ? props.value?.textColor.hex
-                : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
-              fontSize: props.value?.fontSize
-                ? props.value?.fontSize
-                : 'initial',
-            }}
-            className={
-              props.value?.font
-                ? props.value?.font === 'display'
-                  ? 'font-default'
-                  : props.value.font
-                : 'font-default'
-            }
-          >
-            {props.children}
-          </FancyLink>
-        ) : (
-          <span
-            style={{
-              color: props.value?.textColor
-                ? props.value?.textColor.hex
-                : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
-              fontSize: props.value?.fontSize
-                ? props.value?.fontSize
-                : 'initial',
-            }}
-            className={
-              props.value?.font
-                ? props.value?.font === 'display'
-                  ? 'font-default'
-                  : props.value.font
-                : 'font-default'
-            }
-          >
-            {props.children}
-          </span>
-        ),
-      largerSize: (props) => (
-        <span style={{ fontSize: '1.5em' }}>{props.children}</span>
-      ),
-      sub: (props) => <sub>{props.children}</sub>,
-      sup: (props) => <sup>{props.children}</sup>,
-    },
+      document.querySelector('#reveal_caption').scroll({
+        left: offsetX,
+        top: 0,
+        behavior: 'smooth',
+      });
+      currentCaption = n;
+      setCaptionState(n);
+      captionData.state = n;
+    }
   };
 
-  return (
+  // Set Background
+
+  const bgColorSet = [
+    '#BFC29D', //0
+    '#BFC29D', //1
+    '#B5BD98', //2
+    '#A2B08D', //3
+    '#A0B18E', //4
+    '#93A287', //5
+    '#8A9881', //6
+    '#7B8778', //7
+    '#7B8778', //8
+  ];
+  const setBgColor = (set) => {
+    const bgFrame = document.querySelector('#NXTbackground');
+    if (bgFrame) bgFrame.style.background = bgColorSet[set];
+  };
+
+  return loading ? (
+    <div className='h-screen w-screen flex flex-col justify-center items-center bg-[#BFC29D]'>
+      <div className='relative w-16 animate-spin'>
+        <Image src={loadingImage} alt='' />
+      </div>
+      <span className='uppercase block font-default mt-5 text-xs'>LOADING</span>
+    </div>
+  ) : (
     <Layout>
       <SEO
-        title={issue.title}
+        title={'Up NXT'}
         pagelink={router.pathname}
-        inputSEO={issue.seo}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-      {/* Issue Title */}
-      <LazyMotion features={domAnimation}>
-        <m.div
-          initial='initial'
-          animate='enter'
-          exit='exit'
-          variants={fade}
-          className={`z-1 relative no-select-all`}
-        >
-          {/* Issue Number */}
+      {/* FIXED POSITION FRONT*/}
+      <div className='outercontainer-front fixed z-40 w-full h-full pointer-events-none select-none overflow-hidden'>
+        {/* SECTION 1 */}
+        <Section1ComponentFixedFront />
+        {/* SECTION 2 */}
+        <Section2ComponentFixedFront />
+        {/* SECTION 3 */}
+        <Section3ComponentFixedFront />
+        {/* SECTION 4 */}
+        <Section4ComponentFixedFront />
+        {/* SECTION 5 */}
+        <Section5ComponentFixedFront />
+        {/* SECTION 6 */}
+        <Section6ComponentFixedFront />
+        {/* SECTION 7 */}
+        <Section7ComponentFixedFront />
+        {/* SECTION 8 */}
+        <Section8ComponentFixedFront />
+      </div>
+      {/* FIXED POSITION BACK*/}
+      <div className='outercontainer-back fixed -z-1 w-full h-full pointer-events-none select-none overflow-hidden'>
+        {/* SECTION 1 */}
+        <Section1ComponentFixedBack />
+        {/* SECTION 2 */}
+        <Section2ComponentFixedBack />
+        {/* SECTION 3 */}
+        <Section3ComponentFixedBack />
+        {/* SECTION 4 */}
+        <Section4ComponentFixedBack />
+        {/* SECTION 5 */}
+        <Section5ComponentFixedBack />
+        {/* SECTION 6 */}
+        <Section6ComponentFixedBack />
+        {/* SECTION 7 */}
+        <Section7ComponentFixedBack />
+        {/* SECTION 8 */}
+        <Section8ComponentFixedBack />
+      </div>
+      {/* BACKGROUND COLOR */}
+      <div
+        id='NXTbackground'
+        className={`background fixed -z-2 w-full h-full pointer-events-none transition-colors duration-[2000ms]`}
+        style={{ background: bgColorSet[0] }}
+      />
+      {/* CAPTION */}
+      <div
+        id='reveal_caption'
+        className='caption flex flex-row md:justify-center items-center hide-scrollbar fixed z-50 text-sm pointer-events-none overflow-x-auto py-8 md:py-0 md:overflow-x-visible md:overflow-y-visible w-full md:px-20 bottom-2 md:bottom-10 top-auto left-1/2 -translate-x-1/2 max-w-screen-xl transition-all duration-500 opacity-0'
+      >
+        <div className='md:hidden block w-[50vw] shrink-0' />
+        <div className='captions_wrapper flex md:flex-wrap justify-center items-center gap-2 md:gap-1 relative md:!translate-x-0 transition-transform shrink-0 md:shrink'>
           <div
-            id='issueNo'
-            className='h-screen top-0 left-0 right-0  setflex-center w-screen fixed z-10 pointer-events-none'
+            className={`caption_tab px-2 w-fit h-fit rotate-0 will-change-auto text-center shrink-0 max-w-[80vw]`}
           >
-            <Container className='max-md:px-6 text-center '>
-              <span
-                className={` font-normal text-7xl sm:text-8xl md:text-9xl  uppercase ${
-                  dark === 'white-text' ? 'text-white' : 'text-black'
-                }`}
-              >
-                ISSUE <span className='font-sans'> {issue.issueNumber}</span>
-                {/* WHAT'S NXT? */}
-              </span>
-            </Container>
+            WE HAD A DREAM
           </div>
-          {/* Scroll Inidicator */}
           <div
-            id='scrollIndicator'
-            className='fixed z-20 bottom-10 left-0 w-full setflex-center pointer-events-none'
+            className={`caption_tab px-2 w-fit h-fit rotate-1 will-change-auto text-center shrink-0 max-w-[80vw]`}
           >
-            <span
-              className={`font-light text-xs tracking-widest animate-fade-down  ${
-                dark === 'white-text' ? 'text-white' : 'text-black'
-              }`}
-            >
-              SCROLL
-            </span>
+            INSPIRED BY NICE THINGS
           </div>
+          <div
+            className={`caption_tab px-2 w-fit h-fit -rotate-[-.5deg] will-change-auto text-center shrink-0 max-w-[80vw]`}
+          >
+            AND A BETTER WORLD
+          </div>
+          <div
+            className={`caption_tab px-2 w-fit h-fit rotate-[-.25deg] text-center shrink-0 max-w-[80vw]`}
+          >
+            SO WE TOOK THAT DREAM AND MADE IT REAL
+          </div>
+          <div
+            className={`caption_tab px-2 w-fit h-fit rotate-0 text-center shrink-0 max-w-[80vw]`}
+          >
+            SO OTHER PEOPLE CAN DREAM TOO
+          </div>
+          <div
+            className={`caption_tab px-2 w-fit h-fit rotate-1/2 text-center shrink-0 max-w-[80vw]`}
+          >
+            INSPIRED BY OUR NICE THING
+          </div>
+        </div>
+        <div className='md:hidden block w-[50vw] shrink-0' />
+      </div>
 
-          {/* First Background */}
-          <div
-            id='firstBG'
-            className={`fixed setflex-center h-screen w-screen top-0 left-0 -z-1 pointer-events-none ${
-              dark === 'white-text' ? 'bg-black ' : 'bg-white'
-            }`}
-          >
-            {issue.image1 ? (
-              issue.image1.placeholder ? (
-                <>
-                  {/* Image  */}
-                  <div
-                    className={`absolute h-full w-full top-0 left-0  z-10 ${
-                      dark === 'white-text'
-                        ? 'bg-black opacity-40'
-                        : 'bg-white opacity-25'
-                    }`}
-                  />
-                  <Image
-                    src={urlFor(issue.image1.placeholder)
-                      .width(1400)
-                      .format('webp')
-                      .url()}
-                    alt={issue.image1.placeholder.name}
-                    layout='fill'
-                    objectFit='cover'
-                    objectPosition='center'
-                    loading='eager'
-                    placeholder='blur'
-                    blurDataURL={urlFor(issue.image1.placeholder)
-                      .width(800)
-                      .blur(2)
-                      .format('webp')
-                      .url()}
-                  />
-                </>
-              ) : (
-                issue.image1.color && (
-                  <>
-                    {/* Plain Background  */}
-                    <div
-                      className='absolute h-full w-full top-0 left-0 z-20'
-                      style={{ background: `${issue.image1.color.hex}` }}
-                    />
-                  </>
-                )
-              )
-            ) : (
-              <></>
-            )}
-          </div>
-
-          {/* End Background */}
-          <div
-            id='endBg'
-            className={`fixed setflex-center h-screen w-screen top-0 left-0 -z-10 pointer-events-none ${
-              dark === 'white-text' ? 'bg-black ' : 'bg-white'
-            }`}
-          >
-            {issue.image2 ? (
-              issue.image2.placeholder ? (
-                <>
-                  {/* Image  */}
-                  <div
-                    className={`absolute  h-full w-full top-0 left-0 z-10  ${
-                      dark === 'white-text'
-                        ? 'bg-black opacity-40'
-                        : 'bg-white opacity-25'
-                    }`}
-                  />
-                  <Image
-                    src={urlFor(issue.image2.placeholder)
-                      .width(1400)
-                      .format('webp')
-                      .url()}
-                    alt={issue.image2.placeholder.name}
-                    layout='fill'
-                    objectFit='cover'
-                    loading='eager'
-                    objectPosition='center'
-                    placeholder='blur'
-                    blurDataURL={urlFor(issue.image2.placeholder)
-                      .width(800)
-                      .blur(2)
-                      .format('webp')
-                      .url()}
-                  />
-                </>
-              ) : (
-                issue.image2.color && (
-                  <>
-                    {/* Plain Background  */}
-                    <div
-                      className='absolute h-full w-full top-0 left-0 z-20'
-                      style={{ background: `${issue.image2.color.hex}` }}
-                    />
-                  </>
-                )
-              )
-            ) : (
-              <></>
-            )}
-          </div>
-        </m.div>
-      </LazyMotion>
       <LazyMotion features={domAnimation}>
         <m.main
-          className='relative p-0 m-0 z-2'
+          className='relative p-0 m-0'
           initial='initial'
           animate='enter'
           exit='exit'
           variants={fade}
         >
-          <div id='trigger1' className='w-full h-[150vh] mx-md:h-screen' />
-          <div id='trigger2' className='w-full min-h-screen '>
-            <div className='h-[50vh] w-full' />
-            <section className='w-full'>
-              <Container
-                className={`max-md:px-6 pb-24 pb-24-safe flex flex-col justify-between min-h-[65vh] content-center items-center ${
-                  dark === 'white-text' ? 'text-white' : 'text-black'
-                }`}
-              >
-                <span
-                  id='issueNoInside'
-                  className='font-serif font-normal italic text-5xl max-md:text-3xl'
+          {/* Section 0 */}
+          <Section0MarkerTop setBgColor={setBgColor} setCaption={setCaption} />
+          <section
+            id='trigger0'
+            className='trigger w-full h-[110vh] text-4xl'
+            data-scroll-section
+          >
+            <div className='flex justify-center items-center w-full h-screen'>
+              <Parallax speed={-20}>
+                <div
+                  className={`font-light text-xs text-center tracking-widest animate-fade-down text-black select-none`}
                 >
-                  Issue {issue.issueNumber}
-                </span>
-                <h1
-                  className={`title-issue font-sans font-normal  text-center leading-none ${
-                    titleS
-                      ? 'text-[2.5rem] sm:text-6xl md:text-6xl lg:text-8xl'
-                      : 'text-7xl sm:text-8xl'
-                  }`}
-                >
-                  {issue.title}
-                </h1>
-                <span className=' w-full text-center mt-5 max-md:mt-2 mb-auto'>
-                  {checkMonth(new Date(issue.date).getMonth())}{' '}
-                  {new Date(issue.date).getFullYear()}
-                  <span className='mx-4 inline-block'>•</span>
-                  {issue.articleCount} ARTICLES
-                </span>
-                <div className='content-issue editor-styling max-w-lg text-center mt-16'>
-                  <PortableText
-                    value={issue.description}
-                    components={serializers}
-                  />
+                  SCROLL TO
+                  <br />
+                  BEGIN
                 </div>
-                <FancyLink
-                  destination={`/editorial/${issue.slug.current}/list`}
-                  className={` mt-10 py-4 px-6 text-xs tracking-widest transition-all ease-linear ${
-                    dark === 'white-text'
-                      ? 'hover:bg-white border hover:text-black border-white rounded-xl'
-                      : 'hover:bg-black border hover:text-white border-black rounded-xl'
-                  }`}
-                >
-                  READ ISSUE
-                </FancyLink>
-              </Container>
-            </section>
-          </div>
+              </Parallax>
+            </div>
+          </section>
+          <Section0MarkerBottom
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 1 */}
+          {/* WE HAD A DREAM */}
+          <Section1ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 2 */}
+          {/* INSPIRED BY NICE THINGS */}
+          <Section2ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 3 */}
+          {/* AND A BETTER WORLD */}
+          <Section3ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 4 */}
+          {/* SO WE TOOK THAT DREAM AND MADE IT REAL */}
+          <Section4ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 5 */}
+          {/* SO OTHER PEOPLE CAN DREAM TOO */}
+          <Section5ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 6 */}
+          {/* INSPIRED BY OUR NICE THING */}
+          <Section6ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 7 */}
+          {/* FEED CHANGE */}
+          <Section7ComponentInner
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+          {/* Section 8*/}
+          {/* LOCAVORE NEXT */}
+          <Section8ComponentInner
+            general={seo}
+            setBgColor={setBgColor}
+            setCaption={setCaption}
+          />
+
+          <Footer footer={footer} mailchimp={seo.mailchimpID} />
         </m.main>
       </LazyMotion>
     </Layout>
   );
 }
 
-export async function getStaticProps() {
-  const issueAPI = await client.fetch(
-    `
-    *[_type == "home"]{
-      issue-> {
-        ...,
-        "articleCount": count(*[_type=='article' && references(^._id)])
+const Section0MarkerTop = ({ setBgColor, setCaption }) => {
+  const { observe } = useInView({
+    threshold: 1, // Default is 0
+    rootMargin: '0px 0px',
+    onEnter: ({ scrollDirection, entry }) => {
+      setCaption(-1);
+      setBgColor(0);
+      // console.log('enter 0 top', scrollDirection);
+    },
+    onLeave: ({ scrollDirection, entry }) => {
+      // Triggered when the target leaves the viewport
+      if (scrollDirection.vertical === 'up') {
+        // GO TO SECTION 0
+        setCaption(0);
+        setBgColor(0);
+      } else if (scrollDirection.vertical === 'down') {
+        // RETURN TO SECTION START
+        setCaption(-1);
+        setBgColor(0);
       }
-    }
-    `
-  );
-  const seoAPI = await client.fetch(`
-  *[_type == "settings"]
-  `);
-  const headerAPI = await client.fetch(`
-  *[_type == "header"]
-  `);
+      // console.log('enter 0 bottom', scrollDirection.vertical);
+    },
+  });
 
+  return <div className='w-full h-[2px]' ref={observe} />;
+};
+const Section0MarkerBottom = ({ setBgColor, setCaption }) => {
+  const { observe } = useInView({
+    threshold: 1, // Default is 0
+    rootMargin: '0px 0px',
+    onEnter: ({ scrollDirection, entry }) => {
+      setCaption(0);
+      setBgColor(0);
+      // console.log('enter 0 bottom', scrollDirection.vertical);
+    },
+    onLeave: ({ scrollDirection, entry }) => {
+      // Triggered when the target leaves the viewport
+      if (scrollDirection.vertical === 'up') {
+      } else if (scrollDirection.vertical === 'down') {
+        // RETURN TO SECTION 0
+        setCaption(0);
+        setBgColor(0);
+      }
+      // console.log('leave 0 bottom', scrollDirection.vertical);
+    },
+  });
+
+  return <div className='w-full h-0' ref={observe} />;
+};
+
+export async function getStaticProps() {
+  const headerAPI = await client.fetch(`
+    *[_type == "header"]
+    `);
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `);
+  const seoAPI = await client.fetch(`
+  *[_type == "settings"]
+  `);
   return {
     props: {
-      issueAPI,
       seoAPI,
       headerAPI,
       footerAPI,
