@@ -23,7 +23,6 @@ export default function PushScrollGlobal() {
         });
         window.dispatchEvent(event);
       });
-      console.log('detect')
     }
     return () => {};
   }, [scroll]);

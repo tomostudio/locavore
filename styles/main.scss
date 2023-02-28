@@ -14,14 +14,23 @@
 /* Other Styling */
 @import '_global.scss';
 
-
 /* Page Specific Styling */
 @import '_editorial.scss';
 @import '_family.scss';
-
+@import '_reveal.scss';
 
 /* Simple defaults */
 body {
   @apply font-default tracking-wide font-normal antialiased text-black bg-white;
   overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+
+.__b {
+  border: solid thin blue;
+}
+.stop-flickering {
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
 }

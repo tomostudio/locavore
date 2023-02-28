@@ -9,7 +9,7 @@ import React from 'react';
 
 const ScrollTriggerWrapper = forwardRef((props, ref) => {
   const { scroll } = useLocomotiveScroll();
-  const { children, animation } = props;
+  const { children, animation, locomotive = true } = props;
   const [scrollInitState, setScrollInit] = useState(false);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
       ScrollTrigger.scrollerProxy(scrollerQuery, {
         scrollTop(value) {
           return arguments.length
-            ? scroll.scrollTo(value, { duration: 0, disableLerp: true })
+            ? scroll.scrollTo(value, {duration: 0, disableLerp: true})
             : scroll.scroll.instance.scroll.y;
         }, // we don't have to define a scrollLeft because we're only scrolling vertically.
         getBoundingClientRect() {
@@ -126,7 +126,6 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
             });
           });
         }
-
         return tl;
       } else if (isFunction(anim)) {
         // pull object
@@ -143,6 +142,10 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
             tl[tl.length - 1].to(...a[k]);
           } else if (k === 'from') {
             tl[tl.length - 1].from(...a[k]);
+          } else if (k === 'set') {
+            tl[tl.length - 1].set(...a[k]);
+          } else if (k === 'call') {
+            tl[tl.length - 1].call(a[k]);
           }
         });
       }
@@ -153,50 +156,59 @@ const ScrollTriggerWrapper = forwardRef((props, ref) => {
         const _property = Object.getOwnPropertyNames(animation);
 
         //Create Array for Match Media
-        const stMatchMedia = {};
+        const stMatchMedia = [];
 
         // fill animation
         _property.forEach((p, id) => {
           // push animation to object
-          stMatchMedia[`${p}`] = function () {
-            //run apply animation function
 
-            currentTL[`${p}`] = applyAnimation({
-              anim: animation[p],
-              ss: tlSaveStyle,
-            });
+          const pushData = {
+            media: p,
+            function: function () {
+              //run apply animation function
 
-            return () => {
-              tlSaveStyle.forEach((ss) => {
-                gsap.set(ss, { clearProps: true });
+              currentTL[`${p}`] = applyAnimation({
+                anim: animation[p],
+                ss: tlSaveStyle,
               });
 
-              ScrollTrigger.refresh(true);
-              //Kill All Timeline during breakpoint
-              if (currentTL[`${p}`])
-                currentTL[`${p}`].forEach((eachTL) => {
-                  eachTL.pause(0).kill();
-                  eachTL.clear();
+              return () => {
+                tlSaveStyle.forEach((ss) => {
+                  gsap.set(ss, { clearProps: true });
                 });
 
-              delete currentTL[`${p}`];
-            };
+                ScrollTrigger.refresh(true);
+                //Kill All Timeline during breakpoint
+                if (currentTL[`${p}`])
+                  currentTL[`${p}`].forEach((eachTL) => {
+                    eachTL.pause(0).kill();
+                    eachTL.clear();
+                  });
+
+                delete currentTL[`${p}`];
+              };
+            },
           };
+          stMatchMedia.push(pushData);
         });
 
         // RUN Scrolltrigger MatchMedia
-        ScrollTrigger.matchMedia(stMatchMedia);
+        let mm = gsap.matchMedia();
+
+        stMatchMedia.forEach((mediaQuery) => {
+          mm.add(mediaQuery.media, mediaQuery.function);
+        });
 
         // Set ScrollTrigger Save Styles
-        let saveStyles = ``;
-        tlSaveStyle.forEach((tl) => {
-          saveStyles += `${tl} ,`;
-        });
-        if (saveStyles.slice(-2) === ' ,') {
-          saveStyles = saveStyles.slice(0, -2);
-        }
+        // let saveStyles = ``;
+        // tlSaveStyle.forEach((tl) => {
+        //   saveStyles += `${tl} ,`;
+        // });
+        // if (saveStyles.slice(-2) === ' ,') {
+        //   saveStyles = saveStyles.slice(0, -2);
+        // }
 
-        ScrollTrigger.saveStyles(saveStyles);
+        // ScrollTrigger.saveStyles(saveStyles);
       } else {
         // Fill Animation normally, no breakpoints
         resetAnimation();

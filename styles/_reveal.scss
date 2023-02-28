@@ -1,0 +1,13 @@
+#reveal_caption {
+  .caption_tab {
+    position: relative;
+    padding: .25em .75em;
+    opacity: .25;
+    @apply transition-all;
+    background: white;
+    &.active{
+      opacity: 1;
+      background: white;
+    }
+  }
+}

@@ -10,6 +10,7 @@ module.exports = {
     fontFamily: {
       default: ['Favorit Pro', 'sans-serif'],
       sans: ['Whyte Inktrap', 'sans-serif'],
+      funkturm: ['Funkturm', 'sans-serif'],
       serif: ['Alegreya', 'serif'],
     },
     flexGrow: {
@@ -40,11 +41,34 @@ module.exports = {
             transform: 'translateY(20px)',
           },
         },
+        'fade-up': {
+          '0%, 5%': {
+            opacity: 0,
+            transform: 'translateY(20px)',
+          },
+          '40%, 60%': { opacity: 1 },
+          '95%, 100%': {
+            opacity: 0,
+            transform: 'translateY(-20px)',
+          },
+        },
+        'fade': {
+          '0%, 10%': {
+            opacity: 0,
+          },
+          '40%, 70%': { opacity: 1 },
+          '90%, 100%': {
+            opacity: 0,
+          },
+        },
       },
       animation: {
         'fade-left': 'fade-left 1.5s linear infinite',
         'fade-left-slower': 'fade-left 2.5s linear infinite',
         'fade-down': 'fade-down 1.5s linear infinite',
+        'fade-up': 'fade-up 1.5s linear infinite',
+        'fade': 'fade 2s linear infinite',
+        'fade-delay': 'fade 2s linear infinite .25s',
       },
       minHeight: {
         '16rem': '16rem',
@@ -62,6 +86,7 @@ module.exports = {
         md: '850px',
         lg: '1200px',
         xl: '1280px',
+        reveal_end_md: '950px',
         betterhover: { raw: '(hover: hover)' },
       },
       zIndex: {
@@ -181,5 +206,6 @@ module.exports = {
   plugins: [
     require('tailwindcss-padding-safe'),
     require('@tailwindcss/aspect-ratio'),
+    require('tailwind-clip-path'),
   ],
 }

@@ -1,55 +1,55 @@
-import { useEffect, useState } from 'react';
-import FancyLink from '@/components/utils/fancyLink';
-import Container from '@/components/modules/container';
-import { useMediaQuery } from '@/helpers/functional/checkMedia';
-import { useAppContext } from 'context/state';
-import Image from 'next/legacy/image';
-import urlFor from '@/helpers/sanity/urlFor';
-import { transition } from '@/helpers/preset/tailwind';
-import { motion } from 'framer-motion';
-import { Youtube, Facebook, Instagram, Linkedin } from '@/helpers/preset/svg';
+import { useEffect, useState } from 'react'
+import FancyLink from '@/components/utils/fancyLink'
+import Container from '@/components/modules/container'
+import { useMediaQuery } from '@/helpers/functional/checkMedia'
+import { useAppContext } from 'context/state'
+import Image from 'next/legacy/image'
+import urlFor from '@/helpers/sanity/urlFor'
+import { transition } from '@/helpers/preset/tailwind'
+import { motion } from 'framer-motion'
+import { Youtube, Facebook, Instagram, Linkedin } from '@/helpers/preset/svg'
 
 export default function Header({ className = '', header, footer }) {
-  const appContext = useAppContext();
-  const { headerStyle } = appContext.headerVar;
+  const appContext = useAppContext()
+  const { headerStyle } = appContext.headerVar
   // mobileMenu
   // setMobileMenu
-  const [menu, setMenu] = useState(appContext.mobileMenu);
-  const [footerProcessed] = footer;
+  const [menu, setMenu] = useState(appContext.mobileMenu)
+  const [footerProcessed] = footer
 
-  const [wHeight, setWHeight] = useState(800);
+  const [wHeight, setWHeight] = useState(800)
 
   // simplified value of BNW
   // true = black
-  const [bnw, setBNW] = useState(true);
+  const [bnw, setBNW] = useState(true)
 
   useEffect(() => {
-    setMenu(appContext.mobileMenu);
-  }, [appContext.mobileMenu]);
+    setMenu(appContext.mobileMenu)
+  }, [appContext.mobileMenu])
 
   useEffect(() => {
-    setBNW(!headerStyle.includes('white'));
-  }, [headerStyle]);
+    setBNW(!headerStyle.includes('white'))
+  }, [headerStyle])
 
   useEffect(() => {
     const updateHeight = () => {
-      setWHeight(window.innerHeight);
-    };
-    window.addEventListener('resize', updateHeight, false);
+      setWHeight(window.innerHeight)
+    }
+    window.addEventListener('resize', updateHeight, false)
 
     const checkMenu = () => {
-      const { innerWidth: width, innerHeight: height } = window;
+      const { innerWidth: width, innerHeight: height } = window
       if (width > 850) {
-        appContext.setMobileMenu(false);
+        appContext.setMobileMenu(false)
       }
-    };
+    }
 
-    window.addEventListener('resize', checkMenu, false);
+    window.addEventListener('resize', checkMenu, false)
     return () => {
-      window.removeEventListener('resize', updateHeight, false);
-      window.removeEventListener('resize', checkMenu, false);
-    };
-  }, []);
+      window.removeEventListener('resize', updateHeight, false)
+      window.removeEventListener('resize', checkMenu, false)
+    }
+  }, [])
 
   const MobileLink = ({
     destination,
@@ -67,7 +67,7 @@ export default function Header({ className = '', header, footer }) {
     >
       {children}
     </FancyLink>
-  );
+  )
 
   // Header Style Values:
   // default, hidden, white black,
@@ -82,9 +82,9 @@ export default function Header({ className = '', header, footer }) {
       style={{ height: menu ? `${wHeight}px` : 'auto' }}
     >
       <motion.header
-        initial='initial'
-        animate='enter'
-        exit='exit'
+        initial="initial"
+        animate="enter"
+        exit="exit"
         variants={{
           initial: { opacity: 0 },
           enter: {
@@ -120,9 +120,9 @@ export default function Header({ className = '', header, footer }) {
         >
           <FancyLink
             onClick={() => {
-              setWHeight(window.innerHeight);
+              setWHeight(window.innerHeight)
               //Toggle Menu
-              appContext.setMobileMenu(!appContext.mobileMenu);
+              appContext.setMobileMenu(!appContext.mobileMenu)
             }}
             className={`mobile-menu-icon hidden max-md:block w-[25px] h-[25px] max-md:mr-4 ${
               bnw || menu ? 'black' : 'white'
@@ -134,16 +134,19 @@ export default function Header({ className = '', header, footer }) {
           </FancyLink>
           {/* Locavore Logo */}
           <FancyLink
-            destination='/'
-            a11yText='Navigate to the home page'
+            destination="/"
+            a11yText="Navigate to the home page"
             className={` setflex-center max-md:p-0 ${transition.fade}`}
           >
             {bnw || menu ? (
               <Image
-                src={urlFor(header[0].logo.black).width(300).format('webp').url()}
+                src={urlFor(header[0].logo.black)
+                  .width(300)
+                  .format('webp')
+                  .url()}
                 alt={header[0].logo.black.name}
-                layout='intrinsic'
-                objectFit='contain'
+                layout="intrinsic"
+                objectFit="contain"
                 objectPosition={'left center'}
                 priority={true}
                 width={200}
@@ -151,10 +154,13 @@ export default function Header({ className = '', header, footer }) {
               />
             ) : (
               <Image
-                src={urlFor(header[0].logo.white).width(300).format('webp').url()}
+                src={urlFor(header[0].logo.white)
+                  .width(300)
+                  .format('webp')
+                  .url()}
                 alt={header[0].logo.white.name}
-                layout='intrinsic'
-                objectFit='contain'
+                layout="intrinsic"
+                objectFit="contain"
                 priority={true}
                 objectPosition={'left center'}
                 width={200}
@@ -171,8 +177,15 @@ export default function Header({ className = '', header, footer }) {
             {useMediaQuery('(min-width: 850px)') && (
               <>
                 <FancyLink
-                  destination='/editorial'
-                  a11yText='Navigate to the editorial page'
+                  destination="/"
+                  a11yText="Navigate to the nxt page"
+                  className={`leading-none ${transition.fade}`}
+                >
+                  NXT
+                </FancyLink>
+                <FancyLink
+                  destination="/editorial"
+                  a11yText="Navigate to the editorial page"
                   className={`leading-none ${transition.fade}`}
                 >
                   Editorial
@@ -191,8 +204,8 @@ export default function Header({ className = '', header, footer }) {
                     </FancyLink>
                   ))}
                 <FancyLink
-                  destination='/family'
-                  a11yText='Navigate to the about page'
+                  destination="/family"
+                  a11yText="Navigate to the about page"
                   className={`leading-none ${transition.fade}`}
                 >
                   Family
@@ -202,7 +215,7 @@ export default function Header({ className = '', header, footer }) {
             <FancyLink
               destination={header[0].booking}
               blank={true}
-              a11yText='Navigate to the about page'
+              a11yText="Navigate to the about page"
               className={`font-bold leading-none ${transition.fade}`}
             >
               BOOKING
@@ -219,8 +232,10 @@ export default function Header({ className = '', header, footer }) {
               : 'opacity-0 pointer-events-none hidden'
           } ${bnw || menu ? 'bg-white ' : 'bg-black'} `}
         >
-          {/* <HeaderGap className='grow-0 shrink-0' /> */}
-          <MobileLink bnw={bnw} destination='/editorial'>
+          <MobileLink bnw={bnw} destination="/">
+            NXT
+          </MobileLink>
+          <MobileLink bnw={bnw} destination="/editorial">
             Editorial
           </MobileLink>
           {header &&
@@ -230,10 +245,10 @@ export default function Header({ className = '', header, footer }) {
                 {item.title}
               </MobileLink>
             ))}
-          <MobileLink bnw={bnw} destination='/family'>
+          <MobileLink bnw={bnw} destination="/family">
             Family
           </MobileLink>
-          <MobileLink bnw={bnw} destination='/booking'>
+          <MobileLink bnw={bnw} destination="/booking">
             Booking
           </MobileLink>
           {/* Social Media */}
@@ -251,7 +266,7 @@ export default function Header({ className = '', header, footer }) {
                 >
                   <Instagram
                     fill={bnw || menu ? '#000' : '#FFF'}
-                    className='w-4 h-4'
+                    className="w-4 h-4"
                   />
                 </FancyLink>
               )}
@@ -263,7 +278,7 @@ export default function Header({ className = '', header, footer }) {
               >
                 <Facebook
                   fill={bnw || menu ? '#000' : '#FFF'}
-                  className='w-4 h-4'
+                  className="w-4 h-4"
                 />
               </FancyLink>
             )}
@@ -275,7 +290,7 @@ export default function Header({ className = '', header, footer }) {
               >
                 <Youtube
                   fill={bnw || menu ? '#000' : '#FFF'}
-                  className='w-4 h-4'
+                  className="w-4 h-4"
                 />
               </FancyLink>
             )}
@@ -287,7 +302,7 @@ export default function Header({ className = '', header, footer }) {
               >
                 <Linkedin
                   fill={bnw || menu ? '#000' : '#FFF'}
-                  className='w-4 h-4'
+                  className="w-4 h-4"
                 />
               </FancyLink>
             )}
@@ -313,5 +328,5 @@ export default function Header({ className = '', header, footer }) {
         </div>
       )}
     </nav>
-  );
+  )
 }
