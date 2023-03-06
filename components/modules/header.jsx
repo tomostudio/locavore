@@ -248,9 +248,6 @@ export default function Header({ className = '', header, footer }) {
           <MobileLink bnw={bnw} destination="/family">
             Family
           </MobileLink>
-          <MobileLink bnw={bnw} destination="/booking">
-            Booking
-          </MobileLink>
           {/* Social Media */}
           <div
             className={`w-full py-8 border-b flex justify-center space-x-4 ${
