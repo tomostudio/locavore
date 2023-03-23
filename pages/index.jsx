@@ -292,7 +292,7 @@ export default function Reveal({ seoAPI, footerAPI }) {
           {/* BACKGROUND COLOR */}
           <div
             id="NXTbackground"
-            className={`background fixed -z-2 w-full pointer-events-none transition-colors duration-[2000ms] h-[120vh]`}
+            className={`background fixed -z-2 w-full pointer-events-none transition-colors duration-[2000ms] h-[200vh]`}
             style={{ background: bgColorSet[0] }}
           />
           {/* CAPTION */}
