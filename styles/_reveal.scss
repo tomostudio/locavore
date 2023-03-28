@@ -1,13 +1,56 @@
 #reveal_caption {
   .caption_tab {
     position: relative;
-    padding: .25em .75em;
-    opacity: .25;
+    padding: 0.25em 0.75em;
+    opacity: 0.25;
     @apply transition-all;
     background: white;
-    &.active{
+    &.active {
       opacity: 1;
       background: white;
     }
   }
 }
+
+// #section1_animate {
+//   #nxt_logo {
+//     animation: logoMoveUp 2s linear 2s;
+
+//     @keyframes logoMoveUp {
+//       from {
+//         top: 50%;
+//         transform: translateY(-50%);
+//       }
+//       to {
+//         top: 0;
+//         transform: translateY(0%);
+//       }
+//     }
+
+//     & > div {
+//       animation: logoOpacity 2s linear;
+  
+//       @keyframes logoOpacity {
+//         from {
+//           opacity: 0.3;
+//         }
+//         to {
+//           opacity: 1;
+//         }
+//       }
+//     }
+//   }
+
+//   #black-layer {
+//     animation: all 2s linear 4s;
+
+//     @keyframes all {
+//       from {
+//         opacity: 1;
+//       }
+//       to {
+//         opacity: 0;
+//       }
+//     }
+//   }
+// }

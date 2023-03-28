@@ -18,6 +18,9 @@ module.exports = {
       2: 1,
     },
     extend: {
+      lineHeight: {
+        'full': '100%'
+      },
       keyframes: {
         'fade-left': {
           '0%, 5%': {
@@ -121,6 +124,7 @@ module.exports = {
       },
       dropShadow: {
         top: '0px -4px 4px rgba(0, 0, 0, .2)',
+        collaborators: '24px 24px 24px rgba(0, 0, 0, 0.6)'
       },
       boxShadow: {
         base: '0px 0px 10px 2px rgba(0, 0, 0, .4)',
@@ -152,7 +156,7 @@ module.exports = {
         '46rem': '46rem',
         '56rem': '56rem',
         '60rem': '60rem',
-        header: '60px',
+        header: '61px',
         '90%': '90%',
       },
       width: {

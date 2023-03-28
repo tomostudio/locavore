@@ -33,6 +33,7 @@ export default function Index({ issueAPI, seoAPI }) {
   const appContext = useAppContext();
 
   useEffect(() => {
+    console.log(issue.headerOption ? issue.headerOption : 'default')
     appContext.setHeader({
       headerStyle: issue.headerOption ? issue.headerOption : 'default',
     });
