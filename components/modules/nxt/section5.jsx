@@ -5,6 +5,8 @@ import Container from '../container'
 
 // IMPORT LOCAL IMAGE
 import card_bnw from '@/public/nxt2/card_bnw.png'
+import card from '@/public/nxt2/card.png'
+import FancyLink from '@/components/utils/fancyLink'
 
 export const Section5ComponentInner = () => {
   return (
@@ -19,11 +21,14 @@ export const Section5ComponentInner = () => {
             <span className="text-[#BEC29D] text-center font-funkturm text-[7.5rem] leading-full">
               WHAT'S ON?
             </span>
-            <div className="w-full mt-16 grid grid-cols-3 gap-8">
-              <div className="w-full border-2 border-white rounded-xl flex flex-col p-8 text-white">
+            <div className="w-full my-16 grid grid-cols-3 gap-8">
+              <div
+                className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
+              >
                 <span className="text-[1.25rem]">10 OCTOBER 2023</span>
-                <div className="relative w-full aspect-w-1 aspect-h-1 my-5">
-                  <Image src={card_bnw} />
+                <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
+                  <Image src={card_bnw} className="group-hover:hidden" />
+                  <Image src={card} className="hidden group-hover:block" />
                 </div>
                 <span className="font-bold text-[1.875rem] leading-[32px]">
                   Event Title
@@ -33,10 +38,13 @@ export const Section5ComponentInner = () => {
                   sit amet.
                 </p>
               </div>
-              <div className="w-full border-2 border-white rounded-xl flex flex-col p-8 text-white">
+              <div
+                className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
+              >
                 <span className="text-[1.25rem]">10 OCTOBER 2023</span>
-                <div className="relative w-full aspect-w-1 aspect-h-1 my-5">
-                  <Image src={card_bnw} />
+                <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
+                  <Image src={card_bnw} className="group-hover:hidden" />
+                  <Image src={card} className="hidden group-hover:block" />
                 </div>
                 <span className="font-bold text-[1.875rem] leading-[32px]">
                   Event Title
@@ -46,10 +54,13 @@ export const Section5ComponentInner = () => {
                   sit amet.
                 </p>
               </div>
-              <div className="w-full border-2 border-white rounded-xl flex flex-col p-8 text-white">
+              <div
+                className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
+              >
                 <span className="text-[1.25rem]">10 OCTOBER 2023</span>
-                <div className="relative w-full aspect-w-1 aspect-h-1 my-5">
-                  <Image src={card_bnw} />
+                <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
+                  <Image src={card_bnw} className="group-hover:hidden" />
+                  <Image src={card} className="hidden group-hover:block" />
                 </div>
                 <span className="font-bold text-[1.875rem] leading-[32px]">
                   Event Title
@@ -60,6 +71,11 @@ export const Section5ComponentInner = () => {
                 </p>
               </div>
             </div>
+            <FancyLink
+              className={`w-fit p-4 text-[0.875rem] text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+            >
+              VIEW ALL EVENTS & PROGRAMS
+            </FancyLink>
           </div>
         </Container>
       </section>

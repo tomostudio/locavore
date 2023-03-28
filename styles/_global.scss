@@ -90,7 +90,7 @@ main {
   @apply top-20 #{!important};
 }
 
-.tooltip{
+.tooltip {
   @apply bg-white text-black uppercase rounded-xl font-default px-8 py-2 shadow-[0px_1px_10px_0px_rgba(0,0,0,0.25)] #{!important};
 }
 
@@ -105,7 +105,7 @@ main {
     height: 1px;
     left: 50%;
     top: 50%;
-    transition: margin-top 0.05s ease .125s, transform 0.15s ease 0s;
+    transition: margin-top 0.05s ease 0.125s, transform 0.15s ease 0s;
     transform-origin: 50% 50%;
     &:first-child {
       transform: translate(-50%, -50%);
@@ -168,6 +168,7 @@ main {
 
 // OUTLINE
 
-a, button{
+a,
+button {
   @apply outline-slate-500 outline-2 outline-offset-4;
 }
