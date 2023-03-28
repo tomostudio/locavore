@@ -15,7 +15,7 @@ export const Section4ComponentInner = () => {
       <div className="sticky z-10 top-0 w-full h-screen">
         <div
           id="section4_title"
-          className="relative w-full h-full setflex-center-row"
+          className="relative w-full h-full setflex-center-row opacity-0"
         >
           <span className="text-[#BEC29D] text-center font-funkturm text-[7.5rem] leading-full">
             OUR
@@ -151,7 +151,7 @@ export const Section4ComponentInner = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-[25vh]" />
+      <div className="w-full h-[20vh]" />
       <div id="enter-collab-opacity" className="w-full h-[50vh]" />
     </section>
   )

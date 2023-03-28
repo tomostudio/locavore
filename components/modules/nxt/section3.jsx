@@ -8,46 +8,49 @@ import { useAppContext } from 'context/state'
 // IMPORT LOCAL IMAGE
 import building from '@/public/nxt2/building.png'
 
-export const Section3ComponentInner = () => {
+export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   return (
     <section className="relative w-full overflow-x-clip">
-      <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
-        <div className="relative w-full h-screen">
-          <Container className="relative w-full h-full z-10 setflex-center">
-            <span className="text-black text-center font-funkturm text-[7.5rem] leading-full">
-              FEATURES <br />&<br /> FACILITIES
-            </span>
-          </Container>
-          <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-20">
-            <FancyLink
-              id="btn-features"
-              className={`opacity-0 w-fit p-4 text-[0.875rem] text-black bg-white bg-opacity-80 font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-black rounded-xl`}
-            >
-              OUR FEATURES & FACILITIES
-            </FancyLink>
-          </div>
-          <div
-            id="building"
-            className="absolute top-0 left-1/2 translate-y-[95vh] -translate-x-1/2 w-[1294px] h-[768px] z-10"
-          >
-            <div className="relative w-full h-full">
-              <Image
-                src={building}
-                alt=""
-                fill
-                style={{ objectFit: 'contain' }}
-              />
+      <div className="w-full">
+        <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
+          <div className="relative w-full h-screen">
+            <Container className="relative w-full h-full z-10 setflex-center">
+              <span className="text-black text-center font-funkturm text-[7.5rem] leading-full">
+                FEATURES <br />&<br /> FACILITIES
+              </span>
+            </Container>
+            <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-20">
+              <FancyLink
+                id="btn-features"
+                className={`opacity-0 w-fit p-4 text-[0.875rem] text-black bg-white bg-opacity-80 font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-black rounded-xl`}
+              >
+                OUR FEATURES & FACILITIES
+              </FancyLink>
             </div>
+            <div
+              id="building"
+              className="absolute top-0 left-1/2 translate-y-[95vh] -translate-x-1/2 w-[1294px] h-[768px] z-10"
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={building}
+                  alt=""
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+            </div>
+            <div
+              id="bg-white-scale"
+              className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[125%] h-[170%] clip-path-circle-[0%] rounded-50% bg-white"
+            />
           </div>
-          <div
-            id="bg-white-scale"
-            className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[125%] h-[170%] clip-path-circle-[0%] rounded-50% bg-white"
-          />
         </div>
+        <div id="enter-bg-white-scale" className="h-[100vh]" />
+        <div id="enter-building" className="h-[100vh]" />
+        <div className="h-[25vh]" />
       </div>
-      <div id="enter-bg-white-scale" className="h-[100vh]" />
-      <div id="enter-building" className="h-[100vh]" />
-      <div className="h-[25vh]" />
+      <div className="w-full h-[35vh] bg-red-500" />
     </section>
   )
 }
