@@ -43,6 +43,8 @@ import {
 
 import { useAppContext } from 'context/state'
 import applyScrollTrigger from '@/components/utils/applyScrollTrigger'
+import FancyLink from '@/components/utils/fancyLink'
+import NxtNavigation from '@/components/utils/nxtNavigation'
 
 export default function Nxt({ seoAPI, footerAPI }) {
   const router = useRouter()
@@ -119,7 +121,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
           {/* Section 5 */}
           {/* WHAT'S ON? */}
           <Section5ComponentInner />
-
+          <NxtNavigation focus="nxt" />
           <Footer footer={footer} mailchimp={seo.mailchimpID} />
         </m.main>
       </LazyMotion>

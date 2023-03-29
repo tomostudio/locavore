@@ -3214,6 +3214,11 @@ tailwindcss-padding-safe@^1.0.5:
   dependencies:
     lodash "^4.17.21"
 
+tailwindcss-writing-mode@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-writing-mode/-/tailwindcss-writing-mode-1.0.0.tgz#687c4d8f4f89dbbf10e38f78134c691d5e6736d8"
+  integrity sha512-w72adZDP4aCCut8gJzVp1Z2Ht55JlY1Q0ZgJULeAbCEUCfkHVJS+ZYlfMXOmflIDNqnOsGizgojXxq87R0kh7g==
+
 tailwindcss@^3.2.6:
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.2.6.tgz#9bedbc744a4a85d6120ce0cc3db024c551a5c733"

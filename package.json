@@ -63,6 +63,7 @@
     "sass": "^1.58.0",
     "swiper": "^8.4.6",
     "tailwindcss-padding-safe": "^1.0.5",
+    "tailwindcss-writing-mode": "^1.0.0",
     "use-draggable-scroll": "^0.1.0",
     "use-reading-time": "^0.3.0"
   },

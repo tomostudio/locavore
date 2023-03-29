@@ -50,7 +50,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         <div id="enter-building" className="h-[100vh]" />
         <div className="h-[25vh]" />
       </div>
-      <div className="w-full h-[35vh] bg-red-500" />
+      <div className="w-full h-[35vh]" />
     </section>
   )
 }

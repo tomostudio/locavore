@@ -14,8 +14,9 @@ import Image from 'next/image'
 import { useAppContext } from 'context/state'
 import Container from '@/components/modules/container'
 import Footer from '@/components/modules/footer'
+import NxtNavigation from '@/components/utils/nxtNavigation'
 
-const Menu = ({ seoAPI, footerAPI, headerAPI }) => {
+const Menu = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
   const appContext = useAppContext()
   const [seo] = seoAPI
@@ -86,12 +87,7 @@ const Menu = ({ seoAPI, footerAPI, headerAPI }) => {
             </div>
             <div className="image w-full fh-full mb-24 space-y-3">
               <div className="relative w-full aspect-w-16 aspect-h-9">
-                <Image
-                  src={menu_group}
-                  alt=""
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
+                <Image src={menu_group} />
               </div>
               <div className="w-full flex space-x-3 max-md:space-x-2">
                 <div className="relative w-full aspect-w-16 aspect-h-9">
@@ -115,6 +111,7 @@ const Menu = ({ seoAPI, footerAPI, headerAPI }) => {
           </Container>
         </div>
       </motion.main>
+      <NxtNavigation focus="menu" />
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
   )
