@@ -28,7 +28,7 @@ const NxtNavigation = ({ focus = "nxt" }) => {
         FEATURES & FACILITIES
       </FancyLink>
       <FancyLink
-        destination="/nxt/collaborators"
+        destination="/nxt/our-collaborators"
         className={`relative right-[26px] z-30 w-full ${
           focus === "collab" ? 'bg-[#BEC29D]' : 'bg-white'
         } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
