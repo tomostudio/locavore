@@ -5,17 +5,20 @@
   @apply block;
   position: relative;
   width: calc(100% / 8);
+  aspect-ratio: 1/1;
+  margin: 0;
+  padding: 0;
   @include tablet {
     width: calc(100% / 5);
   }
   @include mobile {
     width: calc(100% / 3);
   }
-  &::after {
-    content: '';
-    display: block;
-    padding-bottom: 100%;
-  }
+  // &::after {
+  //   content: '';
+  //   display: block;
+  //   padding-bottom: 100%;
+  // }
   & > div:last-child {
     @apply transition-all duration-300;
     opacity: 0;

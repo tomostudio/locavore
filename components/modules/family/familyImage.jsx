@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import FancyLink from '@/components/utils/fancyLink';
 import urlFor from '@/helpers/sanity/urlFor';
 
@@ -24,7 +24,8 @@ const familyImage = ({ store, src, alt, position = '', name = '' }) => {
       className='family-card'
       ref={familyRef}
       onMouseEnter={(e) => {
-        if (!('ontouchstart' in window)) familyRef.current.classList.add('show');
+        if (!('ontouchstart' in window))
+          familyRef.current.classList.add('show');
       }}
       onMouseLeave={(e) => {
         familyRef.current.classList.remove('show');
@@ -35,21 +36,22 @@ const familyImage = ({ store, src, alt, position = '', name = '' }) => {
         )}, 1)`,
       }}
     >
-      <Image
-        src={urlFor(src).format('webp').width(750).url()}
-        alt={alt}
-        layout='fill'
-        objectFit='cover'
-        objectPosition='top'
-        placeholder='blur'
-        blurDataURL={urlFor(src)
-          .blur(2)
-          .format('webp')
-          .saturation(-100)
-          .width(100)
-          .url()}
-      />
-      <div className='absolute w-full h-full top-0 left-0 flex flex-col items-center  text-center justify-center p-4 z-1'>
+      <div className='w-full h-full top-0 left-0'>
+        <Image
+          src={urlFor(src).format('webp').width(750).url()}
+          alt={alt}
+          placeholder='blur'
+          fill
+          style={{ objectFit: 'cover', objectPosition: 'center top' }}
+          blurDataURL={urlFor(src)
+            .blur(2)
+            .format('webp')
+            .saturation(-100)
+            .width(100)
+            .url()}
+        />
+      </div>
+      <div className='absolute w-full h-full top-0 left-0 flex flex-col items-center text-center justify-center p-4 z-1'>
         {position !== '' && name !== '' ? (
           <span className='relative z-1 mb-auto font-serif text-sm font-bold'>
             {name}
