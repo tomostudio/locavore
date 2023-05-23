@@ -18,10 +18,10 @@ import {
 } from '@/components/modules/nxt/section1'
 
 import {
-  Section2AnimationOBJ,
-  Section2AnimationOBJMobile,
-  Section2ComponentInner,
-} from '@/components/modules/nxt/section2'
+  Section2Option2AnimationOBJ,
+  Section2Option2AnimationOBJMobile,
+  Section2Option2ComponentInner,
+} from '@/components/modules/nxt/section2/option2'
 
 import {
   Section3AnimationOBJ,
@@ -56,14 +56,14 @@ export default function Nxt({ seoAPI, footerAPI }) {
   const animationObj = {
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
-      ...Section2AnimationOBJ,
+      ...Section2Option2AnimationOBJ,
       ...Section3AnimationOBJ(),
       ...Section4AnimationOBJ,
       ...Section5AnimationOBJ,
     ],
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
-      ...Section2AnimationOBJMobile,
+      ...Section2Option2AnimationOBJMobile,
       ...Section3AnimationOBJMobile,
       ...Section4AnimationOBJMobile,
       ...Section5AnimationOBJMobile,
@@ -111,7 +111,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
           <Section1ComponentInner />
           {/* Section 2 */}
           {/* MENU */}
-          <Section2ComponentInner />
+          <Section2Option2ComponentInner />
           {/* Section 3 */}
           {/* FEATURES & FACILITIES */}
           <Section3ComponentInner />

@@ -1,13 +1,13 @@
 import React from 'react'
 import 'intersection-observer' // optional polyfill
 import Image from 'next/image'
-import Container from '../container'
 import FancyLink from '@/components/utils/fancyLink'
 
 // IMPORT LOCAL IMAGE
-import section2_bg1 from '@/public/nxt2/section2_bg1.png'
+import section2_bg from '@/public/nxt2/section2_bg1.png'
+import Container from '../../container'
 
-export const Section2ComponentInner = () => {
+export const Section2Option2ComponentInner = () => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
@@ -16,19 +16,6 @@ export const Section2ComponentInner = () => {
             id="section2_content"
             className="relative z-10 w-full h-auto opacity-0"
           >
-            <div
-              id="section2_bg1"
-              className="absolute top-0 left-0 translate-y-[80vh] w-[384px] h-[210px]"
-            >
-              <div className="relative w-full h-full">
-                <Image
-                  src={section2_bg1}
-                  alt=""
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-            </div>
             <div className="relative w-full h-full setflex-center ">
               <span className="text-[1.875rem] text-[#BEC29D]">
                 WHAT’S ON LOCAVORE
@@ -43,15 +30,15 @@ export const Section2ComponentInner = () => {
               </FancyLink>
             </div>
             <div
-              id="section2_bg2"
-              className="absolute z-20 bottom-0 right-0 translate-y-[90vh] w-[384px] h-[210px]"
+              id="section2_bg"
+              className="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 translate-y-[90vh] w-full h-[50vh]"
             >
               <div className="relative w-full h-full">
                 <Image
-                  src={section2_bg1}
+                  src={section2_bg}
                   alt=""
                   fill
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'contain' }}
                 />
               </div>
             </div>
@@ -64,10 +51,10 @@ export const Section2ComponentInner = () => {
   )
 }
 
-export const Section2AnimationOBJMobile = []
+export const Section2Option2AnimationOBJMobile = []
 
-export const Section2AnimationOBJ = [
-  // SECTION 2
+export const Section2Option2AnimationOBJ = [
+  // SECTION 2 OPTION 3
   // CONTENT ENTER
   () => {
     const id = 'section2-content-enter' // animation id
@@ -96,39 +83,10 @@ export const Section2AnimationOBJ = [
 
     return { id, elem, settings, animation }
   },
-  // BACKGROUND 1 ENTER
-  () => {
-    const id = 'bg1-enter' // animation id
-    const elem = document.querySelector('#section2_bg1')
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: document.querySelector('#enter-bg'), // which section will be tracked as the scroll trigger
-        scrub: 0.5,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    }
-
-    // Input Animation
-    const animation = [
-      {
-        to: [
-          elem,
-          {
-            top: 0,
-            y: 0,
-          },
-        ],
-      },
-    ]
-
-    return { id, elem, settings, animation }
-  },
   // BACKGROUND 2 ENTER
   () => {
     const id = 'bg2-enter' // animation id
-    const elem = document.querySelector('#section2_bg2')
+    const elem = document.querySelector('#section2_bg')
     const settings = {
       scrollTrigger: {
         id: id,
@@ -145,36 +103,8 @@ export const Section2AnimationOBJ = [
         to: [
           elem,
           {
-            bottom: 0,
-            y: 0,
-          },
-        ],
-      },
-    ]
-
-    return { id, elem, settings, animation }
-  },
-  // GROUP TITLE ENTER
-  () => {
-    const id = 'group-title-enter' // animation id
-    const elem = document.querySelector('#group-title')
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: document.querySelector('#enter-group-title'), // which section will be tracked as the scroll trigger
-        scrub: 0.5,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    }
-
-    // Input Animation
-    const animation = [
-      {
-        to: [
-          elem,
-          {
-            opacity: 1,
+            bottom: '50%',
+            y: '50%',
           },
         ],
       },
