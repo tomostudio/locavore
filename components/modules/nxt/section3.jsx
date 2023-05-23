@@ -29,7 +29,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
             </div>
             <div
               id="building"
-              className="absolute top-0 left-1/2 translate-y-[95vh] -translate-x-1/2 w-[1294px] h-[768px] z-10"
+              className="absolute top-0 left-1/2 translate-y-[100vh] -translate-x-1/2 w-full h-[95vh] z-10"
             >
               <div className="relative w-full h-full">
                 <Image
