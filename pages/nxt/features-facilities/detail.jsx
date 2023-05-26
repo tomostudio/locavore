@@ -48,7 +48,7 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
         variants={fade}
         className="no-select-all bg-black"
       >
-        <div className="relative w-full h-full flex">
+        <div className="relative w-full h-full flex mb-10">
           <div className="absolute top-0 left-0 w-1/2 h-full">
             <div className="w-full h-full flex flex-col">
               <div className="relative w-full h-screen">
@@ -95,18 +95,18 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
             </div>
           </Container>
         </div>
-      </motion.main>
-      <div
-        className={`fixed bottom-0 mb-10 left-0 w-full z-40 setflex-center`}
-      >
-        <PillButton
-          destination="/nxt/features-facilities"
-          arrow="left"
-          className="uppercase bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm"
+        <div
+          className={`sticky bottom-10 mb-10 left-0 w-full z-40 setflex-center`}
         >
-          FEATURES & FACILITIES
-        </PillButton>
-      </div>
+          <PillButton
+            destination="/nxt/features-facilities"
+            arrow="left"
+            className="uppercase bg-white"
+          >
+            FEATURES & FACILITIES
+          </PillButton>
+        </div>
+      </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
   )

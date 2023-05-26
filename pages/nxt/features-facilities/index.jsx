@@ -158,10 +158,8 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 AUDITORIUM
               </span>
             </FancyLink>
-            <div className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row">
-            </div>
-            <div className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row">
-            </div>
+            <div className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row"></div>
+            <div className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row"></div>
           </div>
         </div>
         <Swiper
@@ -321,8 +319,8 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             </div>
           </SwiperSlide>
         </Swiper>
+        <NxtNavigation focus="features" />
       </motion.main>
-      <NxtNavigation focus="features" />
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
   )

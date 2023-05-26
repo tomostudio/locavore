@@ -112,16 +112,18 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
             </div>
           </div>
         </Container>
-      </motion.main>
-      <div className={`fixed bottom-0 mb-10 left-0 w-full z-40 setflex-center`}>
-        <PillButton
-          destination="/nxt/our-collaborators"
-          arrow="left"
-          className="uppercase bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm"
+        <div
+          className={`sticky bottom-10 mb-10 left-0 w-full z-40 setflex-center`}
         >
-          COLLABORATORS
-        </PillButton>
-      </div>
+          <PillButton
+            destination="/nxt/our-collaborators"
+            arrow="left"
+            className="uppercase bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm"
+          >
+            COLLABORATORS
+          </PillButton>
+        </div>
+      </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
   )

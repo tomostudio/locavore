@@ -148,8 +148,8 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
             VIEW MORE
           </FancyLink>
         </div>
+        <NxtNavigation focus="events" />
       </motion.main>
-      <NxtNavigation focus="events" />
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
   )

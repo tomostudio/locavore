@@ -249,8 +249,8 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
             VIEW ALL EVENTS & PROGRAMS
           </FancyLink>
         </div>
+        <NxtNavigation focus="collab" />
       </motion.main>
-      <NxtNavigation focus="collab" />
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
   )

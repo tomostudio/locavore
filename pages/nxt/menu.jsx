@@ -45,7 +45,7 @@ const Menu = ({ seoAPI, footerAPI }) => {
         animate="enter"
         exit="exit"
         variants={fade}
-        className="no-select-all"
+        className="no-select-all bg-black"
       >
         <div className="relative w-full h-[500px] flex items-end">
           <Image src={menu_hero} alt="" fill style={{ objectFit: 'cover' }} />
@@ -110,8 +110,8 @@ const Menu = ({ seoAPI, footerAPI }) => {
             </div>
           </Container>
         </div>
+        <NxtNavigation focus="menu" />
       </motion.main>
-      <NxtNavigation focus="menu" />
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
   )
