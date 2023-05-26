@@ -11,6 +11,11 @@ export const Section2Option1ComponentInner = () => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
+        <Image src={section2_bg} alt="" fill style={{ objectFit: 'cover' }} />
+        <div
+          id="black-layer"
+          className="absolute top-0 left-0 w-full h-full bg-black opacity-50"
+        />
         <Container className="relative w-full h-full grow setflex-center">
           <div
             id="section2_content"
@@ -28,19 +33,6 @@ export const Section2Option1ComponentInner = () => {
               >
                 VIEW MENU
               </FancyLink>
-            </div>
-            <div
-              id="section2_bg"
-              className="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 translate-y-[90vh] w-full h-[50vh]"
-            >
-              <div className="relative w-full h-full">
-                <Image
-                  src={section2_bg}
-                  alt=""
-                  fill
-                  style={{ objectFit: 'contain' }}
-                />
-              </div>
             </div>
           </div>
         </Container>

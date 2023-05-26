@@ -9,7 +9,7 @@
 
 /* Custom Style Imports */
 @import '_typography.scss';
-// @import '_locomotive.scss'; 
+// @import '_locomotive.scss';
 
 /* Other Styling */
 @import '_global.scss';
@@ -33,4 +33,42 @@ body {
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
+}
+
+#nxtNavigation {
+  & > * {
+    display: block;
+    flex-grow: 1;
+    min-width: calc(100% / 5);
+    // max-width: calc(100% - 48px);
+    // margin-top: -1px;
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+      margin-top: 0px;
+    }
+    // ONE
+    &:nth-child(5n - 4) {
+      left: 62px;
+    }
+    // TWO
+    &:nth-child(5n - 3) {
+      z-index: 2;
+      left: 31px;
+    }
+    // THREE
+    &:nth-child(5n - 2) {
+      z-index: 3;
+    }
+    // FOUR
+    &:nth-child(5n - 1) {
+      z-index: 4;
+      right: 31px;
+    }
+    // FIVE
+    &:nth-child(5n) {
+      z-index: 5;
+      right: 62px;
+    }
+  }
 }
