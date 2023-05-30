@@ -56,24 +56,24 @@ const EventsAndProgramsDetail = ({ seoAPI, footerAPI }) => {
           <div className="w-full flex flex-col mt-20 mx-auto max-w-4xl">
             <div className="w-full flex gap-8">
               <div className="w-[30%]" />
-              <span className="w-[70%] font-funkturm text-[2.813rem] text-[#BEC29D]">
+              <span className="w-[70%] font-funkturm text-d-additionalHeader text-[#BEC29D]">
                 LOREM IPSUM
               </span>
             </div>
             <div className="w-full flex gap-8 mt-8">
               <div className="w-[30%] flex flex-col gap-3">
                 <div className="w-full flex flex-col gap-3 text-white">
-                  <span className="text-[1.25rem]">
+                  <span className="text-d-body">
                     VENUE:
                     <br />
                     LOREM IPSUM
                   </span>
-                  <span className="text-[1.25rem]">
+                  <span className="text-d-body">
                     DATE:
                     <br />
                     10 OCT 2023
                   </span>
-                  <span className="text-[1.25rem]">
+                  <span className="text-d-body">
                     TIME:
                     <br />
                     07.00 - FINISH
@@ -83,7 +83,7 @@ const EventsAndProgramsDetail = ({ seoAPI, footerAPI }) => {
                   Register Now
                 </FancyLink>
               </div>
-              <p className="w-[70%] text-white text-[1.25rem]">
+              <p className="w-[70%] text-white text-d-body">
                 Lorem ipsum dolor sit amet, consectet elit. Proin nec massa
                 viverra, aliquet dui ac, gravida magna. Lorem ipsum dolor sit
                 amet, dolor sit amet consectetur adipiscing elit. Proin nec

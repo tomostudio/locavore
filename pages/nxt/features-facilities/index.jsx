@@ -18,7 +18,7 @@ import feature1 from '@/public/nxt2/features/feature1.png'
 import feature2 from '@/public/nxt2/features/feature2.png'
 import feature3 from '@/public/nxt2/features/feature3.png'
 import feature4 from '@/public/nxt2/features/feature4.png'
-import NxtNavigation from '@/components/utils/nxtNavigation'
+import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
 
 const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -54,10 +54,10 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
       >
         <HeaderGap />
         <Container className="flex flex-col items-center mt-44">
-          <h1 className="text-[#BEC29D] font-funkturm text-[4.688rem] m-0">
+          <h1 className="text-[#BEC29D] font-funkturm text-d-header m-0">
             FEATURES & FACILITIES
           </h1>
-          <div className="mt-6 text-[#BEC29D] text-[1.25rem]">
+          <div className="mt-6 text-[#BEC29D] text-d-body">
             <button
               onClick={() => {
                 if (
@@ -98,63 +98,63 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
         <div id="grid-view" className="hidden w-full my-20">
           <div className="w-full flex flex-wrap">
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className=" font-medium text-[1.25rem]">LOCALAB</span>
+              <span className=" font-medium text-d-body">LOCALAB</span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">
+              <span className="text-white font-medium text-d-body">
                 DISTILLERY
               </span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">
+              <span className="text-white font-medium text-d-body">
                 FOOD FOREST
               </span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">BAR</span>
+              <span className="text-white font-medium text-d-body">BAR</span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">
+              <span className="text-white font-medium text-d-body">
                 CANTEEN
               </span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">
+              <span className="text-white font-medium text-d-body">
                 DINING RESTAURANT
               </span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">
+              <span className="text-white font-medium text-d-body">
                 MUSHROOM CHAMBER
               </span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">
+              <span className="text-white font-medium text-d-body">
                 ALGAE CULTURE
               </span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">
+              <span className="text-white font-medium text-d-body">
                 BASEMENT
               </span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">
+              <span className="text-white font-medium text-d-body">
                 CONCEPT STORE
               </span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">
+              <span className="text-white font-medium text-d-body">
                 GALLERY
               </span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">
+              <span className="text-white font-medium text-d-body">
                 GARDENS
               </span>
             </FancyLink>
             <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
-              <span className="text-white font-medium text-[1.25rem]">
+              <span className="text-white font-medium text-d-body">
                 AUDITORIUM
               </span>
             </FancyLink>
@@ -319,7 +319,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             </div>
           </SwiperSlide>
         </Swiper>
-        <NxtNavigation focus="features" />
+        <NxtNavigationDesktop focus="features" />
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

@@ -75,7 +75,7 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
               <div className="w-full h-screen" />
             </div>
             <div className="w-full h-screen sticky top-0 left-0 setflex-center">
-              <h1 className="text-[2.813rem] m-0 text-[#BEC29D] font-funkturm">
+              <h1 className="text-d-additionalHeader m-0 text-[#BEC29D] font-funkturm">
                 DISTILLERY
               </h1>
               <div className="relative w-[165px] h-[165px] my-16">
@@ -86,7 +86,7 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
                   style={{ objectFit: 'contain' }}
                 />
               </div>
-              <p className="text-center text-[1.25rem] text-white max-w-sm">
+              <p className="text-center text-d-body text-white max-w-sm">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy
                 text ever since the 1500s, when an unknown printer took a galley

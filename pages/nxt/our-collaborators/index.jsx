@@ -13,7 +13,7 @@ import FancyLink from '@/components/utils/fancyLink'
 import hero from '@/public/nxt2/collab/hero.png'
 import card1 from '@/public/nxt2/collab/card1.png'
 import card_bnw1 from '@/public/nxt2/collab/card_bnw1.png'
-import NxtNavigation from '@/components/utils/nxtNavigation'
+import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
 
 const OurCollaborators = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -51,7 +51,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
           <div className="relative w-full h-[350px] flex items-end justify-center">
             <Image src={hero} alt="" fill style={{ objectFit: 'cover' }} />
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
-            <h1 className="relative text-[4.688rem] text-[#BEC29D] font-funkturm mb-14">
+            <h1 className="relative text-d-header text-[#BEC29D] font-funkturm mb-14">
               OUR COLLABORATORS
             </h1>
           </div>
@@ -249,7 +249,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
             VIEW ALL EVENTS & PROGRAMS
           </FancyLink>
         </div>
-        <NxtNavigation focus="collab" />
+        <NxtNavigationDesktop focus="collab" />
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

@@ -17,7 +17,7 @@ export const Section4ComponentInner = () => {
           id="section4_title"
           className="relative w-full h-full setflex-center-row opacity-0"
         >
-          <span className="text-[#BEC29D] text-center font-funkturm text-[7.5rem] leading-full">
+          <span className="text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full">
             OUR
             <br />
             COLLABORATORS

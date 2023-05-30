@@ -15,14 +15,14 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
           <div className="relative w-full h-screen">
             <Container className="relative w-full h-full z-10 setflex-center">
-              <span className="text-black text-center font-funkturm text-[7.5rem] leading-full">
+              <span className="text-black text-center font-funkturm text-d-additionalTitle leading-full">
                 FEATURES <br />&<br /> FACILITIES
               </span>
             </Container>
             <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-20">
               <FancyLink
                 id="btn-features"
-                className={`opacity-0 w-fit p-4 text-[0.875rem] text-black bg-white bg-opacity-80 font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-black rounded-xl`}
+                className={`opacity-0 w-fit p-4 text-d-small text-black bg-white bg-opacity-80 font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-black rounded-xl`}
               >
                 OUR FEATURES & FACILITIES
               </FancyLink>

@@ -20,11 +20,11 @@ export const Section2Option2ComponentInner = () => {
               <span className="text-[1.875rem] text-[#BEC29D]">
                 WHAT’S ON LOCAVORE
               </span>
-              <p className="text-[7.5rem] text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
+              <p className="text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
                 A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
               </p>
               <FancyLink
-                className={`w-fit p-4 text-[0.875rem] text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                className={`w-fit p-4 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
               >
                 VIEW MENU
               </FancyLink>

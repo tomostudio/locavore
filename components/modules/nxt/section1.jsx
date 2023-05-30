@@ -97,11 +97,11 @@ export const Section1ComponentInner = () => {
             }}
             className="w-full flex flex-col items-center mt-12 px-24"
           >
-            <p className="text-[#BEC29D] font-funkturm text-[2.813rem] text-center leading-[120%]">
+            <p className="text-[#BEC29D] font-funkturm text-d-additionalHeader text-center leading-[120%]">
               Locavore NXT is Lorem ipsum dolor sit amet, consectetur adipiscing
               elit. Proin nec massa viverra, aliquet dui ac.
             </p>
-            <div className="mt-4 text-[#BEC29D] text-[1.25rem]">
+            <div className="mt-4 text-[#BEC29D] text-d-body">
               <span className="mr-4">Lorem ipsum</span>•
               <span className="ml-4 font-serif italic font-medium">
                 March 2022

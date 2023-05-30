@@ -18,6 +18,18 @@ module.exports = {
       2: 1,
     },
     extend: {
+      fontSize: {
+        "d-additionalHeader": "2.813rem",
+        "d-additionalTitle": "7.5rem",
+        "d-heading": "7.5rem",
+        "d-title": "3.75rem",
+        "d-body": "1.25rem",
+        "d-additionalText": "1.25rem",
+        "d-small": "0.875rem",
+        "d-subheading": "4.063rem",
+        "d-caption": "1.063rem",
+        "d-header": "4.688rem",
+      },
       lineHeight: {
         full: "100%",
       },

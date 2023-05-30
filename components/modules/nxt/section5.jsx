@@ -18,14 +18,14 @@ export const Section5ComponentInner = () => {
             <div className="absolute top-7 right-7 w-4 h-4 bg-white rounded-50%" />
             <div className="absolute bottom-7 left-7 w-4 h-4 bg-white rounded-50%" />
             <div className="absolute bottom-7 right-7 w-4 h-4 bg-white rounded-50%" />
-            <span className="text-[#BEC29D] text-center font-funkturm text-[7.5rem] leading-full">
+            <span className="text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full">
               WHAT'S ON?
             </span>
             <div className="w-full my-16 grid grid-cols-3 gap-8">
               <div
                 className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
               >
-                <span className="text-[1.25rem]">10 OCTOBER 2023</span>
+                <span className="text-d-body">10 OCTOBER 2023</span>
                 <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                   <Image src={card_bnw} className="group-hover:hidden" />
                   <Image src={card} className="hidden group-hover:block" />
@@ -33,7 +33,7 @@ export const Section5ComponentInner = () => {
                 <span className="font-bold text-[1.875rem] leading-[32px]">
                   Event Title
                 </span>
-                <p className="text-[0.875rem] mt-1">
+                <p className="text-d-small mt-1">
                   Lorem ispum dolor sit amet, consecteur des adispacing dolor
                   sit amet.
                 </p>
@@ -41,7 +41,7 @@ export const Section5ComponentInner = () => {
               <div
                 className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
               >
-                <span className="text-[1.25rem]">10 OCTOBER 2023</span>
+                <span className="text-d-body">10 OCTOBER 2023</span>
                 <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                   <Image src={card_bnw} className="group-hover:hidden" />
                   <Image src={card} className="hidden group-hover:block" />
@@ -49,7 +49,7 @@ export const Section5ComponentInner = () => {
                 <span className="font-bold text-[1.875rem] leading-[32px]">
                   Event Title
                 </span>
-                <p className="text-[0.875rem] mt-1">
+                <p className="text-d-small mt-1">
                   Lorem ispum dolor sit amet, consecteur des adispacing dolor
                   sit amet.
                 </p>
@@ -57,7 +57,7 @@ export const Section5ComponentInner = () => {
               <div
                 className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
               >
-                <span className="text-[1.25rem]">10 OCTOBER 2023</span>
+                <span className="text-d-body">10 OCTOBER 2023</span>
                 <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                   <Image src={card_bnw} className="group-hover:hidden" />
                   <Image src={card} className="hidden group-hover:block" />
@@ -65,14 +65,14 @@ export const Section5ComponentInner = () => {
                 <span className="font-bold text-[1.875rem] leading-[32px]">
                   Event Title
                 </span>
-                <p className="text-[0.875rem] mt-1">
+                <p className="text-d-small mt-1">
                   Lorem ispum dolor sit amet, consecteur des adispacing dolor
                   sit amet.
                 </p>
               </div>
             </div>
             <FancyLink
-              className={`w-fit p-4 text-[0.875rem] text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              className={`w-fit p-4 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
             >
               VIEW ALL EVENTS & PROGRAMS
             </FancyLink>

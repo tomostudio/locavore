@@ -53,14 +53,14 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
           <div className="w-full h-full">
             <HeaderGap />
             <div className="w-full h-full flex flex-col text-black my-20">
-              <h1 className="font-funkturm text-[2.813rem]">Lorem Ipsum</h1>
+              <h1 className="font-funkturm text-d-additionalHeader">Lorem Ipsum</h1>
               <div className="w-full">
                 <span className="italic font-medium font-serif text-[1.375rem] mr-1">
                   Creative Director
                 </span>
-                —<span className="text-[1.25rem] ml-1">Jakarta, Indonesia</span>
+                —<span className="text-d-body ml-1">Jakarta, Indonesia</span>
               </div>
-              <p className="mt-24 text-[1.25rem]">
+              <p className="mt-24 text-d-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
                 nec massa viverra, aliquet dui ac, gravida magna. Lorem ipsum
                 dolor sit amet, dolor consectetur adipiscing elit. Proin nec
