@@ -49,18 +49,18 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
         variants={fade}
         className="no-select-all bg-[#C2C2C2]"
       >
-        <Container className="relative h-full flex gap-36">
+        <Container className="relative h-full flex flex-col-reverse md:flex-row md:gap-36">
           <div className="w-full h-full">
-            <HeaderGap />
-            <div className="w-full h-full flex flex-col text-black my-20">
-              <h1 className="font-funkturm text-d-additionalHeader">Lorem Ipsum</h1>
-              <div className="w-full">
-                <span className="italic font-medium font-serif text-[1.375rem] mr-1">
+            <HeaderGap className='hidden md:block'/>
+            <div className="w-full h-full flex flex-col text-black mt-12 md:my-20">
+              <h1 className="font-funkturm m-0 md:mb-2 text-m-additionalHeader md:text-d-additionalHeader">Lorem Ipsum</h1>
+              <div className="w-full text-m-small md:text-[1.375rem]">
+                <span className="italic font-medium font-serif mr-1">
                   Creative Director
                 </span>
-                —<span className="text-d-body ml-1">Jakarta, Indonesia</span>
+                —<span className="ml-1">Jakarta, Indonesia</span>
               </div>
-              <p className="mt-24 text-d-body">
+              <p className="mt-10 md:mt-24 text-m-body md:text-d-body">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
                 nec massa viverra, aliquet dui ac, gravida magna. Lorem ipsum
                 dolor sit amet, dolor consectetur adipiscing elit. Proin nec
@@ -98,9 +98,9 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
               </p>
             </div>
           </div>
-          <div className="sticky top-0 left-0 w-full h-screen flex flex-col">
+          <div className="md:sticky top-0 left-0 w-full md:h-screen flex flex-col">
             <HeaderGap />
-            <div className="w-full h-full my-20">
+            <div className="w-full h-[421px] mt-8 md:my-20">
               <div className="relative w-full h-full rounded-lg overflow-hidden">
                 <Image
                   src={detail}

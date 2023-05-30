@@ -48,10 +48,10 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
         className="no-select-all bg-black"
       >
         <div className="relative w-full h-full setflex-center">
-          <div className="relative w-full h-[350px] flex items-end justify-center">
+          <div className="relative w-full h-[350px] flex items-center md:items-end justify-center">
             <Image src={hero} alt="" fill style={{ objectFit: 'cover' }} />
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
-            <h1 className="relative text-d-header text-[#BEC29D] font-funkturm mb-14">
+            <h1 className="relative text-m-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
               OUR COLLABORATORS
             </h1>
           </div>
@@ -78,7 +78,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
                       className="hidden group-hover:block"
                     />
                   </div>
-                  <span className="text-[0.875rem] writing-mode-vertical text-left">
+                  <span className="text-d-small writing-mode-vertical text-left">
                     JAKARTA, INDONESIA
                   </span>
                 </div>
@@ -109,7 +109,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
                       className="hidden group-hover:block"
                     />
                   </div>
-                  <span className="text-[0.875rem] writing-mode-vertical text-left">
+                  <span className="text-d-small writing-mode-vertical text-left">
                     JAKARTA, INDONESIA
                   </span>
                 </div>
@@ -140,7 +140,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
                       className="hidden group-hover:block"
                     />
                   </div>
-                  <span className="text-[0.875rem] writing-mode-vertical text-left">
+                  <span className="text-d-small writing-mode-vertical text-left">
                     JAKARTA, INDONESIA
                   </span>
                 </div>
@@ -171,7 +171,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
                       className="hidden group-hover:block"
                     />
                   </div>
-                  <span className="text-[0.875rem] writing-mode-vertical text-left">
+                  <span className="text-d-small writing-mode-vertical text-left">
                     JAKARTA, INDONESIA
                   </span>
                 </div>
@@ -202,7 +202,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
                       className="hidden group-hover:block"
                     />
                   </div>
-                  <span className="text-[0.875rem] writing-mode-vertical text-left">
+                  <span className="text-d-small writing-mode-vertical text-left">
                     JAKARTA, INDONESIA
                   </span>
                 </div>
@@ -233,7 +233,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
                       className="hidden group-hover:block"
                     />
                   </div>
-                  <span className="text-[0.875rem] writing-mode-vertical text-left">
+                  <span className="text-d-small writing-mode-vertical text-left">
                     JAKARTA, INDONESIA
                   </span>
                 </div>
@@ -244,7 +244,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
             </FancyLink>
           </div>
           <FancyLink
-            className={`w-fit p-4 text-[0.875rem] mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+            className={`w-fit p-4 text-d-small mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
           >
             VIEW ALL EVENTS & PROGRAMS
           </FancyLink>
