@@ -47,21 +47,21 @@ const Menu = ({ seoAPI, footerAPI }) => {
         variants={fade}
         className="no-select-all bg-black"
       >
-        <div className="relative w-full h-[500px] flex items-end">
+        <div className="relative w-full h-[500px] flex items-center md:items-end">
           <Image src={menu_hero} alt="" fill style={{ objectFit: 'cover' }} />
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
-          <div className="relative z-10 mb-16 w-full setflex-center max-w-5xl px-10 max-md:px-5 mx-auto text-white">
-            <h1 className="m-0 font-funkturm text-d-additionalTitle">ARTEFACTS</h1>
-            <span className="mt-2 text-[1.875rem]">LOCAVORE NXT Q1 2023</span>
+          <div className="relative z-10 md:mb-16 w-full setflex-center max-w-5xl px-10 max-md:px-5 mx-auto text-white">
+            <h1 className="m-0 font-funkturm text-m-additionalTitle md:text-d-additionalTitle">ARTEFACTS</h1>
+            <span className="mt-2 text-[1.125rem] md:text-[1.875rem]">LOCAVORE NXT Q1 2023</span>
           </div>
         </div>
         <div className="w-full h-full bg-black">
           <Container className="bg-black flex flex-col">
             <div className="max-w-4xl px-10 max-md:px-5 mx-auto my-24 flex flex-col items-center space-y-20 text-white">
-              <span className="block text-d-header text-center leading-[120%]">
+              <span className="block text-[2.125rem] md:text-d-header text-center leading-[120%]">
                 A History of Locavore in 50 Edible Ideas
               </span>
-              <div className="relative w-[165px] h-[165px]">
+              <div className="relative w-[130px] md:w-[165px] h-[130px] md:h-[165px]">
                 <Image
                   src={leaf}
                   alt=""
@@ -69,7 +69,7 @@ const Menu = ({ seoAPI, footerAPI }) => {
                   style={{ objectFit: 'contain' }}
                 />
               </div>
-              <p>
+              <p className='text-m-body md:text-d-body'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
                 nec massa viverra, aliquet dui ac, gravida magna. Lorem ipsum
                 dolor sit amet, dolor consectetur adipiscing elit. Proin nec

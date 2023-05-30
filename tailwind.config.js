@@ -29,6 +29,15 @@ module.exports = {
         "d-subheading": "4.063rem",
         "d-caption": "1.063rem",
         "d-header": "4.688rem",
+        "m-heading": "3.125rem",
+        "m-body": "0.875rem",
+        "m-title": "1.5rem",
+        "m-additionalText": "0.875rem",
+        "m-small": "0.875rem",
+        "m-subheading": "1.875rem",
+        "m-header": "2.188rem",
+        "m-additionalTitle": "3.125rem",
+        "m-additionalHeader": "1.563rem"
       },
       lineHeight: {
         full: "100%",
