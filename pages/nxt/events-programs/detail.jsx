@@ -49,41 +49,46 @@ const EventsAndProgramsDetail = ({ seoAPI, footerAPI }) => {
         className="no-select-all bg-black"
       >
         <HeaderGap />
-        <Container className="relative flex flex-col my-20">
-          <div className="relative w-full h-[450px] rounded-lg overflow-hidden">
+        <Container className="relative flex flex-col mt-6 mb-10 md:my-20">
+          <div className="relative w-full h-[422px] md:h-[450px] rounded-lg overflow-hidden">
             <Image src={detail} alt="" fill style={{ objectFit: 'cover' }} />
           </div>
           <div className="w-full flex flex-col mt-20 mx-auto max-w-4xl">
             <div className="w-full flex gap-8">
-              <div className="w-[30%]" />
-              <span className="w-[70%] font-funkturm text-d-additionalHeader text-[#BEC29D]">
+              <div className="hidden md:block w-[30%]" />
+              <span className="w-full md:w-[70%] text-center md:text-left font-funkturm text-d-additionalHeader text-[#BEC29D]">
                 LOREM IPSUM
               </span>
             </div>
-            <div className="w-full flex gap-8 mt-8">
-              <div className="w-[30%] flex flex-col gap-3">
-                <div className="w-full flex flex-col gap-3 text-white">
-                  <span className="text-d-body">
+            <div className="w-full flex flex-col md:flex-row gap-8 mt-8">
+              <div className="w-full md:w-[30%] flex flex-col gap-3">
+                <div className="w-full grid grid-flow-col-dense grid-rows-2 md:flex md:flex-col gap-4 md:gap-3 text-white text-m-body md:text-d-body text-center md:text-left">
+                  <span>
                     VENUE:
                     <br />
                     LOREM IPSUM
                   </span>
-                  <span className="text-d-body">
+                  <span>
                     DATE:
                     <br />
                     10 OCT 2023
                   </span>
-                  <span className="text-d-body">
+                  <span>
+                    LOCATION:
+                    <br />
+                    LOREM IPSUM
+                  </span>
+                  <span>
                     TIME:
                     <br />
                     07.00 - FINISH
                   </span>
                 </div>
-                <FancyLink className="font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.375rem] w-fit transtion-all duration-300 hover:opacity-30">
+                <FancyLink className="hidden md:block font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.375rem] w-fit transtion-all duration-300 hover:opacity-30">
                   Register Now
                 </FancyLink>
               </div>
-              <p className="w-[70%] text-white text-d-body">
+              <p className="w-full md:w-[70%] text-white text-m-body md:text-d-body">
                 Lorem ipsum dolor sit amet, consectet elit. Proin nec massa
                 viverra, aliquet dui ac, gravida magna. Lorem ipsum dolor sit
                 amet, dolor sit amet consectetur adipiscing elit. Proin nec
@@ -104,6 +109,9 @@ const EventsAndProgramsDetail = ({ seoAPI, footerAPI }) => {
                 amet, dolor sit amet consectetur adipiscing elit. Proin nec
                 massa dolor viverra, aliquet dui ac, amett gravida magna.
               </p>
+              <FancyLink className="md:hidden mx-auto font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1rem] w-fit transtion-all duration-300 hover:opacity-30">
+                Register Now
+              </FancyLink>
             </div>
           </div>
         </Container>

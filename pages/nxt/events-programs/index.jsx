@@ -49,101 +49,87 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
         className="no-select-all bg-black"
       >
         <div className="relative w-full h-full setflex-center">
-          <div className="relative w-full h-[350px] flex items-end justify-center">
+          <div className="relative w-full h-[350px] flex items-center md:items-end justify-center">
             <Image src={hero} alt="" fill style={{ objectFit: 'cover' }} />
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
-            <h1 className="relative text-d-header text-[#BEC29D] font-funkturm mb-14">
+            <h1 className="relative text-m-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
               EVENTS & PROGRAMS
             </h1>
           </div>
-          <Container className="w-full h-full flex flex-wrap mt-20 mb-16 gap-8">
-            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
-              <span className="text-d-body">10 OCTOBER 2023</span>
+          <Container className="w-full h-full flex flex-col md:flex-row md:flex-wrap mt-20 mb-10 md:mb-16 gap-8">
+            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
+              <span className="text-m-body md:text-d-body">10 OCTOBER 2023</span>
               <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                 <Image src={card_bnw} className="group-hover:hidden" />
                 <Image src={card} className="hidden group-hover:block" />
               </div>
-              <span className="font-bold text-[1.875rem] leading-[32px]">
+              <span className="font-bold text-[1.25rem] md:text-[1.875rem] leading-[32px]">
                 Event Title
               </span>
-              <p className="text-d-small mt-1 text-left">
+              <p className="text-m-small md:text-d-small mt-1 text-left">
                 Lorem ispum dolor sit amet, consecteur des adispacing dolor sit
                 amet.
               </p>
             </FancyLink>
-            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
-              <span className="text-d-body">10 OCTOBER 2023</span>
+            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
+              <span className="text-m-body md:text-d-body">10 OCTOBER 2023</span>
               <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                 <Image src={card_bnw} className="group-hover:hidden" />
                 <Image src={card} className="hidden group-hover:block" />
               </div>
-              <span className="font-bold text-[1.875rem] leading-[32px]">
+              <span className="font-bold text-[1.25rem] md:text-[1.875rem] leading-[32px]">
                 Event Title
               </span>
-              <p className="text-d-small mt-1 text-left">
+              <p className="text-m-small md:text-d-small mt-1 text-left">
                 Lorem ispum dolor sit amet, consecteur des adispacing dolor sit
                 amet.
               </p>
             </FancyLink>
-            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
-              <span className="text-d-body">10 OCTOBER 2023</span>
+            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
+              <span className="text-m-body md:text-d-body">10 OCTOBER 2023</span>
               <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                 <Image src={card_bnw} className="group-hover:hidden" />
                 <Image src={card} className="hidden group-hover:block" />
               </div>
-              <span className="font-bold text-[1.875rem] leading-[32px]">
+              <span className="font-bold text-[1.25rem] md:text-[1.875rem] leading-[32px]">
                 Event Title
               </span>
-              <p className="text-d-small mt-1 text-left">
+              <p className="text-m-small md:text-d-small mt-1 text-left">
                 Lorem ispum dolor sit amet, consecteur des adispacing dolor sit
                 amet.
               </p>
             </FancyLink>
-            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
-              <span className="text-d-body">10 OCTOBER 2023</span>
+            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
+              <span className="text-m-body md:text-d-body">10 OCTOBER 2023</span>
               <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                 <Image src={card_bnw} className="group-hover:hidden" />
                 <Image src={card} className="hidden group-hover:block" />
               </div>
-              <span className="font-bold text-[1.875rem] leading-[32px]">
+              <span className="font-bold text-[1.25rem] md:text-[1.875rem] leading-[32px]">
                 Event Title
               </span>
-              <p className="text-d-small mt-1 text-left">
+              <p className="text-m-small md:text-d-small mt-1 text-left">
                 Lorem ispum dolor sit amet, consecteur des adispacing dolor sit
                 amet.
               </p>
             </FancyLink>
-            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
-              <span className="text-d-body">10 OCTOBER 2023</span>
+            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
+              <span className="text-m-body md:text-d-body">10 OCTOBER 2023</span>
               <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                 <Image src={card_bnw} className="group-hover:hidden" />
                 <Image src={card} className="hidden group-hover:block" />
               </div>
-              <span className="font-bold text-[1.875rem] leading-[32px]">
+              <span className="font-bold text-[1.25rem] md:text-[1.875rem] leading-[32px]">
                 Event Title
               </span>
-              <p className="text-d-small mt-1 text-left">
-                Lorem ispum dolor sit amet, consecteur des adispacing dolor sit
-                amet.
-              </p>
-            </FancyLink>
-            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
-              <span className="text-d-body">10 OCTOBER 2023</span>
-              <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
-                <Image src={card_bnw} className="group-hover:hidden" />
-                <Image src={card} className="hidden group-hover:block" />
-              </div>
-              <span className="font-bold text-[1.875rem] leading-[32px]">
-                Event Title
-              </span>
-              <p className="text-d-small mt-1 text-left">
+              <p className="text-m-small md:text-d-small mt-1 text-left">
                 Lorem ispum dolor sit amet, consecteur des adispacing dolor sit
                 amet.
               </p>
             </FancyLink>
           </Container>
           <FancyLink
-            className={`w-fit p-4 text-d-small mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+            className={`w-fit p-4 text-m-small md:text-d-small mb-10 md:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
           >
             VIEW MORE
           </FancyLink>
