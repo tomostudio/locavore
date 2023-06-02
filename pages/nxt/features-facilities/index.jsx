@@ -27,6 +27,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
   const [footer] = footerAPI
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',
     })
@@ -97,63 +98,63 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
         </Container>
         <div id="grid-view" className="hidden w-full my-20">
           <div className="w-full flex flex-wrap">
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className=" font-medium text-d-body">LOCALAB</span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">
                 DISTILLERY
               </span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">
                 FOOD FOREST
               </span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">BAR</span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">
                 CANTEEN
               </span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">
                 DINING RESTAURANT
               </span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">
                 MUSHROOM CHAMBER
               </span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">
                 ALGAE CULTURE
               </span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">
                 BASEMENT
               </span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">
                 CONCEPT STORE
               </span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">
                 GALLERY
               </span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">
                 GARDENS
               </span>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
+            <FancyLink destination="/nxt/features-facilities/detail" className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black">
               <span className="text-white font-medium text-d-body">
                 AUDITORIUM
               </span>

@@ -9,14 +9,6 @@ const NxtNavigationDesktop = ({ focus = 'nxt' }) => {
       className="sticky bottom-10 z-10 mb-10 mx-auto flex flex-wrap text-black text-d-small"
     >
       <FancyLink
-        destination="/nxt"
-        className={`relative ${
-          focus === 'nxt' ? 'bg-[#BEC29D]' : 'bg-white'
-        } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
-      >
-        NXT
-      </FancyLink>
-      <FancyLink
         destination="/nxt/menu"
         className={`relative z-10 ${
           focus === 'menu' ? 'bg-[#BEC29D]' : 'bg-white'

@@ -8,6 +8,7 @@ import collab1 from '@/public/nxt2/collab1.png'
 import collab2 from '@/public/nxt2/collab2.png'
 import collab3 from '@/public/nxt2/collab3.png'
 import collab4 from '@/public/nxt2/collab4.png'
+import FancyLink from '@/components/utils/fancyLink'
 
 export const Section4ComponentInner = () => {
   return (
@@ -148,6 +149,12 @@ export const Section4ComponentInner = () => {
                 </div>
               </div>
             </Marquee>
+            <FancyLink
+              className={`w-fit p-4 mt-14 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              destination="/nxt/our-collaborators"
+            >
+              VIEW ALL COLLABORATORS
+            </FancyLink>
           </div>
         </div>
       </div>

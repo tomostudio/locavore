@@ -23,6 +23,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
   const [footer] = footerAPI
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',
     })
@@ -57,7 +58,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
             </h1>
           </div>
           <Container className="w-full h-full flex flex-col md:flex-row md:flex-wrap mt-20 mb-10 md:mb-16 gap-8">
-            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
+            <FancyLink destination="/nxt/events-programs/detail" className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
               <span className="text-m-body md:text-d-body">10 OCTOBER 2023</span>
               <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                 <Image src={card_bnw} className="group-hover:hidden" />
@@ -71,7 +72,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
                 amet.
               </p>
             </FancyLink>
-            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
+            <FancyLink destination="/nxt/events-programs/detail" className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
               <span className="text-m-body md:text-d-body">10 OCTOBER 2023</span>
               <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                 <Image src={card_bnw} className="group-hover:hidden" />
@@ -85,7 +86,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
                 amet.
               </p>
             </FancyLink>
-            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
+            <FancyLink destination="/nxt/events-programs/detail" className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
               <span className="text-m-body md:text-d-body">10 OCTOBER 2023</span>
               <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                 <Image src={card_bnw} className="group-hover:hidden" />
@@ -99,7 +100,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
                 amet.
               </p>
             </FancyLink>
-            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
+            <FancyLink destination="/nxt/events-programs/detail" className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
               <span className="text-m-body md:text-d-body">10 OCTOBER 2023</span>
               <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                 <Image src={card_bnw} className="group-hover:hidden" />
@@ -113,7 +114,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
                 amet.
               </p>
             </FancyLink>
-            <FancyLink className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
+            <FancyLink destination="/nxt/events-programs/detail" className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white">
               <span className="text-m-body md:text-d-body">10 OCTOBER 2023</span>
               <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                 <Image src={card_bnw} className="group-hover:hidden" />

@@ -70,6 +70,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',
     })

@@ -22,6 +22,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
   const [footer] = footerAPI
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',
     })
@@ -56,7 +57,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
             </h1>
           </div>
           <div className="w-full h-full flex flex-wrap mt-20 mb-16">
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
+            <FancyLink destination="/nxt/our-collaborators/detail" className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
               <div className="h-full flex flex-col">
                 <span className="italic font-serif text-[1.375rem] text-left mb-1">
                   Work Role
@@ -87,7 +88,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
                 </span>
               </div>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
+            <FancyLink destination="/nxt/our-collaborators/detail" className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
               <div className="h-full flex flex-col">
                 <span className="italic font-serif text-[1.375rem] text-left mb-1">
                   Work Role
@@ -118,7 +119,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
                 </span>
               </div>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
+            <FancyLink destination="/nxt/our-collaborators/detail" className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
               <div className="h-full flex flex-col">
                 <span className="italic font-serif text-[1.375rem] text-left mb-1">
                   Work Role
@@ -149,7 +150,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
                 </span>
               </div>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
+            <FancyLink destination="/nxt/our-collaborators/detail" className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
               <div className="h-full flex flex-col">
                 <span className="italic font-serif text-[1.375rem] text-left mb-1">
                   Work Role
@@ -180,7 +181,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
                 </span>
               </div>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
+            <FancyLink destination="/nxt/our-collaborators/detail" className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
               <div className="h-full flex flex-col">
                 <span className="italic font-serif text-[1.375rem] text-left mb-1">
                   Work Role
@@ -211,7 +212,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
                 </span>
               </div>
             </FancyLink>
-            <FancyLink className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
+            <FancyLink destination="/nxt/our-collaborators/detail" className="w-[calc(100%/3)] border-y border-r border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]">
               <div className="h-full flex flex-col">
                 <span className="italic font-serif text-[1.375rem] text-left mb-1">
                   Work Role
@@ -246,7 +247,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
           <FancyLink
             className={`w-fit p-4 text-d-small mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
           >
-            VIEW ALL EVENTS & PROGRAMS
+            VIEW MORE
           </FancyLink>
         </div>
         <NxtNavigationDesktop focus="collab" />

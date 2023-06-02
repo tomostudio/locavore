@@ -30,6 +30,7 @@ export const Section2Option1ComponentInner = () => {
               </p>
               <FancyLink
                 className={`w-fit p-4 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                destination="/nxt/menu"
               >
                 VIEW MENU
               </FancyLink>
