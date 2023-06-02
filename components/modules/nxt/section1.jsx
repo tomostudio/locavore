@@ -27,7 +27,7 @@ export const Section1ComponentInner = () => {
             opacity: 0.5,
             transition: {
               duration: 1,
-              delay: 1,
+              delay: 2,
             },
           },
           exit: {
