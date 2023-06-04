@@ -7,6 +7,11 @@ import { useAppContext } from 'context/state'
 
 // IMPORT LOCAL IMAGE
 import building from '@/public/nxt2/building.png'
+import lower_ground from '@/public/nxt/lower-ground.webp'
+import ground from '@/public/nxt/ground.webp'
+import firstFloor from '@/public/nxt/1st-floor.webp'
+import secondFloor from '@/public/nxt/2nd-floor.webp'
+import tunnel from '@/public/nxt/tunnel.webp'
 
 export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   return (
@@ -28,19 +33,43 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
                 OUR FEATURES & FACILITIES
               </FancyLink>
             </div>
-            <div
+            <Container
               id="building"
               className="absolute top-0 left-1/2 translate-y-[100vh] -translate-x-1/2 w-full h-[95vh] z-10"
             >
               <div className="relative w-full h-full">
-                <Image
-                  src={building}
-                  alt=""
-                  fill
-                  style={{ objectFit: 'contain' }}
-                />
+                <div
+                  id="tunnel"
+                  className="absolute w-[100%] z-40 top-1/2  translate-y-[-95%]"
+                >
+                  <Image src={tunnel} alt="" />
+                </div>
+                <div
+                  id="second_floor"
+                  className="absolute w-[100%] z-30 top-1/2  translate-y-[-87%]"
+                >
+                  <Image src={secondFloor} alt="" />
+                </div>
+                <div
+                  id="first_floor"
+                  className="absolute w-[100%] z-20 top-1/2  translate-y-[-62%]"
+                >
+                  <Image src={firstFloor} alt="" />
+                </div>
+                <div
+                  id="ground"
+                  className="absolute w-[100%]  z-10 top-1/2  translate-y-[-30%]"
+                >
+                  <Image src={ground} alt="" />
+                </div>
+                <div
+                  id="lower_ground"
+                  className="absolute w-[100%]  top-1/2 translate-y-[-5%]"
+                >
+                  <Image src={lower_ground} alt="" />
+                </div>
               </div>
-            </div>
+            </Container>
             <div
               id="bg-white-scale"
               className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[125%] h-[170%] clip-path-circle-[0%] rounded-50% bg-white"
@@ -49,7 +78,8 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         </div>
         <div id="enter-bg-white-scale" className="h-[100vh]" />
         <div id="enter-building" className="h-[100vh]" />
-        <div className="h-[25vh]" />
+        <div id="enter-restructure-building" className="h-[100vh]" />
+        <div className="h-[50vh]" />
       </div>
       <div className="w-full h-[35vh]" />
     </section>
@@ -108,7 +138,7 @@ export const Section3AnimationOBJ = () => {
           id: id,
           trigger: document.querySelector('#enter-bg-white-scale'), // which section will be tracked as the scroll trigger
           scrub: 0.5,
-          start: 'top 90%',
+          start: 'top 60%',
           end: 'bottom 100%',
         },
       }
@@ -151,6 +181,186 @@ export const Section3AnimationOBJ = () => {
             {
               top: '50%',
               y: '-50%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // TUNNEL ENTER
+    () => {
+      const id = 'tunnel-enter' // animation id
+      const elem = document.querySelector('#tunnel')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-restructure-building'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 100%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              y: '-95%',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              y: '-41.1%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // ENTER SECOND FLOOR
+    () => {
+      const id = 'enter_second_floor' // animation id
+      const elem = document.querySelector('#second_floor')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-restructure-building'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 100%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              y: '-87%',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              y: '-41.2%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // ENTER FIRST FLOOR
+    () => {
+      const id = 'enter_first_floor' // animation id
+      const elem = document.querySelector('#first_floor')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-restructure-building'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 100%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              y: '-62%',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              y: '-42.5%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // ENTER GROUND
+    () => {
+      const id = 'enter_ground' // animation id
+      const elem = document.querySelector('#ground')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-restructure-building'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 100%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              y: '-30%',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              y: '-45%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // ENTER LOWER GROUND
+    () => {
+      const id = 'enter_lower_round' // animation id
+      const elem = document.querySelector('#lower_ground')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-restructure-building'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 100%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              y: '-5%',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              y: '-45%',
             },
           ],
         },

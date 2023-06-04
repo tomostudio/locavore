@@ -18,10 +18,10 @@ import {
 } from '@/components/modules/nxt/section1'
 
 import {
-  Section2Option1AnimationOBJ,
-  Section2Option1AnimationOBJMobile,
-  Section2Option1ComponentInner,
-} from '@/components/modules/nxt/section2/option1'
+  Section2Option2AnimationOBJ,
+  Section2Option2AnimationOBJMobile,
+  Section2Option2ComponentInner,
+} from '@/components/modules/nxt/section2/option2'
 
 import {
   Section3AnimationOBJ,
@@ -55,14 +55,14 @@ export default function Nxt({ seoAPI, footerAPI }) {
   const animationObj = {
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
-      ...Section2Option1AnimationOBJ,
+      ...Section2Option2AnimationOBJ,
       ...Section3AnimationOBJ(),
       ...Section4AnimationOBJ,
       ...Section5AnimationOBJ,
     ],
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
-      ...Section2Option1AnimationOBJMobile,
+      ...Section2Option2AnimationOBJMobile,
       ...Section3AnimationOBJMobile,
       ...Section4AnimationOBJMobile,
       ...Section5AnimationOBJMobile,
@@ -70,7 +70,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',
     })
@@ -112,7 +112,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
             <Section1ComponentInner />
             {/* Section 2 */}
             {/* MENU */}
-            <Section2Option1ComponentInner />
+            <Section2Option2ComponentInner />
             {/* Section 3 */}
             {/* FEATURES & FACILITIES */}
             <Section3ComponentInner />
