@@ -23,6 +23,9 @@ import feature6 from '@/public/nxt2/features/feature6.png'
 import feature7 from '@/public/nxt2/features/feature7.png'
 import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
 import feature1_color from '@/public/nxt2/features/feature1_color.png'
+import feature4_color from '@/public/nxt2/features/feature4_color.png'
+import feature5_color from '@/public/nxt2/features/feature5_color.png'
+import feature6_color from '@/public/nxt2/features/feature6_color.png'
 
 const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -229,24 +232,23 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             modules={[FreeMode, Navigation]}
           >
             <SwiperSlide
-              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 "
+              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
                 window.location.href = '/nxt/features-facilities/detail'
               }}
             >
-              <div className="relative top-1/2 left-1/2 -translate-y-[65%] -translate-x-1/2 w-[150%] group duration-300 transition-all hover:-rotate-6">
-                <Image
-                  src={feature1}
-                  alt=""
-                  className="absolute top-0 left-0 w-full h-auto duration-300 transition-all group-hover:opacity-0"
-                />
-                <Image
-                  src={feature1_color}
-                  className="w-full h-auto"
-                />
+              <div className="relative top-1/2 left-1/2 -translate-y-[65%] -translate-x-1/2 w-[150%]">
+                <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                  <Image
+                    src={feature1}
+                    alt=""
+                    className="absolute top-0 left-0 w-full h-auto duration-300 transition-all group-hover:opacity-0"
+                  />
+                  <Image src={feature1_color} className="w-full h-auto" />
+                </div>
               </div>
             </SwiperSlide>
-            <SwiperSlide
+            {/* <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
                 window.location.href = '/nxt/features-facilities/detail'
@@ -259,7 +261,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                   className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
-            </SwiperSlide>
+            </SwiperSlide> */}
             <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
@@ -267,43 +269,58 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
               }}
             >
               <div className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%]">
-                <Image
-                  src={feature4}
-                  alt=""
-                  className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
-                />
+                <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                  <Image
+                    src={feature4}
+                    alt=""
+                    className="absolute top-0 left-0 w-full h-auto transtion-all duration-300 group-hover:opacity-0"
+                  />
+                  <Image src={feature4_color} className="w-full h-auto" />
+                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide
-              className="relative !w-[250px] !h-[250px] z-10 cursor-pointer transtion-all duration-300 hover:z-50 group"
+              className="relative !w-[250px] !h-[250px] z-20 cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
                 window.location.href = '/nxt/features-facilities/detail'
               }}
             >
               <div className="relative w-full h-full">
-                <Image
-                  src={feature5}
-                  alt=""
-                  fill
-                  className="w-full h-full object-contain transtion-all duration-300 group-hover:-rotate-12"
-                />
+                <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                  <Image
+                    src={feature5}
+                    alt=""
+                    fill
+                    className="absolute top-0 left-0 w-full h-full object-contain transtion-all duration-300 group-hover:opacity-0"
+                  />
+                  <Image
+                    src={feature5_color}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
               </div>
             </SwiperSlide>
             <SwiperSlide
-              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
+              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 z-10 hover:z-50 group"
               onClick={() => {
                 window.location.href = '/nxt/features-facilities/detail'
               }}
             >
               <div className="relative w-[120%] -top-[80%] left-1/2 -translate-x-1/2">
-                <Image
-                  src={feature6}
-                  alt=""
-                  className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
-                />
+                <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                  <Image
+                    src={feature6}
+                    alt=""
+                    className="absolute top-0 left-0 w-full h-auto transtion-all duration-300 group-hover:opacity-0"
+                  />
+                  <Image
+                    src={feature6_color}
+                    className="w-full h-full"
+                  />
+                </div>
               </div>
             </SwiperSlide>
-            <SwiperSlide
+            {/* <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
                 window.location.href = '/nxt/features-facilities/detail'
@@ -316,8 +333,8 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                   className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
-            </SwiperSlide>
-            <SwiperSlide
+            </SwiperSlide> */}
+            {/* <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
                 window.location.href = '/nxt/features-facilities/detail'
@@ -330,8 +347,8 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                   className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
-            </SwiperSlide>
-            <SwiperSlide
+            </SwiperSlide> */}
+            {/* <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
                 window.location.href = '/nxt/features-facilities/detail'
@@ -344,8 +361,8 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                   className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
-            </SwiperSlide>
-            <SwiperSlide
+            </SwiperSlide> */}
+            {/* <SwiperSlide
               className="relative !w-[250px] !h-[250px] z-10 cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
                 window.location.href = '/nxt/features-facilities/detail'
@@ -359,7 +376,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                   className="w-full h-full object-cover transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
-            </SwiperSlide>
+            </SwiperSlide> */}
           </Swiper>
         </div>
         <NxtNavigationDesktop focus="features" />
