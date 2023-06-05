@@ -77,9 +77,9 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         </div>
         <div id="enter-bg-white-scale" className="h-[100vh]" />
         <div id="enter-building" className="h-[100vh]" />
-        <div id="enter-restructure-building" className="h-[100vh]" />
+        {/* <div id="enter-restructure-building" className="h-[100vh]" /> */}
         <div id="enter-btn-collab" className="h-[25vh]" />
-        <div className="h-[50vh]" />
+        <div id="enter-blur" className="h-[25vh]" />
       </div>
       <div className="w-full h-[35vh]" />
     </section>
@@ -140,8 +140,6 @@ export const Section3AnimationOBJ = () => {
           scrub: 0.5,
           start: 'top 100%',
           end: 'bottom 100%',
-          onEnterBack: () => checkHeader('blur'),
-          onLeave: () => checkHeader('blur-white'),
         },
       }
 
@@ -167,9 +165,10 @@ export const Section3AnimationOBJ = () => {
       const settings = {
         scrollTrigger: {
           id: id,
-          trigger: document.querySelector('#enter-restructure-building'), // which section will be tracked as the scroll trigger
+          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
           scrub: 0.5,
-          start: 'top 100%',
+          // markers: true,
+          start: 'top 80%',
           end: 'bottom 100%',
         },
       }
@@ -203,9 +202,9 @@ export const Section3AnimationOBJ = () => {
       const settings = {
         scrollTrigger: {
           id: id,
-          trigger: document.querySelector('#enter-restructure-building'), // which section will be tracked as the scroll trigger
+          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
           scrub: 0.5,
-          start: 'top 100%',
+          start: 'top 80%',
           end: 'bottom 100%',
         },
       }
@@ -239,9 +238,9 @@ export const Section3AnimationOBJ = () => {
       const settings = {
         scrollTrigger: {
           id: id,
-          trigger: document.querySelector('#enter-restructure-building'), // which section will be tracked as the scroll trigger
+          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
           scrub: 0.5,
-          start: 'top 100%',
+          start: 'top 80%',
           end: 'bottom 100%',
         },
       }
@@ -275,9 +274,9 @@ export const Section3AnimationOBJ = () => {
       const settings = {
         scrollTrigger: {
           id: id,
-          trigger: document.querySelector('#enter-restructure-building'), // which section will be tracked as the scroll trigger
+          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
           scrub: 0.5,
-          start: 'top 100%',
+          start: 'top 80%',
           end: 'bottom 100%',
         },
       }
@@ -311,9 +310,9 @@ export const Section3AnimationOBJ = () => {
       const settings = {
         scrollTrigger: {
           id: id,
-          trigger: document.querySelector('#enter-restructure-building'), // which section will be tracked as the scroll trigger
+          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
           scrub: 0.5,
-          start: 'top 100%',
+          start: 'top 80%',
           end: 'bottom 100%',
         },
       }
@@ -364,6 +363,28 @@ export const Section3AnimationOBJ = () => {
             },
           ],
         },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // ENTER BLUR
+    () => {
+      const id = 'blur-enter' // animation id
+      const elem = document.querySelector('#enter-blue')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-blur'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 100%',
+          end: 'bottom 100%',
+          onEnterBack: () => checkHeader('blur'),
+          onLeave: () => checkHeader('blur-white'),
+        },
+      }
+
+      // Input Animation
+      const animation = [
       ]
 
       return { id, elem, settings, animation }

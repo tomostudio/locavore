@@ -115,7 +115,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
                 opacity: 0,
                 transition: {
                   duration: 1,
-                  delay: 2,
+                  delay: 1,
                 },
               },
               exit: {
@@ -140,7 +140,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
             {/* Section 5 */}
             {/* WHAT'S ON? */}
             <Section5ComponentInner />
-            <NxtNavigationDesktop focus="nxt" />
+            <NxtNavigationDesktop transition={true} focus="nxt" />
           </section>
           <Footer footer={footer} mailchimp={seo.mailchimpID} />
         </m.main>
