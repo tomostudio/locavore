@@ -25,3 +25,19 @@
     }
   }
 }
+
+.collaborators-border {
+  & > * {
+    border-bottom: solid 1px white;
+    border-right: solid 1px white;
+
+    &:nth-child(3n) {
+      border-right: 0px;
+    }
+    &:nth-last-child(1),
+    &:nth-last-child(2):not(:nth-child(3n)),
+    &:nth-last-child(3):not(:nth-child(3n)):not(:nth-child(2n)) {
+      border-bottom: 0px;
+    }
+  }
+}
