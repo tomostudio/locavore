@@ -101,9 +101,9 @@ export const Section1ComponentInner = () => {
               Locavore NXT is Lorem ipsum dolor sit amet, consectetur adipiscing
               elit. Proin nec massa viverra, aliquet dui ac.
             </p>
-            <div className="mt-4 text-[#BEC29D] text-d-body">
-              <span className="mr-4">Lorem ipsum</span>•
-              <span className="ml-4 font-serif italic font-medium">
+            <div className="mt-4 text-[#BEC29D]">
+              <span className="mr-4 text-d-body">Lorem ipsum</span>•
+              <span className="ml-4 text-[1.375rem] font-serif italic font-medium">
                 March 2022
               </span>
             </div>

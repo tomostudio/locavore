@@ -87,11 +87,11 @@ const Menu = ({ seoAPI, footerAPI }) => {
               </p>
             </div>
             <div className="image w-full fh-full mb-24 space-y-3">
-              <div className="relative w-full aspect-w-16 aspect-h-9">
+              <div className="relative w-full aspect-w-16 aspect-h-9 rounded-[20px] overflow-hidden">
                 <Image src={menu_group} />
               </div>
               <div className="w-full flex space-x-3 max-md:space-x-2">
-                <div className="relative w-full aspect-w-16 aspect-h-9">
+                <div className="relative w-full aspect-w-16 aspect-h-9 rounded-[20px] overflow-hidden">
                   <Image
                     src={menu_group}
                     alt=""
@@ -99,7 +99,7 @@ const Menu = ({ seoAPI, footerAPI }) => {
                     style={{ objectFit: 'cover' }}
                   />
                 </div>
-                <div className="relative w-full aspect-w-16 aspect-h-9">
+                <div className="relative w-full aspect-w-16 aspect-h-9 rounded-[20px] overflow-hidden">
                   <Image
                     src={menu_group}
                     alt=""

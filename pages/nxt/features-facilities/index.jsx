@@ -62,32 +62,38 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             <h1 className="text-[#BEC29D] font-funkturm text-d-header m-0">
               FEATURES & FACILITIES
             </h1>
-            <div className="mt-6 text-[#BEC29D] text-d-body">
+            <div className="mt-6 text-[#BEC29D]">
               <button
-                onClick={() => {
+                id="image-view-btn"
+                onClick={(e) => {
                   if (
                     document
                       .getElementById('image-view')
                       .classList.contains('hidden')
                   ) {
+                    e.target.classList.add("opacity-40")
+                    document.getElementById("grid-view-btn").classList.remove("opacity-40");
                     document
                       .getElementById('image-view')
                       .classList.remove('hidden')
                     document.getElementById('grid-view').classList.add('hidden')
                   }
                 }}
-                className="mr-4 font-serif italic font-medium transtion-all duration-300 hover:opacity-30"
+                className="mr-4 text-[1.375rem] opacity-40 font-serif italic font-medium transtion-all duration-300 hover:opacity-30"
               >
                 Image View
               </button>
               •
               <button
-                onClick={() => {
+                id="grid-view-btn"
+                onClick={(e) => {
                   if (
                     document
                       .getElementById('grid-view')
                       .classList.contains('hidden')
                   ) {
+                    e.target.classList.add("opacity-40")
+                    document.getElementById("image-view-btn").classList.remove("opacity-40");
                     document
                       .getElementById('grid-view')
                       .classList.remove('hidden')
@@ -96,7 +102,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                       .classList.add('hidden')
                   }
                 }}
-                className="ml-4 font-serif font-medium transtion-all duration-300 hover:opacity-30"
+                className="ml-4 text-d-body font-serif font-medium transtion-all duration-300 hover:opacity-30"
               >
                 Grid View
               </button>
