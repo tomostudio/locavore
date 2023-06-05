@@ -22,6 +22,7 @@ import feature5 from '@/public/nxt2/features/feature5.png'
 import feature6 from '@/public/nxt2/features/feature6.png'
 import feature7 from '@/public/nxt2/features/feature7.png'
 import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
+import feature1_color from '@/public/nxt2/features/feature1_color.png'
 
 const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -71,8 +72,10 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                       .getElementById('image-view')
                       .classList.contains('hidden')
                   ) {
-                    e.target.classList.add("opacity-40")
-                    document.getElementById("grid-view-btn").classList.remove("opacity-40");
+                    e.target.classList.add('opacity-40')
+                    document
+                      .getElementById('grid-view-btn')
+                      .classList.remove('opacity-40')
                     document
                       .getElementById('image-view')
                       .classList.remove('hidden')
@@ -92,8 +95,10 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                       .getElementById('grid-view')
                       .classList.contains('hidden')
                   ) {
-                    e.target.classList.add("opacity-40")
-                    document.getElementById("image-view-btn").classList.remove("opacity-40");
+                    e.target.classList.add('opacity-40')
+                    document
+                      .getElementById('image-view-btn')
+                      .classList.remove('opacity-40')
                     document
                       .getElementById('grid-view')
                       .classList.remove('hidden')
@@ -220,96 +225,138 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             effect="fade"
             slidesPerView="auto"
             speed={1000}
-            className="relative w-full my-96 !overflow-visible"
+            className="relative w-full my-80 !overflow-visible"
             modules={[FreeMode, Navigation]}
           >
-            <SwiperSlide className="relative !w-[250px] !h-[250px]">
-              <div className="relative top-1/2 left-1/2 -translate-y-[70%] -translate-x-1/2 w-[250%] h-[250%] -z-1 ">
+            <SwiperSlide
+              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
+              onClick={() => {
+                window.location.href = '/nxt/features-facilities/detail'
+              }}
+            >
+              <div className="relative top-1/2 left-1/2 -translate-y-[65%] -translate-x-1/2 w-[150%]">
                 <Image
                   src={feature1}
                   alt=""
-                  fill
-                  className="w-full object-contain"
+                  className="absolute top-0 left-0 w-full h-auto transition-all duration-500 group-hover:-rotate-12 group-hover:opacity-0"
+                />
+                <Image
+                  src={feature1_color}
+                  className="w-full h-auto transtion-all duration-500 group-hover:-rotate-12 opacity-100"
                 />
               </div>
             </SwiperSlide>
-            <SwiperSlide className="relative !w-[250px] !h-[250px]">
-              <div className="relative left-1/2 -translate-x-1/2 w-[220%] h-[220%] -z-1">
+            <SwiperSlide
+              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
+              onClick={() => {
+                window.location.href = '/nxt/features-facilities/detail'
+              }}
+            >
+              <div className="relative left-1/2 -translate-x-1/2 w-[120%]">
                 <Image
                   src={feature3}
                   alt=""
-                  fill
-                  className="w-full object-contain"
+                  className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
             </SwiperSlide>
-            <SwiperSlide className="relative !w-[250px] !h-[250px]">
-              <div className="relative top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[220%] h-[220%] -z-1">
+            <SwiperSlide
+              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
+              onClick={() => {
+                window.location.href = '/nxt/features-facilities/detail'
+              }}
+            >
+              <div className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%]">
                 <Image
                   src={feature4}
                   alt=""
-                  fill
-                  className="w-full object-contain"
+                  className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
             </SwiperSlide>
-            <SwiperSlide className="relative !w-[250px] !h-[250px]">
-              <div className="relative w-full h-full -z-1">
+            <SwiperSlide
+              className="relative !w-[250px] !h-[250px] z-10 cursor-pointer transtion-all duration-300 hover:z-50 group"
+              onClick={() => {
+                window.location.href = '/nxt/features-facilities/detail'
+              }}
+            >
+              <div className="relative w-full h-full">
                 <Image
                   src={feature5}
                   alt=""
                   fill
-                  className="w-full object-contain"
+                  className="w-full h-full object-contain transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
             </SwiperSlide>
-            <SwiperSlide className="relative !w-[250px] !h-[250px]">
-              <div className="relative top-1/2 -translate-y-[77%] left-1/2 -translate-x-1/2 w-[220%] h-[220%] -z-1">
+            <SwiperSlide
+              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
+              onClick={() => {
+                window.location.href = '/nxt/features-facilities/detail'
+              }}
+            >
+              <div className="relative w-[120%] -top-[80%] left-1/2 -translate-x-1/2">
                 <Image
                   src={feature6}
                   alt=""
-                  fill
-                  className="w-full object-contain"
+                  className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
             </SwiperSlide>
-            <SwiperSlide className="relative !w-[250px] !h-[250px]">
-              <div className="relative top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[220%] h-[220%] -z-1">
+            <SwiperSlide
+              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
+              onClick={() => {
+                window.location.href = '/nxt/features-facilities/detail'
+              }}
+            >
+              <div className="relative top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[120%]">
                 <Image
                   src={feature7}
                   alt=""
-                  fill
-                  className="w-full object-contain"
+                  className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
             </SwiperSlide>
-            <SwiperSlide className="relative !w-[250px] !h-[250px]">
-              <div className="relative left-1/2 -translate-x-1/2 w-[220%] h-[220%] -z-1">
+            <SwiperSlide
+              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
+              onClick={() => {
+                window.location.href = '/nxt/features-facilities/detail'
+              }}
+            >
+              <div className="relative left-1/2 -translate-x-1/2 w-[120%]">
                 <Image
                   src={feature1}
                   alt=""
-                  fill
-                  className="w-full object-contain"
+                  className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
             </SwiperSlide>
-            <SwiperSlide className="relative !w-[250px] !h-[250px]">
-              <div className="relative top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[220%] h-[220%] -z-1">
+            <SwiperSlide
+              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
+              onClick={() => {
+                window.location.href = '/nxt/features-facilities/detail'
+              }}
+            >
+              <div className="relative top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[120%]">
                 <Image
                   src={feature3}
                   alt=""
-                  fill
-                  className="w-full object-contain"
+                  className="w-full h-auto transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
             </SwiperSlide>
-            <SwiperSlide className="relative !w-[250px] !h-[250px]">
-              <div className="relative w-full h-full -z-1">
+            <SwiperSlide
+              className="relative !w-[250px] !h-[250px] z-10 cursor-pointer transtion-all duration-300 hover:z-50 group"
+              onClick={() => {
+                window.location.href = '/nxt/features-facilities/detail'
+              }}
+            >
+              <div className="relative w-full h-full">
                 <Image
                   src={feature2}
                   alt=""
                   fill
-                  className="w-full object-cover"
+                  className="w-full h-full object-cover transtion-all duration-300 group-hover:-rotate-12"
                 />
               </div>
             </SwiperSlide>
