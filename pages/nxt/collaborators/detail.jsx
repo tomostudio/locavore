@@ -102,10 +102,10 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
               </p>
             </div>
           </div>
-          <div className="md:sticky top-0 left-0 w-full md:h-screen flex flex-col">
+          <div className="md:sticky top-8 md:top-20 left-0 w-full md:h-screen flex flex-col">
             <HeaderGap />
-            <div className="w-full h-[421px] mt-8 md:my-20">
-              <div className="relative w-full h-full rounded-lg overflow-hidden">
+            <div className="w-full max-h-[720px] h-[calc(100vh-(10rem+61px))]">
+              <div className="relative w-full h-full rounded-[15px] overflow-hidden">
                 <Image
                   src={detail}
                   alt=""
