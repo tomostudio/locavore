@@ -160,6 +160,7 @@ export const Section4ComponentInner = () => {
       </div>
       <div className="w-full h-[20vh]" />
       <div id="enter-collab-opacity" className="w-full h-[50vh]" />
+      <div className="w-full h-[50vh]" />
     </section>
   )
 }

@@ -6,7 +6,6 @@ import FancyLink from '@/components/utils/fancyLink'
 import { useAppContext } from 'context/state'
 
 // IMPORT LOCAL IMAGE
-import building from '@/public/nxt2/building.png'
 import lower_ground from '@/public/nxt/lower-ground.webp'
 import ground from '@/public/nxt/ground.webp'
 import firstFloor from '@/public/nxt/1st-floor.webp'
@@ -35,7 +34,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
             </div>
             <Container
               id="building"
-              className="absolute top-0 left-1/2 translate-y-[100vh] -translate-x-1/2 w-full h-[95vh] z-10"
+              className="absolute top-0 left-1/2 translate-y-[120vh] -translate-x-1/2 w-full h-[100vh] z-10"
             >
               <div className="relative w-full h-full">
                 <div
@@ -79,6 +78,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         <div id="enter-bg-white-scale" className="h-[100vh]" />
         <div id="enter-building" className="h-[100vh]" />
         <div id="enter-restructure-building" className="h-[100vh]" />
+        <div id="enter-btn-collab" className="h-[25vh]" />
         <div className="h-[50vh]" />
       </div>
       <div className="w-full h-[35vh]" />
@@ -108,7 +108,7 @@ export const Section3AnimationOBJ = () => {
           id: id,
           trigger: document.querySelector('#enter-bg-white-scale'), // which section will be tracked as the scroll trigger
           scrub: 0.5,
-          start: 'top 100%',
+          start: 'top 160%',
           end: 'bottom 100%',
           onEnterBack: () => checkHeader('blur-white'),
           onLeave: () => checkHeader('blur'),
@@ -122,34 +122,6 @@ export const Section3AnimationOBJ = () => {
             elem,
             {
               clipPath: 'circle(100%)',
-            },
-          ],
-        },
-      ]
-
-      return { id, elem, settings, animation }
-    },
-    // BUTTON FEATURES ENTER
-    () => {
-      const id = 'btn-features-enter' // animation id
-      const elem = document.querySelector('#btn-features')
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-bg-white-scale'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-          start: 'top 60%',
-          end: 'bottom 100%',
-        },
-      }
-
-      // Input Animation
-      const animation = [
-        {
-          to: [
-            elem,
-            {
-              opacity: 1,
             },
           ],
         },
@@ -361,6 +333,34 @@ export const Section3AnimationOBJ = () => {
             elem,
             {
               y: '-45%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // BUTTON FEATURES ENTER
+    () => {
+      const id = 'btn-features-enter' // animation id
+      const elem = document.querySelector('#btn-features')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-btn-collab'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 100%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          to: [
+            elem,
+            {
+              opacity: 1,
             },
           ],
         },

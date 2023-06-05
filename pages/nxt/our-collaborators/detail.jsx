@@ -16,6 +16,7 @@ import hero from '@/public/nxt2/collab/hero.png'
 import detail from '@/public/nxt2/collab/detail.png'
 import card_bnw1 from '@/public/nxt2/collab/card_bnw1.png'
 import PillButton from '@/components/modules/pillButton'
+import StickyButton from '@/components/modules/stickyButton'
 
 const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -52,9 +53,11 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
       >
         <Container className="relative h-full flex flex-col-reverse md:flex-row md:gap-36">
           <div className="w-full h-full">
-            <HeaderGap className='hidden md:block'/>
+            <HeaderGap className="hidden md:block" />
             <div className="w-full h-full flex flex-col text-black mt-12 md:my-20">
-              <h1 className="font-funkturm m-0 md:mb-2 text-m-additionalHeader md:text-d-additionalHeader">Lorem Ipsum</h1>
+              <h1 className="font-funkturm m-0 md:mb-2 text-m-additionalHeader md:text-d-additionalHeader">
+                Lorem Ipsum
+              </h1>
               <div className="w-full text-m-small md:text-[1.375rem]">
                 <span className="italic font-medium font-serif mr-1">
                   Creative Director
@@ -113,17 +116,10 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
             </div>
           </div>
         </Container>
-        <div
-          className={`sticky bottom-10 mb-10 left-0 w-full z-40 setflex-center`}
-        >
-          <PillButton
-            destination="/nxt/our-collaborators"
-            arrow="left"
-            className="uppercase bg-white bg-opacity-75 backdrop-filter backdrop-blur-sm"
-          >
-            COLLABORATORS
-          </PillButton>
-        </div>
+        {/* Button Sticky */}
+        <StickyButton destination="/nxt/our-collaborators" arrow="left">
+          COLLABORATORS
+        </StickyButton>
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

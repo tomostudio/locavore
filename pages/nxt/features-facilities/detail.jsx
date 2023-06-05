@@ -96,17 +96,10 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
             </div>
           </Container>
         </div>
-        <div
-          className={`sticky bottom-10 mb-10 left-0 w-full z-40 setflex-center`}
-        >
-          <PillButton
-            destination="/nxt/features-facilities"
-            arrow="left"
-            className="uppercase bg-white"
-          >
-            FEATURES & FACILITIES
-          </PillButton>
-        </div>
+        {/* Button Sticky */}
+        <StickyButton destination="/nxt/features-facilities" arrow="left">
+          FEATURES & FACILITIES
+        </StickyButton>
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
