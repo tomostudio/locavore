@@ -106,6 +106,24 @@ export default function Nxt({ seoAPI, footerAPI }) {
           exit="exit"
           variants={fade}
         >
+          <m.div
+            initial="initial"
+            animate="enter"
+            variants={{
+              initial: { opacity: 1 },
+              enter: {
+                opacity: 0,
+                transition: {
+                  duration: 1,
+                  delay: 2,
+                },
+              },
+              exit: {
+                opacity: 0,
+              },
+            }}
+            className="fixed top-0 left-0 w-full h-full z-50 pointer-events-none bg-black"
+          />
           <section className="relative p-0 m-0">
             {/* Section 1 */}
             {/* TITLE */}

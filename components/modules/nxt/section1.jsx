@@ -27,7 +27,7 @@ export const Section1ComponentInner = () => {
             opacity: 0.5,
             transition: {
               duration: 1,
-              delay: 2,
+              delay: 3,
             },
           },
           exit: {
@@ -54,6 +54,7 @@ export const Section1ComponentInner = () => {
                 transform: 'translateY(0%)',
                 transition: {
                   duration: 1,
+                  delay: 2
                 },
               },
               exit: {
@@ -85,7 +86,7 @@ export const Section1ComponentInner = () => {
                 opacity: 1,
                 transition: {
                   duration: 1,
-                  delay: 2,
+                  delay: 3,
                 },
               },
               exit: {
