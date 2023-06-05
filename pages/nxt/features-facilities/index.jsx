@@ -229,20 +229,20 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             modules={[FreeMode, Navigation]}
           >
             <SwiperSlide
-              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
+              className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 "
               onClick={() => {
                 window.location.href = '/nxt/features-facilities/detail'
               }}
             >
-              <div className="relative top-1/2 left-1/2 -translate-y-[65%] -translate-x-1/2 w-[150%]">
+              <div className="relative top-1/2 left-1/2 -translate-y-[65%] -translate-x-1/2 w-[150%] group duration-300 transition-all hover:-rotate-6">
                 <Image
                   src={feature1}
                   alt=""
-                  className="absolute top-0 left-0 w-full h-auto transition-all duration-500 group-hover:-rotate-12 group-hover:opacity-0"
+                  className="absolute top-0 left-0 w-full h-auto duration-300 transition-all group-hover:opacity-0"
                 />
                 <Image
                   src={feature1_color}
-                  className="w-full h-auto transtion-all duration-500 group-hover:-rotate-12 opacity-100"
+                  className="w-full h-auto"
                 />
               </div>
             </SwiperSlide>
