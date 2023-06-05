@@ -33,7 +33,7 @@ const NxtNavigationMobile = ({ focus = 'nxt' }) => {
         FEATURES & FACILITIES
       </FancyLink>
       <FancyLink
-        destination="/nxt/our-collaborators"
+        destination="/nxt/collaborators"
         className={`relative z-30 ${
           focus === 'collab' ? 'bg-[#BEC29D]' : 'bg-white'
         } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}

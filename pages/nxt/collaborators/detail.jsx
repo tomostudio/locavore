@@ -117,7 +117,7 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
           </div>
         </Container>
         {/* Button Sticky */}
-        <StickyButton destination="/nxt/our-collaborators" arrow="left">
+        <StickyButton destination="/nxt/collaborators" arrow="left">
           COLLABORATORS
         </StickyButton>
       </motion.main>

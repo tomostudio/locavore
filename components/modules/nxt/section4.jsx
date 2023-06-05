@@ -151,7 +151,7 @@ export const Section4ComponentInner = () => {
             </Marquee>
             <FancyLink
               className={`w-fit p-4 mt-14 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-              destination="/nxt/our-collaborators"
+              destination="/nxt/collaborators"
             >
               VIEW ALL COLLABORATORS
             </FancyLink>

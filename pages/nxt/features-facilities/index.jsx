@@ -54,10 +54,10 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
         animate="enter"
         exit="exit"
         variants={fade}
-        className="no-select-all bg-black overflow-hidden"
+        className="no-select-all bg-black"
       >
         <HeaderGap />
-        <div className="w-full min-h-screen flex flex-col">
+        <div className="w-full min-h-screen flex flex-col overflow-hidden">
           <Container className="flex flex-col items-center mt-44">
             <h1 className="text-[#BEC29D] font-funkturm text-d-header m-0">
               FEATURES & FACILITIES
