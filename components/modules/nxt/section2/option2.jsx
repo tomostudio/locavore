@@ -20,28 +20,28 @@ export const Section2Option2ComponentInner = () => {
               <span className="text-[1.875rem] text-[#BEC29D]">
                 WHAT’S ON LOCAVORE
               </span>
-              <p className="text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
+              <div className="relative text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
                 A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
-              </p>
+                <div
+                  id="section2_bg"
+                  className="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 translate-y-[90vh] w-full h-full"
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={section2_bg}
+                      alt=""
+                      fill
+                      style={{ objectFit: 'contain' }}
+                    />
+                  </div>
+                </div>
+              </div>
               <FancyLink
                 className={`w-fit p-4 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
                 destination="/nxt/menu"
               >
                 VIEW MENU
               </FancyLink>
-            </div>
-            <div
-              id="section2_bg"
-              className="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 translate-y-[90vh] w-full h-[50vh]"
-            >
-              <div className="relative w-full h-full">
-                <Image
-                  src={section2_bg}
-                  alt=""
-                  fill
-                  style={{ objectFit: 'contain' }}
-                />
-              </div>
             </div>
           </div>
         </Container>
