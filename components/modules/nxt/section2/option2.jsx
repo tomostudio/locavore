@@ -14,7 +14,7 @@ export const Section2Option2ComponentInner = () => {
         <Container className="relative w-full h-full grow setflex-center">
           <div
             id="section2_content"
-            className="relative z-10 w-full h-auto opacity-0"
+            className="relative z-10 w-full h-full opacity-0"
           >
             <div className="relative w-full h-full setflex-center ">
               <span className="text-[1.875rem] text-[#BEC29D]">
@@ -36,9 +36,11 @@ export const Section2Option2ComponentInner = () => {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end">
               <FancyLink
-                className={`w-fit p-4 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-                destination="/nxt/menu"
+                className={`w-fit p-4 mb-24 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                destination="/nxt/collaborators"
               >
                 VIEW MENU
               </FancyLink>
