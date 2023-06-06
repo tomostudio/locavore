@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { fade } from '@/helpers/preset/transitions';
 
-import menu_hero from '@/public/nxt2/menu_hero.png';
-import menu_group from '@/public/nxt2/menu_group.png';
+import menu_hero from '@/public/nxt2/menu/hero.png';
+import menu_group from '@/public/nxt2/menu/group.png';
 import leaf from '@/public/nxt2/leaf.png';
 
 import { useContext, useEffect } from 'react';
