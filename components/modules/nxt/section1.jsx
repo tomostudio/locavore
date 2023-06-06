@@ -10,7 +10,7 @@ import NXT_Logo_Bumper from '@/public/nxt2/nxt_logo.png'
 
 export const Section1ComponentInner = () => {
   useEffect(() => {
-    document.querySelector('body').classList.add('overflow-hidden')
+    // document.querySelector('body').classList.add('overflow-hidden')
   }, [])
 
   return (
@@ -94,7 +94,7 @@ export const Section1ComponentInner = () => {
               },
             }}
             onAnimationComplete={() => {
-              document.querySelector('body').classList.remove('overflow-hidden')
+              // document.querySelector('body').classList.remove('overflow-hidden')
             }}
             className="w-full flex flex-col items-center mt-12 px-24"
           >
