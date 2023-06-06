@@ -20,12 +20,12 @@ const NxtNavigationDesktop = ({ focus = 'nxt', transition = false }) => {
           opacity: 1,
         },
       } : {}}
-      className="sticky bottom-10 z-10"
+      className="sticky bottom-10 z-10 mb-10"
     >
       <Container
         id="nxtNavigation"
         padding={true}
-        className="mb-10 !max-w-screen-lg mx-auto flex flex-wrap items-stretch text-black text-d-small"
+        className="!max-w-screen-lg mx-auto flex flex-wrap items-stretch text-black text-d-small"
       >
         <FancyLink
           destination="/nxt/menu"
