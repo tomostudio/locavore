@@ -66,7 +66,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             <h1 className="text-[#BEC29D] font-funkturm text-d-header m-0">
               FEATURES & FACILITIES
             </h1>
-            <div className="mt-6 text-[#BEC29D]">
+            <div className="mt-6 text-[#BEC29D] text-d-body">
               <button
                 id="image-view-btn"
                 onClick={(e) => {
@@ -76,16 +76,24 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                       .classList.contains('hidden')
                   ) {
                     e.target.classList.add('opacity-40')
+                    e.target.classList.add('italic')
+                    e.target.classList.add('text-[1.375rem]')
                     document
                       .getElementById('grid-view-btn')
                       .classList.remove('opacity-40')
+                    document
+                      .getElementById('grid-view-btn')
+                      .classList.remove('italic')
+                    document
+                      .getElementById('grid-view-btn')
+                      .classList.remove('text-[1.375rem]')
                     document
                       .getElementById('image-view')
                       .classList.remove('hidden')
                     document.getElementById('grid-view').classList.add('hidden')
                   }
                 }}
-                className="mr-4 text-[1.375rem] opacity-40 font-serif italic font-medium transtion-all duration-300 hover:opacity-30"
+                className="mr-4 text-[1.375rem] opacity-40 font-serif italic font-medium leading-6 hover:opacity-30"
               >
                 Image View
               </button>
@@ -99,9 +107,17 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                       .classList.contains('hidden')
                   ) {
                     e.target.classList.add('opacity-40')
+                    e.target.classList.add('italic')
+                    e.target.classList.add('text-[1.375rem]')
                     document
                       .getElementById('image-view-btn')
                       .classList.remove('opacity-40')
+                    document
+                      .getElementById('image-view-btn')
+                      .classList.remove('italic')
+                    document
+                      .getElementById('image-view-btn')
+                      .classList.remove('text-[1.375rem]')
                     document
                       .getElementById('grid-view')
                       .classList.remove('hidden')
@@ -110,7 +126,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                       .classList.add('hidden')
                   }
                 }}
-                className="ml-4 text-d-body font-serif font-medium transtion-all duration-300 hover:opacity-30"
+                className="ml-4 font-serif font-medium leading-6 hover:opacity-30"
               >
                 Grid View
               </button>
@@ -313,10 +329,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                     alt=""
                     className="absolute top-0 left-0 w-full h-auto transtion-all duration-300 group-hover:opacity-0"
                   />
-                  <Image
-                    src={feature6_color}
-                    className="w-full h-full"
-                  />
+                  <Image src={feature6_color} className="w-full h-full" />
                 </div>
               </div>
             </SwiperSlide>
