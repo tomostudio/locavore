@@ -132,7 +132,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
             {/* MENU */}
             <Section2Option2ComponentInner />
             {/* Section 3 */}
-            {/* FEATURES & FACILITIES */}
+            {/* OUR FACILITIES */}
             <Section3ComponentInner />
             {/* Section 4 */}
             {/* OUR COLLABORATORS */}

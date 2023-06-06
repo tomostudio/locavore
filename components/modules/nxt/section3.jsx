@@ -27,7 +27,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
               <FancyLink
                 id='btn-features'
                 className={`opacity-0 w-fit p-4 text-d-small text-black bg-white bg-opacity-80 font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-black rounded-xl`}
-                destination='/nxt/features-facilities'
+                destination='/nxt/facilities'
               >
                 OUR FACILITIES
               </FancyLink>

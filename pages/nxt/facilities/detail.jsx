@@ -36,7 +36,7 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
   return (
     <Layout>
       <SEO
-        title={'Features & Facilities'}
+        title={'Our Facilities'}
         pagelink={router.pathname}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
@@ -99,8 +99,8 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
           </Container>
         </div>
         {/* Button Sticky */}
-        <StickyButton destination='/nxt/features-facilities' arrow='left'>
-          FEATURES & FACILITIES
+        <StickyButton destination='/nxt/facilities' arrow='left'>
+          OUR FACILITIES
         </StickyButton>
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />

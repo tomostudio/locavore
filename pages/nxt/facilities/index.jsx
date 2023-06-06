@@ -47,7 +47,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
   return (
     <Layout>
       <SEO
-        title={'Features & Facilities'}
+        title={'Our Facilities'}
         pagelink={router.pathname}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
@@ -64,7 +64,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
         <div className="w-full min-h-screen flex flex-col overflow-hidden">
           <Container className="flex flex-col items-center mt-44">
             <h1 className="text-[#BEC29D] font-funkturm text-d-header m-0">
-              FEATURES & FACILITIES
+              OUR FACILITIES
             </h1>
             <div className="mt-6 text-[#BEC29D] text-d-body">
               <button
@@ -135,13 +135,13 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
           <div id="grid-view" className="hidden w-full my-20">
             <div className="w-full flex flex-wrap">
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className=" font-medium text-d-body">LOCALAB</span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">
@@ -149,7 +149,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 </span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">
@@ -157,13 +157,13 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 </span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">BAR</span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">
@@ -171,7 +171,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 </span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">
@@ -179,7 +179,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 </span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">
@@ -187,7 +187,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 </span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">
@@ -195,7 +195,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 </span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">
@@ -203,7 +203,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 </span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">
@@ -211,7 +211,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 </span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">
@@ -219,7 +219,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 </span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">
@@ -227,7 +227,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 </span>
               </FancyLink>
               <FancyLink
-                destination="/nxt/features-facilities/detail"
+                destination="/nxt/facilities/detail"
                 className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
               >
                 <span className="text-white font-medium text-d-body">
@@ -250,7 +250,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
-                window.location.href = '/nxt/features-facilities/detail'
+                window.location.href = '/nxt/facilities/detail'
               }}
             >
               <div className="relative top-1/2 left-1/2 -translate-y-[65%] -translate-x-1/2 w-[150%]">
@@ -267,7 +267,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             {/* <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
-                window.location.href = '/nxt/features-facilities/detail'
+                window.location.href = '/nxt/facilities/detail'
               }}
             >
               <div className="relative left-1/2 -translate-x-1/2 w-[120%]">
@@ -281,7 +281,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
-                window.location.href = '/nxt/features-facilities/detail'
+                window.location.href = '/nxt/facilities/detail'
               }}
             >
               <div className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%]">
@@ -298,7 +298,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             <SwiperSlide
               className="relative !w-[250px] !h-[250px] z-20 cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
-                window.location.href = '/nxt/features-facilities/detail'
+                window.location.href = '/nxt/facilities/detail'
               }}
             >
               <div className="relative w-full h-full">
@@ -319,7 +319,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 z-10 hover:z-50 group"
               onClick={() => {
-                window.location.href = '/nxt/features-facilities/detail'
+                window.location.href = '/nxt/facilities/detail'
               }}
             >
               <div className="relative w-[120%] -top-[80%] left-1/2 -translate-x-1/2">
@@ -336,7 +336,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             {/* <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
-                window.location.href = '/nxt/features-facilities/detail'
+                window.location.href = '/nxt/facilities/detail'
               }}
             >
               <div className="relative top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[120%]">
@@ -350,7 +350,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             {/* <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
-                window.location.href = '/nxt/features-facilities/detail'
+                window.location.href = '/nxt/facilities/detail'
               }}
             >
               <div className="relative left-1/2 -translate-x-1/2 w-[120%]">
@@ -364,7 +364,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             {/* <SwiperSlide
               className="relative !w-[250px] !h-[250px] cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
-                window.location.href = '/nxt/features-facilities/detail'
+                window.location.href = '/nxt/facilities/detail'
               }}
             >
               <div className="relative top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[120%]">
@@ -378,7 +378,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             {/* <SwiperSlide
               className="relative !w-[250px] !h-[250px] z-10 cursor-pointer transtion-all duration-300 hover:z-50 group"
               onClick={() => {
-                window.location.href = '/nxt/features-facilities/detail'
+                window.location.href = '/nxt/facilities/detail'
               }}
             >
               <div className="relative w-full h-full">
