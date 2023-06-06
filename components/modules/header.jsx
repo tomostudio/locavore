@@ -8,6 +8,7 @@ import urlFor from '@/helpers/sanity/urlFor'
 import { transition } from '@/helpers/preset/tailwind'
 import { motion } from 'framer-motion'
 import { Youtube, Facebook, Instagram, Linkedin } from '@/helpers/preset/svg'
+import Logo from '../utils/logo'
 
 export default function Header({ className = '', header, footer }) {
   const appContext = useAppContext()
@@ -138,35 +139,37 @@ export default function Header({ className = '', header, footer }) {
             a11yText="Navigate to the home page"
             className={` setflex-center max-md:p-0 ${transition.fade}`}
           >
-            {bnw || menu ? (
-              <Image
-                src={urlFor(header[0].logo.black)
-                  .width(300)
-                  .format('webp')
-                  .url()}
-                alt={header[0].logo.black.name}
-                layout="intrinsic"
-                objectFit="contain"
-                objectPosition={'left center'}
-                priority={true}
-                width={200}
-                height={25}
-              />
+            <Logo color={bnw || menu ? '#000' : '#fff'} />
+            {/* {bnw || menu ? (
+              // <Image
+              //   src={urlFor(header[0].logo.black)
+              //     .width(300)
+              //     .format('webp')
+              //     .url()}
+              //   alt={header[0].logo.black.name}
+              //   layout="intrinsic"
+              //   objectFit="contain"
+              //   objectPosition={'left center'}
+              //   priority={true}
+              //   width={200}
+              //   height={25}
+              // />
             ) : (
-              <Image
-                src={urlFor(header[0].logo.white)
-                  .width(300)
-                  .format('webp')
-                  .url()}
-                alt={header[0].logo.white.name}
-                layout="intrinsic"
-                objectFit="contain"
-                priority={true}
-                objectPosition={'left center'}
-                width={200}
-                height={25}
-              />
-            )}
+              // <Image
+              //   src={urlFor(header[0].logo.white)
+              //     .width(300)
+              //     .format('webp')
+              //     .url()}
+              //   alt={header[0].logo.white.name}
+              //   layout="intrinsic"
+              //   objectFit="contain"
+              //   priority={true}
+              //   objectPosition={'left center'}
+              //   width={200}
+              //   height={25}
+              // />
+              // <Logo color="#fff" />
+            )} */}
           </FancyLink>
           {/* Right Header Content */}
           <div
