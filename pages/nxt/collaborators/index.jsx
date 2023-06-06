@@ -32,7 +32,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
     };
   }, []);
 
-  const repeatArr = ['', '', '', '', '',''];
+  const repeatArr = ['', '', '', '', ''];
 
   return (
     <Layout>
@@ -59,10 +59,11 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
             </h1>
           </div>
           <div className='w-full h-full flex flex-wrap mt-20 mb-16 border-y border-white collaborators-border'>
-            {repeatArr.map(() => (
+            {repeatArr.map((obj, id) => (
               <FancyLink
                 destination='/nxt/collaborators/detail'
                 className='w-[calc(100%/3)] setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D] '
+                key={id}
               >
                 <div className='h-full flex flex-col'>
                   <span className='italic font-serif text-[1.375rem] text-left mb-1'>
