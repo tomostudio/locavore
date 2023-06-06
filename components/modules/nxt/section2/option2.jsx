@@ -16,7 +16,7 @@ export const Section2Option2ComponentInner = () => {
             id="section2_content"
             className="relative z-10 w-full h-full opacity-0"
           >
-            <div className="relative w-full h-full setflex-center ">
+            <div className="relative w-full h-full setflex-center pb-20">
               <span className="text-[1.875rem] text-[#BEC29D]">
                 WHAT’S ON LOCAVORE
               </span>
