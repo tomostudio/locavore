@@ -41,7 +41,7 @@ const NxtNavigationDesktop = ({ focus = 'nxt', transition = false }) => {
             focus === 'features' ? 'bg-[#BEC29D]' : 'bg-white'
           } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
         >
-          FEATURES & FACILITIES
+          FACILITIES
         </FancyLink>
         <FancyLink
           destination="/nxt/collaborators"
@@ -58,6 +58,14 @@ const NxtNavigationDesktop = ({ focus = 'nxt', transition = false }) => {
           } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
         >
           EVENTS & PROGRAMS
+        </FancyLink>
+        <FancyLink
+          destination="/nxt"
+          className={`relative z-4 ${
+            focus === 'events' ? 'bg-[#BEC29D]' : 'bg-white'
+          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
+        >
+          VISIT
         </FancyLink>
       </Container>
     </m.div>

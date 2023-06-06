@@ -20,7 +20,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
           <div className='relative w-full h-screen'>
             <Container className='relative w-full h-full z-10 setflex-center'>
               <span className='text-black text-center font-funkturm text-d-additionalTitle leading-full'>
-                FEATURES <br />&<br /> FACILITIES
+                FACILITIES
               </span>
             </Container>
             <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-20'>
@@ -29,7 +29,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
                 className={`opacity-0 w-fit p-4 text-d-small text-black bg-white bg-opacity-80 font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-black rounded-xl`}
                 destination='/nxt/features-facilities'
               >
-                OUR FEATURES & FACILITIES
+                OUR FACILITIES
               </FancyLink>
             </div>
             <Container
@@ -75,10 +75,10 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
             />
           </div>
         </div>
-        <div id='enter-bg-white-scale' className='h-[100vh]' />
+        <div id='enter-bg-white-scale' className='h-[25vh]' />
         <div id='enter-building' className='h-[100vh]' />
         {/* Building Buffer */}
-        <div className='h-[100vh]' />
+        <div className='h-[25vh]' />
         {/* <div id="enter-restructure-building" className="h-[100vh]" /> */}
         <div id='enter-btn-collab' className='h-[25vh]' />
         {/* Ending Buffer */}
