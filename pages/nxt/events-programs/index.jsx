@@ -67,7 +67,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
               <span className="font-bold text-[1.25rem] md:text-[1.875rem] leading-[32px]">
                 Event Title
               </span>
-              <p className="text-m-small md:text-d-small mt-1 text-left">
+              <p className="text-m-small md:text-sm mt-1 text-left">
                 Lorem ispum dolor sit amet, consecteur des adispacing dolor sit
                 amet.
               </p>
@@ -81,7 +81,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
               <span className="font-bold text-[1.25rem] md:text-[1.875rem] leading-[32px]">
                 Event Title
               </span>
-              <p className="text-m-small md:text-d-small mt-1 text-left">
+              <p className="text-m-small md:text-sm mt-1 text-left">
                 Lorem ispum dolor sit amet, consecteur des adispacing dolor sit
                 amet.
               </p>
@@ -95,7 +95,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
               <span className="font-bold text-[1.25rem] md:text-[1.875rem] leading-[32px]">
                 Event Title
               </span>
-              <p className="text-m-small md:text-d-small mt-1 text-left">
+              <p className="text-m-small md:text-sm mt-1 text-left">
                 Lorem ispum dolor sit amet, consecteur des adispacing dolor sit
                 amet.
               </p>
@@ -109,7 +109,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
               <span className="font-bold text-[1.25rem] md:text-[1.875rem] leading-[32px]">
                 Event Title
               </span>
-              <p className="text-m-small md:text-d-small mt-1 text-left">
+              <p className="text-m-small md:text-sm mt-1 text-left">
                 Lorem ispum dolor sit amet, consecteur des adispacing dolor sit
                 amet.
               </p>
@@ -123,14 +123,14 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
               <span className="font-bold text-[1.25rem] md:text-[1.875rem] leading-[32px]">
                 Event Title
               </span>
-              <p className="text-m-small md:text-d-small mt-1 text-left">
+              <p className="text-m-small md:text-sm mt-1 text-left">
                 Lorem ispum dolor sit amet, consecteur des adispacing dolor sit
                 amet.
               </p>
             </FancyLink>
           </Container>
           <FancyLink
-            className={`w-fit p-4 text-m-small md:text-d-small mb-10 md:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+            className={`w-fit p-4 text-m-small md:text-sm mb-10 md:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
           >
             VIEW MORE
           </FancyLink>

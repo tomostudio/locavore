@@ -3,7 +3,7 @@
   & > * {
     display: block;
     flex-grow: 1;
-    width: calc((100% + (28px * 4)) / 4);
+    width: calc((100% + (28px * 5)) / 5);
     margin-top: -1px;
 
     margin-left: -28px;
@@ -21,6 +21,10 @@
     }
     // FIRST CARD
     &:nth-child(4) {
+      z-index: 4;
+    }
+    // FIRST CARD
+    &:nth-child(5) {
       z-index: 4;
     }
   }
