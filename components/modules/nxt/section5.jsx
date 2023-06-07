@@ -34,7 +34,7 @@ export const Section5ComponentInner = () => {
                 <span className="font-bold text-[1.875rem] leading-[32px]">
                   Event Title
                 </span>
-                <p className="text-d-small mt-1">
+                <p className="text-sm mt-1">
                   Lorem ispum dolor sit amet, consecteur des adispacing dolor
                   sit amet.
                 </p>
@@ -51,7 +51,7 @@ export const Section5ComponentInner = () => {
                 <span className="font-bold text-[1.875rem] leading-[32px]">
                   Event Title
                 </span>
-                <p className="text-d-small mt-1">
+                <p className="text-sm mt-1">
                   Lorem ispum dolor sit amet, consecteur des adispacing dolor
                   sit amet.
                 </p>
@@ -68,14 +68,14 @@ export const Section5ComponentInner = () => {
                 <span className="font-bold text-[1.875rem] leading-[32px]">
                   Event Title
                 </span>
-                <p className="text-d-small mt-1">
+                <p className="text-sm mt-1">
                   Lorem ispum dolor sit amet, consecteur des adispacing dolor
                   sit amet.
                 </p>
               </FancyLink>
             </div>
             <FancyLink
-              className={`w-fit p-4 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              className={`w-fit p-4 text-sm text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
               destination="/nxt/events-programs"
             >
               VIEW ALL EVENTS & PROGRAMS

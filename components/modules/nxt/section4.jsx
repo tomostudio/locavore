@@ -18,18 +18,18 @@ export const Section4ComponentInner = () => {
           id="section4_title"
           className="relative w-full h-full setflex-center-row opacity-0"
         >
-          <span className="text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full">
+          <span className='text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full drop-shadow-collaborators'>
             OUR
             <br />
             COLLABORATORS
           </span>
           <div
-            id="slider_collab"
-            className="absolute top-0 left-0 z-10 w-full h-full setflex-center opacity-0"
+            id='slider_collab'
+            className='absolute top-0 left-0 -z-1 w-full h-full setflex-center opacity-0'
           >
-            <Marquee gradient={false} className='mb-20'>
-              <div className="h-[60vh] grid grid-flow-col auto-cols-max grid-rows-nxt gap-6">
-                <div className="relative h-full aspect-1 drop-shadow-collaborators">
+            <Marquee gradient={false}>
+              <div className='h-[60vh] grid grid-flow-col auto-cols-max grid-rows-nxt gap-6 pl-6'>
+                <div className='relative h-full aspect-1 drop-shadow-collaborators'>
                   <Image
                     src={collab1}
                     fill
@@ -100,14 +100,14 @@ export const Section4ComponentInner = () => {
               className={`w-fit p-4 mb-24 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
               destination="/nxt/collaborators"
             >
-              VIEW ALL COLLABORATORS
+              VIEW OUR COLLABORATORS
             </FancyLink>
           </div>
         </div>
       </div>
-      <div className="w-full h-[20vh]" />
-      <div id="enter-collab-opacity" className="w-full h-[50vh]" />
-      <div className="w-full h-[50vh]" />
+      <div className='w-full h-[20vh]' />
+      <div id='enter-collab-opacity' className='w-full h-[50vh]' />
+      <div className='w-full h-[75vh]' />
     </section>
   )
 }
@@ -153,8 +153,8 @@ export const Section4AnimationOBJ = [
         id: id,
         trigger: document.querySelector('#enter-collab-opacity'), // which section will be tracked as the scroll trigger
         scrub: 0.5,
-        start: 'top 100%',
-        end: 'bottom 100%',
+        start: 'top 50%',
+        end: 'top 0%',
       },
     }
 
