@@ -20,7 +20,7 @@ const NxtNavigationDesktop = ({ focus = 'nxt', transition = false }) => {
           opacity: 1,
         },
       } : {}}
-      className="sticky bottom-10 z-10 mb-10"
+      className="sticky bottom-10 z-50 mb-10"
     >
       <Container
         id="nxtNavigation"

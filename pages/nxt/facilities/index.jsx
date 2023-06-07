@@ -26,12 +26,29 @@ import feature1_color from '@/public/nxt2/features/feature1_color.png'
 import feature4_color from '@/public/nxt2/features/feature4_color.png'
 import feature5_color from '@/public/nxt2/features/feature5_color.png'
 import feature6_color from '@/public/nxt2/features/feature6_color.png'
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
   const appContext = useAppContext()
   const [seo] = seoAPI
   const [footer] = footerAPI
+  const facilitiesList = [
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+  ]
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -75,27 +92,42 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                       .getElementById('image-view')
                       .classList.contains('hidden')
                   ) {
-                    e.target.classList.add('opacity-40')
-                    e.target.classList.add('italic')
-                    e.target.classList.add('text-[1.375rem]')
+                    document
+                      .getElementById('image-view-btn')
+                      .classList.add('opacity-40')
+                    document
+                      .getElementById('image-view-btn')
+                      .classList.add('pointer-events-none')
+                    document
+                      .getElementById('image-view-btn')
+                      .children[0].classList.add('italic')
+                    document
+                      .getElementById('image-view-btn')
+                      .children[0].classList.add('text-[1.375rem]')
+
                     document
                       .getElementById('grid-view-btn')
                       .classList.remove('opacity-40')
                     document
                       .getElementById('grid-view-btn')
-                      .classList.remove('italic')
+                      .classList.remove('pointer-events-none')
                     document
                       .getElementById('grid-view-btn')
-                      .classList.remove('text-[1.375rem]')
+                      .children[0].classList.remove('italic')
+                    document
+                      .getElementById('grid-view-btn')
+                      .children[0].classList.remove('text-[1.375rem]')
                     document
                       .getElementById('image-view')
                       .classList.remove('hidden')
                     document.getElementById('grid-view').classList.add('hidden')
                   }
                 }}
-                className="mr-4 text-[1.375rem] opacity-40 font-serif italic font-medium leading-6 hover:opacity-30"
+                className="mr-4 opacity-40 leading-6 transition-all duration-300 hover:opacity-30 pointer-events-none"
               >
-                Image View
+                <span className="text-[1.375rem] font-serif italic font-medium">
+                  Image View
+                </span>
               </button>
               •
               <button
@@ -106,18 +138,31 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                       .getElementById('grid-view')
                       .classList.contains('hidden')
                   ) {
-                    e.target.classList.add('opacity-40')
-                    e.target.classList.add('italic')
-                    e.target.classList.add('text-[1.375rem]')
+                    document
+                      .getElementById('grid-view-btn')
+                      .classList.add('opacity-40')
+                    document
+                      .getElementById('grid-view-btn')
+                      .classList.add('pointer-events-none')
+                    document
+                      .getElementById('grid-view-btn')
+                      .children[0].classList.add('italic')
+                    document
+                      .getElementById('grid-view-btn')
+                      .children[0].classList.add('text-[1.375rem]')
+
                     document
                       .getElementById('image-view-btn')
                       .classList.remove('opacity-40')
                     document
                       .getElementById('image-view-btn')
-                      .classList.remove('italic')
+                      .classList.remove('pointer-events-none')
                     document
                       .getElementById('image-view-btn')
-                      .classList.remove('text-[1.375rem]')
+                      .children[0].classList.remove('italic')
+                    document
+                      .getElementById('image-view-btn')
+                      .children[0].classList.remove('text-[1.375rem]')
                     document
                       .getElementById('grid-view')
                       .classList.remove('hidden')
@@ -126,9 +171,9 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                       .classList.add('hidden')
                   }
                 }}
-                className="ml-4 font-serif font-medium leading-6 hover:opacity-30"
+                className="ml-4 leading-6 transition-all duration-300 hover:opacity-30"
               >
-                Grid View
+                <span className="font-serif font-medium">Grid View</span>
               </button>
             </div>
           </Container>
@@ -238,6 +283,44 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
               <div className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row"></div>
             </div>
           </div>
+
+          {/* <ScrollContainer
+            className={`relative`}
+            horizontal={true}
+            vertical={false}
+            hideScrollbars={false}
+            // onScroll={updateScroll}
+            // innerRef={scrollContainer}
+            nativeMobileScroll={true}
+            // draggingClassName={'overflow-x-scroll'}
+          >
+            <div className="w-auto flex flex-row relative min-w-full">
+              {facilitiesList.map((_, id) => (
+                <div key={id}>
+                  <div
+                    className="relative w-[250px] h-[250px] cursor-pointer transtion-all duration-300 hover:z-40 group"
+                    onClick={() => {
+                      window.location.href = '/nxt/facilities/detail'
+                    }}
+                  >
+                    <div className="relative top-1/2 left-1/2 -translate-y-[65%] -translate-x-1/2 w-[150%]">
+                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                        <Image
+                          src={feature1}
+                          alt=""
+                          className="absolute top-0 left-0 w-full h-auto duration-300 transition-all group-hover:opacity-0"
+                        />
+                        <Image src={feature1_color} className="w-full h-auto" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                // <div className='bg-red-500 mr-8'>
+                //   <div className='w-[250px] h-[250px]'/>
+                //   </div>
+              ))}
+            </div>
+          </ScrollContainer> */}
           <Swiper
             id="image-view"
             loop={true}
