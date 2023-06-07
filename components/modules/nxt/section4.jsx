@@ -1,22 +1,22 @@
-import React from 'react';
-import 'intersection-observer'; // optional polyfill
-import Image from 'next/image';
-import Marquee from 'react-fast-marquee';
+import React from 'react'
+import 'intersection-observer' // optional polyfill
+import Image from 'next/image'
+import Marquee from 'react-fast-marquee'
 
 // IMPORT LOCAL IMAGE
-import collab1 from '@/public/nxt2/collab1.png';
-import collab2 from '@/public/nxt2/collab2.png';
-import collab3 from '@/public/nxt2/collab3.png';
-import collab4 from '@/public/nxt2/collab4.png';
-import FancyLink from '@/components/utils/fancyLink';
+import collab1 from '@/public/nxt2/collab1.png'
+import collab2 from '@/public/nxt2/collab2.png'
+import collab3 from '@/public/nxt2/collab3.png'
+import collab4 from '@/public/nxt2/collab4.png'
+import FancyLink from '@/components/utils/fancyLink'
 
 export const Section4ComponentInner = () => {
   return (
-    <section className='relative w-full'>
-      <div className='sticky z-10 top-0 w-full h-screen'>
+    <section className="relative w-full">
+      <div className="sticky z-10 top-0 w-full h-screen">
         <div
-          id='section4_title'
-          className='relative w-full h-full setflex-center-row opacity-0'
+          id="section4_title"
+          className="relative w-full h-full setflex-center-row opacity-0"
         >
           <span className='text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full drop-shadow-collaborators'>
             OUR
@@ -36,67 +36,69 @@ export const Section4ComponentInner = () => {
                     style={{
                       objectFit: 'cover',
                     }}
-                    alt=''
+                    alt=""
                   />
                 </div>
-                <div className='h-full aspect-1' />
-                <div className='h-full aspect-1 row-span-2 col-span-2 drop-shadow-collaborators'>
+                <div className="h-full aspect-1" />
+                <div className="h-full aspect-1 row-span-2 col-span-2 drop-shadow-collaborators">
                   <Image
                     src={collab2}
                     fill
                     style={{
                       objectFit: 'cover',
                     }}
-                    alt=''
+                    alt=""
                   />
                 </div>
-                <div className='relative h-full aspect-1 drop-shadow-collaborators'>
+                <div className="relative h-full aspect-1 drop-shadow-collaborators">
                   <Image
                     src={collab1}
                     fill
                     style={{
                       objectFit: 'cover',
                     }}
-                    alt=''
+                    alt=""
                   />
                 </div>
-                <div className='h-full aspect-1' />
-                <div className='relative h-full aspect-1 drop-shadow-collaborators'>
+                <div className="h-full aspect-1" />
+                <div className="relative h-full aspect-1 drop-shadow-collaborators">
                   <Image
                     src={collab1}
                     fill
                     style={{
                       objectFit: 'cover',
                     }}
-                    alt=''
+                    alt=""
                   />
                 </div>
-                <div className='relative h-full aspect-1 drop-shadow-collaborators'>
+                <div className="relative h-full aspect-1 drop-shadow-collaborators">
                   <Image
                     src={collab1}
                     fill
                     style={{
                       objectFit: 'cover',
                     }}
-                    alt=''
+                    alt=""
                   />
                 </div>
-                <div className='h-full aspect-1' />
-                <div className='relative h-full aspect-1 drop-shadow-collaborators'>
+                <div className="h-full aspect-1" />
+                <div className="relative h-full aspect-1 drop-shadow-collaborators">
                   <Image
                     src={collab1}
                     fill
                     style={{
                       objectFit: 'cover',
                     }}
-                    alt=''
+                    alt=""
                   />
                 </div>
               </div>
             </Marquee>
+          </div>
+          <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end">
             <FancyLink
-              className={`w-fit p-4 mt-14 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-              destination='/nxt/collaborators'
+              className={`w-fit p-4 mb-24 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              destination="/nxt/collaborators"
             >
               VIEW OUR COLLABORATORS
             </FancyLink>
@@ -107,17 +109,17 @@ export const Section4ComponentInner = () => {
       <div id='enter-collab-opacity' className='w-full h-[50vh]' />
       <div className='w-full h-[75vh]' />
     </section>
-  );
-};
+  )
+}
 
-export const Section4AnimationOBJMobile = [];
+export const Section4AnimationOBJMobile = []
 
 export const Section4AnimationOBJ = [
   // SECTION 4
   // TITLE ENTER
   () => {
-    const id = 'section4-title-enter'; // animation id
-    const elem = document.querySelector('#section4_title');
+    const id = 'section4-title-enter' // animation id
+    const elem = document.querySelector('#section4_title')
     const settings = {
       scrollTrigger: {
         id: id,
@@ -126,7 +128,7 @@ export const Section4AnimationOBJ = [
         start: 'top 50%',
         end: 'bottom 100%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -138,14 +140,14 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
   // SLIDER COLLAB ENTER
   () => {
-    const id = 'slider-collab-enter'; // animation id
-    const elem = document.querySelector('#slider_collab');
+    const id = 'slider-collab-enter' // animation id
+    const elem = document.querySelector('#slider_collab')
     const settings = {
       scrollTrigger: {
         id: id,
@@ -154,7 +156,7 @@ export const Section4AnimationOBJ = [
         start: 'top 50%',
         end: 'top 0%',
       },
-    };
+    }
 
     // Input Animation
     const animation = [
@@ -166,8 +168,8 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ];
+    ]
 
-    return { id, elem, settings, animation };
+    return { id, elem, settings, animation }
   },
-];
+]

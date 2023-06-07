@@ -25,12 +25,12 @@ const NxtNavigationMobile = ({ focus = 'nxt' }) => {
         MENU
       </FancyLink>
       <FancyLink
-        destination="/nxt/features-facilities"
+        destination="/nxt/facilities"
         className={`relative z-20 ${
           focus === 'features' ? 'bg-[#BEC29D]' : 'bg-white'
         } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
       >
-        FEATURES & FACILITIES
+        OUR FACILITIES
       </FancyLink>
       <FancyLink
         destination="/nxt/collaborators"

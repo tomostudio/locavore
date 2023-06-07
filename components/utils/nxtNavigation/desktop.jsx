@@ -36,7 +36,7 @@ const NxtNavigationDesktop = ({ focus = 'nxt', transition = false }) => {
           MENU
         </FancyLink>
         <FancyLink
-          destination="/nxt/features-facilities"
+          destination="/nxt/facilities"
           className={`relative z-2 4 ${
             focus === 'features' ? 'bg-[#BEC29D]' : 'bg-white'
           } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
@@ -61,7 +61,9 @@ const NxtNavigationDesktop = ({ focus = 'nxt', transition = false }) => {
         </FancyLink>
         <FancyLink
           destination="/nxt"
-          className={`relative bg-white z-4 border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
+          className={`relative z-4 ${
+            focus === 'visit' ? 'bg-[#BEC29D]' : 'bg-white'
+          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
         >
           VISIT
         </FancyLink>
