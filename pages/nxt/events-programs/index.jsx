@@ -15,6 +15,9 @@ import Container from '@/components/modules/container'
 import card_bnw from '@/public/nxt2/card_bnw.png'
 import card from '@/public/nxt2/card.png'
 import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
+import NxtNavigationMobile from '@/components/utils/nxtNavigation/mobile'
+import { useMediaQuery } from '@/helpers/functional/checkMedia'
+import NxtNavigation from '@/components/utils/nxtNavigation'
 
 const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -99,7 +102,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
             </FancyLink>
           )}
         </div>
-        <NxtNavigationDesktop focus="events" />
+        <NxtNavigation focus="events" />
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

@@ -14,6 +14,7 @@ import hero from '@/public/nxt2/collab/hero.png'
 import card1 from '@/public/nxt2/collab/card1.png'
 import card_bnw1 from '@/public/nxt2/collab/card_bnw1.png'
 import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
+import NxtNavigation from '@/components/utils/nxtNavigation'
 
 const OurCollaborators = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -113,7 +114,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
             </FancyLink>
           )}
         </div>
-        <NxtNavigationDesktop focus="collab" />
+        <NxtNavigation focus="collab" />
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

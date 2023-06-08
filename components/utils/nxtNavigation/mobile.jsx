@@ -1,54 +1,109 @@
-import Container from "@/components/modules/container"
-import FancyLink from "../fancyLink"
+import Container from '@/components/modules/container'
+import FancyLink from '../fancyLink'
+import { useState } from 'react'
+import { m } from 'framer-motion'
 
-const NxtNavigationMobile = ({ focus = 'nxt' }) => {
+const NxtNavigationMobile = ({ focus = '', transition = false }) => {
+  const [open, setOpen] = useState(false)
   return (
-    <Container
-      id="nxtNavigation"
-      padding={false}
-      className="sticky bottom-10 z-10 mb-10 mx-auto flex flex-wrap text-black"
+    <m.div
+      initial="initial"
+      animate="enter"
+      variants={
+        transition
+          ? {
+              initial: { opacity: 0 },
+              enter: {
+                opacity: 1,
+                transition: {
+                  duration: 1,
+                  delay: 3,
+                },
+              },
+              exit: {
+                opacity: 1,
+              },
+            }
+          : {}
+      }
+      className="sticky bottom-10 z-50 mb-10"
     >
-      {/* <FancyLink
-        destination="/nxt"
-        className={`relative ${
-          focus === 'nxt' ? 'bg-[#BEC29D]' : 'bg-white'
-        } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
-      >
-        NXT
-      </FancyLink> */}
-      <FancyLink
-        destination="/nxt/menu"
-        className={`relative z-10 ${
-          focus === 'menu' ? 'bg-[#BEC29D]' : 'bg-white'
-        } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
-      >
-        MENU
-      </FancyLink>
-      <FancyLink
-        destination="/nxt/facilities"
-        className={`relative z-20 ${
-          focus === 'features' ? 'bg-[#BEC29D]' : 'bg-white'
-        } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
-      >
-        OUR FACILITIES
-      </FancyLink>
-      <FancyLink
-        destination="/nxt/collaborators"
-        className={`relative z-30 ${
-          focus === 'collab' ? 'bg-[#BEC29D]' : 'bg-white'
-        } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
-      >
-        COLLABORATORS
-      </FancyLink>
-      <FancyLink
-        destination="/nxt/events-programs"
-        className={`relative z-40 ${
-          focus === 'events' ? 'bg-[#BEC29D]' : 'bg-white'
-        } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
-      >
-        EVENTS & PROGRAMS
-      </FancyLink>
-    </Container>
+      <Container className="mx-auto flex flex-wrap text-black w-full min-h-[50px]">
+        <div className="relative w-full">
+          <div className="absolute bottom-0 left-0 w-full px-2 pb-2">
+            <FancyLink
+              className="relative w-full h-[50px] rounded-full bg-[#BEC29D] border border-black text-black z-2"
+              onClick={() => {
+                setOpen(!open)
+              }}
+            >
+              {focus === 'menu'
+                ? 'MENU'
+                : focus === 'facilities'
+                ? 'FACILITIES'
+                : focus === 'collab'
+                ? 'COLLABORATORS'
+                : focus === 'visit'
+                ? 'VISIT'
+                : ''}
+              <div className="absolute right-6 top-1/2 -translate-y-1/2">
+                <div className={`menu-icon black ${open ? "open" : ""} hover:opacity-50 transition-opacity duration-300`}>
+                  <div />
+                  <div />
+                </div>
+              </div>
+            </FancyLink>
+          </div>
+          <div
+            className={`py-2 w-full ${
+              open ? 'flex' : 'hidden'
+            } flex flex-col-reverse bg-white rounded-[25px] overflow-hidden`}
+          >
+            <div className="w-full h-[50px] bg-white" />
+            {focus !== 'menu' && (
+              <FancyLink
+                className="w-full h-[50px] bg-white mb-2 setflex-center"
+                destination="/nxt/menu"
+              >
+                MENU
+              </FancyLink>
+            )}
+            {focus !== 'facilities' && (
+              <FancyLink
+                className="w-full h-[50px] bg-white mb-2 setflex-center"
+                destination="/nxt/facilities"
+              >
+                FACILITIES
+              </FancyLink>
+            )}
+            {focus !== 'collab' && (
+              <FancyLink
+                className="w-full h-[50px] bg-white mb-2 setflex-center"
+                destination="/nxt/collaborators"
+              >
+                COLLABORATORS
+              </FancyLink>
+            )}
+            {focus !== 'events' && (
+              <FancyLink
+                className="w-full h-[50px] bg-white mb-2 setflex-center"
+                destination="/nxt/events-programs"
+              >
+                EVENTS & PROGRAMS
+              </FancyLink>
+            )}
+            {focus !== 'visit' && (
+              <FancyLink
+                className="w-full h-[50px] bg-white mb-2 setflex-center"
+                destination="/nxt/visit"
+              >
+                VISIT
+              </FancyLink>
+            )}
+          </div>
+        </div>
+      </Container>
+    </m.div>
   )
 }
 

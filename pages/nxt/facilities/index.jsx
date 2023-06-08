@@ -28,6 +28,7 @@ import feature5_color from '@/public/nxt2/features/feature5_color.png'
 import feature6_color from '@/public/nxt2/features/feature6_color.png'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import ArrowFacilities from '@/components/utils/arrowFacilites'
+import NxtNavigation from '@/components/utils/nxtNavigation'
 
 const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -665,7 +666,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
             </div>
           </div>
         </div>
-        <NxtNavigationDesktop focus="features" />
+        <NxtNavigation focus="facilities" />
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

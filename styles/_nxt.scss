@@ -45,3 +45,51 @@
     }
   }
 }
+
+.menu-icon {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  & > div {
+    position: absolute;
+    width: 12px;
+    height: 1px;
+    left: 50%;
+    top: 50%;
+    transition: margin-top 0.05s ease 0.125s, transform 0.15s ease 0s;
+    transform-origin: 50% 50%;
+    &:first-child {
+      transform: translate(-50%, -50%);
+      margin-top: 3px;
+    }
+    &:last-child {
+      transform: translate(-50%, -50%);
+      margin-top: -3px;
+    }
+  }
+
+  &.open {
+    & > div {
+      transition: margin-top 0.05s ease, transform 0.15s ease 0.04s;
+      &:first-child {
+        margin-top: 0px;
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+      &:last-child {
+        margin-top: 0px;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+    }
+  }
+
+  &.white {
+    & > div {
+      background: white;
+    }
+  }
+  &.black {
+    & > div {
+      background: black;
+    }
+  }
+}

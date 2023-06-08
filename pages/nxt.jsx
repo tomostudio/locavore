@@ -43,7 +43,7 @@ import {
 
 import { useAppContext } from 'context/state'
 import applyScrollTrigger from '@/components/utils/applyScrollTrigger'
-import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
+import NxtNavigation from '@/components/utils/nxtNavigation'
 
 export default function Nxt({ seoAPI, footerAPI }) {
   const router = useRouter()
@@ -140,7 +140,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
             {/* Section 5 */}
             {/* WHAT'S ON? */}
             <Section5ComponentInner />
-            <NxtNavigationDesktop transition={true} focus="nxt" />
+            <NxtNavigation transition={true} />
           </section>
           <Footer footer={footer} mailchimp={seo.mailchimpID} />
         </m.main>

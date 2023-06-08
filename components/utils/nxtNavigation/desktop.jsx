@@ -2,7 +2,7 @@ import Container from '@/components/modules/container'
 import FancyLink from '../fancyLink'
 import { m } from 'framer-motion'
 
-const NxtNavigationDesktop = ({ focus = 'nxt', transition = false }) => {
+const NxtNavigationDesktop = ({ focus = '', transition = false }) => {
   return (
     <m.div
       initial="initial"
@@ -38,7 +38,7 @@ const NxtNavigationDesktop = ({ focus = 'nxt', transition = false }) => {
         <FancyLink
           destination="/nxt/facilities"
           className={`relative z-2 4 ${
-            focus === 'features' ? 'bg-[#BEC29D]' : 'bg-white'
+            focus === 'facilities' ? 'bg-[#BEC29D]' : 'bg-white'
           } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
         >
           FACILITIES

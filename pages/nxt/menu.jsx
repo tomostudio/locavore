@@ -15,6 +15,7 @@ import { useAppContext } from 'context/state';
 import Container from '@/components/modules/container';
 import Footer from '@/components/modules/footer';
 import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop';
+import NxtNavigation from '@/components/utils/nxtNavigation';
 
 const Menu = ({ seoAPI, footerAPI }) => {
   const router = useRouter();
@@ -109,7 +110,7 @@ const Menu = ({ seoAPI, footerAPI }) => {
             </div>
           </Container>
         </div>
-        <NxtNavigationDesktop focus='menu' />
+        <NxtNavigation focus="menu" />
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
