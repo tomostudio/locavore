@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { fade } from '@/helpers/preset/transitions'
 import Footer from '@/components/modules/footer'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import FancyLink from '@/components/utils/fancyLink'
 
@@ -21,7 +21,12 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
   const appContext = useAppContext()
   const [seo] = seoAPI
   const [footer] = footerAPI
-  const eventList = ['', '', '', '', '']
+  const eventList = ['', '', '', '', '', '', '', '', '']
+  const defaultItemToShow = 6
+  const [itemToShow, setItemToShow] = useState(defaultItemToShow)
+  const [showMoreButton, setShowMore] = useState(
+    eventList.length > defaultItemToShow ? true : false,
+  )
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -59,7 +64,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
             </h1>
           </div>
           <Container className="w-full h-full flex flex-col md:flex-row md:flex-wrap mt-20 mb-10 md:mb-16 gap-8">
-            {eventList.map((_, id) => (
+            {eventList.slice(0, itemToShow).map((_, id) => (
               <FancyLink
                 key={id}
                 destination="/nxt/events-programs/detail"
@@ -82,11 +87,17 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
               </FancyLink>
             ))}
           </Container>
-          <FancyLink
-            className={`w-fit p-4 text-m-small md:text-sm mb-10 md:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-          >
-            VIEW MORE
-          </FancyLink>
+          {showMoreButton && (
+            <FancyLink
+              className={`w-fit p-4 text-m-small md:text-sm mb-10 md:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              onClick={() => {
+                setItemToShow(itemToShow + defaultItemToShow)
+                setShowMore(eventList.length > itemToShow + defaultItemToShow)
+              }}
+            >
+              VIEW MORE
+            </FancyLink>
+          )}
         </div>
         <NxtNavigationDesktop focus="events" />
       </motion.main>
