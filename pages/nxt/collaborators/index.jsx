@@ -59,7 +59,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
           <div className="relative w-full h-[350px] flex items-center md:items-end justify-center">
             <Image src={hero} alt="" fill style={{ objectFit: 'cover' }} />
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
-            <h1 className="relative text-m-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
+            <h1 className="relative text-m-header sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
               OUR COLLABORATORS
             </h1>
           </div>
@@ -67,7 +67,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
             {repeatArr.slice(0, itemToShow).map((obj, id) => (
               <FancyLink
                 destination="/nxt/collaborators/detail"
-                className="w-[calc(100%/3)] setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D] "
+                className="w-[calc(100%/2)] md:w-[calc(100%/3)] border-r border-b border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D] "
                 key={id}
               >
                 <div className="h-full flex flex-col">

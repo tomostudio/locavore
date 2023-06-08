@@ -29,6 +29,7 @@ module.exports = {
         'd-subheading': '4.063rem',
         'd-caption': '1.063rem',
         'd-header': '4.688rem',
+        't-header': '3.188rem',
         'm-heading': '3.125rem',
         'm-body': '0.875rem',
         'm-title': '1.5rem',

@@ -62,16 +62,16 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
           <div className="relative w-full h-[350px] flex items-center md:items-end justify-center">
             <Image src={hero} alt="" fill style={{ objectFit: 'cover' }} />
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
-            <h1 className="relative text-m-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
+            <h1 className="relative text-m-header sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
               EVENTS & PROGRAMS
             </h1>
           </div>
-          <Container className="w-full h-full flex flex-col md:flex-row md:flex-wrap mt-20 mb-10 md:mb-16 gap-8">
+          <Container className="w-full h-full flex flex-wrap mt-20 mb-10 md:mb-16 gap-8">
             {eventList.slice(0, itemToShow).map((_, id) => (
               <FancyLink
                 key={id}
                 destination="/nxt/events-programs/detail"
-                className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
+                className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] sm:w-[calc((100%/2)-1rem)] md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
               >
                 <span className="text-m-body md:text-d-body">
                   10 OCTOBER 2023

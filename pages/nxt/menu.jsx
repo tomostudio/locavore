@@ -64,7 +64,7 @@ const Menu = ({ seoAPI, footerAPI }) => {
         <div className='w-full h-full bg-black'>
           <Container className='bg-black flex flex-col'>
             <div className='max-w-4xl px-10 max-md:px-5 mx-auto my-24 flex flex-col items-center space-y-20 text-white'>
-              <span className='block text-[2.125rem] md:text-d-header text-center leading-[120%]'>
+              <span className='block text-[2.125rem] sm:text-t-header md:text-d-header text-center leading-[120%]'>
                 A History of Locavore in 50 Edible Ideas
               </span>
               <div className='w-full text-white editor-styling blog space-y-10'>
