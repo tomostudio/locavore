@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { fade } from '@/helpers/preset/transitions'
 import Container from '@/components/modules/container'
 import { useAppContext } from 'context/state'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
 import Image from 'next/image'
@@ -33,8 +33,10 @@ import NxtNavigation from '@/components/utils/nxtNavigation'
 const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
   const appContext = useAppContext()
+  const scrollContainer = useRef()
   const [seo] = seoAPI
   const [footer] = footerAPI
+  const [positionScroll, setPositionScroll] = useState(0)
   const facilitiesList = [
     '',
     '',
@@ -287,266 +289,333 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
           </div>
 
           <div id="image-view" className="relative w-full">
-            <ScrollContainer
-              className={`relative h-[calc(15vw*3.7)] mt-8`}
-              horizontal={true}
-              vertical={false}
-              hideScrollbars={false}
-              nativeMobileScroll={true}
-            >
-              <div className="w-auto h-full flex items-center relative min-w-full">
-                <div>
-                  <div
-                    className="relative w-[15vw] h-[15vw] max-h-[500px] cursor-pointer transtion-all duration-300 hover:z-40 group"
-                    onClick={() => {
-                      window.location.href = '/nxt/facilities/detail'
-                    }}
-                  >
-                    <div className="relative top-1/2 -translate-y-[78%] w-[calc(15vw*1.5)] h-[calc(15vw*2.25)]">
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <Image
-                          src={feature1}
-                          alt=""
-                          fill
-                          className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
-                        />
-                        <Image
-                          src={feature1_color}
-                          alt=""
-                          fill
-                          className="object-contain"
-                        />
+            <div className="relative w-full h-[calc(15vw*3.7)] mt-8">
+              <ScrollContainer
+                className={`relative h-[calc(15vw*3.7)] scroll-smooth`}
+                horizontal={true}
+                vertical={false}
+                hideScrollbars={false}
+                nativeMobileScroll={true}
+                innerRef={scrollContainer}
+              >
+                <div className="w-fit h-full flex items-center relative min-w-full">
+                  <div>
+                    <div
+                      className="relative w-[15vw] h-[15vw] max-h-[500px] cursor-pointer transtion-all duration-300 hover:z-40 group"
+                      onClick={() => {
+                        window.location.href = '/nxt/facilities/detail'
+                      }}
+                    >
+                      <div className="relative top-1/2 -translate-y-[78%] w-[calc(15vw*1.5)] h-[calc(15vw*2.25)]">
+                        <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                          <Image
+                            src={feature1}
+                            alt=""
+                            fill
+                            className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
+                          />
+                          <Image
+                            src={feature1_color}
+                            alt=""
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
+                      onClick={() => {
+                        window.location.href = '/nxt/facilities/detail'
+                      }}
+                    >
+                      <div className="relative w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
+                        <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                          <Image
+                            src={feature4}
+                            alt=""
+                            fill
+                            className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
+                          />
+                          <Image
+                            src={feature4_color}
+                            alt=""
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
+                      onClick={() => {
+                        window.location.href = '/nxt/facilities/detail'
+                      }}
+                    >
+                      <div className="relative top-1/2 -translate-y-1/2 w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
+                        <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                          <Image
+                            src={feature6}
+                            alt=""
+                            fill
+                            className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
+                          />
+                          <Image
+                            src={feature6_color}
+                            alt=""
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
+                      onClick={() => {
+                        window.location.href = '/nxt/facilities/detail'
+                      }}
+                    >
+                      <div className="relative w-full h-full ">
+                        <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                          <Image
+                            src={feature5}
+                            alt=""
+                            fill
+                            className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
+                          />
+                          <Image
+                            src={feature5_color}
+                            alt=""
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
+                      onClick={() => {
+                        window.location.href = '/nxt/facilities/detail'
+                      }}
+                    >
+                      <div className="relative top-1/2 -translate-y-[72%] w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
+                        <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                          <Image
+                            src={feature1}
+                            alt=""
+                            fill
+                            className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
+                          />
+                          <Image
+                            src={feature1_color}
+                            alt=""
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="relative w-[15vw] h-[15vw] max-h-[500px] cursor-pointer transtion-all duration-300 hover:z-40 group"
+                      onClick={() => {
+                        window.location.href = '/nxt/facilities/detail'
+                      }}
+                    >
+                      <div className="relative top-1/2 -translate-y-[78%] w-[calc(15vw*1.5)] h-[calc(15vw*2.25)]">
+                        <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                          <Image
+                            src={feature1}
+                            alt=""
+                            fill
+                            className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
+                          />
+                          <Image
+                            src={feature1_color}
+                            alt=""
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
+                      onClick={() => {
+                        window.location.href = '/nxt/facilities/detail'
+                      }}
+                    >
+                      <div className="relative w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
+                        <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                          <Image
+                            src={feature4}
+                            alt=""
+                            fill
+                            className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
+                          />
+                          <Image
+                            src={feature4_color}
+                            alt=""
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
+                      onClick={() => {
+                        window.location.href = '/nxt/facilities/detail'
+                      }}
+                    >
+                      <div className="relative top-1/2 -translate-y-1/2 w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
+                        <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                          <Image
+                            src={feature6}
+                            alt=""
+                            fill
+                            className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
+                          />
+                          <Image
+                            src={feature6_color}
+                            alt=""
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
+                      onClick={() => {
+                        window.location.href = '/nxt/facilities/detail'
+                      }}
+                    >
+                      <div className="relative w-full h-full ">
+                        <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                          <Image
+                            src={feature5}
+                            alt=""
+                            fill
+                            className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
+                          />
+                          <Image
+                            src={feature5_color}
+                            alt=""
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
+                      onClick={() => {
+                        window.location.href = '/nxt/facilities/detail'
+                      }}
+                    >
+                      <div className="relative top-1/2 -translate-y-[72%] w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
+                        <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                          <Image
+                            src={feature1}
+                            alt=""
+                            fill
+                            className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
+                          />
+                          <Image
+                            src={feature1_color}
+                            alt=""
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div>
-                  <div
-                    className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
-                    onClick={() => {
-                      window.location.href = '/nxt/facilities/detail'
-                    }}
-                  >
-                    <div className="relative w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <Image
-                          src={feature4}
-                          alt=""
-                          fill
-                          className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
-                        />
-                        <Image
-                          src={feature4_color}
-                          alt=""
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div
-                    className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
-                    onClick={() => {
-                      window.location.href = '/nxt/facilities/detail'
-                    }}
-                  >
-                    <div className="relative top-1/2 -translate-y-1/2 w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <Image
-                          src={feature6}
-                          alt=""
-                          fill
-                          className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
-                        />
-                        <Image
-                          src={feature6_color}
-                          alt=""
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div
-                    className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
-                    onClick={() => {
-                      window.location.href = '/nxt/facilities/detail'
-                    }}
-                  >
-                    <div className="relative w-full h-full ">
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <Image
-                          src={feature5}
-                          alt=""
-                          fill
-                          className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
-                        />
-                        <Image
-                          src={feature5_color}
-                          alt=""
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div
-                    className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
-                    onClick={() => {
-                      window.location.href = '/nxt/facilities/detail'
-                    }}
-                  >
-                    <div className="relative top-1/2 -translate-y-[72%] w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <Image
-                          src={feature1}
-                          alt=""
-                          fill
-                          className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
-                        />
-                        <Image
-                          src={feature1_color}
-                          alt=""
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div
-                    className="relative w-[15vw] h-[15vw] max-h-[500px] cursor-pointer transtion-all duration-300 hover:z-40 group"
-                    onClick={() => {
-                      window.location.href = '/nxt/facilities/detail'
-                    }}
-                  >
-                    <div className="relative top-1/2 -translate-y-[78%] w-[calc(15vw*1.5)] h-[calc(15vw*2.25)]">
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <Image
-                          src={feature1}
-                          alt=""
-                          fill
-                          className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
-                        />
-                        <Image
-                          src={feature1_color}
-                          alt=""
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div
-                    className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
-                    onClick={() => {
-                      window.location.href = '/nxt/facilities/detail'
-                    }}
-                  >
-                    <div className="relative w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <Image
-                          src={feature4}
-                          alt=""
-                          fill
-                          className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
-                        />
-                        <Image
-                          src={feature4_color}
-                          alt=""
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div
-                    className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
-                    onClick={() => {
-                      window.location.href = '/nxt/facilities/detail'
-                    }}
-                  >
-                    <div className="relative top-1/2 -translate-y-1/2 w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <Image
-                          src={feature6}
-                          alt=""
-                          fill
-                          className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
-                        />
-                        <Image
-                          src={feature6_color}
-                          alt=""
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div
-                    className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
-                    onClick={() => {
-                      window.location.href = '/nxt/facilities/detail'
-                    }}
-                  >
-                    <div className="relative w-full h-full ">
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <Image
-                          src={feature5}
-                          alt=""
-                          fill
-                          className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
-                        />
-                        <Image
-                          src={feature5_color}
-                          alt=""
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div
-                    className="relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:z-40 group z-10"
-                    onClick={() => {
-                      window.location.href = '/nxt/facilities/detail'
-                    }}
-                  >
-                    <div className="relative top-1/2 -translate-y-[72%] w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]">
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <Image
-                          src={feature1}
-                          alt=""
-                          fill
-                          className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
-                        />
-                        <Image
-                          src={feature1_color}
-                          alt=""
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              </ScrollContainer>
+              <div className="absolute pointer-events-none z-50 top-0 left-0 h-full w-full flex items-center justify-between ">
+                <button
+                  className="group pointer-events-auto h-fit p-5 border-2 border-white rounded-full ml-8 transition-all duration-300 hover:bg-white"
+                  onClick={() => {
+                    const scrollContainerWidth =
+                      scrollContainer.current.scrollWidth -
+                      scrollContainer.current.clientWidth
+
+                    const scrollPerElement = scrollContainerWidth / 5
+
+                    const scrollToLeft =
+                      positionScroll === scrollContainer.current.scrollLeft
+                        ? positionScroll !== 0
+                          ? positionScroll - scrollPerElement < 0
+                            ? 0
+                            : positionScroll - scrollPerElement
+                          : 0
+                        : scrollContainer.current.scrollLeft -
+                            scrollPerElement <
+                          0
+                        ? 0
+                        : scrollContainer.current.scrollLeft - scrollPerElement
+
+                    scrollContainer.current.scrollLeft = scrollToLeft
+                    console.log(scrollToLeft)
+
+                    setPositionScroll(scrollToLeft)
+                  }}
+                >
+                  <ArrowFacilities position="left" />
+                </button>
+                <button
+                  className={`group pointer-events-auto h-fit p-5 border-2 border-white rounded-full mr-8 transition-all duration-300 hover:bg-white`}
+                  onClick={() => {
+                    const scrollContainerWidth =
+                      scrollContainer.current.scrollWidth -
+                      scrollContainer.current.clientWidth
+
+                    const scrollPerElement = scrollContainerWidth / 5
+
+                    const scrollToRight =
+                      positionScroll === scrollContainer.current.scrollLeft
+                        ? positionScroll
+                          ? positionScroll === scrollContainerWidth
+                            ? scrollContainerWidth
+                            : positionScroll + scrollPerElement >
+                              scrollContainerWidth
+                            ? scrollContainerWidth
+                            : positionScroll + scrollPerElement
+                          : scrollPerElement
+                        : scrollContainer.current.scrollLeft +
+                            scrollPerElement >
+                          scrollContainerWidth
+                        ? scrollContainerWidth
+                        : scrollContainer.current.scrollLeft + scrollPerElement
+
+                    scrollContainer.current.scrollLeft = scrollToRight
+
+                    setPositionScroll(scrollToRight)
+                  }}
+                >
+                  <ArrowFacilities position="right" />
+                </button>
               </div>
-            </ScrollContainer>
+            </div>
             <div className="relative w-full h-full my-[22vw]">
               <Swiper
                 mousewheel={true}
