@@ -15,6 +15,7 @@ import card1 from '@/public/nxt2/collab/card1.png'
 import card_bnw1 from '@/public/nxt2/collab/card_bnw1.png'
 import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
 import NxtNavigation from '@/components/utils/nxtNavigation'
+import { useMediaQuery } from '@/helpers/functional/checkMedia'
 
 const OurCollaborators = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -27,6 +28,24 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
   const [showMoreButton, setShowMore] = useState(
     repeatArr.length > defaultItemToShow ? true : false,
   )
+
+  const removeBorderLastRow = (data, index, mobile = false) => {
+    // Mendapatkan jumlah elemen dalam setiap kolom
+    let columnCount = mobile ? 2 : 3
+    let rowCount = Math.ceil(data.length / columnCount)
+
+    // Mendapatkan elemen-elemen pada kolom terakhir
+    const lastColumnDivs = []
+    for (var i = columnCount * (rowCount - 1); i < data.length; i++) {
+      lastColumnDivs.push(i)
+    }
+
+    if (lastColumnDivs.find((e) => e === index)) {
+      return false
+    } else {
+      return true
+    }
+  }
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -58,7 +77,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
         <div className="relative w-full h-full setflex-center">
           <div className="relative w-full h-[350px] flex items-center md:items-end justify-center">
             <Image src={hero} alt="" fill style={{ objectFit: 'cover' }} />
-            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
+            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20" />
             <h1 className="relative text-m-header sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
               OUR COLLABORATORS
             </h1>
@@ -67,7 +86,23 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
             {repeatArr.slice(0, itemToShow).map((obj, id) => (
               <FancyLink
                 destination="/nxt/collaborators/detail"
-                className="w-[calc(100%/2)] md:w-[calc(100%/3)] border-r border-b border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D] "
+                className={`w-[calc(100%/2)] md:w-[calc(100%/3)] border-r ${
+                  useMediaQuery('(min-width: 850px)')
+                    ? removeBorderLastRow(
+                        repeatArr.slice(0, itemToShow),
+                        id,
+                        false,
+                      )
+                      ? 'border-b'
+                      : ''
+                    : removeBorderLastRow(
+                        repeatArr.slice(0, itemToShow),
+                        id,
+                        true,
+                      )
+                    ? 'border-b'
+                    : ''
+                } border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]`}
                 key={id}
               >
                 <div className="h-full flex flex-col">

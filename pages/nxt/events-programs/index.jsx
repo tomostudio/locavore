@@ -61,7 +61,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
         <div className="relative w-full h-full setflex-center">
           <div className="relative w-full h-[350px] flex items-center md:items-end justify-center">
             <Image src={hero} alt="" fill style={{ objectFit: 'cover' }} />
-            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
+            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20" />
             <h1 className="relative text-m-header sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
               EVENTS & PROGRAMS
             </h1>

@@ -32,16 +32,18 @@
 
 .collaborators-border {
   & > * {
-    border-bottom: solid 1px white;
-    border-right: solid 1px white;
+    border-right: 1px solid white;
 
-    &:nth-child(3n) {
-      border-right: 0px;
+    @media (min-width: 850px) {
+      &:nth-child(3n) {
+        border-right: 0px;
+      }
     }
-    &:nth-last-child(1),
-    &:nth-last-child(2):not(:nth-child(3n)),
-    &:nth-last-child(3):not(:nth-child(3n)):not(:nth-child(2n)) {
-      border-bottom: 0px;
+
+    @media (max-width: 849px) {
+      &:nth-child(2n) {
+        border-right: 0px;
+      }
     }
   }
 }
@@ -90,6 +92,16 @@
   &.black {
     & > div {
       background: black;
+    }
+  }
+}
+
+#testlist {
+  & > * {
+    &:nth-child(3n + 1):nth-last-child(-n + 2),
+    &:nth-child(3n + 2):nth-last-child(-n + 2) {
+      /* Styles for the last column */
+      background-color: red;
     }
   }
 }
