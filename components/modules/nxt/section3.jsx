@@ -14,16 +14,18 @@ import tunnel from '@/public/nxt/tunnel.webp'
 
 export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   return (
-    <section className='relative w-full overflow-x-clip'>
-      <div className='w-full'>
-        <div className='sticky z-10 top-0 w-full h-screen flex flex-col'>
-          <div className='relative w-full h-screen'>
-            <Container className='relative w-full h-full z-20 setflex-center'>
-              <span className='text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full '>
-                OUR<br/>FACILITIES
+    <section className="relative w-full overflow-x-clip">
+      <div className="w-full">
+        <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
+          <div className="relative w-full h-screen">
+            <Container className="relative w-full h-full z-20 setflex-center">
+              <span className="text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full ">
+                OUR
+                <br />
+                FACILITIES
               </span>
             </Container>
-            <div className='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-10'>
+            <div className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex justify-center items-end">
               <FancyLink
                 id="btn-features"
                 className={`opacity-0 w-fit p-4 mb-24 text-d-small text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
@@ -33,8 +35,8 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
               </FancyLink>
             </div>
             <Container
-              id='building'
-              className='absolute top-0 left-1/2 translate-y-[120vh] -translate-x-1/2 w-full h-[100vh] z-2'
+              id="building"
+              className="absolute top-0 left-1/2 translate-y-[120vh] -translate-x-1/2 w-full h-[100vh] z-2"
             >
               <div className="relative w-full h-full">
                 <div
@@ -82,9 +84,9 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         {/* <div id="enter-restructure-building" className="h-[100vh]" /> */}
         <div id="enter-btn-collab" className="h-[25vh]" />
         {/* Ending Buffer */}
-        <div className='h-[10vh]' />
+        <div className="h-[10vh]" />
       </div>
-      <div id='enter-blur' className='w-full h-[10vh]' />
+      <div id="enter-blur" className="w-full h-[10vh]" />
     </section>
   )
 }
