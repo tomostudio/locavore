@@ -180,7 +180,7 @@ export default function Header({ className = '', header, footer }) {
             {useMediaQuery('(min-width: 850px)') && (
               <>
                 <FancyLink
-                  destination="/nxt"
+                  destination="/"
                   a11yText="Navigate to the nxt page"
                   className={`leading-none ${transition.fade}`}
                 >

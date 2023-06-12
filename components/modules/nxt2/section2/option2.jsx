@@ -57,16 +57,6 @@ export const Section2Option2ComponentInner = () => {
                   animate={controls}
                   initial="hidden"
                   variants={variants}
-                  onAnimationStart={() => {
-                    document
-                      .querySelector('body')
-                      .classList.add('overflow-hidden')
-                  }}
-                  onAnimationComplete={() => {
-                    document
-                      .querySelector('body')
-                      .classList.remove('overflow-hidden')
-                  }}
                   className="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 translate-y-[100vh] w-full h-full"
                 >
                   <div className="relative w-full h-full">

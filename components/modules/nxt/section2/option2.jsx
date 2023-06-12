@@ -6,14 +6,29 @@ import FancyLink from '@/components/utils/fancyLink'
 // IMPORT LOCAL IMAGE
 import section2_bg from '@/public/nxt2/section2_bg1.png'
 import Container from '../../container'
+import PillButton from '../../pillButton'
 
 export const Section2Option2ComponentInner = () => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
+        <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-10">
+          <PillButton
+            destination="/"
+            className="uppercase bg-white"
+          >
+            Option 1
+          </PillButton>
+          <PillButton destination="/nxt/option2" className="uppercase bg-white pointer-events-none">
+            Option 2
+          </PillButton>
+          <PillButton destination="/nxt/option3" className="uppercase bg-white">
+            Option 3
+          </PillButton>
+        </div>
         <Container className="relative w-full h-full grow setflex-center">
           <div
-            id="section2_content"
+            id="section2_content-option2"
             className="relative z-10 w-full h-full opacity-0"
           >
             <div className="relative w-full h-full setflex-center pb-20">
@@ -23,7 +38,7 @@ export const Section2Option2ComponentInner = () => {
               <div className="relative text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
                 A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
                 <div
-                  id="section2_bg"
+                  id="section2_bg-option2"
                   className="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 translate-y-[90vh] w-full h-full"
                 >
                   <div className="relative w-full h-full">
@@ -48,7 +63,7 @@ export const Section2Option2ComponentInner = () => {
           </div>
         </Container>
       </div>
-      <div id="enter-bg" className="h-[100vh]" />
+      <div id="enter-bg-option2" className="h-[100vh]" />
       <div className="h-[25vh]" />
     </section>
   )
@@ -60,12 +75,12 @@ export const Section2Option2AnimationOBJ = [
   // SECTION 2 OPTION 3
   // CONTENT ENTER
   () => {
-    const id = 'section2-content-enter' // animation id
-    const elem = document.querySelector('#section2_content')
+    const id = 'section2-content-enter-option2' // animation id
+    const elem = document.querySelector('#section2_content-option2')
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: document.querySelector('#section2_content'), // which section will be tracked as the scroll trigger
+        trigger: document.querySelector('#section2_content-option2'), // which section will be tracked as the scroll trigger
         scrub: 0.5,
         start: 'top 80%',
         end: 'bottom 100%',
@@ -88,12 +103,12 @@ export const Section2Option2AnimationOBJ = [
   },
   // BACKGROUND 2 ENTER
   () => {
-    const id = 'bg2-enter' // animation id
-    const elem = document.querySelector('#section2_bg')
+    const id = 'bg2-enter-option2' // animation id
+    const elem = document.querySelector('#section2_bg-option2')
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: document.querySelector('#enter-bg'), // which section will be tracked as the scroll trigger
+        trigger: document.querySelector('#enter-bg-option2'), // which section will be tracked as the scroll trigger
         scrub: 0.5,
         start: 'top 100%',
         end: 'bottom 100%',

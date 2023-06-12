@@ -18,10 +18,10 @@ import {
 } from '@/components/modules/nxt/section1'
 
 import {
-  Section2Option1AnimationOBJ,
-  Section2Option1AnimationOBJMobile,
-  Section2Option1ComponentInner,
-} from '@/components/modules/nxt/section2/option1'
+  Section2Option3AnimationOBJ,
+  Section2Option3AnimationOBJMobile,
+  Section2Option3ComponentInner,
+} from '@/components/modules/nxt/section2/option3'
 
 import {
   Section3AnimationOBJ,
@@ -44,7 +44,6 @@ import {
 import { useAppContext } from 'context/state'
 import applyScrollTrigger from '@/components/utils/applyScrollTrigger'
 import NxtNavigation from '@/components/utils/nxtNavigation'
-import PillButton from '@/components/modules/pillButton'
 
 export default function Nxt({ seoAPI, footerAPI }) {
   const router = useRouter()
@@ -56,14 +55,14 @@ export default function Nxt({ seoAPI, footerAPI }) {
   const animationObj = {
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
-      ...Section2Option1AnimationOBJ,
+      ...Section2Option3AnimationOBJ,
       ...Section3AnimationOBJ(),
       ...Section4AnimationOBJ,
       ...Section5AnimationOBJ,
     ],
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
-      ...Section2Option1AnimationOBJMobile,
+      ...Section2Option3AnimationOBJMobile,
       ...Section3AnimationOBJMobile,
       ...Section4AnimationOBJMobile,
       ...Section5AnimationOBJMobile,
@@ -71,7 +70,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
   }
 
   useEffect(() => {
-    window.scroll(0, 0)
+    window.scroll(0, 0);
     appContext.setHeader({
       headerStyle: 'blur-white',
     })
@@ -131,7 +130,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
             <Section1ComponentInner />
             {/* Section 2 */}
             {/* MENU */}
-            <Section2Option1ComponentInner />
+            <Section2Option3ComponentInner />
             {/* Section 3 */}
             {/* OUR FACILITIES */}
             <Section3ComponentInner />
@@ -142,14 +141,6 @@ export default function Nxt({ seoAPI, footerAPI }) {
             {/* WHAT'S ON? */}
             <Section5ComponentInner />
             <NxtNavigation transition={true} />
-            <div className="fixed bottom-10 right-5 z-50">
-              <PillButton
-                destination="/nxt"
-                className="uppercase bg-white"
-              >
-                Alternate
-              </PillButton>
-            </div>
           </section>
           <Footer footer={footer} mailchimp={seo.mailchimpID} />
         </m.main>
