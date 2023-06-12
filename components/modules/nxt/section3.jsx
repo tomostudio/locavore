@@ -27,8 +27,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
             </Container>
             <div className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex justify-center items-end">
               <FancyLink
-                id="btn-features"
-                className={`opacity-0 w-fit p-4 mb-24 text-d-small text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
+                className={`w-fit p-4 mb-24 text-d-small text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
                 destination="/nxt/facilities"
               >
                 VIEW OUR FACILITIES
@@ -337,34 +336,6 @@ export const Section3AnimationOBJ = () => {
             elem,
             {
               y: '-45%',
-            },
-          ],
-        },
-      ]
-
-      return { id, elem, settings, animation }
-    },
-    // BUTTON FEATURES ENTER
-    () => {
-      const id = 'btn-features-enter' // animation id
-      const elem = document.querySelector('#btn-features')
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-btn-collab'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-          start: 'top 100%',
-          end: 'bottom 100%',
-        },
-      }
-
-      // Input Animation
-      const animation = [
-        {
-          to: [
-            elem,
-            {
-              opacity: 1,
             },
           ],
         },
