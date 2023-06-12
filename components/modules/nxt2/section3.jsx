@@ -170,6 +170,11 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
               onAnimationStart={() => {
                 document.querySelector('body').classList.add('overflow-hidden')
               }}
+              onAnimationComplete={() => {
+                document
+                  .querySelector('body')
+                  .classList.remove('overflow-hidden')
+              }}
               className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex justify-center items-end"
             >
               <FancyLink
