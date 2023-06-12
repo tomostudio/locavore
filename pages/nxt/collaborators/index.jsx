@@ -48,7 +48,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
   }
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scroll(0, 0);
     appContext.setHeader({
       headerStyle: 'blur-white',
     })
