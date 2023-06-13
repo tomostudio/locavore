@@ -297,7 +297,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 className="w-full my-20"
                 key={showComponent}
               >
-                <div className="w-full flex flex-wrap border-y border-white">
+                <div className="w-full flex flex-wrap border-y border-white facilities-border">
                   {facilitiesListGrid.map((data, id) =>
                     data.title ? (
                       <FancyLink
@@ -306,7 +306,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                         className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
                           facilitiesListGrid,
                           id,
-                        )} border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black`}
+                        )} border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black`}
                       >
                         <span className=" font-medium text-d-body uppercase">
                           {data.title}

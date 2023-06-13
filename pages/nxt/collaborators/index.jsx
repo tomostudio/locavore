@@ -117,7 +117,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
             {repeatArr.slice(0, itemToShow).map((_, id) => (
               <FancyLink
                 destination="/nxt/collaborators/detail"
-                className={`w-[calc(100%/2)] md:w-[calc(100%/3)] border-r ${removeBorderLastRow(
+                className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
                   repeatArr.slice(0, itemToShow),
                   id,
                 )} border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]`}

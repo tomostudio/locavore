@@ -48,6 +48,24 @@
   }
 }
 
+.facilities-border {
+  & > * {
+    border-right: 1px solid white;
+
+    @media (min-width: 850px) {
+      &:nth-child(3n) {
+        border-right: 0px;
+      }
+    }
+
+    @media (max-width: 849px) {
+      &:nth-child(2n) {
+        border-right: 0px;
+      }
+    }
+  }
+}
+
 .menu-icon {
   width: 12px;
   height: 12px;
