@@ -129,19 +129,6 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
     },
   }
 
-  const variantsButton = {
-    hidden: {
-      opacity: 0,
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 1,
-        delay: 4,
-      },
-    },
-  }
-
   return (
     <section className="relative w-full overflow-x-clip my-[40vh]">
       <div className="w-full">
@@ -156,19 +143,14 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
                 FACILITIES
               </span>
             </Container>
-            <m.div
-              animate={controls}
-              initial="hidden"
-              variants={variantsButton}
-              className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex justify-center items-end"
-            >
+            <div className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex justify-center items-end">
               <FancyLink
-                className="w-fit p-4 mb-24 text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl"
+                className={`w-fit p-4 mb-24 text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
                 destination="/nxt/facilities"
               >
                 VIEW OUR FACILITIES
               </FancyLink>
-            </m.div>
+            </div>
             <m.div
               animate={controls}
               initial="hidden"
