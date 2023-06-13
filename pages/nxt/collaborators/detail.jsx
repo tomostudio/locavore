@@ -58,8 +58,8 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
               <h1 className='font-funkturm m-0 md:mb-2 text-m-additionalHeader md:text-d-additionalHeader'>
                 Lorem Ipsum
               </h1>
-              <div className='w-full'>
-                <span className='italic font-medium font-serif mr-1 text-[]'>
+              <div className='w-full text-d-body'>
+                <span className='italic font-medium font-serif mr-1'>
                   Creative Director
                 </span>
                 —<span className='ml-1'>Jakarta, Indonesia</span>

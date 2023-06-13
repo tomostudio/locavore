@@ -29,26 +29,57 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
     repeatArr.length > defaultItemToShow ? true : false,
   )
 
-  const removeBorderLastRow = (data, index, mobile = false) => {
-    // Mendapatkan jumlah elemen dalam setiap kolom
-    let columnCount = mobile ? 2 : 3
-    let rowCount = Math.ceil(data.length / columnCount)
+  const removeBorderLastRow = (data, index) => {
+    // Mendapatkan jumlah elemen dalam setiap kolom di desktop
+    let columnCountDesktop = 3
+    let rowCountDesktop = Math.ceil(data.length / columnCountDesktop)
 
-    // Mendapatkan elemen-elemen pada kolom terakhir
-    const lastColumnDivs = []
-    for (var i = columnCount * (rowCount - 1); i < data.length; i++) {
-      lastColumnDivs.push(i)
+    // Mendapatkan jumlah elemen dalam setiap kolom di mobile
+    let columnCountMobile = 2
+    let rowCountMobile = Math.ceil(data.length / columnCountMobile)
+
+    // Mendapatkan elemen-elemen pada kolom terakhir di desktop
+    const lastColumnDivsDesktop = []
+    for (
+      var i = columnCountDesktop * (rowCountDesktop - 1);
+      i < data.length;
+      i++
+    ) {
+      lastColumnDivsDesktop.push(i)
     }
 
-    if (lastColumnDivs.find((e) => e === index)) {
-      return false
+    // Mendapatkan elemen-elemen pada kolom terakhir di mobile
+    const lastColumnDivsMobile = []
+    for (
+      var i = columnCountMobile * (rowCountMobile - 1);
+      i < data.length;
+      i++
+    ) {
+      lastColumnDivsMobile.push(i)
+    }
+
+    if (
+      !lastColumnDivsDesktop.find((e) => e === index) &&
+      !lastColumnDivsMobile.find((e) => e === index)
+    ) {
+      return 'border-b'
+    } else if (
+      !lastColumnDivsDesktop.find((e) => e === index) &&
+      lastColumnDivsMobile.find((e) => e === index)
+    ) {
+      return 'md:border-b'
+    } else if (
+      lastColumnDivsDesktop.find((e) => e === index) &&
+      !lastColumnDivsMobile.find((e) => e === index)
+    ) {
+      return 'border-b md:border-b-0'
     } else {
-      return true
+      return ''
     }
   }
 
   useEffect(() => {
-    window.scroll(0, 0);
+    window.scroll(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',
     })
@@ -83,26 +114,13 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
             </h1>
           </div>
           <div className="w-full h-full flex flex-wrap mt-20 mb-16 border-y border-white collaborators-border">
-            {repeatArr.slice(0, itemToShow).map((obj, id) => (
+            {repeatArr.slice(0, itemToShow).map((_, id) => (
               <FancyLink
                 destination="/nxt/collaborators/detail"
-                className={`w-[calc(100%/2)] md:w-[calc(100%/3)] border-r ${
-                  useMediaQuery('(min-width: 850px)')
-                    ? removeBorderLastRow(
-                        repeatArr.slice(0, itemToShow),
-                        id,
-                        false,
-                      )
-                      ? 'border-b'
-                      : ''
-                    : removeBorderLastRow(
-                        repeatArr.slice(0, itemToShow),
-                        id,
-                        true,
-                      )
-                    ? 'border-b'
-                    : ''
-                } border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]`}
+                className={`w-[calc(100%/2)] md:w-[calc(100%/3)] border-r ${removeBorderLastRow(
+                  repeatArr.slice(0, itemToShow),
+                  id,
+                )} border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]`}
                 key={id}
               >
                 <div className="h-full flex flex-col">
