@@ -30,7 +30,7 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 import ArrowFacilities from '@/components/utils/arrowFacilites'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 
-const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
+const FeaturesAndFacilities = ({ seoAPI, footerAPI, facilitiesList, facilitiesListScroll }) => {
   const router = useRouter()
   const appContext = useAppContext()
   const scrollContainer = useRef()
@@ -38,99 +38,6 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
   const [footer] = footerAPI
   const [positionScroll, setPositionScroll] = useState(0)
   const [showComponent, setShowComponent] = useState('image-view')
-  const facilitiesList = [
-    {
-      title: 'LOCALAB',
-      image1: feature1,
-      image2: feature1_color,
-      size: 150,
-      position: 'bottom',
-    },
-    {
-      title: 'DISTILLERY',
-      image1: feature4,
-      image2: feature4_color,
-      size: 120,
-      position: 'top',
-    },
-    {
-      title: 'FOOD FOREST',
-      image1: feature6,
-      image2: feature6_color,
-      size: 120,
-      position: 'center',
-    },
-    {
-      title: 'BAR',
-      image1: feature5,
-      image2: feature5_color,
-      size: 'normal',
-      position: 'center',
-    },
-    {
-      title: 'CANTEEN',
-      image1: feature1,
-      image2: feature1_color,
-      size: 150,
-      position: 'top',
-    },
-    {
-      title: 'DINING RESTAURANT',
-      image1: feature4,
-      image2: feature4_color,
-      size: 120,
-      position: 'bottom',
-    },
-    {
-      title: 'MUSHROOM CHAMBER',
-      image1: feature6,
-      image2: feature6_color,
-      size: 120,
-      position: 'center',
-    },
-    {
-      title: 'ALGAE CULTURE',
-      image1: feature5,
-      image2: feature5_color,
-      size: 'normal',
-      position: 'center',
-    },
-    {
-      title: 'BASEMENT',
-      image1: feature1,
-      image2: feature1_color,
-      size: 150,
-      position: 'bottom',
-    },
-    {
-      title: 'CONCEPT STORE',
-      image1: feature4,
-      image2: feature4_color,
-      size: 120,
-      position: 'top',
-    },
-    {
-      title: 'GALLERY',
-      image1: feature6,
-      image2: feature6_color,
-      size: 120,
-      position: 'center',
-    },
-    {
-      title: 'GARDENS',
-      image1: feature5,
-      image2: feature5_color,
-      size: 'normal',
-      position: 'center',
-    },
-    {
-      title: 'AUDITORIUM',
-      image1: feature1,
-      image2: feature1_color,
-      size: 150,
-      position: 'bottom',
-    },
-  ]
 
   // Menghitung sisa pembagian dengan 3
   const remainder = facilitiesList.length % 3
@@ -344,7 +251,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                   opacity: 1,
                   transition: { duration: 0.5, delay: 0.5 },
                 }}
-                exit={{ opacity: 0, transition: { duration: 0.5} }}
+                exit={{ opacity: 0, transition: { duration: 0.5 } }}
                 id="grid-view"
                 className="w-full my-20"
                 key={showComponent}
@@ -398,7 +305,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                   >
                     <div className="w-fit h-full flex items-center relative min-w-full">
                       <div className="w-[50vw]" />
-                      {facilitiesList.map((data, id) => (
+                      {facilitiesListScroll.map((data, id) => (
                         <div key={id}>
                           <div
                             className={`relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:!z-40 group`}
@@ -406,10 +313,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                               window.location.href = '/nxt/facilities/detail'
                             }}
                             style={{
-                              zIndex:
-                                Math.floor(
-                                  Math.random() * facilitiesList.length,
-                                ) + 1,
+                              zIndex: data.zIndex,
                             }}
                           >
                             <div
@@ -460,7 +364,8 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                           scrollContainer.current.scrollWidth -
                           scrollContainer.current.clientWidth
 
-                        const scrollPerElement = scrollContainerWidth / 6
+                        const scrollPerElement =
+                          scrollContainerWidth / (facilitiesList.length / 2 + 1)
 
                         const scrollToLeft =
                           positionScroll === scrollContainer.current.scrollLeft
@@ -490,7 +395,8 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                           scrollContainer.current.scrollWidth -
                           scrollContainer.current.clientWidth
 
-                        const scrollPerElement = scrollContainerWidth / 6
+                        const scrollPerElement =
+                          scrollContainerWidth / (facilitiesList.length / 2 + 1)
 
                         const scrollToRight =
                           positionScroll === scrollContainer.current.scrollLeft
@@ -805,11 +711,112 @@ export async function getStaticProps() {
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
                     `)
+
+  const facilitiesList = [
+    {
+      title: 'LOCALAB',
+      image1: feature1,
+      image2: feature1_color,
+      size: 150,
+      position: 'bottom',
+    },
+    {
+      title: 'DISTILLERY',
+      image1: feature4,
+      image2: feature4_color,
+      size: 120,
+      position: 'top',
+    },
+    {
+      title: 'FOOD FOREST',
+      image1: feature6,
+      image2: feature6_color,
+      size: 120,
+      position: 'center',
+    },
+    {
+      title: 'BAR',
+      image1: feature5,
+      image2: feature5_color,
+      size: 'normal',
+      position: 'center',
+    },
+    {
+      title: 'CANTEEN',
+      image1: feature1,
+      image2: feature1_color,
+      size: 150,
+      position: 'top',
+    },
+    {
+      title: 'DINING RESTAURANT',
+      image1: feature4,
+      image2: feature4_color,
+      size: 120,
+      position: 'bottom',
+    },
+    {
+      title: 'MUSHROOM CHAMBER',
+      image1: feature6,
+      image2: feature6_color,
+      size: 120,
+      position: 'center',
+    },
+    {
+      title: 'ALGAE CULTURE',
+      image1: feature5,
+      image2: feature5_color,
+      size: 'normal',
+      position: 'center',
+    },
+    {
+      title: 'BASEMENT',
+      image1: feature1,
+      image2: feature1_color,
+      size: 150,
+      position: 'bottom',
+    },
+    {
+      title: 'CONCEPT STORE',
+      image1: feature4,
+      image2: feature4_color,
+      size: 120,
+      position: 'top',
+    },
+    {
+      title: 'GALLERY',
+      image1: feature6,
+      image2: feature6_color,
+      size: 120,
+      position: 'center',
+    },
+    {
+      title: 'GARDENS',
+      image1: feature5,
+      image2: feature5_color,
+      size: 'normal',
+      position: 'center',
+    },
+    {
+      title: 'AUDITORIUM',
+      image1: feature1,
+      image2: feature1_color,
+      size: 150,
+      position: 'bottom',
+    },
+  ]
+
+  const facilitiesListScroll = facilitiesList.map((e) => ({
+    ...e,
+    zIndex: Math.floor(Math.random() * facilitiesList.length) + 1,
+  }))
   return {
     props: {
       seoAPI,
       footerAPI,
       headerAPI,
+      facilitiesList,
+      facilitiesListScroll
     },
   }
 }
