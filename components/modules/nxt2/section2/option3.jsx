@@ -6,11 +6,26 @@ import FancyLink from '@/components/utils/fancyLink'
 
 // IMPORT LOCAL IMAGE
 import section2_bg1 from '@/public/nxt2/section2_bg1.png'
+import PillButton from '../../pillButton'
 
 export const Section2Option3ComponentInner = () => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
+        <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-10">
+          <PillButton
+            destination="/nxt"
+            className="uppercase bg-white pointer-events-none"
+          >
+            Option 1
+          </PillButton>
+          <PillButton destination="/nxt/option2" className="uppercase bg-white">
+            Option 2
+          </PillButton>
+          <PillButton destination="/nxt/option3" className="uppercase bg-white">
+            Option 3
+          </PillButton>
+        </div>
         <Container className="relative w-full h-full grow setflex-center">
           <div
             id="section2_content"

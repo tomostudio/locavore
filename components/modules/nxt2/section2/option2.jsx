@@ -2,50 +2,34 @@ import React from 'react'
 import 'intersection-observer' // optional polyfill
 import Image from 'next/image'
 import FancyLink from '@/components/utils/fancyLink'
-import { m, useAnimation } from 'framer-motion'
-import { useInView } from 'react-cool-inview'
 
 // IMPORT LOCAL IMAGE
 import section2_bg from '@/public/nxt2/section2_bg1.png'
 import Container from '../../container'
+import PillButton from '../../pillButton'
 
 export const Section2Option2ComponentInner = () => {
-  const controls = useAnimation()
-  const { observe } = useInView({
-    threshold: 1,
-    unobserveOnEnter: true,
-    onEnter: () => {
-      controls.start('visible')
-    },
-  })
-  const variants = {
-    hidden: {
-      left: '50%',
-      bottom: '0%',
-      y: '90vh',
-      x: '-50%',
-    },
-    visible: {
-      left: '50%',
-      bottom: '50%',
-      y: '50%',
-      x: '-50%',
-      transition: {
-        duration: 1,
-      },
-    },
-  }
-
   return (
     <section className="relative w-full">
-      <div
-        ref={observe}
-        className="sticky z-10 top-0 w-full h-screen flex flex-col"
-      >
+      <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
+        <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-10">
+          <PillButton
+            destination="/"
+            className="uppercase bg-white"
+          >
+            Option 1
+          </PillButton>
+          <PillButton destination="/option2" className="uppercase bg-white pointer-events-none">
+            Option 2
+          </PillButton>
+          <PillButton destination="/option3" className="uppercase bg-white">
+            Option 3
+          </PillButton>
+        </div>
         <Container className="relative w-full h-full grow setflex-center">
           <div
-            // id="section2_content"
-            className="relative z-10 w-full h-full"
+            id="section2_content-option2"
+            className="relative z-10 w-full h-full opacity-0"
           >
             <div className="relative w-full h-full setflex-center pb-20">
               <span className="text-[1.875rem] text-[#BEC29D]">
@@ -53,11 +37,9 @@ export const Section2Option2ComponentInner = () => {
               </span>
               <div className="relative text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
                 A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
-                <m.div
-                  animate={controls}
-                  initial="hidden"
-                  variants={variants}
-                  className="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 translate-y-[100vh] w-full h-full"
+                <div
+                  id="section2_bg-option2"
+                  className="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 translate-y-[90vh] w-full h-full"
                 >
                   <div className="relative w-full h-full">
                     <Image
@@ -67,7 +49,7 @@ export const Section2Option2ComponentInner = () => {
                       style={{ objectFit: 'contain' }}
                     />
                   </div>
-                </m.div>
+                </div>
               </div>
             </div>
             <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end">
@@ -81,7 +63,8 @@ export const Section2Option2ComponentInner = () => {
           </div>
         </Container>
       </div>
-      <div className="h-[50vh]" />
+      <div id="enter-bg-option2" className="h-[100vh]" />
+      <div className="h-[25vh]" />
     </section>
   )
 }
@@ -92,12 +75,12 @@ export const Section2Option2AnimationOBJ = [
   // SECTION 2 OPTION 3
   // CONTENT ENTER
   () => {
-    const id = 'section2-content-enter' // animation id
-    const elem = document.querySelector('#section2_content')
+    const id = 'section2-content-enter-option2' // animation id
+    const elem = document.querySelector('#section2_content-option2')
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: document.querySelector('#section2_content'), // which section will be tracked as the scroll trigger
+        trigger: document.querySelector('#section2_content-option2'), // which section will be tracked as the scroll trigger
         scrub: 0.5,
         start: 'top 80%',
         end: 'bottom 100%',
@@ -111,6 +94,35 @@ export const Section2Option2AnimationOBJ = [
           elem,
           {
             opacity: 1,
+          },
+        ],
+      },
+    ]
+
+    return { id, elem, settings, animation }
+  },
+  // BACKGROUND 2 ENTER
+  () => {
+    const id = 'bg2-enter-option2' // animation id
+    const elem = document.querySelector('#section2_bg-option2')
+    const settings = {
+      scrollTrigger: {
+        id: id,
+        trigger: document.querySelector('#enter-bg-option2'), // which section will be tracked as the scroll trigger
+        scrub: 0.5,
+        start: 'top 100%',
+        end: 'bottom 100%',
+      },
+    }
+
+    // Input Animation
+    const animation = [
+      {
+        to: [
+          elem,
+          {
+            bottom: '50%',
+            y: '50%',
           },
         ],
       },

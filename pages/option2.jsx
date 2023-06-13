@@ -15,25 +15,25 @@ import {
   Section1AnimationOBJ,
   Section1AnimationOBJMobile,
   Section1ComponentInner,
-} from '@/components/modules/nxt2/section1'
+} from '@/components/modules/nxt/section1'
 
 import {
-  Section2Option3AnimationOBJ,
-  Section2Option3AnimationOBJMobile,
-  Section2Option3ComponentInner,
-} from '@/components/modules/nxt2/section2/option3'
+  Section2Option2AnimationOBJ,
+  Section2Option2AnimationOBJMobile,
+  Section2Option2ComponentInner,
+} from '@/components/modules/nxt2/section2/option2'
 
 import {
   Section3AnimationOBJ,
   Section3AnimationOBJMobile,
   Section3ComponentInner,
-} from '@/components/modules/nxt2/section3'
+} from '@/components/modules/nxt/section3'
 
 import {
   Section4AnimationOBJ,
   Section4AnimationOBJMobile,
   Section4ComponentInner,
-} from '@/components/modules/nxt2/section4'
+} from '@/components/modules/nxt/section4'
 
 import {
   Section5AnimationOBJ,
@@ -55,14 +55,14 @@ export default function Nxt({ seoAPI, footerAPI }) {
   const animationObj = {
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
-      ...Section2Option3AnimationOBJ,
+      ...Section2Option2AnimationOBJ,
       ...Section3AnimationOBJ(),
       ...Section4AnimationOBJ,
       ...Section5AnimationOBJ,
     ],
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
-      ...Section2Option3AnimationOBJMobile,
+      ...Section2Option2AnimationOBJMobile,
       ...Section3AnimationOBJMobile,
       ...Section4AnimationOBJMobile,
       ...Section5AnimationOBJMobile,
@@ -130,7 +130,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
             <Section1ComponentInner />
             {/* Section 2 */}
             {/* MENU */}
-            <Section2Option3ComponentInner />
+            <Section2Option2ComponentInner />
             {/* Section 3 */}
             {/* OUR FACILITIES */}
             <Section3ComponentInner />

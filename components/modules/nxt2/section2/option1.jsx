@@ -6,11 +6,26 @@ import FancyLink from '@/components/utils/fancyLink'
 // IMPORT LOCAL IMAGE
 import section2_bg from '@/public/nxt2/section2_bg1.png'
 import Container from '../../container'
+import PillButton from '../../pillButton'
 
 export const Section2Option1ComponentInner = () => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
+        <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-10">
+          <PillButton
+            destination="/nxt"
+            className="uppercase bg-white pointer-events-none"
+          >
+            Option 1
+          </PillButton>
+          <PillButton destination="/nxt/option2" className="uppercase bg-white">
+            Option 2
+          </PillButton>
+          <PillButton destination="/nxt/option3" className="uppercase bg-white">
+            Option 3
+          </PillButton>
+        </div>
         <Image src={section2_bg} alt="" fill style={{ objectFit: 'cover' }} />
         <div
           id="black-layer"
@@ -69,35 +84,6 @@ export const Section2Option1AnimationOBJ = [
           elem,
           {
             opacity: 1,
-          },
-        ],
-      },
-    ]
-
-    return { id, elem, settings, animation }
-  },
-  // BACKGROUND 2 ENTER
-  () => {
-    const id = 'bg2-enter' // animation id
-    const elem = document.querySelector('#section2_bg')
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: document.querySelector('#enter-bg'), // which section will be tracked as the scroll trigger
-        scrub: 0.5,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    }
-
-    // Input Animation
-    const animation = [
-      {
-        to: [
-          elem,
-          {
-            bottom: '50%',
-            y: '50%',
           },
         ],
       },

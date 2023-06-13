@@ -16,11 +16,11 @@ export const Section2Option3ComponentInner = () => {
           <PillButton destination="/" className="uppercase bg-white">
             Option 1
           </PillButton>
-          <PillButton destination="/nxt/option2" className="uppercase bg-white">
+          <PillButton destination="/option2" className="uppercase bg-white">
             Option 2
           </PillButton>
           <PillButton
-            destination="/nxt/option3"
+            destination="/option3"
             className="uppercase bg-white pointer-events-none"
           >
             Option 3
