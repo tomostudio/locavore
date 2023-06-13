@@ -30,47 +30,47 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
   )
 
   const removeBorderLastRow = (data, index) => {
-    // Mendapatkan jumlah elemen dalam setiap kolom di desktop
-    let columnCountDesktop = 3
-    let rowCountDesktop = Math.ceil(data.length / columnCountDesktop)
+    // desktop column
+    let rowCountDesktop = 3
+    let columnCountDesktop = Math.ceil(data.length / rowCountDesktop)
 
-    // Mendapatkan jumlah elemen dalam setiap kolom di mobile
-    let columnCountMobile = 2
-    let rowCountMobile = Math.ceil(data.length / columnCountMobile)
+    // mobile column
+    let rowCountMobile = 2
+    let columnCountMobile = Math.ceil(data.length / rowCountMobile)
 
-    // Mendapatkan elemen-elemen pada kolom terakhir di desktop
-    const lastColumnDivsDesktop = []
+    // check row desktop
+    const lastRowDivsDesktop = []
     for (
-      var i = columnCountDesktop * (rowCountDesktop - 1);
+      var i = rowCountDesktop * (columnCountDesktop - 1);
       i < data.length;
       i++
     ) {
-      lastColumnDivsDesktop.push(i)
+      lastRowDivsDesktop.push(i)
     }
 
-    // Mendapatkan elemen-elemen pada kolom terakhir di mobile
-    const lastColumnDivsMobile = []
+    // check row mobile
+    const lastRowDivsMobile = []
     for (
-      var i = columnCountMobile * (rowCountMobile - 1);
+      var i = rowCountMobile * (columnCountMobile - 1);
       i < data.length;
       i++
     ) {
-      lastColumnDivsMobile.push(i)
+      lastRowDivsMobile.push(i)
     }
 
     if (
-      !lastColumnDivsDesktop.find((e) => e === index) &&
-      !lastColumnDivsMobile.find((e) => e === index)
+      !lastRowDivsDesktop.find((e) => e === index) &&
+      !lastRowDivsMobile.find((e) => e === index)
     ) {
       return 'border-b'
     } else if (
-      !lastColumnDivsDesktop.find((e) => e === index) &&
-      lastColumnDivsMobile.find((e) => e === index)
+      !lastRowDivsDesktop.find((e) => e === index) &&
+      lastRowDivsMobile.find((e) => e === index)
     ) {
       return 'md:border-b'
     } else if (
-      lastColumnDivsDesktop.find((e) => e === index) &&
-      !lastColumnDivsMobile.find((e) => e === index)
+      lastRowDivsDesktop.find((e) => e === index) &&
+      !lastRowDivsMobile.find((e) => e === index)
     ) {
       return 'border-b md:border-b-0'
     } else {

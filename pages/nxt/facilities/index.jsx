@@ -38,27 +38,111 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
   const [footer] = footerAPI
   const [positionScroll, setPositionScroll] = useState(0)
   const [showComponent, setShowComponent] = useState('image-view')
-  const facilitiesList = [
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
+  const facilitiesGrid = [
+    {
+      title: 'LOCALAB',
+    },
+    {
+      title: 'DISTILLERY',
+    },
+    {
+      title: 'FOOD FOREST',
+    },
+    {
+      title: 'BAR',
+    },
+    {
+      title: 'CANTEEN',
+    },
+    {
+      title: 'DINING RESTAURANT',
+    },
+    {
+      title: 'MUSHROOM CHAMBER',
+    },
+    {
+      title: 'ALGAE CULTURE',
+    },
+    {
+      title: 'BASEMENT',
+    },
+    {
+      title: 'CONCEPT STORE',
+    },
+    {
+      title: 'GALLERY',
+    },
+    {
+      title: 'GARDENS',
+    },
+    {
+      title: 'AUDITORIUM',
+    },
   ]
 
+  // Menghitung sisa pembagian dengan 3
+  const remainder = facilitiesGrid.length % 3
+
+  const numberToAdd = remainder === 0 ? 0 : 3 - remainder
+
+  const facilitiesListGrid = facilitiesGrid.concat(Array(numberToAdd).fill({}))
+
+  const removeBorderLastRow = (data, index) => {
+    // desktop column
+    let rowCountDesktop = 3
+    let columnCountDesktop = Math.ceil(data.length / rowCountDesktop)
+
+    // mobile column
+    let rowCountMobile = 2
+    let columnCountMobile = Math.ceil(data.length / rowCountMobile)
+
+    // check row desktop
+    const lastRowDivsDesktop = []
+    for (
+      var i = rowCountDesktop * (columnCountDesktop - 1);
+      i < data.length;
+      i++
+    ) {
+      lastRowDivsDesktop.push(i)
+    }
+
+    // check row mobile
+    const lastRowDivsMobile = []
+    for (
+      var i = rowCountMobile * (columnCountMobile - 1);
+      i < data.length;
+      i++
+    ) {
+      lastRowDivsMobile.push(i)
+    }
+
+    if (
+      !lastRowDivsDesktop.find((e) => e === index) &&
+      !lastRowDivsMobile.find((e) => e === index)
+    ) {
+      return 'border-b'
+    } else if (
+      !lastRowDivsDesktop.find((e) => e === index) &&
+      lastRowDivsMobile.find((e) => e === index)
+    ) {
+      return 'md:border-b'
+    } else if (
+      lastRowDivsDesktop.find((e) => e === index) &&
+      !lastRowDivsMobile.find((e) => e === index)
+    ) {
+      return 'border-b md:border-b-0'
+    } else {
+      return ''
+    }
+  }
+
   useEffect(() => {
-    const scrollContainerWidth =
-      scrollContainer.current.scrollWidth - scrollContainer.current.clientWidth
-    scrollContainer.current.scrollLeft = scrollContainerWidth / 2
+    if (scrollContainer.current) {
+      const scrollContainerWidth =
+        scrollContainer.current.scrollWidth -
+        scrollContainer.current.clientWidth
+      scrollContainer.current.scrollLeft = scrollContainerWidth / 2
+    }
   }, [])
 
   useEffect(() => {
@@ -124,31 +208,31 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                   //     .getElementById('image-view')
                   //     .classList.contains('hidden')
                   // ) {
-                    document
-                      .getElementById('image-view-btn')
-                      .classList.add('opacity-40')
-                    document
-                      .getElementById('image-view-btn')
-                      .classList.add('pointer-events-none')
-                    document
-                      .getElementById('image-view-btn')
-                      .children[0].classList.add('italic')
-                    document
-                      .getElementById('image-view-btn')
-                      .children[0].classList.add('text-[1.375rem]')
+                  document
+                    .getElementById('image-view-btn')
+                    .classList.add('opacity-40')
+                  document
+                    .getElementById('image-view-btn')
+                    .classList.add('pointer-events-none')
+                  document
+                    .getElementById('image-view-btn')
+                    .children[0].classList.add('italic')
+                  document
+                    .getElementById('image-view-btn')
+                    .children[0].classList.add('text-[1.375rem]')
 
-                    document
-                      .getElementById('grid-view-btn')
-                      .classList.remove('opacity-40')
-                    document
-                      .getElementById('grid-view-btn')
-                      .classList.remove('pointer-events-none')
-                    document
-                      .getElementById('grid-view-btn')
-                      .children[0].classList.remove('italic')
-                    document
-                      .getElementById('grid-view-btn')
-                      .children[0].classList.remove('text-[1.375rem]')
+                  document
+                    .getElementById('grid-view-btn')
+                    .classList.remove('opacity-40')
+                  document
+                    .getElementById('grid-view-btn')
+                    .classList.remove('pointer-events-none')
+                  document
+                    .getElementById('grid-view-btn')
+                    .children[0].classList.remove('italic')
+                  document
+                    .getElementById('grid-view-btn')
+                    .children[0].classList.remove('text-[1.375rem]')
                   // }
                 }}
                 className="mr-4 opacity-40 leading-6 transition-all duration-300 hover:opacity-30 pointer-events-none"
@@ -167,31 +251,31 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                   //     .getElementById('grid-view')
                   //     .classList.contains('hidden')
                   // ) {
-                    document
-                      .getElementById('grid-view-btn')
-                      .classList.add('opacity-40')
-                    document
-                      .getElementById('grid-view-btn')
-                      .classList.add('pointer-events-none')
-                    document
-                      .getElementById('grid-view-btn')
-                      .children[0].classList.add('italic')
-                    document
-                      .getElementById('grid-view-btn')
-                      .children[0].classList.add('text-[1.375rem]')
+                  document
+                    .getElementById('grid-view-btn')
+                    .classList.add('opacity-40')
+                  document
+                    .getElementById('grid-view-btn')
+                    .classList.add('pointer-events-none')
+                  document
+                    .getElementById('grid-view-btn')
+                    .children[0].classList.add('italic')
+                  document
+                    .getElementById('grid-view-btn')
+                    .children[0].classList.add('text-[1.375rem]')
 
-                    document
-                      .getElementById('image-view-btn')
-                      .classList.remove('opacity-40')
-                    document
-                      .getElementById('image-view-btn')
-                      .classList.remove('pointer-events-none')
-                    document
-                      .getElementById('image-view-btn')
-                      .children[0].classList.remove('italic')
-                    document
-                      .getElementById('image-view-btn')
-                      .children[0].classList.remove('text-[1.375rem]')
+                  document
+                    .getElementById('image-view-btn')
+                    .classList.remove('opacity-40')
+                  document
+                    .getElementById('image-view-btn')
+                    .classList.remove('pointer-events-none')
+                  document
+                    .getElementById('image-view-btn')
+                    .children[0].classList.remove('italic')
+                  document
+                    .getElementById('image-view-btn')
+                    .children[0].classList.remove('text-[1.375rem]')
                   // }
                 }}
                 className="ml-4 leading-6 transition-all duration-300 hover:opacity-30"
@@ -213,111 +297,30 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                 className="w-full my-20"
                 key={showComponent}
               >
-                <div className="w-full flex flex-wrap">
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className=" font-medium text-d-body">LOCALAB</span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      DISTILLERY
-                    </span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      FOOD FOREST
-                    </span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      BAR
-                    </span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      CANTEEN
-                    </span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      DINING RESTAURANT
-                    </span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      MUSHROOM CHAMBER
-                    </span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      ALGAE CULTURE
-                    </span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      BASEMENT
-                    </span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      CONCEPT STORE
-                    </span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      GALLERY
-                    </span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      GARDENS
-                    </span>
-                  </FancyLink>
-                  <FancyLink
-                    destination="/nxt/facilities/detail"
-                    className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black"
-                  >
-                    <span className="text-white font-medium text-d-body">
-                      AUDITORIUM
-                    </span>
-                  </FancyLink>
-                  <div className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row"></div>
-                  <div className="w-[calc(100%/3)] border-y border-r border-white p-10 setflex-center-row"></div>
+                <div className="w-full flex flex-wrap border-y border-white">
+                  {facilitiesListGrid.map((data, id) =>
+                    data.title ? (
+                      <FancyLink
+                        key={id}
+                        destination="/nxt/facilities/detail"
+                        className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
+                          facilitiesListGrid,
+                          id,
+                        )} border-r border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black`}
+                      >
+                        <span className=" font-medium text-d-body uppercase">
+                          {data.title}
+                        </span>
+                      </FancyLink>
+                    ) : (
+                      <div
+                        className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
+                          facilitiesListGrid,
+                          id,
+                        )} border-r border-white`}
+                      />
+                    ),
+                  )}
                 </div>
               </motion.div>
             ) : (
@@ -621,7 +624,6 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI }) => {
                               scrollPerElement
 
                         scrollContainer.current.scrollLeft = scrollToLeft
-                        console.log(scrollToLeft)
 
                         setPositionScroll(scrollToLeft)
                       }}
