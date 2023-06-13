@@ -14,7 +14,7 @@ import tunnel from '@/public/nxt/tunnel.webp'
 
 export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   return (
-    <section className="relative w-full overflow-x-clip">
+    <section className="relative w-full overflow-x-clip mt-[20vw] mb-[30vw]">
       <div className="w-full">
         <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
           <div className="relative w-full h-screen">
@@ -70,10 +70,12 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
                 </div>
               </div>
             </Container>
-            <div
-              id="bg-white-scale"
-              className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[125%] h-[170%] clip-path-circle-[0%] rounded-50% bg-white"
-            />
+            <div className="absolute top-0 left-0 w-full h-full overflow-visible">
+              <div
+                id="bg-white-scale"
+                className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[0vw] h-[0vw] bg-white rounded-full"
+              />
+            </div>
           </div>
         </div>
         <div id="enter-bg-white-scale" className="h-[25vh]" />
@@ -125,7 +127,8 @@ export const Section3AnimationOBJ = () => {
           to: [
             elem,
             {
-              clipPath: 'circle(100%)',
+              width: "120vw",
+              height: "120vw"
             },
           ],
         },

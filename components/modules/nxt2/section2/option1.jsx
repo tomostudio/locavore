@@ -28,12 +28,12 @@ export const Section2Option1ComponentInner = () => {
         </div>
         <Image src={section2_bg} alt="" fill style={{ objectFit: 'cover' }} />
         <div
-          id="black-layer"
+          id="black-layer-option1"
           className="absolute top-0 left-0 w-full h-full bg-black opacity-50"
         />
         <Container className="relative w-full h-full grow setflex-center">
           <div
-            id="section2_content"
+            id="section2_content-option1"
             className="relative z-10 w-full h-auto opacity-0"
           >
             <div className="relative w-full h-full setflex-center ">
@@ -53,8 +53,6 @@ export const Section2Option1ComponentInner = () => {
           </div>
         </Container>
       </div>
-      <div id="enter-bg" className="h-[100vh]" />
-      <div className="h-[25vh]" />
     </section>
   )
 }
@@ -65,12 +63,12 @@ export const Section2Option1AnimationOBJ = [
   // SECTION 2 OPTION 3
   // CONTENT ENTER
   () => {
-    const id = 'section2-content-enter' // animation id
-    const elem = document.querySelector('#section2_content')
+    const id = 'section2-content-enter-option1' // animation id
+    const elem = document.querySelector('#section2_content-option1')
     const settings = {
       scrollTrigger: {
         id: id,
-        trigger: document.querySelector('#section2_content'), // which section will be tracked as the scroll trigger
+        trigger: document.querySelector('#section2_content-option1'), // which section will be tracked as the scroll trigger
         scrub: 0.5,
         start: 'top 80%',
         end: 'bottom 100%',

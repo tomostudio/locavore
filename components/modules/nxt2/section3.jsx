@@ -25,10 +25,12 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   })
   const variantsBg = {
     hidden: {
-      clipPath: 'circle(0%)',
+      width: "0vw",
+      height: "0vw"
     },
     visible: {
-      clipPath: 'circle(55%)',
+      width: "120vw",
+      height: "120vw",
       transition: {
         duration: 1,
       },
@@ -130,11 +132,9 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   }
 
   return (
-    <section className="relative w-full overflow-x-clip my-[40vh]">
+    <section className="relative w-full overflow-x-clip ">
       <div className="w-full">
-        <div
-          className="sticky z-10 top-0 w-full h-screen flex flex-col"
-        >
+        <div className="sticky z-10 top-0 w-full h-[120vw] flex flex-col justify-center items-center">
           <div className="relative w-full h-screen">
             <Container className="relative w-full h-full z-20 setflex-center">
               <span className="text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full ">
@@ -215,15 +215,17 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
                 </m.div>
               </div>
             </m.div>
-            <m.div
-              animate={controls}
-              initial="hidden"
-              variants={variantsBg}
-              id="bg-white-scale"
-              className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[125%] h-[170%] clip-path-circle-[0%] rounded-50% bg-white"
-            />
+            <div className="absolute top-0 left-0 w-full h-full overflow-visible">
+              <m.div
+                animate={controls}
+                initial="hidden"
+                variants={variantsBg}
+                id="bg-white-scale"
+                className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[0vw] h-[0vw] bg-white rounded-full"
+              />
+            </div>
           </div>
-          <div ref={observe} className='w-full' />
+          <div ref={observe} className="w-full" />
         </div>
       </div>
       <div id="enter-blur" className="w-full h-[10vh]" />

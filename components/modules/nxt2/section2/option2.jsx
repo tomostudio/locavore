@@ -14,15 +14,15 @@ export const Section2Option2ComponentInner = () => {
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
         <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-10">
           <PillButton
-            destination="/"
+            destination="/nxt"
             className="uppercase bg-white"
           >
             Option 1
           </PillButton>
-          <PillButton destination="/option2" className="uppercase bg-white pointer-events-none">
+          <PillButton destination="/nxt/option2" className="uppercase bg-white pointer-events-none">
             Option 2
           </PillButton>
-          <PillButton destination="/option3" className="uppercase bg-white">
+          <PillButton destination="/nxt/option3" className="uppercase bg-white">
             Option 3
           </PillButton>
         </div>

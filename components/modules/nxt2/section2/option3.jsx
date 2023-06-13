@@ -13,16 +13,16 @@ export const Section2Option3ComponentInner = () => {
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
         <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-10">
-          <PillButton
-            destination="/nxt"
-            className="uppercase bg-white pointer-events-none"
-          >
+          <PillButton destination="/nxt" className="uppercase bg-white">
             Option 1
           </PillButton>
           <PillButton destination="/nxt/option2" className="uppercase bg-white">
             Option 2
           </PillButton>
-          <PillButton destination="/nxt/option3" className="uppercase bg-white">
+          <PillButton
+            destination="/nxt/option3"
+            className="uppercase bg-white pointer-events-none"
+          >
             Option 3
           </PillButton>
         </div>
@@ -86,7 +86,7 @@ export const Section2Option3AnimationOBJ = [
   // SECTION 2
   // CONTENT ENTER
   () => {
-    const id = 'section2-content-enter' // animation id
+    const id = 'section2-content-enter-option3' // animation id
     const elem = document.querySelector('#section2_content')
     const settings = {
       scrollTrigger: {
@@ -114,7 +114,7 @@ export const Section2Option3AnimationOBJ = [
   },
   // BACKGROUND 1 ENTER
   () => {
-    const id = 'bg1-enter' // animation id
+    const id = 'bg1-enter-option3' // animation id
     const elem = document.querySelector('#section2_bg1')
     const settings = {
       scrollTrigger: {
@@ -143,7 +143,7 @@ export const Section2Option3AnimationOBJ = [
   },
   // BACKGROUND 2 ENTER
   () => {
-    const id = 'bg2-enter' // animation id
+    const id = 'bg2-enter-option3' // animation id
     const elem = document.querySelector('#section2_bg2')
     const settings = {
       scrollTrigger: {
