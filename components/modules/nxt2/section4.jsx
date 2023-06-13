@@ -15,7 +15,7 @@ import FancyLink from '@/components/utils/fancyLink'
 export const Section4ComponentInner = () => {
   const controls = useAnimation()
   const { observe } = useInView({
-    threshold: 1,
+    threshold: 0,
     unobserveOnEnter: true,
     onEnter: () => {
       controls.start('visible')
@@ -34,7 +34,7 @@ export const Section4ComponentInner = () => {
   }
   return (
     <section className="relative w-full">
-      <div ref={observe} className="sticky z-10 top-0 w-full h-screen">
+      <div className="sticky z-10 top-0 w-full h-screen">
         <div className="relative w-full h-full setflex-center-row">
           <span className="text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full drop-shadow-collaborators">
             OUR
@@ -124,8 +124,8 @@ export const Section4ComponentInner = () => {
             </FancyLink>
           </div>
         </div>
+        <div ref={observe} className='w-full' />
       </div>
-      <div className="h-[50vh]" />
     </section>
   )
 }

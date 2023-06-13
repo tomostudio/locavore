@@ -16,14 +16,8 @@ import { useInView } from 'react-cool-inview'
 
 export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   const controls = useAnimation()
-  const appContext = useAppContext()
-  const checkHeader = (data) => {
-    appContext.setHeader({
-      headerStyle: data,
-    })
-  }
   const { observe } = useInView({
-    threshold: 1,
+    threshold: 0,
     unobserveOnEnter: true,
     onEnter: () => {
       controls.start('visible')
@@ -152,7 +146,6 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
     <section className="relative w-full overflow-x-clip my-[40vh]">
       <div className="w-full">
         <div
-          ref={observe}
           className="sticky z-10 top-0 w-full h-screen flex flex-col"
         >
           <div className="relative w-full h-screen">
@@ -248,8 +241,8 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
               className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[125%] h-[170%] clip-path-circle-[0%] rounded-50% bg-white"
             />
           </div>
+          <div ref={observe} className='w-full' />
         </div>
-        <div className="h-[50vh]" />
       </div>
       <div id="enter-blur" className="w-full h-[10vh]" />
     </section>
