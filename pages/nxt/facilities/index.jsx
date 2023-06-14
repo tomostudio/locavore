@@ -365,7 +365,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI, facilitiesList, facilitiesLi
                           scrollContainer.current.clientWidth
 
                         const scrollPerElement =
-                          scrollContainerWidth / (facilitiesList.length / 2 + 1)
+                          scrollContainerWidth / (facilitiesList.length / 2 + 5)
 
                         const scrollToLeft =
                           positionScroll === scrollContainer.current.scrollLeft
@@ -396,7 +396,7 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI, facilitiesList, facilitiesLi
                           scrollContainer.current.clientWidth
 
                         const scrollPerElement =
-                          scrollContainerWidth / (facilitiesList.length / 2 + 1)
+                          scrollContainerWidth / (facilitiesList.length / 2 + 5)
 
                         const scrollToRight =
                           positionScroll === scrollContainer.current.scrollLeft
@@ -426,7 +426,9 @@ const FeaturesAndFacilities = ({ seoAPI, footerAPI, facilitiesList, facilitiesLi
                 </div>
                 <div className="relative w-full h-full my-[22vw]">
                   <Swiper
-                    mousewheel={true}
+                    mousewheel={{
+                      forceToAxis: true
+                    }}
                     slidesPerView="auto"
                     keyboard={{ enabled: true }}
                     navigation={{
