@@ -6,8 +6,6 @@ import Marquee from 'react-fast-marquee'
 // IMPORT LOCAL IMAGE
 import collab1 from '@/public/nxt2/collab1.png'
 import collab2 from '@/public/nxt2/collab2.png'
-import collab3 from '@/public/nxt2/collab3.png'
-import collab4 from '@/public/nxt2/collab4.png'
 import FancyLink from '@/components/utils/fancyLink'
 
 export const Section4ComponentInner = () => {
@@ -25,7 +23,7 @@ export const Section4ComponentInner = () => {
           </span>
           <div
             id='slider_collab'
-            className='absolute top-0 left-0 -z-1 w-full h-full setflex-center opacity-0'
+            className='absolute top-0 left-0 -z-1 w-full h-full setflex-center opacity-0 pb-20'
           >
             <Marquee gradient={false}>
               <div className='h-[60vh] grid grid-flow-col auto-cols-max grid-rows-nxt gap-6 pl-6'>
@@ -105,9 +103,7 @@ export const Section4ComponentInner = () => {
           </div>
         </div>
       </div>
-      <div className='w-full h-[20vh]' />
-      <div id='enter-collab-opacity' className='w-full h-[50vh]' />
-      <div className='w-full h-[75vh]' />
+      <div id='enter-collab-opacity' className='w-full h-[40vh]' />
     </section>
   )
 }
@@ -153,8 +149,8 @@ export const Section4AnimationOBJ = [
         id: id,
         trigger: document.querySelector('#enter-collab-opacity'), // which section will be tracked as the scroll trigger
         scrub: 0.5,
-        start: 'top 50%',
-        end: 'top 0%',
+        start: 'top 100%',
+        end: 'bottom 100%',
       },
     }
 

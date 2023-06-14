@@ -7,11 +7,12 @@ import FancyLink from '@/components/utils/fancyLink'
 import section2_bg from '@/public/nxt2/section2_bg1.png'
 import Container from '../../container'
 import PillButton from '../../pillButton'
+import { Parallax } from 'react-scroll-parallax'
 
 export const Section2Option1ComponentInner = () => {
   return (
     <section className="relative w-full">
-      <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
+      <div className="sticky z-10 top-0 w-full h-screen flex flex-col overflow-hidden">
         <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-10">
           <PillButton
             destination="/"
@@ -26,7 +27,14 @@ export const Section2Option1ComponentInner = () => {
             Option 3
           </PillButton>
         </div>
-        <Image src={section2_bg} alt="" fill style={{ objectFit: 'cover' }} />
+        <Parallax className='absolute w-full h-full' speed={-10}>
+            <Image
+              src={section2_bg}
+              alt=""
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+        </Parallax>
         <div
           id="black-layer-option1"
           className="absolute top-0 left-0 w-full h-full bg-black opacity-50"
