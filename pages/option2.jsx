@@ -21,7 +21,7 @@ import {
   Section2Option2AnimationOBJ,
   Section2Option2AnimationOBJMobile,
   Section2Option2ComponentInner,
-} from '@/components/modules/nxt2/section2/option2'
+} from '@/components/modules/nxt/section2/option2'
 
 import {
   Section3AnimationOBJ,

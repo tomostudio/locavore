@@ -12,50 +12,23 @@ export const Section2Option2ComponentInner = () => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
-        <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-10">
-          <PillButton
-            destination="/nxt"
-            className="uppercase bg-white"
-          >
-            Option 1
-          </PillButton>
-          <PillButton destination="/nxt/option2" className="uppercase bg-white pointer-events-none">
-            Option 2
-          </PillButton>
-          <PillButton destination="/nxt/option3" className="uppercase bg-white">
-            Option 3
-          </PillButton>
-        </div>
         <Container className="relative w-full h-full grow setflex-center">
           <div
             id="section2_content-option2"
             className="relative z-10 w-full h-full opacity-0"
           >
-            <div className="relative w-full h-full setflex-center pb-20">
+            <div className="relative w-full h-full setflex-center">
               <span className="text-[1.875rem] text-[#BEC29D]">
                 WHAT’S ON LOCAVORE
               </span>
-              <div className="relative text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
+              <p className="relative text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
                 A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
-                <div
-                  id="section2_bg-option2"
-                  className="absolute z-20 bottom-0 left-1/2 -translate-x-1/2 translate-y-[90vh] w-full h-full"
-                >
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={section2_bg}
-                      alt=""
-                      fill
-                      style={{ objectFit: 'contain' }}
-                    />
-                  </div>
-                </div>
-              </div>
+              </p>
             </div>
-            <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end">
+            <div className="absolute top-0 left-0 w-full h-full pointer-events-none flex justify-center items-end">
               <FancyLink
-                className={`w-fit p-4 mb-24 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-                destination="/nxt/collaborators"
+                className={`w-fit p-4 mb-16 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                destination="/nxt/menu"
               >
                 VIEW MENU
               </FancyLink>
@@ -63,8 +36,16 @@ export const Section2Option2ComponentInner = () => {
           </div>
         </Container>
       </div>
-      <div id="enter-bg-option2" className="h-[100vh]" />
-      <div className="h-[25vh]" />
+      <Container className="relative h-screen setflex-center pointer-events-none z-20">
+        <div className="relative w-full h-[50vh] max-h-[500px]">
+          <Image
+            src={section2_bg}
+            alt=""
+            fill
+            style={{ objectFit: 'contain' }}
+          />
+        </div>
+      </Container>
     </section>
   )
 }
@@ -100,34 +81,5 @@ export const Section2Option2AnimationOBJ = [
     ]
 
     return { id, elem, settings, animation }
-  },
-  // BACKGROUND 2 ENTER
-  () => {
-    const id = 'bg2-enter-option2' // animation id
-    const elem = document.querySelector('#section2_bg-option2')
-    const settings = {
-      scrollTrigger: {
-        id: id,
-        trigger: document.querySelector('#enter-bg-option2'), // which section will be tracked as the scroll trigger
-        scrub: 0.5,
-        start: 'top 100%',
-        end: 'bottom 100%',
-      },
-    }
-
-    // Input Animation
-    const animation = [
-      {
-        to: [
-          elem,
-          {
-            bottom: '50%',
-            y: '50%',
-          },
-        ],
-      },
-    ]
-
-    return { id, elem, settings, animation }
-  },
+  }
 ]

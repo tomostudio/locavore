@@ -27,13 +27,8 @@ export const Section2Option1ComponentInner = () => {
             Option 3
           </PillButton>
         </div>
-        <Parallax className='absolute w-full h-full' speed={-10}>
-            <Image
-              src={section2_bg}
-              alt=""
-              fill
-              style={{ objectFit: 'cover' }}
-            />
+        <Parallax className="absolute w-full h-full" speed={-10}>
+          <Image src={section2_bg} alt="" fill style={{ objectFit: 'cover' }} />
         </Parallax>
         <div
           id="black-layer-option1"
@@ -42,7 +37,7 @@ export const Section2Option1ComponentInner = () => {
         <Container className="relative w-full h-full grow setflex-center">
           <div
             id="section2_content-option1"
-            className="relative z-10 w-full h-auto opacity-0"
+            className="relative z-10 w-full h-full opacity-0"
           >
             <div className="relative w-full h-full setflex-center ">
               <span className="text-[1.875rem] text-[#BEC29D]">
@@ -51,8 +46,10 @@ export const Section2Option1ComponentInner = () => {
               <p className="text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
                 A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
               </p>
+            </div>
+            <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end">
               <FancyLink
-                className={`w-fit p-4 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                className={`w-fit p-4 mb-16 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
                 destination="/nxt/menu"
               >
                 VIEW MENU

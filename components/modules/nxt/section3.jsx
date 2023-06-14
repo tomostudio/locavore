@@ -27,7 +27,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
             </Container>
             <div className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex justify-center items-end">
               <FancyLink
-                className={`w-fit p-4 mb-24 text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
+                className={`w-fit p-4 mb-16 text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
                 destination="/nxt/facilities"
               >
                 VIEW OUR FACILITIES

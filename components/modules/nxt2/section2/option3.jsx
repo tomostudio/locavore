@@ -12,64 +12,54 @@ export const Section2Option3ComponentInner = () => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
-        <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-10">
-          <PillButton destination="/nxt" className="uppercase bg-white">
-            Option 1
-          </PillButton>
-          <PillButton destination="/nxt/option2" className="uppercase bg-white">
-            Option 2
-          </PillButton>
-          <PillButton
-            destination="/nxt/option3"
-            className="uppercase bg-white pointer-events-none"
-          >
-            Option 3
-          </PillButton>
-        </div>
         <Container className="relative w-full h-full grow setflex-center">
           <div
             id="section2_content"
-            className="relative z-10 w-full h-auto opacity-0"
+            className="relative z-10 w-full h-full opacity-0"
           >
-            <div
-              id="section2_bg1"
-              className="absolute top-0 left-0 translate-y-[80vh] w-[384px] h-[210px]"
-            >
-              <div className="relative w-full h-full">
-                <Image
-                  src={section2_bg1}
-                  alt=""
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
+            <div className="relative w-full h-full setflex-center ">
+              <div className="relative w-full setflex-center">
+                <div
+                  id="section2_bg1"
+                  className="absolute top-0 left-0 translate-y-[80vh] w-[384px] h-[210px] -z-1"
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={section2_bg1}
+                      alt=""
+                      fill
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                </div>
+                <span className="text-[1.875rem] text-[#BEC29D]">
+                  WHAT’S ON LOCAVORE
+                </span>
+                <p className="text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
+                  A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
+                </p>
+                <div
+                  id="section2_bg2"
+                  className="absolute z-20 bottom-0 right-0 translate-y-[90vh] w-[384px] h-[210px]"
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={section2_bg1}
+                      alt=""
+                      fill
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="relative w-full h-full setflex-center ">
-              <span className="text-[1.875rem] text-[#BEC29D]">
-                WHAT’S ON LOCAVORE
-              </span>
-              <p className="text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
-                A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
-              </p>
+            <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end">
               <FancyLink
-                className={`w-fit p-4 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                className={`w-fit p-4 mb-16 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
                 destination="/nxt/menu"
               >
                 VIEW MENU
               </FancyLink>
-            </div>
-            <div
-              id="section2_bg2"
-              className="absolute z-20 bottom-0 right-0 translate-y-[90vh] w-[384px] h-[210px]"
-            >
-              <div className="relative w-full h-full">
-                <Image
-                  src={section2_bg1}
-                  alt=""
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
             </div>
           </div>
         </Container>

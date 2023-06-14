@@ -9,9 +9,6 @@ import section1 from '@/public/nxt2/section1.png'
 import NXT_Logo_Bumper from '@/public/nxt2/nxt_logo.png'
 
 export const Section1ComponentInner = () => {
-  useEffect(() => {
-    // document.querySelector('body').classList.add('overflow-hidden')
-  }, [])
 
   return (
     <section className="relative w-full h-screen">
@@ -92,9 +89,6 @@ export const Section1ComponentInner = () => {
               exit: {
                 opacity: 1,
               },
-            }}
-            onAnimationComplete={() => {
-              // document.querySelector('body').classList.remove('overflow-hidden')
             }}
             className="w-full flex flex-col items-center mt-12 px-24"
           >
