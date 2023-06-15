@@ -310,7 +310,7 @@ const FeaturesAndFacilities = ({
                       innerRef={scrollContainer}
                     >
                       <div className="w-fit h-full flex items-center relative min-w-full">
-                        <div className="w-[50vw]" />
+                        <div className="w-[25vw]" />
                         {facilitiesListScroll.map((data, id) => (
                           <div key={id}>
                             <div
@@ -359,7 +359,7 @@ const FeaturesAndFacilities = ({
                             </div>
                           </div>
                         ))}
-                        <div className="w-[50vw]" />
+                        <div className="w-[25vw]" />
                       </div>
                     </ScrollContainer>
                     <div className="absolute pointer-events-none z-50 top-0 left-0 h-full w-full flex items-center justify-between ">
@@ -372,7 +372,7 @@ const FeaturesAndFacilities = ({
 
                           const scrollPerElement =
                             scrollContainerWidth /
-                            (facilitiesList.length / 2 + 5)
+                            (facilitiesList.length / 2)
 
                           const scrollToLeft =
                             positionScroll ===
@@ -405,7 +405,7 @@ const FeaturesAndFacilities = ({
 
                           const scrollPerElement =
                             scrollContainerWidth /
-                            (facilitiesList.length / 2 + 5)
+                            (facilitiesList.length / 2)
 
                           const scrollToRight =
                             positionScroll ===
