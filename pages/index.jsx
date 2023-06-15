@@ -142,7 +142,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
             {/* WHAT'S ON? */}
             <Section5ComponentInner />
             <NxtNavigation transition={true} />
-            <div className="fixed bottom-10 right-5 z-50">
+            <div className="fixed bottom-5 right-5 z-50">
               <PillButton
                 destination="/nxt"
                 className="uppercase bg-white"
