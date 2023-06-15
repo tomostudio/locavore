@@ -371,8 +371,7 @@ const FeaturesAndFacilities = ({
                             scrollContainer.current.clientWidth
 
                           const scrollPerElement =
-                            scrollContainerWidth /
-                            (facilitiesList.length / 2)
+                            scrollContainerWidth / (facilitiesList.length / 2)
 
                           const scrollToLeft =
                             positionScroll ===
@@ -404,8 +403,7 @@ const FeaturesAndFacilities = ({
                             scrollContainer.current.clientWidth
 
                           const scrollPerElement =
-                            scrollContainerWidth /
-                            (facilitiesList.length / 2)
+                            scrollContainerWidth / (facilitiesList.length / 2)
 
                           const scrollToRight =
                             positionScroll ===
