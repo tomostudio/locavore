@@ -11,6 +11,7 @@ import Image from 'next/image'
 import FancyLink from '@/components/utils/fancyLink'
 
 import hero from '@/public/nxt2/events/hero.png'
+import hero_mobile from '@/public/nxt2/events/hero_mobile.png'
 import Container from '@/components/modules/container'
 import card_bnw from '@/public/nxt2/card_bnw.png'
 import card from '@/public/nxt2/card.png'
@@ -18,6 +19,7 @@ import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
 import NxtNavigationMobile from '@/components/utils/nxtNavigation/mobile'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import NxtNavigation from '@/components/utils/nxtNavigation'
+import HeaderGap from '@/components/modules/headerGap'
 
 const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -33,7 +35,7 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
 
   useEffect(() => {
     document.querySelector('body').style.backgroundColor = 'black'
-    window.scroll(0, 0);
+    window.scroll(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',
     })
@@ -60,31 +62,45 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
         className="no-select-all bg-black"
       >
         <div className="relative w-full h-full setflex-center">
-          <div className="relative w-full h-[350px] flex items-center md:items-end justify-center">
-            <Image src={hero} alt="" fill style={{ objectFit: 'cover' }} />
+          <div className="relative w-full h-[350px] flex flex-col">
+            <Image
+              src={hero}
+              alt=""
+              fill
+              className="object-cover hidden md:block"
+            />
+            <Image
+              src={hero_mobile}
+              alt=""
+              fill
+              className="object-cover md:hidden"
+            />
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20" />
-            <h1 className="relative text-m-header sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
-              EVENTS & PROGRAMS
-            </h1>
+            <HeaderGap />
+            <div className="w-full flex grow-1 items-center md:items-end justify-center">
+              <h1 className="relative text-m-header sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
+                EVENTS & PROGRAMS
+              </h1>
+            </div>
           </div>
-          <Container className="w-full h-full flex flex-wrap mt-20 mb-10 md:mb-16 gap-8">
+          <Container className="w-full h-full flex flex-wrap mt-11 md:mt-20 mb-10 md:mb-16 gap-8">
             {eventList.slice(0, itemToShow).map((_, id) => (
               <FancyLink
                 key={id}
                 destination="/nxt/events-programs/detail"
                 className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] sm:w-[calc((100%/2)-1rem)] md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
               >
-                <span className="text-m-body md:text-d-body">
+                <span className="text-[1.125rem] md:text-d-body">
                   10 OCTOBER 2023
                 </span>
                 <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
                   <Image src={card_bnw} className="group-hover:hidden" />
                   <Image src={card} className="hidden group-hover:block" />
                 </div>
-                <span className="font-bold text-[1.25rem] md:text-[1.875rem] leading-[32px]">
+                <span className="font-bold text-d-body sm:text-m-title md:text-m-subheading">
                   Event Title
                 </span>
-                <p className="text-m-small md:text-sm mt-1 text-left">
+                <p className="text-sm mt-1">
                   Lorem ispum dolor sit amet, consecteur des adispacing dolor
                   sit amet.
                 </p>

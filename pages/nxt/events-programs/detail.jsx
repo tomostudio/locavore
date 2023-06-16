@@ -55,16 +55,16 @@ const EventsAndProgramsDetail = ({ seoAPI, footerAPI }) => {
           <div className='relative w-full h-[422px] md:h-[450px] rounded-lg overflow-hidden'>
             <Image src={detail} alt='' fill style={{ objectFit: 'cover' }} />
           </div>
-          <div className='w-full flex flex-col mt-20 mx-auto max-w-4xl'>
+          <div className='w-full flex flex-col mt-10 md:mt-20 mx-auto max-w-4xl'>
             <div className='w-full flex gap-8'>
-              <div className='hidden md:block w-[30%]' />
-              <span className='w-full md:w-[70%] text-center md:text-left font-funkturm text-d-additionalHeader text-[#BEC29D]'>
+              <div className='hidden sm:block w-[30%]' />
+              <span className='w-full sm:w-[70%] text-center sm:text-left font-funkturm text-m-additionalHeader md:text-d-additionalHeader text-[#BEC29D]'>
                 LOREM IPSUM
               </span>
             </div>
-            <div className='w-full flex flex-col md:flex-row gap-8 mt-8'>
-              <div className='w-full md:w-[30%] flex flex-col gap-3'>
-                <div className='w-full grid grid-flow-col-dense grid-rows-2 md:flex md:flex-col gap-4 md:gap-3 text-white text-center md:text-left'>
+            <div className='w-full flex flex-col sm:flex-row gap-8 mt-8'>
+              <div className='w-full sm:w-[30%] flex flex-col gap-3'>
+                <div className='w-full grid grid-flow-col-dense grid-rows-2 sm:flex sm:flex-col gap-4 sm:gap-3 text-white text-center sm:text-left'>
                   <span>
                     VENUE:
                     <br />
@@ -86,11 +86,11 @@ const EventsAndProgramsDetail = ({ seoAPI, footerAPI }) => {
                     07.00 - FINISH
                   </span>
                 </div>
-                <FancyLink className='hidden md:block font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30'>
+                <FancyLink className='hidden sm:block font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30'>
                   Register Now
                 </FancyLink>
               </div>
-              <div className='w-full md:w-[70%] text-white editor-styling'>
+              <div className='w-full sm:w-[70%] text-white editor-styling'>
                 <p>
                   Lorem ipsum dolor sit amet, consectet elit. Proin nec massa
                   viverra, aliquet dui ac, gravida magna. Lorem ipsum dolor sit
@@ -116,7 +116,7 @@ const EventsAndProgramsDetail = ({ seoAPI, footerAPI }) => {
                   massa dolor viverra, aliquet dui ac, amett gravida magna.
                 </p>
               </div>
-              <FancyLink className='md:hidden mx-auto font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30'>
+              <FancyLink className='sm:hidden mx-auto font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30'>
                 Register Now
               </FancyLink>
             </div>
