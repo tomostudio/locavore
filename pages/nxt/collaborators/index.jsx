@@ -9,12 +9,13 @@ import Footer from '@/components/modules/footer'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import FancyLink from '@/components/utils/fancyLink'
+import NxtNavigation from '@/components/utils/nxtNavigation'
+import HeaderGap from '@/components/modules/headerGap'
 
 import hero from '@/public/nxt2/collab/hero.png'
+import hero_mobile from '@/public/nxt2/collab/hero_mobile.png'
 import card1 from '@/public/nxt2/collab/card1.png'
 import card_bnw1 from '@/public/nxt2/collab/card_bnw1.png'
-import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
-import NxtNavigation from '@/components/utils/nxtNavigation'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
 
 const OurCollaborators = ({ seoAPI, footerAPI }) => {
@@ -107,54 +108,101 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
         className="no-select-all bg-black"
       >
         <div className="relative w-full h-full setflex-center">
-          <div className="relative w-full h-[350px] flex items-center md:items-end justify-center">
-            <Image src={hero} alt="" fill style={{ objectFit: 'cover' }} />
+          <div className="relative w-full h-[350px] flex flex-col">
+            <Image
+              src={hero}
+              alt=""
+              fill
+              className="object-cover hidden md:block"
+            />
+            <Image
+              src={hero_mobile}
+              alt=""
+              fill
+              className="object-cover md:hidden"
+            />
             <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20" />
-            <h1 className="relative text-m-header sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
-              OUR COLLABORATORS
-            </h1>
+            <HeaderGap />
+            <div className="w-full flex grow-1 items-center md:items-end justify-center">
+              <h1 className="relative text-m-header sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs sm:max-w-md md:max-w-none text-center">
+                OUR COLLABORATORS
+              </h1>
+            </div>
           </div>
-          <div className="w-full h-full flex flex-wrap mt-20 mb-16 border-y border-white collaborators-border">
-            {repeatArr.slice(0, itemToShow).map((_, id) => (
-              <FancyLink
-                destination="/nxt/collaborators/detail"
-                className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
-                  repeatArr.slice(0, itemToShow),
-                  id,
-                )} border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]`}
-                key={id}
-              >
-                <div className="h-full flex flex-col">
-                  <span className="italic font-serif text-[1.375rem] text-left mb-1">
-                    Work Role
-                  </span>
-                  <div className="w-full flex">
-                    <div className="relative aspect-[3/2] md:aspect-[6/5] w-full rounded-md overflow-hidden mr-1">
+          <div className="w-full h-full flex flex-wrap mt-11 md:mt-20 mb-16 border-b sm:border-y border-white collaborators-border">
+            {useMediaQuery('(min-width: 600px)')
+              ? repeatArr.slice(0, itemToShow).map((_, id) => (
+                  <FancyLink
+                    destination="/nxt/collaborators/detail"
+                    className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
+                      repeatArr.slice(0, itemToShow),
+                      id,
+                    )} border-white setflex-center text-white p-10 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]`}
+                    key={id}
+                  >
+                    <div className="h-full flex flex-col">
+                      <span className="italic font-serif text-[1.375rem] text-left mb-1">
+                        Work Role
+                      </span>
+                      <div className="w-full flex">
+                        <div className="relative aspect-[3/2] md:aspect-[6/5] w-full rounded-md overflow-hidden mr-1">
+                          <Image
+                            src={card_bnw1}
+                            alt=""
+                            fill
+                            style={{ objectFit: 'cover' }}
+                            className="group-hover:hidden"
+                          />
+                          <Image
+                            src={card1}
+                            alt=""
+                            fill
+                            style={{ objectFit: 'cover' }}
+                            className="hidden group-hover:block"
+                          />
+                        </div>
+                        <span className="text-d-small writing-mode-vertical text-left">
+                          JAKARTA, INDONESIA
+                        </span>
+                      </div>
+                      <span className="font-bold text-[1.875rem] max-w-[300px] text-left mt-4 leading-tight">
+                        Lorem Ipsum Dolor Sit Amet
+                      </span>
+                    </div>
+                  </FancyLink>
+                ))
+              : repeatArr.map((_, id) => (
+                  <FancyLink
+                    key={id}
+                    destination="/nxt/collaborators/detail"
+                    className="w-full flex flex-col"
+                  >
+                    <div className="relative w-full h-[258px]">
                       <Image
                         src={card_bnw1}
                         alt=""
                         fill
-                        style={{ objectFit: 'cover' }}
-                        className="group-hover:hidden"
+                        className="object-cover group-hover:hidden"
                       />
                       <Image
                         src={card1}
                         alt=""
                         fill
-                        style={{ objectFit: 'cover' }}
-                        className="hidden group-hover:block"
+                        className="object-cover hidden group-hover:block"
                       />
                     </div>
-                    <span className="text-d-small writing-mode-vertical text-left">
-                      JAKARTA, INDONESIA
-                    </span>
-                  </div>
-                  <span className="font-bold text-[1.875rem] max-w-[300px] text-left mt-4 leading-tight">
-                    Lorem Ipsum Dolor Sit Amet
-                  </span>
-                </div>
-              </FancyLink>
-            ))}
+                    <div className="relative bottom-5 w-full flex flex-col pt-5 px-7 bg-black text-white border-t border-white rounded-t-2xl">
+                      <div>
+                        <span className="italic font-serif">Work Role</span>
+                        {` `}—{' '}
+                        <span className="text-m-body">Jakarta, Indonesia</span>
+                      </div>
+                      <span className="font-bold text-d-body text-left mt-2 leading-tight">
+                        Lorem Ipsum Dolor Sit Amet Two Lines or Longer Texts
+                      </span>
+                    </div>
+                  </FancyLink>
+                ))}
           </div>
           {showMoreButton && (
             <FancyLink

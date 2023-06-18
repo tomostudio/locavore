@@ -26,10 +26,10 @@ const NxtNavigationMobile = ({ focus = '', transition = false }) => {
             }
           : {}
       }
-      className="sticky bottom-10 z-50 mb-10"
+      className="sticky bottom-5 z-50 mb-10"
     >
-      <div className="relative w-full h-[50px]">
-        <Container className="absolute mx-auto flex flex-wrap text-black w-full min-h-[50px]">
+      <div className="relative w-full">
+        <Container className="mx-auto flex flex-wrap text-black w-full min-h-[50px]">
           <div className="relative w-full">
             <div className="absolute bottom-0 left-0 w-full px-2 pb-2">
               <FancyLink
@@ -64,9 +64,8 @@ const NxtNavigationMobile = ({ focus = '', transition = false }) => {
             <div
               className={`py-2 w-full ${
                 open ? 'flex' : 'hidden'
-              } flex flex-col-reverse bg-white rounded-[25px] overflow-hidden`}
+              } flex flex-col bg-white rounded-[25px] overflow-hidden`}
             >
-              <div className="w-full h-[50px] bg-white" />
               {focus !== 'menu' && (
                 <FancyLink
                   className="w-full h-[50px] bg-white mb-2 setflex-center"
@@ -107,6 +106,7 @@ const NxtNavigationMobile = ({ focus = '', transition = false }) => {
                   VISIT
                 </FancyLink>
               )}
+              <div className="w-full h-[50px] bg-white" />
             </div>
           </div>
         </Container>

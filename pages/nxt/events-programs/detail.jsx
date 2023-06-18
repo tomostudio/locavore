@@ -52,7 +52,7 @@ const EventsAndProgramsDetail = ({ seoAPI, footerAPI }) => {
       >
         <HeaderGap />
         <Container className='relative flex flex-col mt-6 mb-10 md:my-20'>
-          <div className='relative w-full h-[422px] md:h-[450px] rounded-lg overflow-hidden'>
+          <div className='relative w-full h-[422px] md:h-[450px] rounded-[15px] overflow-hidden'>
             <Image src={detail} alt='' fill style={{ objectFit: 'cover' }} />
           </div>
           <div className='w-full flex flex-col mt-10 md:mt-20 mx-auto max-w-4xl'>

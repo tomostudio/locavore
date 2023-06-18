@@ -55,17 +55,17 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
         <Container className='relative h-full flex flex-col-reverse md:flex-row md:gap-12 lg:gap-24'>
           <div className='w-full h-full'>
             <HeaderGap className='hidden md:block' />
-            <div className='w-full h-full flex flex-col text-black mt-12 md:my-20'>
+            <div className='w-full h-full flex flex-col text-black mt-10 md:my-20'>
               <h1 className='font-funkturm m-0 md:mb-2 text-m-additionalHeader md:text-d-additionalHeader'>
                 Lorem Ipsum
               </h1>
-              <div className='w-full text-d-body'>
-                <span className='italic font-medium font-serif mr-1'>
+              <div className='w-full'>
+                <span className='italic font-medium font-serif mr-1 md:text-d-body'>
                   Creative Director
                 </span>
-                —<span className='ml-1'>Jakarta, Indonesia</span>
+                —<span className='ml-1 text-m-body md:text-d-body'>Jakarta, Indonesia</span>
               </div>
-              <div className='w-full mt-10 md:mt-24 editor-styling max-w-lg mr-auto'>
+              <div className='w-full mt-10 mb-10 md:mb-0 md:mt-24 editor-styling md:max-w-lg mr-auto'>
                 <p>
                   Lorem ipsum dolor sit amet, consectet elit. Proin nec massa
                   viverra, aliquet dui ac, gravida magna. Lorem ipsum dolor sit
@@ -95,7 +95,7 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
           </div>
           <div className='md:sticky top-8 md:top-0 left-0 w-full md:h-screen flex flex-col'>
             <HeaderGap />
-            <div className='w-full max-h-[720px] h-[calc(100vh-(10rem+61px))] mt-12 md:my-20'>
+            <div className='w-full h-[422px] sm:max-h-[720px] sm:h-[calc(100vh-(10rem+61px))] mt-6 md:my-20'>
               <div className='relative w-full h-full rounded-[15px] overflow-hidden'>
                 <Image
                   src={detail}
