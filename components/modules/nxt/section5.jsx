@@ -7,6 +7,7 @@ import Container from '../container'
 import card_bnw from '@/public/nxt2/card_bnw.png'
 import card from '@/public/nxt2/card.png'
 import FancyLink from '@/components/utils/fancyLink'
+import EventCard from './eventCard'
 
 export const Section5ComponentInner = () => {
   const eventList = ['', '', '']
@@ -22,26 +23,17 @@ export const Section5ComponentInner = () => {
             <span className="text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full">
               WHAT'S ON?
             </span>
-            <div className="w-full my-16 grid grid-cols-3 gap-8">
+            <div className="w-full my-16 flex flex-nowrap gap-8">
               {eventList.map((_, id) => (
-                <FancyLink
+                <EventCard
                   key={id}
-                  className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
-                  destination="/nxt/events-programs/detail"
-                >
-                  <span className="text-d-body">10 OCTOBER 2023</span>
-                  <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
-                    <Image src={card_bnw} className="group-hover:hidden" />
-                    <Image src={card} className="hidden group-hover:block" />
-                  </div>
-                  <span className="font-bold text-[1.875rem] leading-[32px]">
-                    Event Title
-                  </span>
-                  <p className="text-sm mt-1">
-                    Lorem ispum dolor sit amet, consecteur des adispacing dolor
-                    sit amet.
-                  </p>
-                </FancyLink>
+                  widthNormal={true}
+                  date="10 OCTOBER 2023"
+                  image={card}
+                  image_bnw={card_bnw}
+                  title="Event Title"
+                  description="Lorem ispum dolor sit amet, consecteur des adispacing dolor sit amet."
+                />
               ))}
             </div>
             <FancyLink

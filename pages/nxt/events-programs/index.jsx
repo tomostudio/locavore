@@ -20,6 +20,8 @@ import NxtNavigationMobile from '@/components/utils/nxtNavigation/mobile'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 import HeaderGap from '@/components/modules/headerGap'
+import HeroComponent from '@/components/modules/nxt/hero'
+import EventCard from '@/components/modules/nxt/eventCard'
 
 const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -62,49 +64,21 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
         className="no-select-all bg-black"
       >
         <div className="relative w-full h-full setflex-center">
-          <div className="relative w-full h-[350px] flex flex-col">
-            <Image
-              src={hero}
-              alt=""
-              fill
-              className="object-cover hidden md:block"
-            />
-            <Image
-              src={hero_mobile}
-              alt=""
-              fill
-              className="object-cover md:hidden"
-            />
-            <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20" />
-            <HeaderGap />
-            <div className="w-full flex grow-1 items-center md:items-end justify-center">
-              <h1 className="relative text-m-header sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
-                EVENTS & PROGRAMS
-              </h1>
-            </div>
-          </div>
-          <Container className="w-full h-full flex flex-wrap mt-11 md:mt-20 mb-10 md:mb-16 gap-8">
+          <HeroComponent
+            title="EVENTS & PROGRAMS"
+            imageDesktop={hero}
+            imageMobile={hero_mobile}
+          />
+          <Container className="h-full flex flex-wrap mt-11 md:mt-20 mb-10 md:mb-16 gap-8">
             {eventList.slice(0, itemToShow).map((_, id) => (
-              <FancyLink
+              <EventCard
                 key={id}
-                destination="/nxt/events-programs/detail"
-                className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] sm:w-[calc((100%/2)-1rem)] md:w-[calc((100%/3)-2rem)] pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
-              >
-                <span className="text-[1.125rem] md:text-d-body">
-                  10 OCTOBER 2023
-                </span>
-                <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
-                  <Image src={card_bnw} className="group-hover:hidden" />
-                  <Image src={card} className="hidden group-hover:block" />
-                </div>
-                <span className="font-bold text-d-body sm:text-m-title md:text-m-subheading">
-                  Event Title
-                </span>
-                <p className="text-sm mt-1">
-                  Lorem ispum dolor sit amet, consecteur des adispacing dolor
-                  sit amet.
-                </p>
-              </FancyLink>
+                date="10 OCTOBER 2023"
+                image={card}
+                image_bnw={card_bnw}
+                title="Event Title"
+                description="Lorem ispum dolor sit amet, consecteur des adispacing dolor sit amet."
+              />
             ))}
           </Container>
           {showMoreButton && (
