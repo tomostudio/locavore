@@ -77,7 +77,7 @@ const CollaboratorCard = ({
                   {role}
                 </span>
                 <div className="w-full flex">
-                  <div className="relative aspect-[3/2] md:aspect-[6/5] w-full rounded-md overflow-hidden mr-1">
+                  <div className="relative aspect-[3/2] sm:aspect-[6/5] w-full rounded-md overflow-hidden mr-1">
                     <Image
                       src={image_bnw}
                       alt=""

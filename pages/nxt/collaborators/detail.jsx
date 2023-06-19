@@ -12,10 +12,7 @@ import FancyLink from '@/components/utils/fancyLink';
 import HeaderGap from '@/components/modules/headerGap';
 import Container from '@/components/modules/container';
 
-import hero from '@/public/nxt2/collab/hero.png';
 import detail from '@/public/nxt2/collab/detail.png';
-import card_bnw1 from '@/public/nxt2/collab/card_bnw1.png';
-import PillButton from '@/components/modules/pillButton';
 import StickyButton from '@/components/modules/stickyButton';
 
 const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
@@ -52,7 +49,7 @@ const OurCollaboratorsDetail = ({ seoAPI, footerAPI }) => {
         variants={fade}
         className='no-select-all bg-[#C2C2C2]'
       >
-        <Container className='relative h-full flex flex-col-reverse md:flex-row md:gap-12 lg:gap-24'>
+        <Container className='relative h-full max-md:max-w-[500px] flex flex-col-reverse md:flex-row md:gap-12 lg:gap-24'>
           <div className='w-full h-full'>
             <HeaderGap className='hidden md:block' />
             <div className='w-full h-full flex flex-col text-black mt-10 md:my-20'>

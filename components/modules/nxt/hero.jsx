@@ -3,18 +3,18 @@ import HeaderGap from '../headerGap'
 
 const HeroComponent = ({ imageDesktop, imageMobile, title }) => {
   return (
-    <div className="relative w-full h-[350px] flex flex-col">
+    <div className="relative w-full aspect-[15/14] sm:aspect-[144/35] flex flex-col">
       <Image
         src={imageDesktop}
         alt=""
         fill
-        className="object-cover hidden md:block"
+        className="object-cover hidden sm:block"
       />
-      <Image src={imageMobile} alt="" fill className="object-cover md:hidden" />
+      <Image src={imageMobile} alt="" fill className="object-cover sm:hidden" />
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20" />
       <HeaderGap />
-      <div className="w-full flex grow-1 items-center md:items-end justify-center">
-        <h1 className="relative text-m-header sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm md:mb-14 max-w-xs md:max-w-none text-center">
+      <div className="w-full flex grow-1 items-center sm:items-end justify-center">
+        <h1 className="relative text-m-header sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm sm:mb-10 md:mb-14 max-w-xs sm:max-w-none text-center">
           {title}
         </h1>
       </div>

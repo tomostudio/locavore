@@ -19,7 +19,7 @@ const EventCard = ({
       } pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white`}
     >
       <span className="text-[1.125rem] md:text-d-body">{date}</span>
-      <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
+      <div className="event-image relative w-full aspect-[1/1] my-5 border-2 group-hover:border-[#BEC29D] border-white">
         <Image src={image_bnw} className="group-hover:hidden" />
         <Image src={image} className="hidden group-hover:block" />
       </div>
