@@ -33,9 +33,9 @@ const ImageView = ({
       id="image-view"
       className="relative w-full"
     >
-      <div className="relative w-full h-[calc(15vw*3.7)] mt-8">
+      <div className="relative w-full h-[calc(40vw*3.7)] sm:h-[calc(30vw*3.7)] md:h-[calc(15vw*3.7)] mt-8">
         <ScrollContainer
-          className={`relative h-[calc(15vw*3.7)] scroll-smooth hide-scrollbar`}
+          className={`relative h-full scroll-smooth hide-scrollbar`}
           horizontal={true}
           vertical={false}
           hideScrollbars={false}
@@ -47,7 +47,7 @@ const ImageView = ({
             {facilitiesListScroll.map((data, id) => (
               <div key={id}>
                 <FancyLink
-                  className={`block relative w-[15vw] h-[15vw] cursor-pointer transtion-all duration-300 hover:!z-40 group`}
+                  className={`block relative w-[40vw] h-[40vw] sm:w-[30vw] sm:h-[30vw] md:w-[15vw] md:h-[15vw] cursor-pointer transtion-all duration-300 hover:!z-40 group`}
                   destination="/nxt/facilities/detail"
                   style={{
                     zIndex: data.zIndex,
@@ -66,9 +66,9 @@ const ImageView = ({
                         : ''
                     } ${
                       data.size === 150
-                        ? 'w-[calc(15vw*1.5)] h-[calc(15vw*2.25)]'
+                        ? 'w-[calc(40vw*1.5)] h-[calc(40vw*2.25)] sm:w-[calc(30vw*1.5)] sm:h-[calc(30vw*2.25)] md:w-[calc(15vw*1.5)] md:h-[calc(15vw*2.25)]'
                         : data.size === 120
-                        ? 'w-[calc(15vw*1.2)] h-[calc(15vw*1.8)]'
+                        ? 'w-[calc(40vw*1.2)] h-[calc(40vw*1.8)] sm:w-[calc(30vw*1.2)] sm:h-[calc(30vw*1.8)] md:w-[calc(15vw*1.2)] md:h-[calc(15vw*1.8)]'
                         : 'w-full h-full'
                     }`}
                   >
@@ -155,7 +155,7 @@ const ImageView = ({
           </button>
         </div>
       </div>
-      <div className="relative w-full h-full my-[22vw]">
+      <div className="relative w-full h-[calc(40vw*3.7)] sm:h-[calc(30vw*3.7)] md:h-[calc(15vw*3.7)] flex items-center my-20">
         <Swiper
           mousewheel={{
             forceToAxis: true,
@@ -170,7 +170,43 @@ const ImageView = ({
           className="relative w-full !overflow-visible"
           modules={[FreeMode, Navigation, Keyboard, Mousewheel]}
         >
-          <SwiperSlide
+          {facilitiesListScroll.map((data, id) => (
+            <SwiperSlide
+              key={id}
+              className="relative !w-[40vw] !h-[40vw] sm:!w-[30vw] sm:!h-[30vw] md:!w-[15vw] md:!h-[15vw] cursor-pointer transtion-all duration-300 hover:z-50 group"
+            >
+              <FancyLink
+                className={`block relative ${
+                  data.position === 'bottom'
+                    ? data.size === 150
+                      ? 'top-1/2 -translate-y-[78%]'
+                      : data.size === 120
+                      ? 'top-1/2 -translate-y-[72%]'
+                      : ''
+                    : data.position === 'center'
+                    ? 'top-1/2 -translate-y-1/2'
+                    : ''
+                } ${
+                  data.size === 150
+                    ? 'w-[calc(40vw*1.5)] sm:w-[calc(30vw*1.5)] md:w-[calc(15vw*1.5)]'
+                    : data.size === 120
+                    ? 'w-[calc(40vw*1.2)] sm:w-[calc(30vw*1.2)] md:w-[calc(15vw*1.2)]'
+                    : 'w-full h-full'
+                }`}
+                destination="/nxt/facilities/detail"
+              >
+                <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                  <Image
+                    src={data.image1}
+                    alt=""
+                    className="absolute top-0 left-0 w-full h-auto duration-300 transition-all group-hover:opacity-0"
+                  />
+                  <Image src={data.image2} className="w-full h-auto" />
+                </div>
+              </FancyLink>
+            </SwiperSlide>
+          ))}
+          {/* <SwiperSlide
             className="relative !w-[15vw] !h-[15vw] cursor-pointer transtion-all duration-300 hover:z-50 group"
             onClick={() => {
               window.location.href = '/nxt/facilities/detail'
@@ -385,7 +421,7 @@ const ImageView = ({
                 <Image src={feature6_color} className="w-full h-full" />
               </div>
             </div>
-          </SwiperSlide>
+          </SwiperSlide> */}
         </Swiper>
         <div className="absolute pointer-events-none z-50 top-0 left-0 h-full w-full flex items-center justify-between ">
           <button className="prevFacilities group pointer-events-auto w-[60px] h-[60px] p-5 border-2 border-white rounded-full ml-8 transition-all duration-300 hover:bg-white">

@@ -9,7 +9,7 @@ const GridView = ({ facilitiesListGrid }) => {
 
     // mobile column
     let rowCountMobile = 2
-    let columnCountMobile = Math.ceil(data.length / rowCountMobile)
+    let columnCountMobile = Math.ceil(data.filter((e) => !e.mobile).length / rowCountMobile)
 
     // check row desktop
     const lastRowDivsDesktop = []
@@ -71,9 +71,9 @@ const GridView = ({ facilitiesListGrid }) => {
               className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
                 facilitiesListGrid,
                 id,
-              )} border-white p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black`}
+              )} border-white px-2 py-4 text-center sm:p-10 setflex-center-row text-white transition-all duration-300 hover:bg-[#BEC29D] hover:text-black`}
             >
-              <span className=" font-medium text-d-body uppercase">
+              <span className="font-medium text-m-body sm:text-d-body uppercase">
                 {data.title}
               </span>
             </FancyLink>
@@ -82,7 +82,7 @@ const GridView = ({ facilitiesListGrid }) => {
               className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
                 facilitiesListGrid,
                 id,
-              )} border-white`}
+              )} ${data.mobile === "hidden" ? "hidden md:block" : ""} border-white`}
             />
           ),
         )}

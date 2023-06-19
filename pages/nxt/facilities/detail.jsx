@@ -15,6 +15,8 @@ import feature1_big from '@/public/nxt2/features/feature1_big.png'
 import feature2_big from '@/public/nxt2/features/feature2_big.png'
 import StickyButton from '@/components/modules/stickyButton'
 import PillButton from '@/components/modules/pillButton'
+import { useMediaQuery } from '@/helpers/functional/checkMedia'
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -24,7 +26,7 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
 
   useEffect(() => {
     document.querySelector('body').style.backgroundColor = 'black'
-    window.scroll(0, 0);
+    window.scroll(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',
     })
@@ -50,37 +52,66 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
         variants={fade}
         className="relative bg-black"
       >
-        <div className="relative w-full h-full flex flex-col md:flex-row">
-          <div className="relative md:absolute top-0 left-0 w-full md:w-1/2 h-full">
-            <div className="w-full h-full flex flex-col">
-              <div className="relative w-full h-[500px] md:h-screen">
-                <Image
-                  src={feature1_big}
-                  alt=""
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <div className="relative w-full h-[500px] md:h-screen">
-                <Image
-                  src={feature2_big}
-                  alt=""
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
+        <div className="relative w-full h-full grow flex flex-col md:flex-row mb-10 md:mb-0">
+          {useMediaQuery('(min-width: 850px)') ? (
+            <div className="relative md:absolute top-0 left-0 w-full md:w-1/2 h-full">
+              <div className="w-full h-full flex flex-col">
+                <div className="relative w-full h-[500px] md:h-screen">
+                  <Image
+                    src={feature1_big}
+                    alt=""
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+                <div className="relative w-full h-[500px] md:h-screen">
+                  <Image
+                    src={feature2_big}
+                    alt=""
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <ScrollContainer
+              className={`relative w-full h-[500px] sm:h-[720px] scroll-smooth hide-scrollbar`}
+              horizontal={true}
+              vertical={false}
+              hideScrollbars={false}
+              nativeMobileScroll={true}
+            >
+              <div className="w-fit h-full flex items-center relative min-w-full">
+                <div className="relative w-[80vw] h-full">
+                  <Image
+                    src={feature1_big}
+                    alt=""
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+                <div className="relative w-[80vw] h-full">
+                  <Image
+                    src={feature2_big}
+                    alt=""
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+              </div>
+            </ScrollContainer>
+          )}
           <Container className="relative w-full flex">
             <div className="hidden w-full h-full md:flex flex-col">
               <div className="w-full h-screen" />
               <div className="w-full h-screen" />
             </div>
             <div className="w-full md:h-screen md:sticky top-0 left-0 setflex-center mt-16">
-              <h1 className="text-m-additionalHeader md:text-d-additionalHeader m-0 text-[#BEC29D] font-funkturm">
+              <h1 className="text-m-additionalHeader sm:text-[2rem] md:text-d-additionalHeader m-0 text-[#BEC29D] font-funkturm">
                 DISTILLERY
               </h1>
-              <div className="relative w-[87px] md:w-[165px] h-[87px] md:h-[165px] my-10 md:my-16">
+              <div className="relative w-[87px] sm:w-[100px] md:w-[165px] h-[87px] sm:h-[100px] md:h-[165px] my-10 md:my-16">
                 <Image
                   src={leaf}
                   alt=""
@@ -88,7 +119,7 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
                   style={{ objectFit: 'contain' }}
                 />
               </div>
-              <div className="w-full  text-white editor-styling max-w-sm text-center mx-auto">
+              <div className="w-full  text-white editor-styling sm:max-w-md md:max-w-sm text-center mx-auto">
                 <p>
                   Lorem ipsum dolor sit amet, consectet elit. Proin nec massa
                   viverra, aliquet dui ac, gravida magna. Lorem ipsum dolor sit
@@ -99,12 +130,18 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
             </div>
           </Container>
         </div>
-        <div className="absolute bottom-0 left-0 w-full h-full flex items-end pointer-events-none">
-          {/* Button Sticky */}
+        {/* Button Sticky */}
+        {useMediaQuery('(min-width: 850px)') ? (
+          <div className="absolute bottom-0 left-0 w-full h-full flex items-end pointer-events-none">
+            <StickyButton destination="/nxt/facilities" arrow="left">
+              OUR FACILITIES
+            </StickyButton>
+          </div>
+        ) : (
           <StickyButton destination="/nxt/facilities" arrow="left">
             OUR FACILITIES
           </StickyButton>
-        </div>
+        )}
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

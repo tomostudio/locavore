@@ -2,28 +2,22 @@ import Layout from '@/components/modules/layout'
 import SEO from '@/components/utils/seo'
 import client from '@/helpers/sanity/client'
 import { useRouter } from 'next/router'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { fade } from '@/helpers/preset/transitions'
 import Container from '@/components/modules/container'
 import { useAppContext } from 'context/state'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from '@/components/modules/footer'
 import HeaderGap from '@/components/modules/headerGap'
 
 import feature1 from '@/public/nxt2/features/feature1.png'
-import feature2 from '@/public/nxt2/features/feature2.png'
-import feature3 from '@/public/nxt2/features/feature3.png'
 import feature4 from '@/public/nxt2/features/feature4.png'
 import feature5 from '@/public/nxt2/features/feature5.png'
 import feature6 from '@/public/nxt2/features/feature6.png'
-import feature7 from '@/public/nxt2/features/feature7.png'
-import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
 import feature1_color from '@/public/nxt2/features/feature1_color.png'
 import feature4_color from '@/public/nxt2/features/feature4_color.png'
 import feature5_color from '@/public/nxt2/features/feature5_color.png'
 import feature6_color from '@/public/nxt2/features/feature6_color.png'
-import ScrollContainer from 'react-indiana-drag-scroll'
-import ArrowFacilities from '@/components/utils/arrowFacilites'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 import ButtonViewFacilities from '@/components/modules/nxt/facilities/buttonViewFacilities'
 import ViewComponent from '@/components/modules/nxt/facilities/viewComponent'
@@ -45,7 +39,28 @@ const FeaturesAndFacilities = ({
 
   const numberToAdd = remainder === 0 ? 0 : 3 - remainder
 
-  const facilitiesListGrid = facilitiesList.concat(Array(numberToAdd).fill({}))
+  const facilitiesListFill = facilitiesList.concat(Array(numberToAdd).fill({}))
+
+  const facilitiesListGrid = facilitiesListFill.map((e, index) => {
+    // Menghitung sisa pembagian dengan 2
+    const remainderMob = facilitiesList.length % 2
+
+    const numberToAddMob = remainderMob === 0 ? 0 : 2 - remainderMob
+    const facilitiesListGridMobile = facilitiesList.concat(
+      Array(numberToAddMob).fill({}),
+    )
+    if (facilitiesListFill.length > facilitiesListGridMobile.length) {
+      if (index+1 > facilitiesListGridMobile.length) {
+        return {
+          mobile: 'hidden',
+        }
+      } else {
+        return { ...e }
+      }
+    } else {
+      return { ...e }
+    }
+  })
 
   useEffect(() => {
     document.querySelector('body').style.backgroundColor = 'black'
@@ -97,8 +112,8 @@ const FeaturesAndFacilities = ({
           }}
           className="w-full min-h-screen flex flex-col overflow-hidden"
         >
-          <Container className="flex flex-col items-center mt-44">
-            <h1 className="text-[#BEC29D] font-funkturm text-m-header sm:text-t-header md:text-d-header m-0">
+          <Container className="flex flex-col items-center mt-20 md:mt-44">
+            <h1 className="text-[#BEC29D] text-center font-funkturm text-m-header sm:text-t-header md:text-d-header max-w-[180px] sm:max-w-none m-0">
               OUR FACILITIES
             </h1>
             <ButtonViewFacilities setShowComponent={setShowComponent} />

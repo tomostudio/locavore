@@ -1,6 +1,6 @@
 const ButtonViewFacilities = ({ setShowComponent }) => {
   return (
-    <div className="mt-6 text-[#BEC29D] text-d-body">
+    <div className="mt-2 md:mt-6 text-[#BEC29D] md:text-d-body">
       <button
         id="image-view-btn"
         onClick={(e) => {
@@ -15,7 +15,10 @@ const ButtonViewFacilities = ({ setShowComponent }) => {
             .children[0].classList.add('italic')
           document
             .getElementById('image-view-btn')
-            .children[0].classList.add('text-[1.375rem]')
+            .children[0].classList.add('md:text-[1.375rem]')
+          document
+            .getElementById('image-view-btn')
+            .children[0].classList.add('text-[18px]')
 
           document
             .getElementById('grid-view-btn')
@@ -28,11 +31,14 @@ const ButtonViewFacilities = ({ setShowComponent }) => {
             .children[0].classList.remove('italic')
           document
             .getElementById('grid-view-btn')
-            .children[0].classList.remove('text-[1.375rem]')
+            .children[0].classList.remove('md:text-[1.375rem]')
+          document
+            .getElementById('grid-view-btn')
+            .children[0].classList.remove('text-[18px]')
         }}
-        className="mr-4 opacity-40 leading-6 transition-all duration-300 hover:opacity-30 pointer-events-none"
+        className="mr-2 md:mr-4 opacity-40 leading-6 transition-all duration-300 hover:opacity-30 pointer-events-none"
       >
-        <span className="text-[1.375rem] font-serif italic font-medium">
+        <span className="text-[18px] md:text-[1.375rem] font-serif italic font-medium">
           Image View
         </span>
       </button>
@@ -51,7 +57,10 @@ const ButtonViewFacilities = ({ setShowComponent }) => {
             .children[0].classList.add('italic')
           document
             .getElementById('grid-view-btn')
-            .children[0].classList.add('text-[1.375rem]')
+            .children[0].classList.add('md:text-[1.375rem]')
+          document
+            .getElementById('grid-view-btn')
+            .children[0].classList.add('text-[18px]')
 
           document
             .getElementById('image-view-btn')
@@ -64,9 +73,12 @@ const ButtonViewFacilities = ({ setShowComponent }) => {
             .children[0].classList.remove('italic')
           document
             .getElementById('image-view-btn')
-            .children[0].classList.remove('text-[1.375rem]')
+            .children[0].classList.remove('md:text-[1.375rem]')
+          document
+            .getElementById('image-view-btn')
+            .children[0].classList.remove('text-[18px]')
         }}
-        className="ml-4 leading-6 transition-all duration-300 hover:opacity-30"
+        className="ml-2 md:ml-4 leading-6 transition-all duration-300 hover:opacity-30"
       >
         <span className="font-serif font-medium">Grid View</span>
       </button>
