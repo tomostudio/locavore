@@ -63,8 +63,8 @@ export default function Nxt({ seoAPI, footerAPI }) {
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
       ...Section2Option3AnimationOBJ,
-      ...Section3AnimationOBJMobile,
-      ...Section4AnimationOBJMobile,
+      ...Section3AnimationOBJMobile(),
+      ...Section4AnimationOBJ,
       ...Section5AnimationOBJMobile,
     ],
   }
