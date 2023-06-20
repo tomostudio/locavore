@@ -14,7 +14,7 @@ const EventCard = ({
       destination="/nxt/events-programs/detail"
       className={`group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] ${
         widthNormal
-          ? 'sm:w-[calc(100%/2)] md:w-[calc(100%/3)]'
+          ? 'w-full md:w-[calc(100%/3)]'
           : 'sm:w-[calc((100%/2)-1rem)] md:w-[calc((100%/3)-1.35rem)]'
       } pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white`}
     >

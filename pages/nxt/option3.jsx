@@ -134,13 +134,13 @@ export default function Nxt({ seoAPI, footerAPI }) {
             <Section2Option3ComponentInner />
             {/* Section 3 */}
             {/* OUR FACILITIES */}
-            {/* <Section3ComponentInner /> */}
+            <Section3ComponentInner />
             {/* Section 4 */}
             {/* OUR COLLABORATORS */}
-            {/* <Section4ComponentInner /> */}
+            <Section4ComponentInner />
             {/* Section 5 */}
             {/* WHAT'S ON? */}
-            {/* <Section5ComponentInner /> */}
+            <Section5ComponentInner />
             <NxtNavigation transition={true} />
           </section>
           <Footer footer={footer} mailchimp={seo.mailchimpID} />

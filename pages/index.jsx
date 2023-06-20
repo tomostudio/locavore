@@ -64,8 +64,8 @@ export default function Nxt({ seoAPI, footerAPI }) {
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
       ...Section2Option1AnimationOBJ,
-      ...Section3AnimationOBJMobile,
-      ...Section4AnimationOBJMobile,
+      ...Section3AnimationOBJMobile(),
+      ...Section4AnimationOBJ,
       ...Section5AnimationOBJMobile,
     ],
   }
@@ -135,13 +135,13 @@ export default function Nxt({ seoAPI, footerAPI }) {
             <Section2Option1ComponentInner />
             {/* Section 3 */}
             {/* OUR FACILITIES */}
-            {/* <Section3ComponentInner /> */}
+            <Section3ComponentInner />
             {/* Section 4 */}
             {/* OUR COLLABORATORS */}
-            {/* <Section4ComponentInner /> */}
+            <Section4ComponentInner />
             {/* Section 5 */}
             {/* WHAT'S ON? */}
-            {/* <Section5ComponentInner /> */}
+            <Section5ComponentInner />
             <NxtNavigation transition={true} />
             <div className="fixed bottom-5 right-5 z-50">
               <PillButton destination="/nxt" className="uppercase bg-white">

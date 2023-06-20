@@ -7,6 +7,7 @@ import Marquee from 'react-fast-marquee'
 import collab1 from '@/public/nxt2/collab1.png'
 import collab2 from '@/public/nxt2/collab2.png'
 import FancyLink from '@/components/utils/fancyLink'
+import { useMediaQuery } from '@/helpers/functional/checkMedia'
 
 export const Section4ComponentInner = () => {
   return (
@@ -16,74 +17,55 @@ export const Section4ComponentInner = () => {
           id="section4_title"
           className="relative w-full h-full setflex-center-row opacity-0"
         >
-          <span className='text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full drop-shadow-collaborators'>
-            OUR
-            <br />
-            COLLABORATORS
-          </span>
+          {useMediaQuery('(min-width: 601px)') && (
+            <span className="text-[#BEC29D] whitespace-pre-line text-center font-funkturm text-d-additionalTitle leading-full drop-shadow-collaborators">
+              OUR
+              <br />
+              COLLABORATORS
+            </span>
+          )}
           <div
-            id='slider_collab'
-            className='absolute top-0 left-0 -z-1 w-full h-full setflex-center opacity-0'
+            id="slider_collab"
+            className="absolute top-0 left-0 -z-1 w-full h-full setflex-center pb-20 opacity-0"
           >
+            {useMediaQuery('(max-width: 600px)') && (
+              <span className="text-[#BEC29D] mb-7 whitespace-pre-line text-center font-funkturm text-m-additionalTitle leading-full drop-shadow-collaborators">
+                OUR
+                <br />
+                COLLABOR-
+                <br />
+                ATORS
+              </span>
+            )}
             <Marquee gradient={false}>
-              <div className='h-[60vh] grid grid-flow-col auto-cols-max grid-rows-nxt gap-6 pl-6'>
-                <div className='relative h-full aspect-1 drop-shadow-collaborators'>
-                  <Image
-                    src={collab1}
-                    fill
-                    alt=""
-                    className='object-cover'
-                  />
+              <div className="h-[35vh] sm:h-[40vh] md:h-[60vh] grid grid-flow-col auto-cols-max grid-rows-nxt gap-6 pl-6">
+                <div className="relative h-full aspect-1 drop-shadow-collaborators">
+                  <Image src={collab1} fill alt="" className="object-cover" />
                 </div>
                 <div className="h-full aspect-1" />
                 <div className="h-full aspect-1 row-span-2 col-span-2 drop-shadow-collaborators">
-                  <Image
-                    src={collab2}
-                    fill
-                    alt=""
-                    className='object-cover'
-                  />
+                  <Image src={collab2} fill alt="" className="object-cover" />
                 </div>
                 <div className="relative h-full aspect-1 drop-shadow-collaborators">
-                  <Image
-                    src={collab1}
-                    fill
-                    alt=""
-                    className='object-cover'
-                  />
+                  <Image src={collab1} fill alt="" className="object-cover" />
                 </div>
                 <div className="h-full aspect-1" />
                 <div className="relative h-full aspect-1 drop-shadow-collaborators">
-                  <Image
-                    src={collab1}
-                    fill
-                    alt=""
-                    className='object-cover'
-                  />
+                  <Image src={collab1} fill alt="" className="object-cover" />
                 </div>
                 <div className="relative h-full aspect-1 drop-shadow-collaborators">
-                  <Image
-                    src={collab1}
-                    fill
-                    alt=""
-                    className='object-cover'
-                  />
+                  <Image src={collab1} fill alt="" className="object-cover" />
                 </div>
                 <div className="h-full aspect-1" />
                 <div className="relative h-full aspect-1 drop-shadow-collaborators">
-                  <Image
-                    src={collab1}
-                    fill
-                    alt=""
-                    className='object-cover'
-                  />
+                  <Image src={collab1} fill alt="" className="object-cover" />
                 </div>
               </div>
             </Marquee>
           </div>
           <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end">
             <FancyLink
-              className={`w-fit p-4 mb-16 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              className={`w-fit p-4 mb-24 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
               destination="/nxt/collaborators"
             >
               VIEW OUR COLLABORATORS
@@ -91,7 +73,7 @@ export const Section4ComponentInner = () => {
           </div>
         </div>
       </div>
-      <div id='enter-collab-opacity' className='w-full h-[40vh]' />
+      <div id="enter-collab-opacity" className="w-full h-[30vh] sm:h-[40vh]" />
     </section>
   )
 }

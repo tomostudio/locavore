@@ -14,12 +14,12 @@ import tunnel from '@/public/nxt/tunnel.webp'
 
 export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   return (
-    <section className="relative w-full overflow-x-clip mt-[20vw] mb-[30vw]">
+    <section className="relative w-full overflow-x-clip mt-[20vw] md:mb-[30vw]">
       <div className="w-full">
         <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
           <div className="relative w-full h-screen">
             <Container className="relative w-full h-full z-20 setflex-center">
-              <span className="text-[#BEC29D] text-center font-funkturm text-d-additionalTitle leading-full ">
+              <span className="text-[#BEC29D] text-center font-funkturm text-m-additionalTitle md:text-d-additionalTitle leading-full ">
                 OUR
                 <br />
                 FACILITIES
@@ -92,8 +92,6 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   )
 }
 
-export const Section3AnimationOBJMobile = []
-
 export const Section3AnimationOBJ = () => {
   const appContext = useAppContext()
 
@@ -127,8 +125,284 @@ export const Section3AnimationOBJ = () => {
           to: [
             elem,
             {
-              width: "120vw",
-              height: "120vw"
+              width: '120vw',
+              height: '120vw',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // BUILDING ENTER
+    () => {
+      const id = 'building-enter' // animation id
+      const elem = document.querySelector('#building')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 100%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          to: [
+            elem,
+            {
+              top: '50%',
+              y: '-50%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // TUNNEL ENTER
+    () => {
+      const id = 'tunnel-enter' // animation id
+      const elem = document.querySelector('#tunnel')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          // markers: true,
+          start: 'top 80%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              y: '-95%',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              y: '-41.1%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // ENTER SECOND FLOOR
+    () => {
+      const id = 'enter_second_floor' // animation id
+      const elem = document.querySelector('#second_floor')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 80%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              y: '-87%',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              y: '-41.2%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // ENTER FIRST FLOOR
+    () => {
+      const id = 'enter_first_floor' // animation id
+      const elem = document.querySelector('#first_floor')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 80%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              y: '-62%',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              y: '-42.5%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // ENTER GROUND
+    () => {
+      const id = 'enter_ground' // animation id
+      const elem = document.querySelector('#ground')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 80%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              y: '-30%',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              y: '-45%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // ENTER LOWER GROUND
+    () => {
+      const id = 'enter_lower_round' // animation id
+      const elem = document.querySelector('#lower_ground')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 80%',
+          end: 'bottom 100%',
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          set: [
+            elem,
+            {
+              y: '-5%',
+            },
+          ],
+        },
+        {
+          to: [
+            elem,
+            {
+              y: '-45%',
+            },
+          ],
+        },
+      ]
+
+      return { id, elem, settings, animation }
+    },
+    // ENTER BLUR
+    () => {
+      const id = 'blur-enter' // animation id
+      const elem = document.querySelector('#enter-blur')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-blur'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'bottom 50%',
+          end: 'bottom 0%',
+          onEnterBack: () => checkHeader('blur'),
+          onLeave: () => checkHeader('blur-white'),
+        },
+      }
+
+      // Input Animation
+      const animation = []
+
+      return { id, elem, settings, animation }
+    },
+  ]
+}
+
+export const Section3AnimationOBJMobile = () => {
+  const appContext = useAppContext()
+
+  const checkHeader = (data) => {
+    appContext.setHeader({
+      headerStyle: data,
+    })
+  }
+
+  return [
+    // SECTION 3
+    // BG WHITE SCALE ENTER
+    () => {
+      const id = 'bg-white-scale-enter' // animation id
+      const elem = document.querySelector('#bg-white-scale')
+      const settings = {
+        scrollTrigger: {
+          id: id,
+          trigger: document.querySelector('#enter-bg-white-scale'), // which section will be tracked as the scroll trigger
+          scrub: 0.5,
+          start: 'top 150%',
+          end: 'top 100%',
+          onEnterBack: () => checkHeader('blur-white'),
+          onLeave: () => checkHeader('blur'),
+        },
+      }
+
+      // Input Animation
+      const animation = [
+        {
+          to: [
+            elem,
+            {
+              width: '180vw',
+              height: '180vw',
             },
           ],
         },
