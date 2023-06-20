@@ -68,7 +68,7 @@ export const Section2Option3ComponentInner = () => {
                     src={section2_bg1}
                     alt=""
                     fill
-                    style={{ objectFit: 'contain' }}
+                    className='object-contain'
                   />
                 </div>
               </div>
@@ -86,7 +86,7 @@ export const Section2Option3ComponentInner = () => {
                     src={section2_bg1}
                     alt=""
                     fill
-                    style={{ objectFit: 'contain' }}
+                    className='object-contain'
                   />
                 </div>
               </div>

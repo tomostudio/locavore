@@ -12,7 +12,7 @@ export const Section1ComponentInner = () => {
 
   return (
     <section className="relative w-full h-screen">
-      <Image src={section1} alt="" fill style={{ objectFit: 'cover' }} />
+      <Image src={section1} alt="" fill className='object-cover' />
       <m.div
         id="black-layer"
         initial="initial"
@@ -64,11 +64,9 @@ export const Section1ComponentInner = () => {
             <div className="relative w-[250px] h-[250px]">
               <Image
                 src={NXT_Logo_Bumper}
-                fill
-                style={{
-                  objectFit: 'cover',
-                }}
                 alt=""
+                fill
+                className='object-cover'
               />
             </div>
           </m.div>

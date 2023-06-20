@@ -31,10 +31,8 @@ export const Section4ComponentInner = () => {
                   <Image
                     src={collab1}
                     fill
-                    style={{
-                      objectFit: 'cover',
-                    }}
                     alt=""
+                    className='object-cover'
                   />
                 </div>
                 <div className="h-full aspect-1" />
@@ -42,20 +40,16 @@ export const Section4ComponentInner = () => {
                   <Image
                     src={collab2}
                     fill
-                    style={{
-                      objectFit: 'cover',
-                    }}
                     alt=""
+                    className='object-cover'
                   />
                 </div>
                 <div className="relative h-full aspect-1 drop-shadow-collaborators">
                   <Image
                     src={collab1}
                     fill
-                    style={{
-                      objectFit: 'cover',
-                    }}
                     alt=""
+                    className='object-cover'
                   />
                 </div>
                 <div className="h-full aspect-1" />
@@ -63,20 +57,16 @@ export const Section4ComponentInner = () => {
                   <Image
                     src={collab1}
                     fill
-                    style={{
-                      objectFit: 'cover',
-                    }}
                     alt=""
+                    className='object-cover'
                   />
                 </div>
                 <div className="relative h-full aspect-1 drop-shadow-collaborators">
                   <Image
                     src={collab1}
                     fill
-                    style={{
-                      objectFit: 'cover',
-                    }}
                     alt=""
+                    className='object-cover'
                   />
                 </div>
                 <div className="h-full aspect-1" />
@@ -84,10 +74,8 @@ export const Section4ComponentInner = () => {
                   <Image
                     src={collab1}
                     fill
-                    style={{
-                      objectFit: 'cover',
-                    }}
                     alt=""
+                    className='object-cover'
                   />
                 </div>
               </div>

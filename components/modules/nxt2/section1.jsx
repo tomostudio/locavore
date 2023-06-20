@@ -9,10 +9,9 @@ import section1 from '@/public/nxt2/section1.png'
 import NXT_Logo_Bumper from '@/public/nxt2/nxt_logo.png'
 
 export const Section1ComponentInner = () => {
-
   return (
     <section className="relative w-full h-screen">
-      <Image src={section1} alt="" fill style={{ objectFit: 'cover' }} />
+      <Image src={section1} alt="" fill className="object-cover" />
       <m.div
         id="black-layer"
         initial="initial"
@@ -51,7 +50,7 @@ export const Section1ComponentInner = () => {
                 transform: 'translateY(0%)',
                 transition: {
                   duration: 1,
-                  delay: 2
+                  delay: 2,
                 },
               },
               exit: {
@@ -65,10 +64,8 @@ export const Section1ComponentInner = () => {
               <Image
                 src={NXT_Logo_Bumper}
                 fill
-                style={{
-                  objectFit: 'cover',
-                }}
                 alt=""
+                className="object-cover"
               />
             </div>
           </m.div>

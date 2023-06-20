@@ -107,7 +107,7 @@ const CollaboratorCard = ({
               destination="/nxt/collaborators/detail"
               className="w-full flex flex-col"
             >
-              <div className="relative w-full h-[258px]">
+              <div className="relative w-full aspect-[3/2]">
                 <Image
                   src={image_bnw}
                   alt=""

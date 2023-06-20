@@ -28,7 +28,7 @@ export const Section2Option1ComponentInner = () => {
           </PillButton>
         </div>
         <Parallax className="absolute w-full h-full" speed={-10}>
-          <Image src={section2_bg} alt="" fill style={{ objectFit: 'cover' }} />
+          <Image src={section2_bg} alt="" fill className="object-cover" />
         </Parallax>
         <div
           id="black-layer-option1"
