@@ -60,7 +60,7 @@ const NxtNavigationDesktop = ({ focus = '', transition = false }) => {
           EVENTS & PROGRAMS
         </FancyLink>
         <FancyLink
-          destination="/nxt"
+          destination="/nxt/visit"
           className={`relative z-4 ${
             focus === 'visit' ? 'bg-[#BEC29D]' : 'bg-white'
           } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}

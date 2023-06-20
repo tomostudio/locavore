@@ -40,10 +40,10 @@ export const Section2Option1ComponentInner = () => {
             className="relative z-10 w-full h-full opacity-0"
           >
             <div className="relative w-full h-full setflex-center ">
-              <span className="text-[1.875rem] text-[#BEC29D]">
+              <span className="text-[1.125rem] md:text-[1.875rem] text-[#BEC29D]">
                 WHAT’S ON LOCAVORE
               </span>
-              <p className="text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
+              <p className="text-m-additionalTitle md:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center">
                 A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
               </p>
             </div>

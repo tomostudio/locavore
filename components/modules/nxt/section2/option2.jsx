@@ -32,10 +32,10 @@ export const Section2Option2ComponentInner = () => {
             className="relative z-10 w-full h-full opacity-0"
           >
             <div className="relative w-full h-full setflex-center">
-              <span className="text-[1.875rem] text-[#BEC29D]">
+              <span className="text-[1.125rem] md:text-[1.875rem] text-[#BEC29D]">
                 WHAT’S ON LOCAVORE
               </span>
-              <p className="relative text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
+              <p className="relative text-m-additionalTitle md:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center">
                 A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
               </p>
             </div>
@@ -51,7 +51,7 @@ export const Section2Option2ComponentInner = () => {
         </Container>
       </div>
       <Container className="relative h-screen setflex-center pointer-events-none z-20">
-        <div className="relative w-full h-[50vh] max-h-[500px]">
+        <div className="relative w-full max-w-xl h-[50vh] max-h-[500px]">
           <Image
             src={section2_bg}
             alt=""

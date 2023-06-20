@@ -37,10 +37,10 @@ export const Section2Option3ComponentInner = () => {
             >
               <div className="relative w-full h-full setflex-center ">
                 <div className="relative w-full setflex-center">
-                  <span className="text-[1.875rem] text-[#BEC29D]">
+                  <span className="text-[1.125rem] md:text-[1.875rem] text-[#BEC29D]">
                     WHAT’S ON LOCAVORE
                   </span>
-                  <p className="text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 text-center">
+                  <p className="text-m-additionalTitle md:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center">
                     A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
                   </p>
                 </div>
@@ -59,39 +59,39 @@ export const Section2Option3ComponentInner = () => {
         <div className="relative w-full h-screen pointer-events-none" />
       </div>
       <div className="absolute top-0 left-0 w-full h-[200vh] flex items-end z-1 pointer-events-none">
-        <div className="relative w-full h-screen">
-          <div className="absolute bottom-0 left-0 w-full h-full">
-            <Container className="relative h-screen flex justify-start pointer-events-none z-20">
-              <div className="relative w-[25vw] max-w-[500px] h-full">
-                <div className="relative w-full h-[25vw]">
-                  <Image
-                    src={section2_bg1}
-                    alt=""
-                    fill
-                    className='object-contain'
-                  />
-                </div>
+        <div className="relative w-full h-screen flex items-center">
+          {/* <div className="absolute bottom-0 left-0 w-full h-full"> */}
+          <Container className="relative h-[50vh] flex justify-start pointer-events-none z-20">
+            <div className="relative w-[30vw] md:w-[25vw] max-w-[500px] h-full">
+              <div className="relative w-full h-[25vw]">
+                <Image
+                  src={section2_bg1}
+                  alt=""
+                  fill
+                  className="object-contain"
+                />
               </div>
-            </Container>
-          </div>
+            </div>
+          </Container>
+          {/* </div> */}
         </div>
       </div>
       <div className="absolute top-0 left-0 w-full h-[200vh] flex items-end z-20 pointer-events-none">
-        <div className="relative w-full h-screen">
-          <div className="absolute bottom-0 left-0 w-full h-full">
-            <Container className="relative h-screen flex justify-end pointer-events-none z-20">
-              <div className="relative w-[25vw] max-w-[500px] h-full flex items-end">
-                <div className="relative w-full h-[25vw]">
-                  <Image
-                    src={section2_bg1}
-                    alt=""
-                    fill
-                    className='object-contain'
-                  />
-                </div>
+        <div className="relative w-full h-screen flex items-center">
+          {/* <div className="absolute bottom-0 left-0 w-full h-full"> */}
+          <Container className="relative h-[50vh] flex justify-end pointer-events-none z-20">
+            <div className="relative w-[30vw] md:w-[25vw] max-w-[500px] h-full flex items-end">
+              <div className="relative w-full h-[25vw]">
+                <Image
+                  src={section2_bg1}
+                  alt=""
+                  fill
+                  className="object-contain"
+                />
               </div>
-            </Container>
-          </div>
+            </div>
+          </Container>
+          {/* </div> */}
         </div>
       </div>
     </section>
