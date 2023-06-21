@@ -60,8 +60,7 @@ export const Section2Option3ComponentInner = () => {
       </div>
       <div className="absolute top-0 left-0 w-full h-[200vh] flex items-end z-1 pointer-events-none">
         <div className="relative w-full h-screen flex items-center">
-          {/* <div className="absolute bottom-0 left-0 w-full h-full"> */}
-          <Container className="relative h-[50vh] flex justify-start pointer-events-none z-20">
+          <Container className="relative h-[50vh] md:h-screen flex justify-start pointer-events-none z-20">
             <div className="relative w-[30vw] md:w-[25vw] max-w-[500px] h-full">
               <div className="relative w-full h-[25vw]">
                 <Image
@@ -73,13 +72,11 @@ export const Section2Option3ComponentInner = () => {
               </div>
             </div>
           </Container>
-          {/* </div> */}
         </div>
       </div>
       <div className="absolute top-0 left-0 w-full h-[200vh] flex items-end z-20 pointer-events-none">
         <div className="relative w-full h-screen flex items-center">
-          {/* <div className="absolute bottom-0 left-0 w-full h-full"> */}
-          <Container className="relative h-[50vh] flex justify-end pointer-events-none z-20">
+          <Container className="relative h-[50vh] md:h-screen flex justify-end pointer-events-none z-20">
             <div className="relative w-[30vw] md:w-[25vw] max-w-[500px] h-full flex items-end">
               <div className="relative w-full h-[25vw]">
                 <Image
@@ -91,7 +88,6 @@ export const Section2Option3ComponentInner = () => {
               </div>
             </div>
           </Container>
-          {/* </div> */}
         </div>
       </div>
     </section>
