@@ -65,7 +65,7 @@ export const Section4ComponentInner = () => {
           </div>
           <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end">
             <FancyLink
-              className={`w-fit p-4 mb-24 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              className={`w-fit p-4 mb-24 md:mb-[4.5rem] text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
               destination="/nxt/collaborators"
             >
               VIEW OUR COLLABORATORS
