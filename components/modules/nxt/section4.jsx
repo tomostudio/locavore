@@ -10,6 +10,49 @@ import FancyLink from '@/components/utils/fancyLink'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
 
 export const Section4ComponentInner = () => {
+  var dataSection4 = [
+    [
+      {
+        image: collab1,
+      },
+      {
+        image: collab2,
+      },
+      {
+        image: collab1,
+      },
+      {
+        image: collab1,
+      },
+      {
+        image: collab1,
+      },
+    ],
+    [
+      {
+        image: collab2,
+      },
+    ],
+  ]
+
+  for (var i = 0; i < dataSection4.length; i++) {
+    // Mendapatkan index acak di dalam array pecahan (kecuali awal dan akhir)
+    var randomIndex =
+      Math.floor(Math.random() * (dataSection4[i].length - 2)) + 1
+
+    // Menambah properti size pada elemen object 
+    dataSection4[i][randomIndex] = {
+      ...dataSection4[i][randomIndex],
+      size: 'big',
+    }
+
+    if (dataSection4[i].length === 5) {
+      // Menambahkan elemen object kosong pada posisi acak (indeks 0 hingga 4)
+      var emptyIndex = Math.floor(Math.random() * 5)
+      dataSection4[i].splice(emptyIndex, 0, {})
+    }
+  }
+
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen">
@@ -39,7 +82,40 @@ export const Section4ComponentInner = () => {
             )}
             <Marquee gradient={false}>
               <div className="h-[35vh] sm:h-[40vh] md:h-[60vh] grid grid-flow-col auto-cols-max grid-rows-nxt gap-6 pl-6">
-                <div className="relative h-full aspect-1 drop-shadow-collaborators">
+                {dataSection4
+                  .reduce((prev, next) => prev.concat(next))
+                  .map((data, id) =>
+                    Object.keys(data).length > 0 ? (
+                      data.size ? (
+                        <div
+                          key={id}
+                          className="h-full aspect-1 row-span-2 col-span-2 drop-shadow-collaborators"
+                        >
+                          <Image
+                            src={data.image}
+                            fill
+                            alt=""
+                            className="object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div
+                          key={id}
+                          className="relative h-full aspect-1 drop-shadow-collaborators"
+                        >
+                          <Image
+                            src={data.image}
+                            fill
+                            alt=""
+                            className="object-cover"
+                          />
+                        </div>
+                      )
+                    ) : (
+                      <div className="h-full aspect-1" />
+                    ),
+                  )}
+                {/* <div className="relative h-full aspect-1 drop-shadow-collaborators">
                   <Image src={collab1} fill alt="" className="object-cover" />
                 </div>
                 <div className="h-full aspect-1" />
@@ -59,7 +135,7 @@ export const Section4ComponentInner = () => {
                 <div className="h-full aspect-1" />
                 <div className="relative h-full aspect-1 drop-shadow-collaborators">
                   <Image src={collab1} fill alt="" className="object-cover" />
-                </div>
+                </div> */}
               </div>
             </Marquee>
           </div>
