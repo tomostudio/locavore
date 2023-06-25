@@ -19,7 +19,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
           <div className="relative w-full h-screen">
             <Container className="relative w-full h-full z-20 setflex-center">
-              <span className="text-[#BEC29D] text-center font-funkturm text-m-additionalTitle md:text-d-additionalTitle leading-full ">
+              <span className="text-[#BEC29D] text-center font-funkturm text-m-additionalTitle md:text-[5rem] lg:text-d-additionalTitle leading-full ">
                 OUR
                 <br />
                 FACILITIES
