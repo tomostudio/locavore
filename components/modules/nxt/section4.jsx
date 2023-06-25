@@ -36,17 +36,17 @@ export const Section4ComponentInner = () => {
   ]
 
   for (var i = 0; i < dataSection4.length; i++) {
-    // Mendapatkan index acak di dalam array pecahan (kecuali awal dan akhir)
-    var randomIndex =
-      Math.floor(Math.random() * (dataSection4[i].length - 2)) + 1
-
-    // Menambah properti size pada elemen object 
-    dataSection4[i][randomIndex] = {
-      ...dataSection4[i][randomIndex],
-      size: 'big',
-    }
-
     if (dataSection4[i].length === 5) {
+      // Mendapatkan index acak di dalam array pecahan (kecuali awal dan akhir)
+      var randomIndex =
+        Math.floor(Math.random() * (dataSection4[i].length - 2)) + 1
+
+      // Menambah properti size pada elemen object
+      dataSection4[i][randomIndex] = {
+        ...dataSection4[i][randomIndex],
+        size: 'big',
+      }
+
       // Menambahkan elemen object kosong pada posisi acak (indeks 0 hingga 4)
       var emptyIndex = Math.floor(Math.random() * 5)
       dataSection4[i].splice(emptyIndex, 0, {})
