@@ -9,7 +9,7 @@ import Container from '../../container'
 import PillButton from '../../pillButton'
 import urlFor from '@/helpers/sanity/urlFor'
 
-export const Section2Option2ComponentInner = ({ data }) => {
+export const Section2Option2ComponentInner = ({ dataSection2Option2 }) => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
@@ -40,10 +40,10 @@ export const Section2Option2ComponentInner = ({ data }) => {
           >
             <div className="relative w-full h-full setflex-center">
               <span className="text-[1.125rem] md:text-[1.875rem] text-[#BEC29D]">
-                {data.title}
+                {dataSection2Option2.title}
               </span>
               <p className="relative text-m-additionalTitle md:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center">
-                {data.description}
+                {dataSection2Option2.description}
               </p>
             </div>
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none flex justify-center items-end">
@@ -60,12 +60,12 @@ export const Section2Option2ComponentInner = ({ data }) => {
       <Container className="relative h-screen setflex-center pointer-events-none z-20">
         <div className="relative w-full max-w-xl h-[50vh] max-h-[500px]">
           <Image
-            src={urlFor(data.imageNormal).width(798).url()}
+            src={urlFor(dataSection2Option2.imageNormal).width(798).url()}
             alt=""
             layout='fill'
             objectFit='contain'
             placeholder="blur"
-            blurDataURL={urlFor(data.imageNormal)
+            blurDataURL={urlFor(dataSection2Option2.imageNormal)
               .blur(2)
               .format('webp')
               .width(100)

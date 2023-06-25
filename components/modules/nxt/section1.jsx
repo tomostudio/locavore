@@ -10,17 +10,17 @@ import section1_mobile from '@/public/nxt2/section1_mobile.png'
 import NXT_Logo_Bumper from '@/public/nxt2/nxt_logo.png'
 import urlFor from '@/helpers/sanity/urlFor'
 
-export const Section1ComponentInner = ({ data }) => {
+export const Section1ComponentInner = ({ dataSection1 }) => {
   return (
     <section className="relative w-full h-screen">
       <div className="absolute top-0 left-0 w-full h-full hidden sm:block z-10">
         <Image
-          src={urlFor(data.image.imageDesktop).width(1440).url()}
+          src={urlFor(dataSection1.image.imageDesktop).width(1440).url()}
           alt=""
           layout="fill"
           objectFit="cover"
           placeholder="blur"
-          blurDataURL={urlFor(data.image.imageDesktop)
+          blurDataURL={urlFor(dataSection1.image.imageDesktop)
             .blur(2)
             .format('webp')
             .width(100)
@@ -28,12 +28,12 @@ export const Section1ComponentInner = ({ data }) => {
         />
       </div>
       <Image
-        src={urlFor(data.image.imageMobile).width(600).url()}
+        src={urlFor(dataSection1.image.imageMobile).width(600).url()}
         alt=""
         layout="fill"
         objectFit="cover"
         placeholder="blur"
-        blurDataURL={urlFor(data.image.imageMobile)
+        blurDataURL={urlFor(dataSection1.image.imageMobile)
           .blur(2)
           .format('webp')
           .width(500)
@@ -121,15 +121,15 @@ export const Section1ComponentInner = ({ data }) => {
             className="w-full flex flex-col items-center mt-10 sm:mt-12 sm:px-24"
           >
             <p className="text-[#BEC29D] font-funkturm text-m-additionalHeader sm:text-d-additionalHeader text-center leading-none sm:leading-[120%]">
-              {data.description}
+              {dataSection1.description}
             </p>
             <div className="mt-2 sm:mt-4 text-[#BEC29D]">
               <span className="mr-2 sm:mr-4 text-m-body sm:text-d-body">
-                {data.textLeft}
+                {dataSection1.textLeft}
               </span>
               •
               <span className="ml-2 sm:ml-4 sm:text-[1.375rem] font-serif italic font-medium">
-                {data.textRight}
+                {dataSection1.textRight}
               </span>
             </div>
           </m.div>

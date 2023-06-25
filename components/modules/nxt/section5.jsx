@@ -9,8 +9,8 @@ import card from '@/public/nxt2/card.png'
 import FancyLink from '@/components/utils/fancyLink'
 import EventCard from './eventCard'
 
-export const Section5ComponentInner = ({ data }) => {
-  const eventList = Array(3).fill(data[0])
+export const Section5ComponentInner = ({ dataSection5 }) => {
+  const eventList = Array(3).fill(dataSection5[0])
   return (
     <>
       <section id="trigger5" className="trigger relative w-full flex flex-col">

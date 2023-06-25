@@ -9,7 +9,7 @@ import section2_bg1 from '@/public/nxt2/section2_bg1.png'
 import PillButton from '../../pillButton'
 import urlFor from '@/helpers/sanity/urlFor'
 
-export const Section2Option3ComponentInner = ({ data }) => {
+export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
   return (
     <section className="relative w-full">
       <div className="relative w-full h-full z-10">
@@ -42,10 +42,10 @@ export const Section2Option3ComponentInner = ({ data }) => {
               <div className="relative w-full h-full setflex-center ">
                 <div className="relative w-full setflex-center">
                   <span className="text-[1.125rem] md:text-[1.875rem] text-[#BEC29D]">
-                    {data.title}
+                    {dataSection2Option3.title}
                   </span>
                   <p className="text-m-additionalTitle md:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center">
-                    {data.description}
+                    {dataSection2Option3.description}
                   </p>
                 </div>
               </div>
@@ -68,12 +68,12 @@ export const Section2Option3ComponentInner = ({ data }) => {
             <div className="relative w-[30vw] md:w-[25vw] max-w-[500px] h-full">
               <div className="relative w-full h-[25vw]">
                 <Image
-                  src={urlFor(data.imageNormal).width(798).url()}
+                  src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
                   alt=""
                   layout='fill'
                   objectFit='contain'
                   placeholder="blur"
-                  blurDataURL={urlFor(data.imageNormal)
+                  blurDataURL={urlFor(dataSection2Option3.imageNormal)
                     .blur(2)
                     .format('webp')
                     .width(100)
@@ -90,12 +90,12 @@ export const Section2Option3ComponentInner = ({ data }) => {
             <div className="relative w-[30vw] md:w-[25vw] max-w-[500px] h-full flex items-end">
               <div className="relative w-full h-[25vw]">
                 <Image
-                  src={urlFor(data.imageNormal).width(798).url()}
+                  src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
                   alt=""
                   layout='fill'
                   objectFit='contain'
                   placeholder="blur"
-                  blurDataURL={urlFor(data.imageNormal)
+                  blurDataURL={urlFor(dataSection2Option3.imageNormal)
                     .blur(2)
                     .format('webp')
                     .width(100)

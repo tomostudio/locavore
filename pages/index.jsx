@@ -61,7 +61,7 @@ export default function Nxt({ homeNxtAPI, eventAPI, seoAPI, footerAPI }) {
   const [seo] = seoAPI
   const [footer] = footerAPI
 
-  const getFunctSection2 = () => {
+  const getFuncSection2 = () => {
     if (homeNxt.section2.option === 'option1') {
       return Section2Option1AnimationOBJ
     } else if (homeNxt.section2.option === 'option2') {
@@ -75,13 +75,14 @@ export default function Nxt({ homeNxtAPI, eventAPI, seoAPI, footerAPI }) {
   const animationObj = {
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
-      ...getFunctSection2(),
+      ...getFuncSection2(),
       ...Section3AnimationOBJ(),
       ...Section4AnimationOBJ,
       ...Section5AnimationOBJ,
     ],
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
+      ...getFuncSection2(),
       ...Section3AnimationOBJMobile(),
       ...Section4AnimationOBJ,
       ...Section5AnimationOBJMobile,
@@ -147,15 +148,21 @@ export default function Nxt({ homeNxtAPI, eventAPI, seoAPI, footerAPI }) {
           <section className="relative p-0 m-0">
             {/* Section 1 */}
             {/* TITLE */}
-            <Section1ComponentInner data={homeNxt.section1} />
+            <Section1ComponentInner dataSection1={homeNxt.section1} />
             {/* Section 2 */}
             {/* MENU */}
             {homeNxt.section2.option === 'option1' ? (
-              <Section2Option1ComponentInner data={homeNxt.section2} />
+              <Section2Option1ComponentInner
+                dataSection2Option1={homeNxt.section2}
+              />
             ) : homeNxt.section2.option === 'option2' ? (
-              <Section2Option2ComponentInner data={homeNxt.section2} />
+              <Section2Option2ComponentInner
+                dataSection2Option2={homeNxt.section2}
+              />
             ) : (
-              <Section2Option3ComponentInner data={homeNxt.section2} />
+              <Section2Option3ComponentInner
+                dataSection2Option3={homeNxt.section2}
+              />
             )}
             {/* Section 3 */}
             {/* OUR FACILITIES */}
@@ -165,7 +172,7 @@ export default function Nxt({ homeNxtAPI, eventAPI, seoAPI, footerAPI }) {
             <Section4ComponentInner />
             {/* Section 5 */}
             {/* WHAT'S ON? */}
-            <Section5ComponentInner data={eventAPI} />
+            <Section5ComponentInner dataSection5={eventAPI} />
             <NxtNavigation transition={true} />
             <div className="fixed bottom-5 right-5 z-50">
               <PillButton destination="/nxt" className="uppercase bg-white">

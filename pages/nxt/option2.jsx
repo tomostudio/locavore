@@ -45,9 +45,10 @@ import { useAppContext } from 'context/state'
 import applyScrollTrigger from '@/components/utils/applyScrollTrigger'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 
-export default function Nxt({ seoAPI, footerAPI }) {
+export default function Nxt({ homeNxtAPI, eventAPI, seoAPI, footerAPI }) {
   const router = useRouter()
   const appContext = useAppContext()
+  const [homeNxt] = homeNxtAPI
   const [seo] = seoAPI
   const [footer] = footerAPI
 
@@ -71,7 +72,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
 
   useEffect(() => {
     document.querySelector('body').style.backgroundColor = 'black'
-    window.scroll(0, 0);
+    window.scroll(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',
     })
@@ -128,10 +129,12 @@ export default function Nxt({ seoAPI, footerAPI }) {
           <section className="relative p-0 m-0">
             {/* Section 1 */}
             {/* TITLE */}
-            <Section1ComponentInner />
+            <Section1ComponentInner dataSection1={homeNxt.section1} />
             {/* Section 2 */}
             {/* MENU */}
-            <Section2Option2ComponentInner />
+            <Section2Option2ComponentInner
+              dataSection2Option2={homeNxt.section2}
+            />
             {/* Section 3 */}
             {/* OUR FACILITIES */}
             <Section3ComponentInner />
@@ -140,7 +143,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
             <Section4ComponentInner />
             {/* Section 5 */}
             {/* WHAT'S ON? */}
-            <Section5ComponentInner />
+            <Section5ComponentInner dataSection5={eventAPI} />
             <NxtNavigation transition={true} />
           </section>
           <Footer footer={footer} mailchimp={seo.mailchimpID} />
@@ -151,6 +154,13 @@ export default function Nxt({ seoAPI, footerAPI }) {
 }
 
 export async function getStaticProps() {
+  const homeNxtAPI = await client.fetch(`
+    *[_type == "homeNxt"]
+    `)
+
+  const eventAPI = await client.fetch(`
+  *[_type == "eventList"]
+  `)
   const headerAPI = await client.fetch(`
     *[_type == "header"]
     `)
@@ -162,6 +172,8 @@ export async function getStaticProps() {
   `)
   return {
     props: {
+      homeNxtAPI,
+      eventAPI,
       seoAPI,
       headerAPI,
       footerAPI,

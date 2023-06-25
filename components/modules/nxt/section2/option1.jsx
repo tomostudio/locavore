@@ -10,7 +10,7 @@ import PillButton from '../../pillButton'
 import { Parallax } from 'react-scroll-parallax'
 import urlFor from '@/helpers/sanity/urlFor'
 
-export const Section2Option1ComponentInner = ({ data }) => {
+export const Section2Option1ComponentInner = ({ dataSection2Option1 }) => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col overflow-hidden">
@@ -36,12 +36,12 @@ export const Section2Option1ComponentInner = ({ data }) => {
         </div>
         <Parallax className="absolute w-full h-full" speed={-10}>
           <Image
-            src={urlFor(data.imageWide).width(1440).url()}
+            src={urlFor(dataSection2Option1.imageWide).width(1440).url()}
             alt=""
             layout="fill"
             objectFit="cover"
             placeholder="blur"
-            blurDataURL={urlFor(data.imageWide)
+            blurDataURL={urlFor(dataSection2Option1.imageWide)
               .blur(2)
               .format('webp')
               .width(100)
@@ -59,10 +59,10 @@ export const Section2Option1ComponentInner = ({ data }) => {
           >
             <div className="relative w-full h-full setflex-center ">
               <span className="text-[1.125rem] md:text-[1.875rem] text-[#BEC29D]">
-                {data.title}
+                {dataSection2Option1.title}
               </span>
               <p className="text-m-additionalTitle md:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center">
-                {data.description}
+                {dataSection2Option1.description}
               </p>
             </div>
             <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end">
