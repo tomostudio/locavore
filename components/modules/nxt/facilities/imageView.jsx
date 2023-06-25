@@ -4,7 +4,7 @@ import { useState } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { FreeMode, Keyboard, Mousewheel, Navigation } from 'swiper'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 
 import feature1 from '@/public/nxt2/features/feature1.png'
 import feature4 from '@/public/nxt2/features/feature4.png'
@@ -15,6 +15,7 @@ import feature4_color from '@/public/nxt2/features/feature4_color.png'
 import feature5_color from '@/public/nxt2/features/feature5_color.png'
 import feature6_color from '@/public/nxt2/features/feature6_color.png'
 import FancyLink from '@/components/utils/fancyLink'
+import urlFor from '@/helpers/sanity/urlFor'
 
 const ImageView = ({
   facilitiesList,
@@ -48,42 +49,56 @@ const ImageView = ({
               <div key={id}>
                 <FancyLink
                   className={`block relative w-[40vw] h-[40vw] sm:w-[30vw] sm:h-[30vw] md:w-[15vw] md:h-[15vw] cursor-pointer transtion-all duration-300 hover:!z-40 group`}
-                  destination="/nxt/facilities/detail"
+                  destination={`/nxt/facilities/${data.slug.current}`}
                   style={{
                     zIndex: data.zIndex,
                   }}
                 >
                   <div
                     className={`relative ${
-                      data.position === 'bottom'
-                        ? data.size === 150
+                      data.thumbnail.position === 'bottom'
+                        ? data.thumbnail.size === '150'
                           ? 'top-1/2 -translate-y-[78%]'
-                          : data.size === 120
+                          : data.thumbnail.size === '120'
                           ? 'top-1/2 -translate-y-[72%]'
                           : ''
-                        : data.position === 'center'
+                        : data.thumbnail.position === 'center'
                         ? 'top-1/2 -translate-y-1/2'
                         : ''
                     } ${
-                      data.size === 150
+                      data.thumbnail.size === '150'
                         ? 'w-[calc(40vw*1.5)] h-[calc(40vw*2.25)] sm:w-[calc(30vw*1.5)] sm:h-[calc(30vw*2.25)] md:w-[calc(15vw*1.5)] md:h-[calc(15vw*2.25)]'
-                        : data.size === 120
+                        : data.thumbnail.size === '120'
                         ? 'w-[calc(40vw*1.2)] h-[calc(40vw*1.8)] sm:w-[calc(30vw*1.2)] sm:h-[calc(30vw*1.8)] md:w-[calc(15vw*1.2)] md:h-[calc(15vw*1.8)]'
                         : 'w-full h-full'
                     }`}
                   >
                     <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                      <div className="absolute w-full h-full top-0 left-0 z-10 duration-300 transition-all group-hover:opacity-0">
+                        <Image
+                          src={urlFor(data.thumbnail.imageBnw).width(350).url()}
+                          alt=""
+                          layout="fill"
+                          objectFit="contain"
+                          placeholder="blur"
+                          blurDataURL={urlFor(data.thumbnail.imageBnw)
+                            .blur(2)
+                            .format('webp')
+                            .width(100)
+                            .url()}
+                        />
+                      </div>
                       <Image
-                        src={data.image1}
+                        src={urlFor(data.thumbnail.imageColor).width(350).url()}
                         alt=""
-                        fill
-                        className="absolute top-0 left-0 z-10 object-contain duration-300 transition-all group-hover:opacity-0"
-                      />
-                      <Image
-                        src={data.image2}
-                        alt=""
-                        fill
-                        className="object-contain"
+                        layout="fill"
+                        objectFit="contain"
+                        placeholder="blur"
+                        blurDataURL={urlFor(data.thumbnail.imageColor)
+                          .blur(2)
+                          .format('webp')
+                          .width(100)
+                          .url()}
                       />
                     </div>
                   </div>
@@ -177,251 +192,55 @@ const ImageView = ({
             >
               <FancyLink
                 className={`block relative ${
-                  data.position === 'bottom'
-                    ? data.size === 150
+                  data.thumbnail.position === 'bottom'
+                    ? data.thumbnail.size === '150'
                       ? 'top-1/2 -translate-y-[78%]'
-                      : data.size === 120
+                      : data.thumbnail.size === '120'
                       ? 'top-1/2 -translate-y-[72%]'
                       : ''
-                    : data.position === 'center'
+                    : data.thumbnail.position === 'center'
                     ? 'top-1/2 -translate-y-1/2'
                     : ''
                 } ${
-                  data.size === 150
-                    ? 'w-[calc(40vw*1.5)] sm:w-[calc(30vw*1.5)] md:w-[calc(15vw*1.5)]'
-                    : data.size === 120
-                    ? 'w-[calc(40vw*1.2)] sm:w-[calc(30vw*1.2)] md:w-[calc(15vw*1.2)]'
+                  data.thumbnail.size === '150'
+                    ? 'w-[calc(40vw*1.5)] h-[calc(40vw*2.25)] sm:w-[calc(30vw*1.5)] sm:h-[calc(30vw*2.25)] md:w-[calc(15vw*1.5)] md:h-[calc(15vw*2.25)]'
+                    : data.thumbnail.size === '120'
+                    ? 'w-[calc(40vw*1.2)] h-[calc(40vw*1.8)] sm:w-[calc(30vw*1.2)] sm:h-[calc(30vw*1.8)] md:w-[calc(15vw*1.2)] md:h-[calc(15vw*1.8)]'
                     : 'w-full h-full'
                 }`}
-                destination="/nxt/facilities/detail"
+                destination={`/nxt/facilities/${data.slug.current}`}
               >
                 <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
+                  <div className="absolute top-0 left-0 w-full h-full duration-300 z-10 transition-all group-hover:opacity-0">
+                    <Image
+                      src={urlFor(data.thumbnail.imageBnw).width(350).url()}
+                      alt=""
+                      layout="fill"
+                      objectFit="contain"
+                      placeholder="blur"
+                      blurDataURL={urlFor(data.thumbnail.imageColor)
+                        .blur(2)
+                        .format('webp')
+                        .width(100)
+                        .url()}
+                    />
+                  </div>
                   <Image
-                    src={data.image1}
+                    src={urlFor(data.thumbnail.imageColor).width(350).url()}
                     alt=""
-                    className="absolute top-0 left-0 w-full h-auto duration-300 transition-all group-hover:opacity-0"
+                    layout="fill"
+                    objectFit="contain"
+                    placeholder="blur"
+                    blurDataURL={urlFor(data.thumbnail.imageColor)
+                      .blur(2)
+                      .format('webp')
+                      .width(100)
+                      .url()}
                   />
-                  <Image src={data.image2} className="w-full h-auto" />
                 </div>
               </FancyLink>
             </SwiperSlide>
           ))}
-          {/* <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] cursor-pointer transtion-all duration-300 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative top-1/2 left-1/2 -translate-y-[65%] -translate-x-1/2 w-[150%]">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature1}
-                  alt=""
-                  className="absolute top-0 left-0 w-full h-auto duration-300 transition-all group-hover:opacity-0"
-                />
-                <Image src={feature1_color} className="w-full h-auto" />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] cursor-pointer transtion-all duration-300 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%]">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature4}
-                  alt=""
-                  className="absolute top-0 left-0 w-full h-auto transtion-all duration-300 group-hover:opacity-0"
-                />
-                <Image src={feature4_color} className="w-full h-auto" />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] z-20 cursor-pointer transtion-all duration-300 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative w-full h-full">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature5}
-                  alt=""
-                  fill
-                  className="absolute top-0 left-0 w-full h-full object-contain transtion-all duration-300 group-hover:opacity-0"
-                />
-                <Image
-                  src={feature5_color}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] cursor-pointer transtion-all duration-300 z-10 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative w-[120%] -top-[80%] left-1/2 -translate-x-1/2">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature6}
-                  alt=""
-                  className="absolute top-0 left-0 w-full h-auto transtion-all duration-300 group-hover:opacity-0"
-                />
-                <Image src={feature6_color} className="w-full h-full" />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] cursor-pointer transtion-all duration-300 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative top-1/2 left-1/2 -translate-y-[65%] -translate-x-1/2 w-[150%]">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature1}
-                  alt=""
-                  className="absolute top-0 left-0 w-full h-auto duration-300 transition-all group-hover:opacity-0"
-                />
-                <Image src={feature1_color} className="w-full h-auto" />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] cursor-pointer transtion-all duration-300 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%]">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature4}
-                  alt=""
-                  className="absolute top-0 left-0 w-full h-auto transtion-all duration-300 group-hover:opacity-0"
-                />
-                <Image src={feature4_color} className="w-full h-auto" />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] z-20 cursor-pointer transtion-all duration-300 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative w-full h-full">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature5}
-                  alt=""
-                  fill
-                  className="absolute top-0 left-0 w-full h-full object-contain transtion-all duration-300 group-hover:opacity-0"
-                />
-                <Image
-                  src={feature5_color}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] cursor-pointer transtion-all duration-300 z-10 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative w-[120%] -top-[80%] left-1/2 -translate-x-1/2">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature6}
-                  alt=""
-                  className="absolute top-0 left-0 w-full h-auto transtion-all duration-300 group-hover:opacity-0"
-                />
-                <Image src={feature6_color} className="w-full h-full" />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] cursor-pointer transtion-all duration-300 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative top-1/2 left-1/2 -translate-y-[65%] -translate-x-1/2 w-[150%]">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature1}
-                  alt=""
-                  className="absolute top-0 left-0 w-full h-auto duration-300 transition-all group-hover:opacity-0"
-                />
-                <Image src={feature1_color} className="w-full h-auto" />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] cursor-pointer transtion-all duration-300 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%]">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature4}
-                  alt=""
-                  className="absolute top-0 left-0 w-full h-auto transtion-all duration-300 group-hover:opacity-0"
-                />
-                <Image src={feature4_color} className="w-full h-auto" />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] z-20 cursor-pointer transtion-all duration-300 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative w-full h-full">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature5}
-                  alt=""
-                  fill
-                  className="absolute top-0 left-0 w-full h-full object-contain transtion-all duration-300 group-hover:opacity-0"
-                />
-                <Image
-                  src={feature5_color}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide
-            className="relative !w-[15vw] !h-[15vw] cursor-pointer transtion-all duration-300 z-10 hover:z-50 group"
-            onClick={() => {
-              window.location.href = '/nxt/facilities/detail'
-            }}
-          >
-            <div className="relative w-[120%] -top-[80%] left-1/2 -translate-x-1/2">
-              <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                <Image
-                  src={feature6}
-                  alt=""
-                  className="absolute top-0 left-0 w-full h-auto transtion-all duration-300 group-hover:opacity-0"
-                />
-                <Image src={feature6_color} className="w-full h-full" />
-              </div>
-            </div>
-          </SwiperSlide> */}
         </Swiper>
         <div className="absolute pointer-events-none z-50 top-0 left-0 h-full w-full flex items-center justify-between ">
           <button className="prevFacilities group pointer-events-auto w-[60px] h-[60px] p-5 border-2 border-white rounded-full ml-8 transition-all duration-300 hover:bg-white">

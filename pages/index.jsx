@@ -45,25 +45,43 @@ import { useAppContext } from 'context/state'
 import applyScrollTrigger from '@/components/utils/applyScrollTrigger'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 import PillButton from '@/components/modules/pillButton'
+import {
+  Section2Option2AnimationOBJ,
+  Section2Option2ComponentInner,
+} from '@/components/modules/nxt/section2/option2'
+import {
+  Section2Option3AnimationOBJ,
+  Section2Option3ComponentInner,
+} from '@/components/modules/nxt/section2/option3'
 
-export default function Nxt({ seoAPI, footerAPI }) {
+export default function Nxt({ homeNxtAPI, eventAPI, seoAPI, footerAPI }) {
   const router = useRouter()
   const appContext = useAppContext()
+  const [homeNxt] = homeNxtAPI
   const [seo] = seoAPI
   const [footer] = footerAPI
+
+  const getFunctSection2 = () => {
+    if (homeNxt.section2.option === 'option1') {
+      return Section2Option1AnimationOBJ
+    } else if (homeNxt.section2.option === 'option2') {
+      return Section2Option2AnimationOBJ
+    } else {
+      return Section2Option3AnimationOBJ
+    }
+  }
 
   // ANIMATION
   const animationObj = {
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
-      ...Section2Option1AnimationOBJ,
+      ...getFunctSection2(),
       ...Section3AnimationOBJ(),
       ...Section4AnimationOBJ,
       ...Section5AnimationOBJ,
     ],
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
-      ...Section2Option1AnimationOBJ,
       ...Section3AnimationOBJMobile(),
       ...Section4AnimationOBJ,
       ...Section5AnimationOBJMobile,
@@ -129,10 +147,16 @@ export default function Nxt({ seoAPI, footerAPI }) {
           <section className="relative p-0 m-0">
             {/* Section 1 */}
             {/* TITLE */}
-            <Section1ComponentInner />
+            <Section1ComponentInner data={homeNxt.section1} />
             {/* Section 2 */}
             {/* MENU */}
-            <Section2Option1ComponentInner />
+            {homeNxt.section2.option === 'option1' ? (
+              <Section2Option1ComponentInner data={homeNxt.section2} />
+            ) : homeNxt.section2.option === 'option2' ? (
+              <Section2Option2ComponentInner data={homeNxt.section2} />
+            ) : (
+              <Section2Option3ComponentInner data={homeNxt.section2} />
+            )}
             {/* Section 3 */}
             {/* OUR FACILITIES */}
             <Section3ComponentInner />
@@ -141,7 +165,7 @@ export default function Nxt({ seoAPI, footerAPI }) {
             <Section4ComponentInner />
             {/* Section 5 */}
             {/* WHAT'S ON? */}
-            <Section5ComponentInner />
+            <Section5ComponentInner data={eventAPI} />
             <NxtNavigation transition={true} />
             <div className="fixed bottom-5 right-5 z-50">
               <PillButton destination="/nxt" className="uppercase bg-white">
@@ -157,6 +181,13 @@ export default function Nxt({ seoAPI, footerAPI }) {
 }
 
 export async function getStaticProps() {
+  const homeNxtAPI = await client.fetch(`
+    *[_type == "homeNxt"]
+    `)
+
+  const eventAPI = await client.fetch(`
+  *[_type == "eventList"]
+  `)
   const headerAPI = await client.fetch(`
     *[_type == "header"]
     `)
@@ -168,6 +199,8 @@ export async function getStaticProps() {
   `)
   return {
     props: {
+      homeNxtAPI,
+      eventAPI,
       seoAPI,
       headerAPI,
       footerAPI,

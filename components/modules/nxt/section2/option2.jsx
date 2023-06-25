@@ -1,28 +1,35 @@
 import React from 'react'
 import 'intersection-observer' // optional polyfill
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import FancyLink from '@/components/utils/fancyLink'
 
 // IMPORT LOCAL IMAGE
 import section2_bg from '@/public/nxt2/section2_bg1.png'
 import Container from '../../container'
 import PillButton from '../../pillButton'
+import urlFor from '@/helpers/sanity/urlFor'
 
-export const Section2Option2ComponentInner = () => {
+export const Section2Option2ComponentInner = ({ data }) => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
         <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-10">
-          <PillButton destination="/" className="uppercase bg-white">
+          <PillButton
+            destination="/"
+            className="uppercase bg-red-500 text-white"
+          >
             Option 1
           </PillButton>
           <PillButton
             destination="/nxt/option2"
-            className="uppercase bg-white pointer-events-none"
+            className="uppercase bg-red-500 text-white pointer-events-none"
           >
             Option 2
           </PillButton>
-          <PillButton destination="/nxt/option3" className="uppercase bg-white">
+          <PillButton
+            destination="/nxt/option3"
+            className="uppercase bg-red-500 text-white"
+          >
             Option 3
           </PillButton>
         </div>
@@ -33,10 +40,10 @@ export const Section2Option2ComponentInner = () => {
           >
             <div className="relative w-full h-full setflex-center">
               <span className="text-[1.125rem] md:text-[1.875rem] text-[#BEC29D]">
-                WHAT’S ON LOCAVORE
+                {data.title}
               </span>
               <p className="relative text-m-additionalTitle md:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center">
-                A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
+                {data.description}
               </p>
             </div>
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none flex justify-center items-end">
@@ -53,10 +60,16 @@ export const Section2Option2ComponentInner = () => {
       <Container className="relative h-screen setflex-center pointer-events-none z-20">
         <div className="relative w-full max-w-xl h-[50vh] max-h-[500px]">
           <Image
-            src={section2_bg}
+            src={urlFor(data.imageNormal).width(798).url()}
             alt=""
-            fill
-            className='object-contain'
+            layout='fill'
+            objectFit='contain'
+            placeholder="blur"
+            blurDataURL={urlFor(data.imageNormal)
+              .blur(2)
+              .format('webp')
+              .width(100)
+              .url()}
           />
         </div>
       </Container>
@@ -95,5 +108,5 @@ export const Section2Option2AnimationOBJ = [
     ]
 
     return { id, elem, settings, animation }
-  }
+  },
 ]

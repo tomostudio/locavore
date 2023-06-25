@@ -23,6 +23,7 @@ import ButtonViewFacilities from '@/components/modules/nxt/facilities/buttonView
 import ViewComponent from '@/components/modules/nxt/facilities/viewComponent'
 
 const FeaturesAndFacilities = ({
+  facilitiesAPI,
   seoAPI,
   footerAPI,
   facilitiesList,
@@ -35,22 +36,22 @@ const FeaturesAndFacilities = ({
   const [showComponent, setShowComponent] = useState('image-view')
 
   // Menghitung sisa pembagian dengan 3
-  const remainder = facilitiesList.length % 3
+  const remainder = facilitiesAPI.length % 3
 
   const numberToAdd = remainder === 0 ? 0 : 3 - remainder
 
-  const facilitiesListFill = facilitiesList.concat(Array(numberToAdd).fill({}))
+  const facilitiesListFill = facilitiesAPI.concat(Array(numberToAdd).fill({}))
 
   const facilitiesListGrid = facilitiesListFill.map((e, index) => {
     // Menghitung sisa pembagian dengan 2
     const remainderMob = facilitiesList.length % 2
 
     const numberToAddMob = remainderMob === 0 ? 0 : 2 - remainderMob
-    const facilitiesListGridMobile = facilitiesList.concat(
+    const facilitiesListGridMobile = facilitiesAPI.concat(
       Array(numberToAddMob).fill({}),
     )
     if (facilitiesListFill.length > facilitiesListGridMobile.length) {
-      if (index+1 > facilitiesListGridMobile.length) {
+      if (index + 1 > facilitiesListGridMobile.length) {
         return {
           mobile: 'hidden',
         }
@@ -120,7 +121,7 @@ const FeaturesAndFacilities = ({
           </Container>
           <ViewComponent
             showComponent={showComponent}
-            facilitiesList={facilitiesList}
+            facilitiesList={facilitiesAPI}
             facilitiesListGrid={facilitiesListGrid}
             facilitiesListScroll={facilitiesListScroll}
           />
@@ -133,6 +134,9 @@ const FeaturesAndFacilities = ({
 }
 
 export async function getStaticProps() {
+  const facilitiesAPI = await client.fetch(`
+  *[_type == "facilitiesList"]
+  `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)
@@ -237,12 +241,13 @@ export async function getStaticProps() {
     },
   ]
 
-  const facilitiesListScroll = facilitiesList.map((e) => ({
+  const facilitiesListScroll = facilitiesAPI.map((e) => ({
     ...e,
     zIndex: Math.floor(Math.random() * facilitiesList.length) + 1,
   }))
   return {
     props: {
+      facilitiesAPI,
       seoAPI,
       footerAPI,
       headerAPI,

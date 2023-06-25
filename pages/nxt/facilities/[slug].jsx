@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 import { fade } from '@/helpers/preset/transitions'
 import Footer from '@/components/modules/footer'
 import { useEffect } from 'react'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Container from '@/components/modules/container'
 
 import leaf from '@/public/nxt2/leaf.png'
@@ -17,10 +17,13 @@ import StickyButton from '@/components/modules/stickyButton'
 import PillButton from '@/components/modules/pillButton'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import ScrollContainer from 'react-indiana-drag-scroll'
+import urlFor from '@/helpers/sanity/urlFor'
+import EditorComponent from '@/components/modules/editorial/editorComponent'
 
-const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
+const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
   const appContext = useAppContext()
+  const [facilities] = facilitiesAPI
   const [seo] = seoAPI
   const [footer] = footerAPI
 
@@ -39,7 +42,7 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
   return (
     <Layout>
       <SEO
-        title={'Our Facilities'}
+        title={facilities.title}
         pagelink={router.pathname}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
@@ -55,22 +58,22 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
         <div className="relative w-full h-full grow flex flex-col md:flex-row mb-10 md:mb-0">
           {useMediaQuery('(min-width: 850px)') ? (
             <div className="w-1/2 h-full flex flex-col">
-              <div className="relative aspect-[18/29]">
-                <Image
-                  src={feature1_big}
-                  alt=""
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <div className="relative aspect-[18/29]">
-                <Image
-                  src={feature2_big}
-                  alt=""
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
+              {facilities.images.map((data, id) => (
+                <div key={id} className="relative aspect-[18/29]">
+                  <Image
+                    src={urlFor(data).width(720).url()}
+                    alt=""
+                    layout="fill"
+                    objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL={urlFor(data)
+                      .blur(2)
+                      .format('webp')
+                      .width(100)
+                      .url()}
+                  />
+                </div>
+              ))}
             </div>
           ) : (
             <ScrollContainer
@@ -81,22 +84,22 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
               nativeMobileScroll={true}
             >
               <div className="w-fit h-full flex items-center relative min-w-full">
-                <div className="relative w-[80vw] h-full">
-                  <Image
-                    src={feature1_big}
-                    alt=""
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
-                <div className="relative w-[80vw] h-full">
-                  <Image
-                    src={feature2_big}
-                    alt=""
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
+                {facilities.images.map((data, id) => (
+                  <div key={id} className="relative w-[80vw] h-full">
+                    <Image
+                      src={urlFor(data).width(720).url()}
+                      alt=""
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={urlFor(data)
+                        .blur(2)
+                        .format('webp')
+                        .width(100)
+                        .url()}
+                    />
+                  </div>
+                ))}
               </div>
             </ScrollContainer>
           )}
@@ -104,21 +107,13 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
         <Container className="md:absolute md:top-0 md:left-1/2 md:-translate-x-1/2 mb-10 md:mb-0 w-full h-full flex justify-end">
           <div className="w-full md:w-1/2 md:h-screen md:sticky top-0 setflex-center md:pt-16">
             <h1 className="text-m-additionalHeader sm:text-[2rem] md:text-d-additionalHeader m-0 text-[#BEC29D] font-funkturm">
-              DISTILLERY
+              {facilities.title}
             </h1>
             <div className="relative w-[87px] sm:w-[100px] md:w-[165px] h-[87px] sm:h-[100px] md:h-[165px] my-10 md:my-16">
-              <Image src={leaf} alt="" fill style={{ objectFit: 'contain' }} />
+              <Image src={leaf} alt="" fill className='object-contain' />
             </div>
-            <div className="w-full  text-white editor-styling sm:max-w-md md:max-w-sm text-center mx-auto">
-              <p>
-                Lorem ipsum dolor sit amet, consectet elit. Proin nec massa
-                viverra, aliquet dui ac, gravida magna. Lorem ipsum dolor sit
-                amet, dolor sit amet consectetur adipiscing elit. Proin nec
-                massa dolor viverra, aliquet dui ac, amett gravida magna.
-              </p>
-            </div>
+            <EditorComponent data={facilities.description} color="#fff" fontColor="text-white" textAlign="text-center" />
           </div>
-          {/* <div className="relative w-full md:w-1/2 h-full pt-2 md:pt-16"></div> */}
         </Container>
         {/* Button Sticky */}
         {useMediaQuery('(min-width: 850px)') ? (
@@ -138,7 +133,24 @@ const FeaturesAndFacilitiesDetail = ({ seoAPI, footerAPI }) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticPaths() {
+  const res = await client.fetch(`
+        *[_type == "facilitiesList"]
+      `)
+
+  const paths = res.map((data) => ({
+    params: { slug: data.slug.current.toString() },
+  }))
+
+  return { paths, fallback: false }
+}
+
+export async function getStaticProps({ params }) {
+  const facilitiesAPI = await client.fetch(
+    `
+      *[_type == "facilitiesList" && slug.current == "${params.slug}"] 
+    `,
+  )
   const seoAPI = await client.fetch(`
     *[_type == "settings"]
     `)
@@ -150,6 +162,7 @@ export async function getStaticProps() {
                       `)
   return {
     props: {
+      facilitiesAPI,
       seoAPI,
       footerAPI,
       headerAPI,

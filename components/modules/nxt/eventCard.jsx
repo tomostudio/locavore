@@ -1,7 +1,9 @@
 import FancyLink from '@/components/utils/fancyLink'
-import Image from 'next/image'
+import urlFor from '@/helpers/sanity/urlFor'
+import Image from 'next/legacy/image'
 
 const EventCard = ({
+  slug,
   date,
   image,
   image_bnw,
@@ -11,7 +13,7 @@ const EventCard = ({
 }) => {
   return (
     <FancyLink
-      destination="/nxt/events-programs/detail"
+      destination={`/nxt/events-programs/${slug}`}
       className={`group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] ${
         widthNormal
           ? 'w-full sm:w-[calc((100%/2)-1rem)] md:w-[calc(100%/3)]'
@@ -20,8 +22,26 @@ const EventCard = ({
     >
       <span className="text-[1.125rem] md:text-d-body">{date}</span>
       <div className="event-image relative w-full aspect-[1/1] my-5 border-2 group-hover:border-[#BEC29D] border-white">
-        <Image src={image_bnw} className="group-hover:hidden" />
-        <Image src={image} className="hidden group-hover:block" />
+        <Image
+          src={urlFor(image_bnw).width(500).url()}
+          layout="fill"
+          objectFit="cover"
+          placeholder="blur"
+          blurDataURL={urlFor(image_bnw)
+            .blur(2)
+            .format('webp')
+            .width(100)
+            .url()}
+          className="group-hover:opacity-0"
+        />
+        <Image
+          src={urlFor(image).width(500).url()}
+          layout="fill"
+          objectFit="cover"
+          placeholder="blur"
+          blurDataURL={urlFor(image).blur(2).format('webp').width(100).url()}
+          className="opacity-0 group-hover:opacity-100"
+        />
       </div>
       <span className="font-bold text-d-body sm:text-m-title md:text-m-subheading">
         {title}

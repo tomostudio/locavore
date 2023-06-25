@@ -17,16 +17,22 @@ import card_bnw1 from '@/public/nxt2/collab/card_bnw1.png'
 import HeroComponent from '@/components/modules/nxt/hero'
 import CollaboratorCard from '@/components/modules/nxt/collaboratorCard'
 
-const OurCollaborators = ({ seoAPI, footerAPI }) => {
+const OurCollaborators = ({
+  collaboratorAPI,
+  collaboratorListAPI,
+  seoAPI,
+  footerAPI,
+  headerAPI,
+}) => {
   const router = useRouter()
   const appContext = useAppContext()
+  const [collaborator] = collaboratorAPI
   const [seo] = seoAPI
   const [footer] = footerAPI
-  const repeatArr = ['', '', '', '', '', '', '', '', '']
   const defaultItemToShow = 6
   const [itemToShow, setItemToShow] = useState(defaultItemToShow)
   const [showMoreButton, setShowMore] = useState(
-    repeatArr.length > defaultItemToShow ? true : false,
+    collaboratorListAPI.length > defaultItemToShow ? true : false,
   )
 
   useEffect(() => {
@@ -60,17 +66,12 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
         <div className="relative w-full h-full setflex-center">
           <HeroComponent
             title="OUR COLLABORATORS"
-            imageDesktop={hero}
-            imageMobile={hero_mobile}
+            imageDesktop={collaborator.hero.imageDesktop}
+            imageMobile={collaborator.hero.imageMobile}
           />
           <div className="w-full h-full flex flex-wrap mt-11 md:mt-20 mb-16 border-b sm:border-y border-white collaborators-border">
             <CollaboratorCard
-              data={repeatArr}
-              role="Work Role"
-              location="Jakarta, Indonesia"
-              title="Lorem Ipsum Dolor Sit Amet"
-              image={card1}
-              image_bnw={card_bnw1}
+              collaboratorListAPI={collaboratorListAPI}
               itemToShow={itemToShow}
             />
           </div>
@@ -79,7 +80,7 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
               className={`w-fit p-4 text-d-small mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
               onClick={() => {
                 setItemToShow(itemToShow + defaultItemToShow)
-                setShowMore(repeatArr.length > itemToShow + defaultItemToShow)
+                setShowMore(collaboratorListAPI.length > itemToShow + defaultItemToShow)
               }}
             >
               VIEW MORE
@@ -94,6 +95,12 @@ const OurCollaborators = ({ seoAPI, footerAPI }) => {
 }
 
 export async function getStaticProps() {
+  const collaboratorAPI = await client.fetch(`
+    *[_type == "collaborator"]
+    `)
+  const collaboratorListAPI = await client.fetch(`
+    *[_type == "collaboratorList"]
+    `)
   const seoAPI = await client.fetch(`
     *[_type == "settings"]
     `)
@@ -105,6 +112,8 @@ export async function getStaticProps() {
                       `)
   return {
     props: {
+      collaboratorAPI,
+      collaboratorListAPI,
       seoAPI,
       footerAPI,
       headerAPI,

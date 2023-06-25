@@ -9,7 +9,9 @@ const GridView = ({ facilitiesListGrid }) => {
 
     // mobile column
     let rowCountMobile = 2
-    let columnCountMobile = Math.ceil(data.filter((e) => !e.mobile).length / rowCountMobile)
+    let columnCountMobile = Math.ceil(
+      data.filter((e) => !e.mobile).length / rowCountMobile,
+    )
 
     // check row desktop
     const lastRowDivsDesktop = []
@@ -67,7 +69,7 @@ const GridView = ({ facilitiesListGrid }) => {
           data.title ? (
             <FancyLink
               key={id}
-              destination="/nxt/facilities/detail"
+              destination={`/nxt/facilities/${data.slug.current}`}
               className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
                 facilitiesListGrid,
                 id,
@@ -82,7 +84,9 @@ const GridView = ({ facilitiesListGrid }) => {
               className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
                 facilitiesListGrid,
                 id,
-              )} ${data.mobile === "hidden" ? "hidden md:block" : ""} border-white`}
+              )} ${
+                data.mobile === 'hidden' ? 'hidden md:block' : ''
+              } border-white`}
             />
           ),
         )}

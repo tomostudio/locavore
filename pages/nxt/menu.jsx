@@ -4,25 +4,25 @@ import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { fade } from '@/helpers/preset/transitions'
 
-import hero from '@/public/nxt2/menu/hero.png'
-import hero_mobile from '@/public/nxt2/menu/hero_mobile.png'
-import menu_group from '@/public/nxt2/menu/group.png'
 import leaf from '@/public/nxt2/leaf.png'
 
 import { useContext, useEffect } from 'react'
 import client from '@/helpers/sanity/client'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { useAppContext } from 'context/state'
 import Container from '@/components/modules/container'
 import Footer from '@/components/modules/footer'
 import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
 import NxtNavigation from '@/components/utils/nxtNavigation'
+import urlFor from '@/helpers/sanity/urlFor'
+import EditorComponent from '@/components/modules/editorial/editorComponent'
 
-const Menu = ({ seoAPI, footerAPI }) => {
+const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
   const appContext = useAppContext()
   const [seo] = seoAPI
   const [footer] = footerAPI
+  const [menu] = menuAPI
 
   useEffect(() => {
     document.querySelector('body').style.backgroundColor = 'black'
@@ -52,25 +52,41 @@ const Menu = ({ seoAPI, footerAPI }) => {
         className="no-select-all bg-black"
       >
         <div className="relative w-full aspect-[3/4] sm:aspect-[95/33] flex items-center sm:items-end">
-          <Image
-            src={hero}
-            alt=""
-            fill
-            className="object-cover hidden sm:block"
-          />
-          <Image
-            src={hero_mobile}
-            alt=""
-            fill
-            className="object-cover sm:hidden"
-          />
+          <div className="relative w-full hidden sm:block">
+            <Image
+              src={urlFor(menu.hero.image.imageDesktop).width(1140).url()}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              placeholder="blur"
+              blurDataURL={urlFor(menu.hero.image.imageDesktop)
+                .blur(2)
+                .format('webp')
+                .width(100)
+                .url()}
+            />
+          </div>
+          <div className="absolute top-0 left-0 w-full h-full sm:hidden">
+            <Image
+              src={urlFor(menu.hero.image.imageMobile).width(375).url()}
+              alt=""
+              layout="fill"
+              objectFit="cover"
+              placeholder="blur"
+              blurDataURL={urlFor(menu.hero.image.imageMobile)
+                .blur(2)
+                .format('webp')
+                .width(100)
+                .url()}
+            />
+          </div>
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
           <div className="relative z-10 sm:mb-10 md:mb-20 w-full setflex-center max-w-5xl px-10 max-md:px-5 mx-auto text-white">
             <h1 className="m-0 font-funkturm text-m-additionalTitle md:text-d-additionalTitle">
-              ARTEFACTS
+              {menu.hero.title}
             </h1>
             <span className="mt-2 text-[1.125rem] md:text-[1.875rem]">
-              LOCAVORE NXT Q1 2023
+              {menu.hero.description}
             </span>
           </div>
         </div>
@@ -78,48 +94,12 @@ const Menu = ({ seoAPI, footerAPI }) => {
           <Container className="bg-black flex flex-col">
             <div className="max-w-4xl px-10 max-md:px-5 mx-auto my-24 flex flex-col items-center space-y-20 text-white">
               <span className="block text-[2.125rem] sm:text-t-header md:text-d-header text-center leading-[120%]">
-                A History of Locavore in 50 Edible Ideas
+                {menu.title}
               </span>
-              <div className="w-full text-white editor-styling blog space-y-10">
-                <div className="relative mx-auto">
-                  <Image src={leaf} alt="" style={{ objectFit: 'contain' }} />
-                </div>
-                <p className="text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  nec massa viverra, aliquet dui ac, gravida magna. Lorem ipsum
-                  dolor sit amet, dolor consectetur adipiscing elit. Proin nec
-                  massa viverra, aliquet dui ac, amett gravida magna. Lorem
-                  ipsum dolor sit amet, consectetur adipiscing elit. Proin nec
-                  massa viverra, aliquet dui ac, gravida magna. Lorem ipsum
-                  dolor sit amet, dolor consectetur adipiscing elit.
-                </p>
-                <p className="text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  nec massa viverra, aliquet dui ac, gravida magna. Lorem ipsum
-                  dolor sit amet, dolor consectetur adipiscing elit. Proin nec
-                  massa viverra, aliquet dui ac, amett gravida magna. Lorem
-                  ipsum dolor sit amet, consectetur adipiscing elit. Proin nec
-                  massa viverra, aliquet dui ac, gravida magna. Lorem ipsum
-                  dolor sit amet, dolor consectetur adipiscing elit.
-                </p>
-                {/* IMAGE COMPONENT */}
-                <div className="relative max-auto w-full rounded-xl overflow-hidden">
-                  <Image src={menu_group} />
-                </div>
-                <p className="text-center">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                  nec massa viverra, aliquet dui ac, gravida magna. Lorem ipsum
-                  dolor sit amet, dolor consectetur adipiscing elit. Proin nec
-                  massa viverra, aliquet dui ac, amett gravida magna. Lorem
-                  ipsum dolor sit amet, consectetur adipiscing elit. Proin nec
-                  massa viverra, aliquet dui ac, gravida magna. Lorem ipsum
-                  dolor sit amet, dolor consectetur adipiscing elit.
-                </p>
-                {/* GALLERY COMPONENT */}
-                {/* VIDEO COMPONENT */}
-                {/* H1 COMPONENT */}
-                {/* H2 COMPONENT */}
+              <div className="relative mx-auto my-10">
+                <Image src={leaf} alt="" style={{ objectFit: 'contain' }} />
               </div>
+              <EditorComponent data={menu.article[0].content} color={'#fff'} />
             </div>
           </Container>
         </div>
@@ -131,6 +111,9 @@ const Menu = ({ seoAPI, footerAPI }) => {
 }
 
 export async function getStaticProps() {
+  const menuAPI = await client.fetch(`
+  *[_type == "menu"]
+  `)
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)
@@ -142,6 +125,7 @@ export async function getStaticProps() {
                     `)
   return {
     props: {
+      menuAPI,
       seoAPI,
       footerAPI,
       headerAPI,

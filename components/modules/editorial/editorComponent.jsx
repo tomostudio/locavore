@@ -9,9 +9,9 @@ import { useNextSanityImage } from 'next-sanity-image';
 import client from '@/helpers/sanity/client';
 import { singleIURB, columnIURB } from '@/components/utils/iurb';
 
-const EditorComponent = ({ data, color }) => {
+const EditorComponent = ({ data, color, fontColor="", textAlign="" }) => {
   return (
-    <div className='editor-styling blog'>
+    <div className={`editor-styling blog padding-none ${fontColor} ${textAlign}`}>
       <PortableText
         value={data}
         components={{

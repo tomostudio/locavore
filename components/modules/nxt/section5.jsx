@@ -9,8 +9,8 @@ import card from '@/public/nxt2/card.png'
 import FancyLink from '@/components/utils/fancyLink'
 import EventCard from './eventCard'
 
-export const Section5ComponentInner = () => {
-  const eventList = ['', '', '']
+export const Section5ComponentInner = ({ data }) => {
+  const eventList = Array(3).fill(data[0])
   return (
     <>
       <section id="trigger5" className="trigger relative w-full flex flex-col">
@@ -24,15 +24,16 @@ export const Section5ComponentInner = () => {
               WHAT'S ON?
             </span>
             <div className="w-full my-10 sm:my-12 md:my-16 flex flex-wrap md:flex-nowrap gap-8">
-              {eventList.map((_, id) => (
+              {eventList.map((e, id) => (
                 <EventCard
                   key={id}
                   widthNormal={true}
-                  date="10 OCTOBER 2023"
-                  image={card}
-                  image_bnw={card_bnw}
-                  title="Event Title"
-                  description="Lorem ispum dolor sit amet, consecteur des adispacing dolor sit amet."
+                  slug={e.slug.current}
+                  date={e.date}
+                  image={e.thumbnail.imageColor}
+                  image_bnw={e.thumbnail.imageBnw}
+                  title={e.title}
+                  description={e.thumbnail.description}
                 />
               ))}
             </div>

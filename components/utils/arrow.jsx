@@ -1,10 +1,10 @@
-const Arrow = ({ className, position, fill }) => {
+const Arrow = ({ className, position, fill, sizeTop="24", sizeLeftRight="11" }) => {
   return (
     <>
       {position === 'top' ? (
         <svg
-          width="24"
-          height="24"
+          width={sizeTop}
+          height={sizeTop}
           viewBox="0 0 24 24"
           fill="none"
           className={`arrow ${className}`}
@@ -16,8 +16,8 @@ const Arrow = ({ className, position, fill }) => {
         </svg>
       ) : (
         <svg
-          width="11"
-          height="11"
+          width={sizeLeftRight}
+          height={sizeLeftRight}
           viewBox="0 0 11 11"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

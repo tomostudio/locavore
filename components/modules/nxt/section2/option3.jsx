@@ -1,31 +1,35 @@
 import React from 'react'
 import 'intersection-observer' // optional polyfill
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Container from '../../container'
 import FancyLink from '@/components/utils/fancyLink'
 
 // IMPORT LOCAL IMAGE
 import section2_bg1 from '@/public/nxt2/section2_bg1.png'
 import PillButton from '../../pillButton'
+import urlFor from '@/helpers/sanity/urlFor'
 
-export const Section2Option3ComponentInner = () => {
+export const Section2Option3ComponentInner = ({ data }) => {
   return (
     <section className="relative w-full">
       <div className="relative w-full h-full z-10">
         <div className="sticky top-0 w-full h-screen flex flex-col">
           <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-20">
-            <PillButton destination="/" className="uppercase bg-white">
+            <PillButton
+              destination="/"
+              className="uppercase bg-red-500 text-white"
+            >
               Option 1
             </PillButton>
             <PillButton
               destination="/nxt/option2"
-              className="uppercase bg-white"
+              className="uppercase bg-red-500 text-white"
             >
               Option 2
             </PillButton>
             <PillButton
               destination="/nxt/option3"
-              className="uppercase bg-white pointer-events-none"
+              className="uppercase bg-red-500 text-white pointer-events-none"
             >
               Option 3
             </PillButton>
@@ -38,10 +42,10 @@ export const Section2Option3ComponentInner = () => {
               <div className="relative w-full h-full setflex-center ">
                 <div className="relative w-full setflex-center">
                   <span className="text-[1.125rem] md:text-[1.875rem] text-[#BEC29D]">
-                    WHAT’S ON LOCAVORE
+                    {data.title}
                   </span>
                   <p className="text-m-additionalTitle md:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center">
-                    A HISTORY OF LOCAVORE IN 50 EDIBLE IDEAS
+                    {data.description}
                   </p>
                 </div>
               </div>
@@ -64,10 +68,16 @@ export const Section2Option3ComponentInner = () => {
             <div className="relative w-[30vw] md:w-[25vw] max-w-[500px] h-full">
               <div className="relative w-full h-[25vw]">
                 <Image
-                  src={section2_bg1}
+                  src={urlFor(data.imageNormal).width(798).url()}
                   alt=""
-                  fill
-                  className="object-contain"
+                  layout='fill'
+                  objectFit='contain'
+                  placeholder="blur"
+                  blurDataURL={urlFor(data.imageNormal)
+                    .blur(2)
+                    .format('webp')
+                    .width(100)
+                    .url()}
                 />
               </div>
             </div>
@@ -80,10 +90,16 @@ export const Section2Option3ComponentInner = () => {
             <div className="relative w-[30vw] md:w-[25vw] max-w-[500px] h-full flex items-end">
               <div className="relative w-full h-[25vw]">
                 <Image
-                  src={section2_bg1}
+                  src={urlFor(data.imageNormal).width(798).url()}
                   alt=""
-                  fill
-                  className="object-contain"
+                  layout='fill'
+                  objectFit='contain'
+                  placeholder="blur"
+                  blurDataURL={urlFor(data.imageNormal)
+                    .blur(2)
+                    .format('webp')
+                    .width(100)
+                    .url()}
                 />
               </div>
             </div>

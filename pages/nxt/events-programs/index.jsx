@@ -18,16 +18,17 @@ import NxtNavigation from '@/components/utils/nxtNavigation'
 import HeroComponent from '@/components/modules/nxt/hero'
 import EventCard from '@/components/modules/nxt/eventCard'
 
-const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
+const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
   const appContext = useAppContext()
+  const [event] = eventAPI
   const [seo] = seoAPI
   const [footer] = footerAPI
   const eventList = ['', '', '', '', '', '', '', '', '']
   const defaultItemToShow = 6
   const [itemToShow, setItemToShow] = useState(defaultItemToShow)
   const [showMoreButton, setShowMore] = useState(
-    eventList.length > defaultItemToShow ? true : false,
+    eventListAPI.length > defaultItemToShow ? true : false,
   )
 
   useEffect(() => {
@@ -61,18 +62,19 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
         <div className="relative w-full h-full setflex-center">
           <HeroComponent
             title="EVENTS & PROGRAMS"
-            imageDesktop={hero}
-            imageMobile={hero_mobile}
+            imageDesktop={event.hero.imageDesktop}
+            imageMobile={event.hero.imageMobile}
           />
           <Container className="h-full flex flex-wrap mt-11 md:mt-20 mb-10 md:mb-16 gap-8">
-            {eventList.slice(0, itemToShow).map((_, id) => (
+            {eventListAPI.slice(0, itemToShow).map((data, id) => (
               <EventCard
                 key={id}
-                date="10 OCTOBER 2023"
-                image={card}
-                image_bnw={card_bnw}
-                title="Event Title"
-                description="Lorem ispum dolor sit amet, consecteur des adispacing dolor sit amet."
+                slug={data.slug.current}
+                date={data.date}
+                image={data.thumbnail.imageColor}
+                image_bnw={data.thumbnail.imageBnw}
+                title={data.title}
+                description={data.thumbnail.description}
               />
             ))}
           </Container>
@@ -96,6 +98,12 @@ const EventsAndPrograms = ({ seoAPI, footerAPI }) => {
 }
 
 export async function getStaticProps() {
+  const eventAPI = await client.fetch(`
+    *[_type == "event"]
+    `)
+  const eventListAPI = await client.fetch(`
+    *[_type == "eventList"]
+    `)
   const seoAPI = await client.fetch(`
     *[_type == "settings"]
     `)
@@ -107,6 +115,8 @@ export async function getStaticProps() {
                       `)
   return {
     props: {
+      eventAPI,
+      eventListAPI,
       seoAPI,
       footerAPI,
       headerAPI,
