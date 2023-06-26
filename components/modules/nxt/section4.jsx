@@ -44,7 +44,7 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
           className="relative w-full h-full setflex-center-row opacity-0"
         >
           {useMediaQuery('(min-width: 601px)') && (
-            <span className="text-[#BEC29D] whitespace-pre-line text-center font-funkturm text-m-additionalTitle md:text-[5rem] lg:text-d-additionalTitle leading-full drop-shadow-collaborators">
+            <span className="text-[#BEC29D] whitespace-pre-line text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full drop-shadow-collaborators">
               OUR
               <br />
               COLLABORATORS

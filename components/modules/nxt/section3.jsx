@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import 'intersection-observer' // optional polyfill
 import Image from 'next/image'
 import Container from '../container'
@@ -12,15 +12,26 @@ import firstFloor from '@/public/nxt/1st-floor.webp'
 import secondFloor from '@/public/nxt/2nd-floor.webp'
 import tunnel from '@/public/nxt/tunnel.webp'
 import { Parallax } from 'react-scroll-parallax'
+import { useMediaQuery } from '@/helpers/functional/checkMedia'
 
 export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
+  const appContext = useAppContext()
+
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      appContext.setHeader({
+        headerStyle: 'blur-white',
+      })
+    })
+  }, [])
+
   return (
     <section className="relative w-full overflow-x-clip mt-[20vw] md:mb-[30vw]">
       <div className="w-full">
         <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
           <div className="relative w-full h-screen">
             <Container className="relative w-full h-full z-20 setflex-center">
-              <span className="text-[#BEC29D] text-center font-funkturm text-m-additionalTitle md:text-[5rem] lg:text-d-additionalTitle leading-full ">
+              <span className="text-[#BEC29D] text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full ">
                 OUR
                 <br />
                 FACILITIES
@@ -71,7 +82,13 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
                 </div>
               </div>
             </Container>
-            <Parallax speed={10} className="absolute top-0 left-0 w-full h-full overflow-visible">
+            <Parallax
+              speed={10}
+              disabled={
+                useMediaQuery('(orientation: landscape)') ? false : true
+              }
+              className="absolute top-0 left-0 w-full h-full overflow-visible"
+            >
               <div
                 id="bg-white-scale"
                 className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[0vw] h-[0vw] bg-white rounded-full"
@@ -369,15 +386,7 @@ export const Section3AnimationOBJ = () => {
   ]
 }
 
-export const Section3AnimationOBJMobile = () => {
-  const appContext = useAppContext()
-
-  const checkHeader = (data) => {
-    appContext.setHeader({
-      headerStyle: data,
-    })
-  }
-
+export const Section3AnimationOBJPortrait = () => {
   return [
     // SECTION 3
     // BG WHITE SCALE ENTER
@@ -391,8 +400,6 @@ export const Section3AnimationOBJMobile = () => {
           scrub: 0.5,
           start: 'top 150%',
           end: 'top 100%',
-          onEnterBack: () => checkHeader('blur-white'),
-          onLeave: () => checkHeader('blur'),
         },
       }
 
@@ -402,8 +409,8 @@ export const Section3AnimationOBJMobile = () => {
           to: [
             elem,
             {
-              width: '180vw',
-              height: '180vw',
+              width: '140vw',
+              height: '140vw',
             },
           ],
         },
@@ -632,8 +639,6 @@ export const Section3AnimationOBJMobile = () => {
           scrub: 0.5,
           start: 'bottom 50%',
           end: 'bottom 0%',
-          onEnterBack: () => checkHeader('blur'),
-          onLeave: () => checkHeader('blur-white'),
         },
       }
 

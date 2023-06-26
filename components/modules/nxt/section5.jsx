@@ -20,7 +20,7 @@ export const Section5ComponentInner = ({ dataSection5 }) => {
             <div className="hidden sm:block absolute top-7 right-7 w-4 h-4 bg-white rounded-50%" />
             <div className="hidden sm:block absolute bottom-7 left-7 w-4 h-4 bg-white rounded-50%" />
             <div className="hidden sm:block absolute bottom-7 right-7 w-4 h-4 bg-white rounded-50%" />
-            <span className="text-[#BEC29D] text-center font-funkturm text-m-additionalTitle md:text-[5rem] lg:text-d-additionalTitle leading-full">
+            <span className="text-[#BEC29D] text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full">
               WHAT'S ON?
             </span>
             <div className="w-full my-10 sm:my-12 md:my-16 flex flex-wrap md:flex-nowrap gap-8">

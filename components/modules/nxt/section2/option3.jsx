@@ -44,7 +44,7 @@ export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
                   <span className="text-[1.125rem] md:text-[1.875rem] text-[#BEC29D]">
                     {dataSection2Option3.title}
                   </span>
-                  <p className="text-m-additionalTitle md:text-[5rem] lg:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center">
+                  <p className="text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center">
                     {dataSection2Option3.description}
                   </p>
                 </div>
