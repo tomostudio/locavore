@@ -45,7 +45,13 @@ import { useAppContext } from 'context/state'
 import applyScrollTrigger from '@/components/utils/applyScrollTrigger'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 
-export default function Nxt({ homeNxtAPI, eventAPI, seoAPI, footerAPI }) {
+export default function Nxt({
+  homeNxtAPI,
+  eventAPI,
+  collabAPI,
+  seoAPI,
+  footerAPI,
+}) {
   const router = useRouter()
   const appContext = useAppContext()
   const [homeNxt] = homeNxtAPI
@@ -140,7 +146,7 @@ export default function Nxt({ homeNxtAPI, eventAPI, seoAPI, footerAPI }) {
             <Section3ComponentInner />
             {/* Section 4 */}
             {/* OUR COLLABORATORS */}
-            <Section4ComponentInner />
+            <Section4ComponentInner dataSection4={collabAPI} />
             {/* Section 5 */}
             {/* WHAT'S ON? */}
             <Section5ComponentInner dataSection5={eventAPI} />
@@ -157,10 +163,12 @@ export async function getStaticProps() {
   const homeNxtAPI = await client.fetch(`
     *[_type == "homeNxt"]
     `)
-
   const eventAPI = await client.fetch(`
   *[_type == "eventList"]
   `)
+  const collabAPI = await client.fetch(`
+      *[_type == "collaboratorList"]
+      `)
   const headerAPI = await client.fetch(`
     *[_type == "header"]
     `)
@@ -174,6 +182,7 @@ export async function getStaticProps() {
     props: {
       homeNxtAPI,
       eventAPI,
+      collabAPI,
       seoAPI,
       headerAPI,
       footerAPI,

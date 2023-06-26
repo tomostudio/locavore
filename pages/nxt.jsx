@@ -46,7 +46,7 @@ import applyScrollTrigger from '@/components/utils/applyScrollTrigger'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 import PillButton from '@/components/modules/pillButton'
 
-export default function Nxt({ homeNxtAPI, eventAPI, seoAPI, footerAPI }) {
+export default function Nxt({ homeNxtAPI, eventAPI, collabAPI, seoAPI, footerAPI }) {
   const router = useRouter()
   const appContext = useAppContext()
   const [homeNxt] = homeNxtAPI
@@ -130,16 +130,18 @@ export default function Nxt({ homeNxtAPI, eventAPI, seoAPI, footerAPI }) {
           <section className="relative p-0 m-0">
             {/* Section 1 */}
             {/* TITLE */}
-            <Section1ComponentInner dataSection1={homeNxt.section1}  />
+            <Section1ComponentInner dataSection1={homeNxt.section1} />
             {/* Section 2 */}
             {/* MENU */}
-            <Section2Option2ComponentInner dataSection2Option2={homeNxt.section2}  />
+            <Section2Option2ComponentInner
+              dataSection2Option2={homeNxt.section2}
+            />
             {/* Section 3 */}
             {/* OUR FACILITIES */}
             <Section3ComponentInner />
             {/* Section 4 */}
             {/* OUR COLLABORATORS */}
-            <Section4ComponentInner />
+            <Section4ComponentInner dataSection4={collabAPI} />
             {/* Section 5 */}
             {/* WHAT'S ON? */}
             <Section5ComponentInner dataSection5={eventAPI} />
@@ -165,6 +167,9 @@ export async function getStaticProps() {
   const eventAPI = await client.fetch(`
   *[_type == "eventList"]
   `)
+  const collabAPI = await client.fetch(`
+      *[_type == "collaboratorList"]
+      `)
   const headerAPI = await client.fetch(`
     *[_type == "header"]
     `)
@@ -178,6 +183,7 @@ export async function getStaticProps() {
     props: {
       homeNxtAPI,
       eventAPI,
+      collabAPI,
       seoAPI,
       headerAPI,
       footerAPI,

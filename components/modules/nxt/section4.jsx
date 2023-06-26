@@ -1,6 +1,6 @@
 import React from 'react'
 import 'intersection-observer' // optional polyfill
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Marquee from 'react-fast-marquee'
 
 // IMPORT LOCAL IMAGE
@@ -8,48 +8,31 @@ import collab1 from '@/public/nxt2/collab1.png'
 import collab2 from '@/public/nxt2/collab2.png'
 import FancyLink from '@/components/utils/fancyLink'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
+import urlFor from '@/helpers/sanity/urlFor'
 
-export const Section4ComponentInner = () => {
-  var dataSection4 = [
-    [
-      {
-        image: collab1,
-      },
-      {
-        image: collab2,
-      },
-      {
-        image: collab1,
-      },
-      {
-        image: collab1,
-      },
-      {
-        image: collab1,
-      },
-    ],
-    [
-      {
-        image: collab2,
-      },
-    ],
-  ]
+export const Section4ComponentInner = ({ dataSection4 }) => {
+  const tambahData = Array(10).fill(dataSection4[0])
 
-  for (var i = 0; i < dataSection4.length; i++) {
-    if (dataSection4[i].length === 5) {
+  const dataSection4Split = []
+  for (let i = 0; i < tambahData.length; i += 5) {
+    dataSection4Split.push(tambahData.slice(i, i + 5))
+  }
+
+  for (var i = 0; i < dataSection4Split.length; i++) {
+    if (dataSection4Split[i].length === 5) {
       // Mendapatkan index acak di dalam array pecahan (kecuali awal dan akhir)
       var randomIndex =
-        Math.floor(Math.random() * (dataSection4[i].length - 2)) + 1
+        Math.floor(Math.random() * (dataSection4Split[i].length - 2)) + 1
 
       // Menambah properti size pada elemen object
-      dataSection4[i][randomIndex] = {
-        ...dataSection4[i][randomIndex],
+      dataSection4Split[i][randomIndex] = {
+        ...dataSection4Split[i][randomIndex],
         size: 'big',
       }
 
       // Menambahkan elemen object kosong pada posisi acak (indeks 0 hingga 4)
       var emptyIndex = Math.floor(Math.random() * 5)
-      dataSection4[i].splice(emptyIndex, 0, {})
+      dataSection4Split[i].splice(emptyIndex, 0, {})
     }
   }
 
@@ -82,7 +65,7 @@ export const Section4ComponentInner = () => {
             )}
             <Marquee gradient={false}>
               <div className="h-[35vh] sm:h-[40vh] md:h-[60vh] grid grid-flow-col auto-cols-max grid-rows-nxt gap-6 pl-6">
-                {dataSection4
+                {dataSection4Split
                   .reduce((prev, next) => prev.concat(next))
                   .map((data, id) =>
                     Object.keys(data).length > 0 ? (
@@ -92,10 +75,16 @@ export const Section4ComponentInner = () => {
                           className="h-full aspect-1 row-span-2 col-span-2 drop-shadow-collaborators"
                         >
                           <Image
-                            src={data.image}
-                            fill
-                            alt={data.alt}
-                            className="object-cover"
+                            src={urlFor(data.image).width(510).url()}
+                            alt={data.image.alt}
+                            layout="fill"
+                            objectFit="cover"
+                            placeholder="blur"
+                            blurDataURL={urlFor(data.image)
+                              .blur(2)
+                              .format('webp')
+                              .width(100)
+                              .url()}
                           />
                         </div>
                       ) : (
@@ -104,10 +93,16 @@ export const Section4ComponentInner = () => {
                           className="relative h-full aspect-1 drop-shadow-collaborators"
                         >
                           <Image
-                            src={data.image}
-                            fill
-                            alt={data.alt}
-                            className="object-cover"
+                            src={urlFor(data.image).width(510).url()}
+                            alt={data.image.alt}
+                            layout="fill"
+                            objectFit="cover"
+                            placeholder="blur"
+                            blurDataURL={urlFor(data.image)
+                              .blur(2)
+                              .format('webp')
+                              .width(100)
+                              .url()}
                           />
                         </div>
                       )
