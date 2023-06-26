@@ -96,8 +96,8 @@ export const Section1ComponentInner = ({ dataSection1 }) => {
               <Image
                 src={NXT_Logo_Bumper}
                 alt=""
-                fill
-                className="object-cover"
+                layout='fill'
+                objectFit='cover'
               />
             </div>
           </m.div>
