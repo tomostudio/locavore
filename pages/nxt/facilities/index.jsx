@@ -26,7 +26,6 @@ const FeaturesAndFacilities = ({
   facilitiesAPI,
   seoAPI,
   footerAPI,
-  facilitiesList,
   facilitiesListScroll,
 }) => {
   const router = useRouter()
@@ -44,7 +43,7 @@ const FeaturesAndFacilities = ({
 
   const facilitiesListGrid = facilitiesListFill.map((e, index) => {
     // Menghitung sisa pembagian dengan 2
-    const remainderMob = facilitiesList.length % 2
+    const remainderMob = facilitiesAPI.length % 2
 
     const numberToAddMob = remainderMob === 0 ? 0 : 2 - remainderMob
     const facilitiesListGridMobile = facilitiesAPI.concat(
@@ -147,103 +146,9 @@ export async function getStaticProps() {
                     *[_type == "header"]
                     `)
 
-  const facilitiesList = [
-    {
-      title: 'LOCALAB',
-      image1: feature1,
-      image2: feature1_color,
-      size: 150,
-      position: 'bottom',
-    },
-    {
-      title: 'DISTILLERY',
-      image1: feature4,
-      image2: feature4_color,
-      size: 120,
-      position: 'top',
-    },
-    {
-      title: 'FOOD FOREST',
-      image1: feature6,
-      image2: feature6_color,
-      size: 120,
-      position: 'center',
-    },
-    {
-      title: 'BAR',
-      image1: feature5,
-      image2: feature5_color,
-      size: 'normal',
-      position: 'center',
-    },
-    {
-      title: 'CANTEEN',
-      image1: feature1,
-      image2: feature1_color,
-      size: 150,
-      position: 'top',
-    },
-    {
-      title: 'DINING RESTAURANT',
-      image1: feature4,
-      image2: feature4_color,
-      size: 120,
-      position: 'bottom',
-    },
-    {
-      title: 'MUSHROOM CHAMBER',
-      image1: feature6,
-      image2: feature6_color,
-      size: 120,
-      position: 'center',
-    },
-    {
-      title: 'ALGAE CULTURE',
-      image1: feature5,
-      image2: feature5_color,
-      size: 'normal',
-      position: 'center',
-    },
-    {
-      title: 'BASEMENT',
-      image1: feature1,
-      image2: feature1_color,
-      size: 150,
-      position: 'bottom',
-    },
-    {
-      title: 'CONCEPT STORE',
-      image1: feature4,
-      image2: feature4_color,
-      size: 120,
-      position: 'top',
-    },
-    {
-      title: 'GALLERY',
-      image1: feature6,
-      image2: feature6_color,
-      size: 120,
-      position: 'center',
-    },
-    {
-      title: 'GARDENS',
-      image1: feature5,
-      image2: feature5_color,
-      size: 'normal',
-      position: 'center',
-    },
-    {
-      title: 'AUDITORIUM',
-      image1: feature1,
-      image2: feature1_color,
-      size: 150,
-      position: 'bottom',
-    },
-  ]
-
   const facilitiesListScroll = facilitiesAPI.map((e) => ({
     ...e,
-    zIndex: Math.floor(Math.random() * facilitiesList.length) + 1,
+    zIndex: Math.floor(Math.random() * facilitiesAPI.length) + 1,
   }))
   return {
     props: {
@@ -251,7 +156,6 @@ export async function getStaticProps() {
       seoAPI,
       footerAPI,
       headerAPI,
-      facilitiesList,
       facilitiesListScroll,
     },
   }

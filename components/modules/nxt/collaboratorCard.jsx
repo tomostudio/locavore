@@ -83,7 +83,7 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
                   <div className="relative aspect-[3/2] sm:aspect-[6/5] w-full rounded-md overflow-hidden mr-1">
                     <Image
                       src={urlFor(data.thumbnail.imageBnw).width(600).url()}
-                      alt=""
+                      alt={data.thumbnail.imageBnw.alt}
                       layout="fill"
                       objectFit="cover"
                       placeholder="blur"
@@ -96,7 +96,7 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
                     />
                     <Image
                       src={urlFor(data.thumbnail.imageColor).width(600).url()}
-                      alt=""
+                      alt={data.thumbnail.imageColor.alt}
                       layout="fill"
                       objectFit="cover"
                       placeholder="blur"
@@ -127,7 +127,7 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
               <div className="relative w-full aspect-[3/2]">
                 <Image
                   src={urlFor(data.thumbnail.imageBnw).width(600).url()}
-                  alt=""
+                  alt={data.thumbnail.imageBnw.alt}
                   layout="fill"
                   objectFit="cover"
                   placeholder="blur"
@@ -140,7 +140,7 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
                 />
                 <Image
                   src={urlFor(data.thumbnail.imageColor).width(600).url()}
-                  alt=""
+                  alt={data.thumbnail.imageColor.alt}
                   layout="fill"
                   objectFit="cover"
                   placeholder="blur"

@@ -69,7 +69,7 @@ export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
               <div className="relative w-full h-[25vw]">
                 <Image
                   src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
-                  alt=""
+                  alt={dataSection2Option3.imageNormal.alt}
                   layout='fill'
                   objectFit='contain'
                   placeholder="blur"
@@ -91,7 +91,7 @@ export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
               <div className="relative w-full h-[25vw]">
                 <Image
                   src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
-                  alt=""
+                  alt={dataSection2Option3.imageNormal.alt}
                   layout='fill'
                   objectFit='contain'
                   placeholder="blur"

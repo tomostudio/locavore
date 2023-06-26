@@ -210,10 +210,10 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
               </FancyLink>
             </div>
             <div className="relative w-full aspect-[361/243] my-9 sm:my-14">
-              <div className="relative w-full h-full hidden sm:block">
+              <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
                 <Image
                   src={urlFor(visit.map.mapDesktop).width(722).url()}
-                  alt=""
+                  alt={visit.map.mapDesktop.alt}
                   layout="fill"
                   objectFit="cover"
                   placeholder="blur"
@@ -227,7 +227,7 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
               <div className="absolute top-0 left-0 w-full h-full sm:hidden">
                 <Image
                   src={urlFor(visit.map.mapMobile).width(321).url()}
-                  alt=""
+                  alt={visit.map.mapMobile.alt}
                   layout="fill"
                   objectFit="cover"
                   placeholder="blur"

@@ -137,23 +137,24 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
         <HeaderGap />
         <Container className="relative flex flex-col mt-6 mb-10 md:my-20">
           <div className="relative w-full aspect-[345/442] sm:aspect-[8/3] rounded-[15px] overflow-hidden">
-            <Image
-              src={urlFor(event.image.imageDesktop).width(1200).url()}
-              alt=""
-              layout="fill"
-              objectFit="cover"
-              placeholder="blur"
-              blurDataURL={urlFor(event.image.imageDesktop)
-                .blur(2)
-                .format('webp')
-                .width(100)
-                .url()}
-              className="sm:block"
-            />
+            <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
+              <Image
+                src={urlFor(event.image.imageDesktop).width(1200).url()}
+                alt={event.image.imageDesktop.alt}
+                layout="fill"
+                objectFit="cover"
+                placeholder="blur"
+                blurDataURL={urlFor(event.image.imageDesktop)
+                  .blur(2)
+                  .format('webp')
+                  .width(100)
+                  .url()}
+              />
+            </div>
             <div className="absolute top-0 left-0 w-full h-full sm:hidden">
               <Image
                 src={urlFor(event.image.imageMobile).width(345).url()}
-                alt=""
+                alt={event.image.imageMobile.alt}
                 layout="fill"
                 objectFit="cover"
                 placeholder="blur"

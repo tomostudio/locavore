@@ -163,7 +163,7 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
               <div className="relative w-full h-full rounded-[15px] overflow-hidden">
                 <Image
                   src={urlFor(collaborator.image).width(590).url()}
-                  alt=""
+                  alt={collaborator.image.alt}
                   layout="fill"
                   objectFit="cover"
                   placeholder="blur"

@@ -94,7 +94,7 @@ export const Section4ComponentInner = () => {
                           <Image
                             src={data.image}
                             fill
-                            alt=""
+                            alt={data.alt}
                             className="object-cover"
                           />
                         </div>
@@ -106,36 +106,15 @@ export const Section4ComponentInner = () => {
                           <Image
                             src={data.image}
                             fill
-                            alt=""
+                            alt={data.alt}
                             className="object-cover"
                           />
                         </div>
                       )
                     ) : (
-                      <div className="h-full aspect-1" />
+                      <div key={id} className="h-full aspect-1" />
                     ),
                   )}
-                {/* <div className="relative h-full aspect-1 drop-shadow-collaborators">
-                  <Image src={collab1} fill alt="" className="object-cover" />
-                </div>
-                <div className="h-full aspect-1" />
-                <div className="h-full aspect-1 row-span-2 col-span-2 drop-shadow-collaborators">
-                  <Image src={collab2} fill alt="" className="object-cover" />
-                </div>
-                <div className="relative h-full aspect-1 drop-shadow-collaborators">
-                  <Image src={collab1} fill alt="" className="object-cover" />
-                </div>
-                <div className="h-full aspect-1" />
-                <div className="relative h-full aspect-1 drop-shadow-collaborators">
-                  <Image src={collab1} fill alt="" className="object-cover" />
-                </div>
-                <div className="relative h-full aspect-1 drop-shadow-collaborators">
-                  <Image src={collab1} fill alt="" className="object-cover" />
-                </div>
-                <div className="h-full aspect-1" />
-                <div className="relative h-full aspect-1 drop-shadow-collaborators">
-                  <Image src={collab1} fill alt="" className="object-cover" />
-                </div> */}
               </div>
             </Marquee>
           </div>

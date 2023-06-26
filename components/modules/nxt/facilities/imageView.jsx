@@ -77,7 +77,7 @@ const ImageView = ({
                       <div className="absolute w-full h-full top-0 left-0 z-10 duration-300 transition-all group-hover:opacity-0">
                         <Image
                           src={urlFor(data.thumbnail.imageBnw).width(350).url()}
-                          alt=""
+                          alt={data.thumbnail.imageBnw.alt}
                           layout="fill"
                           objectFit="contain"
                           placeholder="blur"
@@ -90,7 +90,7 @@ const ImageView = ({
                       </div>
                       <Image
                         src={urlFor(data.thumbnail.imageColor).width(350).url()}
-                        alt=""
+                        alt={data.thumbnail.imageColor.alt}
                         layout="fill"
                         objectFit="contain"
                         placeholder="blur"
@@ -214,7 +214,7 @@ const ImageView = ({
                   <div className="absolute top-0 left-0 w-full h-full duration-300 z-10 transition-all group-hover:opacity-0">
                     <Image
                       src={urlFor(data.thumbnail.imageBnw).width(350).url()}
-                      alt=""
+                      alt={data.thumbnail.imageBnw.alt}
                       layout="fill"
                       objectFit="contain"
                       placeholder="blur"
@@ -227,7 +227,7 @@ const ImageView = ({
                   </div>
                   <Image
                     src={urlFor(data.thumbnail.imageColor).width(350).url()}
-                    alt=""
+                    alt={data.thumbnail.imageColor.alt}
                     layout="fill"
                     objectFit="contain"
                     placeholder="blur"

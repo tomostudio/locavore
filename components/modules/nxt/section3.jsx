@@ -11,6 +11,7 @@ import ground from '@/public/nxt/ground.webp'
 import firstFloor from '@/public/nxt/1st-floor.webp'
 import secondFloor from '@/public/nxt/2nd-floor.webp'
 import tunnel from '@/public/nxt/tunnel.webp'
+import { Parallax } from 'react-scroll-parallax'
 
 export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
   return (
@@ -42,40 +43,40 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
                   id="tunnel"
                   className="absolute w-[100%] z-40 top-1/2  translate-y-[-95%]"
                 >
-                  <Image src={tunnel} alt="" />
+                  <Image src={tunnel} alt="Tunnel" />
                 </div>
                 <div
                   id="second_floor"
                   className="absolute w-[100%] z-30 top-1/2  translate-y-[-87%]"
                 >
-                  <Image src={secondFloor} alt="" />
+                  <Image src={secondFloor} alt="Second Floor" />
                 </div>
                 <div
                   id="first_floor"
                   className="absolute w-[100%] z-20 top-1/2  translate-y-[-62%]"
                 >
-                  <Image src={firstFloor} alt="" />
+                  <Image src={firstFloor} alt="First Floor" />
                 </div>
                 <div
                   id="ground"
                   className="absolute w-[100%]  z-10 top-1/2  translate-y-[-30%]"
                 >
-                  <Image src={ground} alt="" />
+                  <Image src={ground} alt="Ground" />
                 </div>
                 <div
                   id="lower_ground"
                   className="absolute w-[100%]  top-1/2 translate-y-[-5%]"
                 >
-                  <Image src={lower_ground} alt="" />
+                  <Image src={lower_ground} alt="Lower Ground" />
                 </div>
               </div>
             </Container>
-            <div className="absolute top-0 left-0 w-full h-full overflow-visible">
+            <Parallax speed={10} className="absolute top-0 left-0 w-full h-full overflow-visible">
               <div
                 id="bg-white-scale"
                 className="relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[0vw] h-[0vw] bg-white rounded-full"
               />
-            </div>
+            </Parallax>
           </div>
         </div>
         <div id="enter-bg-white-scale" className="h-[25vh]" />

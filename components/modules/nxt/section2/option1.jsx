@@ -37,7 +37,7 @@ export const Section2Option1ComponentInner = ({ dataSection2Option1 }) => {
         <Parallax className="absolute w-full h-full" speed={-10}>
           <Image
             src={urlFor(dataSection2Option1.imageWide).width(1440).url()}
-            alt=""
+            alt={dataSection2Option1.imageWide.alt}
             layout="fill"
             objectFit="cover"
             placeholder="blur"

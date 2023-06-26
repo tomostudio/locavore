@@ -24,6 +24,7 @@ const EventCard = ({
       <div className="event-image relative w-full aspect-[1/1] my-5 border-2 group-hover:border-[#BEC29D] border-white">
         <Image
           src={urlFor(image_bnw).width(500).url()}
+          alt={image_bnw.alt}
           layout="fill"
           objectFit="cover"
           placeholder="blur"
@@ -36,6 +37,7 @@ const EventCard = ({
         />
         <Image
           src={urlFor(image).width(500).url()}
+          alt={image.alt}
           layout="fill"
           objectFit="cover"
           placeholder="blur"

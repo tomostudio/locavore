@@ -62,7 +62,7 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
                 <div key={id} className="relative aspect-[18/29]">
                   <Image
                     src={urlFor(data).width(720).url()}
-                    alt=""
+                    alt={data.alt}
                     layout="fill"
                     objectFit="cover"
                     placeholder="blur"
@@ -88,7 +88,7 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
                   <div key={id} className="relative w-[80vw] h-full">
                     <Image
                       src={urlFor(data).width(720).url()}
-                      alt=""
+                      alt={data.alt}
                       layout="fill"
                       objectFit="cover"
                       placeholder="blur"
@@ -110,7 +110,7 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
               {facilities.title}
             </h1>
             <div className="relative w-[87px] sm:w-[100px] md:w-[165px] h-[87px] sm:h-[100px] md:h-[165px] my-10 md:my-16">
-              <Image src={leaf} alt="" fill className='object-contain' />
+              <Image src={leaf} alt="Leaf" fill className='object-contain' />
             </div>
             <EditorComponent data={facilities.description} color="#fff" fontColor="text-white" textAlign="text-center" />
           </div>

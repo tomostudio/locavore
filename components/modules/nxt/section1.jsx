@@ -16,7 +16,7 @@ export const Section1ComponentInner = ({ dataSection1 }) => {
       <div className="absolute top-0 left-0 w-full h-full hidden sm:block z-10">
         <Image
           src={urlFor(dataSection1.image.imageDesktop).width(1440).url()}
-          alt=""
+          alt={dataSection1.image.imageDesktop.alt}
           layout="fill"
           objectFit="cover"
           placeholder="blur"
@@ -27,19 +27,20 @@ export const Section1ComponentInner = ({ dataSection1 }) => {
             .url()}
         />
       </div>
-      <Image
-        src={urlFor(dataSection1.image.imageMobile).width(600).url()}
-        alt=""
-        layout="fill"
-        objectFit="cover"
-        placeholder="blur"
-        blurDataURL={urlFor(dataSection1.image.imageMobile)
-          .blur(2)
-          .format('webp')
-          .width(500)
-          .url()}
-        className="sm:hidden"
-      />
+      <div className="absolute top-0 left-0 w-full h-full sm:hidden">
+        <Image
+          src={urlFor(dataSection1.image.imageMobile).width(600).url()}
+          alt={dataSection1.image.imageMobile.alt}
+          layout="fill"
+          objectFit="cover"
+          placeholder="blur"
+          blurDataURL={urlFor(dataSection1.image.imageMobile)
+            .blur(2)
+            .format('webp')
+            .width(500)
+            .url()}
+        />
+      </div>
       <m.div
         id="black-layer"
         initial="initial"

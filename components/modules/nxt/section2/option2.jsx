@@ -61,7 +61,7 @@ export const Section2Option2ComponentInner = ({ dataSection2Option2 }) => {
         <div className="relative w-full max-w-xl h-[50vh] max-h-[500px]">
           <Image
             src={urlFor(dataSection2Option2.imageNormal).width(798).url()}
-            alt=""
+            alt={dataSection2Option2.imageNormal.alt}
             layout='fill'
             objectFit='contain'
             placeholder="blur"

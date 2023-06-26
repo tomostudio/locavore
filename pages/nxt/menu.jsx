@@ -52,10 +52,10 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
         className="no-select-all bg-black"
       >
         <div className="relative w-full aspect-[3/4] sm:aspect-[95/33] flex items-center sm:items-end">
-          <div className="relative w-full hidden sm:block">
+          <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
             <Image
               src={urlFor(menu.hero.image.imageDesktop).width(1140).url()}
-              alt=""
+              alt={menu.hero.image.imageDesktop.alt}
               layout="fill"
               objectFit="cover"
               placeholder="blur"
@@ -69,7 +69,7 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
           <div className="absolute top-0 left-0 w-full h-full sm:hidden">
             <Image
               src={urlFor(menu.hero.image.imageMobile).width(375).url()}
-              alt=""
+              alt={menu.hero.image.imageMobile.alt}
               layout="fill"
               objectFit="cover"
               placeholder="blur"
@@ -97,7 +97,7 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
                 {menu.title}
               </span>
               <div className="relative mx-auto my-10">
-                <Image src={leaf} alt="" style={{ objectFit: 'contain' }} />
+                <Image src={leaf} alt="Leaf" objectFit='contain' />
               </div>
               <EditorComponent data={menu.article[0].content} color={'#fff'} />
             </div>

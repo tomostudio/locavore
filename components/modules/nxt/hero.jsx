@@ -8,7 +8,7 @@ const HeroComponent = ({ imageDesktop, imageMobile, title }) => {
       <div className="absolute top-0 left-0 w-full h-full hidden sm:block z-10">
         <Image
           src={urlFor(imageDesktop).width(1140).url()}
-          alt=""
+          alt={imageDesktop.alt}
           layout="fill"
           objectFit="cover"
           placeholder="blur"
@@ -19,19 +19,20 @@ const HeroComponent = ({ imageDesktop, imageMobile, title }) => {
             .url()}
         />
       </div>
-      <Image
-        src={urlFor(imageMobile).width(1140).url()}
-        alt=""
-        layout="fill"
-        objectFit="cover"
-        placeholder="blur"
-        blurDataURL={urlFor(imageMobile)
-          .blur(2)
-          .format('webp')
-          .width(100)
-          .url()}
-        className="sm:hidden"
-      />
+      <div className="absolute top-0 left-0 w-full h-full sm:hidden">
+        <Image
+          src={urlFor(imageMobile).width(375).url()}
+          alt={imageMobile.alt}
+          layout="fill"
+          objectFit="cover"
+          placeholder="blur"
+          blurDataURL={urlFor(imageMobile)
+            .blur(2)
+            .format('webp')
+            .width(100)
+            .url()}
+        />
+      </div>
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 z-10" />
       <HeaderGap />
       <div className="w-full flex grow-1 items-center sm:items-end justify-center z-20">
