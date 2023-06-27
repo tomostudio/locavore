@@ -46,6 +46,15 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
       code: (props) => (
         <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
       ),
+      buttonLink: (props) => (
+        <FancyLink
+          blank="_blank"
+          destination={props.value.link}
+          className={`w-fit p-4 mx-auto text-d-small uppercase text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+        >
+          {props.value.title}
+        </FancyLink>
+      ),
     },
     marks: {
       add_ann: (props) =>

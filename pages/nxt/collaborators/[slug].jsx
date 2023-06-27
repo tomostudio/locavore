@@ -45,6 +45,15 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
       code: (props) => (
         <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
       ),
+      buttonLink: (props) => (
+        <FancyLink
+          blank="_blank"
+          destination={props.value.link}
+          className={`w-fit p-4 mx-auto text-d-small uppercase text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
+        >
+          {props.value.title}
+        </FancyLink>
+      ),
     },
     marks: {
       add_ann: (props) =>

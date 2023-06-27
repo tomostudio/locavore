@@ -19,6 +19,8 @@ import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import urlFor from '@/helpers/sanity/urlFor'
 import EditorComponent from '@/components/modules/editorial/editorComponent'
+import { PortableText } from '@portabletext/react'
+import FancyLink from '@/components/utils/fancyLink'
 
 const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -26,6 +28,95 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
   const [facilities] = facilitiesAPI
   const [seo] = seoAPI
   const [footer] = footerAPI
+
+  const serializer = {
+    block: {
+      normal: ({ children }) =>
+        children[0] === '' ? <br /> : <p>{children}</p>,
+      h1: ({ children }) => <h1>{children}</h1>,
+      h2: ({ children }) => <h2>{children}</h2>,
+      h3: ({ children }) => <h3>{children}</h3>,
+      h4: ({ children }) => <h4>{children}</h4>,
+      h5: ({ children }) => <h5>{children}</h5>,
+      center: ({ children }) => <p align="center">{children}</p>,
+      left: ({ children }) => <p align="left">{children}</p>,
+      right: ({ children }) => <p align="right">{children}</p>,
+    },
+    list: {
+      number: ({ children }) => <ol className="list-decimal">{children}</ol>,
+    },
+    types: {
+      code: (props) => (
+        <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
+      ),
+      buttonLink: (props) => (
+        <FancyLink
+          blank="_blank"
+          destination={props.value.link}
+          className={`w-fit p-4 mx-auto text-d-small uppercase text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+        >
+          {props.value.title}
+        </FancyLink>
+      ),
+    },
+    marks: {
+      add_ann: (props) =>
+        props.value?.link ? (
+          <FancyLink
+            destination={props.value.link}
+            blank={props.value.target_blank}
+            style={{
+              color: props.value?.textColor
+                ? props.value?.textColor.hex
+                : 'currentColor',
+              backgroundColor: props.value?.bgColor
+                ? props.value?.bgColor
+                : 'transparent',
+              fontSize: props.value?.fontSize
+                ? props.value?.fontSize
+                : 'initial',
+            }}
+            className={
+              props.value?.font
+                ? props.value?.font === 'display'
+                  ? 'font-default'
+                  : props.value.font
+                : 'font-default'
+            }
+          >
+            {props.children}
+          </FancyLink>
+        ) : (
+          <span
+            style={{
+              color: props.value?.textColor
+                ? props.value?.textColor.hex
+                : 'currentColor',
+              backgroundColor: props.value?.bgColor
+                ? props.value?.bgColor
+                : 'transparent',
+              fontSize: props.value?.fontSize
+                ? props.value?.fontSize
+                : 'initial',
+            }}
+            className={
+              props.value?.font
+                ? props.value?.font === 'display'
+                  ? 'font-default'
+                  : props.value.font
+                : 'font-default'
+            }
+          >
+            {props.children}
+          </span>
+        ),
+      largerSize: (props) => (
+        <span style={{ fontSize: '1.5em' }}>{props.children}</span>
+      ),
+      sub: (props) => <sub>{props.children}</sub>,
+      sup: (props) => <sup>{props.children}</sup>,
+    },
+  }
 
   useEffect(() => {
     document.querySelector('body').style.backgroundColor = 'black'
@@ -110,9 +201,14 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
               {facilities.title}
             </h1>
             <div className="relative w-[87px] sm:w-[100px] md:w-[165px] h-[87px] sm:h-[100px] md:h-[165px] my-10 md:my-16">
-              <Image src={leaf} alt="Leaf" fill className='object-contain' />
+              <Image src={leaf} alt="Leaf" fill className="object-contain" />
             </div>
-            <EditorComponent data={facilities.description} color="#fff" fontColor="text-white" textAlign="text-center" />
+            <div className="relative w-full text-center text-white editor-styling px-20">
+              <PortableText
+                value={facilities.description}
+                components={serializer}
+              />
+            </div>
           </div>
         </Container>
         {/* Button Sticky */}
