@@ -11,7 +11,7 @@ import FancyLink from '@/components/utils/fancyLink'
 
 import hero from '@/public/nxt2/visit/hero.png'
 import map from '@/public/nxt2/visit/map.png'
-import hero_mobile from '@/public/nxt2/visit/hero_mobile.png'
+import map_mobile from '@/public/nxt2/visit/map_mobile.png'
 import Container from '@/components/modules/container'
 import card_bnw from '@/public/nxt2/card_bnw.png'
 import card from '@/public/nxt2/card.png'
@@ -212,30 +212,18 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             <div className="relative w-full aspect-[361/243] my-9 sm:my-14">
               <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
                 <Image
-                  src={urlFor(visit.map.mapDesktop).width(722).url()}
-                  alt={visit.map.mapDesktop.alt}
+                  src={map}
+                  alt="Map"
                   layout="fill"
                   objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={urlFor(visit.map.mapDesktop)
-                    .blur(2)
-                    .format('webp')
-                    .width(100)
-                    .url()}
                 />
               </div>
               <div className="absolute top-0 left-0 w-full h-full sm:hidden">
                 <Image
-                  src={urlFor(visit.map.mapMobile).width(321).url()}
-                  alt={visit.map.mapMobile.alt}
+                  src={map_mobile}
+                  alt="Map"
                   layout="fill"
                   objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={urlFor(visit.map.mapMobile)
-                    .blur(2)
-                    .format('webp')
-                    .width(100)
-                    .url()}
                 />
               </div>
             </div>
@@ -252,8 +240,8 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             <div className="w-full border-y border-white grid grid-cols-3 gap-y-8 py-8 sm:py-12">
               {visit.contents.map((data, id) => (
                 <>
-                  {id % 2 !== 0 && <div className="w-full hidden sm:block" />}
-                  <div className="w-full flex flex-col col-span-3 sm:col-span-2">
+                  {id % 2 !== 0 && <div key={id} className="w-full hidden sm:block" />}
+                  <div key={id} className="w-full flex flex-col col-span-3 sm:col-span-2">
                     <span className="font-serif italic text-[20px] sm:text-[24px] flex items-center">
                       <Arrow
                         position="right"
@@ -270,7 +258,7 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
                       />
                     </div>
                   </div>
-                  {id % 2 === 0 && <div className="w-full hidden sm:block" />}
+                  {id % 2 === 0 && <div key={id} className="w-full hidden sm:block" />}
                 </>
               ))}
             </div>
