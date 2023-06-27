@@ -211,12 +211,7 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             </div>
             <div className="relative w-full aspect-[361/243] my-9 sm:my-14">
               <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
-                <Image
-                  src={map}
-                  alt="Map"
-                  layout="fill"
-                  objectFit="cover"
-                />
+                <Image src={map} alt="Map" layout="fill" objectFit="cover" />
               </div>
               <div className="absolute top-0 left-0 w-full h-full sm:hidden">
                 <Image
@@ -232,16 +227,21 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             </div>
             <FancyLink
               target="_blank"
-              destination="https://book.locavorenext.com"
-              className={`w-fit p-4 mt-10 sm:mt-12 mx-auto text-d-small mb-12 sm:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              destination={visit.booking.link}
+              className={`w-fit p-4 mt-10 sm:mt-12 mx-auto text-d-small uppercase mb-12 sm:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
             >
-              BOOK HERE
+              {visit.booking.title}
             </FancyLink>
             <div className="w-full border-y border-white grid grid-cols-3 gap-y-8 py-8 sm:py-12">
               {visit.contents.map((data, id) => (
                 <>
-                  {id % 2 !== 0 && <div key={id} className="w-full hidden sm:block" />}
-                  <div key={id} className="w-full flex flex-col col-span-3 sm:col-span-2">
+                  {id % 2 !== 0 && (
+                    <div key={id} className="w-full hidden sm:block" />
+                  )}
+                  <div
+                    key={id}
+                    className="w-full flex flex-col col-span-3 sm:col-span-2"
+                  >
                     <span className="font-serif italic text-[20px] sm:text-[24px] flex items-center">
                       <Arrow
                         position="right"
@@ -258,7 +258,9 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
                       />
                     </div>
                   </div>
-                  {id % 2 === 0 && <div key={id} className="w-full hidden sm:block" />}
+                  {id % 2 === 0 && (
+                    <div key={id} className="w-full hidden sm:block" />
+                  )}
                 </>
               ))}
             </div>
@@ -269,10 +271,10 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             </span>
             <FancyLink
               target="_blank"
-              destination="https://book.locavorenext.com"
-              className={`w-fit p-4 mx-auto text-d-small mt-6 sm:mt-12 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              destination={visit.booking.link}
+              className={`w-fit p-4 mx-auto text-d-small uppercase mt-6 sm:mt-12 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
             >
-              BOOK HERE
+              {visit.booking.title}
             </FancyLink>
           </div>
         </div>
