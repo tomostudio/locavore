@@ -87,7 +87,7 @@ const OurCollaborators = ({
             </FancyLink>
           )}
         </div>
-        <NxtNavigation focus="collab" />
+        <NxtNavigation />
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

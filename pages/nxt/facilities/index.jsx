@@ -125,7 +125,7 @@ const FeaturesAndFacilities = ({
             facilitiesListScroll={facilitiesListScroll}
           />
         </motion.div>
-        <NxtNavigation focus="facilities" />
+        <NxtNavigation />
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

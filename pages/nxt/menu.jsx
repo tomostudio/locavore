@@ -103,7 +103,7 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
             </div>
           </Container>
         </div>
-        <NxtNavigation focus="menu" />
+        <NxtNavigation />
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>

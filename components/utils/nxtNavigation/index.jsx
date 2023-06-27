@@ -3,7 +3,7 @@ import NxtNavigationDesktop from './desktop'
 import NxtNavigationMobile from './mobile'
 import { useEffect, useState } from 'react'
 
-const NxtNavigation = ({ focus = '', transition = false }) => {
+const NxtNavigation = ({ transition = false }) => {
   const [resizeTransition, setResizeTransition] = useState(transition)
   useEffect(() => {
     window.addEventListener('resize', () => {
@@ -12,9 +12,9 @@ const NxtNavigation = ({ focus = '', transition = false }) => {
   }, [])
 
   return useMediaQuery('(min-width: 1060px)') ? (
-    <NxtNavigationDesktop transition={resizeTransition} focus={focus} />
+    <NxtNavigationDesktop transition={resizeTransition} />
   ) : (
-    <NxtNavigationMobile transition={resizeTransition} focus={focus} />
+    <NxtNavigationMobile transition={resizeTransition} />
   )
 }
 

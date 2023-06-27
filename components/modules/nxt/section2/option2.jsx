@@ -13,7 +13,7 @@ export const Section2Option2ComponentInner = ({ dataSection2Option2 }) => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
-        <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-10">
+        <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-20">
           <PillButton
             destination="/"
             className="uppercase bg-red-500 text-white"
@@ -48,7 +48,7 @@ export const Section2Option2ComponentInner = ({ dataSection2Option2 }) => {
             </div>
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none flex justify-center items-end">
               <FancyLink
-                className={`w-fit p-4 mb-[4.5rem] text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                className={`w-fit p-4 mb-20 lg:mb-[4.5rem] text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
                 destination="/nxt/menu"
               >
                 VIEW MENU

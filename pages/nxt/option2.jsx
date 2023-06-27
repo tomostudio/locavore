@@ -26,6 +26,7 @@ import {
 import {
   Section3AnimationOBJ,
   Section3AnimationOBJMobile,
+  Section3AnimationOBJPortrait,
   Section3ComponentInner,
 } from '@/components/modules/nxt/section3'
 
@@ -60,17 +61,17 @@ export default function Nxt({
 
   // ANIMATION
   const animationObj = {
+    '(orientation: landscape)': [...Section3AnimationOBJ()],
+    '(orientation: portrait)': [...Section3AnimationOBJPortrait()],
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
       ...Section2Option2AnimationOBJ,
-      ...Section3AnimationOBJ(),
       ...Section4AnimationOBJ,
       ...Section5AnimationOBJ,
     ],
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
       ...Section2Option2AnimationOBJ,
-      ...Section3AnimationOBJMobile(),
       ...Section4AnimationOBJ,
       ...Section5AnimationOBJMobile,
     ],

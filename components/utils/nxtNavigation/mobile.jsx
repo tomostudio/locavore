@@ -2,8 +2,10 @@ import Container from '@/components/modules/container'
 import FancyLink from '../fancyLink'
 import { useState } from 'react'
 import { m } from 'framer-motion'
+import { useRouter } from 'next/router'
 
-const NxtNavigationMobile = ({ focus = '', transition = false }) => {
+const NxtNavigationMobile = ({ transition = false }) => {
+  const router = useRouter()
   const [open, setOpen] = useState(false)
   return (
     <m.div
@@ -31,22 +33,24 @@ const NxtNavigationMobile = ({ focus = '', transition = false }) => {
       <div className="relative w-full">
         <Container className="mx-auto flex flex-wrap text-black w-full min-h-[50px]">
           <div className="relative w-full">
-            <div className="absolute bottom-0 left-0 w-full px-2 pb-2">
+            <div className="relative w-full px-2">
               <FancyLink
                 className="relative w-full h-[50px] rounded-full bg-[#BEC29D] border border-black text-black z-2"
                 onClick={() => {
                   setOpen(!open)
                 }}
               >
-                {focus === 'menu'
+                {router.pathname === '/nxt' || router.pathname === '/'
+                  ? 'NXT'
+                  : router.pathname === '/nxt/menu'
                   ? 'MENU'
-                  : focus === 'facilities'
+                  : router.pathname === '/nxt/facilities'
                   ? 'FACILITIES'
-                  : focus === 'collab'
+                  : router.pathname === '/nxt/collaborators'
                   ? 'COLLABORATORS'
-                  : focus === 'visit'
+                  : router.pathname === '/nxt/visit'
                   ? 'VISIT'
-                  : focus == 'events'
+                  : router.pathname == '/nxt/events-programs'
                   ? 'EVENTS & PROGRAMS'
                   : ''}
                 <div className="absolute right-6 top-1/2 -translate-y-1/2">
@@ -62,11 +66,11 @@ const NxtNavigationMobile = ({ focus = '', transition = false }) => {
               </FancyLink>
             </div>
             <div
-              className={`py-2 w-full ${
+              className={`absolute -bottom-2 left-0 w-full ${
                 open ? 'flex' : 'hidden'
               } flex flex-col bg-white rounded-[25px] overflow-hidden`}
             >
-              {focus !== 'menu' && (
+              {router.pathname !== '/nxt/menu' && (
                 <FancyLink
                   className="w-full h-[50px] bg-white mb-2 setflex-center"
                   destination="/nxt/menu"
@@ -74,7 +78,7 @@ const NxtNavigationMobile = ({ focus = '', transition = false }) => {
                   MENU
                 </FancyLink>
               )}
-              {focus !== 'facilities' && (
+              {router.pathname !== '/nxt/facilities' && (
                 <FancyLink
                   className="w-full h-[50px] bg-white mb-2 setflex-center"
                   destination="/nxt/facilities"
@@ -82,7 +86,7 @@ const NxtNavigationMobile = ({ focus = '', transition = false }) => {
                   FACILITIES
                 </FancyLink>
               )}
-              {focus !== 'collab' && (
+              {router.pathname !== '/nxt/collaborators' && (
                 <FancyLink
                   className="w-full h-[50px] bg-white mb-2 setflex-center"
                   destination="/nxt/collaborators"
@@ -90,7 +94,7 @@ const NxtNavigationMobile = ({ focus = '', transition = false }) => {
                   COLLABORATORS
                 </FancyLink>
               )}
-              {focus !== 'events' && (
+              {router.pathname !== '/nxt/events-programs' && (
                 <FancyLink
                   className="w-full h-[50px] bg-white mb-2 setflex-center"
                   destination="/nxt/events-programs"
@@ -98,7 +102,7 @@ const NxtNavigationMobile = ({ focus = '', transition = false }) => {
                   EVENTS & PROGRAMS
                 </FancyLink>
               )}
-              {focus !== 'visit' && (
+              {router.pathname !== '/nxt/visit' && (
                 <FancyLink
                   className="w-full h-[50px] bg-white mb-2 setflex-center"
                   destination="/nxt/visit"

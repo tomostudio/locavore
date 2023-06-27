@@ -288,7 +288,7 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             </FancyLink>
           </div>
         </div>
-        <NxtNavigation focus="visit" />
+        <NxtNavigation />
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
