@@ -14,16 +14,16 @@ export const Section5ComponentInner = ({ dataSection5 }) => {
   return (
     <>
       <section id="trigger5" className="trigger relative w-full flex flex-col">
-        <Container className="mb-10">
-          <div className="relative w-full flex flex-col items-center sm:border-2 border-white rounded-2xl sm:px-16 md:p-20">
-            <div className="hidden sm:block absolute top-7 left-7 w-4 h-4 bg-white rounded-50%" />
-            <div className="hidden sm:block absolute top-7 right-7 w-4 h-4 bg-white rounded-50%" />
-            <div className="hidden sm:block absolute bottom-7 left-7 w-4 h-4 bg-white rounded-50%" />
-            <div className="hidden sm:block absolute bottom-7 right-7 w-4 h-4 bg-white rounded-50%" />
+        <Container className="my-10">
+          <div className="relative w-full flex flex-col items-center sm:border  border-white rounded-2xl sm:px-12 sm:py-12 md:p-20">
+            <div className="hidden md:block absolute top-7 left-7 w-4 h-4 bg-white rounded-50%" />
+            <div className="hidden md:block absolute top-7 right-7 w-4 h-4 bg-white rounded-50%" />
+            <div className="hidden md:block absolute bottom-7 left-7 w-4 h-4 bg-white rounded-50%" />
+            <div className="hidden md:block absolute bottom-7 right-7 w-4 h-4 bg-white rounded-50%" />
             <span className="text-[#BEC29D] text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full">
               WHAT'S ON?
             </span>
-            <div className="w-full my-10 sm:my-12 md:my-16 flex flex-wrap md:flex-nowrap gap-8">
+            <div className="w-full max-w-xs sm:max-w-none mx-auto mt-8 mb-8 sm:mt-8 sm:mb-8 md:my-16 flex flex-wrap md:flex-nowrap gap-4 md:gap-8">
               {eventList.map((e, id) => (
                 <EventCard
                   key={id}

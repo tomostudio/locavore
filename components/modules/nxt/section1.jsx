@@ -92,12 +92,13 @@ export const Section1ComponentInner = ({ dataSection1 }) => {
             }}
             className="absolute top-0 left-0 w-full flex justify-center"
           >
-            <div className="relative w-[150px] sm:w-[250px] aspect-[1/1]">
+            <div className="relative w-[150px] sm:w-[180px] lg:w-[250px] aspect-[1/1]">
               <Image
                 src={NXT_Logo_Bumper}
                 alt=""
                 layout='fill'
                 objectFit='cover'
+                priority
               />
             </div>
           </m.div>
@@ -119,17 +120,17 @@ export const Section1ComponentInner = ({ dataSection1 }) => {
                 opacity: 1,
               },
             }}
-            className="w-full flex flex-col items-center mt-10 sm:mt-12 sm:px-24"
+            className="w-full flex flex-col items-center mt-10 md:mt-12 md:px-4"
           >
-            <p className="text-[#BEC29D] font-funkturm text-m-additionalHeader sm:text-d-additionalHeader text-center leading-none sm:leading-[120%]">
+            <p className="text-[#BEC29D] font-funkturm text-2xl md:text-[45px] text-center leading-none md:leading-[120%]">
               {dataSection1.description}
             </p>
-            <div className="mt-2 sm:mt-4 text-[#BEC29D]">
-              <span className="mr-2 sm:mr-4 text-m-body sm:text-d-body">
+            <div className="mt-2 md:mt-4 text-[#BEC29D]">
+              <span className="mr-2 md:mr-4 text-m-body md:text-d-body">
                 {dataSection1.textLeft}
               </span>
               •
-              <span className="ml-2 sm:ml-4 sm:text-[1.375rem] font-serif italic font-medium">
+              <span className="ml-2 md:ml-4 md:text-[1.375rem] font-serif italic font-medium">
                 {dataSection1.textRight}
               </span>
             </div>

@@ -15,25 +15,24 @@ import {
   Section1AnimationOBJ,
   Section1AnimationOBJMobile,
   Section1ComponentInner,
-} from '@/components/modules/nxt2/section1'
+} from '@/components/modules/nxt/section1'
 
 import {
   Section2Option2AnimationOBJ,
   Section2Option2AnimationOBJMobile,
   Section2Option2ComponentInner,
-} from '@/components/modules/nxt2/section2/option2'
+} from '@/components/modules/nxt/section2/option2'
 
 import {
   Section3AnimationOBJ,
   Section3AnimationOBJMobile,
   Section3ComponentInner,
-} from '@/components/modules/nxt2/section3'
+} from '@/components/modules/nxt-alt/section3'
 
 import {
   Section4AnimationOBJ,
-  Section4AnimationOBJMobile,
   Section4ComponentInner,
-} from '@/components/modules/nxt2/section4'
+} from '@/components/modules/nxt/section4'
 
 import {
   Section5AnimationOBJ,
@@ -65,8 +64,7 @@ export default function Nxt({ homeNxtAPI, eventAPI, collabAPI, seoAPI, footerAPI
     '(max-width: 850px)': [
       ...Section1AnimationOBJMobile,
       ...Section2Option2AnimationOBJ,
-      ...Section3AnimationOBJMobile,
-      ...Section4AnimationOBJMobile,
+      ...Section4AnimationOBJ,
       ...Section5AnimationOBJMobile,
     ],
   }
@@ -148,7 +146,7 @@ export default function Nxt({ homeNxtAPI, eventAPI, collabAPI, seoAPI, footerAPI
             <NxtNavigation transition={true} />
             <div className="fixed bottom-5 right-5 z-50">
               <PillButton destination="/" className="uppercase bg-white">
-                NXT
+                ALTERNATE
               </PillButton>
             </div>
           </section>

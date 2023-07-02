@@ -76,7 +76,7 @@
     height: 1px;
     left: 50%;
     top: 50%;
-    transition: margin-top 0.05s ease 0.125s, transform 0.15s ease 0s;
+    // transition: margin-top 0.05s ease 0.125s, transform 0.15s ease 0s;
     transform-origin: 50% 50%;
     &:first-child {
       transform: translate(-50%, -50%);
@@ -90,7 +90,7 @@
 
   &.open {
     & > div {
-      transition: margin-top 0.05s ease, transform 0.15s ease 0.04s;
+      // transition: margin-top 0s ease, transform 0s ease 0s;
       &:first-child {
         margin-top: 0px;
         transform: translate(-50%, -50%) rotate(-45deg);
@@ -121,5 +121,20 @@
       /* Styles for the last column */
       background-color: red;
     }
+  }
+}
+
+.nxt-mobile-menu {
+  opacity: 0;
+  pointer-events: none;
+  max-height: 70px;
+
+  transition: opacity 0.2s 0.1s, max-height 0.2s;
+
+  &.open {
+    opacity: 1;
+    pointer-events: auto;
+    max-height: 700px;
+    transition: opacity 0.4s 0s ease, max-height 0.6s 0.2s ease;
   }
 }

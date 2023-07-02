@@ -118,6 +118,7 @@ export default function Nxt({
     }
   }, [])
 
+
   return (
     <Layout>
       <SEO

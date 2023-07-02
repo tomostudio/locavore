@@ -18,10 +18,10 @@ const EventCard = ({
         widthNormal
           ? 'w-full sm:w-[calc((100%/2)-1rem)] md:w-[calc(100%/3)]'
           : 'sm:w-[calc((100%/2)-1rem)] md:w-[calc((100%/3)-1.35rem)]'
-      } pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white`}
+      } pointer-events-auto cursor-pointer transition-all duration-300 border border-white rounded-xl flex flex-col p-8 text-white`}
     >
       <span className="text-[1.125rem] md:text-d-body">{date}</span>
-      <div className="event-image relative w-full aspect-[1/1] my-5 border-2 group-hover:border-[#BEC29D] border-white">
+      <div className="event-image relative w-full aspect-[1/1] my-5 border group-hover:border-[#BEC29D] border-white transition-all duration-300">
         <Image
           src={urlFor(image_bnw).width(500).url()}
           alt={image_bnw.alt}
