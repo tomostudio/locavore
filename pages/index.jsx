@@ -184,7 +184,7 @@ export default function Nxt({
             <NxtNavigation transition={true} />
             <div className="fixed bottom-5 right-5 z-50">
               <PillButton destination="/nxt" className="uppercase bg-white">
-                Alternate
+                ALT
               </PillButton>
             </div>
           </section>

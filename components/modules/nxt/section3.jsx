@@ -42,7 +42,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
             </Container>
             <div className='absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex justify-center items-end'>
               <FancyLink
-                className={`w-fit p-4 mb-20 lg:mb-[4.5rem] text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
+                className={`w-fit py-4 px-6 mb-20 lg:mb-[4.5rem] text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
                 destination='/nxt/facilities'
               >
                 VIEW OUR FACILITIES
@@ -90,7 +90,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
               // disabled={
               //   useMediaQuery('(orientation: landscape)') ? false : true
               // }
-              className='absolute top-0 left-0 w-full h-full overflow-visible border border-red-400'
+              className='absolute top-0 left-0 w-full h-full overflow-visible'
             >
               <div
                 id='bg-white-scale'

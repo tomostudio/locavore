@@ -51,7 +51,7 @@ export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
             </div>
             <div className='absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end'>
               <FancyLink
-                className={`w-fit p-4 mb-20 lg:mb-[4.5rem] text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+                className={`w-fit py-4 px-6 mb-20 lg:mb-[4.5rem] text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
                 destination='/nxt/menu'
               >
                 VIEW MENU

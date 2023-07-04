@@ -146,7 +146,7 @@ export default function Nxt({ homeNxtAPI, eventAPI, collabAPI, seoAPI, footerAPI
             <NxtNavigation transition={true} />
             <div className="fixed bottom-5 right-5 z-50">
               <PillButton destination="/" className="uppercase bg-white">
-                ALTERNATE
+                ALT
               </PillButton>
             </div>
           </section>
