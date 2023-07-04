@@ -17,6 +17,7 @@ import card from '@/public/nxt2/card.png'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 import HeroComponent from '@/components/modules/nxt/hero'
 import EventCard from '@/components/modules/nxt/eventCard'
+import ViewMoreButton from '@/components/utils/viewMoreButton'
 
 const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -28,7 +29,7 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
   const defaultItemToShow = 6
   const [itemToShow, setItemToShow] = useState(defaultItemToShow)
   const [showMoreButton, setShowMore] = useState(
-    eventListAPI.length > defaultItemToShow ? true : false,
+    Array(10).fill(eventListAPI[0]).length > defaultItemToShow ? true : false,
   )
 
   useEffect(() => {
@@ -65,29 +66,30 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
             imageDesktop={event.hero.imageDesktop}
             imageMobile={event.hero.imageMobile}
           />
-          <Container className="h-full flex flex-wrap mt-11 md:mt-20 mb-10 md:mb-16 gap-8">
-            {eventListAPI.slice(0, itemToShow).map((data, id) => (
-              <EventCard
-                key={id}
-                slug={data.slug.current}
-                date={data.date}
-                image={data.thumbnail.imageColor}
-                image_bnw={data.thumbnail.imageBnw}
-                title={data.title}
-                description={data.thumbnail.description}
-              />
-            ))}
+          <Container className="h-full grid sm:grid-cols-2 lg:grid-cols-3 mt-11 md:mt-20 mb-10 md:mb-16 gap-8">
+            {Array(10)
+              .fill(eventListAPI[0])
+              .slice(0, itemToShow)
+              .map((data, id) => (
+                <EventCard
+                  key={id}
+                  slug={data.slug.current}
+                  date={data.date}
+                  image={data.thumbnail.imageColor}
+                  image_bnw={data.thumbnail.imageBnw}
+                  title={data.title}
+                  description={data.thumbnail.description}
+                />
+              ))}
           </Container>
           {showMoreButton && (
-            <FancyLink
-              className={`w-fit p-4 text-m-small md:text-sm mb-10 md:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-              onClick={() => {
-                setItemToShow(itemToShow + defaultItemToShow)
-                setShowMore(eventList.length > itemToShow + defaultItemToShow)
-              }}
-            >
-              VIEW MORE
-            </FancyLink>
+            <ViewMoreButton
+              data={Array(10).fill(eventListAPI[0])}
+              itemToShow={itemToShow}
+              setItemToShow={setItemToShow}
+              defaultItemToShow={defaultItemToShow}
+              setShowMore={setShowMore}
+            />
           )}
         </div>
         <NxtNavigation />

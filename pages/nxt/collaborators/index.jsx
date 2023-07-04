@@ -16,6 +16,7 @@ import card1 from '@/public/nxt2/collab/card1.png'
 import card_bnw1 from '@/public/nxt2/collab/card_bnw1.png'
 import HeroComponent from '@/components/modules/nxt/hero'
 import CollaboratorCard from '@/components/modules/nxt/collaboratorCard'
+import ViewMoreButton from '@/components/utils/viewMoreButton'
 
 const OurCollaborators = ({
   collaboratorAPI,
@@ -32,8 +33,15 @@ const OurCollaborators = ({
   const defaultItemToShow = 6
   const [itemToShow, setItemToShow] = useState(defaultItemToShow)
   const [showMoreButton, setShowMore] = useState(
-    collaboratorListAPI.length > defaultItemToShow ? true : false,
+    Array(10).fill(collaboratorListAPI[0]).length > defaultItemToShow
+      ? true
+      : false,
   )
+
+  const handleViewMore = () => {
+    setItemToShow(itemToShow + defaultItemToShow)
+    setShowMore(data.length > itemToShow + defaultItemToShow)
+  }
 
   useEffect(() => {
     document.querySelector('body').style.backgroundColor = 'black'
@@ -71,20 +79,18 @@ const OurCollaborators = ({
           />
           <div className="w-full h-full flex flex-wrap mt-11 md:mt-20 mb-16 border-b sm:border-y border-white collaborators-border">
             <CollaboratorCard
-              collaboratorListAPI={collaboratorListAPI}
+              collaboratorListAPI={Array(10).fill(collaboratorListAPI[0])}
               itemToShow={itemToShow}
             />
           </div>
           {showMoreButton && (
-            <FancyLink
-              className={`w-fit p-4 text-d-small mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-              onClick={() => {
-                setItemToShow(itemToShow + defaultItemToShow)
-                setShowMore(collaboratorListAPI.length > itemToShow + defaultItemToShow)
-              }}
-            >
-              VIEW MORE
-            </FancyLink>
+            <ViewMoreButton
+              data={Array(10).fill(collaboratorListAPI[0])}
+              itemToShow={itemToShow}
+              setItemToShow={setItemToShow}
+              defaultItemToShow={defaultItemToShow}
+              setShowMore={setShowMore}
+            />
           )}
         </div>
         <NxtNavigation />
