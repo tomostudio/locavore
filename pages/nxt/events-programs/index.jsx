@@ -66,7 +66,7 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
             imageDesktop={event.hero.imageDesktop}
             imageMobile={event.hero.imageMobile}
           />
-          <Container className="h-full grid sm:grid-cols-2 lg:grid-cols-3 mt-11 md:mt-20 mb-10 md:mb-16 gap-8">
+          <Container className="h-full flex flex-wrap mt-11 md:mt-20 mb-10 md:mb-16 gap-8">
             {Array(10)
               .fill(eventListAPI[0])
               .slice(0, itemToShow)
