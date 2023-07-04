@@ -272,7 +272,7 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         </div>
       </div>
       {/* Background Buffer */}
-      <div className='w-full h-0 landscape:h-[25vh] landscape:min-h-[300px]' />
+      <div className='w-full h-0 landscape:h-[vw] landscape:min-h-[300px]' />
     </section>
   );
 };

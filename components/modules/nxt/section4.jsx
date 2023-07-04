@@ -14,6 +14,12 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
   const [dataSection4Split, setDataSection4] = useState([]);
 
   useEffect(() => {
+    // Ambil Data Collaborators
+    // Randomize (shuffle)
+    // Truncuate (15 / 20 / 25)
+    // Set Random Big (minimum per 5 Jarak(boleh lebih))
+    // Set Random Empty Space (Ga boleh ada 4 empty space continuosly)
+
     // UseEffect supaya ga retrigger
     // ini complicated sekali array adjustmentnya
     const tambahData = Array(10).fill(dataSection4[0]); // duplicate array 10 times

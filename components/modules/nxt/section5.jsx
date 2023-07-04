@@ -23,7 +23,7 @@ export const Section5ComponentInner = ({ dataSection5 }) => {
             <span className="text-[#BEC29D] text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full">
               WHAT'S ON?
             </span>
-            <div className="w-full max-w-xs sm:max-w-none mx-auto mt-8 mb-8 sm:mt-8 sm:mb-8 md:my-16 flex flex-wrap md:flex-nowrap gap-4 md:gap-8">
+            <div className="w-full max-w-xs sm:max-w-none mx-auto mt-8 mb-8 sm:mt-8 sm:mb-8 md:my-16 flex flex-wrap justify-center gap-4 md:gap-8">
               {eventList.map((e, id) => (
                 <EventCard
                   key={id}

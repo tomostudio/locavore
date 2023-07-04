@@ -1,55 +1,55 @@
-import React from 'react'
-import 'intersection-observer' // optional polyfill
-import Image from 'next/legacy/image'
-import FancyLink from '@/components/utils/fancyLink'
+import React from 'react';
+import 'intersection-observer'; // optional polyfill
+import Image from 'next/image';
+import FancyLink from '@/components/utils/fancyLink';
 
 // IMPORT LOCAL IMAGE
-import section2_bg from '@/public/nxt2/section2_bg1.png'
-import Container from '../../container'
-import PillButton from '../../pillButton'
-import urlFor from '@/helpers/sanity/urlFor'
+import section2_bg from '@/public/nxt2/section2_bg1.png';
+import Container from '../../container';
+import PillButton from '../../pillButton';
+import urlFor from '@/helpers/sanity/urlFor';
 
 export const Section2Option2ComponentInner = ({ dataSection2Option2 }) => {
   return (
-    <section className="relative w-full">
-      <div className="sticky z-10 top-0 w-full h-screen flex flex-col">
-        <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-20">
+    <section className='relative w-full'>
+      <div className='sticky z-10 top-0 w-full h-screen flex flex-col'>
+        <div className='absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-20'>
           <PillButton
-            destination="/"
-            className="uppercase bg-red-500 text-white"
+            destination='/'
+            className='uppercase bg-red-500 text-white'
           >
             Option 1
           </PillButton>
           <PillButton
-            destination="/nxt/option2"
-            className="uppercase bg-red-500 text-white pointer-events-none"
+            destination='/nxt/option2'
+            className='uppercase bg-red-500 text-white pointer-events-none'
           >
             Option 2
           </PillButton>
           <PillButton
-            destination="/nxt/option3"
-            className="uppercase bg-red-500 text-white"
+            destination='/nxt/option3'
+            className='uppercase bg-red-500 text-white'
           >
             Option 3
           </PillButton>
         </div>
-        <Container className="relative w-full h-full grow setflex-center">
+        <Container className='relative w-full h-full grow setflex-center'>
           <div
-            id="section2_content-option2"
-            className="relative z-10 w-full h-full opacity-0"
+            id='section2_content-option2'
+            className='relative z-10 w-full h-full opacity-0'
           >
-            <div className="relative w-full h-full setflex-center">
-              <span className="text-[1.125rem] md:text-[1.875rem] text-[#BEC29D]">
+            <div className='relative w-full h-full setflex-center'>
+              <span className='text-[1.125rem] md:text-[1.875rem] text-[#BEC29D]'>
                 {dataSection2Option2.title}
               </span>
-              <p className="relative text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center">
+              <p className='relative text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle text-[#BEC29D] font-funkturm leading-[100%] tracking-[0.03em] my-8 max-w-md md:max-w-none text-center'>
                 {dataSection2Option2.description}
               </p>
             </div>
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none flex justify-center items-end">
+            <div className='absolute top-0 left-0 w-full h-full pointer-events-none flex justify-center items-end'>
               <FancyLink
                 className={`w-fit p-4 mb-20 lg:mb-[4.5rem] text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-                destination="/nxt/menu"
+                destination='/nxt/menu'
               >
                 VIEW MENU
               </FancyLink>
@@ -57,34 +57,38 @@ export const Section2Option2ComponentInner = ({ dataSection2Option2 }) => {
           </div>
         </Container>
       </div>
-      <Container className="relative h-screen setflex-center pointer-events-none z-20">
-        <div className="relative w-full max-w-xl h-[50vh] max-h-[500px]">
+      <Container className='relative setflex-center pointer-events-none z-20'>
+        <div className='relative w-full max-w-3xl h-[75vh] max-h-[600px]'>
           <Image
             src={urlFor(dataSection2Option2.imageNormal).width(798).url()}
             alt={dataSection2Option2.imageNormal.alt}
-            layout='fill'
-            objectFit='contain'
-            placeholder="blur"
+            fill
+            placeholder='blur'
+            style={{objectFit: 'contain', objectPosition: 'center'}}
             blurDataURL={urlFor(dataSection2Option2.imageNormal)
               .blur(2)
               .format('webp')
               .width(100)
               .url()}
+
+              // update to solid color
+            unoptimized={false}
           />
         </div>
       </Container>
+      <div className='relative h-screen'/>
     </section>
-  )
-}
+  );
+};
 
-export const Section2Option2AnimationOBJMobile = []
+export const Section2Option2AnimationOBJMobile = [];
 
 export const Section2Option2AnimationOBJ = [
   // SECTION 2 OPTION 3
   // CONTENT ENTER
   () => {
-    const id = 'section2-content-enter-option2' // animation id
-    const elem = document.querySelector('#section2_content-option2')
+    const id = 'section2-content-enter-option2'; // animation id
+    const elem = document.querySelector('#section2_content-option2');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -93,7 +97,7 @@ export const Section2Option2AnimationOBJ = [
         start: 'top 80%',
         end: 'bottom 100%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -105,8 +109,8 @@ export const Section2Option2AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
-]
+];
