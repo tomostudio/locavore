@@ -28,9 +28,9 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
 
     const _dataSection = [];
 
-    const bigGapCounterMinCount = 5;
-    const bigGapCounterMaxCount = 10;
-    const emptyCounterCount = 3;
+    const bigGapCounterMinCount = 5; // Untuk hitung jarak minimum antara component besar
+    const bigGapCounterMaxCount = 10; // Untuk hitung jarak maximum antara component besar (eg Harus ada Besar setiap 10)
+    const emptyCounterCount = 3; // Hitung Maximal Component Kosong
 
     let bigGapCounterMin = bigGapCounterMinCount;
     let bigGapCounterMax = bigGapCounterMaxCount;
@@ -95,6 +95,7 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
 
     setDataSection4(_dataSection);
   }, []);
+
   return (
     <section className='relative w-full'>
       <div id='enter-collab' className='relative z-10 top-0 w-full h-screen '>
