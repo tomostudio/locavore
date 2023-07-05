@@ -1,47 +1,47 @@
-import Layout from '@/components/modules/layout'
-import SEO from '@/components/utils/seo'
-import client from '@/helpers/sanity/client'
-import { useAppContext } from 'context/state'
-import { useRouter } from 'next/router'
-import { motion } from 'framer-motion'
-import { fade } from '@/helpers/preset/transitions'
-import Footer from '@/components/modules/footer'
-import { useEffect, useState } from 'react'
-import FancyLink from '@/components/utils/fancyLink'
+import Layout from '@/components/modules/layout';
+import SEO from '@/components/utils/seo';
+import client from '@/helpers/sanity/client';
+import { useAppContext } from 'context/state';
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+import { fade } from '@/helpers/preset/transitions';
+import Footer from '@/components/modules/footer';
+import { useEffect, useState } from 'react';
+import FancyLink from '@/components/utils/fancyLink';
 
-import hero from '@/public/nxt2/events/hero.png'
-import hero_mobile from '@/public/nxt2/events/hero_mobile.png'
-import Container from '@/components/modules/container'
-import card_bnw from '@/public/nxt2/card_bnw.png'
-import card from '@/public/nxt2/card.png'
-import NxtNavigation from '@/components/utils/nxtNavigation'
-import HeroComponent from '@/components/modules/nxt/hero'
-import EventCard from '@/components/modules/nxt/eventCard'
+import hero from '@/public/nxt2/events/hero.png';
+import hero_mobile from '@/public/nxt2/events/hero_mobile.png';
+import Container from '@/components/modules/container';
+import card_bnw from '@/public/nxt2/card_bnw.png';
+import card from '@/public/nxt2/card.png';
+import NxtNavigation from '@/components/utils/nxtNavigation';
+import HeroComponent from '@/components/modules/nxt/hero';
+import EventCard from '@/components/modules/nxt/eventCard';
 
 const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
-  const router = useRouter()
-  const appContext = useAppContext()
-  const [event] = eventAPI
-  const [seo] = seoAPI
-  const [footer] = footerAPI
-  const eventList = ['', '', '', '', '', '', '', '', '']
-  const defaultItemToShow = 6
-  const [itemToShow, setItemToShow] = useState(defaultItemToShow)
+  const router = useRouter();
+  const appContext = useAppContext();
+  const [event] = eventAPI;
+  const [seo] = seoAPI;
+  const [footer] = footerAPI;
+  const eventList = ['', '', '', '', '', '', '', '', ''];
+  const defaultItemToShow = 6;
+  const [itemToShow, setItemToShow] = useState(defaultItemToShow);
   const [showMoreButton, setShowMore] = useState(
-    eventListAPI.length > defaultItemToShow ? true : false,
-  )
+    eventListAPI.length > defaultItemToShow ? true : false
+  );
 
   useEffect(() => {
-    document.querySelector('body').style.backgroundColor = 'black'
-    window.scroll(0, 0)
+    document.querySelector('body').style.backgroundColor = 'black';
+    window.scroll(0, 0);
     appContext.setHeader({
       headerStyle: 'blur-white',
-    })
+    });
 
     return () => {
-      appContext.setHeader({ headerStyle: 'default' })
-    }
-  }, [])
+      appContext.setHeader({ headerStyle: 'default' });
+    };
+  }, []);
 
   return (
     <Layout>
@@ -53,37 +53,75 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
       />
 
       <motion.main
-        initial="initial"
-        animate="enter"
-        exit="exit"
+        initial='initial'
+        animate='enter'
+        exit='exit'
         variants={fade}
-        className="no-select-all bg-black"
+        className='no-select-all bg-black'
       >
-        <div className="relative w-full h-full setflex-center">
+        <div className='relative w-full h-full setflex-center'>
           <HeroComponent
-            title="EVENTS & PROGRAMS"
+            title='EVENTS & PROGRAMS'
             imageDesktop={event.hero.imageDesktop}
             imageMobile={event.hero.imageMobile}
           />
-          <Container className="h-full flex flex-wrap mt-11 md:mt-20 mb-10 md:mb-16 gap-8">
+          <Container className='h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-11 md:mt-20 mb-10 md:mb-16 gap-4 md:gap-8 justify-items-center'>
             {eventListAPI.slice(0, itemToShow).map((data, id) => (
-              <EventCard
-                key={id}
-                slug={data.slug.current}
-                date={data.date}
-                image={data.thumbnail.imageColor}
-                image_bnw={data.thumbnail.imageBnw}
-                title={data.title}
-                description={data.thumbnail.description}
-              />
+              <>
+                <EventCard
+                  key={id}
+                  slug={data.slug.current}
+                  date={data.date}
+                  image={data.thumbnail.imageColor}
+                  image_bnw={data.thumbnail.imageBnw}
+                  title={data.title}
+                  description={data.thumbnail.description}
+                />
+                <EventCard
+                  key={id}
+                  slug={data.slug.current}
+                  date={data.date}
+                  image={data.thumbnail.imageColor}
+                  image_bnw={data.thumbnail.imageBnw}
+                  title={data.title}
+                  description={data.thumbnail.description}
+                />
+                <EventCard
+                  key={id}
+                  slug={data.slug.current}
+                  date={data.date}
+                  image={data.thumbnail.imageColor}
+                  image_bnw={data.thumbnail.imageBnw}
+                  title={data.title}
+                  description={data.thumbnail.description}
+                />
+                <EventCard
+                  key={id}
+                  slug={data.slug.current}
+                  date={data.date}
+                  image={data.thumbnail.imageColor}
+                  image_bnw={data.thumbnail.imageBnw}
+                  title={data.title}
+                  description={data.thumbnail.description}
+                />
+                <EventCard
+                  key={id}
+                  slug={data.slug.current}
+                  date={data.date}
+                  image={data.thumbnail.imageColor}
+                  image_bnw={data.thumbnail.imageBnw}
+                  title={data.title}
+                  description={data.thumbnail.description}
+                />
+              </>
             ))}
           </Container>
           {showMoreButton && (
             <FancyLink
               className={`w-fit p-4 text-m-small md:text-sm mb-10 md:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
               onClick={() => {
-                setItemToShow(itemToShow + defaultItemToShow)
-                setShowMore(eventList.length > itemToShow + defaultItemToShow)
+                setItemToShow(itemToShow + defaultItemToShow);
+                setShowMore(eventList.length > itemToShow + defaultItemToShow);
               }}
             >
               VIEW MORE
@@ -94,25 +132,25 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
-  )
-}
+  );
+};
 
 export async function getStaticProps() {
   const eventAPI = await client.fetch(`
     *[_type == "event"]
-    `)
+    `);
   const eventListAPI = await client.fetch(`
     *[_type == "eventList"]
-    `)
+    `);
   const seoAPI = await client.fetch(`
     *[_type == "settings"]
-    `)
+    `);
   const footerAPI = await client.fetch(`
                       *[_type == "footer"]
-                      `)
+                      `);
   const headerAPI = await client.fetch(`
                       *[_type == "header"]
-                      `)
+                      `);
   return {
     props: {
       eventAPI,
@@ -121,7 +159,7 @@ export async function getStaticProps() {
       footerAPI,
       headerAPI,
     },
-  }
+  };
 }
 
-export default EventsAndPrograms
+export default EventsAndPrograms;

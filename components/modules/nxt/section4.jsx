@@ -17,8 +17,8 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
     // Ambil Data Collaborators
     // Randomize (shuffle)
     // Truncuate (15 / 20 / 25)
-    // Set Random Big (minimum per 5 Jarak(boleh lebih))
     // Set Random Empty Space (Ga boleh ada 4 empty space continuosly)
+    // Set Random Big (minimum per 5 Jarak(boleh lebih))
 
     // UseEffect supaya ga retrigger
     // ini complicated sekali array adjustmentnya
@@ -44,8 +44,42 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
         var emptyIndex = Math.floor(Math.random() * 5);
         _dataSection[i].splice(emptyIndex, 0, {});
       }
-      setDataSection4(_dataSection);
+      setData
+      Section4(_dataSection);
     }
+
+    // NOTE
+    // const dataVisual = [];
+    // let bigCounter = 0;
+    // let bigCounterMax = 0;
+    // tambahData.forEach((data, index)=> {
+    //   // empty counter = 0
+    //   // random true or false for empty
+
+    //   // check empty counter ( = 3 force data)
+    //   // check empty
+    //   // false
+    //   // dataVisual.push('empty');
+    //   // empty counter++
+    //     // check bigcounter is not 0
+    //     // bigcounter--
+    //     // bigcounterMax--
+    //   // random lagi -> loop
+
+    //   // push data
+    //   // dataVisual.push('data');
+    //   // check bigCounterMax = 0 (proceed to set size Big)
+    //   // check bigcounter = 0 (zero proceed to random)
+    //   // random big
+    //   // random big true -> set size
+    //   // set size big
+    //   // set bigcounter = 5
+    //   // set bigcounterMax = 10
+    //   // random big false
+    //     // check bigcounter is not 0
+    //     // bigcounter--
+    //     // bigcounterMax--
+    // })
   }, []);
   return (
     <section className='relative w-full'>

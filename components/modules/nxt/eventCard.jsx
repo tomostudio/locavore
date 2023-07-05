@@ -14,11 +14,7 @@ const EventCard = ({
   return (
     <FancyLink
       destination={`/nxt/events-programs/${slug}`}
-      className={`group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] ${
-        widthNormal
-          ? 'w-full max-w-sm'
-          : 'sm:w-[calc((100%/2)-1rem)] lg:w-[calc((100%/3)-1.35rem)]'
-      } pointer-events-auto cursor-pointer transition-all duration-300 border border-white rounded-xl flex flex-col p-8 text-white`}
+      className={`group hover:border-[#BEC29D] max-w-sm hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border border-white rounded-xl flex flex-col p-8 text-white`}
     >
       <span className="text-[1.125rem] md:text-d-body">{date}</span>
       <div className="event-image relative w-full aspect-[1/1] my-5 border group-hover:border-[#BEC29D] border-white transition-all duration-300">
