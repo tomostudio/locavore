@@ -13,32 +13,6 @@ import urlFor from '@/helpers/sanity/urlFor'
 export const Section4ComponentInner = ({ dataSection4 }) => {
   const [dataSection4Split, setDataSection4] = useState([])
 
-  const test = () => {
-    let collaborators = [
-      'John',
-      'Alice',
-      'Bob',
-      'Carol',
-      'David',
-      'Eve',
-      'Frank',
-      'Grace',
-      'Hank',
-      'Ivy',
-    ]
-    const _dataSection = []
-    for (var i = 0; i < 20; i++) {
-      console.log(collaborators.length)
-      const randomIndex = Math.floor(Math.random() * collaborators.length)
-      collaborators[randomIndex] = 'big'
-      const slideArray = collaborators.slice(0, randomIndex + 1)
-      _dataSection.push(...slideArray)
-      // potong array
-      collaborators = collaborators.slice(randomIndex + 1)
-      if (collaborators.length < 5) break
-    }
-  }
-
   useEffect(() => {
     // Ambil Data Collaborators
     // Randomize (shuffle)
@@ -57,7 +31,7 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
     let bigCounterMax = 10
     let emptyCounter = 0
 
-    const checkBig = (data) => {
+    const randomBig = (data) => {
       if (bigCounterMax === 0) {
         // harus set big
         _dataSection.push({
@@ -68,9 +42,13 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
         bigCounterMax = 10
         bigCounter === 0 ? (bigCounter = 5) : bigCounter--
       } else if (bigCounter === 0) {
+        // -1 counter
         bigCounterMax--
+        // reset counter
         bigCounter = 5
+        // ranom boolean
         const randomBoolean = Math.random() < 0.5
+        // push data
         _dataSection.push(
           randomBoolean
             ? {
@@ -82,9 +60,11 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
               },
         )
       } else {
+        // push data
         _dataSection.push({
           ...data,
         })
+        // - 1 counter
         bigCounterMax--
         bigCounter--
       }
@@ -95,7 +75,7 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
         // reset empty counter
         emptyCounter = 0
         // set random big
-        checkBig(data)
+        randomBig(data)
       } else {
         // random true or false
         const randomBoolean = Math.random() < 0.5
@@ -108,7 +88,7 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
           bigCounter > 0 ? bigCounter : bigCounter
         } else {
           // set random big
-          checkBig(data)
+          randomBig(data)
         }
       }
 
