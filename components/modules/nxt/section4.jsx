@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import 'intersection-observer' // optional polyfill
-import Image from 'next/legacy/image'
-import Marquee from 'react-fast-marquee'
+import React, { useEffect, useState } from 'react';
+import 'intersection-observer'; // optional polyfill
+import Image from 'next/legacy/image';
+import Marquee from 'react-fast-marquee';
 
 // IMPORT LOCAL IMAGE
-import collab1 from '@/public/nxt2/collab1.png'
-import collab2 from '@/public/nxt2/collab2.png'
-import FancyLink from '@/components/utils/fancyLink'
-import { useMediaQuery } from '@/helpers/functional/checkMedia'
-import urlFor from '@/helpers/sanity/urlFor'
+import collab1 from '@/public/nxt2/collab1.png';
+import collab2 from '@/public/nxt2/collab2.png';
+import FancyLink from '@/components/utils/fancyLink';
+import { useMediaQuery } from '@/helpers/functional/checkMedia';
+import urlFor from '@/helpers/sanity/urlFor';
 
 export const Section4ComponentInner = ({ dataSection4 }) => {
-  const [dataSection4Split, setDataSection4] = useState([])
+  const [dataSection4Split, setDataSection4] = useState([]);
 
   useEffect(() => {
     // Ambil Data Collaborators
@@ -23,121 +23,95 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
 
     // UseEffect supaya ga retrigger
     // ini complicated sekali array adjustmentnya
-    const tambahData = Array(15).fill(dataSection4[0]) // duplicate array 10 times
-    let shuffledArray = tambahData.sort((a, b) => 0.5 - Math.random())
+    const tambahData = Array(15).fill(dataSection4[0]); // duplicate array 15 times
+    let shuffledArray = tambahData.sort((a, b) => 0.5 - Math.random()); // Shuffle
 
-    const _dataSection = []
-    let bigCounter = 0
-    let bigCounterMax = 10
-    let emptyCounter = 0
+    const _dataSection = [];
 
-    const randomBig = (data) => {
-      if (bigCounterMax === 0) {
-        // harus set big
+    const bigGapCounterMinCount = 5;
+    const bigGapCounterMaxCount = 10;
+    const emptyCounterCount = 3;
+
+    let bigGapCounterMin = bigGapCounterMinCount;
+    let bigGapCounterMax = bigGapCounterMaxCount;
+    let emptyCounter = emptyCounterCount;
+
+    shuffledArray.forEach((data, index) => {
+      // SET EMPTY
+      let setData = Math.random() < 0.5;
+      if (emptyCounter === 0 || bigGapCounterMax === 0) setData = true;
+
+      // LOOP WHILE EMPTY
+      while (!setData) {
+        // DAPET EMPTY
+        // push empty
         _dataSection.push({
-          ...data,
-          size: 'big',
-        })
-        // reset counter
-        bigCounterMax = 10
-        bigCounter === 0 ? (bigCounter = 5) : bigCounter--
-      } else if (bigCounter === 0) {
-        // -1 counter
-        bigCounterMax--
-        // reset counter
-        bigCounter = 5
-        // ranom boolean
-        const randomBoolean = Math.random() < 0.5
-        // push data
-        _dataSection.push(
-          randomBoolean
-            ? {
-                ...data,
-                size: 'big',
-              }
-            : {
-                ...data,
-              },
-        )
-      } else {
-        // push data
-        _dataSection.push({
-          ...data,
-        })
-        // - 1 counter
-        bigCounterMax--
-        bigCounter--
-      }
-    }
-    shuffledArray.forEach((data, _) => {
-      console.log(bigCounterMax)
-      if (emptyCounter === 3) {
-        // reset empty counter
-        emptyCounter = 0
-        // set random big
-        randomBig(data)
-      } else {
-        // random true or false
-        const randomBoolean = Math.random() < 0.5
-        if (randomBoolean) {
-          // push empty
-          _dataSection.push({})
-          // + 1 empty counter
-          emptyCounter++
-          bigCounterMax > 0 ? bigCounterMax-- : bigCounterMax
-          bigCounter > 0 ? bigCounter : bigCounter
-        } else {
-          // set random big
-          randomBig(data)
+          data: '',
+          type: 'empty',
+        });
+
+        // + 1 empty counter
+        emptyCounter > 0 ? emptyCounter-- : 0;
+        // +1 Big Gap Counter
+        bigGapCounterMax > 0 ? bigGapCounterMax-- : bigGapCounterMax;
+        bigGapCounterMin > 0 ? bigGapCounterMin-- : bigGapCounterMin;
+
+        setData = Math.random() < 0.5;
+        if (emptyCounter === 0 || bigGapCounterMax === 0) setData = true;
+
+        if (setData) {
+          // RESET COUNT
+          emptyCounter = emptyCounterCount;
+          break;
         }
       }
 
-      // NOTE
-      // empty counter = 0
-      // random true or false for empty
-      // check empty counter ( = 3 force data)
-      // check empty
-      // false
-      // dataVisual.push('empty');
-      // empty counter++
-      // check bigcounter is not 0
-      // bigcounter--
-      // bigcounterMax--
-      // random lagi -> loop
-      // push data
-      // dataVisual.push('data');
-      // check bigCounterMax = 0 (proceed to set size Big)
-      // check bigcounter = 0 (zero proceed to random)
-      // random big
-      // random big true -> set size
-      // set size big
-      // set bigcounter = 5
-      // set bigcounterMax = 10
-      // random big false
-      // check bigcounter is not 0
-      // bigcounter--
-      // bigcounterMax--
-    })
-    setDataSection4(_dataSection)
-    console.log(_dataSection)
-  }, [])
+      // INSERT DATA
+      // CHECK RANDOM BIG
+      let setBig = Math.random() < 0.5;
+      // CONDITIONING DATA
+      if (bigGapCounterMax === 0) setBig = true;
+      if (bigGapCounterMin > 0) setBig = false;
+
+      // INSERT DATA ACCORDINGLY
+      if (setBig) {
+        _dataSection.push({
+          data,
+          type: 'big',
+        });
+        // reset big counter
+        bigGapCounterMin = bigGapCounterMinCount;
+        bigGapCounterMax = bigGapCounterMaxCount;
+      } else {
+        _dataSection.push({
+          data,
+          type: 'normal',
+        });
+        // +1 Big Gap MIN MAX Counter
+        bigGapCounterMax > 0 ? bigGapCounterMax-- : bigGapCounterMax;
+        bigGapCounterMin > 0 ? bigGapCounterMin-- : bigGapCounterMin;
+      }
+    });
+
+    setDataSection4(_dataSection);
+  }, []);
   return (
-    <section className="relative w-full">
-      <div id="enter-collab" className="relative z-10 top-0 w-full h-screen ">
+    <section className='relative w-full'>
+      <div id='enter-collab' className='relative z-10 top-0 w-full h-screen '>
         <div
-          id="section4_title"
-          className="relative w-full h-full setflex-center-row "
+          id='section4_title'
+          className='relative w-full h-full setflex-center-row '
         >
-          <span className="hidden md:block text-[#BEC29D] whitespace-pre-line text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full drop-shadow-collaborators">
+          <span className='hidden md:block text-[#BEC29D] whitespace-pre-line text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full drop-shadow-collaborators'>
             OUR
             <br />
             COLLABORATORS
           </span>
           <div
-            id="slider_collab"
-            className="absolute top-0 left-0 -z-1 w-full h-full setflex-center pb-20 opacity-0"
+            id='slider_collab'
+            className='absolute top-0 left-0 -z-1 w-full h-full setflex-center pb-20 opacity-0'
           >
-            <span className="text-[#BEC29D] mb-7 whitespace-pre-line text-center font-funkturm text-m-additionalTitle leading-full drop-shadow-collaborators md:hidden">
+            <span className='text-[#BEC29D] mb-7 whitespace-pre-line text-center font-funkturm text-m-additionalTitle leading-full drop-shadow-collaborators md:hidden'>
               {useMediaQuery('(min-width: 400px)') ? (
                 <>
                   OUR
@@ -156,21 +130,21 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
             </span>
 
             <Marquee gradient={false}>
-              <div className="h-[35vh] sm:h-[40vh] md:h-[60vh] grid grid-flow-col auto-cols-max grid-rows-nxt gap-3 pl-3 md:gap-6 md:pl-6">
+              <div className='h-[35vh] sm:h-[40vh] md:h-[60vh] grid grid-flow-col auto-cols-max grid-rows-nxt gap-3 pl-3 md:gap-6 md:pl-6'>
                 {dataSection4Split.length > 0 &&
-                  dataSection4Split.map((data, id) => {
-                    return Object.keys(data).length > 0 ? (
-                      data.size ? (
+                  dataSection4Split.map(({ data, type }, id) => {
+                    if (type === 'big') {
+                      return (
                         <div
                           key={id}
-                          className="h-full aspect-1 row-span-2 col-span-2 drop-shadow-collaborators"
+                          className='h-full aspect-1 row-span-2 col-span-2 drop-shadow-collaborators'
                         >
                           <Image
                             src={urlFor(data.image).width(510).url()}
                             alt={data.image.alt}
-                            layout="fill"
-                            objectFit="cover"
-                            placeholder="blur"
+                            layout='fill'
+                            objectFit='cover'
+                            placeholder='blur'
                             blurDataURL={urlFor(data.image)
                               .blur(2)
                               .format('webp')
@@ -178,17 +152,19 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
                               .url()}
                           />
                         </div>
-                      ) : (
+                      );
+                    } else if (type === 'normal') {
+                      return (
                         <div
                           key={id}
-                          className="relative h-full aspect-1 drop-shadow-collaborators"
+                          className='relative h-full aspect-1 drop-shadow-collaborators'
                         >
                           <Image
                             src={urlFor(data.image).width(510).url()}
                             alt={data.image.alt}
-                            layout="fill"
-                            objectFit="cover"
-                            placeholder="blur"
+                            layout='fill'
+                            objectFit='cover'
+                            placeholder='blur'
                             blurDataURL={urlFor(data.image)
                               .blur(2)
                               .format('webp')
@@ -196,18 +172,18 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
                               .url()}
                           />
                         </div>
-                      )
-                    ) : (
-                      <div key={id} className="h-full aspect-1" />
-                    )
+                      );
+                    } else if (type === 'empty') {
+                      return <div key={id} className='h-full aspect-1' />;
+                    }
                   })}
               </div>
             </Marquee>
           </div>
-          <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end">
+          <div className='absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end'>
             <FancyLink
               className={`w-fit py-4 px-6 mb-20 lg:mb-[4.5rem] text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-              destination="/nxt/collaborators"
+              destination='/nxt/collaborators'
             >
               VIEW OUR COLLABORATORS
             </FancyLink>
@@ -215,14 +191,14 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export const Section4AnimationOBJ = [
   // SLIDER COLLAB ENTER
   () => {
-    const id = 'slider-collab-enter' // animation id
-    const elem = document.querySelector('#slider_collab')
+    const id = 'slider-collab-enter'; // animation id
+    const elem = document.querySelector('#slider_collab');
     const settings = {
       scrollTrigger: {
         id: id,
@@ -231,7 +207,7 @@ export const Section4AnimationOBJ = [
         start: 'top 75%',
         end: 'top 0%',
       },
-    }
+    };
 
     // Input Animation
     const animation = [
@@ -243,8 +219,8 @@ export const Section4AnimationOBJ = [
           },
         ],
       },
-    ]
+    ];
 
-    return { id, elem, settings, animation }
+    return { id, elem, settings, animation };
   },
-]
+];

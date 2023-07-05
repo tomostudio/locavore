@@ -18,19 +18,19 @@ export const Section2Option2ComponentInner = ({ dataSection2Option2 }) => {
             destination='/'
             className='uppercase bg-red-500 text-white'
           >
-            Option 1
+            OPT. 1
           </PillButton>
           <PillButton
             destination='/nxt/option2'
             className='uppercase bg-red-500 text-white pointer-events-none'
           >
-            Option 2
+            OPT. 2
           </PillButton>
           <PillButton
             destination='/nxt/option3'
             className='uppercase bg-red-500 text-white'
           >
-            Option 3
+            OPT. 3
           </PillButton>
         </div>
         <Container className='relative w-full h-full grow setflex-center'>

@@ -19,19 +19,19 @@ export const Section2Option1ComponentInner = ({ dataSection2Option1 }) => {
             destination="/"
             className="uppercase bg-red-500 text-white pointer-events-none"
           >
-            Option 1
+            OPT. 1
           </PillButton>
           <PillButton
             destination="/nxt/option2"
             className="uppercase bg-red-500 text-white"
           >
-            Option 2
+            OPT. 2
           </PillButton>
           <PillButton
             destination="/nxt/option3"
             className="uppercase bg-red-500 text-white"
           >
-            Option 3
+            OPT. 3
           </PillButton>
         </div>
         <Parallax className="absolute w-full h-full" speed={-10}>

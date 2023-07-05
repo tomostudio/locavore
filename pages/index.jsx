@@ -183,7 +183,7 @@ export default function Nxt({
             <Section5ComponentInner dataSection5={eventAPI} />
             <NxtNavigation transition={true} />
             <div className="fixed bottom-5 right-5 z-50">
-              <PillButton destination="/nxt" className="uppercase bg-white">
+              <PillButton destination="/nxt" className="uppercase bg-yellow-500">
                 ALT
               </PillButton>
             </div>
