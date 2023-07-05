@@ -49,71 +49,98 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
 
     // UseEffect supaya ga retrigger
     // ini complicated sekali array adjustmentnya
-    const tambahData = Array(10).fill(dataSection4[0]) // duplicate array 10 times
+    const tambahData = Array(15).fill(dataSection4[0]) // duplicate array 10 times
     let shuffledArray = tambahData.sort((a, b) => 0.5 - Math.random())
 
     const _dataSection = []
-    while (true) {
-      if (shuffledArray.length === 0) break
-      // random index
-      const randomIndex = Math.floor(Math.random() * shuffledArray.length)
-      // masukkan kata big dengan randomindex
-      shuffledArray[randomIndex] = {
-        ...shuffledArray[randomIndex],
-        size: 'big',
-      }
-      // potong array dari index ke 1 sampai ke randomindex + 1
-      const slideArray = shuffledArray.slice(0, randomIndex + 1)
-      // push data yang dipotong ke dalam array baru
-      _dataSection.push(...slideArray)
-      // potong array yang sudah di push sebelumnya
-      shuffledArray = shuffledArray.slice(randomIndex + 1)
-      if (shuffledArray.length < 5) {
-        _dataSection.push(...shuffledArray)
-        break
+    let bigCounter = 0
+    let bigCounterMax = 10
+    let emptyCounter = 0
+
+    const checkBig = (data) => {
+      if (bigCounterMax === 0) {
+        // harus set big
+        _dataSection.push({
+          ...data,
+          size: 'big',
+        })
+        // reset counter
+        bigCounterMax = 10
+        bigCounter === 0 ? (bigCounter = 5) : bigCounter--
+      } else if (bigCounter === 0) {
+        bigCounterMax--
+        bigCounter = 5
+        const randomBoolean = Math.random() < 0.5
+        _dataSection.push(
+          randomBoolean
+            ? {
+                ...data,
+                size: 'big',
+              }
+            : {
+                ...data,
+              },
+        )
       } else {
-        // push data 1-5
-        _dataSection.push(...shuffledArray.slice(0, 5))
-        // potong array
-        shuffledArray = shuffledArray.slice(5)
+        _dataSection.push({
+          ...data,
+        })
+        bigCounterMax--
+        bigCounter--
       }
-      setData
-      Section4(_dataSection);
     }
+    shuffledArray.forEach((data, _) => {
+      console.log(bigCounterMax)
+      if (emptyCounter === 3) {
+        // reset empty counter
+        emptyCounter = 0
+        // set random big
+        checkBig(data)
+      } else {
+        // random true or false
+        const randomBoolean = Math.random() < 0.5
+        if (randomBoolean) {
+          // push empty
+          _dataSection.push({})
+          // + 1 empty counter
+          emptyCounter++
+          bigCounterMax > 0 ? bigCounterMax-- : bigCounterMax
+          bigCounter > 0 ? bigCounter : bigCounter
+        } else {
+          // set random big
+          checkBig(data)
+        }
+      }
 
-    // NOTE
-    // const dataVisual = [];
-    // let bigCounter = 0;
-    // let bigCounterMax = 0;
-    // tambahData.forEach((data, index)=> {
-    //   // empty counter = 0
-    //   // random true or false for empty
-
-    //   // check empty counter ( = 3 force data)
-    //   // check empty
-    //   // false
-    //   // dataVisual.push('empty');
-    //   // empty counter++
-    //     // check bigcounter is not 0
-    //     // bigcounter--
-    //     // bigcounterMax--
-    //   // random lagi -> loop
-
-    //   // push data
-    //   // dataVisual.push('data');
-    //   // check bigCounterMax = 0 (proceed to set size Big)
-    //   // check bigcounter = 0 (zero proceed to random)
-    //   // random big
-    //   // random big true -> set size
-    //   // set size big
-    //   // set bigcounter = 5
-    //   // set bigcounterMax = 10
-    //   // random big false
-    //     // check bigcounter is not 0
-    //     // bigcounter--
-    //     // bigcounterMax--
-    // })
-  }, []);
+      // NOTE
+      // empty counter = 0
+      // random true or false for empty
+      // check empty counter ( = 3 force data)
+      // check empty
+      // false
+      // dataVisual.push('empty');
+      // empty counter++
+      // check bigcounter is not 0
+      // bigcounter--
+      // bigcounterMax--
+      // random lagi -> loop
+      // push data
+      // dataVisual.push('data');
+      // check bigCounterMax = 0 (proceed to set size Big)
+      // check bigcounter = 0 (zero proceed to random)
+      // random big
+      // random big true -> set size
+      // set size big
+      // set bigcounter = 5
+      // set bigcounterMax = 10
+      // random big false
+      // check bigcounter is not 0
+      // bigcounter--
+      // bigcounterMax--
+    })
+    setDataSection4(_dataSection)
+    console.log(_dataSection)
+  }, [])
   return (
     <section className="relative w-full">
       <div id="enter-collab" className="relative z-10 top-0 w-full h-screen ">
