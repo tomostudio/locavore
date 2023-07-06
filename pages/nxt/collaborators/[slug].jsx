@@ -143,7 +143,7 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
         className="no-select-all bg-[#C2C2C2]"
       >
         <Container className="relative h-full max-md:max-w-[500px] flex flex-col-reverse md:flex-row md:gap-12 lg:gap-24">
-          <div className="w-full h-full">
+          <div className="w-full md:w-1/2 h-full">
             <HeaderGap className="hidden md:block" />
             <div className="w-full h-full flex flex-col text-black mt-10 md:my-20">
               <h1 className="font-funkturm m-0 md:mb-2 text-m-additionalHeader md:text-d-additionalHeader">
@@ -166,10 +166,10 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
               </div>
             </div>
           </div>
-          <div className="md:sticky top-8 md:top-0 left-0 w-full md:h-screen flex flex-col">
+          <div className="md:sticky  w-full md:w-1/2 top-8 md:top-0 left-0 md:h-screen flex flex-col">
             <HeaderGap />
-            <div className="w-full h-[422px] sm:h-[500px] md:max-h-[720px] md:h-[calc(100vh-(10rem+61px))] mt-6 md:my-20">
-              <div className="relative w-full h-full rounded-[15px] overflow-hidden">
+            <div className="relative w-full h-auto aspect-[11/13] md:aspect-auto mt-6 md:my-20">
+              <div className="relative w-full h-full md:h-[calc(100vh-(10rem+61px))] md:max-h-[720px]  rounded-[15px] overflow-hidden">
                 <Image
                   src={urlFor(collaborator.image).width(590).url()}
                   alt={collaborator.image.alt}

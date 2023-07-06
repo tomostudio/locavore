@@ -10,8 +10,8 @@ import { useEffect, useState } from 'react'
 import FancyLink from '@/components/utils/fancyLink'
 
 import hero from '@/public/nxt2/visit/hero.png'
-import map from '@/public/nxt2/visit/map.png'
-import map_mobile from '@/public/nxt2/visit/map_mobile.png'
+import map from '@/public/nxt2/visit/map.jpg'
+import map_mobile from '@/public/nxt2/visit/map_mobile.jpg'
 import Container from '@/components/modules/container'
 import card_bnw from '@/public/nxt2/card_bnw.png'
 import card from '@/public/nxt2/card.png'
@@ -204,10 +204,10 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             imageMobile={visit.hero.imageMobile}
           />
           <div className="px-10 max-md:px-5 max-w-4xl w-full h-full flex flex-col mt-11 md:mt-20 mb-10 md:mb-16 text-white">
-            <span className="font-serif text-[30px] sm:text-[40px] text-center">
+            <span className="font-serif text-[30px] sm:text-[40px] text-center leading-tight">
               Plan to visit us? <br /> Check out our information below!
             </span>
-            <div className="flex flex-col justify-center items-center text-[14px] sm:text-[16px] max-w-[250px] sm:max-w-none mx-auto mt-10 text-center sm:mt-20">
+            <div className="flex flex-col justify-center items-center text-[14px] sm:text-[16px] max-w-sm sm:max-w-none mx-auto mt-10 text-center sm:mt-20">
               <span className="font-bold">OUR LOCATION</span>
               <FancyLink
                 target="_blank"
@@ -231,7 +231,7 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
                 />
               </div>
             </div>
-            <div className="text-center w-full editor-styling max-w-[250px] sm:max-w-none mx-auto">
+            <div className="text-center w-full editor-styling max-w-sm sm:max-w-none mx-auto">
               <PortableText value={visit.description} components={serializer} />
             </div>
             <FancyLink
@@ -241,15 +241,12 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             >
               {visit.booking.title}
             </FancyLink>
-            <div className="w-full border-y border-white grid grid-cols-3 gap-y-8 py-8 sm:py-12">
+            <div className="w-full border-y border-white flex flex-col gap-y-8 py-8 sm:py-12">
               {visit.contents.map((data, id) => (
                 <>
-                  {id % 2 !== 0 && (
-                    <div key={id} className="w-full hidden sm:block" />
-                  )}
                   <div
                     key={id}
-                    className="w-full flex flex-col col-span-3 sm:col-span-2"
+                    className={`w-full sm:max-w-lg flex flex-col col-span-3 sm:col-span-2 mx-0 ${id % 2 == 0 ? 'sm:mr-2 sm:ml-auto' : 'sm:ml-2 sm:mr-auto'}`}
                   >
                     <span className="font-serif italic text-[20px] sm:text-[24px] flex items-center">
                       <Arrow
@@ -267,9 +264,6 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
                       />
                     </div>
                   </div>
-                  {id % 2 === 0 && (
-                    <div key={id} className="w-full hidden sm:block" />
-                  )}
                 </>
               ))}
             </div>

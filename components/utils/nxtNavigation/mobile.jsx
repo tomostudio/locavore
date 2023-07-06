@@ -112,7 +112,7 @@ const NxtNavigationMobile = ({ transition = false }) => {
                   VISIT
                 </FancyLink>
               )}
-              <div className='w-full h-[50px] flex-shrink-0 bg-white' />
+              <div className='w-full h-[60px] flex-shrink-0 bg-white' />
             </div>
           </div>
         </Container>

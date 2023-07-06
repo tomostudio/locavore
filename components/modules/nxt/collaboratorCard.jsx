@@ -72,14 +72,14 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
               className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
                 collaboratorListAPI.slice(0, itemToShow),
                 id,
-              )} border-white setflex-center text-white py-10 px-20 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]`}
+              )} border-white setflex-center text-white py-8 px-12 lg:px-14 xl:py-10 xl:px-20 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]`}
               key={id}
             >
               <div className="w-full h-full flex flex-col">
                 <span className="italic font-serif text-[1.375rem] text-left mb-1">
                   {data.workRole}
                 </span>
-                <div className="w-full flex">
+                <div className="w-full relative">
                   <div className="relative aspect-[3/2] sm:aspect-[6/5] w-full rounded-md overflow-hidden mr-1">
                     <Image
                       src={urlFor(data.thumbnail.imageBnw).width(600).url()}
@@ -108,11 +108,13 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
                       className="opacity-0 group-hover:opacity-100"
                     />
                   </div>
-                  <span className="text-d-small writing-mode-vertical text-left">
+                  <span className="absolute -right-1 translate-x-full h-full top-0 text-d-small writing-mode-vertical text-left">
                     {data.location}
                   </span>
                 </div>
                 <span className="font-bold text-[1.875rem] max-w-[300px] text-left mt-4 leading-tight">
+                  {data.title}<br/>
+                  {data.title}<br/>
                   {data.title}
                 </span>
               </div>
