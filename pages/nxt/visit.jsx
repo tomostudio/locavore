@@ -22,6 +22,8 @@ import Image from 'next/legacy/image'
 import urlFor from '@/helpers/sanity/urlFor'
 import { PortableText } from '@portabletext/react'
 import Arrow from '@/components/utils/arrow'
+import { useNextSanityImage } from 'next-sanity-image'
+import { singleIURB } from '@/components/utils/iurb'
 
 const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -49,6 +51,29 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
     types: {
       code: (props) => (
         <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
+      ),
+      leafImg: (props) => (
+        <div className={`image !my-10`}>
+          <div className="relative w-full aspect-[5/2] overflow-hidden">
+            {props.value && props.value.asset ? (
+              <Image
+                src={urlFor(props.value).format('webp').width(500).url()}
+                alt={props.value.name}
+                layout="fill"
+                objectFit="contain"
+                placeholder="blur"
+                blurDataURL={urlFor(props.value)
+                  .blur(2)
+                  .format('webp')
+                  .saturation(-100)
+                  .width(100)
+                  .url()}
+              />
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
       ),
       buttonLink: (props) => (
         <FancyLink
@@ -218,7 +243,11 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
                 <Arrow position="right" fill="white" className="ml-2 inline" />
               </FancyLink>
             </div>
-            <div className="relative w-full aspect-[361/243] my-9 sm:my-14">
+            <FancyLink
+              target="_blank"
+              destination={visit.location.link}
+              className="relative w-full aspect-[361/243] my-9 sm:my-14"
+            >
               <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
                 <Image src={map} alt="Map" layout="fill" objectFit="cover" />
               </div>
@@ -230,7 +259,7 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
                   objectFit="cover"
                 />
               </div>
-            </div>
+            </FancyLink>
             <div className="text-center w-full editor-styling max-w-sm sm:max-w-none mx-auto">
               <PortableText value={visit.description} components={serializer} />
             </div>
@@ -246,7 +275,9 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
                 <>
                   <div
                     key={id}
-                    className={`w-full sm:max-w-lg flex flex-col col-span-3 sm:col-span-2 mx-0 ${id % 2 == 0 ? 'sm:mr-2 sm:ml-auto' : 'sm:ml-2 sm:mr-auto'}`}
+                    className={`w-full sm:max-w-lg flex flex-col col-span-3 sm:col-span-2 mx-0 ${
+                      id % 2 == 0 ? 'sm:mr-2 sm:ml-auto' : 'sm:ml-2 sm:mr-auto'
+                    }`}
                   >
                     <span className="font-serif italic text-[20px] sm:text-[24px] flex items-center">
                       <Arrow

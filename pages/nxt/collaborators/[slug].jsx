@@ -17,6 +17,8 @@ import StickyButton from '@/components/modules/stickyButton'
 import EditorComponent from '@/components/modules/editorial/editorComponent'
 import { PortableText } from '@portabletext/react'
 import urlFor from '@/helpers/sanity/urlFor'
+import { useNextSanityImage } from 'next-sanity-image'
+import { singleIURB } from '@/components/utils/iurb'
 
 const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -44,6 +46,29 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
     types: {
       code: (props) => (
         <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
+      ),
+      leafImg: (props) => (
+        <div className={`image !my-10`}>
+          <div className="relative w-full aspect-[5/2] overflow-hidden">
+            {props.value && props.value.asset ? (
+              <Image
+                src={urlFor(props.value).width(500).url()}
+                alt={props.value.name}
+                layout="fill"
+                objectFit="contain"
+                placeholder="blur"
+                blurDataURL={urlFor(props.value)
+                  .blur(2)
+                  .format('webp')
+                  .saturation(-100)
+                  .width(100)
+                  .url()}
+              />
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
       ),
       buttonLink: (props) => (
         <FancyLink

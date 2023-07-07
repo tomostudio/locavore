@@ -1,30 +1,32 @@
-import Layout from '@/components/modules/layout';
-import SEO from '@/components/utils/seo';
-import client from '@/helpers/sanity/client';
-import { useAppContext } from 'context/state';
-import { useRouter } from 'next/router';
-import { motion } from 'framer-motion';
-import { fade } from '@/helpers/preset/transitions';
-import Footer from '@/components/modules/footer';
-import { useEffect } from 'react';
-import Image from 'next/legacy/image';
-import FancyLink from '@/components/utils/fancyLink';
-import HeaderGap from '@/components/modules/headerGap';
-import Container from '@/components/modules/container';
+import Layout from '@/components/modules/layout'
+import SEO from '@/components/utils/seo'
+import client from '@/helpers/sanity/client'
+import { useAppContext } from 'context/state'
+import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
+import { fade } from '@/helpers/preset/transitions'
+import Footer from '@/components/modules/footer'
+import { useEffect } from 'react'
+import Image from 'next/legacy/image'
+import FancyLink from '@/components/utils/fancyLink'
+import HeaderGap from '@/components/modules/headerGap'
+import Container from '@/components/modules/container'
 
-import detail from '@/public/nxt2/events/detail.png';
-import detail_mobile from '@/public/nxt2/events/detail_mobile.png';
-import StickyButton from '@/components/modules/stickyButton';
-import PillButton from '@/components/modules/pillButton';
-import urlFor from '@/helpers/sanity/urlFor';
-import { PortableText } from '@portabletext/react';
+import detail from '@/public/nxt2/events/detail.png'
+import detail_mobile from '@/public/nxt2/events/detail_mobile.png'
+import StickyButton from '@/components/modules/stickyButton'
+import PillButton from '@/components/modules/pillButton'
+import urlFor from '@/helpers/sanity/urlFor'
+import { PortableText } from '@portabletext/react'
+import { useNextSanityImage } from 'next-sanity-image'
+import { singleIURB } from '@/components/utils/iurb'
 
 const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
-  const router = useRouter();
-  const appContext = useAppContext();
-  const [event] = eventAPI;
-  const [seo] = seoAPI;
-  const [footer] = footerAPI;
+  const router = useRouter()
+  const appContext = useAppContext()
+  const [event] = eventAPI
+  const [seo] = seoAPI
+  const [footer] = footerAPI
 
   const serializer = {
     block: {
@@ -35,20 +37,43 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
       h3: ({ children }) => <h3>{children}</h3>,
       h4: ({ children }) => <h4>{children}</h4>,
       h5: ({ children }) => <h5>{children}</h5>,
-      center: ({ children }) => <p align='center'>{children}</p>,
-      left: ({ children }) => <p align='left'>{children}</p>,
-      right: ({ children }) => <p align='right'>{children}</p>,
+      center: ({ children }) => <p align="center">{children}</p>,
+      left: ({ children }) => <p align="left">{children}</p>,
+      right: ({ children }) => <p align="right">{children}</p>,
     },
     list: {
-      number: ({ children }) => <ol className='list-decimal'>{children}</ol>,
+      number: ({ children }) => <ol className="list-decimal">{children}</ol>,
     },
     types: {
       code: (props) => (
         <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
       ),
+      leafImg: (props) => (
+        <div className={`image !my-10`}>
+          <div className="relative w-full aspect-[5/2] overflow-hidden">
+            {props.value && props.value.asset ? (
+              <Image
+                src={urlFor(props.value).width(500).url()}
+                alt={props.value.name}
+                layout="fill"
+                objectFit="contain"
+                placeholder="blur"
+                blurDataURL={urlFor(props.value)
+                  .blur(2)
+                  .format('webp')
+                  .saturation(-100)
+                  .width(100)
+                  .url()}
+              />
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
+      ),
       buttonLink: (props) => (
         <FancyLink
-          blank='_blank'
+          blank="_blank"
           destination={props.value.link}
           className={`w-fit p-4 mx-auto text-d-small uppercase text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
         >
@@ -113,19 +138,19 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
       sub: (props) => <sub>{props.children}</sub>,
       sup: (props) => <sup>{props.children}</sup>,
     },
-  };
+  }
 
   useEffect(() => {
-    document.querySelector('body').style.backgroundColor = 'black';
-    window.scroll(0, 0);
+    document.querySelector('body').style.backgroundColor = 'black'
+    window.scroll(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',
-    });
+    })
 
     return () => {
-      appContext.setHeader({ headerStyle: 'default' });
-    };
-  }, []);
+      appContext.setHeader({ headerStyle: 'default' })
+    }
+  }, [])
 
   return (
     <Layout>
@@ -137,22 +162,22 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
       />
 
       <motion.main
-        initial='initial'
-        animate='enter'
-        exit='exit'
+        initial="initial"
+        animate="enter"
+        exit="exit"
         variants={fade}
-        className=' bg-black'
+        className=" bg-black"
       >
         <HeaderGap />
-        <Container className='relative flex flex-col mt-6 mb-10 md:my-20'>
-          <div className='relative w-full aspect-[345/442] md:aspect-[8/3] rounded-[15px] overflow-hidden'>
-            <div className='absolute top-0 left-0 w-full h-full hidden md:block'>
+        <Container className="relative flex flex-col mt-6 mb-10 md:my-20">
+          <div className="relative w-full aspect-[345/442] md:aspect-[8/3] rounded-[15px] overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full hidden md:block">
               <Image
                 src={urlFor(event.image.imageDesktop).width(1200).url()}
                 alt={event.image.imageDesktop.alt}
-                layout='fill'
-                objectFit='cover'
-                placeholder='blur'
+                layout="fill"
+                objectFit="cover"
+                placeholder="blur"
                 blurDataURL={urlFor(event.image.imageDesktop)
                   .blur(2)
                   .format('webp')
@@ -160,13 +185,13 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
                   .url()}
               />
             </div>
-            <div className='absolute top-0 left-0 w-full h-full md:hidden'>
+            <div className="absolute top-0 left-0 w-full h-full md:hidden">
               <Image
                 src={urlFor(event.image.imageMobile).width(345).url()}
                 alt={event.image.imageMobile.alt}
-                layout='fill'
-                objectFit='cover'
-                placeholder='blur'
+                layout="fill"
+                objectFit="cover"
+                placeholder="blur"
                 blurDataURL={urlFor(event.image.imageMobile)
                   .blur(2)
                   .format('webp')
@@ -175,16 +200,16 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
               />
             </div>
           </div>
-          <div className='w-full flex flex-col mt-10 md:mt-20 mx-auto max-w-4xl'>
-            <div className='w-full flex gap-8'>
-              <div className='hidden md:block w-[30%]' />
-              <span className='w-full md:w-[70%] text-center md:text-left font-funkturm text-m-additionalHeader md:text-d-additionalHeader text-[#BEC29D]'>
+          <div className="w-full flex flex-col mt-10 md:mt-20 mx-auto max-w-4xl">
+            <div className="w-full flex gap-8">
+              <div className="hidden md:block w-[30%]" />
+              <span className="w-full md:w-[70%] text-center md:text-left font-funkturm text-m-additionalHeader md:text-d-additionalHeader text-[#BEC29D]">
                 {event.title}
               </span>
             </div>
-            <div className='w-full flex flex-col max-w-lg md:max-w-none  mx-auto md:flex-row gap-8 mt-8'>
-              <div className='w-full md:w-[30%] flex flex-col gap-3'>
-                <div className='w-full grid grid-flow-col-dense grid-rows-2 md:flex md:flex-col gap-4 md:gap-3 text-white text-center md:text-left'>
+            <div className="w-full flex flex-col max-w-lg md:max-w-none  mx-auto md:flex-row gap-8 mt-8">
+              <div className="w-full md:w-[30%] flex flex-col gap-3">
+                <div className="w-full grid grid-flow-col-dense grid-rows-2 md:flex md:flex-col gap-4 md:gap-3 text-white text-center md:text-left">
                   <span>
                     VENUE:
                     <br />
@@ -207,15 +232,15 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
                   </span>
                 </div>
                 <FancyLink
-                  target='_blank'
+                  target="_blank"
                   destination={event.registerLink}
-                  className='hidden md:block font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30'
+                  className="hidden md:block font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30"
                 >
                   Register Now
                 </FancyLink>
               </div>
-              <div className='w-full md:w-[70%] text-white '>
-                <div className='w-full max-w-xl editor-styling'>
+              <div className="w-full md:w-[70%] text-white ">
+                <div className="w-full max-w-xl editor-styling">
                   <PortableText
                     value={event.description}
                     components={serializer}
@@ -223,9 +248,9 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
                 </div>
               </div>
               <FancyLink
-                target='_blank'
+                target="_blank"
                 destination={event.registerLink}
-                className='md:hidden mx-auto font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30'
+                className="md:hidden mx-auto font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30"
               >
                 Register Now
               </FancyLink>
@@ -233,42 +258,42 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
           </div>
         </Container>
         {/* Button Sticky */}
-        <StickyButton destination='/nxt/events-programs' arrow='left'>
+        <StickyButton destination="/nxt/events-programs" arrow="left">
           EVENTS & PROGRAMS
         </StickyButton>
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
-  );
-};
+  )
+}
 
 export async function getStaticPaths() {
   const res = await client.fetch(`
         *[_type == "eventList"]
-      `);
+      `)
 
   const paths = res.map((data) => ({
     params: { slug: data.slug.current.toString() },
-  }));
+  }))
 
-  return { paths, fallback: false };
+  return { paths, fallback: false }
 }
 
 export async function getStaticProps({ params }) {
   const eventAPI = await client.fetch(
     `
       *[_type == "eventList" && slug.current == "${params.slug}"] 
-    `
-  );
+    `,
+  )
   const seoAPI = await client.fetch(`
     *[_type == "settings"]
-    `);
+    `)
   const footerAPI = await client.fetch(`
                       *[_type == "footer"]
-                      `);
+                      `)
   const headerAPI = await client.fetch(`
                       *[_type == "header"]
-                      `);
+                      `)
   return {
     props: {
       eventAPI,
@@ -276,7 +301,7 @@ export async function getStaticProps({ params }) {
       footerAPI,
       headerAPI,
     },
-  };
+  }
 }
 
-export default EventsAndProgramsDetail;
+export default EventsAndProgramsDetail

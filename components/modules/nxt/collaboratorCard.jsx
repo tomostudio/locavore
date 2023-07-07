@@ -113,8 +113,6 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
                   </span>
                 </div>
                 <span className="font-bold text-[1.875rem] max-w-[300px] text-left mt-4 leading-tight">
-                  {data.title}<br/>
-                  {data.title}<br/>
                   {data.title}
                 </span>
               </div>

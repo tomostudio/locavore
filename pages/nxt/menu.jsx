@@ -4,8 +4,6 @@ import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { fade } from '@/helpers/preset/transitions'
 
-import leaf from '@/public/nxt2/leaf.png'
-
 import { useContext, useEffect } from 'react'
 import client from '@/helpers/sanity/client'
 import Image from 'next/legacy/image'
@@ -96,9 +94,6 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
               <span className="block text-[2.125rem] sm:text-t-header md:text-d-header text-center leading-[120%]">
                 {menu.title}
               </span>
-              <div className="relative mx-auto my-10">
-                <Image src={leaf} alt="Leaf" objectFit='contain' />
-              </div>
               <EditorComponent data={menu.article[0].content} color={'#fff'} />
             </div>
           </Container>
