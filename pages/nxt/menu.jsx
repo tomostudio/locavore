@@ -14,6 +14,9 @@ import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 import urlFor from '@/helpers/sanity/urlFor'
 import EditorComponent from '@/components/modules/editorial/editorComponent'
+import GalleryComponent from '@/components/modules/editorial/galleryComponent'
+import VideoComponent from '@/components/modules/editorial/videoComponent'
+import Caption from '@/components/modules/editorial/caption'
 
 const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -94,7 +97,61 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
               <span className="block text-[2.125rem] sm:text-t-header md:text-d-header text-center leading-[120%]">
                 {menu.title}
               </span>
-              <EditorComponent data={menu.article[0].content} color={'#fff'} />
+              {menu.article.map((data) =>
+                data._type === 'editor' ? (
+                  <EditorComponent data={data.content} color={'#fff'} />
+                ) : data._type === 'gallery' ? (
+                  <GalleryComponent gallery={data} color={'#fff'} />
+                ) : data._type === 'video' ? (
+                  <VideoComponent video={data} />
+                ) : data._type === 'imageComponent' ? (
+                  <div
+                    className={`h-auto setflex-center ${
+                      !data.option ? 'w-content max-md:w-full px-14' : 'w-full'
+                    }`}
+                  >
+                    <div
+                      className={`relative w-full h-full aspect-w-16 aspect-h-9 max-md:aspect-w-1 max-md:aspect-h-1 rounded-xl overflow-hidden`}
+                      style={{
+                        backgroundColor: `rgba(208,208,208, 1)`,
+                      }}
+                    >
+                      {data.image && data.image.asset ? (
+                        <Image
+                          src={urlFor(data.image).width(1500).url()}
+                          alt={data.image.name}
+                          layout="fill"
+                          objectFit="cover"
+                          objectPosition="center"
+                          placeholder="blur"
+                          blurDataURL={urlFor(data.image)
+                            .blur(2)
+                            .format('webp')
+                            .width(500)
+                            .url()}
+                        />
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                    {data.description && (
+                      <div
+                        className={`${
+                          data.option ? 'w-content max-md:w-full' : 'w-full'
+                        } mx-auto max-md:px-4`}
+                      >
+                        <Caption
+                          option={data.option}
+                          caption={data.description}
+                          color={'#fff'}
+                        />
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <></>
+                ),
+              )}
             </div>
           </Container>
         </div>
