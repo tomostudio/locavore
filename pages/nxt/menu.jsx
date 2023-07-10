@@ -17,6 +17,7 @@ import EditorComponent from '@/components/modules/editorial/editorComponent'
 import GalleryComponent from '@/components/modules/editorial/galleryComponent'
 import VideoComponent from '@/components/modules/editorial/videoComponent'
 import Caption from '@/components/modules/editorial/caption'
+import { Parallax } from 'react-scroll-parallax'
 
 const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -53,7 +54,7 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
         className="no-select-all bg-black"
       >
         <div className="relative w-full aspect-[3/4] sm:aspect-[95/33] flex items-center sm:items-end">
-          <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
+          <Parallax speed={10} className="absolute top-0 left-0 w-full h-full hidden sm:block">
             <Image
               src={urlFor(menu.hero.image.imageDesktop).width(1140).url()}
               alt={menu.hero.image.imageDesktop.alt}
@@ -66,8 +67,8 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
                 .width(100)
                 .url()}
             />
-          </div>
-          <div className="absolute top-0 left-0 w-full h-full sm:hidden">
+          </Parallax>
+          <Parallax speed={10} className="absolute top-0 left-0 w-full h-full sm:hidden">
             <Image
               src={urlFor(menu.hero.image.imageMobile).width(375).url()}
               alt={menu.hero.image.imageMobile.alt}
@@ -80,7 +81,7 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
                 .width(100)
                 .url()}
             />
-          </div>
+          </Parallax>
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
           <div className="relative z-10 sm:mb-10 md:mb-20 w-full setflex-center max-w-5xl px-10 max-md:px-5 mx-auto text-white">
             <h1 className="m-0 font-funkturm text-m-additionalTitle md:text-d-additionalTitle">

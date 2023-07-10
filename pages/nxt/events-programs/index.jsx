@@ -24,7 +24,6 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
   const [event] = eventAPI;
   const [seo] = seoAPI;
   const [footer] = footerAPI;
-  const eventList = ['', '', '', '', '', '', '', '', ''];
   const defaultItemToShow = 6;
   const [itemToShow, setItemToShow] = useState(defaultItemToShow);
   const [showMoreButton, setShowMore] = useState(
@@ -121,7 +120,7 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
               className={`w-fit p-4 text-m-small md:text-sm mb-10 md:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
               onClick={() => {
                 setItemToShow(itemToShow + defaultItemToShow);
-                setShowMore(eventList.length > itemToShow + defaultItemToShow);
+                setShowMore(eventListAPI.length > itemToShow + defaultItemToShow);
               }}
             >
               VIEW MORE

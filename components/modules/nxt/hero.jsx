@@ -1,11 +1,12 @@
 import Image from 'next/legacy/image'
 import HeaderGap from '../headerGap'
 import urlFor from '@/helpers/sanity/urlFor'
+import { Parallax } from 'react-scroll-parallax'
 
 const HeroComponent = ({ imageDesktop, imageMobile, title }) => {
   return (
     <div className="relative w-full aspect-[15/14] sm:aspect-[144/35] flex flex-col">
-      <div className="absolute top-0 left-0 w-full h-full hidden sm:block z-10">
+      <Parallax speed={10} className="absolute top-0 left-0 w-full h-full hidden sm:block z-10">
         <Image
           src={urlFor(imageDesktop).width(1140).url()}
           alt={imageDesktop.alt}
@@ -18,8 +19,8 @@ const HeroComponent = ({ imageDesktop, imageMobile, title }) => {
             .width(100)
             .url()}
         />
-      </div>
-      <div className="absolute top-0 left-0 w-full h-full sm:hidden">
+      </Parallax>
+      <Parallax speed={10} className="absolute top-0 left-0 w-full h-full sm:hidden">
         <Image
           src={urlFor(imageMobile).width(375).url()}
           alt={imageMobile.alt}
@@ -32,7 +33,7 @@ const HeroComponent = ({ imageDesktop, imageMobile, title }) => {
             .width(100)
             .url()}
         />
-      </div>
+      </Parallax>
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 z-10" />
       <HeaderGap />
       <div className="w-full flex grow-1 items-center sm:items-end justify-center z-20">

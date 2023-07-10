@@ -313,8 +313,8 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
           </div>
         </div>
         <NxtNavigation />
+        <Footer footer={footer} mailchimp={seo.mailchimpID} />
       </motion.main>
-      <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
   )
 }

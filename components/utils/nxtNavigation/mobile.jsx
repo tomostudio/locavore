@@ -66,7 +66,7 @@ const NxtNavigationMobile = ({ transition = false }) => {
               </FancyLink>
             </div>
             <div
-              className={`absolute -bottom-[10px] left-0 w-full nxt-mobile-menu ${
+              className={`absolute -bottom-[10px] left-0 w-full nxt-mobile-menu pt-[10px] ${
                 open
                   ? 'open'
                   : ''

@@ -63,7 +63,7 @@ export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
       {/* Buffer */}
       <div className='relative h-[5vh] max-h-24' />
       <Parallax speed={20} className='relative w-full mx-auto max-w-screen-lg px-8 z-1 pointer-events-none '>
-        <div className='relative w-[30vw] md:w-[25vw] max-w-[500px] h-25vh'>
+        <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-25vh'>
           <Image
             src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
             alt={dataSection2Option3.imageNormal.alt}
@@ -81,7 +81,7 @@ export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
       {/* Buffer */}
       <div className='relative h-[25vh]' />
       <Parallax speed={5} className='relative w-full mx-auto max-w-screen-lg px-8 flex justify-end z-20 pointer-events-none'>
-        <div className='relative w-[30vw] md:w-[25vw] max-w-[500px] h-25vh'>
+        <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-25vh'>
           <Image
             src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
             alt={dataSection2Option3.imageNormal.alt}

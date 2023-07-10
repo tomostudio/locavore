@@ -110,10 +110,10 @@ const FeaturesAndFacilities = ({
               transition: { duration: 0.5, ease: [0.83, 0, 0.17, 1] },
             },
           }}
-          className="w-full min-h-screen flex flex-col overflow-hidden"
+          className="w-full flex flex-col overflow-hidden"
         >
           <Container className="flex flex-col items-center mt-20 md:mt-44">
-            <h1 className="text-[#BEC29D] text-center font-funkturm text-m-header sm:text-t-header md:text-d-header max-w-[180px] sm:max-w-none m-0">
+            <h1 className="text-[#BEC29D] text-center font-funkturm text-m-header sm:text-t-header md:text-d-header m-0">
               OUR FACILITIES
             </h1>
             <ButtonViewFacilities setShowComponent={setShowComponent} />
@@ -126,8 +126,8 @@ const FeaturesAndFacilities = ({
           />
         </motion.div>
         <NxtNavigation />
+        <Footer footer={footer} mailchimp={seo.mailchimpID} />
       </motion.main>
-      <Footer footer={footer} mailchimp={seo.mailchimpID} />
     </Layout>
   )
 }
