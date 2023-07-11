@@ -30,18 +30,13 @@ const OurCollaborators = ({
   const [collaborator] = collaboratorAPI
   const [seo] = seoAPI
   const [footer] = footerAPI
-  const defaultItemToShow = 6
+  const defaultItemToShow = 12
   const [itemToShow, setItemToShow] = useState(defaultItemToShow)
   const [showMoreButton, setShowMore] = useState(
-    Array(15).fill(collaboratorListAPI[0]).length > defaultItemToShow
+    Array(13).fill(collaboratorListAPI[0]).length > defaultItemToShow
       ? true
       : false,
   )
-
-  const handleViewMore = () => {
-    setItemToShow(itemToShow + defaultItemToShow)
-    setShowMore(data.length > itemToShow + defaultItemToShow)
-  }
 
   useEffect(() => {
     document.querySelector('body').style.backgroundColor = 'black'
@@ -79,13 +74,13 @@ const OurCollaborators = ({
           />
           <div className="w-full h-full grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-11 md:mt-20 mb-16 border-b sm:border-y border-white collaborators-border">
             <CollaboratorCard
-              collaboratorListAPI={Array(15).fill(collaboratorListAPI[0])}
+              collaboratorListAPI={Array(13).fill(collaboratorListAPI[0])}
               itemToShow={itemToShow}
             />
           </div>
           {showMoreButton && (
             <ViewMoreButton
-              data={Array(15).fill(collaboratorListAPI[0])}
+              data={Array(13).fill(collaboratorListAPI[0])}
               itemToShow={itemToShow}
               setItemToShow={setItemToShow}
               defaultItemToShow={defaultItemToShow}

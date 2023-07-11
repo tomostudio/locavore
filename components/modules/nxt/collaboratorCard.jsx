@@ -9,6 +9,10 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
     let rowCountDesktop = 4
     let columnCountDesktop = Math.ceil(data.length / rowCountDesktop)
 
+    // desktop tablet
+    let rowCountTablet = 3
+    let columnCountTablet = Math.ceil(data.length / rowCountTablet)
+
     // mobile column
     let rowCountMobile = 2
     let columnCountMobile = Math.ceil(data.length / rowCountMobile)
@@ -23,6 +27,16 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
       lastRowDivsDesktop.push(i)
     }
 
+    // check row tablet
+    const lastRowDivsTablet = []
+    for (
+      var i = rowCountTablet * (columnCountTablet - 1);
+      i < data.length;
+      i++
+    ) {
+      lastRowDivsTablet.push(i)
+    }
+
     // check row mobile
     const lastRowDivsMobile = []
     for (
@@ -33,34 +47,62 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
       lastRowDivsMobile.push(i)
     }
 
-    if (collaboratorListAPI.length > 4) {
-      if (
-        !lastRowDivsDesktop.find((e) => e === index) &&
-        !lastRowDivsMobile.find((e) => e === index)
-      ) {
-        return 'border-b'
-      } else if (
-        !lastRowDivsDesktop.find((e) => e === index) &&
-        lastRowDivsMobile.find((e) => e === index)
-      ) {
-        return 'md:border-b'
-      } else if (
-        lastRowDivsDesktop.find((e) => e === index) &&
-        !lastRowDivsMobile.find((e) => e === index)
-      ) {
-        return 'border-b md:border-b-0'
-      } else {
-        return ''
-      }
-    } else if (collaboratorListAPI.length === 4) {
-      if (!lastRowDivsMobile.find((e) => e === index)) {
-        return 'border-b'
-      } else {
-        return ''
-      }
+    // if (collaboratorListAPI.length > 4) {
+    console.log(lastRowDivsDesktop.find((e) => e === index))
+    if (
+      !lastRowDivsDesktop.find((e) => e === index) &&
+      !lastRowDivsTablet.find((e) => e === index) &&
+      !lastRowDivsMobile.find((e) => e === index)
+    ) {
+      return 'sm:border-b'
+    } else if (
+      !lastRowDivsDesktop.find((e) => e === index) &&
+      lastRowDivsTablet.find((e) => e === index) &&
+      lastRowDivsMobile.find((e) => e === index)
+    ) {
+      return 'lg:border-b'
+    } else if (
+      !lastRowDivsDesktop.find((e) => e === index) &&
+      !lastRowDivsTablet.find((e) => e === index) &&
+      lastRowDivsMobile.find((e) => e === index)
+    ) {
+      return 'md:border-b lg:border-b'
+    } else if (
+      !lastRowDivsDesktop.find((e) => e === index) &&
+      lastRowDivsTablet.find((e) => e === index) &&
+      !lastRowDivsMobile.find((e) => e === index)
+    ) {
+      return 'sm:border-b md:border-b-0 lg:border-b'
+    } else if (
+      lastRowDivsDesktop.find((e) => e === index) &&
+      !lastRowDivsTablet.find((e) => e === index) &&
+      lastRowDivsMobile.find((e) => e === index)
+    ) {
+      return 'md:border-b lg:border-b-0'
+    } else if (
+      lastRowDivsDesktop.find((e) => e === index) &&
+      !lastRowDivsTablet.find((e) => e === index) &&
+      !lastRowDivsMobile.find((e) => e === index)
+    ) {
+      return 'sm:border-b lg:border-b-0'
+    } else if (
+      lastRowDivsDesktop.find((e) => e === index) &&
+      lastRowDivsTablet.find((e) => e === index) &&
+      !lastRowDivsMobile.find((e) => e === index)
+    ) {
+      return 'sm:border-b md:border-b-0'
     } else {
       return ''
     }
+    // } else if (collaboratorListAPI.length === 4) {
+    //   if (!lastRowDivsMobile.find((e) => e === index)) {
+    //     return 'border-b'
+    //   } else {
+    //     return ''
+    //   }
+    // } else {
+    //   return ''
+    // }
   }
 
   return (

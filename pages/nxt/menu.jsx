@@ -53,20 +53,25 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
         variants={fade}
         className="no-select-all bg-black"
       >
-        <div className="relative w-full aspect-[3/4] sm:aspect-[95/33] flex items-center sm:items-end">
-          <Parallax speed={10} className="absolute top-0 left-0 w-full h-full hidden sm:block">
-            <Image
-              src={urlFor(menu.hero.image.imageDesktop).width(1140).url()}
-              alt={menu.hero.image.imageDesktop.alt}
-              layout="fill"
-              objectFit="cover"
-              placeholder="blur"
-              blurDataURL={urlFor(menu.hero.image.imageDesktop)
-                .blur(2)
-                .format('webp')
-                .width(100)
-                .url()}
-            />
+        <div className="relative w-full aspect-[3/4] sm:aspect-[95/33] flex items-center sm:items-end overflow-hidden">
+          <Parallax
+            speed={5}
+            className="absolute top-0 left-0 w-full h-full hidden sm:flex justify-center items-center"
+          >
+            <div className="relative w-[125%] h-[125%]">
+              <Image
+                src={urlFor(menu.hero.image.imageDesktop).width(1500).url()}
+                alt={menu.hero.image.imageDesktop.alt}
+                layout="fill"
+                objectFit="cover"
+                placeholder="blur"
+                blurDataURL={urlFor(menu.hero.image.imageDesktop)
+                  .blur(2)
+                  .format('webp')
+                  .width(100)
+                  .url()}
+              />
+            </div>
           </Parallax>
           <div className="absolute top-0 left-0 w-full h-full sm:hidden">
             <Image
