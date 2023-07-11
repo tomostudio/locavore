@@ -61,43 +61,42 @@ export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
         </Container>
       </div>
       {/* Buffer */}
-      <div className='relative h-[5vh] max-h-24' />
-      <Parallax speed={20} className='relative w-full mx-auto max-w-screen-lg px-8 z-1 pointer-events-none '>
-        <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-25vh'>
-          <Image
-            src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
-            alt={dataSection2Option3.imageNormal.alt}
-            layout='fill'
-            objectFit='contain'
-            placeholder='blur'
-            blurDataURL={urlFor(dataSection2Option3.imageNormal)
-              .blur(2)
-              .format('webp')
-              .width(100)
-              .url()}
-          />
+      <div className='relative h-screen flex justify-center items-center flex-col'>
+        <div className=' w-full mx-auto max-w-screen-lg px-8 z-1 pointer-events-none '>
+          <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-40vh md:h-25vh'>
+            <Image
+              src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
+              alt={dataSection2Option3.imageNormal.alt}
+              layout='fill'
+              objectFit='contain'
+              placeholder='blur'
+              blurDataURL={urlFor(dataSection2Option3.imageNormal)
+                .blur(2)
+                .format('webp')
+                .width(100)
+                .url()}
+            />
+          </div>
         </div>
-      </Parallax>
-      {/* Buffer */}
-      <div className='hidden sm:block relative h-[25vh]' />
-      <Parallax speed={5} className='relative w-full mx-auto max-w-screen-lg px-8 flex justify-end z-20 pointer-events-none'>
-        <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-25vh'>
-          <Image
-            src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
-            alt={dataSection2Option3.imageNormal.alt}
-            layout='fill'
-            objectFit='contain'
-            placeholder='blur'
-            blurDataURL={urlFor(dataSection2Option3.imageNormal)
-              .blur(2)
-              .format('webp')
-              .width(100)
-              .url()}
-          />
+        <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-25vh' />
+        {/* Buffer */}
+        <div className=' w-full mx-auto max-w-screen-lg px-8 flex justify-end z-20 pointer-events-none'>
+          <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-40vh md:h-25vh'>
+            <Image
+              src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
+              alt={dataSection2Option3.imageNormal.alt}
+              layout='fill'
+              objectFit='contain'
+              placeholder='blur'
+              blurDataURL={urlFor(dataSection2Option3.imageNormal)
+                .blur(2)
+                .format('webp')
+                .width(100)
+                .url()}
+            />
+          </div>
         </div>
-      </Parallax>
-      {/* Buffer */}
-      <div className='relative h-screen' />
+      </div>
     </section>
   );
 };
