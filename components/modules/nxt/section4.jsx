@@ -180,10 +180,8 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
                   })}
               </div>
             </Marquee>
-          </div>
-          <div className='absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end'>
             <FancyLink
-              className={`w-fit py-4 px-6 mb-8 lg:mb-12 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              className={`w-fit py-4 px-6 mt-10 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
               destination='/nxt/collaborators'
             >
               VIEW OUR COLLABORATORS
