@@ -33,7 +33,7 @@ const OurCollaborators = ({
   const defaultItemToShow = 6
   const [itemToShow, setItemToShow] = useState(defaultItemToShow)
   const [showMoreButton, setShowMore] = useState(
-    Array(10).fill(collaboratorListAPI[0]).length > defaultItemToShow
+    Array(15).fill(collaboratorListAPI[0]).length > defaultItemToShow
       ? true
       : false,
   )
@@ -77,15 +77,15 @@ const OurCollaborators = ({
             imageDesktop={collaborator.hero.imageDesktop}
             imageMobile={collaborator.hero.imageMobile}
           />
-          <div className="w-full h-full flex flex-wrap mt-11 md:mt-20 mb-16 border-b sm:border-y border-white collaborators-border">
+          <div className="w-full h-full grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-11 md:mt-20 mb-16 border-b sm:border-y border-white collaborators-border">
             <CollaboratorCard
-              collaboratorListAPI={Array(10).fill(collaboratorListAPI[0])}
+              collaboratorListAPI={Array(15).fill(collaboratorListAPI[0])}
               itemToShow={itemToShow}
             />
           </div>
           {showMoreButton && (
             <ViewMoreButton
-              data={Array(10).fill(collaboratorListAPI[0])}
+              data={Array(15).fill(collaboratorListAPI[0])}
               itemToShow={itemToShow}
               setItemToShow={setItemToShow}
               defaultItemToShow={defaultItemToShow}

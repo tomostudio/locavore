@@ -171,7 +171,7 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
           <div className="w-full md:w-1/2 h-full">
             <HeaderGap className="hidden md:block" />
             <div className="w-full h-full flex flex-col text-black mt-10 md:my-20">
-              <h1 className="font-funkturm m-0 md:mb-2 text-m-additionalHeader md:text-d-additionalHeader">
+              <h1 className="font-funkturm m-0 md:mb-2 text-[2.5rem] md:text-d-additionalHeader">
                 {collaborator.title}
               </h1>
               <div className="w-full">

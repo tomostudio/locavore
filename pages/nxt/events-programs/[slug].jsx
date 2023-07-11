@@ -203,7 +203,7 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
           <div className="w-full flex flex-col mt-10 md:mt-20 mx-auto max-w-4xl">
             <div className="w-full flex gap-8">
               <div className="hidden md:block w-[30%]" />
-              <span className="w-full md:w-[70%] text-center md:text-left font-funkturm text-m-additionalHeader md:text-d-additionalHeader text-[#BEC29D]">
+              <span className="w-full md:w-[70%] text-center md:text-left font-funkturm text-[2.5rem] md:text-d-additionalHeader text-[#BEC29D]">
                 {event.title}
               </span>
             </div>

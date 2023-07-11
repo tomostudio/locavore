@@ -110,7 +110,7 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
           </span>
           <div
             id='slider_collab'
-            className='absolute top-0 left-0 -z-1 w-full h-full setflex-center pb-20 opacity-0'
+            className='absolute top-0 left-0 -z-1 w-full h-full setflex-center opacity-0'
           >
             <span className='text-[#BEC29D] mb-7 whitespace-pre-line text-center font-funkturm text-m-additionalTitle leading-full drop-shadow-collaborators md:hidden'>
               {useMediaQuery('(min-width: 400px)') ? (
@@ -183,7 +183,7 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
           </div>
           <div className='absolute top-0 left-0 w-full h-full z-10 pointer-events-none flex justify-center items-end'>
             <FancyLink
-              className={`w-fit py-4 px-6 mb-20 lg:mb-[4.5rem] text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              className={`w-fit py-4 px-6 mb-8 lg:mb-12 text-d-small text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
               destination='/nxt/collaborators'
             >
               VIEW OUR COLLABORATORS

@@ -225,7 +225,7 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
         <div className="md:sticky md:top-0 md:right-0 w-full md:w-1/2 md:min-h-screen h-full flex justify-end">
           <div className="w-full mx-auto max-w-2xl px-10 max-md:px-5 setflex-center py-20 md:py-24">
             <HeaderGap className="hidden md:block" />
-            <h1 className="text-m-additionalHeader sm:text-[2rem] md:text-d-additionalHeader m-0 text-[#BEC29D] font-funkturm">
+            <h1 className="text-[2.5rem] md:text-d-additionalHeader m-0 text-[#BEC29D] font-funkturm">
               {facilities.title}
             </h1>
             <div className="relative w-full max-w-xl mx-auto text-center text-white editor-styling px-10">

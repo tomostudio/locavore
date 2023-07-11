@@ -41,9 +41,11 @@ const EventCard = ({
           className="opacity-0 group-hover:opacity-100"
         />
       </div>
-      <span className="font-bold text-d-body sm:text-m-title md:text-m-subheading">
-        {title}
-      </span>
+      <div className="w-full flex items-center grow">
+        <span className="font-bold text-d-body sm:text-m-title md:text-m-subheading line-clamp-2 leading-[32px]">
+          {title}
+        </span>
+      </div>
       <p className="text-sm mt-1">{description}</p>
     </FancyLink>
   )

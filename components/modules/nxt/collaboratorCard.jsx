@@ -6,7 +6,7 @@ import Image from 'next/legacy/image'
 const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
   const removeBorderLastRow = (data, index) => {
     // desktop column
-    let rowCountDesktop = 3
+    let rowCountDesktop = 4
     let columnCountDesktop = Math.ceil(data.length / rowCountDesktop)
 
     // mobile column
@@ -33,7 +33,7 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
       lastRowDivsMobile.push(i)
     }
 
-    if (collaboratorListAPI.length > 3) {
+    if (collaboratorListAPI.length > 4) {
       if (
         !lastRowDivsDesktop.find((e) => e === index) &&
         !lastRowDivsMobile.find((e) => e === index)
@@ -52,7 +52,7 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
       } else {
         return ''
       }
-    } else if (collaboratorListAPI.length === 3) {
+    } else if (collaboratorListAPI.length === 4) {
       if (!lastRowDivsMobile.find((e) => e === index)) {
         return 'border-b'
       } else {
@@ -69,14 +69,14 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
         ? collaboratorListAPI.slice(0, itemToShow).map((data, id) => (
             <FancyLink
               destination={`/nxt/collaborators/${data.slug.current}`}
-              className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
+              className={`w-full ${removeBorderLastRow(
                 collaboratorListAPI.slice(0, itemToShow),
                 id,
               )} border-white setflex-center text-white py-8 px-12 lg:px-14 xl:py-10 xl:px-20 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]`}
               key={id}
             >
               <div className="w-full h-full flex flex-col">
-                <span className="italic font-serif text-[1.375rem] text-left mb-1">
+                <span className="italic font-serif text-[1.375rem] text-left mb-2">
                   {data.workRole}
                 </span>
                 <div className="w-full relative">
@@ -108,7 +108,7 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
                       className="opacity-0 group-hover:opacity-100"
                     />
                   </div>
-                  <span className="absolute -right-1 translate-x-full h-full top-0 text-d-small writing-mode-vertical text-left">
+                  <span className="absolute -right-2 uppercase translate-x-full h-full top-0 text-d-small writing-mode-vertical text-left">
                     {data.location}
                   </span>
                 </div>

@@ -79,7 +79,7 @@ export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
         </div>
       </Parallax>
       {/* Buffer */}
-      <div className='relative h-[25vh]' />
+      <div className='hidden sm:block relative h-[25vh]' />
       <Parallax speed={5} className='relative w-full mx-auto max-w-screen-lg px-8 flex justify-end z-20 pointer-events-none'>
         <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-25vh'>
           <Image

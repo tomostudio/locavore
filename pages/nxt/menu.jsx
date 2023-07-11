@@ -68,7 +68,7 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
                 .url()}
             />
           </Parallax>
-          <Parallax speed={10} className="absolute top-0 left-0 w-full h-full sm:hidden">
+          <div className="absolute top-0 left-0 w-full h-full sm:hidden">
             <Image
               src={urlFor(menu.hero.image.imageMobile).width(375).url()}
               alt={menu.hero.image.imageMobile.alt}
@@ -81,7 +81,7 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
                 .width(100)
                 .url()}
             />
-          </Parallax>
+          </div>
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
           <div className="relative z-10 sm:mb-10 md:mb-20 w-full setflex-center max-w-5xl px-10 max-md:px-5 mx-auto text-white">
             <h1 className="m-0 font-funkturm text-m-additionalTitle md:text-d-additionalTitle">
