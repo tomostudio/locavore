@@ -63,7 +63,7 @@ export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
       {/* Buffer */}
       <div className='relative h-screen flex justify-center items-center flex-col'>
         <div className=' w-full mx-auto max-w-screen-lg px-8 z-1 pointer-events-none '>
-          <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-40vh md:h-25vh'>
+          <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-25vh'>
             <Image
               src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
               alt={dataSection2Option3.imageNormal.alt}
@@ -78,10 +78,10 @@ export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
             />
           </div>
         </div>
-        <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-25vh' />
+        <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-[10vh] md:h-25vh max-h-[150px]' />
         {/* Buffer */}
         <div className=' w-full mx-auto max-w-screen-lg px-8 flex justify-end z-20 pointer-events-none'>
-          <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-40vh md:h-25vh'>
+          <div className='relative w-[40vw] md:w-[25vw] max-w-[500px] h-25vh'>
             <Image
               src={urlFor(dataSection2Option3.imageNormal).width(798).url()}
               alt={dataSection2Option3.imageNormal.alt}
