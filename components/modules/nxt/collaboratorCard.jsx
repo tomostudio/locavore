@@ -131,7 +131,7 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
               key={id}
             >
               <div className="w-full h-full flex flex-col">
-                <span className="italic font-serif text-[1.375rem] text-left mb-2">
+                <span className="italic font-serif text-[1.375rem] text-left mb-2 leading-none">
                   {data.workRole}
                 </span>
                 <div className="w-full relative">
@@ -163,7 +163,7 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
                       className="opacity-0 group-hover:opacity-100"
                     />
                   </div>
-                  <span className="absolute -right-2 uppercase translate-x-full h-full top-0 text-d-small writing-mode-vertical text-left">
+                  <span className="absolute -right-2 uppercase translate-x-full h-full top-0 leading-none text-d-small writing-mode-vertical text-left">
                     {data.location}
                   </span>
                 </div>
