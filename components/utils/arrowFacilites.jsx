@@ -6,7 +6,9 @@ const ArrowFacilities = ({ color = '#fff', position = 'left' }) => {
       height="16"
       fill="none"
       viewBox="0 0 20 16"
-      className={`${position === 'right' ? 'rotate-180' : ''}`}
+      className={`w-[13px] sm:w-[20px] h-[8px] sm:h-[16px] ${
+        position === 'right' ? 'rotate-180' : ''
+      }`}
     >
       <path
         fill={color}
