@@ -47,62 +47,75 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
       lastRowDivsMobile.push(i)
     }
 
-    // if (collaboratorListAPI.length > 4) {
-    console.log(lastRowDivsDesktop.find((e) => e === index))
-    if (
-      !lastRowDivsDesktop.find((e) => e === index) &&
-      !lastRowDivsTablet.find((e) => e === index) &&
-      !lastRowDivsMobile.find((e) => e === index)
-    ) {
-      return 'sm:border-b'
-    } else if (
-      !lastRowDivsDesktop.find((e) => e === index) &&
-      lastRowDivsTablet.find((e) => e === index) &&
-      lastRowDivsMobile.find((e) => e === index)
-    ) {
-      return 'lg:border-b'
-    } else if (
-      !lastRowDivsDesktop.find((e) => e === index) &&
-      !lastRowDivsTablet.find((e) => e === index) &&
-      lastRowDivsMobile.find((e) => e === index)
-    ) {
-      return 'md:border-b lg:border-b'
-    } else if (
-      !lastRowDivsDesktop.find((e) => e === index) &&
-      lastRowDivsTablet.find((e) => e === index) &&
-      !lastRowDivsMobile.find((e) => e === index)
-    ) {
-      return 'sm:border-b md:border-b-0 lg:border-b'
-    } else if (
-      lastRowDivsDesktop.find((e) => e === index) &&
-      !lastRowDivsTablet.find((e) => e === index) &&
-      lastRowDivsMobile.find((e) => e === index)
-    ) {
-      return 'md:border-b lg:border-b-0'
-    } else if (
-      lastRowDivsDesktop.find((e) => e === index) &&
-      !lastRowDivsTablet.find((e) => e === index) &&
-      !lastRowDivsMobile.find((e) => e === index)
-    ) {
-      return 'sm:border-b lg:border-b-0'
-    } else if (
-      lastRowDivsDesktop.find((e) => e === index) &&
-      lastRowDivsTablet.find((e) => e === index) &&
-      !lastRowDivsMobile.find((e) => e === index)
-    ) {
-      return 'sm:border-b md:border-b-0'
-    } else {
-      return ''
+    if (collaboratorListAPI.length > 4) {
+      console.log(lastRowDivsDesktop.find((e) => e === index))
+      if (
+        !lastRowDivsDesktop.find((e) => e === index) &&
+        !lastRowDivsTablet.find((e) => e === index) &&
+        !lastRowDivsMobile.find((e) => e === index)
+      ) {
+        return 'sm:border-b'
+      } else if (
+        !lastRowDivsDesktop.find((e) => e === index) &&
+        lastRowDivsTablet.find((e) => e === index) &&
+        lastRowDivsMobile.find((e) => e === index)
+      ) {
+        return 'lg:border-b'
+      } else if (
+        !lastRowDivsDesktop.find((e) => e === index) &&
+        !lastRowDivsTablet.find((e) => e === index) &&
+        lastRowDivsMobile.find((e) => e === index)
+      ) {
+        return 'md:border-b lg:border-b'
+      } else if (
+        !lastRowDivsDesktop.find((e) => e === index) &&
+        lastRowDivsTablet.find((e) => e === index) &&
+        !lastRowDivsMobile.find((e) => e === index)
+      ) {
+        return 'sm:border-b md:border-b-0 lg:border-b'
+      } else if (
+        lastRowDivsDesktop.find((e) => e === index) &&
+        !lastRowDivsTablet.find((e) => e === index) &&
+        lastRowDivsMobile.find((e) => e === index)
+      ) {
+        return 'md:border-b lg:border-b-0'
+      } else if (
+        lastRowDivsDesktop.find((e) => e === index) &&
+        !lastRowDivsTablet.find((e) => e === index) &&
+        !lastRowDivsMobile.find((e) => e === index)
+      ) {
+        return 'sm:border-b lg:border-b-0'
+      } else if (
+        lastRowDivsDesktop.find((e) => e === index) &&
+        lastRowDivsTablet.find((e) => e === index) &&
+        !lastRowDivsMobile.find((e) => e === index)
+      ) {
+        return 'sm:border-b md:border-b-0'
+      } else {
+        return ''
+      }
+    } else if (collaboratorListAPI.length === 4) {
+      if (
+        !lastRowDivsTablet.find((e) => e === index) &&
+        !lastRowDivsMobile.find((e) => e === index)
+      ) {
+        return 'sm:border-b lg:border-b-0'
+      } else if (!lastRowDivsTablet.find((e) => e === index)) {
+        return 'md:border-b'
+      } else if (!lastRowDivsMobile.find((e) => e === index)) {
+        return 'sm:border-b md:border-b-0'
+      } else {
+        return ''
+      }
+    } else if(collaboratorListAPI.length === 3){
+      if (
+        !lastRowDivsMobile.find((e) => e === index)
+      ) {
+        return 'sm:border-b md:border-b-0'
+      } else {
+        return ''
+      }
     }
-    // } else if (collaboratorListAPI.length === 4) {
-    //   if (!lastRowDivsMobile.find((e) => e === index)) {
-    //     return 'border-b'
-    //   } else {
-    //     return ''
-    //   }
-    // } else {
-    //   return ''
-    // }
   }
 
   return (
