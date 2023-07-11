@@ -17,7 +17,7 @@ const EventCard = ({
       className={`group hover:border-[#BEC29D] max-w-sm hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border border-white rounded-xl flex flex-col p-8 text-white`}
     >
       <span className="text-[1.125rem] md:text-d-body">{date}</span>
-      <div className="event-image relative w-full aspect-[1/1] mt-6 mb-5 border group-hover:border-[#BEC29D] border-white transition-all duration-300">
+      <div className="event-image relative w-full aspect-[1/1] mt-4 mb-4 border group-hover:border-[#BEC29D] border-white transition-all duration-300">
         <Image
           src={urlFor(image_bnw).width(500).url()}
           alt={image_bnw.alt}
