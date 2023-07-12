@@ -1,4 +1,3 @@
-import ArrowFacilities from '@/components/utils/arrowFacilites'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
@@ -16,6 +15,10 @@ import feature5_color from '@/public/nxt2/features/feature5_color.png'
 import feature6_color from '@/public/nxt2/features/feature6_color.png'
 import FancyLink from '@/components/utils/fancyLink'
 import urlFor from '@/helpers/sanity/urlFor'
+import {
+  ArrowFacilitiesDesktop,
+  ArrowFacilitiesMobile,
+} from '@/components/utils/arrowFacilites'
 
 const ImageView = ({
   facilitiesList,
@@ -298,7 +301,11 @@ const ImageView = ({
                 console.log(positionScroll, scrollToLeft, scrollProgressDis)
               }}
             >
-              <ArrowFacilities position="left" />
+              <ArrowFacilitiesDesktop
+                position="left"
+                className="hidden md:block"
+              />
+              <ArrowFacilitiesMobile position="left" className="md:hidden" />
             </button>
             <button
               className={`group pointer-events-auto w-[30px] sm:w-[60px] h-[30px] sm:h-[60px] flex justify-center items-center border sm:border-2 border-white rounded-full mr-8 transition-all duration-300 hover:bg-white`}
@@ -337,7 +344,11 @@ const ImageView = ({
                 console.log(positionScroll, scrollToRight, scrollProgressDis)
               }}
             >
-              <ArrowFacilities position="right" />
+              <ArrowFacilitiesDesktop
+                position="right"
+                className="hidden md:block"
+              />
+              <ArrowFacilitiesMobile position="right" className="md:hidden" />
             </button>
           </div>
         )}
@@ -474,10 +485,18 @@ const ImageView = ({
         </Swiper>
         <div className="absolute pointer-events-none z-50 top-0 left-0 h-full w-full flex items-center justify-between ">
           <button className="prevFacilities group pointer-events-auto w-[30px] sm:w-[60px] h-[30px] sm:h-[60px] flex justify-center items-center border sm:border-2 border-white rounded-full ml-8 transition-all duration-300 hover:bg-white">
-            <ArrowFacilities position="left" />
+            <ArrowFacilitiesDesktop
+              position="left"
+              className="hidden md:block"
+            />
+            <ArrowFacilitiesMobile position="left" className="md:hidden" />
           </button>
           <button className="nextFacilities group pointer-events-auto w-[30px] sm:w-[60px] h-[30px] sm:h-[60px] flex justify-center items-center border sm:border-2 border-white rounded-full mr-8 transition-all duration-300 hover:bg-white">
-            <ArrowFacilities position="right" />
+            <ArrowFacilitiesDesktop
+              position="right"
+              className="hidden md:block"
+            />
+            <ArrowFacilitiesMobile position="right" className="md:hidden" />
           </button>
         </div>
       </div>
