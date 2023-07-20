@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
     if (router.pathname.startsWith('/nxt')) {
       document.querySelector('body').classList.add('blackBody')
     } else {
-      if(document.querySelector('body').contains("blackBody")) {
+      if(document.querySelector('body').classList.contains("blackBody")) {
         document.querySelector('body').classList.remove('blackBody')
       }
     }
