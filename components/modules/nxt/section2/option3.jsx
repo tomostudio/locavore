@@ -14,26 +14,6 @@ export const Section2Option3ComponentInner = ({ dataSection2Option3 }) => {
   return (
     <section className='relative w-full'>
       <div className='sticky top-0 w-full h-screen flex flex-col z-10'>
-        <div className='absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-20'>
-          <PillButton
-            destination='/'
-            className='uppercase bg-red-500 text-white'
-          >
-            OPT. 1
-          </PillButton>
-          <PillButton
-            destination='/nxt/option2'
-            className='uppercase bg-red-500 text-white'
-          >
-            OPT. 2
-          </PillButton>
-          <PillButton
-            destination='/nxt/option3'
-            className='uppercase bg-red-500 text-white pointer-events-none'
-          >
-            OPT. 3
-          </PillButton>
-        </div>
         <Container className='relative w-full h-full grow setflex-center'>
           <div
             id='section2_content'

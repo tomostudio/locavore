@@ -42,7 +42,7 @@ const HeroComponent = ({ imageDesktop, imageMobile, title }) => {
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-20 z-10" />
       <HeaderGap />
       <div className="w-full flex grow-1 items-center sm:items-end justify-center z-20">
-        <h1 className="relative text-[2.5rem] sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm sm:mb-10 md:mb-14 max-w-xs sm:max-w-none text-center">
+        <h1 className="relative text-[2.5rem] sm:text-t-header md:text-d-header text-[#BEC29D] font-funkturm sm:mb-10 md:mb-16 max-w-xs sm:max-w-none text-center">
           {title}
         </h1>
       </div>

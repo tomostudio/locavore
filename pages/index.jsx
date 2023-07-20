@@ -25,8 +25,6 @@ import {
 
 import {
   Section3AnimationOBJ,
-  Section3AnimationOBJMobile,
-  Section3AnimationOBJPortrait,
   Section3ComponentInner,
 } from '@/components/modules/nxt/section3'
 
@@ -80,11 +78,10 @@ export default function Nxt({
 
   // ANIMATION
   const animationObj = {
-    '(orientation: landscape)': [...Section3AnimationOBJ()],
-    '(orientation: portrait)': [...Section3AnimationOBJPortrait()],
     '(min-width: 851px)': [
       ...Section1AnimationOBJ,
       ...getFuncSection2(),
+      ...Section3AnimationOBJ(),
       ...Section4AnimationOBJ,
       ...Section5AnimationOBJ,
     ],
@@ -97,7 +94,6 @@ export default function Nxt({
   }
 
   useEffect(() => {
-    document.querySelector('body').style.backgroundColor = 'black'
     window.scroll(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',
@@ -182,11 +178,6 @@ export default function Nxt({
             {/* WHAT'S ON? */}
             <Section5ComponentInner dataSection5={eventAPI} />
             <NxtNavigation transition={true} />
-            <div className="fixed bottom-5 right-5 z-50">
-              <PillButton destination="/nxt" className="uppercase bg-yellow-500">
-                ALT
-              </PillButton>
-            </div>
           </section>
           <Footer footer={footer} mailchimp={seo.mailchimpID} />
         </m.main>

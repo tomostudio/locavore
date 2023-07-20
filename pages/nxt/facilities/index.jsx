@@ -63,7 +63,6 @@ const FeaturesAndFacilities = ({
   })
 
   useEffect(() => {
-    document.querySelector('body').style.backgroundColor = 'black'
     window.scroll(0, 0)
     appContext.setHeader({
       headerStyle: 'blur-white',

@@ -14,26 +14,6 @@ export const Section2Option1ComponentInner = ({ dataSection2Option1 }) => {
   return (
     <section className="relative w-full">
       <div className="sticky z-10 top-0 w-full h-screen flex flex-col overflow-hidden">
-        <div className="absolute top-0 left-10 h-full flex flex-col justify-center gap-8 z-20">
-          <PillButton
-            destination="/"
-            className="uppercase bg-red-500 text-white pointer-events-none"
-          >
-            OPT. 1
-          </PillButton>
-          <PillButton
-            destination="/nxt/option2"
-            className="uppercase bg-red-500 text-white"
-          >
-            OPT. 2
-          </PillButton>
-          <PillButton
-            destination="/nxt/option3"
-            className="uppercase bg-red-500 text-white"
-          >
-            OPT. 3
-          </PillButton>
-        </div>
         <Parallax className="absolute w-full h-full" speed={-10}>
           <Image
             src={urlFor(dataSection2Option1.imageWide).width(1440).url()}

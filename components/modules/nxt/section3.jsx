@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Container from '../container';
 import FancyLink from '@/components/utils/fancyLink';
 import { useAppContext } from 'context/state';
+import { m, useAnimation } from 'framer-motion';
 
 // IMPORT LOCAL IMAGE
 import lower_ground from '@/public/nxt/lower-ground.webp';
@@ -11,27 +12,175 @@ import ground from '@/public/nxt/ground.webp';
 import firstFloor from '@/public/nxt/1st-floor.webp';
 import secondFloor from '@/public/nxt/2nd-floor.webp';
 import tunnel from '@/public/nxt/tunnel.webp';
+import { useInView } from 'react-cool-inview';
+
 import { Parallax } from 'react-scroll-parallax';
-import { useMediaQuery } from '@/helpers/functional/checkMedia';
 
 export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
-  const appContext = useAppContext();
+  const controls = useAnimation();
+  const controlBg = useAnimation();
+
+  const bgInview = useInView({
+    threshold: 0,
+    onEnter: ({ scrollDirection, entry, observe, unobserve }) => {
+      console.log(scrollDirection, entry, 'enter');
+      if (scrollDirection.vertical === 'up') controlBg.start('visible');
+    },
+    onLeave: ({ scrollDirection, entry, observe, unobserve }) => {
+      console.log(scrollDirection, entry, 'exit');
+
+      if (scrollDirection.vertical === 'down') controlBg.start('hidden');
+    },
+  });
+
+  const { observe } = useInView({
+    threshold: 0,
+    onEnter: ({ scrollDirection, entry, observe, unobserve }) => {
+      console.log(scrollDirection, entry, 'enter');
+      if (scrollDirection.vertical === 'up') controls.start('visible');
+    },
+    onLeave: ({ scrollDirection, entry, observe, unobserve }) => {
+      console.log(scrollDirection, entry, 'exit');
+
+      if (scrollDirection.vertical === 'down') controls.start('hidden');
+    },
+  });
 
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      appContext.setHeader({
-        headerStyle: 'blur-white',
-      });
-    });
+    controlBg.start('hidden');
+    controls.start('hidden');
   }, []);
 
+  const buildingSpeed = 3;
+  const variantsBg = {
+    hidden: {
+      scale: 0,
+      transition: {
+        duration: 1,
+      },
+    },
+    visible: {
+      scale: 1,
+      transition: {
+        duration: 1,
+      },
+    },
+  };
+
+  const variantsBuilding = {
+    hidden: {
+      y: '50%',
+      x: '-50%',
+      transition: {
+        duration: 1,
+      },
+    },
+    visible: {
+      y: '-50%',
+      x: '-50%',
+      transition: {
+        ease: 'easeInOut',
+        duration: 2,
+      },
+    },
+  };
+
+  const variantsTunnel = {
+    hidden: {
+      y: '-50%',
+      opacity: 0,
+      transition: {
+        duration: 1,
+      },
+    },
+    visible: {
+      y: '-41.1%',
+      opacity: 1,
+      transition: {
+        ease: 'easeInOut',
+        duration: buildingSpeed,
+      },
+    },
+  };
+
+  const variantsSecondFloor = {
+    hidden: {
+      opacity: 0,
+      y: '-30%',
+      transition: {
+        duration: 1,
+      },
+    },
+    visible: {
+      y: '-41.2%',
+      opacity: 1,
+      transition: {
+        ease: 'easeInOut',
+        duration: buildingSpeed,
+      },
+    },
+  };
+
+  const variantsFirstFloor = {
+    hidden: {
+      y: '-10%',
+      opacity: 0,
+      transition: {
+        duration: 1,
+      },
+    },
+    visible: {
+      y: '-42.5%',
+      opacity: 1,
+      transition: {
+        ease: 'easeInOut',
+        duration: buildingSpeed,
+      },
+    },
+  };
+
+  const variantsGround = {
+    hidden: {
+      y: '25%',
+      opacity: 0,
+      transition: {
+        duration: 1,
+      },
+    },
+    visible: {
+      y: '-45%',
+      opacity: 1,
+      transition: {
+        ease: 'easeInOut',
+        duration: buildingSpeed,
+      },
+    },
+  };
+
+  const variantsLowerGround = {
+    hidden: {
+      y: '40%',
+      opacity: 0,
+      transition: {
+        duration: 1,
+      },
+    },
+    visible: {
+      y: '-45%',
+      opacity: 1,
+      transition: {
+        ease: 'easeInOut',
+        duration: buildingSpeed,
+      },
+    },
+  };
+
   return (
-    <section className='relative w-full overflow-x-clip mt-[20vw] md:mb-[30vw]'>
-      <div className='w-full'>
-        <div
-          id='enter-bg-white-scale'
-          className='sticky z-10 top-0 w-full h-screen flex flex-col'
-        >
+    <section id='section3' className='relative w-full overflow-x-clip'>
+      {/* Background Buffer */}
+      <div className='w-full h-0 landscape:h-[25vh]' />
+      <div className='w-full '>
+        <div className='sticky z-10 top-0 w-full h-screen flex flex-col justify-center items-center'>
           <div className='relative w-full h-screen'>
             <Container className='relative w-full h-full z-20 setflex-center'>
               <span className='text-[#BEC29D] text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full '>
@@ -42,88 +191,109 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
             </Container>
             <div className='absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex justify-center items-end'>
               <FancyLink
-                className={`w-fit py-4 px-6 mb-20 lg:mb-[4.5rem] text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
+                className={`w-fit p-4 mb-20 lg:mb-[4.5rem] text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
                 destination='/nxt/facilities'
               >
                 VIEW OUR FACILITIES
               </FancyLink>
             </div>
-            <Container
-              id='building'
-              className='absolute top-0 left-1/2 translate-y-[120vh] -translate-x-1/2 w-full h-[100vh] z-2'
+            <m.div
+              animate={controls}
+              initial='hidden'
+              variants={variantsBuilding}
+              className='absolute top-1/2 left-1/2 translate-y-[100%] -translate-x-1/2 w-full h-[95vh] z-2 max-w-screen-xl'
             >
-              <div className='relative w-full h-full'>
-                <div
-                  id='tunnel'
-                  className='absolute w-[100%] z-40 top-1/2  translate-y-[-125%]'
+              <Parallax speed={5} className='relative w-full h-full'>
+                <m.div
+                  animate={controls}
+                  initial='hidden'
+                  variants={variantsTunnel}
+                  className='absolute w-full  z-40 top-1/2  translate-y-[-30%]'
                 >
-                  <Image src={tunnel} alt='Tunnel' />
-                </div>
-                <div
-                  id='second_floor'
-                  className='absolute w-[100%] z-30 top-1/2  translate-y-[-100%]'
+                  <Image src={tunnel} alt='' />
+                </m.div>
+                <m.div
+                  animate={controls}
+                  initial='hidden'
+                  variants={variantsSecondFloor}
+                  className='absolute w-full z-30 top-1/2  translate-y-[-10%]'
                 >
-                  <Image src={secondFloor} alt='Second Floor' />
-                </div>
-                <div
-                  id='first_floor'
-                  className='absolute w-[100%] z-20 top-1/2  translate-y-[-75%]'
+                  <Image src={secondFloor} alt='' />
+                </m.div>
+                <m.div
+                  animate={controls}
+                  initial='hidden'
+                  variants={variantsFirstFloor}
+                  className='absolute w-full  z-20 top-1/2  translate-y-[10%]'
                 >
-                  <Image src={firstFloor} alt='First Floor' />
-                </div>
-                <div
-                  id='ground'
-                  className='absolute w-[100%]  z-10 top-1/2  translate-y-[-45%]'
+                  <Image src={firstFloor} alt='' />
+                </m.div>
+                <m.div
+                  animate={controls}
+                  initial='hidden'
+                  variants={variantsGround}
+                  className='absolute w-full  z-10 top-1/2 translate-y-[25%]'
                 >
-                  <Image src={ground} alt='Ground' />
-                </div>
-                <div
-                  id='lower_ground'
-                  className='absolute w-[100%]  top-1/2 translate-y-[0%]'
+                  <Image src={ground} alt='' />
+                </m.div>
+                <m.div
+                  animate={controls}
+                  initial='hidden'
+                  variants={variantsLowerGround}
+                  className='absolute w-full  top-1/2 translate-y-[40%]'
                 >
-                  <Image src={lower_ground} alt='Lower Ground' />
-                </div>
-              </div>
-            </Container>
+                  <Image src={lower_ground} alt='' />
+                </m.div>
+              </Parallax>
+            </m.div>
+
             <Parallax
-              speed={15}
-              // disabled={
-              //   useMediaQuery('(orientation: landscape)') ? false : true
-              // }
-              className='absolute top-0 left-0 w-full h-full overflow-visible'
+              speed={10}
+              className='absolute top-0 left-0 w-full h-screen overflow-visible flex justify-center content-center items-center'
             >
-              <div
+              <m.div
+                animate={controlBg}
+                initial='hidden'
+                variants={variantsBg}
                 id='bg-white-scale'
-                className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] md:w-[120vw] md:h-[120vw] bg-white rounded-full'
+                className='relative w-[150vw] h-[150vw] aspect-1 md:w-[120vw] md:h-[120vw] bg-white rounded-full scale-0 flex-shrink-0'
               />
             </Parallax>
           </div>
+          {/* Animation Trigger */}
+          <div
+            ref={observe}
+            className='absolute top-[25%] w-full h-[1px] pointer-events-none opacity-0 z-50'
+          />
+          <div
+            ref={bgInview.observe}
+            className='absolute top-[25%] w-full h-[1px] pointer-events-none opacity-0 z-50'
+          />
         </div>
-        <div id='enter-building' className='h-[75vh]' />
       </div>
+      {/* Background Buffer */}
+      <div className='w-full h-0 landscape:h-[vw] landscape:min-h-[300px]' />
     </section>
   );
 };
 
+export const Section3AnimationOBJMobile = [];
+
 export const Section3AnimationOBJ = () => {
   const appContext = useAppContext();
-
   const checkHeader = (data) => {
     appContext.setHeader({
       headerStyle: data,
     });
   };
-
   return [
-    // SECTION 3
-    // ENTER BLUR
     () => {
       const id = 'enter-blur'; // animation id
       const elem = null;
       const settings = {
         scrollTrigger: {
           id: id,
-          trigger: document.querySelector('#enter-bg-white-scale'), // which section will be tracked as the scroll trigger
+          trigger: document.querySelector('#section3'), // which section will be tracked as the scroll trigger
           scrub: true,
           start: 'top 100%',
           end: 'top 25%',
@@ -137,218 +307,6 @@ export const Section3AnimationOBJ = () => {
 
       return { id, elem, settings, animation };
     },
-    // BG WHITE SCALE ENTER
-    () => {
-      const id = 'bg-white-scale-enter'; // animation id
-      const elem = document.querySelector('#bg-white-scale');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-bg-white-scale'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-          start: 'top 100%',
-          end: 'top -50%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          from: [
-            elem,
-            {
-              scale: 0,
-            },
-          ],
-          to: [
-            elem,
-            {
-              scale: 1,
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // BUILDING ENTER
-    () => {
-      const id = 'building-enter'; // animation id
-      const elem = document.querySelector('#building');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-
-          start: 'top 150%',
-          end: 'top 0%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          to: [
-            elem,
-            {
-              top: '50%',
-              y: '-50%',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // TUNNEL ENTER
-    () => {
-      const id = 'tunnel-enter'; // animation id
-      const elem = document.querySelector('#tunnel');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-
-          start: 'top 150%',
-          end: 'top 0%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              y: '-125%',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              y: '-41.1%',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // ENTER SECOND FLOOR
-    () => {
-      const id = 'enter_second_floor'; // animation id
-      const elem = document.querySelector('#second_floor');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-
-          start: 'top 150%',
-          end: 'top 0%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              y: '-100%',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              y: '-41.2%',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // ENTER FIRST FLOOR
-    () => {
-      const id = 'enter_first_floor'; // animation id
-      const elem = document.querySelector('#first_floor');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-
-          start: 'top 150%',
-          end: 'top 0%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              y: '-75%',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              y: '-42.5%',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // ENTER LOWER GROUND
-    () => {
-      const id = 'enter_lower_ground'; // animation id
-      const elem = document.querySelector('#lower_ground');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-
-          start: 'top 150%',
-          end: 'top 0%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              y: '0%',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              y: '-45%',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
     // EXIT BLUR
     () => {
       const id = 'blur-exit'; // animation id
@@ -356,10 +314,10 @@ export const Section3AnimationOBJ = () => {
       const settings = {
         scrollTrigger: {
           id: id,
-          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
+          trigger: document.querySelector('#section3'), // which section will be tracked as the scroll trigger
           scrub: 0.5,
-          start: 'bottom 50%',
-          end: 'bottom 0%',
+          start: 'bottom 100%',
+          end: 'bottom 50%',
           onEnterBack: () => checkHeader('blur'),
           onLeave: () => checkHeader('blur-white'),
         },
@@ -367,219 +325,6 @@ export const Section3AnimationOBJ = () => {
 
       // Input Animation
       const animation = [];
-
-      return { id, elem, settings, animation };
-    },
-  ];
-};
-
-export const Section3AnimationOBJPortrait = () => {
-  return [
-    // BG WHITE SCALE ENTER
-    () => {
-      const id = 'bg-white-scale-enter'; // animation id
-      const elem = document.querySelector('#bg-white-scale');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-bg-white-scale'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-          start: 'top 100%',
-          end: 'top -50%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          from: [
-            elem,
-            {
-              scale: 0,
-            },
-          ],
-          to: [
-            elem,
-            {
-              scale: 1,
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // BUILDING ENTER
-    () => {
-      const id = 'building-enter'; // animation id
-      const elem = document.querySelector('#building');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-          start: 'top 150%',
-          end: 'top 0%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          to: [
-            elem,
-            {
-              top: '50%',
-              y: '-50%',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // TUNNEL ENTER
-    () => {
-      const id = 'tunnel-enter'; // animation id
-      const elem = document.querySelector('#tunnel');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-          //
-          start: 'top 80%',
-          end: 'bottom 100%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              y: '-125%',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              y: '-41.1%',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // ENTER SECOND FLOOR
-    () => {
-      const id = 'enter_second_floor'; // animation id
-      const elem = document.querySelector('#second_floor');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-          start: 'top 80%',
-          end: 'bottom 100%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              y: '-100%',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              y: '-41.2%',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // ENTER FIRST FLOOR
-    () => {
-      const id = 'enter_first_floor'; // animation id
-      const elem = document.querySelector('#first_floor');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-          start: 'top 80%',
-          end: 'bottom 100%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              y: '-75%',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              y: '-42.5%',
-            },
-          ],
-        },
-      ];
-
-      return { id, elem, settings, animation };
-    },
-    // ENTER LOWER GROUND
-    () => {
-      const id = 'enter_lower_ground'; // animation id
-      const elem = document.querySelector('#lower_ground');
-      const settings = {
-        scrollTrigger: {
-          id: id,
-          trigger: document.querySelector('#enter-building'), // which section will be tracked as the scroll trigger
-          scrub: 0.5,
-          start: 'top 80%',
-          end: 'bottom 100%',
-        },
-      };
-
-      // Input Animation
-      const animation = [
-        {
-          set: [
-            elem,
-            {
-              y: '0%',
-            },
-          ],
-        },
-        {
-          to: [
-            elem,
-            {
-              y: '-45%',
-            },
-          ],
-        },
-      ];
 
       return { id, elem, settings, animation };
     },
