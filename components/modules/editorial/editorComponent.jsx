@@ -236,15 +236,15 @@ const EditorComponent = ({ data, color, fontColor = '', textAlign = '' }) => {
             leafImg: (props) => (
               <div className={`image !my-10`}>
                 <div className="relative w-full aspect-[5/2] overflow-hidden">
-                  {props.value && props.value.asset ? (
+                  {props.value.image && props.value.image.asset ? (
                     <Image
-                      {...useNextSanityImage(client, props.value, {
+                      {...useNextSanityImage(client, props.value.image, {
                         imageBuilder: singleIURB,
                       })}
                       style={{ width: '100%', height: 'auto' }}
-                      alt={props.value.name}
+                      alt={props.value.image.name}
                       placeholder="blur"
-                      blurDataURL={urlFor(props.value)
+                      blurDataURL={urlFor(props.value.image)
                         .blur(2)
                         .format('webp')
                         .saturation(-100)
