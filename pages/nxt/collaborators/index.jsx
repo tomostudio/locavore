@@ -33,7 +33,7 @@ const OurCollaborators = ({
   const defaultItemToShow = 12
   const [itemToShow, setItemToShow] = useState(defaultItemToShow)
   const [showMoreButton, setShowMore] = useState(
-    Array(15).fill(collaboratorListAPI[0]).length > defaultItemToShow
+    collaboratorListAPI.length > defaultItemToShow
       ? true
       : false,
   )
@@ -73,13 +73,13 @@ const OurCollaborators = ({
           />
           <div className="w-full h-full grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-11 md:mt-20 mb-16 border-b sm:border-y border-white collaborators-border">
             <CollaboratorCard
-              collaboratorListAPI={Array(15).fill(collaboratorListAPI[0])}
+              collaboratorListAPI={collaboratorListAPI}
               itemToShow={itemToShow}
             />
           </div>
           {showMoreButton && (
             <ViewMoreButton
-              data={Array(15).fill(collaboratorListAPI[0])}
+              data={collaboratorListAPI}
               itemToShow={itemToShow}
               setItemToShow={setItemToShow}
               defaultItemToShow={defaultItemToShow}

@@ -10,7 +10,7 @@ import FancyLink from '@/components/utils/fancyLink';
 import { useMediaQuery } from '@/helpers/functional/checkMedia';
 import urlFor from '@/helpers/sanity/urlFor';
 
-export const Section4ComponentInner = ({ dataSection4 }) => {
+export const Section4ComponentInner = ({ collabList }) => {
   const [dataSection4Split, setDataSection4] = useState([]);
 
   useEffect(() => {
@@ -23,8 +23,7 @@ export const Section4ComponentInner = ({ dataSection4 }) => {
 
     // UseEffect supaya ga retrigger
     // ini complicated sekali array adjustmentnya
-    const tambahData = Array(15).fill(dataSection4[0]); // duplicate array 15 times
-    let shuffledArray = tambahData.sort((a, b) => 0.5 - Math.random()); // Shuffle
+    let shuffledArray = collabList.sort((a, b) => 0.5 - Math.random()); // Shuffle
 
     const _dataSection = [];
 

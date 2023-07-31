@@ -23,7 +23,7 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
   const defaultItemToShow = 6;
   const [itemToShow, setItemToShow] = useState(defaultItemToShow);
   const [showMoreButton, setShowMore] = useState(
-    Array(15).fill(eventListAPI[0]).length > defaultItemToShow ? true : false
+    eventListAPI.length > defaultItemToShow ? true : false
   );
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
             imageMobile={event.hero.imageMobile}
           />
           <Container className='w-full mx-auto max-w-screen-xl h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-11 md:mt-20 mb-10 md:mb-16 gap-4 lg:gap-8 justify-items-center'>
-            {Array(15).fill(eventListAPI[0]).slice(0, itemToShow).map((data, id) => (
+            {eventListAPI.slice(0, itemToShow).map((data, id) => (
                 <EventCard
                   key={id}
                   slug={data.slug.current}
@@ -77,7 +77,7 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
               className={`w-fit p-4 text-m-small md:text-sm mb-10 md:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
               onClick={() => {
                 setItemToShow(itemToShow + defaultItemToShow);
-                setShowMore(Array(15).fill(eventListAPI[0]).length > itemToShow + defaultItemToShow);
+                setShowMore(eventListAPI.length > itemToShow + defaultItemToShow);
               }}
             >
               VIEW MORE

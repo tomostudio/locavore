@@ -173,10 +173,10 @@ export default function Nxt({
             <Section3ComponentInner />
             {/* Section 4 */}
             {/* OUR COLLABORATORS */}
-            <Section4ComponentInner dataSection4={collabAPI} />
+            <Section4ComponentInner collabList={collabAPI} />
             {/* Section 5 */}
             {/* WHAT'S ON? */}
-            <Section5ComponentInner dataSection5={eventAPI} />
+            <Section5ComponentInner eventList={eventAPI} />
             <NxtNavigation transition={true} />
           </section>
           <Footer footer={footer} mailchimp={seo.mailchimpID} />
@@ -191,7 +191,7 @@ export async function getStaticProps() {
     *[_type == "homeNxt"]
     `)
   const eventAPI = await client.fetch(`
-  *[_type == "eventList"]
+  *[_type == "eventList"][0..2]
   `)
   const collabAPI = await client.fetch(`
       *[_type == "collaboratorList"]

@@ -12,14 +12,10 @@ import FancyLink from '@/components/utils/fancyLink'
 import HeaderGap from '@/components/modules/headerGap'
 import Container from '@/components/modules/container'
 
-import detail from '@/public/nxt2/events/detail.png'
-import detail_mobile from '@/public/nxt2/events/detail_mobile.png'
 import StickyButton from '@/components/modules/stickyButton'
-import PillButton from '@/components/modules/pillButton'
 import urlFor from '@/helpers/sanity/urlFor'
 import { PortableText } from '@portabletext/react'
-import { useNextSanityImage } from 'next-sanity-image'
-import { singleIURB } from '@/components/utils/iurb'
+import dateConvert from '@/helpers/functional/dateConvert'
 
 const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
   const router = useRouter()
@@ -208,7 +204,7 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
             </div>
             <div className="w-full flex flex-col max-w-lg md:max-w-none  mx-auto md:flex-row gap-8 mt-8">
               <div className="w-full md:w-[30%] flex flex-col gap-3">
-                <div className="w-full grid grid-flow-col-dense grid-rows-2 md:flex md:flex-col gap-4 md:gap-3 text-white text-center md:text-left">
+                <div className="w-full grid grid-flow-col-dense grid-rows-2 uppercase md:flex md:flex-col gap-4 md:gap-3 text-white text-center md:text-left">
                   <span>
                     VENUE:
                     <br />
@@ -217,7 +213,7 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
                   <span>
                     DATE:
                     <br />
-                    {event.date}
+                    {dateConvert(event.date)}
                   </span>
                   <span>
                     LOCATION:
