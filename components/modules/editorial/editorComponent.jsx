@@ -233,7 +233,7 @@ const EditorComponent = ({ data, color, fontColor = '', textAlign = '' }) => {
                 )}
               </div>
             ),
-            leafImg: (props) => (
+            smallImage: (props) => (
               <div className={`image !my-10`}>
                 <div className="relative w-full aspect-[5/2] overflow-hidden">
                   {props.value.image && props.value.image.asset ? (

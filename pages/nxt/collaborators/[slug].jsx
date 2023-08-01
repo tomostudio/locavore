@@ -47,7 +47,7 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
       code: (props) => (
         <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
       ),
-      leafImg: (props) => (
+      smallImage: (props) => (
         <div className={`image !my-10`}>
           <div className="relative w-full aspect-[5/2] overflow-hidden">
             {props.value.image && props.value.image.asset ? (
