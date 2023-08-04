@@ -23,11 +23,9 @@ export const Section3ComponentInner = ({ facilitiesSection }) => {
   const bgInview = useInView({
     threshold: 0,
     onEnter: ({ scrollDirection, entry, observe, unobserve }) => {
-      console.log(scrollDirection, entry, 'enter');
       if (scrollDirection.vertical === 'up') controlBg.start('visible');
     },
     onLeave: ({ scrollDirection, entry, observe, unobserve }) => {
-      console.log(scrollDirection, entry, 'exit');
 
       if (scrollDirection.vertical === 'down') controlBg.start('hidden');
     },
@@ -36,11 +34,9 @@ export const Section3ComponentInner = ({ facilitiesSection }) => {
   const { observe } = useInView({
     threshold: 0,
     onEnter: ({ scrollDirection, entry, observe, unobserve }) => {
-      console.log(scrollDirection, entry, 'enter');
       if (scrollDirection.vertical === 'up') controls.start('visible');
     },
     onLeave: ({ scrollDirection, entry, observe, unobserve }) => {
-      console.log(scrollDirection, entry, 'exit');
 
       if (scrollDirection.vertical === 'down') controls.start('hidden');
     },

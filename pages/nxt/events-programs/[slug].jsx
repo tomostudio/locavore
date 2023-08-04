@@ -18,15 +18,17 @@ import { PortableText } from '@portabletext/react'
 import dateConvert from '@/helpers/functional/dateConvert'
 
 const EventsAndProgramsDetail = ({
+  homeAPI,
   eventButtonText,
   eventAPI,
-  seoAPI,
+  settingAPI,
   footerAPI,
 }) => {
   const router = useRouter()
   const appContext = useAppContext()
+  const [home] = homeAPI
   const [event] = eventAPI
-  const [seo] = seoAPI
+  const [setting] = settingAPI
   const [footer] = footerAPI
 
   const serializer = {
@@ -180,8 +182,8 @@ const EventsAndProgramsDetail = ({
           typeof event.seo !== 'undefined' &&
           event.seo
         }
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
-        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+        defaultSEO={typeof home !== 'undefined' && home.seo}
+        webTitle={typeof setting !== 'undefined' && setting.webTitle}
       />
 
       <motion.main
@@ -286,7 +288,7 @@ const EventsAndProgramsDetail = ({
           {eventButtonText.heading}
         </StickyButton>
       </motion.main>
-      <Footer footer={footer} mailchimp={seo.mailchimpID} />
+      <Footer footer={footer} mailchimp={setting.mailchimpID} />
     </Layout>
   )
 }
@@ -314,7 +316,10 @@ export async function getStaticProps({ params }) {
       heading
     }
     `)
-  const seoAPI = await client.fetch(`
+  const homeAPI = await client.fetch(`
+      *[_type == "homeNxt"]
+      `)
+  const settingAPI = await client.fetch(`
     *[_type == "settings"]
     `)
   const footerAPI = await client.fetch(`
@@ -325,9 +330,10 @@ export async function getStaticProps({ params }) {
                       `)
   return {
     props: {
+      homeAPI,
       eventButtonText,
       eventAPI,
-      seoAPI,
+      settingAPI,
       footerAPI,
       headerAPI,
     },

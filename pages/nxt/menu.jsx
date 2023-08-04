@@ -18,12 +18,13 @@ import VideoComponent from '@/components/modules/editorial/videoComponent'
 import Caption from '@/components/modules/editorial/caption'
 import { Parallax } from 'react-scroll-parallax'
 
-const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
+const Menu = ({ homeAPI, menuAPI, settingAPI, footerAPI }) => {
   const router = useRouter()
   const appContext = useAppContext()
-  const [seo] = seoAPI
+  const [setting] = settingAPI
   const [footer] = footerAPI
   const [menu] = menuAPI
+  const [home] = homeAPI
 
   useEffect(() => {
     window.scroll(0, 0)
@@ -46,8 +47,8 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
           typeof menu.seo !== 'undefined' &&
           menu.seo
         }
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
-        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+        defaultSEO={typeof home !== 'undefined' && home.seo}
+        webTitle={typeof setting !== 'undefined' && setting.webTitle}
       />
       <motion.main
         initial="initial"
@@ -106,15 +107,20 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
               <span className="block text-[2.125rem] sm:text-t-header md:text-d-header text-center leading-[120%]">
                 {menu.menuTitle}
               </span>
-              {menu.article.map((data) =>
+              {menu.article.map((data, id) =>
                 data._type === 'editor' ? (
-                  <EditorComponent data={data.content} color={'#fff'} />
+                  <EditorComponent
+                    key={id}
+                    data={data.content}
+                    color={'#fff'}
+                  />
                 ) : data._type === 'gallery' ? (
-                  <GalleryComponent gallery={data} color={'#fff'} />
+                  <GalleryComponent key={id} gallery={data} color={'#fff'} />
                 ) : data._type === 'video' ? (
-                  <VideoComponent video={data} />
+                  <VideoComponent key={id} video={data} />
                 ) : data._type === 'imageComponent' ? (
                   <div
+                    key={id}
                     className={`h-auto setflex-center ${
                       !data.option ? 'w-content max-md:w-full px-14' : 'w-full'
                     }`}
@@ -166,7 +172,7 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
         </div>
         <NxtNavigation />
       </motion.main>
-      <Footer footer={footer} mailchimp={seo.mailchimpID} />
+      <Footer footer={footer} mailchimp={setting.mailchimpID} />
     </Layout>
   )
 }
@@ -175,7 +181,10 @@ export async function getStaticProps() {
   const menuAPI = await client.fetch(`
   *[_type == "menu"]
   `)
-  const seoAPI = await client.fetch(`
+  const homeAPI = await client.fetch(`
+      *[_type == "homeNxt"]
+      `)
+  const settingAPI = await client.fetch(`
   *[_type == "settings"]
   `)
   const footerAPI = await client.fetch(`
@@ -186,8 +195,9 @@ export async function getStaticProps() {
                     `)
   return {
     props: {
+      homeAPI,
       menuAPI,
-      seoAPI,
+      settingAPI,
       footerAPI,
       headerAPI,
     },

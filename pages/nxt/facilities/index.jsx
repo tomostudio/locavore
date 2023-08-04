@@ -14,15 +14,17 @@ import ButtonViewFacilities from '@/components/modules/nxt/facilities/buttonView
 import ViewComponent from '@/components/modules/nxt/facilities/viewComponent'
 
 const FeaturesAndFacilities = ({
+  homeAPI,
   facilitiesAPI,
   facilitiesListAPI,
-  seoAPI,
+  settingAPI,
   footerAPI,
   facilitiesListScroll,
 }) => {
   const router = useRouter()
   const appContext = useAppContext()
-  const [seo] = seoAPI
+  const [home] = homeAPI
+  const [setting] = settingAPI
   const [footer] = footerAPI
   const [facilities] = facilitiesAPI
   const [showComponent, setShowComponent] = useState('image-view')
@@ -78,8 +80,8 @@ const FeaturesAndFacilities = ({
           typeof facilities.seo !== 'undefined' &&
           facilities.seo
         }
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
-        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+        defaultSEO={typeof home !== 'undefined' && home.seo}
+        webTitle={typeof setting !== 'undefined' && setting.webTitle}
       />
 
       <motion.main
@@ -124,7 +126,7 @@ const FeaturesAndFacilities = ({
           />
         </motion.div>
         <NxtNavigation />
-        <Footer footer={footer} mailchimp={seo.mailchimpID} />
+        <Footer footer={footer} mailchimp={setting.mailchimpID} />
       </motion.main>
     </Layout>
   )
@@ -137,7 +139,10 @@ export async function getStaticProps() {
   const facilitiesListAPI = await client.fetch(`
   *[_type == "facilitiesList"]
   `)
-  const seoAPI = await client.fetch(`
+  const homeAPI = await client.fetch(`
+  *[_type == "homeNxt"]
+  `)
+  const settingAPI = await client.fetch(`
   *[_type == "settings"]
   `)
   const footerAPI = await client.fetch(`
@@ -153,9 +158,10 @@ export async function getStaticProps() {
   }))
   return {
     props: {
+      homeAPI,
       facilitiesAPI,
       facilitiesListAPI,
-      seoAPI,
+      settingAPI,
       footerAPI,
       headerAPI,
       facilitiesListScroll,

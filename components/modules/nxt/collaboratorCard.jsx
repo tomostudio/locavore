@@ -48,7 +48,6 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
     }
 
     if (collaboratorListAPI.length > 4) {
-      console.log(lastRowDivsDesktop.find((e) => e === index))
       if (
         !lastRowDivsDesktop.find((e) => e === index) &&
         !lastRowDivsTablet.find((e) => e === index) &&

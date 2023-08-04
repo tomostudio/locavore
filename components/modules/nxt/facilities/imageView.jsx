@@ -205,7 +205,6 @@ const ImageView = ({ facilitiesListScroll, scrollContainer }) => {
                 scrollContainer.current.scrollLeft = scrollToLeft
 
                 setPositionScroll(scrollToLeft)
-                console.log(positionScroll, scrollToLeft, scrollProgressDis)
               }}
             >
               <ArrowFacilitiesDesktop
@@ -248,7 +247,6 @@ const ImageView = ({ facilitiesListScroll, scrollContainer }) => {
                 scrollContainer.current.scrollLeft = scrollToRight
 
                 setPositionScroll(scrollToRight)
-                console.log(positionScroll, scrollToRight, scrollProgressDis)
               }}
             >
               <ArrowFacilitiesDesktop

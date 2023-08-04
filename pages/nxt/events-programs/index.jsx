@@ -14,11 +14,18 @@ import NxtNavigation from '@/components/utils/nxtNavigation'
 import HeroComponent from '@/components/modules/nxt/hero'
 import EventCard from '@/components/modules/nxt/eventCard'
 
-const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
+const EventsAndPrograms = ({
+  homeAPI,
+  eventAPI,
+  eventListAPI,
+  settingAPI,
+  footerAPI,
+}) => {
   const router = useRouter()
   const appContext = useAppContext()
+  const [home] = homeAPI
   const [event] = eventAPI
-  const [seo] = seoAPI
+  const [setting] = settingAPI
   const [footer] = footerAPI
   const defaultItemToShow = 6
   const [itemToShow, setItemToShow] = useState(defaultItemToShow)
@@ -47,8 +54,8 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
           typeof event.seo !== 'undefined' &&
           event.seo
         }
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
-        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+        defaultSEO={typeof home !== 'undefined' && home.seo}
+        webTitle={typeof setting !== 'undefined' && setting.webTitle}
       />
 
       <motion.main
@@ -93,7 +100,7 @@ const EventsAndPrograms = ({ eventAPI, eventListAPI, seoAPI, footerAPI }) => {
         </div>
         <NxtNavigation />
       </motion.main>
-      <Footer footer={footer} mailchimp={seo.mailchimpID} />
+      <Footer footer={footer} mailchimp={setting.mailchimpID} />
     </Layout>
   )
 }
@@ -105,7 +112,10 @@ export async function getStaticProps() {
   const eventListAPI = await client.fetch(`
     *[_type == "eventList"]
     `)
-  const seoAPI = await client.fetch(`
+  const homeAPI = await client.fetch(`
+    *[_type == "homeNxt"]
+    `)
+  const settingAPI = await client.fetch(`
     *[_type == "settings"]
     `)
   const footerAPI = await client.fetch(`
@@ -116,9 +126,10 @@ export async function getStaticProps() {
                       `)
   return {
     props: {
+      homeAPI,
       eventAPI,
       eventListAPI,
-      seoAPI,
+      settingAPI,
       footerAPI,
       headerAPI,
     },

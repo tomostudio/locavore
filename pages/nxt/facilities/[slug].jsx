@@ -10,29 +10,25 @@ import { useEffect } from 'react'
 import Image from 'next/legacy/image'
 import HeaderGap from '@/components/modules/headerGap'
 
-import feature1_big from '@/public/nxt2/features/feature1_big.png'
-import feature2_big from '@/public/nxt2/features/feature2_big.png'
 import StickyButton from '@/components/modules/stickyButton'
-import PillButton from '@/components/modules/pillButton'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import urlFor from '@/helpers/sanity/urlFor'
-import EditorComponent from '@/components/modules/editorial/editorComponent'
 import { PortableText } from '@portabletext/react'
 import FancyLink from '@/components/utils/fancyLink'
-import { useNextSanityImage } from 'next-sanity-image'
-import { singleIURB } from '@/components/utils/iurb'
 
 const FeaturesAndFacilitiesDetail = ({
+  homeAPI,
   facilitiesButtonText,
   facilitiesAPI,
-  seoAPI,
+  settingAPI,
   footerAPI,
 }) => {
   const router = useRouter()
   const appContext = useAppContext()
+  const [home] = homeAPI
   const [facilities] = facilitiesAPI
-  const [seo] = seoAPI
+  const [setting] = settingAPI
   const [footer] = footerAPI
 
   const serializer = {
@@ -186,10 +182,9 @@ const FeaturesAndFacilitiesDetail = ({
           typeof facilities.seo !== 'undefined' &&
           facilities.seo
         }
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
-        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+        defaultSEO={typeof home !== 'undefined' && home.seo}
+        webTitle={typeof setting !== 'undefined' && setting.webTitle}
       />
-      {console.log(facilitiesButtonText)}
       <motion.main
         initial="initial"
         animate="enter"
@@ -274,7 +269,7 @@ const FeaturesAndFacilitiesDetail = ({
           </StickyButton>
         </div>
       </motion.main>
-      <Footer footer={footer} mailchimp={seo.mailchimpID} />
+      <Footer footer={footer} mailchimp={setting.mailchimpID} />
     </Layout>
   )
 }
@@ -302,7 +297,10 @@ export async function getStaticProps({ params }) {
       heading
     }
     `)
-  const seoAPI = await client.fetch(`
+  const homeAPI = await client.fetch(`
+      *[_type == "homeNxt"]
+      `)
+  const settingAPI = await client.fetch(`
     *[_type == "settings"]
     `)
   const footerAPI = await client.fetch(`
@@ -313,9 +311,10 @@ export async function getStaticProps({ params }) {
                       `)
   return {
     props: {
+      homeAPI,
       facilitiesButtonText,
       facilitiesAPI,
-      seoAPI,
+      settingAPI,
       footerAPI,
       headerAPI,
     },

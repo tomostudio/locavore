@@ -25,11 +25,12 @@ import Arrow from '@/components/utils/arrow'
 import { useNextSanityImage } from 'next-sanity-image'
 import { singleIURB } from '@/components/utils/iurb'
 
-const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
+const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
   const router = useRouter()
   const appContext = useAppContext()
+  const [home] = homeAPI
   const [visit] = visitAPI
-  const [seo] = seoAPI
+  const [setting] = settingAPI
   const [footer] = footerAPI
 
   const serializer = {
@@ -183,8 +184,8 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
           typeof visit.seo !== 'undefined' &&
           visit.seo
         }
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
-        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+        defaultSEO={typeof home !== 'undefined' && home.seo}
+        webTitle={typeof setting !== 'undefined' && setting.webTitle}
       />
 
       <motion.main
@@ -222,7 +223,9 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             >
               <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
                 <Image
-                  src={urlFor(visit.location.mapImage.imageDesktop).width(722).url()}
+                  src={urlFor(visit.location.mapImage.imageDesktop)
+                    .width(722)
+                    .url()}
                   alt={visit.location.mapImage.imageDesktop.alt}
                   layout="fill"
                   objectFit="cover"
@@ -236,7 +239,9 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
               </div>
               <div className="absolute top-0 left-0 w-full h-full sm:hidden">
                 <Image
-                  src={urlFor(visit.location.mapImage.imageMobile).width(321).url()}
+                  src={urlFor(visit.location.mapImage.imageMobile)
+                    .width(321)
+                    .url()}
                   alt={visit.location.mapImage.imageMobile.alt}
                   layout="fill"
                   objectFit="cover"
@@ -261,30 +266,28 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             </FancyLink>
             <div className="w-full border-y border-white flex flex-col gap-y-8 py-8 sm:py-12">
               {visit.additionalInfo.map((data, id) => (
-                <>
-                  <div
-                    key={id}
-                    className={`w-full sm:max-w-lg flex flex-col col-span-3 sm:col-span-2 mx-0 ${
-                      id % 2 == 0 ? 'sm:mr-2 sm:ml-auto' : 'sm:ml-2 sm:mr-auto'
-                    }`}
-                  >
-                    <span className="font-serif italic text-[20px] sm:text-[24px] flex items-center">
-                      <Arrow
-                        position="right"
-                        fill="white"
-                        sizeLeftRight="14"
-                        className="mr-3"
-                      />
-                      {data.title}
-                    </span>
-                    <div className="mt-2 editor-styling">
-                      <PortableText
-                        value={data.description}
-                        components={serializer}
-                      />
-                    </div>
+                <div
+                  key={id}
+                  className={`w-full sm:max-w-lg flex flex-col col-span-3 sm:col-span-2 mx-0 ${
+                    id % 2 == 0 ? 'sm:mr-2 sm:ml-auto' : 'sm:ml-2 sm:mr-auto'
+                  }`}
+                >
+                  <span className="font-serif italic text-[20px] sm:text-[24px] flex items-center">
+                    <Arrow
+                      position="right"
+                      fill="white"
+                      sizeLeftRight="14"
+                      className="mr-3"
+                    />
+                    {data.title}
+                  </span>
+                  <div className="mt-2 editor-styling">
+                    <PortableText
+                      value={data.description}
+                      components={serializer}
+                    />
                   </div>
-                </>
+                </div>
               ))}
             </div>
             <span className="font-serif text-[30px] sm:text-[40px] text-center mt-10 sm:mt-14">
@@ -300,7 +303,7 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
           </div>
         </div>
         <NxtNavigation />
-        <Footer footer={footer} mailchimp={seo.mailchimpID} />
+        <Footer footer={footer} mailchimp={setting.mailchimpID} />
       </motion.main>
     </Layout>
   )
@@ -310,7 +313,10 @@ export async function getStaticProps() {
   const visitAPI = await client.fetch(`
     *[_type == "visit"]
     `)
-  const seoAPI = await client.fetch(`
+  const homeAPI = await client.fetch(`
+      *[_type == "homeNxt"]
+      `)
+  const settingAPI = await client.fetch(`
     *[_type == "settings"]
     `)
   const footerAPI = await client.fetch(`
@@ -321,8 +327,9 @@ export async function getStaticProps() {
                       `)
   return {
     props: {
+      homeAPI,
       visitAPI,
-      seoAPI,
+      settingAPI,
       footerAPI,
       headerAPI,
     },

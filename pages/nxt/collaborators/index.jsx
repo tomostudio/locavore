@@ -7,28 +7,25 @@ import { motion } from 'framer-motion'
 import { fade } from '@/helpers/preset/transitions'
 import Footer from '@/components/modules/footer'
 import { useEffect, useState } from 'react'
-import FancyLink from '@/components/utils/fancyLink'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 
-import hero from '@/public/nxt2/collab/hero.png'
-import hero_mobile from '@/public/nxt2/collab/hero_mobile.png'
-import card1 from '@/public/nxt2/collab/card1.png'
-import card_bnw1 from '@/public/nxt2/collab/card_bnw1.png'
 import HeroComponent from '@/components/modules/nxt/hero'
 import CollaboratorCard from '@/components/modules/nxt/collaboratorCard'
 import ViewMoreButton from '@/components/utils/viewMoreButton'
 
 const OurCollaborators = ({
+  homeAPI,
   collaboratorAPI,
   collaboratorListAPI,
-  seoAPI,
+  settingAPI,
   footerAPI,
   headerAPI,
 }) => {
   const router = useRouter()
   const appContext = useAppContext()
+  const [home] = homeAPI
   const [collaborator] = collaboratorAPI
-  const [seo] = seoAPI
+  const [setting] = settingAPI
   const [footer] = footerAPI
   const defaultItemToShow = 12
   const [itemToShow, setItemToShow] = useState(defaultItemToShow)
@@ -57,8 +54,8 @@ const OurCollaborators = ({
           typeof collaborator.seo !== 'undefined' &&
           collaborator.seo
         }
-        defaultSEO={typeof seo !== 'undefined' && seo.seo}
-        webTitle={typeof seo !== 'undefined' && seo.webTitle}
+        defaultSEO={typeof home !== 'undefined' && home.seo}
+        webTitle={typeof setting !== 'undefined' && setting.webTitle}
       />
       <motion.main
         initial="initial"
@@ -90,7 +87,7 @@ const OurCollaborators = ({
           )}
         </div>
         <NxtNavigation />
-        <Footer footer={footer} mailchimp={seo.mailchimpID} />
+        <Footer footer={footer} mailchimp={setting.mailchimpID} />
       </motion.main>
     </Layout>
   )
@@ -103,7 +100,10 @@ export async function getStaticProps() {
   const collaboratorListAPI = await client.fetch(`
     *[_type == "collaboratorList"]
     `)
-  const seoAPI = await client.fetch(`
+  const homeAPI = await client.fetch(`
+        *[_type == "homeNxt"]
+        `)
+  const settingAPI = await client.fetch(`
     *[_type == "settings"]
     `)
   const footerAPI = await client.fetch(`
@@ -114,9 +114,10 @@ export async function getStaticProps() {
                       `)
   return {
     props: {
+      homeAPI,
       collaboratorAPI,
       collaboratorListAPI,
-      seoAPI,
+      settingAPI,
       footerAPI,
       headerAPI,
     },
