@@ -5,7 +5,6 @@ import { useEffect, useRef } from 'react'
 
 const ViewComponent = ({
   showComponent,
-  facilitiesList,
   facilitiesListGrid,
   facilitiesListScroll,
 }) => {
@@ -30,7 +29,6 @@ const ViewComponent = ({
         ) : (
           <ImageView
             key={showComponent}
-            facilitiesList={facilitiesList}
             facilitiesListScroll={facilitiesListScroll}
             scrollContainer={scrollContainer}
           />

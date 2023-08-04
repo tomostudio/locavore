@@ -10,17 +10,17 @@ import section1_mobile from '@/public/nxt2/section1_mobile.png'
 import NXT_Logo_Bumper from '@/public/nxt2/nxt_logo.png'
 import urlFor from '@/helpers/sanity/urlFor'
 
-export const Section1ComponentInner = ({ dataSection1 }) => {
+export const Section1ComponentInner = ({ landingSection }) => {
   return (
     <section className="relative w-full h-screen">
       <div className="absolute top-0 left-0 w-full h-full hidden sm:block z-10">
         <Image
-          src={urlFor(dataSection1.image.imageDesktop).width(1440).url()}
-          alt={dataSection1.image.imageDesktop.alt}
+          src={urlFor(landingSection.imageDesktop).width(1440).url()}
+          alt={landingSection.imageDesktop.alt}
           layout="fill"
           objectFit="cover"
           placeholder="blur"
-          blurDataURL={urlFor(dataSection1.image.imageDesktop)
+          blurDataURL={urlFor(landingSection.imageDesktop)
             .blur(2)
             .format('webp')
             .width(100)
@@ -29,12 +29,12 @@ export const Section1ComponentInner = ({ dataSection1 }) => {
       </div>
       <div className="absolute top-0 left-0 w-full h-full sm:hidden">
         <Image
-          src={urlFor(dataSection1.image.imageMobile).width(600).url()}
-          alt={dataSection1.image.imageMobile.alt}
+          src={urlFor(landingSection.imageMobile).width(600).url()}
+          alt={landingSection.imageMobile.alt}
           layout="fill"
           objectFit="cover"
           placeholder="blur"
-          blurDataURL={urlFor(dataSection1.image.imageMobile)
+          blurDataURL={urlFor(landingSection.imageMobile)
             .blur(2)
             .format('webp')
             .width(500)
@@ -123,15 +123,15 @@ export const Section1ComponentInner = ({ dataSection1 }) => {
             className="w-full flex flex-col items-center mt-10 md:mt-12 md:px-4"
           >
             <p className="text-[#BEC29D] font-funkturm text-2xl md:text-[45px] text-center leading-none md:leading-[120%]">
-              {dataSection1.description}
+              {landingSection.description}
             </p>
             <div className="mt-2 md:mt-4 text-[#BEC29D]">
               <span className="mr-2 md:mr-4 text-m-body md:text-d-body">
-                {dataSection1.textLeft}
+                {landingSection.textLeft}
               </span>
               •
               <span className="ml-2 md:ml-4 md:text-[1.375rem] font-serif italic font-medium">
-                {dataSection1.textRight}
+                {landingSection.textRight}
               </span>
             </div>
           </m.div>

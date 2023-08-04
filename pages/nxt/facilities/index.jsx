@@ -15,6 +15,7 @@ import ViewComponent from '@/components/modules/nxt/facilities/viewComponent'
 
 const FeaturesAndFacilities = ({
   facilitiesAPI,
+  facilitiesListAPI,
   seoAPI,
   footerAPI,
   facilitiesListScroll,
@@ -23,21 +24,24 @@ const FeaturesAndFacilities = ({
   const appContext = useAppContext()
   const [seo] = seoAPI
   const [footer] = footerAPI
+  const [facilities] = facilitiesAPI
   const [showComponent, setShowComponent] = useState('image-view')
 
   // Menghitung sisa pembagian dengan 3
-  const remainder = facilitiesAPI.length % 3
+  const remainder = facilitiesListAPI.length % 3
 
   const numberToAdd = remainder === 0 ? 0 : 3 - remainder
 
-  const facilitiesListFill = facilitiesAPI.concat(Array(numberToAdd).fill({}))
+  const facilitiesListFill = facilitiesListAPI.concat(
+    Array(numberToAdd).fill({}),
+  )
 
   const facilitiesListGrid = facilitiesListFill.map((e, index) => {
     // Menghitung sisa pembagian dengan 2
-    const remainderMob = facilitiesAPI.length % 2
+    const remainderMob = facilitiesListAPI.length % 2
 
     const numberToAddMob = remainderMob === 0 ? 0 : 2 - remainderMob
-    const facilitiesListGridMobile = facilitiesAPI.concat(
+    const facilitiesListGridMobile = facilitiesListAPI.concat(
       Array(numberToAddMob).fill({}),
     )
     if (facilitiesListFill.length > facilitiesListGridMobile.length) {
@@ -67,8 +71,13 @@ const FeaturesAndFacilities = ({
   return (
     <Layout>
       <SEO
-        title={'Our Facilities'}
+        title={facilities.heading}
         pagelink={router.pathname}
+        inputSEO={
+          typeof facilities !== 'undefined' &&
+          typeof facilities.seo !== 'undefined' &&
+          facilities.seo
+        }
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -104,13 +113,12 @@ const FeaturesAndFacilities = ({
         >
           <Container className="flex flex-col items-center mt-20 md:mt-44">
             <h1 className="text-[#BEC29D] text-center font-funkturm text-[2.5rem] sm:text-t-header md:text-d-header m-0">
-              OUR FACILITIES
+              {facilities.heading}
             </h1>
             <ButtonViewFacilities setShowComponent={setShowComponent} />
           </Container>
           <ViewComponent
             showComponent={showComponent}
-            facilitiesList={facilitiesAPI}
             facilitiesListGrid={facilitiesListGrid}
             facilitiesListScroll={facilitiesListScroll}
           />
@@ -124,6 +132,9 @@ const FeaturesAndFacilities = ({
 
 export async function getStaticProps() {
   const facilitiesAPI = await client.fetch(`
+  *[_type == "facilities"]
+  `)
+  const facilitiesListAPI = await client.fetch(`
   *[_type == "facilitiesList"]
   `)
   const seoAPI = await client.fetch(`
@@ -136,13 +147,14 @@ export async function getStaticProps() {
                     *[_type == "header"]
                     `)
 
-  const facilitiesListScroll = facilitiesAPI.map((e) => ({
+  const facilitiesListScroll = facilitiesListAPI.map((e) => ({
     ...e,
-    zIndex: Math.floor(Math.random() * facilitiesAPI.length) + 1,
+    zIndex: Math.floor(Math.random() * facilitiesListAPI.length) + 1,
   }))
   return {
     props: {
       facilitiesAPI,
+      facilitiesListAPI,
       seoAPI,
       footerAPI,
       headerAPI,

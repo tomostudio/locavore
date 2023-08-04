@@ -17,7 +17,12 @@ import urlFor from '@/helpers/sanity/urlFor'
 import { PortableText } from '@portabletext/react'
 import dateConvert from '@/helpers/functional/dateConvert'
 
-const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
+const EventsAndProgramsDetail = ({
+  eventButtonText,
+  eventAPI,
+  seoAPI,
+  footerAPI,
+}) => {
   const router = useRouter()
   const appContext = useAppContext()
   const [event] = eventAPI
@@ -79,7 +84,7 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
     },
     marks: {
       add_ann: (props) =>
-        props.value?.link ? (
+        props.value.select_link === 'link' ? (
           <FancyLink
             destination={props.value.link}
             blank={props.value.target_blank}
@@ -87,9 +92,28 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
               color: props.value?.textColor
                 ? props.value?.textColor.hex
                 : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
+              fontSize: props.value?.fontSize
+                ? props.value?.fontSize
+                : 'initial',
+            }}
+            className={
+              props.value?.font
+                ? props.value?.font === 'display'
+                  ? 'font-default'
+                  : props.value.font
+                : 'font-default'
+            }
+          >
+            {props.children}
+          </FancyLink>
+        ) : props.value.select_link === 'wa_link' ? (
+          <FancyLink
+            destination={props.value.wa_link}
+            blank={true}
+            style={{
+              color: props.value?.textColor
+                ? props.value?.textColor.hex
+                : 'currentColor',
               fontSize: props.value?.fontSize
                 ? props.value?.fontSize
                 : 'initial',
@@ -105,14 +129,13 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
             {props.children}
           </FancyLink>
         ) : (
-          <span
+          <FancyLink
+            destination={props.value.email}
+            blank={false}
             style={{
               color: props.value?.textColor
                 ? props.value?.textColor.hex
                 : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
               fontSize: props.value?.fontSize
                 ? props.value?.fontSize
                 : 'initial',
@@ -126,7 +149,7 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
             }
           >
             {props.children}
-          </span>
+          </FancyLink>
         ),
       largerSize: (props) => (
         <span style={{ fontSize: '1.5em' }}>{props.children}</span>
@@ -152,6 +175,11 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
       <SEO
         title={event.title}
         pagelink={router.pathname}
+        inputSEO={
+          typeof event !== 'undefined' &&
+          typeof event.seo !== 'undefined' &&
+          event.seo
+        }
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -208,53 +236,54 @@ const EventsAndProgramsDetail = ({ eventAPI, seoAPI, footerAPI }) => {
                   <span>
                     VENUE:
                     <br />
-                    {event.venue}
+                    {event.sidebar.venue}
                   </span>
                   <span>
                     DATE:
                     <br />
-                    {dateConvert(event.date)}
+                    {dateConvert(event.sidebar.date)}
                   </span>
                   <span>
                     LOCATION:
                     <br />
-                    {event.location}
+                    {event.sidebar.location}
                   </span>
                   <span>
                     TIME:
                     <br />
-                    {event.time}
+                    {event.sidebar.time}
                   </span>
                 </div>
                 <FancyLink
                   target="_blank"
-                  destination={event.registerLink}
+                  destination={event.sidebar.ctaButton.buttonLink}
                   className="hidden md:block font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30"
                 >
-                  Register Now
+                  {event.sidebar.ctaButton.buttonText}
                 </FancyLink>
               </div>
               <div className="w-full md:w-[70%] text-white ">
                 <div className="w-full max-w-xl editor-styling">
-                  <PortableText
-                    value={event.description}
-                    components={serializer}
-                  />
+                  <PortableText value={event.content} components={serializer} />
                 </div>
               </div>
               <FancyLink
                 target="_blank"
-                destination={event.registerLink}
+                destination={event.sidebar.ctaButton.buttonLink}
                 className="md:hidden mx-auto font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30"
               >
-                Register Now
+                {event.sidebar.ctaButton.buttonText}
               </FancyLink>
             </div>
           </div>
         </Container>
         {/* Button Sticky */}
-        <StickyButton destination="/nxt/events-programs" arrow="left">
-          EVENTS & PROGRAMS
+        <StickyButton
+          destination="/nxt/events-programs"
+          arrow="left"
+          className="uppercase"
+        >
+          {eventButtonText.heading}
         </StickyButton>
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
@@ -280,6 +309,11 @@ export async function getStaticProps({ params }) {
       *[_type == "eventList" && slug.current == "${params.slug}"] 
     `,
   )
+  const eventButtonText = await client.fetch(`
+    *[_type == "event"][0] {
+      heading
+    }
+    `)
   const seoAPI = await client.fetch(`
     *[_type == "settings"]
     `)
@@ -291,6 +325,7 @@ export async function getStaticProps({ params }) {
                       `)
   return {
     props: {
+      eventButtonText,
       eventAPI,
       seoAPI,
       footerAPI,

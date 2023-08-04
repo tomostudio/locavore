@@ -20,7 +20,12 @@ import urlFor from '@/helpers/sanity/urlFor'
 import { useNextSanityImage } from 'next-sanity-image'
 import { singleIURB } from '@/components/utils/iurb'
 
-const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
+const OurCollaboratorsDetail = ({
+  collaboratorButtonText,
+  collaboratorAPI,
+  seoAPI,
+  footerAPI,
+}) => {
   const router = useRouter()
   const appContext = useAppContext()
   const [collaborator] = collaboratorAPI
@@ -82,7 +87,7 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
     },
     marks: {
       add_ann: (props) =>
-        props.value?.link ? (
+        props.value.select_link === 'link' ? (
           <FancyLink
             destination={props.value.link}
             blank={props.value.target_blank}
@@ -90,9 +95,28 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
               color: props.value?.textColor
                 ? props.value?.textColor.hex
                 : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
+              fontSize: props.value?.fontSize
+                ? props.value?.fontSize
+                : 'initial',
+            }}
+            className={
+              props.value?.font
+                ? props.value?.font === 'display'
+                  ? 'font-default'
+                  : props.value.font
+                : 'font-default'
+            }
+          >
+            {props.children}
+          </FancyLink>
+        ) : props.value.select_link === 'wa_link' ? (
+          <FancyLink
+            destination={props.value.wa_link}
+            blank={true}
+            style={{
+              color: props.value?.textColor
+                ? props.value?.textColor.hex
+                : 'currentColor',
               fontSize: props.value?.fontSize
                 ? props.value?.fontSize
                 : 'initial',
@@ -108,14 +132,13 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
             {props.children}
           </FancyLink>
         ) : (
-          <span
+          <FancyLink
+            destination={props.value.email}
+            blank={false}
             style={{
               color: props.value?.textColor
                 ? props.value?.textColor.hex
                 : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
               fontSize: props.value?.fontSize
                 ? props.value?.fontSize
                 : 'initial',
@@ -129,7 +152,7 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
             }
           >
             {props.children}
-          </span>
+          </FancyLink>
         ),
       largerSize: (props) => (
         <span style={{ fontSize: '1.5em' }}>{props.children}</span>
@@ -155,6 +178,11 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
       <SEO
         title={collaborator.title}
         pagelink={router.pathname}
+        inputSEO={
+          typeof collaborator !== 'undefined' &&
+          typeof collaborator.seo !== 'undefined' &&
+          collaborator.seo
+        }
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -184,7 +212,7 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
               </div>
               <div className="w-full my-10 md:mb-0 md:mt-24 md:max-w-lg editor-styling mr-auto">
                 <PortableText
-                  value={collaborator.description}
+                  value={collaborator.content}
                   components={serializer}
                 />
               </div>
@@ -211,8 +239,12 @@ const OurCollaboratorsDetail = ({ collaboratorAPI, seoAPI, footerAPI }) => {
           </div>
         </Container>
         {/* Button Sticky */}
-        <StickyButton destination="/nxt/collaborators" arrow="left">
-          COLLABORATORS
+        <StickyButton
+          destination="/nxt/collaborators"
+          arrow="left"
+          className="uppercase"
+        >
+          {collaboratorButtonText.heading}
         </StickyButton>
       </motion.main>
       <Footer footer={footer} mailchimp={seo.mailchimpID} />
@@ -238,6 +270,11 @@ export async function getStaticProps({ params }) {
       *[_type == "collaboratorList" && slug.current == "${params.slug}"] 
     `,
   )
+  const collaboratorButtonText = await client.fetch(`
+    *[_type == "collaborator"][0] {
+      heading
+    }
+    `)
   const seoAPI = await client.fetch(`
     *[_type == "settings"]
     `)
@@ -249,6 +286,7 @@ export async function getStaticProps({ params }) {
                       `)
   return {
     props: {
+      collaboratorButtonText,
       collaboratorAPI,
       seoAPI,
       footerAPI,

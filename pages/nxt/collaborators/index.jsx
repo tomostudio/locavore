@@ -33,9 +33,7 @@ const OurCollaborators = ({
   const defaultItemToShow = 12
   const [itemToShow, setItemToShow] = useState(defaultItemToShow)
   const [showMoreButton, setShowMore] = useState(
-    collaboratorListAPI.length > defaultItemToShow
-      ? true
-      : false,
+    collaboratorListAPI.length > defaultItemToShow ? true : false,
   )
 
   useEffect(() => {
@@ -52,12 +50,16 @@ const OurCollaborators = ({
   return (
     <Layout>
       <SEO
-        title={'Our Collaborators'}
+        title={collaborator.heading}
         pagelink={router.pathname}
+        inputSEO={
+          typeof collaborator !== 'undefined' &&
+          typeof collaborator.seo !== 'undefined' &&
+          collaborator.seo
+        }
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-
       <motion.main
         initial="initial"
         animate="enter"
@@ -67,7 +69,7 @@ const OurCollaborators = ({
       >
         <div className="relative w-full h-full setflex-center">
           <HeroComponent
-            title="OUR COLLABORATORS"
+            title={collaborator.heading}
             imageDesktop={collaborator.hero.imageDesktop}
             imageMobile={collaborator.hero.imageMobile}
           />

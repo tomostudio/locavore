@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode, Keyboard, Mousewheel, Navigation } from 'swiper'
 import Image from 'next/legacy/image'
 
 import FancyLink from '@/components/utils/fancyLink'
@@ -12,11 +10,7 @@ import {
   ArrowFacilitiesMobile,
 } from '@/components/utils/arrowFacilites'
 
-const ImageView = ({
-  facilitiesList,
-  facilitiesListScroll,
-  scrollContainer,
-}) => {
+const ImageView = ({ facilitiesListScroll, scrollContainer }) => {
   const [positionScroll, setPositionScroll] = useState(0)
   const [navVisibility, setNavVisbility] = useState(false)
 
@@ -26,7 +20,6 @@ const ImageView = ({
     } else {
       setNavVisbility(true)
     }
-    console.log(scrollContainer.current.scrollWidth, window.screen.width)
   }, [])
   return (
     <motion.div
@@ -66,17 +59,23 @@ const ImageView = ({
                     }}
                   >
                     <div
-                      className={`relative ${
-                        data.thumbnail.position === 'bottom'
-                          ? data.thumbnail.size === '150'
+                      className={`relative
+                      ${
+                        data.thumbnail.size === '150'
+                          ? data.thumbnail.imageLarge.position === 'bottom'
                             ? 'top-1/2 -translate-y-[78%]'
-                            : data.thumbnail.size === '120'
-                            ? 'top-1/2 -translate-y-[72%]'
+                            : data.thumbnail.imageLarge.position === 'center'
+                            ? 'top-1/2 -translate-y-1/2'
                             : ''
-                          : data.thumbnail.position === 'center'
-                          ? 'top-1/2 -translate-y-1/2'
+                          : data.thumbnail.size === '120'
+                          ? data.thumbnail.imageMedium.position === 'bottom'
+                            ? 'top-1/2 -translate-y-[72%]'
+                            : data.thumbnail.imageMedium.position === 'center'
+                            ? 'top-1/2 -translate-y-1/2'
+                            : ''
                           : ''
-                      } ${
+                      }
+                      ${
                         data.thumbnail.size === '150'
                           ? 'w-[calc(40vw*1.5)] h-[calc(40vw*2.25)] sm:w-[calc(30vw*1.5)] sm:h-[calc(30vw*2.25)] md:w-[calc(15vw*1.5)] md:h-[calc(15vw*2.25)]'
                           : data.thumbnail.size === '120'
@@ -87,14 +86,36 @@ const ImageView = ({
                       <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
                         <div className="absolute w-full h-full top-0 left-0 z-10 duration-300 transition-all group-hover:opacity-0">
                           <Image
-                            src={urlFor(data.thumbnail.imageBnw)
+                            src={urlFor(
+                              data.thumbnail.size === '150'
+                                ? data.thumbnail.imageLarge.imageBnw
+                                : data.thumbnail.size === '120'
+                                ? data.thumbnail.imageMedium.imageBnw
+                                : data.thumbnail.imageSmall.imageBnw,
+                            )
                               .width(350)
                               .url()}
-                            alt={data.thumbnail.imageBnw.alt}
+                            alt={
+                              data.thumbnail.size === '150'
+                                ? data.thumbnail.imageLarge.imageBnw.alt
+                                : data.thumbnail.size === '120'
+                                ? data.thumbnail.imageMedium.imageBnw.alt
+                                : data.thumbnail.imageSmall.imageBnw.alt
+                            }
                             layout="fill"
-                            objectFit="contain"
+                            objectFit={
+                              data.thumbnail.size === 'normal'
+                                ? data.thumbnail.imageSmall.imageFit
+                                : 'contain'
+                            }
                             placeholder="blur"
-                            blurDataURL={urlFor(data.thumbnail.imageBnw)
+                            blurDataURL={urlFor(
+                              data.thumbnail.size === '150'
+                                ? data.thumbnail.imageLarge.imageBnw
+                                : data.thumbnail.size === '120'
+                                ? data.thumbnail.imageMedium.imageBnw
+                                : data.thumbnail.imageSmall.imageBnw,
+                            )
                               .blur(2)
                               .format('webp')
                               .width(100)
@@ -102,142 +123,36 @@ const ImageView = ({
                           />
                         </div>
                         <Image
-                          src={urlFor(data.thumbnail.imageColor)
+                          src={urlFor(
+                            data.thumbnail.size === '150'
+                              ? data.thumbnail.imageLarge.imageColor
+                              : data.thumbnail.size === '120'
+                              ? data.thumbnail.imageMedium.imageColor
+                              : data.thumbnail.imageSmall.imageColor,
+                          )
                             .width(350)
                             .url()}
-                          alt={data.thumbnail.imageColor.alt}
+                          alt={
+                            data.thumbnail.size === '150'
+                              ? data.thumbnail.imageLarge.imageColor.alt
+                              : data.thumbnail.size === '120'
+                              ? data.thumbnail.imageMedium.imageColor.alt
+                              : data.thumbnail.imageSmall.imageColor.alt
+                          }
                           layout="fill"
-                          objectFit="contain"
+                          objectFit={
+                            data.thumbnail.size === 'normal'
+                              ? data.thumbnail.imageSmall.imageFit
+                              : 'contain'
+                          }
                           placeholder="blur"
-                          blurDataURL={urlFor(data.thumbnail.imageColor)
-                            .blur(2)
-                            .format('webp')
-                            .width(100)
-                            .url()}
-                        />
-                      </div>
-                    </div>
-                  </FancyLink>
-                </div>
-              ))}
-              {facilitiesListScroll.map((data, id) => (
-                <div key={id}>
-                  <FancyLink
-                    className={`block relative w-[40vw] h-[40vw] sm:w-[30vw] sm:h-[30vw] md:w-[15vw] md:h-[15vw] cursor-pointer transtion-all duration-300 hover:!z-40 group`}
-                    destination={`/nxt/facilities/${data.slug.current}`}
-                    style={{
-                      zIndex: data.zIndex,
-                    }}
-                  >
-                    <div
-                      className={`relative ${
-                        data.thumbnail.position === 'bottom'
-                          ? data.thumbnail.size === '150'
-                            ? 'top-1/2 -translate-y-[78%]'
-                            : data.thumbnail.size === '120'
-                            ? 'top-1/2 -translate-y-[72%]'
-                            : ''
-                          : data.thumbnail.position === 'center'
-                          ? 'top-1/2 -translate-y-1/2'
-                          : ''
-                      } ${
-                        data.thumbnail.size === '150'
-                          ? 'w-[calc(40vw*1.5)] h-[calc(40vw*2.25)] sm:w-[calc(30vw*1.5)] sm:h-[calc(30vw*2.25)] md:w-[calc(15vw*1.5)] md:h-[calc(15vw*2.25)]'
-                          : data.thumbnail.size === '120'
-                          ? 'w-[calc(40vw*1.2)] h-[calc(40vw*1.8)] sm:w-[calc(30vw*1.2)] sm:h-[calc(30vw*1.8)] md:w-[calc(15vw*1.2)] md:h-[calc(15vw*1.8)]'
-                          : 'w-full h-full'
-                      }`}
-                    >
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <div className="absolute w-full h-full top-0 left-0 z-10 duration-300 transition-all group-hover:opacity-0">
-                          <Image
-                            src={urlFor(data.thumbnail.imageBnw)
-                              .width(350)
-                              .url()}
-                            alt={data.thumbnail.imageBnw.alt}
-                            layout="fill"
-                            objectFit="contain"
-                            placeholder="blur"
-                            blurDataURL={urlFor(data.thumbnail.imageBnw)
-                              .blur(2)
-                              .format('webp')
-                              .width(100)
-                              .url()}
-                          />
-                        </div>
-                        <Image
-                          src={urlFor(data.thumbnail.imageColor)
-                            .width(350)
-                            .url()}
-                          alt={data.thumbnail.imageColor.alt}
-                          layout="fill"
-                          objectFit="contain"
-                          placeholder="blur"
-                          blurDataURL={urlFor(data.thumbnail.imageColor)
-                            .blur(2)
-                            .format('webp')
-                            .width(100)
-                            .url()}
-                        />
-                      </div>
-                    </div>
-                  </FancyLink>
-                </div>
-              ))}
-              {facilitiesListScroll.map((data, id) => (
-                <div key={id}>
-                  <FancyLink
-                    className={`block relative w-[40vw] h-[40vw] sm:w-[30vw] sm:h-[30vw] md:w-[15vw] md:h-[15vw] cursor-pointer transtion-all duration-300 hover:!z-40 group`}
-                    destination={`/nxt/facilities/${data.slug.current}`}
-                    style={{
-                      zIndex: data.zIndex,
-                    }}
-                  >
-                    <div
-                      className={`relative ${
-                        data.thumbnail.position === 'bottom'
-                          ? data.thumbnail.size === '150'
-                            ? 'top-1/2 -translate-y-[78%]'
-                            : data.thumbnail.size === '120'
-                            ? 'top-1/2 -translate-y-[72%]'
-                            : ''
-                          : data.thumbnail.position === 'center'
-                          ? 'top-1/2 -translate-y-1/2'
-                          : ''
-                      } ${
-                        data.thumbnail.size === '150'
-                          ? 'w-[calc(40vw*1.5)] h-[calc(40vw*2.25)] sm:w-[calc(30vw*1.5)] sm:h-[calc(30vw*2.25)] md:w-[calc(15vw*1.5)] md:h-[calc(15vw*2.25)]'
-                          : data.thumbnail.size === '120'
-                          ? 'w-[calc(40vw*1.2)] h-[calc(40vw*1.8)] sm:w-[calc(30vw*1.2)] sm:h-[calc(30vw*1.8)] md:w-[calc(15vw*1.2)] md:h-[calc(15vw*1.8)]'
-                          : 'w-full h-full'
-                      }`}
-                    >
-                      <div className="relative w-full h-full duration-300 transition-all group-hover:-rotate-6">
-                        <div className="absolute w-full h-full top-0 left-0 z-10 duration-300 transition-all group-hover:opacity-0">
-                          <Image
-                            src={urlFor(data.thumbnail.imageBnw)
-                              .width(350)
-                              .url()}
-                            alt={data.thumbnail.imageBnw.alt}
-                            layout="fill"
-                            objectFit="contain"
-                            placeholder="blur"
-                            blurDataURL={urlFor(data.thumbnail.imageBnw)
-                              .blur(2)
-                              .format('webp')
-                              .width(100)
-                              .url()}
-                          />
-                        </div>
-                        <Image
-                          src={urlFor(data.thumbnail.imageColor)
-                            .width(350)
-                            .url()}
-                          alt={data.thumbnail.imageColor.alt}
-                          layout="fill"
-                          objectFit="contain"
-                          placeholder="blur"
-                          blurDataURL={urlFor(data.thumbnail.imageColor)
+                          blurDataURL={urlFor(
+                            data.thumbnail.size === '150'
+                              ? data.thumbnail.imageLarge.imageColor
+                              : data.thumbnail.size === '120'
+                              ? data.thumbnail.imageMedium.imageColor
+                              : data.thumbnail.imageSmall.imageColor,
+                          )
                             .blur(2)
                             .format('webp')
                             .width(100)

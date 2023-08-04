@@ -4,13 +4,12 @@ import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { fade } from '@/helpers/preset/transitions'
 
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import client from '@/helpers/sanity/client'
 import Image from 'next/legacy/image'
 import { useAppContext } from 'context/state'
 import Container from '@/components/modules/container'
 import Footer from '@/components/modules/footer'
-import NxtNavigationDesktop from '@/components/utils/nxtNavigation/desktop'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 import urlFor from '@/helpers/sanity/urlFor'
 import EditorComponent from '@/components/modules/editorial/editorComponent'
@@ -40,8 +39,13 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
   return (
     <Layout>
       <SEO
-        title={'Menu'}
+        title={menu.hero.heading}
         pagelink={router.pathname}
+        inputSEO={
+          typeof menu !== 'undefined' &&
+          typeof menu.seo !== 'undefined' &&
+          menu.seo
+        }
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -59,12 +63,12 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
           >
             <div className="relative w-[125%] h-[125%]">
               <Image
-                src={urlFor(menu.hero.image.imageDesktop).width(1500).url()}
-                alt={menu.hero.image.imageDesktop.alt}
+                src={urlFor(menu.hero.imageDesktop).width(1500).url()}
+                alt={menu.hero.imageDesktop.alt}
                 layout="fill"
                 objectFit="cover"
                 placeholder="blur"
-                blurDataURL={urlFor(menu.hero.image.imageDesktop)
+                blurDataURL={urlFor(menu.hero.imageDesktop)
                   .blur(2)
                   .format('webp')
                   .width(100)
@@ -74,12 +78,12 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
           </Parallax>
           <div className="absolute top-0 left-0 w-full h-full sm:hidden">
             <Image
-              src={urlFor(menu.hero.image.imageMobile).width(375).url()}
-              alt={menu.hero.image.imageMobile.alt}
+              src={urlFor(menu.hero.imageMobile).width(375).url()}
+              alt={menu.hero.imageMobile.alt}
               layout="fill"
               objectFit="cover"
               placeholder="blur"
-              blurDataURL={urlFor(menu.hero.image.imageMobile)
+              blurDataURL={urlFor(menu.hero.imageMobile)
                 .blur(2)
                 .format('webp')
                 .width(100)
@@ -88,11 +92,11 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
           </div>
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
           <div className="relative z-10 sm:mb-10 md:mb-20 w-full setflex-center max-w-5xl px-10 max-md:px-5 mx-auto text-white">
-            <h1 className="m-0 font-funkturm text-m-additionalTitle md:text-d-additionalTitle">
-              {menu.hero.title}
+            <h1 className="m-0 uppercase font-funkturm text-m-additionalTitle md:text-d-additionalTitle">
+              {menu.hero.heading}
             </h1>
             <span className="mt-2 text-[1.125rem] md:text-[1.875rem]">
-              {menu.hero.description}
+              {menu.hero.subheading}
             </span>
           </div>
         </div>
@@ -100,7 +104,7 @@ const Menu = ({ menuAPI, seoAPI, footerAPI }) => {
           <Container className="bg-black flex flex-col">
             <div className="max-w-4xl px-10 max-md:px-5 mx-auto my-24 flex flex-col items-center space-y-20 text-white">
               <span className="block text-[2.125rem] sm:text-t-header md:text-d-header text-center leading-[120%]">
-                {menu.title}
+                {menu.menuTitle}
               </span>
               {menu.article.map((data) =>
                 data._type === 'editor' ? (

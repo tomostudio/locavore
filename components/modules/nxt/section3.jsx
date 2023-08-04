@@ -16,7 +16,7 @@ import { useInView } from 'react-cool-inview';
 
 import { Parallax } from 'react-scroll-parallax';
 
-export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
+export const Section3ComponentInner = ({ facilitiesSection }) => {
   const controls = useAnimation();
   const controlBg = useAnimation();
 
@@ -183,18 +183,16 @@ export const Section3ComponentInner = ({ setBgColor, setCaption }) => {
         <div className='sticky z-10 top-0 w-full h-screen flex flex-col justify-center items-center'>
           <div className='relative w-full h-screen'>
             <Container className='relative w-full h-full z-20 setflex-center'>
-              <span className='text-[#BEC29D] text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full '>
-                OUR
-                <br />
-                FACILITIES
+              <span className='text-[#BEC29D] uppercase max-w-[650px] text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full '>
+                {facilitiesSection.heading}
               </span>
             </Container>
             <div className='absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex justify-center items-end'>
               <FancyLink
-                className={`w-fit p-4 mb-20 lg:mb-[4.5rem] text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
+                className={`w-fit p-4 mb-20 lg:mb-[4.5rem] uppercase text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
                 destination='/nxt/facilities'
               >
-                VIEW OUR FACILITIES
+                {facilitiesSection.button}
               </FancyLink>
             </div>
             <m.div

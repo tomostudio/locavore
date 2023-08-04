@@ -87,7 +87,7 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
     },
     marks: {
       add_ann: (props) =>
-        props.value?.link ? (
+        props.value.select_link === 'link' ? (
           <FancyLink
             destination={props.value.link}
             blank={props.value.target_blank}
@@ -95,9 +95,6 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
               color: props.value?.textColor
                 ? props.value?.textColor.hex
                 : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
               fontSize: props.value?.fontSize
                 ? props.value?.fontSize
                 : 'initial',
@@ -112,42 +109,14 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
           >
             {props.children}
           </FancyLink>
-        ) : props.value?.wa_link ? (
+        ) : props.value.select_link === 'wa_link' ? (
           <FancyLink
             destination={props.value.wa_link}
-            blank={props.value.target_blank}
+            blank={true}
             style={{
               color: props.value?.textColor
                 ? props.value?.textColor.hex
                 : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
-              fontSize: props.value?.fontSize
-                ? props.value?.fontSize
-                : 'initial',
-            }}
-            className={
-              props.value?.font
-                ? props.value?.font === 'display'
-                  ? 'font-default'
-                  : props.value.font
-                : 'font-default'
-            }
-          >
-            {props.children}
-          </FancyLink>
-        ) : props.value?.email ? (
-          <FancyLink
-            destination={props.value.email}
-            blank={props.value.target_blank}
-            style={{
-              color: props.value?.textColor
-                ? props.value?.textColor.hex
-                : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
               fontSize: props.value?.fontSize
                 ? props.value?.fontSize
                 : 'initial',
@@ -163,14 +132,13 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             {props.children}
           </FancyLink>
         ) : (
-          <span
+          <FancyLink
+            destination={props.value.email}
+            blank={false}
             style={{
               color: props.value?.textColor
                 ? props.value?.textColor.hex
                 : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
               fontSize: props.value?.fontSize
                 ? props.value?.fontSize
                 : 'initial',
@@ -184,7 +152,7 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
             }
           >
             {props.children}
-          </span>
+          </FancyLink>
         ),
       largerSize: (props) => (
         <span style={{ fontSize: '1.5em' }}>{props.children}</span>
@@ -208,8 +176,13 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
   return (
     <Layout>
       <SEO
-        title={'Visit'}
+        title={visit.heading}
         pagelink={router.pathname}
+        inputSEO={
+          typeof visit !== 'undefined' &&
+          typeof visit.seo !== 'undefined' &&
+          visit.seo
+        }
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -223,13 +196,13 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
       >
         <div className="relative w-full h-full setflex-center">
           <HeroComponent
-            title="VISIT"
+            title={visit.heading}
             imageDesktop={visit.hero.imageDesktop}
             imageMobile={visit.hero.imageMobile}
           />
           <div className="px-10 max-md:px-5 max-w-4xl w-full h-full flex flex-col mt-11 md:mt-20 mb-10 md:mb-16 text-white">
             <span className="font-serif text-[30px] sm:text-[40px] text-center leading-tight">
-              Plan to visit us? <br /> Check out our information below!
+              {visit.subheadingTop}
             </span>
             <div className="flex flex-col justify-center items-center text-[14px] sm:text-[16px] max-w-sm sm:max-w-none mx-auto mt-10 text-center sm:mt-20">
               <span className="font-bold">OUR LOCATION</span>
@@ -238,7 +211,7 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
                 destination={visit.location.link}
                 className="underline hover:opacity-50 mt-2 sm:mt-3 transition-opacity cursor-pointer inline-block"
               >
-                {visit.location.title}
+                {visit.location.entry}
                 <Arrow position="right" fill="white" className="ml-2 inline" />
               </FancyLink>
             </div>
@@ -248,29 +221,46 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
               className="relative w-full aspect-[361/243] my-9 sm:my-14"
             >
               <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
-                <Image src={map} alt="Map" layout="fill" objectFit="cover" />
+                <Image
+                  src={urlFor(visit.location.mapImage.imageDesktop).width(722).url()}
+                  alt={visit.location.mapImage.imageDesktop.alt}
+                  layout="fill"
+                  objectFit="cover"
+                  placeholder="blur"
+                  blurDataURL={urlFor(visit.location.mapImage.imageDesktop)
+                    .blur(2)
+                    .format('webp')
+                    .width(100)
+                    .url()}
+                />
               </div>
               <div className="absolute top-0 left-0 w-full h-full sm:hidden">
                 <Image
-                  src={map_mobile}
-                  alt="Map"
+                  src={urlFor(visit.location.mapImage.imageMobile).width(321).url()}
+                  alt={visit.location.mapImage.imageMobile.alt}
                   layout="fill"
                   objectFit="cover"
+                  placeholder="blur"
+                  blurDataURL={urlFor(visit.location.mapImage.imageMobile)
+                    .blur(2)
+                    .format('webp')
+                    .width(100)
+                    .url()}
                 />
               </div>
             </FancyLink>
             <div className="text-center w-full editor-styling max-w-sm sm:max-w-none mx-auto">
-              <PortableText value={visit.description} components={serializer} />
+              <PortableText value={visit.content} components={serializer} />
             </div>
             <FancyLink
               target="_blank"
-              destination={visit.booking.link}
+              destination={visit.ctaButton.link}
               className={`w-fit p-4 mt-10 sm:mt-12 mx-auto text-d-small uppercase mb-12 sm:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
             >
-              {visit.booking.title}
+              {visit.ctaButton.buttonText}
             </FancyLink>
             <div className="w-full border-y border-white flex flex-col gap-y-8 py-8 sm:py-12">
-              {visit.contents.map((data, id) => (
+              {visit.additionalInfo.map((data, id) => (
                 <>
                   <div
                     key={id}
@@ -298,16 +288,14 @@ const Visit = ({ visitAPI, seoAPI, footerAPI }) => {
               ))}
             </div>
             <span className="font-serif text-[30px] sm:text-[40px] text-center mt-10 sm:mt-14">
-              What are you waiting for?
-              <br />
-              Come and visit us now!
+              {visit.subheadingBottom}
             </span>
             <FancyLink
               target="_blank"
-              destination={visit.booking.link}
+              destination={visit.ctaButton.link}
               className={`w-fit p-4 mx-auto text-d-small uppercase mt-6 sm:mt-12 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
             >
-              {visit.booking.title}
+              {visit.ctaButton.buttonText}
             </FancyLink>
           </div>
         </div>

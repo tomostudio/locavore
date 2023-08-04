@@ -23,7 +23,12 @@ import FancyLink from '@/components/utils/fancyLink'
 import { useNextSanityImage } from 'next-sanity-image'
 import { singleIURB } from '@/components/utils/iurb'
 
-const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
+const FeaturesAndFacilitiesDetail = ({
+  facilitiesButtonText,
+  facilitiesAPI,
+  seoAPI,
+  footerAPI,
+}) => {
   const router = useRouter()
   const appContext = useAppContext()
   const [facilities] = facilitiesAPI
@@ -85,7 +90,7 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
     },
     marks: {
       add_ann: (props) =>
-        props.value?.link ? (
+        props.value.select_link === 'link' ? (
           <FancyLink
             destination={props.value.link}
             blank={props.value.target_blank}
@@ -93,9 +98,28 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
               color: props.value?.textColor
                 ? props.value?.textColor.hex
                 : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
+              fontSize: props.value?.fontSize
+                ? props.value?.fontSize
+                : 'initial',
+            }}
+            className={
+              props.value?.font
+                ? props.value?.font === 'display'
+                  ? 'font-default'
+                  : props.value.font
+                : 'font-default'
+            }
+          >
+            {props.children}
+          </FancyLink>
+        ) : props.value.select_link === 'wa_link' ? (
+          <FancyLink
+            destination={props.value.wa_link}
+            blank={true}
+            style={{
+              color: props.value?.textColor
+                ? props.value?.textColor.hex
+                : 'currentColor',
               fontSize: props.value?.fontSize
                 ? props.value?.fontSize
                 : 'initial',
@@ -111,14 +135,13 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
             {props.children}
           </FancyLink>
         ) : (
-          <span
+          <FancyLink
+            destination={props.value.email}
+            blank={false}
             style={{
               color: props.value?.textColor
                 ? props.value?.textColor.hex
                 : 'currentColor',
-              backgroundColor: props.value?.bgColor
-                ? props.value?.bgColor
-                : 'transparent',
               fontSize: props.value?.fontSize
                 ? props.value?.fontSize
                 : 'initial',
@@ -132,7 +155,7 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
             }
           >
             {props.children}
-          </span>
+          </FancyLink>
         ),
       largerSize: (props) => (
         <span style={{ fontSize: '1.5em' }}>{props.children}</span>
@@ -158,10 +181,15 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
       <SEO
         title={facilities.title}
         pagelink={router.pathname}
+        inputSEO={
+          typeof facilities !== 'undefined' &&
+          typeof facilities.seo !== 'undefined' &&
+          facilities.seo
+        }
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
-
+      {console.log(facilitiesButtonText)}
       <motion.main
         initial="initial"
         animate="enter"
@@ -229,7 +257,7 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
             </h1>
             <div className="relative w-full max-w-xl mx-auto text-center text-white editor-styling px-10">
               <PortableText
-                value={facilities.description}
+                value={facilities.content}
                 components={serializer}
               />
             </div>
@@ -237,8 +265,12 @@ const FeaturesAndFacilitiesDetail = ({ facilitiesAPI, seoAPI, footerAPI }) => {
         </div>
         {/* Button Sticky */}
         <div className="sticky bottom-0 w-full md:h-0 left-0 flex items-end pointer-events-none">
-          <StickyButton destination="/nxt/facilities" arrow="left">
-            OUR FACILITIES
+          <StickyButton
+            destination="/nxt/facilities"
+            arrow="left"
+            className="uppercase"
+          >
+            {facilitiesButtonText.heading}
           </StickyButton>
         </div>
       </motion.main>
@@ -265,6 +297,11 @@ export async function getStaticProps({ params }) {
       *[_type == "facilitiesList" && slug.current == "${params.slug}"] 
     `,
   )
+  const facilitiesButtonText = await client.fetch(`
+    *[_type == "facilities"][0] {
+      heading
+    }
+    `)
   const seoAPI = await client.fetch(`
     *[_type == "settings"]
     `)
@@ -276,6 +313,7 @@ export async function getStaticProps({ params }) {
                       `)
   return {
     props: {
+      facilitiesButtonText,
       facilitiesAPI,
       seoAPI,
       footerAPI,

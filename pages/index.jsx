@@ -114,12 +114,16 @@ export default function Nxt({
     }
   }, [])
 
-
   return (
     <Layout>
       <SEO
         title={'Up NXT'}
         pagelink={router.pathname}
+        inputSEO={
+          typeof homeNxt !== 'undefined' &&
+          typeof homeNxt.seo !== 'undefined' &&
+          homeNxt.seo
+        }
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
@@ -152,31 +156,31 @@ export default function Nxt({
           <section className="relative p-0 m-0">
             {/* Section 1 */}
             {/* TITLE */}
-            <Section1ComponentInner dataSection1={homeNxt.section1} />
+            <Section1ComponentInner landingSection={homeNxt.section1} />
             {/* Section 2 */}
             {/* MENU */}
             {homeNxt.section2.option === 'option1' ? (
               <Section2Option1ComponentInner
-                dataSection2Option1={homeNxt.section2}
+                menuSectionOption1={homeNxt.section2}
               />
             ) : homeNxt.section2.option === 'option2' ? (
               <Section2Option2ComponentInner
-                dataSection2Option2={homeNxt.section2}
+                menuSectionOption2={homeNxt.section2}
               />
             ) : (
               <Section2Option3ComponentInner
-                dataSection2Option3={homeNxt.section2}
+                menuSectionOption3={homeNxt.section2}
               />
             )}
             {/* Section 3 */}
             {/* OUR FACILITIES */}
-            <Section3ComponentInner />
+            <Section3ComponentInner facilitiesSection={homeNxt.facilitiesSection} />
             {/* Section 4 */}
             {/* OUR COLLABORATORS */}
-            <Section4ComponentInner collabList={collabAPI} />
+            <Section4ComponentInner collabList={collabAPI} collaboratorSection={homeNxt.collaboratorSection} />
             {/* Section 5 */}
             {/* WHAT'S ON? */}
-            <Section5ComponentInner eventList={eventAPI} />
+            <Section5ComponentInner eventList={eventAPI} eventSection={homeNxt.eventSection} />
             <NxtNavigation transition={true} />
           </section>
           <Footer footer={footer} mailchimp={seo.mailchimpID} />
