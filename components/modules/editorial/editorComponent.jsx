@@ -235,7 +235,7 @@ const EditorComponent = ({ data, color, fontColor = '', textAlign = '' }) => {
             ),
             smallImage: (props) => (
               <div className={`image !my-10`}>
-                <div className="relative w-full aspect-[5/2] overflow-hidden">
+                <div className="relative w-full max-w-[500px] mx-auto aspect-[5/2] overflow-hidden">
                   {props.value.image && props.value.image.asset ? (
                     <Image
                       {...useNextSanityImage(client, props.value.image, {
