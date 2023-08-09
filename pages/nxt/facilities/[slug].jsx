@@ -86,7 +86,7 @@ const FeaturesAndFacilitiesDetail = ({
     },
     marks: {
       add_ann: (props) =>
-        props.value.select_link === 'link' ? (
+        props.value.select_link === 'default' ? (
           <FancyLink
             destination={props.value.link}
             blank={props.value.target_blank}
@@ -247,9 +247,26 @@ const FeaturesAndFacilitiesDetail = ({
         <div className="md:sticky md:top-0 md:right-0 w-full md:w-1/2 md:min-h-screen h-full flex justify-end">
           <div className="w-full mx-auto max-w-2xl px-10 max-md:px-5 setflex-center py-20 md:py-24">
             <HeaderGap className="hidden md:block" />
-            <h1 className="text-[2.5rem] md:text-d-additionalHeader m-0 text-[#BEC29D] font-funkturm">
+            <h1 className="text-[2.5rem] md:text-d-additionalHeader mb-10 text-[#BEC29D] font-funkturm">
               {facilities.title}
             </h1>
+            {facilities.imageIcon && (
+              <div className="relative w-full aspect-[5/2] mb-10">
+                <Image
+                  src={urlFor(facilities.imageIcon).width(500).url()}
+                  alt={facilities.imageIcon.name}
+                  layout="fill"
+                  objectFit="contain"
+                  placeholder="blur"
+                  blurDataURL={urlFor(facilities.imageIcon)
+                    .blur(2)
+                    .format('webp')
+                    .saturation(-100)
+                    .width(100)
+                    .url()}
+                />
+              </div>
+            )}
             <div className="relative w-full max-w-xl mx-auto text-center text-white editor-styling px-10">
               <PortableText
                 value={facilities.content}

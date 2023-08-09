@@ -96,8 +96,8 @@ export const Section1ComponentInner = ({ landingSection }) => {
               <Image
                 src={NXT_Logo_Bumper}
                 alt=""
-                layout='fill'
-                objectFit='cover'
+                layout="fill"
+                objectFit="cover"
                 priority
               />
             </div>
@@ -126,13 +126,25 @@ export const Section1ComponentInner = ({ landingSection }) => {
               {landingSection.description}
             </p>
             <div className="mt-2 md:mt-4 text-[#BEC29D]">
-              <span className="mr-2 md:mr-4 text-m-body md:text-d-body">
-                {landingSection.textLeft}
-              </span>
-              •
-              <span className="ml-2 md:ml-4 md:text-[1.375rem] font-serif italic font-medium">
-                {landingSection.textRight}
-              </span>
+              {landingSection.textLeft && landingSection.textRight ? (
+                <>
+                  <span className="mr-2 md:mr-4 text-m-body md:text-d-body">
+                    {landingSection.textLeft}
+                  </span>
+                  •
+                  <span className="ml-2 md:ml-4 md:text-[1.375rem] font-serif italic font-medium">
+                    {landingSection.textRight}
+                  </span>
+                </>
+              ) : landingSection.textLeft || landingSection.textRight ? (
+                <span className="mr-2 md:mr-4 text-m-body md:text-d-body">
+                  {landingSection.textLeft
+                    ? landingSection.textLeft
+                    : landingSection.textRight}
+                </span>
+              ) : (
+                <></>
+              )}
             </div>
           </m.div>
         </Container>

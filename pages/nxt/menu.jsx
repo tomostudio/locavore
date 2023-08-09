@@ -96,9 +96,11 @@ const Menu = ({ homeAPI, menuAPI, settingAPI, footerAPI }) => {
             <h1 className="m-0 uppercase font-funkturm text-m-additionalTitle md:text-d-additionalTitle">
               {menu.hero.heading}
             </h1>
-            <span className="mt-2 text-[1.125rem] md:text-[1.875rem]">
-              {menu.hero.subheading}
-            </span>
+            {menu.hero.subheading && (
+              <span className="mt-2 text-[1.125rem] md:text-[1.875rem]">
+                {menu.hero.subheading}
+              </span>
+            )}
           </div>
         </div>
         <div className="w-full h-full bg-black">
@@ -107,7 +109,7 @@ const Menu = ({ homeAPI, menuAPI, settingAPI, footerAPI }) => {
               <span className="block text-[2.125rem] sm:text-t-header md:text-d-header text-center leading-[120%]">
                 {menu.menuTitle}
               </span>
-              {menu.article.map((data, id) =>
+              {menu.article?.map((data, id) =>
                 data._type === 'editor' ? (
                   <EditorComponent
                     key={id}

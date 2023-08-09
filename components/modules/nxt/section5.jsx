@@ -24,7 +24,7 @@ export const Section5ComponentInner = ({ eventList, eventSection }) => {
                   key={id}
                   widthNormal={true}
                   slug={e.slug.current}
-                  date={e.sidebar.date}
+                  date={e.thumbnail.date}
                   image={e.thumbnail.imageColor}
                   image_bnw={e.thumbnail.imageBnw}
                   title={e.title}

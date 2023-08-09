@@ -85,7 +85,7 @@ const OurCollaboratorsDetail = ({
     },
     marks: {
       add_ann: (props) =>
-        props.value.select_link === 'link' ? (
+        props.value.select_link === 'default' ? (
           <FancyLink
             destination={props.value.link}
             blank={props.value.target_blank}

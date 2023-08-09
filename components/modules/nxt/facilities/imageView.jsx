@@ -62,13 +62,13 @@ const ImageView = ({ facilitiesListScroll, scrollContainer }) => {
                       className={`relative
                       ${
                         data.thumbnail.size === '150'
-                          ? data.thumbnail.imageLarge.position === 'bottom'
+                          ? data.thumbnail.imageLarge.position === 'top'
                             ? 'top-1/2 -translate-y-[78%]'
                             : data.thumbnail.imageLarge.position === 'center'
                             ? 'top-1/2 -translate-y-1/2'
                             : ''
                           : data.thumbnail.size === '120'
-                          ? data.thumbnail.imageMedium.position === 'bottom'
+                          ? data.thumbnail.imageMedium.position === 'top'
                             ? 'top-1/2 -translate-y-[72%]'
                             : data.thumbnail.imageMedium.position === 'center'
                             ? 'top-1/2 -translate-y-1/2'

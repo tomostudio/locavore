@@ -53,29 +53,45 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
       code: (props) => (
         <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
       ),
-      smallImage: (props) => (
-        <div className={`image !my-10`}>
-          <div className="relative w-full aspect-[5/2] overflow-hidden">
-            {props.value.image && props.value.image.asset ? (
+      mapImage: (props) =>
+        props.value.imageDesktop.asset && props.value.imageMobile.asset ? (
+          <FancyLink
+            target="_blank"
+            destination={props.value.link}
+            className="relative w-full aspect-[361/243] my-6 sm:my-11"
+          >
+            <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
               <Image
-                src={urlFor(props.value.image).format('webp').width(500).url()}
-                alt={props.value.image.name}
+                src={urlFor(props.value.imageDesktop).width(722).url()}
+                alt={props.value.imageDesktop.alt}
                 layout="fill"
-                objectFit="contain"
+                objectFit="cover"
                 placeholder="blur"
-                blurDataURL={urlFor(props.value.image)
+                blurDataURL={urlFor(props.value.imageDesktop)
                   .blur(2)
                   .format('webp')
-                  .saturation(-100)
                   .width(100)
                   .url()}
               />
-            ) : (
-              <></>
-            )}
-          </div>
-        </div>
-      ),
+            </div>
+            <div className="absolute top-0 left-0 w-full h-full sm:hidden">
+              <Image
+                src={urlFor(props.value.imageMobile).width(321).url()}
+                alt={props.value.imageMobile.alt}
+                layout="fill"
+                objectFit="cover"
+                placeholder="blur"
+                blurDataURL={urlFor(props.value.imageMobile)
+                  .blur(2)
+                  .format('webp')
+                  .width(100)
+                  .url()}
+              />
+            </div>
+          </FancyLink>
+        ) : (
+          <></>
+        ),
       buttonLink: (props) => (
         <FancyLink
           blank="_blank"
@@ -88,7 +104,7 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
     },
     marks: {
       add_ann: (props) =>
-        props.value.select_link === 'link' ? (
+        props.value.select_link === 'default' ? (
           <FancyLink
             destination={props.value.link}
             blank={props.value.target_blank}
@@ -202,10 +218,10 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
             imageMobile={visit.hero.imageMobile}
           />
           <div className="px-10 max-md:px-5 max-w-4xl w-full h-full flex flex-col mt-11 md:mt-20 mb-10 md:mb-16 text-white">
-            <span className="font-serif text-[30px] sm:text-[40px] text-center leading-tight">
+            <span className="font-serif text-[30px] sm:text-[40px] text-center leading-tight mb-10 sm:mb-20">
               {visit.subheadingTop}
             </span>
-            <div className="flex flex-col justify-center items-center text-[14px] sm:text-[16px] max-w-sm sm:max-w-none mx-auto mt-10 text-center sm:mt-20">
+            {/* <div className="flex flex-col justify-center items-center text-[14px] sm:text-[16px] max-w-sm sm:max-w-none mx-auto mt-10 text-center sm:mt-20">
               <span className="font-bold">OUR LOCATION</span>
               <FancyLink
                 target="_blank"
@@ -215,52 +231,15 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
                 {visit.location.entry}
                 <Arrow position="right" fill="white" className="ml-2 inline" />
               </FancyLink>
-            </div>
-            <FancyLink
-              target="_blank"
-              destination={visit.location.link}
-              className="relative w-full aspect-[361/243] my-9 sm:my-14"
-            >
-              <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
-                <Image
-                  src={urlFor(visit.location.mapImage.imageDesktop)
-                    .width(722)
-                    .url()}
-                  alt={visit.location.mapImage.imageDesktop.alt}
-                  layout="fill"
-                  objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={urlFor(visit.location.mapImage.imageDesktop)
-                    .blur(2)
-                    .format('webp')
-                    .width(100)
-                    .url()}
-                />
-              </div>
-              <div className="absolute top-0 left-0 w-full h-full sm:hidden">
-                <Image
-                  src={urlFor(visit.location.mapImage.imageMobile)
-                    .width(321)
-                    .url()}
-                  alt={visit.location.mapImage.imageMobile.alt}
-                  layout="fill"
-                  objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={urlFor(visit.location.mapImage.imageMobile)
-                    .blur(2)
-                    .format('webp')
-                    .width(100)
-                    .url()}
-                />
-              </div>
-            </FancyLink>
-            <div className="text-center w-full editor-styling max-w-sm sm:max-w-none mx-auto">
+            </div> */}
+
+            <div className="text-center w-full editor-styling max-w-sm sm:max-w-none mx-auto mb-10 sm:mb-12">
               <PortableText value={visit.content} components={serializer} />
             </div>
             <FancyLink
               target="_blank"
               destination={visit.ctaButton.link}
-              className={`w-fit p-4 mt-10 sm:mt-12 mx-auto text-d-small uppercase mb-12 sm:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              className={`w-fit p-4 mx-auto text-d-small uppercase mb-12 sm:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
             >
               {visit.ctaButton.buttonText}
             </FancyLink>

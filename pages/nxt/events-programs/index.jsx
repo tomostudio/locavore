@@ -76,7 +76,7 @@ const EventsAndPrograms = ({
               <EventCard
                 key={id}
                 slug={data.slug.current}
-                date={data.sidebar.date}
+                date={data.thumbnail.date}
                 image={data.thumbnail.imageColor}
                 image_bnw={data.thumbnail.imageBnw}
                 title={data.title}
