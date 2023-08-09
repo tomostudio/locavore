@@ -51,29 +51,6 @@ const FeaturesAndFacilitiesDetail = ({
       code: (props) => (
         <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
       ),
-      smallImage: (props) => (
-        <div className={`image !my-10`}>
-          <div className="relative w-full aspect-[5/2] overflow-hidden">
-            {props.value.image && props.value.image.asset ? (
-              <Image
-                src={urlFor(props.value.image).width(500).url()}
-                alt={props.value.image.name}
-                layout="fill"
-                objectFit="contain"
-                placeholder="blur"
-                blurDataURL={urlFor(props.value.image)
-                  .blur(2)
-                  .format('webp')
-                  .saturation(-100)
-                  .width(100)
-                  .url()}
-              />
-            ) : (
-              <></>
-            )}
-          </div>
-        </div>
-      ),
       buttonLink: (props) => (
         <FancyLink
           blank="_blank"
