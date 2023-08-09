@@ -12,6 +12,7 @@ import { transition } from '@/helpers/preset/tailwind'
 import { useRouter } from 'next/router'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import { Button, Snackbar, Tooltip } from '@mui/material'
+import { toPlainText } from '@/helpers/functional/toPlainText'
 
 export default function OpeningArticle({
   general,
