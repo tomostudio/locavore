@@ -125,6 +125,9 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
             }
           >
             {props.children}
+            {props.value.arrow && (
+              <Arrow position="right" fill="white" className="ml-2 inline" />
+            )}
           </FancyLink>
         ) : props.value.select_link === 'wa_link' ? (
           <FancyLink

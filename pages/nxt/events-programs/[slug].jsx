@@ -16,6 +16,7 @@ import StickyButton from '@/components/modules/stickyButton'
 import urlFor from '@/helpers/sanity/urlFor'
 import { PortableText } from '@portabletext/react'
 import dateConvert from '@/helpers/functional/dateConvert'
+import Arrow from '@/components/utils/arrow'
 
 const EventsAndProgramsDetail = ({
   homeAPI,
@@ -84,6 +85,9 @@ const EventsAndProgramsDetail = ({
             }
           >
             {props.children}
+            {props.value.arrow && (
+              <Arrow position="right" fill="white" className="ml-2 inline" />
+            )}
           </FancyLink>
         ) : props.value.select_link === 'wa_link' ? (
           <FancyLink

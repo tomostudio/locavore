@@ -16,6 +16,7 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 import urlFor from '@/helpers/sanity/urlFor'
 import { PortableText } from '@portabletext/react'
 import FancyLink from '@/components/utils/fancyLink'
+import Arrow from '@/components/utils/arrow'
 
 const FeaturesAndFacilitiesDetail = ({
   homeAPI,
@@ -84,6 +85,9 @@ const FeaturesAndFacilitiesDetail = ({
             }
           >
             {props.children}
+            {props.value.arrow && (
+              <Arrow position="right" fill="white" className="ml-2 inline" />
+            )}
           </FancyLink>
         ) : props.value.select_link === 'wa_link' ? (
           <FancyLink

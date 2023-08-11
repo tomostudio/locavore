@@ -15,6 +15,7 @@ import Container from '@/components/modules/container'
 import StickyButton from '@/components/modules/stickyButton'
 import { PortableText } from '@portabletext/react'
 import urlFor from '@/helpers/sanity/urlFor'
+import Arrow from '@/components/utils/arrow'
 
 const OurCollaboratorsDetail = ({
   homeAPI,
@@ -83,6 +84,9 @@ const OurCollaboratorsDetail = ({
             }
           >
             {props.children}
+            {props.value.arrow && (
+              <Arrow position="right" fill="white" className="ml-2 inline" />
+            )}
           </FancyLink>
         ) : props.value.select_link === 'wa_link' ? (
           <FancyLink
