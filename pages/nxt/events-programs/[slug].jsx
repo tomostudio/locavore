@@ -210,54 +210,33 @@ const EventsAndProgramsDetail = ({
               </span>
             </div>
             <div className="w-full flex flex-col max-w-lg md:max-w-none  mx-auto md:flex-row gap-8 mt-8">
-              {event.sidebars.length > 0 && (
-                <div className="w-full md:w-[30%] flex flex-col gap-3">
-                  <div className="w-full grid grid-flow-col-dense grid-rows-2 md:flex md:flex-col gap-4 md:gap-3 text-white text-center md:text-left">
-                    {event.sidebars.map((data, id) =>
-                      data.type === 'text' ? (
-                        <div
-                          key={id}
-                          className="w-full flex flex-col uppercase"
-                        >
-                          <span>{data.text.infoTitle}:</span>
-                          <span>{data.text.infoDetail}</span>
-                        </div>
-                      ) : (
-                        <FancyLink
-                          key={id}
-                          target="_blank"
-                          destination={data.button.buttonLink}
-                          className="hidden md:block font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30"
-                        >
-                          {data.button.buttonText}
-                        </FancyLink>
-                      ),
-                    )}
-                  </div>
-                </div>
-              )}
-              <div
-                className={`w-full text-white ${
-                  event.sidebars.length > 0 ? 'md:w-[70%]' : ''
-                }`}
-              >
-                <div className="w-full max-w-xl mx-auto editor-styling">
-                  <PortableText value={event.content} components={serializer} />
+              <div className="w-full md:w-[30%] flex flex-col gap-3">
+                <div className="w-full grid grid-flow-col-dense grid-rows-2 md:flex md:flex-col gap-4 md:gap-3 text-white text-center md:text-left">
+                  {event.detailInfo?.map((data, id) => (
+                    <div key={id} className="w-full flex flex-col uppercase">
+                      <span>{data.infoTitle}:</span>
+                      <span>{data.infoDetail}</span>
+                    </div>
+                  ))}
+                  <FancyLink
+                    target="_blank"
+                    destination={event.ctaButton.buttonLink}
+                    className="hidden md:block font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30"
+                  >
+                    {event.ctaButton.buttonText}
+                  </FancyLink>
                 </div>
               </div>
-              {event.sidebars?.map(
-                (data, id) =>
-                  data.type === 'link' && (
-                    <FancyLink
-                      key={id}
-                      target="_blank"
-                      destination={data.button.buttonLink}
-                      className="md:hidden mx-auto font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30"
-                    >
-                      {data.button.buttonText}
-                    </FancyLink>
-                  ),
-              )}
+              <div className={`w-full md:w-[70%] text-white editor-styling`}>
+                <PortableText value={event.content} components={serializer} />
+              </div>
+              <FancyLink
+                target="_blank"
+                destination={event.ctaButton.buttonLink}
+                className="md:hidden mx-auto font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30"
+              >
+                {event.ctaButton.buttonText}
+              </FancyLink>
             </div>
           </div>
         </Container>
