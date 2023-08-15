@@ -221,9 +221,11 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
             imageMobile={visit.hero.imageMobile}
           />
           <div className="px-10 max-md:px-5 max-w-4xl w-full h-full flex flex-col mt-11 md:mt-20 mb-10 md:mb-16 text-white">
-            <span className="font-serif text-[30px] sm:text-[40px] text-center leading-tight mb-10 sm:mb-20">
-              {visit.subheadingTop}
-            </span>
+            {visit.subheadingTop && (
+              <span className="font-serif text-[30px] sm:text-[40px] text-center leading-tight mb-10 sm:mb-20">
+                {visit.subheadingTop}
+              </span>
+            )}
             {/* <div className="flex flex-col justify-center items-center text-[14px] sm:text-[16px] max-w-sm sm:max-w-none mx-auto mt-10 text-center sm:mt-20">
               <span className="font-bold">OUR LOCATION</span>
               <FancyLink
@@ -272,9 +274,11 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
                 </div>
               ))}
             </div>
-            <span className="font-serif text-[30px] sm:text-[40px] text-center mt-10 sm:mt-14">
-              {visit.subheadingBottom}
-            </span>
+            {visit.subheadingBottom && (
+              <span className="font-serif text-[30px] sm:text-[40px] text-center mt-10 sm:mt-14">
+                {visit.subheadingBottom}
+              </span>
+            )}
             <FancyLink
               target="_blank"
               destination={visit.ctaButton.link}

@@ -137,11 +137,15 @@ export const Section1ComponentInner = ({ landingSection }) => {
                   </span>
                 </>
               ) : landingSection.textLeft || landingSection.textRight ? (
-                <span className="mr-2 md:mr-4 text-m-body md:text-d-body">
-                  {landingSection.textLeft
-                    ? landingSection.textLeft
-                    : landingSection.textRight}
-                </span>
+                landingSection.textLeft ? (
+                  <span className="mr-2 md:mr-4 text-m-body md:text-d-body">
+                    {landingSection.textLeft}
+                  </span>
+                ) : (
+                  <span className="ml-2 md:ml-4 md:text-[1.375rem] font-serif italic font-medium">
+                    {landingSection.textRight}
+                  </span>
+                )
               ) : (
                 <></>
               )}
