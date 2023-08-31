@@ -31,7 +31,6 @@ const Menu = ({ homeAPI, menuAPI, settingAPI, footerAPI }) => {
     appContext.setHeader({
       headerStyle: 'blur-white',
     })
-
     return () => {
       appContext.setHeader({ headerStyle: 'default' })
     }
