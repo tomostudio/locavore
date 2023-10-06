@@ -231,7 +231,7 @@ const FeaturesAndFacilitiesDetail = ({
             <h1 className="text-[2.5rem] md:text-d-additionalHeader mb-10 text-[#BEC29D] font-funkturm">
               {facilities.title}
             </h1>
-            {facilities.imageIcon && (
+            {facilities.imageIcon?.asset && (
               <div className="relative w-full aspect-[5/2] mb-10">
                 <Image
                   src={urlFor(facilities.imageIcon).width(500).url()}
