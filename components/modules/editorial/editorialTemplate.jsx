@@ -115,28 +115,28 @@ export default function EditorialTemplate({
                     <EditorialIssueCard
                       comingsoon={true}
                       title={checkClosest().title}
-                      date={checkClosest().date}
+                      date={checkClosest().datef}
                       dark={checkClosest().dark}
                       bgColor={
                         checkClosest().thumbnail &&
-                        !checkClosest().thumbnail.placeholder &&
+                        !checkClosest().thumbnail.placeholder?.asset &&
                         checkClosest().thumbnail.color.hex
                           ? checkClosest().thumbnail.color.hex
                           : '#fff'
                       }
                       className="mb-10"
                       imageThumbnail={
-                        checkClosest().thumbnail &&
+                        checkClosest().thumbnail?.placeholder?.asset &&
                         urlFor(checkClosest().thumbnail.placeholder)
                           .width(1500)
                           .url()
                       }
                       alt={
-                        checkClosest().thumbnail &&
+                        checkClosest().thumbnail?.placeholder?.name &&
                         checkClosest().thumbnail.placeholder.name
                       }
                       blurDataURL={
-                        checkClosest().thumbnail &&
+                        checkClosest().thumbnail?.placeholder?.asset &&
                         urlFor(checkClosest().thumbnail.placeholder)
                           .blur(2)
                           .format('webp')
@@ -174,7 +174,7 @@ export default function EditorialTemplate({
                         dark={data.dark}
                         bgColor={
                           data.thumbnail &&
-                          !data.thumbnail.placeholder &&
+                          !data.thumbnail.placeholder?.asset &&
                           data.thumbnail.color.hex
                             ? data.thumbnail.color.hex
                             : '#fff'
@@ -182,13 +182,13 @@ export default function EditorialTemplate({
                         totalArticles={data.articleCount}
                         destination={`/editorial/${data.slug.current}`}
                         imageThumbnail={
-                          data.thumbnail &&
+                          data.thumbnail?.placeholder?.asset &&
                           urlFor(data.thumbnail.placeholder).url()
                         }
-                        alt={data.thumbnail && data.thumbnail.placeholder.name}
+                        alt={data.thumbnail?.placeholder?.name && data.thumbnail.placeholder.name}
                         descriptions={data.coverText}
                         blurDataURL={
-                          data.thumbnail &&
+                          data.thumbnail?.placeholder?.asset &&
                           urlFor(data.thumbnail.placeholder)
                             .blur(2)
                             .format('webp')
