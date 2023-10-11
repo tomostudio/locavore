@@ -92,7 +92,7 @@ const Menu = ({ homeAPI, menuAPI, settingAPI, footerAPI }) => {
           </div>
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
           <div className="relative z-10 sm:mb-10 md:mb-20 w-full setflex-center max-w-5xl px-10 max-md:px-5 mx-auto text-white">
-            <h1 className="m-0 uppercase font-funkturm text-m-additionalTitle md:text-d-additionalTitle">
+            <h1 className="m-0 uppercase font-funkturm text-m-additionalTitle md:text-d-additionalTitle text-center">
               {menu.hero.heading}
             </h1>
             {menu.hero.subheading && (
