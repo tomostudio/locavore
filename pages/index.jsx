@@ -117,7 +117,7 @@ export default function Nxt({
   return (
     <Layout>
       <SEO
-        title={'Up NXT'}
+        title={typeof homeNxt.pagetitle !== 'undefined' && homeNxt.pagetitle}
         pagelink={router.pathname}
         inputSEO={
           typeof homeNxt !== 'undefined' &&
@@ -129,15 +129,15 @@ export default function Nxt({
       />
       <LazyMotion features={domAnimation}>
         <m.main
-          className="relative p-0 m-0 bg-black"
-          initial="initial"
-          animate="enter"
-          exit="exit"
+          className='relative p-0 m-0 bg-black'
+          initial='initial'
+          animate='enter'
+          exit='exit'
           variants={fade}
         >
           <m.div
-            initial="initial"
-            animate="enter"
+            initial='initial'
+            animate='enter'
             variants={{
               initial: { opacity: 1 },
               enter: {
@@ -151,9 +151,9 @@ export default function Nxt({
                 opacity: 0,
               },
             }}
-            className="fixed top-0 left-0 w-full h-full z-50 pointer-events-none bg-black"
+            className='fixed top-0 left-0 w-full h-full z-50 pointer-events-none bg-black'
           />
-          <section className="relative p-0 m-0">
+          <section className='relative p-0 m-0'>
             {/* Section 1 */}
             {/* TITLE */}
             <Section1ComponentInner landingSection={homeNxt.section1} />
@@ -174,13 +174,21 @@ export default function Nxt({
             )}
             {/* Section 3 */}
             {/* OUR FACILITIES */}
-            <Section3ComponentInner facilitiesSection={homeNxt.facilitiesSection} />
+            <Section3ComponentInner
+              facilitiesSection={homeNxt.facilitiesSection}
+            />
             {/* Section 4 */}
             {/* OUR COLLABORATORS */}
-            <Section4ComponentInner collabList={collabAPI} collaboratorSection={homeNxt.collaboratorSection} />
+            <Section4ComponentInner
+              collabList={collabAPI}
+              collaboratorSection={homeNxt.collaboratorSection}
+            />
             {/* Section 5 */}
             {/* WHAT'S ON? */}
-            <Section5ComponentInner eventList={eventAPI} eventSection={homeNxt.eventSection} />
+            <Section5ComponentInner
+              eventList={eventAPI}
+              eventSection={homeNxt.eventSection}
+            />
             <NxtNavigation transition={true} />
           </section>
           <Footer footer={footer} mailchimp={seo.mailchimpID} />

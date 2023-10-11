@@ -5,8 +5,6 @@ import { m } from 'framer-motion'
 import Container from '../container'
 
 // IMPORT LOCAL IMAGE
-import section1 from '@/public/nxt2/section1.png'
-import section1_mobile from '@/public/nxt2/section1_mobile.png'
 import NXT_Logo_Bumper from '@/public/nxt2/nxt_logo.png'
 import urlFor from '@/helpers/sanity/urlFor'
 
