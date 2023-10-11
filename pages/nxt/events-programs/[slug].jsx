@@ -174,84 +174,86 @@ const EventsAndProgramsDetail = ({
         variants={fade}
         className=' bg-black'
       >
-        <HeaderGap />
-        <Container className='relative flex flex-col mt-6 mb-10 md:my-20'>
-          <div className='relative w-full aspect-[345/442] md:aspect-[8/3] rounded-[15px] overflow-hidden'>
-            <div className='absolute top-0 left-0 w-full h-full hidden md:block'>
-              <Image
-                src={urlFor(event.image.imageDesktop).width(1200).url()}
-                alt={event.image.imageDesktop.alt}
-                layout='fill'
-                objectFit='cover'
-                placeholder='blur'
-                blurDataURL={urlFor(event.image.imageDesktop)
-                  .blur(2)
-                  .format('webp')
-                  .width(100)
-                  .url()}
-              />
+        <div>
+          <HeaderGap />
+          <Container className='relative flex flex-col mt-6 mb-10 md:my-20'>
+            <div className='relative w-full aspect-[345/442] md:aspect-[8/3] rounded-[15px] overflow-hidden'>
+              <div className='absolute top-0 left-0 w-full h-full hidden md:block'>
+                <Image
+                  src={urlFor(event.image.imageDesktop).width(1200).url()}
+                  alt={event.image.imageDesktop.alt}
+                  layout='fill'
+                  objectFit='cover'
+                  placeholder='blur'
+                  blurDataURL={urlFor(event.image.imageDesktop)
+                    .blur(2)
+                    .format('webp')
+                    .width(100)
+                    .url()}
+                />
+              </div>
+              <div className='absolute top-0 left-0 w-full h-full md:hidden'>
+                <Image
+                  src={urlFor(event.image.imageMobile).width(345).url()}
+                  alt={event.image.imageMobile.alt}
+                  layout='fill'
+                  objectFit='cover'
+                  placeholder='blur'
+                  blurDataURL={urlFor(event.image.imageMobile)
+                    .blur(2)
+                    .format('webp')
+                    .width(100)
+                    .url()}
+                />
+              </div>
             </div>
-            <div className='absolute top-0 left-0 w-full h-full md:hidden'>
-              <Image
-                src={urlFor(event.image.imageMobile).width(345).url()}
-                alt={event.image.imageMobile.alt}
-                layout='fill'
-                objectFit='cover'
-                placeholder='blur'
-                blurDataURL={urlFor(event.image.imageMobile)
-                  .blur(2)
-                  .format('webp')
-                  .width(100)
-                  .url()}
-              />
-            </div>
-          </div>
-          <div className='w-full flex flex-col mt-10 md:mt-20 mx-auto max-w-4xl'>
-            <div className='w-full flex gap-8'>
-              <div className='hidden md:block w-[30%]' />
-              <span className='w-full md:w-[70%] text-center md:text-left font-funkturm text-[2.5rem] md:text-d-additionalHeader text-[#BEC29D]'>
-                {event.title}
-              </span>
-            </div>
-            <div className='w-full flex flex-col max-w-lg md:max-w-none  mx-auto md:flex-row gap-8 mt-8'>
-              <div className='w-full md:w-[30%] flex flex-col gap-3'>
-                <div className='w-full grid grid-flow-col-dense grid-rows-2 md:flex md:flex-col gap-4 md:gap-3 text-white text-center md:text-left'>
-                  {event.detailInfo?.map((data, id) => (
-                    <div key={id} className='w-full flex flex-col uppercase'>
-                      <span>{data.infoTitle}:</span>
-                      <span>{data.infoDetail}</span>
-                    </div>
-                  ))}
-                  <FancyLink
-                    target='_blank'
-                    destination={event.ctaButton.buttonLink}
-                    className='hidden md:block font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30'
-                  >
-                    {event.ctaButton.buttonText}
-                  </FancyLink>
+            <div className='w-full flex flex-col mt-10 md:mt-20 mx-auto max-w-4xl'>
+              <div className='w-full flex gap-8'>
+                <div className='hidden md:block w-[30%]' />
+                <span className='w-full md:w-[70%] text-center md:text-left font-funkturm text-[2.5rem] md:text-d-additionalHeader text-[#BEC29D]'>
+                  {event.title}
+                </span>
+              </div>
+              <div className='w-full flex flex-col max-w-lg md:max-w-none  mx-auto md:flex-row gap-8 mt-8'>
+                <div className='w-full md:w-[30%] flex flex-col gap-3'>
+                  <div className='w-full grid grid-flow-col-dense grid-rows-2 md:flex md:flex-col gap-4 md:gap-3 text-white text-center md:text-left'>
+                    {event.detailInfo?.map((data, id) => (
+                      <div key={id} className='w-full flex flex-col uppercase'>
+                        <span>{data.infoTitle}:</span>
+                        <span>{data.infoDetail}</span>
+                      </div>
+                    ))}
+                    <FancyLink
+                      target='_blank'
+                      destination={event.ctaButton.buttonLink}
+                      className='hidden md:block font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30'
+                    >
+                      {event.ctaButton.buttonText}
+                    </FancyLink>
+                  </div>
                 </div>
+                <div className={`w-full md:w-[70%] text-white editor-styling`}>
+                  <PortableText value={event.content} components={serializer} />
+                </div>
+                <FancyLink
+                  target='_blank'
+                  destination={event.ctaButton.buttonLink}
+                  className='md:hidden mx-auto font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30'
+                >
+                  {event.ctaButton.buttonText}
+                </FancyLink>
               </div>
-              <div className={`w-full md:w-[70%] text-white editor-styling`}>
-                <PortableText value={event.content} components={serializer} />
-              </div>
-              <FancyLink
-                target='_blank'
-                destination={event.ctaButton.buttonLink}
-                className='md:hidden mx-auto font-serif font-medium border-b border-[#BEC29D] text-[#BEC29D] text-[1.1rem] w-fit transtion-all duration-300 hover:opacity-30'
-              >
-                {event.ctaButton.buttonText}
-              </FancyLink>
             </div>
-          </div>
-        </Container>
-        {/* Button Sticky */}
-        <StickyButton
-          destination='/nxt/events-programs'
-          arrow='left'
-          className='uppercase'
-        >
-          {eventButtonText.heading}
-        </StickyButton>
+          </Container>
+          {/* Button Sticky */}
+          <StickyButton
+            destination='/nxt/events-programs'
+            arrow='left'
+            className='uppercase'
+          >
+            {eventButtonText.heading}
+          </StickyButton>
+        </div>
         <Footer footer={footer} mailchimp={setting.mailchimpID} />
       </motion.main>
     </Layout>
