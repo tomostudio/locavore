@@ -97,7 +97,7 @@ export const Section4ComponentInner = ({ collabList, collaboratorSection }) => {
       <div id="enter-collab" className="relative z-10 top-0 w-full h-screen ">
         <div
           id="section4_title"
-          className="relative w-full h-full setflex-center-row "
+          className="relative w-full h-full setflex-center-row pointer-events-none"
         >
           <span className="hidden md:block text-[#BEC29D] max-w-[1000px] whitespace-pre-line text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full drop-shadow-collaborators">
             {collaboratorSection.heading}
