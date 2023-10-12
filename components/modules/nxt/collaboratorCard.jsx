@@ -174,18 +174,9 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
             <FancyLink
               key={id}
               destination={`/nxt/collaborators/${data.slug.current}`}
-              className='w-full flex flex-col'
+              className='w-full flex flex-col px-5'
             >
-              <div className='relative bottom-5 w-full flex flex-col pt-5 px-7 bg-black text-white border-t border-white rounded-t-2xl'>
-                <div>
-                  <span className='italic font-serif'>{data.workRole}</span>
-                  {` `}— <span className='text-m-body'>{data.location}</span>
-                </div>
-                <span className='font-bold text-d-body text-left mt-2 leading-tight'>
-                  {data.title}
-                </span>
-              </div>
-              <div className='relative w-full aspect-[3/2]'>
+              <div className='relative w-full aspect-[3/2] border border-white rounded-t-2xl overflow-hidden'>
                 <Image
                   src={urlFor(data.thumbnail.imageBnw).width(600).url()}
                   alt={data.thumbnail.imageBnw.alt}
@@ -212,6 +203,15 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
                     .url()}
                   className='opacity-0 group-hover:opacity-100'
                 />
+              </div>
+              <div className='relative bottom-5 w-full flex flex-col py-5 px-7 bg-black text-white border border-white rounded-2xl'>
+                <div>
+                  <span className='italic font-serif'>{data.workRole}</span>
+                  {` `}— <span className='text-m-body'>{data.location}</span>
+                </div>
+                <span className='font-bold text-d-body text-left mt-2 leading-tight'>
+                  {data.title}
+                </span>
               </div>
             </FancyLink>
           ))}
