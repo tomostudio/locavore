@@ -195,35 +195,56 @@ const FeaturesAndFacilitiesDetail = ({
                 ))}
               </div>
             ) : (
-              <ScrollContainer
-                className={`relative w-full scroll-smooth hide-scrollbar`}
-                horizontal={true}
-                vertical={false}
-                hideScrollbars={false}
-                nativeMobileScroll={true}
-              >
-                <div className='w-fit flex items-center relative min-w-full'>
-                  {facilities.images.map((data, id) => (
-                    <div
-                      key={id}
-                      className='relative w-[80vw] sm:w-[66vw] aspect-[4/6]'
-                    >
+              <>
+                {facilities.images.length > 1 ? (
+                  <ScrollContainer
+                    className={`relative w-full scroll-smooth hide-scrollbar`}
+                    horizontal={true}
+                    vertical={false}
+                    hideScrollbars={false}
+                    nativeMobileScroll={true}
+                  >
+                    <div className='w-fit flex items-center relative min-w-full'>
+                      {facilities.images.map((data, id) => (
+                        <div
+                          key={id}
+                          className='relative w-[80vw] sm:w-[66vw] aspect-[4/6]'
+                        >
+                          <Image
+                            src={urlFor(data).width(720).url()}
+                            alt={data.alt}
+                            layout='fill'
+                            objectFit='cover'
+                            placeholder='blur'
+                            blurDataURL={urlFor(data)
+                              .blur(2)
+                              .format('webp')
+                              .width(100)
+                              .url()}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </ScrollContainer>
+                ) : (
+                  <>
+                    <div className='w-fit flex items-center relative min-w-full aspect-[5/6] sm:aspect-[1/1]'>
                       <Image
-                        src={urlFor(data).width(720).url()}
-                        alt={data.alt}
+                        src={urlFor(facilities.images[0]).width(720).url()}
+                        alt={facilities.images[0].alt}
                         layout='fill'
                         objectFit='cover'
                         placeholder='blur'
-                        blurDataURL={urlFor(data)
+                        blurDataURL={urlFor(facilities.images[0])
                           .blur(2)
                           .format('webp')
                           .width(100)
                           .url()}
                       />
                     </div>
-                  ))}
-                </div>
-              </ScrollContainer>
+                  </>
+                )}
+              </>
             )}
           </div>
           <div className='md:sticky md:top-0 md:right-0 w-full md:w-1/2 md:min-h-screen h-full flex justify-end'>
