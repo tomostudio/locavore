@@ -50,24 +50,24 @@ const Menu = ({ homeAPI, menuAPI, settingAPI, footerAPI }) => {
         webTitle={typeof setting !== 'undefined' && setting.webTitle}
       />
       <motion.main
-        initial="initial"
-        animate="enter"
-        exit="exit"
+        initial='initial'
+        animate='enter'
+        exit='exit'
         variants={fade}
-        className="no-select-all bg-black"
+        className='no-select-all bg-black'
       >
-        <div className="relative w-full aspect-[3/4] sm:aspect-[95/33] flex items-center sm:items-end overflow-hidden">
+        <div className='relative w-full aspect-[3/4] sm:aspect-[95/33] flex items-center sm:items-end overflow-hidden'>
           <Parallax
             speed={5}
-            className="absolute top-0 left-0 w-full h-full hidden sm:flex justify-center items-center"
+            className='absolute top-0 left-0 w-full h-full hidden sm:flex justify-center items-center'
           >
-            <div className="relative w-[125%] h-[125%]">
+            <div className='relative w-[125%] h-[125%]'>
               <Image
                 src={urlFor(menu.hero.imageDesktop).width(1500).url()}
                 alt={menu.hero.imageDesktop.alt}
-                layout="fill"
-                objectFit="cover"
-                placeholder="blur"
+                layout='fill'
+                objectFit='cover'
+                placeholder='blur'
                 blurDataURL={urlFor(menu.hero.imageDesktop)
                   .blur(2)
                   .format('webp')
@@ -76,13 +76,13 @@ const Menu = ({ homeAPI, menuAPI, settingAPI, footerAPI }) => {
               />
             </div>
           </Parallax>
-          <div className="absolute top-0 left-0 w-full h-full sm:hidden">
+          <div className='absolute top-0 left-0 w-full h-full sm:hidden'>
             <Image
               src={urlFor(menu.hero.imageMobile).width(375).url()}
               alt={menu.hero.imageMobile.alt}
-              layout="fill"
-              objectFit="cover"
-              placeholder="blur"
+              layout='fill'
+              objectFit='cover'
+              placeholder='blur'
               blurDataURL={urlFor(menu.hero.imageMobile)
                 .blur(2)
                 .format('webp')
@@ -90,22 +90,22 @@ const Menu = ({ homeAPI, menuAPI, settingAPI, footerAPI }) => {
                 .url()}
             />
           </div>
-          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-40" />
-          <div className="relative z-10 sm:mb-10 md:mb-20 w-full setflex-center max-w-5xl px-10 max-md:px-5 mx-auto text-white">
-            <h1 className="m-0 uppercase font-funkturm text-m-additionalTitle md:text-d-additionalTitle">
+          <div className='absolute top-0 left-0 w-full h-full bg-black opacity-40' />
+          <div className='relative z-10 sm:mb-10 md:mb-20 w-full setflex-center max-w-5xl px-10 max-md:px-5 mx-auto text-white'>
+            <h1 className='m-0 uppercase font-funkturm text-m-additionalTitle md:text-d-additionalTitle text-center'>
               {menu.hero.heading}
             </h1>
             {menu.hero.subheading && (
-              <span className="mt-2 text-[1.125rem] md:text-[1.875rem]">
+              <span className='mt-2 text-[1.125rem] md:text-[1.875rem]'>
                 {menu.hero.subheading}
               </span>
             )}
           </div>
         </div>
-        <div className="w-full h-full bg-black">
-          <Container className="bg-black flex flex-col">
-            <div className="max-w-4xl px-10 max-md:px-5 mx-auto my-24 flex flex-col items-center space-y-20 text-white">
-              <span className="block text-[2.125rem] sm:text-t-header md:text-d-header text-center leading-[120%]">
+        <div className='w-full h-full bg-black'>
+          <Container className='bg-black flex flex-col'>
+            <div className='max-w-4xl px-10 max-md:px-5 mx-auto my-24 flex flex-col items-center space-y-20 text-white'>
+              <span className='block text-[2.125rem] sm:text-t-header md:text-d-header text-center leading-[120%]'>
                 {menu.menuTitle}
               </span>
               {menu.article?.map((data, id) =>
@@ -136,10 +136,10 @@ const Menu = ({ homeAPI, menuAPI, settingAPI, footerAPI }) => {
                         <Image
                           src={urlFor(data.image).width(1500).url()}
                           alt={data.image.name}
-                          layout="fill"
-                          objectFit="cover"
-                          objectPosition="center"
-                          placeholder="blur"
+                          layout='fill'
+                          objectFit='cover'
+                          objectPosition='center'
+                          placeholder='blur'
                           blurDataURL={urlFor(data.image)
                             .blur(2)
                             .format('webp')
@@ -166,14 +166,14 @@ const Menu = ({ homeAPI, menuAPI, settingAPI, footerAPI }) => {
                   </div>
                 ) : (
                   <></>
-                ),
+                )
               )}
             </div>
           </Container>
         </div>
         <NxtNavigation />
+        <Footer footer={footer} mailchimp={setting.mailchimpID} />
       </motion.main>
-      <Footer footer={footer} mailchimp={setting.mailchimpID} />
     </Layout>
   )
 }
