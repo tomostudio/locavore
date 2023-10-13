@@ -110,7 +110,7 @@ export async function getStaticProps() {
     *[_type == "event"]
     `)
   const eventListAPI = await client.fetch(`
-    *[_type == "eventList"]
+    *[_type == "eventList"] | order(thumbnail.date desc)
     `)
   const homeAPI = await client.fetch(`
     *[_type == "homeNxt"]

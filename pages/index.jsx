@@ -203,7 +203,7 @@ export async function getStaticProps() {
     *[_type == "homeNxt"]
     `)
   const eventAPI = await client.fetch(`
-  *[_type == "eventList"][0..2]
+  *[_type == "eventList"][0..2] | order(thumbnail.date desc)
   `)
   const collabAPI = await client.fetch(`
       *[_type == "collaboratorList"] | order(order asc)
