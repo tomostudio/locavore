@@ -198,7 +198,7 @@ export async function getStaticProps() {
   *[_type == "eventList"][0..2]
   `)
   const collabAPI = await client.fetch(`
-      *[_type == "collaboratorList"]
+      *[_type == "collaboratorList"] | order(order asc)
       `)
   const headerAPI = await client.fetch(`
     *[_type == "header"]
