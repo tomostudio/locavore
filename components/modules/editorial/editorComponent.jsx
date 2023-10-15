@@ -38,6 +38,15 @@ const EditorComponent = ({ data, color, fontColor = '', textAlign = '' }) => {
             number: ({ children }) => <ol>{children}</ol>,
           },
           types: {
+            buttonLink: (props) => (
+              <FancyLink
+                blank="_blank"
+                destination={props.value.link}
+                className={`w-fit p-4 mx-auto text-d-small uppercase text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              >
+                {props.value.title}
+              </FancyLink>
+            ),
             video: (props) => (
               <VideoComponent video={props.value} color={color} />
             ),
