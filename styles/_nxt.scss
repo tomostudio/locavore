@@ -33,16 +33,34 @@
 .collaborators-border {
   & > * {
     border-right: 1px solid white;
+    border-bottom: 1px solid white;
 
-    @media (min-width: 1200px) {
+    &:nth-last-child(2) {
+      border-bottom: 0px;
+    }
+    &:nth-last-child(1) {
+      border-bottom: 0px;
+    }
+    @media (min-width: 1536px) {
       &:nth-child(4n) {
         border-right: 0px;
       }
+
+      &:nth-last-child(4) {
+        border-bottom: 0px;
+      }
+
+      &:nth-last-child(3) {
+        border-bottom: 0px;
+      }
     }
 
-    @media (max-width: 1199px) and (min-width: 850px) {
+    @media (max-width: 1535px) and (min-width: 850px) {
       &:nth-child(3n) {
         border-right: 0px;
+      }
+      &:nth-last-child(3) {
+        border-bottom: 0px;
       }
     }
 
@@ -50,10 +68,16 @@
       &:nth-child(2n) {
         border-right: 0px;
       }
+      &:nth-last-child(3) {
+        border-bottom: 0px;
+      }
     }
 
     @media (max-width: 599px) {
       border-right: 0px;
+      &:last-nth-child(3) {
+        border-bottom: 0px;
+      }
     }
   }
 }

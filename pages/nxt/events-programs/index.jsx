@@ -71,7 +71,7 @@ const EventsAndPrograms = ({
             imageDesktop={event.hero.imageDesktop}
             imageMobile={event.hero.imageMobile}
           />
-          <Container className='w-full mx-auto max-w-screen-xl h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-11 md:mt-20 mb-10 md:mb-16 gap-4 lg:gap-8 justify-items-center'>
+          <Container className='w-full mx-auto max-w-screen-xl h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-11 md:mt-20 mb-10 md:mb-16 gap-4 lg:gap-8 justify-items-center items-start'>
             {eventListAPI.slice(0, itemToShow).map((data, id) => (
               <EventCard
                 key={id}
