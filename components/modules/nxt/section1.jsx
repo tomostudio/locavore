@@ -123,17 +123,15 @@ export const Section1ComponentInner = ({ landingSection }) => {
             <p className='text-[#BEC29D] font-funkturm text-2xl md:text-[45px] text-center leading-none md:leading-[120%]'>
               {landingSection.description}
             </p>
-            <div className='mt-2 md:mt-4 text-[#BEC29D]'>
-              {landingSection.textLeft && landingSection.textRight ? (
-                <span className='block text-center'>
+            <div className='mt-2 md:mt-4 text-[#BEC29D] text-center'>
+              {landingSection.textLeft && landingSection.textRight ? (<>
                   <span className='mr-2 md:mr-4 text-m-body md:text-d-body'>
                     {landingSection.textLeft}
                   </span>
                   •
                   <span className='ml-2 md:ml-4 md:text-[1.375rem] font-serif italic font-medium'>
                     {landingSection.textRight}
-                  </span>
-                </span>
+                  </span></>
               ) : landingSection.textLeft || landingSection.textRight ? (
                 landingSection.textLeft ? (
                   <span className='mx-auto block text-m-body md:text-d-body text-center'>
