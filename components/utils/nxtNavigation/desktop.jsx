@@ -37,7 +37,7 @@ const NxtNavigationDesktop = ({transition = false }) => {
           destination="/nxt/menu"
           className={`relative z-1  ${
             router.pathname === '/nxt/menu' ? 'bg-[#BEC29D]' : 'bg-white'
-          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
+          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-500 hover:bg-[#BEC29D]`}
         >
           MENU
         </FancyLink>
@@ -45,7 +45,7 @@ const NxtNavigationDesktop = ({transition = false }) => {
           destination="/nxt/facilities"
           className={`relative z-2 4 ${
             router.pathname === '/nxt/facilities' ? 'bg-[#BEC29D]' : 'bg-white'
-          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
+          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-500 hover:bg-[#BEC29D]`}
         >
           FACILITIES
         </FancyLink>
@@ -55,7 +55,7 @@ const NxtNavigationDesktop = ({transition = false }) => {
             router.pathname === '/nxt/collaborators'
               ? 'bg-[#BEC29D]'
               : 'bg-white'
-          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
+          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-500 hover:bg-[#BEC29D]`}
         >
           COLLABORATORS
         </FancyLink>
@@ -65,7 +65,7 @@ const NxtNavigationDesktop = ({transition = false }) => {
             router.pathname === '/nxt/events-programs'
               ? 'bg-[#BEC29D]'
               : 'bg-white'
-          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
+          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-500 hover:bg-[#BEC29D]`}
         >
           EVENTS & PROGRAMS
         </FancyLink>
@@ -73,7 +73,7 @@ const NxtNavigationDesktop = ({transition = false }) => {
           destination="/nxt/visit"
           className={`relative z-4 ${
             router.pathname === '/nxt/visit' ? 'bg-[#BEC29D]' : 'bg-white'
-          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-300 hover:bg-[#BEC29D]`}
+          } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-500 hover:bg-[#BEC29D]`}
         >
           VISIT
         </FancyLink>
