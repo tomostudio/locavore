@@ -122,7 +122,7 @@ export const Section4ComponentInner = ({ collabList, collaboratorSection }) => {
                       return (
                         <div
                           key={id}
-                          className="h-full aspect-1 row-span-2 col-span-2 drop-shadow-collaborators"
+                          className="relative h-full aspect-1 row-span-2 col-span-2 drop-shadow-collaborators"
                         >
                           <Image
                             src={urlFor(data.image).width(510).url()}
