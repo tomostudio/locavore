@@ -47,3 +47,7 @@ $offBlack: #181818;
     user-select: none !important;
   }
 }
+
+.blackBody {
+  @apply bg-black;
+}

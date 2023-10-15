@@ -33,7 +33,6 @@ export default function Index({ issueAPI, seoAPI }) {
   const appContext = useAppContext();
 
   useEffect(() => {
-    console.log(issue.headerOption ? issue.headerOption : 'default')
     appContext.setHeader({
       headerStyle: issue.headerOption ? issue.headerOption : 'default',
     });
@@ -324,7 +323,7 @@ export default function Index({ issueAPI, seoAPI }) {
             }`}
           >
             {issue.image1 ? (
-              issue.image1.placeholder ? (
+              issue.image1.placeholder?.asset ? (
                 <>
                   {/* Image  */}
                   <div
@@ -376,7 +375,7 @@ export default function Index({ issueAPI, seoAPI }) {
             }`}
           >
             {issue.image2 ? (
-              issue.image2.placeholder ? (
+              issue.image2.placeholder?.asset ? (
                 <>
                   {/* Image  */}
                   <div

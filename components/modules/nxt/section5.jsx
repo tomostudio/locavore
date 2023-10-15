@@ -1,80 +1,42 @@
 import React from 'react'
 import 'intersection-observer' // optional polyfill
-import Image from 'next/image'
 import Container from '../container'
 
-// IMPORT LOCAL IMAGE
-import card_bnw from '@/public/nxt2/card_bnw.png'
-import card from '@/public/nxt2/card.png'
 import FancyLink from '@/components/utils/fancyLink'
+import EventCard from './eventCard'
 
-export const Section5ComponentInner = () => {
+export const Section5ComponentInner = ({ eventList, eventSection }) => {
   return (
     <>
       <section id="trigger5" className="trigger relative w-full flex flex-col">
-        <Container className="mb-10">
-          <div className="relative w-full flex flex-col items-center border-2 border-white rounded-2xl p-20">
-            <div className="absolute top-7 left-7 w-4 h-4 bg-white rounded-50%" />
-            <div className="absolute top-7 right-7 w-4 h-4 bg-white rounded-50%" />
-            <div className="absolute bottom-7 left-7 w-4 h-4 bg-white rounded-50%" />
-            <div className="absolute bottom-7 right-7 w-4 h-4 bg-white rounded-50%" />
-            <span className="text-[#BEC29D] text-center font-funkturm text-[7.5rem] leading-full">
-              WHAT'S ON?
+        <Container className="my-10">
+          <div className="relative w-full flex flex-col items-center sm:border  border-white rounded-2xl sm:px-12 sm:py-12 md:p-20">
+            <div className="hidden md:block absolute top-7 left-7 w-4 h-4 bg-white rounded-50%" />
+            <div className="hidden md:block absolute top-7 right-7 w-4 h-4 bg-white rounded-50%" />
+            <div className="hidden md:block absolute bottom-7 left-7 w-4 h-4 bg-white rounded-50%" />
+            <div className="hidden md:block absolute bottom-7 right-7 w-4 h-4 bg-white rounded-50%" />
+            <span className="text-[#BEC29D] uppercase text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full">
+              {eventSection.heading}
             </span>
-            <div className="w-full my-16 grid grid-cols-3 gap-8">
-              <div
-                className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
-              >
-                <span className="text-[1.25rem]">10 OCTOBER 2023</span>
-                <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
-                  <Image src={card_bnw} className="group-hover:hidden" />
-                  <Image src={card} className="hidden group-hover:block" />
-                </div>
-                <span className="font-bold text-[1.875rem] leading-[32px]">
-                  Event Title
-                </span>
-                <p className="text-[0.875rem] mt-1">
-                  Lorem ispum dolor sit amet, consecteur des adispacing dolor
-                  sit amet.
-                </p>
-              </div>
-              <div
-                className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
-              >
-                <span className="text-[1.25rem]">10 OCTOBER 2023</span>
-                <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
-                  <Image src={card_bnw} className="group-hover:hidden" />
-                  <Image src={card} className="hidden group-hover:block" />
-                </div>
-                <span className="font-bold text-[1.875rem] leading-[32px]">
-                  Event Title
-                </span>
-                <p className="text-[0.875rem] mt-1">
-                  Lorem ispum dolor sit amet, consecteur des adispacing dolor
-                  sit amet.
-                </p>
-              </div>
-              <div
-                className="group hover:border-[#BEC29D] hover:text-black hover:bg-[#BEC29D] w-full pointer-events-auto cursor-pointer transition-all duration-300 border-2 border-white rounded-xl flex flex-col p-8 text-white"
-              >
-                <span className="text-[1.25rem]">10 OCTOBER 2023</span>
-                <div className="event-image relative w-full aspect-w-1 aspect-h-1 my-5 border-2 group-hover:border-[#BEC29D] border-white">
-                  <Image src={card_bnw} className="group-hover:hidden" />
-                  <Image src={card} className="hidden group-hover:block" />
-                </div>
-                <span className="font-bold text-[1.875rem] leading-[32px]">
-                  Event Title
-                </span>
-                <p className="text-[0.875rem] mt-1">
-                  Lorem ispum dolor sit amet, consecteur des adispacing dolor
-                  sit amet.
-                </p>
-              </div>
+            <div className="w-full sm:max-w-none mx-auto mt-8 mb-8 sm:mt-8 sm:mb-8 md:my-16 grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+              {eventList.map((e, id) => (
+                <EventCard
+                  key={id}
+                  widthNormal={true}
+                  slug={e.slug.current}
+                  date={e.thumbnail.date}
+                  image={e.thumbnail.imageColor}
+                  image_bnw={e.thumbnail.imageBnw}
+                  title={e.title}
+                  description={e.thumbnail.shortDescription}
+                />
+              ))}
             </div>
             <FancyLink
-              className={`w-fit p-4 text-[0.875rem] text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              className={`w-fit py-4 px-6 text-sm uppercase text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
+              destination="/nxt/events-programs"
             >
-              VIEW ALL EVENTS & PROGRAMS
+              {eventSection.button}
             </FancyLink>
           </div>
         </Container>

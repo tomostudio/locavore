@@ -35,7 +35,7 @@
     display: block;
     flex-grow: 1;
     min-width: calc(100% / 3);
-    max-width: calc(100% - 48px);
+    max-width: calc(100% - 56px);
     margin-top: -1px;
     &:nth-child(1),
     &:nth-child(2),
@@ -45,7 +45,7 @@
     // FIRST CARD
     &:nth-child(3n - 2) {
       z-index: 1;
-      left: 24px;
+      left: 28px;
     }
     // FIRST CARD
     &:nth-child(3n - 1) {
@@ -54,7 +54,7 @@
     // FIRST CARD
     &:nth-child(3n) {
       z-index: 3;
-      right: 24px;
+      right: 28px;
     }
   }
 }

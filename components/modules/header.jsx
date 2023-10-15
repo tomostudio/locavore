@@ -150,7 +150,7 @@ export default function Header({ className = '', header, footer }) {
                 objectPosition={'left center'}
                 priority={true}
                 width={200}
-                height={25}
+                height={32}
               />
             ) : (
               <Image
@@ -164,7 +164,7 @@ export default function Header({ className = '', header, footer }) {
                 priority={true}
                 objectPosition={'left center'}
                 width={200}
-                height={25}
+                height={32}
               />
             )}
           </FancyLink>

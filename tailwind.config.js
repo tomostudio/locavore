@@ -13,11 +13,33 @@ module.exports = {
       funkturm: ["Funkturm", "sans-serif"],
       serif: ["Alegreya", "serif"],
     },
-    flexGrow: {
-      1: 1,
-      2: 1,
-    },
     extend: {
+      flexGrow: {
+        1: 1,
+        2: 1,
+      },
+      fontSize: {
+        "d-additionalHeader": "2.813rem",
+        "d-additionalTitle": "7.5rem",
+        "d-heading": "7.5rem",
+        "d-title": "3.75rem",
+        "d-body": "1.25rem",
+        "d-additionalText": "1.25rem",
+        "d-small": "0.875rem",
+        "d-subheading": "4.063rem",
+        "d-caption": "1.063rem",
+        "d-header": "4.688rem",
+        "t-header": "3.188rem",
+        "m-heading": "3.125rem",
+        "m-body": "0.875rem",
+        "m-title": "1.5rem",
+        "m-additionalText": "0.875rem",
+        "m-small": "0.875rem",
+        "m-subheading": "1.875rem",
+        "m-header": "2.188rem",
+        "m-additionalTitle": "3.125rem",
+        "m-additionalHeader": "1.563rem",
+      },
       lineHeight: {
         full: "100%",
       },
@@ -81,10 +103,10 @@ module.exports = {
         "1rem": "1rem",
       },
       screens: {
-        "max-sm": { max: "600px" },
-        "max-md": { max: "850px" },
-        "max-lg": { max: "1200px" },
-        "max-xl": { max: "1400px" },
+        "max-sm": { max: "599px" },
+        "max-md": { max: "849px" },
+        "max-lg": { max: "1199px" },
+        "max-xl": { max: "1399px" },
         sm: "600px",
         md: "850px",
         lg: "1200px",
@@ -128,6 +150,9 @@ module.exports = {
       },
       boxShadow: {
         base: "0px 0px 10px 2px rgba(0, 0, 0, .4)",
+      },
+      gridTemplateRows: {
+        nxt: "repeat(2, minmax(0, 100%))",
       },
       height: {
         "screen-1/2": "50vh",
@@ -214,5 +239,6 @@ module.exports = {
     require("tailwindcss-writing-mode")({
       variants: ["responsive", "hover"],
     }),
+    require('@tailwindcss/line-clamp')
   ],
 };

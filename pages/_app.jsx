@@ -16,6 +16,20 @@ export default function App({ Component, pageProps }) {
   const router = useRouter()
 
   useEffect(() => {
+    if (router.pathname.startsWith('/nxt')) {
+      document.querySelector('body').classList.add('blackBody')
+    } else {
+      if(document.querySelector('body').classList.contains("blackBody")) {
+        document.querySelector('body').classList.remove('blackBody')
+      }
+    }
+
+    return () => {
+      document.querySelector('body').classList.remove('blackBody')
+    }
+  }, [router.pathname])
+
+  useEffect(() => {
     history.scrollRestoration = 'manual'
   }, [])
   return (
