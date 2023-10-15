@@ -47,72 +47,6 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
       lastRowDivsMobile.push(i)
     }
 
-    if (collaboratorListAPI.length > 4) {
-      if (
-        !lastRowDivsDesktop.find((e) => e === index) &&
-        !lastRowDivsTablet.find((e) => e === index) &&
-        !lastRowDivsMobile.find((e) => e === index)
-      ) {
-        return 'sm:border-b'
-      } else if (
-        !lastRowDivsDesktop.find((e) => e === index) &&
-        lastRowDivsTablet.find((e) => e === index) &&
-        lastRowDivsMobile.find((e) => e === index)
-      ) {
-        return 'lg:border-b'
-      } else if (
-        !lastRowDivsDesktop.find((e) => e === index) &&
-        !lastRowDivsTablet.find((e) => e === index) &&
-        lastRowDivsMobile.find((e) => e === index)
-      ) {
-        return 'md:border-b lg:border-b'
-      } else if (
-        !lastRowDivsDesktop.find((e) => e === index) &&
-        lastRowDivsTablet.find((e) => e === index) &&
-        !lastRowDivsMobile.find((e) => e === index)
-      ) {
-        return 'sm:border-b md:border-b-0 lg:border-b'
-      } else if (
-        lastRowDivsDesktop.find((e) => e === index) &&
-        !lastRowDivsTablet.find((e) => e === index) &&
-        lastRowDivsMobile.find((e) => e === index)
-      ) {
-        return 'md:border-b lg:border-b-0'
-      } else if (
-        lastRowDivsDesktop.find((e) => e === index) &&
-        !lastRowDivsTablet.find((e) => e === index) &&
-        !lastRowDivsMobile.find((e) => e === index)
-      ) {
-        return 'sm:border-b lg:border-b-0'
-      } else if (
-        lastRowDivsDesktop.find((e) => e === index) &&
-        lastRowDivsTablet.find((e) => e === index) &&
-        !lastRowDivsMobile.find((e) => e === index)
-      ) {
-        return 'sm:border-b md:border-b-0'
-      } else {
-        return ''
-      }
-    } else if (collaboratorListAPI.length === 4) {
-      if (
-        !lastRowDivsTablet.find((e) => e === index) &&
-        !lastRowDivsMobile.find((e) => e === index)
-      ) {
-        return 'sm:border-b lg:border-b-0'
-      } else if (!lastRowDivsTablet.find((e) => e === index)) {
-        return 'md:border-b'
-      } else if (!lastRowDivsMobile.find((e) => e === index)) {
-        return 'sm:border-b md:border-b-0'
-      } else {
-        return ''
-      }
-    } else if (collaboratorListAPI.length === 3) {
-      if (!lastRowDivsMobile.find((e) => e === index)) {
-        return 'sm:border-b md:border-b-0'
-      } else {
-        return ''
-      }
-    }
   }
 
   return (
@@ -121,10 +55,7 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
         ? collaboratorListAPI.slice(0, itemToShow).map((data, id) => (
             <FancyLink
               destination={`/nxt/collaborators/${data.slug.current}`}
-              className={`w-full ${removeBorderLastRow(
-                collaboratorListAPI.slice(0, itemToShow),
-                id
-              )} border-white setflex-center text-white py-8 px-12 lg:px-14 xl:py-10 xl:px-20 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]`}
+              className={`w-full border-white setflex-center text-white py-8 px-12 lg:px-14 xl:py-10 xl:px-20 transition-all duration-300 group hover:text-black hover:bg-[#BEC29D]`}
               key={id}
             >
               <div className='w-full h-full flex flex-col'>
@@ -164,7 +95,7 @@ const CollaboratorCard = ({ collaboratorListAPI, itemToShow }) => {
                     {data.location}
                   </span>
                 </div>
-                <span className='font-bold text-[1.875rem] max-w-[300px] text-left mt-4 leading-tight'>
+                <span className='font-bold text-[1.875rem] max-w-[300px] text-left mt-4 leading-tight line-clamp-2'>
                   {data.title}
                 </span>
               </div>
