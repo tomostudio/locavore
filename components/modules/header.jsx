@@ -137,7 +137,7 @@ export default function Header({ className = '', header, footer }) {
             destination="/"
             a11yText="Navigate to the home page"
             className={` setflex-center max-md:p-0 ${transition.fade}`}
-          >
+          > 
             {bnw || menu ? (
               <Image
                 src={urlFor(header[0].logo.black)
