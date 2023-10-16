@@ -61,8 +61,8 @@ export default function Header({ className = '', header, footer }) {
       destination={destination}
       className={`text-center w-full py-8 border-b flex justify-center text-4xl  ${
         bnw || menu
-          ? 'border-black text-black hover:bg-black hover:text-white transition-colors'
-          : 'border-white text-white hover:bg-white hover:text-black transition-colors'
+          ? 'border-black text-black hover:bg-black hover:text-white transition-colors duration-500'
+          : 'border-white text-white hover:bg-white hover:text-black transition-colors duration-500'
       } ${className}`}
     >
       {children}
@@ -82,9 +82,9 @@ export default function Header({ className = '', header, footer }) {
       style={{ height: menu ? `${wHeight}px` : 'auto' }}
     >
       <motion.header
-        initial="initial"
-        animate="enter"
-        exit="exit"
+        initial='initial'
+        animate='enter'
+        exit='exit'
         variants={{
           initial: { opacity: 0 },
           enter: {
@@ -113,7 +113,9 @@ export default function Header({ className = '', header, footer }) {
             : 'bg-opacity-100'
         }
         ${menu ? `!bg-opacity-100 ` : ''}
-        ${headerStyle.toLowerCase().includes('hidden') ? '!hidden' : ''}`}
+        ${
+          headerStyle.toLowerCase().includes('hidden') ? '!hidden' : ''
+        } transition-all duration-500`}
       >
         <Container
           className={`h-header relative pointer-events-auto flex flex-wrap max-md:flex-nowrap max-md:items-center `}
@@ -124,7 +126,7 @@ export default function Header({ className = '', header, footer }) {
               //Toggle Menu
               appContext.setMobileMenu(!appContext.mobileMenu)
             }}
-            className={`mobile-menu-icon hidden max-md:block w-[25px] h-[25px] max-md:mr-4 ${
+            className={`mobile-menu-icon hidden max-md:block w-[25px] h-[25px] max-md:mr-5 ${
               bnw || menu ? 'black' : 'white'
             }
           ${menu ? 'open black' : ''} ${transition.fade}`}
@@ -134,58 +136,69 @@ export default function Header({ className = '', header, footer }) {
           </FancyLink>
           {/* Locavore Logo */}
           <FancyLink
-            destination="/"
-            a11yText="Navigate to the home page"
-            className={` setflex-center max-md:p-0 ${transition.fade}`}
+            destination='/'
+            a11yText='Navigate to the home page'
+            className={`relative max-md:p-0 ${transition.fade}`}
           >
-            {bnw || menu ? (
+            {/* Black */}
+            <div
+              className={`w-full h-full setflex-center transition-all duration-500 ${
+                bnw || menu ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
               <Image
                 src={urlFor(header[0].logo.black)
                   .width(300)
                   .format('webp')
                   .url()}
                 alt={header[0].logo.black.name}
-                layout="intrinsic"
-                objectFit="contain"
+                layout='intrinsic'
+                objectFit='contain'
                 objectPosition={'left center'}
                 priority={true}
-                width={200}
-                height={32}
+                width={100}
+                height={40}
               />
-            ) : (
+            </div>
+            {/* White */}
+            <div
+              className={`absolute top-0 left-0 w-full h-full setflex-center transition-all duration-500 ${
+                bnw || menu ? 'opacity-0' : 'opacity-100'
+              } `}
+            >
               <Image
                 src={urlFor(header[0].logo.white)
                   .width(300)
                   .format('webp')
                   .url()}
                 alt={header[0].logo.white.name}
-                layout="intrinsic"
-                objectFit="contain"
+                layout='intrinsic'
+                objectFit='contain'
                 priority={true}
                 objectPosition={'left center'}
-                width={200}
-                height={32}
+                width={100}
+                height={40}
               />
-            )}
+            </div>
           </FancyLink>
           {/* Right Header Content */}
           <div
             className={`ml-auto setflex-center-row max-md:justify-end space-x-6 w-full pointer-events-none text-sm md:text-sm md:w-auto ${
               bnw || menu ? 'text-black' : 'text-white'
-            }`}
+            } transition-colors duration-500`}
           >
             {useMediaQuery('(min-width: 850px)') && (
               <>
                 <FancyLink
-                  destination="/"
-                  a11yText="Navigate to the nxt page"
+                  destination='/'
+                  a11yText='Navigate to the nxt page'
                   className={`leading-none ${transition.fade}`}
                 >
                   NXT
                 </FancyLink>
                 <FancyLink
-                  destination="/editorial"
-                  a11yText="Navigate to the editorial page"
+                  destination='/editorial'
+                  a11yText='Navigate to the editorial page'
                   className={`leading-none ${transition.fade}`}
                 >
                   Editorial
@@ -204,8 +217,8 @@ export default function Header({ className = '', header, footer }) {
                     </FancyLink>
                   ))}
                 <FancyLink
-                  destination="/family"
-                  a11yText="Navigate to the about page"
+                  destination='/family'
+                  a11yText='Navigate to the about page'
                   className={`leading-none ${transition.fade}`}
                 >
                   Family
@@ -215,7 +228,7 @@ export default function Header({ className = '', header, footer }) {
             <FancyLink
               destination={header[0].booking}
               blank={true}
-              a11yText="Navigate to the about page"
+              a11yText='Navigate to the about page'
               className={`font-bold leading-none ${transition.fade}`}
             >
               BOOKING
@@ -230,12 +243,14 @@ export default function Header({ className = '', header, footer }) {
             menu
               ? 'relative opacity-1 pointer-events-auto'
               : 'opacity-0 pointer-events-none hidden'
-          } ${bnw || menu ? 'bg-white ' : 'bg-black'} `}
+          } ${
+            bnw || menu ? 'bg-white ' : 'bg-black'
+          }  transition-all duration-500`}
         >
-          <MobileLink bnw={bnw} destination="/">
+          <MobileLink bnw={bnw} destination='/'>
             NXT
           </MobileLink>
-          <MobileLink bnw={bnw} destination="/editorial">
+          <MobileLink bnw={bnw} destination='/editorial'>
             Editorial
           </MobileLink>
           {header &&
@@ -245,12 +260,12 @@ export default function Header({ className = '', header, footer }) {
                 {item.title}
               </MobileLink>
             ))}
-          <MobileLink bnw={bnw} destination="/family">
+          <MobileLink bnw={bnw} destination='/family'>
             Family
           </MobileLink>
           {/* Social Media */}
           <div
-            className={`w-full py-8 border-b flex justify-center space-x-4 ${
+            className={`w-full py-8 border-b flex justify-center space-x-4 transition-all duration-500 ${
               bnw || menu ? 'border-black' : 'border-white'
             }`}
           >
@@ -263,50 +278,53 @@ export default function Header({ className = '', header, footer }) {
                 >
                   <Instagram
                     fill={bnw || menu ? '#000' : '#FFF'}
-                    className="w-4 h-4"
+                    className='w-4 h-4'
                   />
                 </FancyLink>
               )}
-            {footerProcessed.footerLink && footerProcessed.footerLink.facebook && (
-              <FancyLink
-                destination={footerProcessed.footerLink.facebook.link}
-                blank={true}
-                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
-              >
-                <Facebook
-                  fill={bnw || menu ? '#000' : '#FFF'}
-                  className="w-4 h-4"
-                />
-              </FancyLink>
-            )}
-            {footerProcessed.footerLink && footerProcessed.footerLink.youtube && (
-              <FancyLink
-                destination={footerProcessed.footerLink.youtube.link}
-                blank={true}
-                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
-              >
-                <Youtube
-                  fill={bnw || menu ? '#000' : '#FFF'}
-                  className="w-4 h-4"
-                />
-              </FancyLink>
-            )}
-            {footerProcessed.footerLink && footerProcessed.footerLink.linkedin && (
-              <FancyLink
-                destination={footerProcessed.footerLink.linkedin.link}
-                blank={true}
-                className={`relative w-10 h-10 setflex-center ${transition.fade}`}
-              >
-                <Linkedin
-                  fill={bnw || menu ? '#000' : '#FFF'}
-                  className="w-4 h-4"
-                />
-              </FancyLink>
-            )}
+            {footerProcessed.footerLink &&
+              footerProcessed.footerLink.facebook && (
+                <FancyLink
+                  destination={footerProcessed.footerLink.facebook.link}
+                  blank={true}
+                  className={`relative w-10 h-10 setflex-center ${transition.fade}`}
+                >
+                  <Facebook
+                    fill={bnw || menu ? '#000' : '#FFF'}
+                    className='w-4 h-4'
+                  />
+                </FancyLink>
+              )}
+            {footerProcessed.footerLink &&
+              footerProcessed.footerLink.youtube && (
+                <FancyLink
+                  destination={footerProcessed.footerLink.youtube.link}
+                  blank={true}
+                  className={`relative w-10 h-10 setflex-center ${transition.fade}`}
+                >
+                  <Youtube
+                    fill={bnw || menu ? '#000' : '#FFF'}
+                    className='w-4 h-4'
+                  />
+                </FancyLink>
+              )}
+            {footerProcessed.footerLink &&
+              footerProcessed.footerLink.linkedin && (
+                <FancyLink
+                  destination={footerProcessed.footerLink.linkedin.link}
+                  blank={true}
+                  className={`relative w-10 h-10 setflex-center ${transition.fade}`}
+                >
+                  <Linkedin
+                    fill={bnw || menu ? '#000' : '#FFF'}
+                    className='w-4 h-4'
+                  />
+                </FancyLink>
+              )}
           </div>
           {/* Ending */}
           <FancyLink
-            className={`w-full h-16 flex justify-center items-center mt-auto transition-colors relative ${
+            className={`w-full h-16 flex justify-center items-center mt-auto transition-colors duration-500 relative ${
               bnw || menu
                 ? 'bg-white text-black hover:bg-black hover:text-white'
                 : 'bg-black text-white hover:bg-white hover:text-black'
@@ -314,7 +332,7 @@ export default function Header({ className = '', header, footer }) {
             onClick={() => appContext.setMobileMenu(false)}
           >
             <div
-              className={`w-full h-[1px] absolute top-[-1px]  transition-colors ${
+              className={`w-full h-[1px] absolute top-[-1px]  transition-colors duration-500 ${
                 bnw || menu
                   ? 'bg-black hover:bg-black hover:text-white'
                   : 'bg-white hover:bg-white hover:text-black'

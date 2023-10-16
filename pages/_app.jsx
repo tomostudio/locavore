@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }) {
   const router = useRouter()
 
   useEffect(() => {
-    if (router.pathname.startsWith('/nxt')) {
+    if (router.pathname.startsWith('/nxt') || router.pathname === '/') {
       document.querySelector('body').classList.add('blackBody')
     } else {
       if (document.querySelector('body').classList.contains('blackBody')) {
