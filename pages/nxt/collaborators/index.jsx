@@ -70,7 +70,7 @@ const OurCollaborators = ({
             imageDesktop={collaborator.hero.imageDesktop}
             imageMobile={collaborator.hero.imageMobile}
           />
-          <div className="w-full h-full grid sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 mt-11 md:mt-20 mb-16 border-b sm:border-y border-white collaborators-border">
+          <div className="w-full h-full grid sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 mt-11 md:mt-20 mb-16 sm:border-y border-white collaborators-border">
             <CollaboratorCard
               collaboratorListAPI={collaboratorListAPI}
               itemToShow={itemToShow}
