@@ -178,7 +178,7 @@ export default function Family({
           </HeadingTitle>
           {/* Family Button */}
           <FamilyMenu familyListAPI={familyListAPI} onFamilyHover={true} />
-          <section className='w-full h-full flex flex-col relative z-2'>
+          <section className='w-full h-full flex flex-col relative z-[10]'>
             <div
               className='relative w-full h-auto flex flex-wrap  '
               id='family-image'
