@@ -174,7 +174,7 @@ const FeaturesAndFacilitiesDetail = ({
         className='relative bg-black '
       >
         <div className='flex flex-col md:flex-row flex-wrap w-full'>
-          <div className='relative w-full md:w-1/2 h-full grow flex flex-col md:flex-row mb-0'>
+          <div className='md:sticky md:top-0 w-full md:w-1/2 h-full grow flex flex-col md:flex-row mb-0'>
             {useMediaQuery('(min-width: 850px)') ? (
               <div className='w-full flex flex-col'>
                 {facilities.images.map((data, id) => (
