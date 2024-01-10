@@ -1,7 +1,7 @@
-import React from 'react';
-import { NextSeo } from 'next-seo';
-import Head from 'next/head';
-import urlFor from '@/helpers/sanity/urlFor';
+import React from 'react'
+import { NextSeo } from 'next-seo'
+import Head from 'next/head'
+import urlFor from '@/helpers/sanity/urlFor'
 
 const SEO = ({
   inputSEO = '',
@@ -19,19 +19,19 @@ const SEO = ({
         typeof defaultSEO.seo_description !== 'undefined' &&
         defaultSEO.seo_description
       ? defaultSEO.seo_description // Check and Get Default
-      : ''; // Insert Blank
+      : '' // Insert Blank
   const image =
     typeof inputSEO !== 'undefined' &&
     typeof inputSEO.seo_image !== 'undefined' &&
     typeof inputSEO.seo_image.asset !== 'undefined' &&
     inputSEO.seo_image
-      ? urlFor(inputSEO.seo_image).auto("format").width(800).url() // Check and Get Input
+      ? urlFor(inputSEO.seo_image).format('jpg').quality(80).width(1200).url() // Check and Get Input
       : typeof defaultSEO !== 'undefined' &&
         typeof defaultSEO.seo_image !== 'undefined' &&
         typeof defaultSEO.seo_image.asset !== 'undefined' &&
         defaultSEO.seo_image
-      ? urlFor(defaultSEO.seo_image).auto("format").width(800).url() // Check and Get Default
-      : ''; // Insert Blank
+      ? urlFor(defaultSEO.seo_image).format('jpg').quality(80).width(1200).url() // Check and Get Default
+      : '' // Insert Blank
 
   const image_alt =
     typeof inputSEO !== 'undefined' &&
@@ -43,7 +43,7 @@ const SEO = ({
         typeof defaultSEO.seo_image !== 'undefined' &&
         defaultSEO.seo_image.name
       ? defaultSEO.seo_image.name
-      : '';
+      : ''
 
   const meta_keywords =
     typeof inputSEO !== 'undefined' &&
@@ -54,12 +54,12 @@ const SEO = ({
         typeof defaultSEO.seo_keywords !== 'undefined' &&
         defaultSEO.seo_keywords
       ? defaultSEO.seo_keywords
-      : '';
+      : ''
 
-  const pagetitle = title && webTitle ? `${title} • ${webTitle}` : `Locavore®`;
+  const pagetitle = title && webTitle ? `${title} • ${webTitle}` : `Locavore®`
   const canonicalLink = `https://locavorenext.com${
     pagelink ? `${pagelink.startsWith('/') ? '' : '/'}${pagelink}` : ''
-  }`;
+  }`
 
   return (
     <>
@@ -76,9 +76,8 @@ const SEO = ({
             {
               url: image,
               alt: image_alt,
-              width: 800,
-              height: 600,
-              type: 'image/jpeg',
+              width: 1200,
+              height: 628,
             },
           ],
           site_name: 'Locavore',
@@ -89,10 +88,10 @@ const SEO = ({
         }}
       />
       <Head>
-        <meta name='keywords' content={meta_keywords} />
+        <meta name="keywords" content={meta_keywords} />
       </Head>
     </>
-  );
-};
+  )
+}
 
-export default SEO;
+export default SEO
