@@ -1,5 +1,3 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
-
 module.exports = {
   mode: "jit",
   content: [
@@ -238,7 +236,6 @@ module.exports = {
     require("tailwind-clip-path"),
     require("tailwindcss-writing-mode")({
       variants: ["responsive", "hover"],
-    }),
-    require('@tailwindcss/line-clamp')
+    })
   ],
 };

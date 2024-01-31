@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import SwiperCore, { Pagination } from 'swiper'
 import { motion } from 'framer-motion'
 import Image from 'next/legacy/image'
 import { useRouter } from 'next/router'
@@ -25,9 +24,6 @@ import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import { PortableText } from '@portabletext/react'
 import { Facebook, Instagram, Whatsapp } from '@/helpers/preset/svg'
 import Script from 'next/script'
-
-// install Swiper modules
-SwiperCore.use([Pagination])
 
 const FamilySlug = ({
   familyAPI,

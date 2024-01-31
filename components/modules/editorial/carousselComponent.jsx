@@ -2,18 +2,11 @@ import { useState } from 'react'
 import Container from '../container'
 import Image from 'next/legacy/image'
 import urlFor from '@/helpers/sanity/urlFor'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore, {
-  Autoplay,
-  FreeMode,
-  Navigation,
-  Thumbs,
-  Controller,
-} from 'swiper'
 import 'swiper/css/effect-fade'
 import 'swiper/css/navigation'
-import FancyLink from '@/components/utils/fancyLink'
 import Arrow from '@/components/utils/arrow'
+import Swiper from 'swiper'
+import { Autoplay, FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
 const CarousselComponent = ({ caroussel }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
