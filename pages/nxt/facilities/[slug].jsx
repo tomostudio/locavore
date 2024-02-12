@@ -178,6 +178,7 @@ const FeaturesAndFacilitiesDetail = ({
             {useMediaQuery('(min-width: 850px)') ? (
               <div className='w-full flex flex-col'>
                 {facilities.images.map((data, id) => (
+                  data.asset &&
                   <div key={id} className='relative aspect-[4/6]'>
                     <Image
                       src={urlFor(data).width(720).url()}
@@ -206,6 +207,7 @@ const FeaturesAndFacilitiesDetail = ({
                   >
                     <div className='w-fit flex items-center relative min-w-full'>
                       {facilities.images.map((data, id) => (
+                        data.asset &&
                         <div
                           key={id}
                           className='relative w-[80vw] sm:w-[66vw] aspect-[4/6]'
