@@ -186,7 +186,7 @@ export default function Nxt({
             {/* Section 5 */}
             {/* WHAT'S ON? */}
             <Section5ComponentInner
-              eventList={eventAPI}
+              eventList={eventAPI.slice(0,3)}
               eventSection={homeNxt.eventSection}
             />
             <NxtNavigation transition={true} />
@@ -203,7 +203,7 @@ export async function getStaticProps() {
     *[_type == "homeNxt"]
     `)
   const eventAPI = await client.fetch(`
-  *[_type == "eventList"][0..2] | order(thumbnail.date desc)
+  *[_type == "eventList"] | order(thumbnail.date desc)
   `)
   const collabAPI = await client.fetch(`
       *[_type == "collaboratorList"] | order(order asc)
