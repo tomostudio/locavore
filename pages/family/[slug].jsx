@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/legacy/image'
+import ImageModule from 'next/image'
 import { useRouter } from 'next/router'
 
 // Layout
@@ -24,6 +25,10 @@ import { useMediaQuery } from '@/helpers/functional/checkMedia'
 import { PortableText } from '@portabletext/react'
 import { Facebook, Instagram, Whatsapp } from '@/helpers/preset/svg'
 import Script from 'next/script'
+import PillButton from '@/components/modules/pillButton'
+import { useNextSanityImage } from 'next-sanity-image'
+import { singleIURB } from '@/components/utils/iurb'
+import Caption from '@/components/modules/editorial/caption'
 
 const FamilySlug = ({
   familyAPI,
@@ -67,6 +72,51 @@ const FamilySlug = ({
     types: {
       code: (props) => (
         <div dangerouslySetInnerHTML={{ __html: props.value.code }} />
+      ),
+      roundedButton: (props) => (
+        <PillButton
+          blank
+          destination={props.value?.link}
+          className="w-fit mx-auto"
+        >
+          {props.value?.name}
+        </PillButton>
+      ),
+      imageModule: (props) => (
+        <div className={`image !px-[40px]`}>
+          <div
+            className="relative w-full rounded-xl overflow-hidden"
+            style={{
+              backgroundColor: `rgba(208,208,208, 1)`,
+            }}
+          >
+            {props.value.image && props.value.image.asset ? (
+              <ImageModule
+                {...useNextSanityImage(client, props.value.image, {
+                  imageBuilder: singleIURB,
+                })}
+                style={{ width: '100%', height: 'auto' }}
+                alt={props.value.image.name}
+                placeholder="blur"
+                blurDataURL={urlFor(props.value.image)
+                  .blur(2)
+                  .format('webp')
+                  .saturation(-100)
+                  .width(100)
+                  .url()}
+              />
+            ) : (
+              <></>
+            )}
+          </div>
+          {props.value.name && (
+            <Caption
+              option={false}
+              caption={props.value.name}
+              color="#000"
+            />
+          )}
+        </div>
       ),
     },
     marks: {
