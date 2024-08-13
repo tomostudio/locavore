@@ -53,7 +53,7 @@ const ImageView = ({ facilitiesListScroll, scrollContainer }) => {
                 <div key={id}>
                   <FancyLink
                     className={`block relative w-[40vw] h-[40vw] sm:w-[30vw] sm:h-[30vw] md:w-[15vw] md:h-[15vw] cursor-pointer transtion-all duration-300 hover:!z-40 group`}
-                    destination={`/nxt/facilities/${data.slug.current}`}
+                    destination={`/nxt/features/${data.slug.current}`}
                     style={{
                       zIndex: data.zIndex,
                     }}

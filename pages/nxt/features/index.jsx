@@ -27,7 +27,7 @@ const FeaturesAndFacilities = ({
   const [setting] = settingAPI
   const [footer] = footerAPI
   const [facilities] = facilitiesAPI
-  const [showComponent, setShowComponent] = useState('image-view')
+  const [showComponent, setShowComponent] = useState('grid-view')
 
   // Menghitung sisa pembagian dengan 3
   const remainder = facilitiesListAPI.length % 3

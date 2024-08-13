@@ -42,12 +42,12 @@ const NxtNavigationDesktop = ({transition = false }) => {
           MENU
         </FancyLink>
         <FancyLink
-          destination="/nxt/facilities"
+          destination="/nxt/features"
           className={`relative z-2 4 ${
-            router.pathname === '/nxt/facilities' ? 'bg-[#BEC29D]' : 'bg-white'
+            router.pathname === '/nxt/features' ? 'bg-[#BEC29D]' : 'bg-white'
           } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-500 hover:bg-[#BEC29D]`}
         >
-          FACILITIES
+          FEATURES
         </FancyLink>
         <FancyLink
           destination="/nxt/collaborators"
