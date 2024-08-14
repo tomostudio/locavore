@@ -94,7 +94,7 @@ const FamilySlug = ({
                 : 'font-default'
             }
           >
-            {props.children}
+            {props.children} 
           </FancyLink>
         ) : (
           <span
