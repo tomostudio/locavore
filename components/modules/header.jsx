@@ -76,7 +76,7 @@ export default function Header({ className = '', header, footer }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 w-full z-50 overflow-auto hide-scrollbar flex flex-col no-select-all ${
+      className={`fixed top-0 left-0 right-0 w-full z-[99] overflow-auto hide-scrollbar flex flex-col no-select-all ${
         menu ? 'h-screen' : ''
       }`}
       style={{ height: menu ? `${wHeight}px` : 'auto' }}
