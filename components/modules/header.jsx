@@ -231,7 +231,7 @@ export default function Header({ className = '', header, footer }) {
               a11yText='Navigate to the about page'
               className={`font-bold leading-none ${transition.fade}`}
             >
-              BOOK NXT
+              BOOK NOW
             </FancyLink>
           </div>
         </Container>
