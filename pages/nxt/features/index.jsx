@@ -115,7 +115,7 @@ const FeaturesAndFacilities = ({
         >
           <Container className="flex flex-col items-center mt-20 md:mt-44">
             <h1 className="text-[#BEC29D] text-center font-funkturm text-[2.5rem] sm:text-t-header md:text-d-header m-0">
-              {facilities.heading}
+              FEATURES
             </h1>
             <ButtonViewFacilities setShowComponent={setShowComponent} />
           </Container>
