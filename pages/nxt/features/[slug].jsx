@@ -287,7 +287,7 @@ const FeaturesAndFacilitiesDetail = ({
               arrow='left'
               className='uppercase'
             >
-              {facilitiesButtonText.heading}
+              FEATURES
             </StickyButton>
           </div>
         </div>
