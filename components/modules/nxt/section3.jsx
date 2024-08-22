@@ -188,7 +188,7 @@ export const Section3ComponentInner = ({ facilitiesSection }) => {
                 className={`w-fit p-4 mb-20 lg:mb-[4.5rem] uppercase text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
                 destination='/nxt/features'
               >
-                {facilitiesSection.button}
+                VIEW FEATURES
               </FancyLink>
             </div>
             <m.div
