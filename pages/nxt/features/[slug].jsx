@@ -283,7 +283,7 @@ const FeaturesAndFacilitiesDetail = ({
           {/* Button Sticky */}
           <div className='sticky bottom-0 w-full md:h-0 left-0 flex items-end pointer-events-none'>
             <StickyButton
-              destination='/nxt/facilities'
+              destination='/nxt/features'
               arrow='left'
               className='uppercase'
             >

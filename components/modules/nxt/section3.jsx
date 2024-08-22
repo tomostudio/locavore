@@ -180,15 +180,15 @@ export const Section3ComponentInner = ({ facilitiesSection }) => {
           <div className='relative w-full h-screen'>
             <Container className='relative w-full h-full z-20 setflex-center'>
               <span className='text-[#BEC29D] uppercase max-w-[650px] text-center font-funkturm text-m-additionalTitle sm:text-[4rem] md:text-[5rem] lg:text-d-additionalTitle leading-full '>
-                {facilitiesSection.heading}
+                FEATURES
               </span>
             </Container>
             <div className='absolute top-0 left-0 w-full h-full z-20 pointer-events-none flex justify-center items-end'>
               <FancyLink
                 className={`w-fit p-4 mb-20 lg:mb-[4.5rem] uppercase text-d-small bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-black font-default tracking-widest transition-all ease-linear hover:bg-black border hover:text-white border-black rounded-xl`}
-                destination='/nxt/facilities'
+                destination='/nxt/features'
               >
-                {facilitiesSection.button}
+                VIEW FEATURES
               </FancyLink>
             </div>
             <m.div

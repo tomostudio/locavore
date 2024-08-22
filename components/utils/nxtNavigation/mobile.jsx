@@ -47,8 +47,8 @@ const NxtNavigationMobile = ({ transition = false }) => {
                   ? 'NXT'
                   : router.pathname === '/nxt/menu'
                   ? 'MENU'
-                  : router.pathname === '/nxt/facilities'
-                  ? 'FACILITIES'
+                  : router.pathname === '/nxt/features'
+                  ? 'FEATURES'
                   : router.pathname === '/nxt/collaborators'
                   ? 'COLLABORATORS'
                   : router.pathname === '/nxt/visit'
@@ -81,12 +81,12 @@ const NxtNavigationMobile = ({ transition = false }) => {
                   MENU
                 </FancyLink>
               )}
-              {router.pathname !== '/nxt/facilities' && (
+              {router.pathname !== '/nxt/features' && (
                 <FancyLink
                   className="w-full h-[50px] flex-shrink-0 bg-white mb-[10px] setflex-center"
-                  destination="/nxt/facilities"
+                  destination="/nxt/features"
                 >
-                  FACILITIES
+                  FEATURES
                 </FancyLink>
               )}
               {router.pathname !== '/nxt/collaborators' && (

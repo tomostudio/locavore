@@ -27,7 +27,7 @@ const FeaturesAndFacilities = ({
   const [setting] = settingAPI
   const [footer] = footerAPI
   const [facilities] = facilitiesAPI
-  const [showComponent, setShowComponent] = useState('image-view')
+  const [showComponent, setShowComponent] = useState('grid-view')
 
   // Menghitung sisa pembagian dengan 3
   const remainder = facilitiesListAPI.length % 3
@@ -115,7 +115,7 @@ const FeaturesAndFacilities = ({
         >
           <Container className="flex flex-col items-center mt-20 md:mt-44">
             <h1 className="text-[#BEC29D] text-center font-funkturm text-[2.5rem] sm:text-t-header md:text-d-header m-0">
-              {facilities.heading}
+              FEATURES
             </h1>
             <ButtonViewFacilities setShowComponent={setShowComponent} />
           </Container>

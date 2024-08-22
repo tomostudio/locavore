@@ -69,7 +69,7 @@ const GridView = ({ facilitiesListGrid }) => {
           data.title ? (
             <FancyLink
               key={id}
-              destination={`/nxt/facilities/${data.slug.current}`}
+              destination={`/nxt/features/${data.slug.current}`}
               className={`w-[calc(100%/2)] md:w-[calc(100%/3)] ${removeBorderLastRow(
                 facilitiesListGrid,
                 id

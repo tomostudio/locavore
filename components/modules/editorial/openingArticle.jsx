@@ -158,7 +158,7 @@ export default function OpeningArticle({
         <h1 className="m-0 font-sans font-normal">{article.title}</h1>
         <div className="w-full flex max-md:flex-col items-center max-md:items-start justify-between">
           {/* Category */}
-          <div className="w-auto space-x-4 flex ">
+          <div className="w-auto space-x-4 flex">
             <PillButton
               destination="/editorial/search"
               onClick={() => {
