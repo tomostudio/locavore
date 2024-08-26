@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, useState } from 'react'
+import { forwardRef, Fragment, useEffect, useRef, useState } from 'react'
 import FancyLink from '@/components/utils/fancyLink'
 import Container from '@/components/modules/container'
 import { useMediaQuery } from '@/helpers/functional/checkMedia'
@@ -253,7 +253,7 @@ export default function Header({ className = '', header, family, footer }) {
             <FancyLink
               onClick={() => {
                 setWHeight(window.innerHeight)
-                if(appContext.mobileMenu) {
+                if (appContext.mobileMenu) {
                   appContext.setMobileMenu(false)
                 }
                 appContext.setOpenBook(true)
@@ -435,24 +435,23 @@ const PopUp = forwardRef(
                 Choose which venue to book
               </span>
             </div>
-            {family.map((data, id) =>
-              data.ctaButton ? (
-                <div
-                  key={id}
-                  className="py-[20px] text-center border-b border-black"
-                >
-                  <FancyLink
-                    href={data.ctaButton.link}
-                    blank
-                    className="text-[35px] leading-[38px]"
-                  >
-                    {data.title}
-                  </FancyLink>
-                </div>
-              ) : (
-                <></>
-              ),
-            )}
+            {family.map((data, id) => (
+              <Fragment key={id}>
+                {data.ctaButton ? (
+                  <div className="py-[20px] text-center border-b border-black">
+                    <FancyLink
+                      destination={data.ctaButton.link}
+                      blank
+                      className="text-[35px] leading-[38px]"
+                    >
+                      {data.title}
+                    </FancyLink>
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </Fragment>
+            ))}
           </div>
           <FancyLink
             onClick={() => setOpenBook(false)}
