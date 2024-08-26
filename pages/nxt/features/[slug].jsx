@@ -41,12 +41,12 @@ const FeaturesAndFacilitiesDetail = ({
       h3: ({ children }) => <h3>{children}</h3>,
       h4: ({ children }) => <h4>{children}</h4>,
       h5: ({ children }) => <h5>{children}</h5>,
-      center: ({ children }) => <p align='center'>{children}</p>,
-      left: ({ children }) => <p align='left'>{children}</p>,
-      right: ({ children }) => <p align='right'>{children}</p>,
+      center: ({ children }) => <p align="center">{children}</p>,
+      left: ({ children }) => <p align="left">{children}</p>,
+      right: ({ children }) => <p align="right">{children}</p>,
     },
     list: {
-      number: ({ children }) => <ol className='list-decimal'>{children}</ol>,
+      number: ({ children }) => <ol className="list-decimal">{children}</ol>,
     },
     types: {
       code: (props) => (
@@ -54,7 +54,7 @@ const FeaturesAndFacilitiesDetail = ({
       ),
       buttonLink: (props) => (
         <FancyLink
-          blank='_blank'
+          blank="_blank"
           destination={props.value.link}
           className={`w-fit p-4 mx-auto text-d-small uppercase text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
         >
@@ -86,7 +86,7 @@ const FeaturesAndFacilitiesDetail = ({
           >
             {props.children}
             {props.value.arrow && (
-              <Arrow position='right' fill='white' className='ml-2 inline' />
+              <Arrow position="right" fill="white" className="ml-2 inline" />
             )}
           </FancyLink>
         ) : props.value.select_link === 'wa_link' ? (
@@ -167,33 +167,35 @@ const FeaturesAndFacilitiesDetail = ({
         webTitle={typeof setting !== 'undefined' && setting.webTitle}
       />
       <motion.main
-        initial='initial'
-        animate='enter'
-        exit='exit'
+        initial="initial"
+        animate="enter"
+        exit="exit"
         variants={fade}
-        className='relative bg-black '
+        className="relative bg-black "
       >
-        <div className='flex flex-col md:flex-row flex-wrap w-full'>
-          <div className='md:sticky md:top-0 w-full md:w-1/2 h-full grow flex flex-col md:flex-row mb-0'>
+        <div className="flex flex-col md:flex-row flex-wrap w-full">
+          <div className="md:sticky md:top-0 w-full md:w-1/2 h-full grow flex flex-col md:flex-row mb-0">
             {useMediaQuery('(min-width: 850px)') ? (
-              <div className='w-full flex flex-col'>
-                {facilities.images.map((data, id) => (
-                  data.asset &&
-                  <div key={id} className='relative aspect-[4/6]'>
-                    <Image
-                      src={urlFor(data).width(720).url()}
-                      alt={data.alt}
-                      layout='fill'
-                      objectFit='cover'
-                      placeholder='blur'
-                      blurDataURL={urlFor(data)
-                        .blur(2)
-                        .format('webp')
-                        .width(100)
-                        .url()}
-                    />
-                  </div>
-                ))}
+              <div className="w-full flex flex-col">
+                {facilities.images.map(
+                  (data, id) =>
+                    data.asset && (
+                      <div key={id} className="relative aspect-[4/6]">
+                        <Image
+                          src={urlFor(data).width(720).url()}
+                          alt={data.alt}
+                          layout="fill"
+                          objectFit="cover"
+                          placeholder="blur"
+                          blurDataURL={urlFor(data)
+                            .blur(2)
+                            .format('webp')
+                            .width(100)
+                            .url()}
+                        />
+                      </div>
+                    ),
+                )}
               </div>
             ) : (
               <>
@@ -205,38 +207,40 @@ const FeaturesAndFacilitiesDetail = ({
                     hideScrollbars={false}
                     nativeMobileScroll={true}
                   >
-                    <div className='w-fit flex items-center relative min-w-full'>
-                      {facilities.images.map((data, id) => (
-                        data.asset &&
-                        <div
-                          key={id}
-                          className='relative w-[80vw] sm:w-[66vw] aspect-[4/6]'
-                        >
-                          <Image
-                            src={urlFor(data).width(720).url()}
-                            alt={data.alt}
-                            layout='fill'
-                            objectFit='cover'
-                            placeholder='blur'
-                            blurDataURL={urlFor(data)
-                              .blur(2)
-                              .format('webp')
-                              .width(100)
-                              .url()}
-                          />
-                        </div>
-                      ))}
+                    <div className="w-fit flex items-center relative min-w-full">
+                      {facilities.images.map(
+                        (data, id) =>
+                          data.asset && (
+                            <div
+                              key={id}
+                              className="relative w-[80vw] sm:w-[66vw] aspect-[4/6]"
+                            >
+                              <Image
+                                src={urlFor(data).width(720).url()}
+                                alt={data.alt}
+                                layout="fill"
+                                objectFit="cover"
+                                placeholder="blur"
+                                blurDataURL={urlFor(data)
+                                  .blur(2)
+                                  .format('webp')
+                                  .width(100)
+                                  .url()}
+                              />
+                            </div>
+                          ),
+                      )}
                     </div>
                   </ScrollContainer>
                 ) : (
                   <>
-                    <div className='w-fit flex items-center relative min-w-full aspect-[5/6] sm:aspect-[1/1]'>
+                    <div className="w-fit flex items-center relative min-w-full aspect-[5/6] sm:aspect-[1/1]">
                       <Image
                         src={urlFor(facilities.images[0]).width(720).url()}
                         alt={facilities.images[0].alt}
-                        layout='fill'
-                        objectFit='cover'
-                        placeholder='blur'
+                        layout="fill"
+                        objectFit="cover"
+                        placeholder="blur"
                         blurDataURL={urlFor(facilities.images[0])
                           .blur(2)
                           .format('webp')
@@ -249,20 +253,20 @@ const FeaturesAndFacilitiesDetail = ({
               </>
             )}
           </div>
-          <div className='md:sticky md:top-0 md:right-0 w-full md:w-1/2 md:min-h-screen h-full flex justify-end'>
-            <div className='w-full mx-auto max-w-2xl px-10 max-md:px-5 setflex-center py-20 md:py-24'>
-              <HeaderGap className='hidden md:block' />
-              <h1 className='text-[2.5rem] text-center md:text-d-additionalHeader mb-10 text-[#BEC29D] font-funkturm'>
+          <div className="md:sticky md:top-0 md:right-0 w-full md:w-1/2 md:min-h-screen h-full flex justify-end">
+            <div className="w-full mx-auto max-w-2xl px-10 max-md:px-5 setflex-center py-20 md:py-24">
+              <HeaderGap className="hidden md:block" />
+              <h1 className="text-[2.5rem] text-center md:text-d-additionalHeader mb-10 text-[#BEC29D] font-funkturm">
                 {facilities.title}
               </h1>
               {facilities.imageIcon?.asset && (
-                <div className='relative w-full aspect-[5/2] mb-10'>
+                <div className="relative w-full aspect-[5/2] mb-10">
                   <Image
                     src={urlFor(facilities.imageIcon).width(500).url()}
                     alt={facilities.imageIcon.name}
-                    layout='fill'
-                    objectFit='contain'
-                    placeholder='blur'
+                    layout="fill"
+                    objectFit="contain"
+                    placeholder="blur"
                     blurDataURL={urlFor(facilities.imageIcon)
                       .blur(2)
                       .format('webp')
@@ -272,7 +276,7 @@ const FeaturesAndFacilitiesDetail = ({
                   />
                 </div>
               )}
-              <div className='relative w-full max-w-xl mx-auto text-center text-white editor-styling px-10'>
+              <div className="relative w-full max-w-xl mx-auto text-center text-white editor-styling px-10">
                 <PortableText
                   value={facilities.content}
                   components={serializer}
@@ -281,11 +285,11 @@ const FeaturesAndFacilitiesDetail = ({
             </div>
           </div>
           {/* Button Sticky */}
-          <div className='sticky bottom-0 w-full md:h-0 left-0 flex items-end pointer-events-none'>
+          <div className="sticky bottom-0 w-full md:h-0 left-0 flex items-end pointer-events-none">
             <StickyButton
-              destination='/nxt/features'
-              arrow='left'
-              className='uppercase'
+              destination="/nxt/features"
+              arrow="left"
+              className="uppercase"
             >
               FEATURES
             </StickyButton>
@@ -313,7 +317,7 @@ export async function getStaticProps({ params }) {
   const facilitiesAPI = await client.fetch(
     `
       *[_type == "facilitiesList" && slug.current == "${params.slug}"] 
-    `
+    `,
   )
   const facilitiesButtonText = await client.fetch(`
     *[_type == "facilities"][0] {
@@ -332,6 +336,9 @@ export async function getStaticProps({ params }) {
   const headerAPI = await client.fetch(`
                       *[_type == "header"]
                       `)
+  const familyListAPI = await client.fetch(`
+  *[_type == "family_list"] | order(order asc)
+  `)
   return {
     props: {
       homeAPI,
@@ -340,6 +347,7 @@ export async function getStaticProps({ params }) {
       settingAPI,
       footerAPI,
       headerAPI,
+      familyListAPI
     },
   }
 }

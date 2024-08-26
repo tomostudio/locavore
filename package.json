@@ -62,6 +62,7 @@
     "react-waypoint": "^10.3.0",
     "read-time-estimate": "^0.0.3",
     "sass": "^1.70.0",
+    "sharp": "^0.33.5",
     "swiper": "^11.0.5",
     "tailwindcss-padding-safe": "^1.0.5",
     "tailwindcss-writing-mode": "^1.0.0",

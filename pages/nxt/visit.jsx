@@ -311,6 +311,9 @@ export async function getStaticProps() {
   const headerAPI = await client.fetch(`
                       *[_type == "header"]
                       `)
+  const familyListAPI = await client.fetch(`
+  *[_type == "family_list"] | order(order asc)
+  `)
   return {
     props: {
       homeAPI,
@@ -318,6 +321,7 @@ export async function getStaticProps() {
       settingAPI,
       footerAPI,
       headerAPI,
+      familyListAPI,
     },
   }
 }

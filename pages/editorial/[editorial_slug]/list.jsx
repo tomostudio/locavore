@@ -342,12 +342,16 @@ export async function getStaticProps({ params }) {
   const footerAPI = await client.fetch(`
   *[_type == "footer"]
   `);
+  const familyListAPI = await client.fetch(`
+    *[_type == "family_list"] | order(order asc)
+    `)
   return {
     props: {
       issueAPI,
       seoAPI,
       footerAPI,
       headerAPI,
+      familyListAPI
     },
   };
 }

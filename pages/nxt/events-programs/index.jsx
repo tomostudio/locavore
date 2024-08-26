@@ -30,7 +30,7 @@ const EventsAndPrograms = ({
   const defaultItemToShow = 6
   const [itemToShow, setItemToShow] = useState(defaultItemToShow)
   const [showMoreButton, setShowMore] = useState(
-    eventListAPI.length > defaultItemToShow ? true : false
+    eventListAPI.length > defaultItemToShow ? true : false,
   )
 
   useEffect(() => {
@@ -59,19 +59,19 @@ const EventsAndPrograms = ({
       />
 
       <motion.main
-        initial='initial'
-        animate='enter'
-        exit='exit'
+        initial="initial"
+        animate="enter"
+        exit="exit"
         variants={fade}
-        className='no-select-all bg-black'
+        className="no-select-all bg-black"
       >
-        <div className='relative w-full h-full setflex-center'>
+        <div className="relative w-full h-full setflex-center">
           <HeroComponent
             title={event.heading}
             imageDesktop={event.hero.imageDesktop}
             imageMobile={event.hero.imageMobile}
           />
-          <Container className='w-full mx-auto max-w-screen-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-11 md:mt-20 mb-10 md:mb-16 gap-4 lg:gap-8 justify-items-center items-start'>
+          <Container className="w-full mx-auto max-w-screen-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-11 md:mt-20 mb-10 md:mb-16 gap-4 lg:gap-8 justify-items-center items-start">
             {eventListAPI.slice(0, itemToShow).map((data, id) => (
               <EventCard
                 key={id}
@@ -90,7 +90,7 @@ const EventsAndPrograms = ({
               onClick={() => {
                 setItemToShow(itemToShow + defaultItemToShow)
                 setShowMore(
-                  eventListAPI.length > itemToShow + defaultItemToShow
+                  eventListAPI.length > itemToShow + defaultItemToShow,
                 )
               }}
             >
@@ -124,6 +124,9 @@ export async function getStaticProps() {
   const headerAPI = await client.fetch(`
                       *[_type == "header"]
                       `)
+  const familyListAPI = await client.fetch(`
+  *[_type == "family_list"] | order(order asc)
+  `)
   return {
     props: {
       homeAPI,
@@ -132,6 +135,7 @@ export async function getStaticProps() {
       settingAPI,
       footerAPI,
       headerAPI,
+      familyListAPI
     },
   }
 }

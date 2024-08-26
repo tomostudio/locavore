@@ -157,7 +157,7 @@ export default function App({ Component, pageProps }) {
 
       <AppWrapper>
         <AnimatePresence>
-          <Header header={pageProps.headerAPI} footer={pageProps.footerAPI} />
+          <Header header={pageProps.headerAPI} family={pageProps.familyListAPI} footer={pageProps.footerAPI} />
         </AnimatePresence>
         <ParallaxProvider>
           <AnimatePresence mode="wait">
