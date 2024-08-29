@@ -226,12 +226,12 @@ export default function Header({ className = '', header, footer }) {
               </>
             )}
             <FancyLink
-              destination={header[0].booking}
+              destination="https://www.sevenrooms.com/reservations/locavorenext"
               blank={true}
               a11yText='Navigate to the about page'
               className={`font-bold leading-none ${transition.fade}`}
             >
-              BOOK NOW
+              BOOK NXT
             </FancyLink>
           </div>
         </Container>
