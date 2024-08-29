@@ -8,6 +8,7 @@ import urlFor from '@/helpers/sanity/urlFor'
 import { transition } from '@/helpers/preset/tailwind'
 import { motion } from 'framer-motion'
 import { Youtube, Facebook, Instagram, Linkedin } from '@/helpers/preset/svg'
+import { duration } from '@mui/material'
 
 export default function Header({ className = '', header, family, footer }) {
   const appContext = useAppContext()
@@ -425,7 +426,7 @@ const PopUpMobile = forwardRef(
       <div
         onClick={handleClickOutside}
         className={`fixed max-md:relative top-0 left-0 z-[99] w-full h-full flex justify-center items-center max-md:items-start bg-black bg-opacity-50 overflow-y-scroll hide-scrollbar py-10 max-md:p-0 ${
-          isOpenBook ? 'flex opacity-100' : 'none opacity-0 pointer-events-none'
+          isOpenBook ? 'flex' : 'hidden'
         }`}
       >
         <div
