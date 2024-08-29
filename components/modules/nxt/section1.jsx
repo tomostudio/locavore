@@ -80,7 +80,7 @@ export const Section1ComponentInner = ({ landingSection }) => {
                 transform: 'translateY(0%)',
                 transition: {
                   duration: 1,
-                  delay: 2,
+                  delay: 3,
                 },
               },
               exit: {

@@ -584,7 +584,7 @@ export async function getServerSideProps({ params }) {
       notFound: true,
     }
   }
-    
+
   let nextArticle = {}
   const articleAPI = await client.fetch(
     `
@@ -646,6 +646,10 @@ export async function getServerSideProps({ params }) {
     }
   }
 
+  const familyListAPI = await client.fetch(`
+  *[_type == "family_list"] | order(order asc)
+  `)
+
   return {
     props: {
       articleAPI,
@@ -655,6 +659,7 @@ export async function getServerSideProps({ params }) {
       nextArticleIndex,
       processedArticle,
       nextArticle,
+      familyListAPI,
     },
   }
 }

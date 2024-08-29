@@ -635,6 +635,10 @@ export async function getStaticProps({ params }) {
     };
   }
 
+  const familyListAPI = await client.fetch(`
+    *[_type == "family_list"] | order(order asc)
+    `)
+    
   return {
     props: {
       articleAPI,
@@ -644,6 +648,7 @@ export async function getStaticProps({ params }) {
       nextArticleIndex,
       processedArticle,
       nextArticle,
+      familyListAPI
     },
   };
 }

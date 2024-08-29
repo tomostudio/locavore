@@ -151,6 +151,9 @@ export async function getStaticProps() {
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
                     `)
+  const familyListAPI = await client.fetch(`
+  *[_type == "family_list"] | order(order asc)
+  `)
 
   const facilitiesListScroll = facilitiesListAPI.map((e) => ({
     ...e,
@@ -165,6 +168,7 @@ export async function getStaticProps() {
       footerAPI,
       headerAPI,
       facilitiesListScroll,
+      familyListAPI,
     },
   }
 }

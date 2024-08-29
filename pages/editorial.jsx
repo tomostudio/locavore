@@ -1,10 +1,10 @@
-import EditorialTemplate from '@/components/modules/editorial/editorialTemplate';
-import SEO from '@/components/utils/seo';
-import { useRouter } from 'next/router';
+import EditorialTemplate from '@/components/modules/editorial/editorialTemplate'
+import SEO from '@/components/utils/seo'
+import { useRouter } from 'next/router'
 
 // Helpers
-import client from '@/helpers/sanity/client';
-import { useEffect } from 'react';
+import client from '@/helpers/sanity/client'
+import { useEffect } from 'react'
 
 export default function Editorial({
   issueAPI,
@@ -12,14 +12,14 @@ export default function Editorial({
   editorialAPI,
   footerAPI,
 }) {
-  const router = useRouter();
-  const [seo] = seoAPI;
-  const [editorial] = editorialAPI;
-  const [footer] = footerAPI;
+  const router = useRouter()
+  const [seo] = seoAPI
+  const [editorial] = editorialAPI
+  const [footer] = footerAPI
 
   useEffect(() => {
-    window.scroll(0, 0);
-  }, []);
+    window.scroll(0, 0)
+  }, [])
 
   return (
     <>
@@ -41,7 +41,7 @@ export default function Editorial({
         mailchimp={seo.mailchimpID}
       />
     </>
-  );
+  )
 }
 
 export async function getStaticProps() {
@@ -50,19 +50,22 @@ export async function getStaticProps() {
                       ...,
                       "articleCount": count(*[_type=='article' && references(^._id)])
                     }
-                    `);
+                    `)
   const seoAPI = await client.fetch(`
                     *[_type == "settings"]
-                    `);
+                    `)
   const editorialAPI = await client.fetch(`
                     *[_type == "editorial"]
-                    `);
+                    `)
   const headerAPI = await client.fetch(`
                     *[_type == "header"]
-                    `);
+                    `)
   const footerAPI = await client.fetch(`
                     *[_type == "footer"]
-                    `);
+                    `)
+  const familyListAPI = await client.fetch(`
+                    *[_type == "family_list"] | order(order asc)
+                    `)
   return {
     props: {
       issueAPI,
@@ -70,6 +73,7 @@ export async function getStaticProps() {
       editorialAPI,
       footerAPI,
       headerAPI,
+      familyListAPI,
     },
-  };
+  }
 }

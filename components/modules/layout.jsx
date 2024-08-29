@@ -13,12 +13,12 @@ export default function Layout({ children }) {
 
   useEffect(() => {
     const { innerWidth: width, innerHeight: height } = window;
-    if (appContext.mobileMenu && width <= 850) {
+    if ((appContext.mobileMenu || appContext.isOpenBook) && width <= 850) {
       setDisableView(true);
     } else {
       setDisableView(false);
     }
-  }, [appContext.mobileMenu]);
+  }, [appContext.mobileMenu, appContext.isOpenBook]);
 
   return <div className={`${disableView ? `pointer-events-none` : ''}`}>{children}</div>;
 }

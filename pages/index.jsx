@@ -129,15 +129,15 @@ export default function Nxt({
       />
       <LazyMotion features={domAnimation}>
         <m.main
-          className='relative p-0 m-0 bg-black'
-          initial='initial'
-          animate='enter'
-          exit='exit'
+          className="relative p-0 m-0 bg-black"
+          initial="initial"
+          animate="enter"
+          exit="exit"
           variants={fade}
         >
           <m.div
-            initial='initial'
-            animate='enter'
+            initial="initial"
+            animate="enter"
             variants={{
               initial: { opacity: 1 },
               enter: {
@@ -151,9 +151,9 @@ export default function Nxt({
                 opacity: 0,
               },
             }}
-            className='fixed top-0 left-0 w-full h-full z-50 pointer-events-none bg-black'
+            className="fixed top-0 left-0 w-full h-full z-50 pointer-events-none bg-black"
           />
-          <section className='relative p-0 m-0'>
+          <section className="relative p-0 m-0">
             {/* Section 1 */}
             {/* TITLE */}
             <Section1ComponentInner landingSection={homeNxt.section1} />
@@ -186,7 +186,7 @@ export default function Nxt({
             {/* Section 5 */}
             {/* WHAT'S ON? */}
             <Section5ComponentInner
-              eventList={eventAPI.slice(0,3)}
+              eventList={eventAPI.slice(0, 3)}
               eventSection={homeNxt.eventSection}
             />
             <NxtNavigation transition={true} />
@@ -217,6 +217,9 @@ export async function getStaticProps() {
   const seoAPI = await client.fetch(`
   *[_type == "settings"]
   `)
+  const familyListAPI = await client.fetch(`
+  *[_type == "family_list"] | order(order asc)
+  `)
   return {
     props: {
       homeNxtAPI,
@@ -225,6 +228,7 @@ export async function getStaticProps() {
       seoAPI,
       headerAPI,
       footerAPI,
+      familyListAPI,
     },
   }
 }
