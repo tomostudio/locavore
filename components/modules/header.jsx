@@ -344,7 +344,7 @@ export default function Header({ className = '', header, family, footer }) {
             className={`w-full py-8 border-b flex justify-center space-x-4 transition-all duration-500 ${
               bnw || menu ? 'border-black' : 'border-white'
             }`}
-          >
+          > 
             {footerProcessed.footerLink &&
               footerProcessed.footerLink.instagram && (
                 <FancyLink
