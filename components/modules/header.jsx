@@ -296,7 +296,7 @@ export default function Header({ className = '', header, family, footer }) {
           </div>
         </Container>
       </motion.header>
-      <PopUp
+      <PopUpDesktop
         ref={popUpRefDekstop}
         family={family}
         isOpenBook={isOpenBookDesktop}
@@ -304,7 +304,7 @@ export default function Header({ className = '', header, family, footer }) {
         handleClickOutside={handleClickOutsideDesktop}
       />
       {useMediaQuery('(max-width: 850px)') && (
-        <PopUp
+        <PopUpMobile
           ref={popUpRefMobile}
           family={family}
           isOpenBook={appContext.isOpenBookMobile}
@@ -419,13 +419,13 @@ export default function Header({ className = '', header, family, footer }) {
   )
 }
 
-const PopUp = forwardRef(
+const PopUpMobile = forwardRef(
   ({ family, isOpenBook, setOpenBook, handleClickOutside = () => {} }, ref) => {
     return (
       <div
         onClick={handleClickOutside}
         className={`fixed max-md:relative top-0 left-0 z-[99] w-full h-full flex justify-center items-center max-md:items-start bg-black bg-opacity-50 overflow-y-scroll hide-scrollbar py-10 max-md:p-0 ${
-          isOpenBook ? 'flex opacity-100' : 'hidden opacity-0'
+          isOpenBook ? 'flex opacity-100' : 'none opacity-0'
         }`}
       >
         <div
@@ -465,6 +465,90 @@ const PopUp = forwardRef(
           </FancyLink>
         </div>
       </div>
+    )
+  },
+)
+
+const PopUpDesktop = forwardRef(
+  ({ family, isOpenBook, setOpenBook, handleClickOutside = () => {} }, ref) => {
+    return (
+      <motion.div
+        initial={{
+          display: 'none',
+          opacity: 0,
+        }}
+        animate={
+          isOpenBook
+            ? {
+                display: 'flex',
+                opacity: 1,
+              }
+            : {
+                display: 'none',
+                opacity: 0,
+              }
+        }
+        transition={
+          isOpenBook
+            ? {
+                display: {
+                  duration: 0.01,
+                },
+                opacity: {
+                  delay: 0.01,
+                  duration: 0.5,
+                },
+              }
+            : {
+                opacity: {
+                  duration: 0.5,
+                },
+                display: {
+                  delay: 0.55,
+                  duration: 0.01,
+                },
+              }
+        }
+        onClick={handleClickOutside}
+        className="fixed max-md:relative top-0 left-0 z-[99] w-full h-full flex justify-center items-center max-md:items-start bg-black bg-opacity-50 overflow-y-scroll hide-scrollbar py-10 max-md:p-0"
+      >
+        <div
+          ref={ref}
+          className="w-full max-w-[600px] max-md:max-w-none min-h-0 max-md:min-h-full flex flex-col justify-between bg-white rounded-[10px] max-md:rounded-none m-auto max-md:m-0"
+        >
+          <div className="w-full flex flex-col">
+            <div className="py-[25px] text-center border-b border-black">
+              <span className="font-serif font-normal text-[16px] leading-[110%] tracking-[0.7px]">
+                Choose which venue to book
+              </span>
+            </div>
+            {family.map((data, id) => (
+              <Fragment key={id}>
+                {data.ctaButton ? (
+                  <div className="py-[20px] text-center border-b border-black">
+                    <FancyLink
+                      destination={data.ctaButton.link}
+                      blank
+                      className="text-[35px] leading-[38px] transition-all duration-500 hover:opacity-50"
+                    >
+                      {data.title}
+                    </FancyLink>
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </Fragment>
+            ))}
+          </div>
+          <FancyLink
+            onClick={() => setOpenBook(false)}
+            className="relative py-[25px] text-center text-[12px] font-[500] leading-[18px] tracking-[0.6px] transition-all duration-500 hover:opacity-50"
+          >
+            <div className="absolute top-[-1px] left-0 w-full h-[1px] bg-black" />
+            CLOSE
+          </FancyLink>
+        </div>
+      </motion.div>
     )
   },
 )
