@@ -298,7 +298,7 @@ export default function Header({ className = '', header, family, footer }) {
       </motion.header>
       <PopUpDesktop
         ref={popUpRefDekstop}
-        family={family}
+        header={header[0]}
         isOpenBook={isOpenBookDesktop}
         setOpenBook={setOpenBookDesktop}
         handleClickOutside={handleClickOutsideDesktop}
@@ -306,7 +306,7 @@ export default function Header({ className = '', header, family, footer }) {
       {useMediaQuery('(max-width: 850px)') && (
         <PopUpMobile
           ref={popUpRefMobile}
-          family={family}
+          header={header[0]}
           isOpenBook={appContext.isOpenBookMobile}
           setOpenBook={appContext.setOpenBookMobile}
           handleClickOutside={handleClickOutsideMobile}
@@ -344,7 +344,7 @@ export default function Header({ className = '', header, family, footer }) {
             className={`w-full py-8 border-b flex justify-center space-x-4 transition-all duration-500 ${
               bnw || menu ? 'border-black' : 'border-white'
             }`}
-          > 
+          >
             {footerProcessed.footerLink &&
               footerProcessed.footerLink.instagram && (
                 <FancyLink
@@ -420,7 +420,7 @@ export default function Header({ className = '', header, family, footer }) {
 }
 
 const PopUpMobile = forwardRef(
-  ({ family, isOpenBook, setOpenBook, handleClickOutside = () => {} }, ref) => {
+  ({ header, isOpenBook, setOpenBook, handleClickOutside = () => {} }, ref) => {
     return (
       <div
         onClick={handleClickOutside}
@@ -438,22 +438,19 @@ const PopUpMobile = forwardRef(
                 Choose which venue to book
               </span>
             </div>
-            {family.map((data, id) => (
-              <Fragment key={id}>
-                {data.ctaButton ? (
-                  <div className="py-[20px] text-center border-b border-black">
-                    <FancyLink
-                      destination={data.ctaButton.link}
-                      blank
-                      className="text-[35px] leading-[38px] transition-all duration-500 hover:opacity-50"
-                    >
-                      {data.title}
-                    </FancyLink>
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </Fragment>
+            {header.bookNow.map((data, id) => (
+              <div
+                key={id}
+                className="py-[20px] text-center border-b border-black"
+              >
+                <FancyLink
+                  destination={data.link}
+                  blank
+                  className="text-[35px] leading-[38px] transition-all duration-500 hover:opacity-50"
+                >
+                  {data.name}
+                </FancyLink>
+              </div>
             ))}
           </div>
           <FancyLink
@@ -470,7 +467,7 @@ const PopUpMobile = forwardRef(
 )
 
 const PopUpDesktop = forwardRef(
-  ({ family, isOpenBook, setOpenBook, handleClickOutside = () => {} }, ref) => {
+  ({ header, isOpenBook, setOpenBook, handleClickOutside = () => {} }, ref) => {
     return (
       <motion.div
         initial={{
@@ -522,22 +519,19 @@ const PopUpDesktop = forwardRef(
                 Choose which venue to book
               </span>
             </div>
-            {family.map((data, id) => (
-              <Fragment key={id}>
-                {data.ctaButton ? (
-                  <div className="py-[20px] text-center border-b border-black">
-                    <FancyLink
-                      destination={data.ctaButton.link}
-                      blank
-                      className="text-[35px] leading-[38px] transition-all duration-500 hover:opacity-50"
-                    >
-                      {data.title}
-                    </FancyLink>
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </Fragment>
+            {header.bookNow.map((data, id) => (
+              <div
+                key={id}
+                className="py-[20px] text-center border-b border-black"
+              >
+                <FancyLink
+                  destination={data.link}
+                  blank
+                  className="text-[35px] leading-[38px] transition-all duration-500 hover:opacity-50"
+                >
+                  {data.name}
+                </FancyLink>
+              </div>
             ))}
           </div>
           <FancyLink
