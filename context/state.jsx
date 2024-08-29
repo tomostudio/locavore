@@ -8,7 +8,7 @@ export function AppWrapper({ children }) {
   const [mobileMenu, setMobileMenu] = useState(false) // mobile menu status
   const [category, setCategory] = useState('')
   const [history, setHistory] = useState([])
-  const [isOpenBook, setOpenBook] = useState(false)
+  const [isOpenBookMobile, setOpenBookMobile] = useState(false)
 
   return (
     <AppContext.Provider
@@ -23,8 +23,8 @@ export function AppWrapper({ children }) {
         setCategory,
         history,
         setHistory,
-        isOpenBook,
-        setOpenBook,
+        isOpenBookMobile,
+        setOpenBookMobile,
       }}
     >
       {children}

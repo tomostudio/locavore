@@ -11,13 +11,27 @@ import { Youtube, Facebook, Instagram, Linkedin } from '@/helpers/preset/svg'
 
 export default function Header({ className = '', header, family, footer }) {
   const appContext = useAppContext()
-  const popUpRef = useRef()
+  const popUpRefDekstop = useRef()
+  const popUpRefMobile = useRef()
   const { headerStyle } = appContext.headerVar
+  const [isOpenBookDesktop, setOpenBookDesktop] = useState(false)
 
   // Handle Click Outside
-  const handleClickOutside = (event) => {
-    if (popUpRef.current && !popUpRef.current.contains(event.target)) {
-      appContext.setOpenBook(false)
+  const handleClickOutsideDesktop = (event) => {
+    if (
+      popUpRefDekstop.current &&
+      !popUpRefDekstop.current.contains(event.target)
+    ) {
+      setOpenBookDesktop(false)
+    }
+  }
+
+  const handleClickOutsideMobile = (event) => {
+    if (
+      popUpRefMobile.current &&
+      !popUpRefMobile.current.contains(event.target)
+    ) {
+      appContext.setOpenBookMobile(false)
     }
   }
 
@@ -31,6 +45,16 @@ export default function Header({ className = '', header, family, footer }) {
   // simplified value of BNW
   // true = black
   const [bnw, setBNW] = useState(true)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setOpenBookDesktop(false)
+      if (window.innerWidth > 850) {
+        appContext.setOpenBookMobile(false)
+      }
+    }
+    window.addEventListener('resize', handleResize, false)
+  }, [])
 
   useEffect(() => {
     setMenu(appContext.mobileMenu)
@@ -86,10 +110,10 @@ export default function Header({ className = '', header, family, footer }) {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 w-full z-[99] overflow-auto hide-scrollbar flex flex-col no-select-all ${
-        menu || appContext.isOpenBook ? 'h-screen' : ''
+        menu || appContext.isOpenBookMobile ? 'h-screen' : ''
       }`}
       style={{
-        height: menu || appContext.isOpenBook ? `${wHeight}px` : 'auto',
+        height: menu || appContext.isOpenBookMobile ? `${wHeight}px` : 'auto',
       }}
     >
       <motion.header
@@ -113,21 +137,21 @@ export default function Header({ className = '', header, family, footer }) {
         }}
         className={`sticky top-0 left-0 right-0 w-full z-2 border-b ${className}
         ${
-          bnw || menu || appContext.isOpenBook
+          bnw || menu || appContext.isOpenBookMobile
             ? 'border-black bg-white'
             : 'border-white bg-black'
         }
         ${
           headerStyle.toLowerCase().includes('blur')
             ? `bg-opacity-50 backdrop-filter backdrop-blur-sm ${
-                menu || appContext.isOpenBook ? '' : '!bg-transparent'
+                menu || appContext.isOpenBookMobile ? '' : '!bg-transparent'
               }`
             : headerStyle.toLowerCase().includes('trans') ||
               headerStyle.toLowerCase().includes('transparent')
             ? 'bg-opacity-0'
             : 'bg-opacity-100'
         }
-        ${menu || appContext.isOpenBook ? `!bg-opacity-100 ` : ''}
+        ${menu || appContext.isOpenBookMobile ? `!bg-opacity-100 ` : ''}
         ${
           headerStyle.toLowerCase().includes('hidden') ? '!hidden' : ''
         } transition-all duration-500`}
@@ -138,17 +162,17 @@ export default function Header({ className = '', header, family, footer }) {
           <FancyLink
             onClick={() => {
               setWHeight(window.innerHeight)
-              if (appContext.isOpenBook) {
-                appContext.setOpenBook(false)
+              if (appContext.isOpenBookMobile) {
+                appContext.setOpenBookMobile(false)
               } else {
                 //Toggle Menu
                 appContext.setMobileMenu(!appContext.mobileMenu)
               }
             }}
             className={`mobile-menu-icon hidden max-md:block w-[25px] h-[25px] max-md:mr-5 ${
-              bnw || menu || appContext.isOpenBook ? 'black' : 'white'
+              bnw || menu || appContext.isOpenBookMobile ? 'black' : 'white'
             }
-          ${menu || appContext.isOpenBook ? 'open black' : ''} ${
+          ${menu || appContext.isOpenBookMobile ? 'open black' : ''} ${
               transition.fade
             }`}
           >
@@ -164,7 +188,7 @@ export default function Header({ className = '', header, family, footer }) {
             {/* Black */}
             <div
               className={`w-full h-full setflex-center transition-all duration-500 ${
-                bnw || menu || appContext.isOpenBook
+                bnw || menu || appContext.isOpenBookMobile
                   ? 'opacity-100'
                   : 'opacity-0'
               }`}
@@ -186,7 +210,7 @@ export default function Header({ className = '', header, family, footer }) {
             {/* White */}
             <div
               className={`absolute top-0 left-0 w-full h-full setflex-center transition-all duration-500 ${
-                bnw || menu || appContext.isOpenBook
+                bnw || menu || appContext.isOpenBookMobile
                   ? 'opacity-0'
                   : 'opacity-100'
               } `}
@@ -256,11 +280,15 @@ export default function Header({ className = '', header, family, footer }) {
                 if (appContext.mobileMenu) {
                   appContext.setMobileMenu(false)
                 }
-                appContext.setOpenBook(true)
+                if (window.innerWidth > 850) {
+                  setOpenBookDesktop(true)
+                } else {
+                  appContext.setOpenBookMobile(true)
+                }
               }}
               a11yText="Navigate to the about page"
               className={`font-bold leading-none ${transition.fade} ${
-                appContext.isOpenBook ? 'text-black' : ''
+                appContext.isOpenBookMobile ? 'text-black' : ''
               }`}
             >
               BOOK NOW
@@ -269,12 +297,21 @@ export default function Header({ className = '', header, family, footer }) {
         </Container>
       </motion.header>
       <PopUp
-        ref={popUpRef}
+        ref={popUpRefDekstop}
         family={family}
-        isOpenBook={appContext.isOpenBook}
-        setOpenBook={appContext.setOpenBook}
-        handleClickOutside={handleClickOutside}
+        isOpenBook={isOpenBookDesktop}
+        setOpenBook={setOpenBookDesktop}
+        handleClickOutside={handleClickOutsideDesktop}
       />
+      {useMediaQuery('(max-width: 850px)') && (
+        <PopUp
+          ref={popUpRefMobile}
+          family={family}
+          isOpenBook={appContext.isOpenBookMobile}
+          setOpenBook={appContext.setOpenBookMobile}
+          handleClickOutside={handleClickOutsideMobile}
+        />
+      )}
       {/* MOBILE MENU */}
       {useMediaQuery('(max-width: 850px)') && (
         <div
@@ -385,45 +422,11 @@ export default function Header({ className = '', header, family, footer }) {
 const PopUp = forwardRef(
   ({ family, isOpenBook, setOpenBook, handleClickOutside = () => {} }, ref) => {
     return (
-      <motion.div
-        initial={{
-          display: 'none',
-          opacity: 0,
-        }}
-        animate={
-          isOpenBook
-            ? {
-                display: 'flex',
-                opacity: 1,
-              }
-            : {
-                display: 'none',
-                opacity: 0,
-              }
-        }
-        transition={
-          isOpenBook
-            ? {
-                display: {
-                  duration: 0.01,
-                },
-                opacity: {
-                  delay: 0.01,
-                  duration: 0.5,
-                },
-              }
-            : {
-                opacity: {
-                  duration: 0.5,
-                },
-                display: {
-                  delay: 0.55,
-                  duration: 0.01,
-                },
-              }
-        }
+      <div
         onClick={handleClickOutside}
-        className="fixed max-md:relative top-0 left-0 z-[99] w-full h-full flex justify-center items-center max-md:items-start bg-black bg-opacity-50 overflow-y-scroll hide-scrollbar py-10 max-md:p-0"
+        className={`fixed max-md:relative top-0 left-0 z-[99] w-full h-full flex justify-center items-center max-md:items-start bg-black bg-opacity-50 overflow-y-scroll hide-scrollbar py-10 max-md:p-0 ${
+          isOpenBook ? 'flex opacity-100' : 'hidden opacity-0'
+        }`}
       >
         <div
           ref={ref}
@@ -442,7 +445,7 @@ const PopUp = forwardRef(
                     <FancyLink
                       destination={data.ctaButton.link}
                       blank
-                      className="text-[35px] leading-[38px]"
+                      className="text-[35px] leading-[38px] transition-all duration-500 hover:opacity-50"
                     >
                       {data.title}
                     </FancyLink>
@@ -455,13 +458,13 @@ const PopUp = forwardRef(
           </div>
           <FancyLink
             onClick={() => setOpenBook(false)}
-            className="relative py-[25px] text-center text-[12px] font-[500] leading-[18px] tracking-[0.6px]"
+            className="relative py-[25px] text-center text-[12px] font-[500] leading-[18px] tracking-[0.6px] transition-all duration-500 hover:opacity-50"
           >
             <div className="absolute top-[-1px] left-0 w-full h-[1px] bg-black" />
             CLOSE
           </FancyLink>
         </div>
-      </motion.div>
+      </div>
     )
   },
 )
