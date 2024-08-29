@@ -291,7 +291,7 @@ export default function Header({ className = '', header, family, footer }) {
                 appContext.isOpenBookMobile ? 'text-black' : ''
               }`}
             >
-              BOOK NOW
+              BOOK NXT
             </FancyLink>
           </div>
         </Container>

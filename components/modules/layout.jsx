@@ -22,3 +22,4 @@ export default function Layout({ children }) {
 
   return <div className={`${disableView ? `pointer-events-none` : ''}`}>{children}</div>;
 }
+ 
