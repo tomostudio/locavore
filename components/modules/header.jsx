@@ -425,7 +425,7 @@ const PopUpMobile = forwardRef(
       <div
         onClick={handleClickOutside}
         className={`fixed max-md:relative top-0 left-0 z-[99] w-full h-full flex justify-center items-center max-md:items-start bg-black bg-opacity-50 overflow-y-scroll hide-scrollbar py-10 max-md:p-0 ${
-          isOpenBook ? 'flex opacity-100' : 'none opacity-0'
+          isOpenBook ? 'flex opacity-100' : 'none opacity-0 pointer-events-none'
         }`}
       >
         <div
