@@ -106,7 +106,7 @@ export const Section4ComponentInner = ({ collabList, collaboratorSection }) => {
             id="slider_collab"
             className="absolute top-0 left-0 -z-1 w-full h-full setflex-center opacity-0"
           >
-            <span className="text-[#BEC29D] mb-7 break-all max-w-[450px] whitespace-pre-line text-center font-funkturm text-m-additionalTitle sm:text-[2rem] leading-full drop-shadow-collaborators md:hidden">
+            <span className="text-[#BEC29D] mb-7 break-all max-w-[450px] whitespace-pre-line text-center font-funkturm  sm:text-m-additionalTitle text-[2rem] leading-full drop-shadow-collaborators md:hidden">
               {useMediaQuery('(min-width: 400px)') ? (
                 <>{collaboratorSection.heading}</>
               ) : (
