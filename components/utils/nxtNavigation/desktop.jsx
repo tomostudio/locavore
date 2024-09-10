@@ -39,7 +39,7 @@ const NxtNavigationDesktop = ({transition = false }) => {
             router.pathname === '/nxt/menu' ? 'bg-[#BEC29D]' : 'bg-white'
           } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-500 hover:bg-[#BEC29D]`}
         >
-          MENU
+          TASTING MENU
         </FancyLink>
         <FancyLink
           destination="/nxt/features"

@@ -78,7 +78,7 @@ const NxtNavigationMobile = ({ transition = false }) => {
                   className="w-full h-[50px] flex-shrink-0 bg-white mb-[10px] setflex-center"
                   destination="/nxt/menu"
                 >
-                  MENU
+                  TASTING MENU
                 </FancyLink>
               )}
               {router.pathname !== '/nxt/features' && (
