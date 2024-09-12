@@ -46,7 +46,7 @@ const NxtNavigationMobile = ({ transition = false }) => {
                 router.pathname === '/nxt/option3'
                   ? 'NXT'
                   : router.pathname === '/nxt/menu'
-                  ? 'MENU'
+                  ? 'TASTING MENU'
                   : router.pathname === '/nxt/features'
                   ? 'FEATURES'
                   : router.pathname === '/nxt/collaborators'
