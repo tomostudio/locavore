@@ -85,9 +85,9 @@ const FamilySlug = ({
         </>
       ),
       imageModule: (props) => (
-        <div className={`image md:!px-20`}>
+        <div className={`image md:!px-24 max-w-[700px] mx-auto`}>
           <div
-            className='relative w-full rounded-xl overflow-hidden'
+            className='relative w-full rounded-xl overflow-hidden mx-auto '
             style={{
               backgroundColor: `rgba(208,208,208, 1)`,
             }}
