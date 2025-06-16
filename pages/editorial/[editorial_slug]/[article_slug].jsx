@@ -509,6 +509,9 @@ export default function ArticleSlug({
         )}
       </section>
       {/* Card Next Article */}
+      {
+        console.log()
+      }
       <NextArticle
         bgColor={nextArticle.article.category.color.hex}
         title={`${
@@ -602,7 +605,7 @@ export async function getStaticProps({ params }) {
     `
         *[_type == "issue" && slug.current ==  "${params.editorial_slug}"] {
           ...,
-          "article": *[_type=='article' && references(^._id) ] | order(articleNumber asc) {
+          "article": *[_type=='article' && references(^._id)] | order(articleNumber asc) {
             ...,
             category->,
             "timeRead": round(length(pt::text(description)) / 5 / 180 ),
