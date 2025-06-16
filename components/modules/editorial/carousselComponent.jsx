@@ -5,7 +5,7 @@ import urlFor from '@/helpers/sanity/urlFor'
 import 'swiper/css/effect-fade'
 import 'swiper/css/navigation'
 import Arrow from '@/components/utils/arrow'
-import Swiper from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
 const CarousselComponent = ({ caroussel }) => {
@@ -45,7 +45,7 @@ const CarousselComponent = ({ caroussel }) => {
                     src={urlFor(data).width(1500).url()}
                     alt={data.name}
                     layout="fill"
-                    objectFit="cover"
+                    objectFit={data.objectFit}
                     objectPosition="center"
                     className="gallery-image"
                     placeholder="blur"
