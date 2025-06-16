@@ -51,3 +51,6 @@ The site is now running at `http://localhost:3000`!
 Hendhy Hutomo (hello@hendhyhutomo.com)
 Dimas Aditya Mukhsinin (dimasadityamukhsinin@gmail.com)
 TOMO studio (info@tomostudio.id)
+
+
+Update

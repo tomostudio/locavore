@@ -241,13 +241,6 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
             <div className="text-center w-full editor-styling max-w-sm sm:max-w-none mx-auto mb-10 sm:mb-12">
               <PortableText value={visit.content} components={serializer} />
             </div>
-            <FancyLink
-              target="_blank"
-              destination={visit.ctaButton.link}
-              className={`w-fit p-4 mx-auto text-d-small uppercase mb-12 sm:mb-16 text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl`}
-            >
-              {visit.ctaButton.buttonText}
-            </FancyLink>
             <div className="w-full border-y border-white flex flex-col gap-y-8 py-8 sm:py-12">
               {visit.additionalInfo.map((data, id) => (
                 <div
