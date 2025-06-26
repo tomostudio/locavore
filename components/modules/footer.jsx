@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import MailchimpSubscribe from 'react-mailchimp-subscribe';
-import SubscribeForm from './subscribe';
 
 import Container from './container';
 import FancyLink from '../utils/fancyLink';
@@ -13,8 +11,7 @@ import {
   Mail,
 } from '@/helpers/preset/svg';
 
-const Footer = ({ className = '', footer, mailchimp = '' }) => {
-  const MAILCHIMP_URL = mailchimp;
+const Footer = ({ className = '', footer }) => {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -43,18 +40,21 @@ const Footer = ({ className = '', footer, mailchimp = '' }) => {
               }).format(time)}
             </span>
           </div>
-          {/* Subscription Form  */}
-          <MailchimpSubscribe
-            url={MAILCHIMP_URL}
-            render={({ subscribe, status, message }) => (
-              <SubscribeForm
-                status={status}
-                message={message}
-                subText={footer.subscription}
-                onValidated={(formData) => subscribe(formData)}
-              />
-            )}
-          />
+          {/* Email Subscription Form  */}
+          <div className='w-full mb-8'>
+            <div className='flex flex-col space-y-4'>
+              <span className='text-sm text-gray-300'>
+                {footer.subscription || 'Subscribe to the NXT letter'}
+              </span>
+              <FancyLink
+                destination='https://a9e18c20.sibforms.com/serve/MUIFAD2anCaaj-IDOL5775JYmjMIm6UewVNfEWGIkhtllrO3QFsDQPb1jccKw9w-2RrbJlRF2jzeg3dAnNOVdw1q2UWUGkVqyAmddPglpKDCQhHw79o5WeGChgkTzCohSRXCZrGg53WWg-dIvDivGq2wIXjVGsGBeZMF8AEggd9BrRvZvhuJKcDAIMFTT2zHV6qSgioKF6HCPDtv'
+                blank={true}
+                className={`w-fit py-4 px-6 text-d-small uppercase text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl ${transition.fade}`}
+              >
+                SUBSCRIBE
+              </FancyLink>
+            </div>
+          </div>
         </div>
         <div className='w-full h-full max-md:mt-10 flex flex-col justify-between relative -right-3 max-md:right-0 max-md:-left-3'>
           {footer.show_socmed && (
