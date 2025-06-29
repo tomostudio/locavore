@@ -43,7 +43,7 @@ const Footer = ({ className = '', footer }) => {
           {/* Email Subscription Form  */}
           <div className='w-full mb-8'>
             <div className='flex flex-col space-y-4'>
-              <span className='text-sm text-gray-300'>
+              <span className='text-lg text-gray-300'>
                 {footer.subscription || 'Subscribe to the NXT letter'}
               </span>
               <FancyLink
