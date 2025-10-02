@@ -84,38 +84,46 @@ const FamilySlug = ({
           </FancyLink>
         </>
       ),
-      imageModule: (props) => (
-        <div className={`image md:!px-24 max-w-[700px] mx-auto`}>
-          <div
-            className='relative w-full rounded-xl overflow-hidden mx-auto '
-            style={{
-              backgroundColor: `rgba(208,208,208, 1)`,
-            }}
-          >
-            {props.value.image && props.value.image.asset ? (
-              <ImageModule
-                {...useNextSanityImage(client, props.value.image, {
-                  imageBuilder: singleIURB,
-                })}
-                style={{ width: '100%', height: 'auto' }}
-                alt={props.value.image.name}
-                placeholder='blur'
-                blurDataURL={urlFor(props.value.image)
-                  .blur(2)
-                  .format('webp')
-                  .saturation(-100)
-                  .width(100)
-                  .url()}
-              />
-            ) : (
-              <></>
+      imageModule: (props) => {
+        // CUSTOM MODIFICATION: Check if we're on locavorenxt page and if image is one of the specific ones that should display side by side
+        // TODO: Add hardcoded URLs for specific images that need to display side by side
+        const shouldDisplaySideBySide = router.query.slug === 'locavorenxt' && 
+          (props.value.image?.asset?._ref === 'image-33cf22d22de434d87085524090825871b0c9bab3-9635x1250-png' ||
+           props.value.image?.asset?._ref === 'image-4dcbde0cab708850c1aa5bf21741ecf1121d6dbe-225x225-png');
+        
+        return (
+          <div className={`image ${shouldDisplaySideBySide ? 'w-[120px]' : 'md:!px-24 max-w-[700px] mx-auto'}`}>
+            <div
+              className='relative w-full rounded-xl overflow-hidden mx-auto '
+              style={{
+                backgroundColor: `rgba(208,208,208, 1)`,
+              }}
+            >
+              {props.value.image && props.value.image.asset ? (
+                <ImageModule
+                  {...useNextSanityImage(client, props.value.image, {
+                    imageBuilder: singleIURB,
+                  })}
+                  style={{ width: shouldDisplaySideBySide ? '120px' : '100%', height: 'auto' }} // CUSTOM MODIFICATION: Set fixed width for side-by-side images
+                  alt={props.value.image.name}
+                  placeholder='blur'
+                  blurDataURL={urlFor(props.value.image)
+                    .blur(2)
+                    .format('webp')
+                    .saturation(-100)
+                    .width(100)
+                    .url()}
+                />
+              ) : (
+                <></>
+              )}
+            </div>
+            {props.value.name && (
+              <Caption option={false} caption={props.value.name} color='#000' />
             )}
           </div>
-          {props.value.name && (
-            <Caption option={false} caption={props.value.name} color='#000' />
-          )}
-        </div>
-      ),
+        )
+      },
     },
     marks: {
       add_ann: (props) =>
@@ -294,11 +302,52 @@ const FamilySlug = ({
                 {family.title}
               </span>
               <div className='border-b border-black h-px w-full' />
-              <div className='editor-styling w-full mt-8 max-md:max-w-lg'>
-                <PortableText
-                  value={family.description}
-                  components={serializers}
-                />
+              <div className="editor-styling w-full mt-8 max-md:max-w-lg">
+                {/* CUSTOM MODIFICATION: Special rendering for locavorenxt page to display specific images side by side */}
+                {router.query.slug === 'locavorenxt' ? (
+                  <div className="space-y-4">
+                    {/* Render all content except the specific images that need to be side by side */}
+                    {family.description.map((block, index) => {
+                      // TODO: Replace hardcoded asset refs with hardcoded URLs when needed
+                      if (block._type === 'imageModule' && 
+                          (block.image?.asset?._ref === 'image-33cf22d22de434d87085524090825871b0c9bab3-9635x1250-png' ||
+                           block.image?.asset?._ref === 'image-4dcbde0cab708850c1aa5bf21741ecf1121d6dbe-225x225-png')) {
+                        return null; // Skip these images - they'll be rendered separately below
+                      }
+                      return (
+                        <PortableText
+                          key={index}
+                          value={[block]}
+                          components={serializers}
+                        />
+                      );
+                    })}
+                    {/* CUSTOM MODIFICATION: Flexbox container to display specific images side by side */}
+                    <div className="flex flex-wrap gap-4 justify-center">
+                      {family.description
+                        .filter(block => 
+                          block._type === 'imageModule' && 
+                          // TODO: Replace these hardcoded asset refs with hardcoded URLs
+                          (block.image?.asset?._ref === 'image-33cf22d22de434d87085524090825871b0c9bab3-9635x1250-png' ||
+                           block.image?.asset?._ref === 'image-4dcbde0cab708850c1aa5bf21741ecf1121d6dbe-225x225-png')
+                        )
+                        .map((block, index) => (
+                          <div key={index} className="w-[120px]"> {/* Fixed width container for side-by-side display */}
+                            <PortableText
+                              value={[block]}
+                              components={serializers}
+                            />
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                ) : (
+                  /* Default rendering for all other pages */
+                  <PortableText
+                    value={family.description}
+                    components={serializers}
+                  />
+                )}
               </div>
             </div>
           </div>
