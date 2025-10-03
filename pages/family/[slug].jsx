@@ -45,6 +45,53 @@ const FamilySlug = ({
 
   const dark = false
 
+  // Helper function to check if an image should be displayed side by side
+  const isSideBySideImage = (imageBlock) => {
+    if (!imageBlock?.image?.asset) return false;
+    
+    // Extract image IDs from the URLs and also keep the original asset refs for fallback
+    const sideBySideImageIds = [
+      '33cf22d22de434d87085524090825871b0c9bab3', // from first URL
+      '4dcbde0cab708850c1aa5bf21741ecf1121d6dbe',  // from second URL  
+      'eedce8f1b794e1bf34e491c36037d53d0b2063fe', // from third URL
+      'ce279421dca0f410aefeeef9d2fa776b3392df85'  // from fourth URL
+    ];
+    
+    const assetRef = imageBlock.image.asset._ref;
+    
+    // Check if the asset reference contains any of our target image IDs
+    return sideBySideImageIds.some(imageId => assetRef && assetRef.includes(imageId));
+  };
+
+  // Helper function to get URL for specific images
+  // TO ADD MORE CLICKABLE IMAGES: 
+  // 1. Add the image asset ID to both sideBySideImageIds arrays (this function and imageModule serializer)
+  // 2. Add the corresponding URL mapping in imageUrlMapping below
+  // 3. The image will automatically become clickable and open the URL in a new tab
+  const getImageUrl = (imageBlock) => {
+    if (!imageBlock?.image?.asset) return null;
+    
+    // CLICKABLE IMAGE URL MAPPING
+    // To add more images: Add 'imageAssetId': 'https://your-url-here' entries below
+    // Find image asset IDs by inspecting the Sanity asset reference in browser dev tools
+    const imageUrlMapping = {
+      'eedce8f1b794e1bf34e491c36037d53d0b2063fe': 'https://www.theworlds50best.com/asia/en/awards/sustainable-restaurant-award.html',
+      'ce279421dca0f410aefeeef9d2fa776b3392df85': 'https://www.laliste.com/es/awards2025'
+      // ADD MORE MAPPINGS HERE: 'imageAssetId': 'https://destination-url.com'
+    };
+    
+    const assetRef = imageBlock.image.asset._ref;
+    
+    // Find matching URL for the image
+    for (const [imageId, url] of Object.entries(imageUrlMapping)) {
+      if (assetRef && assetRef.includes(imageId)) {
+        return url;
+      }
+    }
+    
+    return null;
+  };
+
   useEffect(() => {
     appContext.setHeader({ headerStyle: dark ? 'white' : 'black' })
     window.scroll(0, 0)
@@ -86,12 +133,24 @@ const FamilySlug = ({
       ),
       imageModule: (props) => {
         // CUSTOM MODIFICATION: Check if we're on locavorenxt page and if image is one of the specific ones that should display side by side
-        // TODO: Add hardcoded URLs for specific images that need to display side by side
-        const shouldDisplaySideBySide = router.query.slug === 'locavorenxt' && 
-          (props.value.image?.asset?._ref === 'image-33cf22d22de434d87085524090825871b0c9bab3-9635x1250-png' ||
-           props.value.image?.asset?._ref === 'image-4dcbde0cab708850c1aa5bf21741ecf1121d6dbe-225x225-png');
+        // TO ADD MORE SIDE-BY-SIDE IMAGES: Add the image asset ID to this array AND to the getImageUrl function above
+        // IMPORTANT: Keep this array in sync with the imageUrlMapping in getImageUrl function
+        const sideBySideImageIds = [
+          '33cf22d22de434d87085524090825871b0c9bab3', // from first URL (if needed)
+          '4dcbde0cab708850c1aa5bf21741ecf1121d6dbe',  // from second URL (if needed)
+          'eedce8f1b794e1bf34e491c36037d53d0b2063fe', // World's 50 Best Award
+          'ce279421dca0f410aefeeef9d2fa776b3392df85'  // La Liste Award
+          // ADD MORE IMAGE IDs HERE to make them display side-by-side on locavorenxt page
+        ];
         
-        return (
+        const assetRef = props.value.image?.asset?._ref;
+        const shouldDisplaySideBySide = router.query.slug === 'locavorenxt' && 
+          sideBySideImageIds.some(imageId => assetRef && assetRef.includes(imageId));
+        
+        // Get URL for clickable images - this checks if the current image has a URL mapping
+        const imageUrl = getImageUrl(props.value);
+        
+        const imageContent = (
           <div className={`image ${shouldDisplaySideBySide ? 'w-[120px]' : 'md:!px-24 max-w-[700px] mx-auto'}`}>
             <div
               className='relative w-full rounded-xl overflow-hidden mx-auto '
@@ -122,7 +181,23 @@ const FamilySlug = ({
               <Caption option={false} caption={props.value.name} color='#000' />
             )}
           </div>
-        )
+        );
+        
+        // CLICKABLE IMAGE LOGIC: If image has a URL mapping, wrap it in a clickable link that opens in new tab
+        if (imageUrl) {
+          return (
+            <FancyLink
+              destination={imageUrl}
+              blank={true}
+              className="block hover:opacity-80 transition-opacity duration-300 cursor-pointer"
+            >
+              {imageContent}
+            </FancyLink>
+          );
+        }
+        
+        // Return regular image if no URL mapping exists
+        return imageContent;
       },
     },
     marks: {
@@ -308,10 +383,7 @@ const FamilySlug = ({
                   <div className="space-y-4">
                     {/* Render all content except the specific images that need to be side by side */}
                     {family.description.map((block, index) => {
-                      // TODO: Replace hardcoded asset refs with hardcoded URLs when needed
-                      if (block._type === 'imageModule' && 
-                          (block.image?.asset?._ref === 'image-33cf22d22de434d87085524090825871b0c9bab3-9635x1250-png' ||
-                           block.image?.asset?._ref === 'image-4dcbde0cab708850c1aa5bf21741ecf1121d6dbe-225x225-png')) {
+                      if (block._type === 'imageModule' && isSideBySideImage(block)) {
                         return null; // Skip these images - they'll be rendered separately below
                       }
                       return (
@@ -326,10 +398,7 @@ const FamilySlug = ({
                     <div className="flex flex-wrap gap-4 justify-center">
                       {family.description
                         .filter(block => 
-                          block._type === 'imageModule' && 
-                          // TODO: Replace these hardcoded asset refs with hardcoded URLs
-                          (block.image?.asset?._ref === 'image-33cf22d22de434d87085524090825871b0c9bab3-9635x1250-png' ||
-                           block.image?.asset?._ref === 'image-4dcbde0cab708850c1aa5bf21741ecf1121d6dbe-225x225-png')
+                          block._type === 'imageModule' && isSideBySideImage(block)
                         )
                         .map((block, index) => (
                           <div key={index} className="w-[120px]"> {/* Fixed width container for side-by-side display */}
