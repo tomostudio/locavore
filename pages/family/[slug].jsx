@@ -86,6 +86,7 @@ const FamilySlug = ({
       '9beebc5300dcedecc33287527d7b8f319831f134': 'https://www.prestigeonline.com/id/wine-dine/prestige-gourmet-awards-2025/',
       '27680879083f1134b31e01821f1240de3859937e': 'https://www.oadguides.com/restaurant/locavore-nxt',
       'f2703e94ad106c3b08e54e982e39a0238c44f985': 'https://thesra.org/about-us/food-made-good-directory/',
+      'c1b4a40bd80040a6a6507b2d09c36986719364ad': 'https://www.tatlerasia.com/dining/locavore-nxt-id',
     }
     return id && imageUrlMapping[id] ? imageUrlMapping[id] : null
   }
