@@ -65,6 +65,12 @@ const FamilySlug = ({
     '27430b9c4a0dd35429e82e738b1c80196cf00a3e', // tatler 2025
   ])
 
+  const nusantaraSideBySideIds = new Set([
+    '5f5d222a9f8c58798daf60761b175594567d8888', // OAD
+    '7f8aeb89fdbea91a6f73542db808950397a272b9', // 50s best discovery
+    'c0f8daca212f83363fdbec4d5d68383d2cc12646', // tatler 2025
+  ])
+
   const extractId = (refOrUrl) => {
     if (!refOrUrl) return null
     const s = String(refOrUrl)
@@ -80,7 +86,8 @@ const FamilySlug = ({
     const id = idFromRef || idFromUrl
     return (
       (slug === 'locavorenxt' && id && locavorenxtSideBySideIds.has(id)) ||
-      (slug === 'night-rooster' && id && nightRoosterSideBySideIds.has(id))
+      (slug === 'night-rooster' && id && nightRoosterSideBySideIds.has(id)) ||
+      (slug === 'nusantara' && id && nusantaraSideBySideIds.has(id))
     )
   }
 
@@ -101,6 +108,10 @@ const FamilySlug = ({
       '3567ce9db6f96a110a3e89c885aaabc8a52117b9': '',
       'd4250f7ef233482fc3a8324c4ae68689fda335e7': '',
       '27430b9c4a0dd35429e82e738b1c80196cf00a3e': 'https://www.tatlerasia.com/dining/night-rooster-id',
+      // Nusantara URLs
+      '5f5d222a9f8c58798daf60761b175594567d8888': '',
+      '7f8aeb89fdbea91a6f73542db808950397a272b9': '',
+      'c0f8daca212f83363fdbec4d5d68383d2cc12646': '',
     }
     return id && imageUrlMapping[id] ? imageUrlMapping[id] : null
   }
@@ -310,8 +321,8 @@ const FamilySlug = ({
               <span className='text-center py-3 font-bold uppercase'>{family.title}</span>
               <div className='border-b border-black h-px w-full' />
               <div className='editor-styling w-full mt-8 max-md:max-w-lg'>
-                {/* Special rendering for locavorenxt and night-rooster: side-by-side for selected images */}
-                {(slug === 'locavorenxt' || slug === 'night-rooster') ? (
+                {/* Special rendering for locavorenxt, night-rooster, and nusantara: side-by-side for selected images */}
+                {(slug === 'locavorenxt' || slug === 'night-rooster' || slug === 'nusantara') ? (
                   <div className='space-y-4'>
                     {/* Render all content except images selected for side-by-side */}
                     {family.description.map((block, index) => {
