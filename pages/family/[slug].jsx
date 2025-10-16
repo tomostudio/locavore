@@ -59,6 +59,12 @@ const FamilySlug = ({
     'f2703e94ad106c3b08e54e982e39a0238c44f985', // Food made good (https://thesra.org/about-us/food-made-good-directory/)
   ])
 
+  const nightRoosterSideBySideIds = new Set([
+    '3567ce9db6f96a110a3e89c885aaabc8a52117b9', // Tatler image
+    'd4250f7ef233482fc3a8324c4ae68689fda335e7', // 50s best
+    '27430b9c4a0dd35429e82e738b1c80196cf00a3e', // tatler 2025
+  ])
+
   const extractId = (refOrUrl) => {
     if (!refOrUrl) return null
     const s = String(refOrUrl)
@@ -72,7 +78,10 @@ const FamilySlug = ({
     const idFromRef = extractId(imageBlock.image?.asset?._ref)
     const idFromUrl = extractId(imageBlock.image?.url)
     const id = idFromRef || idFromUrl
-    return slug === 'locavorenxt' && id && locavorenxtSideBySideIds.has(id)
+    return (
+      (slug === 'locavorenxt' && id && locavorenxtSideBySideIds.has(id)) ||
+      (slug === 'night-rooster' && id && nightRoosterSideBySideIds.has(id))
+    )
   }
 
   // Click-through URL mapping (optional). Keep in sync with side-by-side IDs if needed.
@@ -80,6 +89,7 @@ const FamilySlug = ({
     if (!imageBlock?.image) return null
     const id = extractId(imageBlock.image?.asset?._ref) || extractId(imageBlock.image?.url)
     const imageUrlMapping = {
+      // Locavorenxt URLs
       '6aff0992c9a0ebc8a56b9844c2d3add813677ccc': 'https://www.theworlds50best.com/asia/en/awards/sustainable-restaurant-award.html',
       '602faac7df0984afe4db4182cbd207aed2ed6c81': 'https://thebestchefawards.com/chefs/eelke-plasmeijer-ray-adriansyah/',
       '104e22761eb1e670d4b7ad91c9d72a52e5ce7dbe': 'https://www.laliste.com/es/awards2025',
@@ -87,6 +97,10 @@ const FamilySlug = ({
       '27680879083f1134b31e01821f1240de3859937e': 'https://www.oadguides.com/restaurant/locavore-nxt',
       'f2703e94ad106c3b08e54e982e39a0238c44f985': 'https://thesra.org/about-us/food-made-good-directory/',
       'c1b4a40bd80040a6a6507b2d09c36986719364ad': 'https://www.tatlerasia.com/dining/locavore-nxt-id',
+      // Night-rooster URLs
+      '3567ce9db6f96a110a3e89c885aaabc8a52117b9': '',
+      'd4250f7ef233482fc3a8324c4ae68689fda335e7': '',
+      '27430b9c4a0dd35429e82e738b1c80196cf00a3e': 'https://www.tatlerasia.com/dining/night-rooster-id',
     }
     return id && imageUrlMapping[id] ? imageUrlMapping[id] : null
   }
@@ -296,8 +310,8 @@ const FamilySlug = ({
               <span className='text-center py-3 font-bold uppercase'>{family.title}</span>
               <div className='border-b border-black h-px w-full' />
               <div className='editor-styling w-full mt-8 max-md:max-w-lg'>
-                {/* Special rendering for locavorenxt: side-by-side for selected images */}
-                {slug === 'locavorenxt' ? (
+                {/* Special rendering for locavorenxt and night-rooster: side-by-side for selected images */}
+                {(slug === 'locavorenxt' || slug === 'night-rooster') ? (
                   <div className='space-y-4'>
                     {/* Render all content except images selected for side-by-side */}
                     {family.description.map((block, index) => {
