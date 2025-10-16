@@ -105,13 +105,13 @@ const FamilySlug = ({
       'f2703e94ad106c3b08e54e982e39a0238c44f985': 'https://thesra.org/about-us/food-made-good-directory/',
       'c1b4a40bd80040a6a6507b2d09c36986719364ad': 'https://www.tatlerasia.com/dining/locavore-nxt-id',
       // Night-rooster URLs
-      '3567ce9db6f96a110a3e89c885aaabc8a52117b9': '',
-      'd4250f7ef233482fc3a8324c4ae68689fda335e7': '',
-      '27430b9c4a0dd35429e82e738b1c80196cf00a3e': 'https://www.tatlerasia.com/dining/night-rooster-id',
+      '3567ce9db6f96a110a3e89c885aaabc8a52117b9': 'https://www.tatlerasia.com/dining/night-rooster?listId=282',
+      'd4250f7ef233482fc3a8324c4ae68689fda335e7': 'https://www.theworlds50best.com/discovery/Establishments/Indonesia/Bali/Night-Rooster-by-Locavore-NXT.html',
+      '27430b9c4a0dd35429e82e738b1c80196cf00a3e': 'https://www.tatlerasia.com/dining/night-rooster?listId=282',
       // Nusantara URLs
-      '5f5d222a9f8c58798daf60761b175594567d8888': '',
-      '7f8aeb89fdbea91a6f73542db808950397a272b9': '',
-      'c0f8daca212f83363fdbec4d5d68383d2cc12646': '',
+      '5f5d222a9f8c58798daf60761b175594567d8888': 'https://www.oadguides.com/restaurant/nusantara-by-locavore',
+      '7f8aeb89fdbea91a6f73542db808950397a272b9': 'https://www.theworlds50best.com/discovery/Establishments/Indonesia/Bali/Nusantara-by-Locavore-NXT.html',
+      'c0f8daca212f83363fdbec4d5d68383d2cc12646': 'https://www.tatlerasia.com/dining/nusantara-by-locavore-id',
     }
     return id && imageUrlMapping[id] ? imageUrlMapping[id] : null
   }
