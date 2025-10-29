@@ -333,15 +333,37 @@ const FamilySlug = ({
                       }
                       return <PortableText key={index} value={[block]} components={serializers} />
                     })}
-                    {/* Side-by-side container */}
-                    <div className='flex flex-wrap gap-4 justify-center'>
-                      {family.description
-                        .filter((block) => block._type === 'imageModule' && isSideBySideImage(block))
-                        .map((block, index) => (
-                          <div key={index} className='w-[100px]'>
-                            <PortableText value={[block]} components={serializers} />
-                          </div>
-                        ))}
+                    {/* Side-by-side container with row layout */}
+                    <div className='flex flex-col gap-6 items-center max-w-4xl mx-auto'>
+                      {(() => {
+                        const sideBySeideImages = family.description.filter((block) => block._type === 'imageModule' && isSideBySideImage(block))
+                        const firstRowCount = Math.min(5, sideBySeideImages.length)
+                        const secondRowCount = sideBySeideImages.length - firstRowCount
+                        
+                        return (
+                          <>
+                            {/* First row */}
+                            <div className='flex justify-center gap-4 flex-wrap'>
+                              {sideBySeideImages.slice(0, firstRowCount).map((block, index) => (
+                                <div key={index} className='w-[100px] md:w-[120px]'>
+                                  <PortableText value={[block]} components={serializers} />
+                                </div>
+                              ))}
+                            </div>
+                            
+                            {/* Second row if there are more images */}
+                            {secondRowCount > 0 && (
+                              <div className='flex justify-center gap-4 flex-wrap'>
+                                {sideBySeideImages.slice(firstRowCount).map((block, index) => (
+                                  <div key={`second-${index}`} className='w-[100px] md:w-[120px]'>
+                                    <PortableText value={[block]} components={serializers} />
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </>
+                        )
+                      })()}
                     </div>
                   </div>
                 ) : (
