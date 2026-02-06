@@ -49,31 +49,47 @@ const FamilySlug = ({
   const slug = router.query?.slug || family?.slug?.current
 
   // --- Side-by-side image helpers (robust to asset _ref and plain URLs) ---
-  const locavorenxtSideBySideIds = new Set([
-    '6aff0992c9a0ebc8a56b9844c2d3add813677ccc', // 50s Best (https://www.theworlds50best.com/asia/en/awards/sustainable-restaurant-award.html)
-    '602faac7df0984afe4db4182cbd207aed2ed6c81', // The best chef (https://thebestchefawards.com/chefs/eelke-plasmeijer-ray-adriansyah/)
-    '104e22761eb1e670d4b7ad91c9d72a52e5ce7dbe', // La Liste (https://www.laliste.com/es/awards2025)
-    '9beebc5300dcedecc33287527d7b8f319831f134', // Prestige gourmet awards (https://www.prestigeonline.com/id/wine-dine/prestige-gourmet-awards-2025/)
-    '27680879083f1134b31e01821f1240de3859937e', // OAD (https://www.oadguides.com/restaurant/locavore-nxt)
-    'c1b4a40bd80040a6a6507b2d09c36986719364ad', // Tatler
-    'f2703e94ad106c3b08e54e982e39a0238c44f985', // Food made good (https://thesra.org/about-us/food-made-good-directory/)
-    'ac7b19c73879f83cd6e86d78aa8c107dea47f58d', // Tatler Asia (https://www.tatlerasia.com/dining/locavore-nxt?listId=281)
-    'edc5e221323934d0b2b79008c5280b54dea050f8', // Taste Makers Award
-  ])
+  // Awards organized by year for each restaurant
+  const locavorenxtAwards = [
+    { id: '6aff0992c9a0ebc8a56b9844c2d3add813677ccc', year: 2025 }, // 50s Best
+    { id: '602faac7df0984afe4db4182cbd207aed2ed6c81', year: 2025 }, // The best chef
+    { id: '104e22761eb1e670d4b7ad91c9d72a52e5ce7dbe', year: 2025 }, // La Liste
+    { id: '9beebc5300dcedecc33287527d7b8f319831f134', year: 2025 }, // Prestige gourmet awards
+    { id: '27680879083f1134b31e01821f1240de3859937e', year: 2025 }, // OAD
+    { id: 'c1b4a40bd80040a6a6507b2d09c36986719364ad', year: 2025 }, // Tatler
+    { id: 'f2703e94ad106c3b08e54e982e39a0238c44f985', year: 2025 }, // Food made good
+    { id: 'ac7b19c73879f83cd6e86d78aa8c107dea47f58d', year: 2025 }, // Tatler Asia
+    { id: 'edc5e221323934d0b2b79008c5280b54dea050f8', year: 2025 }, // Taste Makers Award
+    { id: '4dd4be020a72f65fd3ec9e5a359f4086532c94ff', year: 2026 }, // Food Made Good 2026
+  ]
 
-  const nightRoosterSideBySideIds = new Set([
-    '3567ce9db6f96a110a3e89c885aaabc8a52117b9', // Tatler image
-    'd4250f7ef233482fc3a8324c4ae68689fda335e7', // 50s best
-    '27430b9c4a0dd35429e82e738b1c80196cf00a3e', // tatler 2025
-    '9944e7595d79259aeefe13e8a672d37082eb54bb', // Taste Makers Award
-  ])
+  const nightRoosterAwards = [
+    { id: '3567ce9db6f96a110a3e89c885aaabc8a52117b9', year: 2025 }, // Tatler image
+    { id: 'd4250f7ef233482fc3a8324c4ae68689fda335e7', year: 2025 }, // 50s best
+    { id: '27430b9c4a0dd35429e82e738b1c80196cf00a3e', year: 2025 }, // tatler 2025
+    { id: '9944e7595d79259aeefe13e8a672d37082eb54bb', year: 2025 }, // Taste Makers Award
+    { id: 'b843596706cc059cc07de1202ba7965d2ace3b11', year: 2026 }, // Top 500 Bars
+  ]
 
-  const nusantaraSideBySideIds = new Set([
-    '5f5d222a9f8c58798daf60761b175594567d8888', // OAD
-    '7f8aeb89fdbea91a6f73542db808950397a272b9', // 50s best discovery
-    'c0f8daca212f83363fdbec4d5d68383d2cc12646', // tatler 2025
-    '72ad8a2cc47aadf5da5d688640e1da7e167132eb', // Taste Makers Award
-  ])
+  const nusantaraAwards = [
+    { id: '5f5d222a9f8c58798daf60761b175594567d8888', year: 2025 }, // OAD
+    { id: '7f8aeb89fdbea91a6f73542db808950397a272b9', year: 2025 }, // 50s best discovery
+    { id: 'c0f8daca212f83363fdbec4d5d68383d2cc12646', year: 2025 }, // tatler 2025
+    { id: '72ad8a2cc47aadf5da5d688640e1da7e167132eb', year: 2025 }, // Taste Makers Award
+  ]
+
+  // Helper to get awards array for current slug
+  const getAwardsForSlug = () => {
+    if (slug === 'locavorenxt') return locavorenxtAwards
+    if (slug === 'night-rooster') return nightRoosterAwards
+    if (slug === 'nusantara') return nusantaraAwards
+    return []
+  }
+
+  // Create Sets for quick lookup (used by isSideBySideImage)
+  const locavorenxtSideBySideIds = new Set(locavorenxtAwards.map(a => a.id))
+  const nightRoosterSideBySideIds = new Set(nightRoosterAwards.map(a => a.id))
+  const nusantaraSideBySideIds = new Set(nusantaraAwards.map(a => a.id))
 
   const extractId = (refOrUrl) => {
     if (!refOrUrl) return null
@@ -110,11 +126,13 @@ const FamilySlug = ({
       'c1b4a40bd80040a6a6507b2d09c36986719364ad': 'https://www.tatlerasia.com/dining/locavore-nxt-id',
       'ac7b19c73879f83cd6e86d78aa8c107dea47f58d': 'https://www.tatlerasia.com/dining/locavore-nxt?listId=281',
       'edc5e221323934d0b2b79008c5280b54dea050f8': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-restaurants-in-indonesia/',
+      '4dd4be020a72f65fd3ec9e5a359f4086532c94ff': 'https://thesra.org/about-us/food-made-good-directory/',
       // Night-rooster URLs
       '3567ce9db6f96a110a3e89c885aaabc8a52117b9': 'https://www.tatlerasia.com/dining/night-rooster?listId=282',
       'd4250f7ef233482fc3a8324c4ae68689fda335e7': 'https://www.theworlds50best.com/discovery/Establishments/Indonesia/Bali/Night-Rooster-by-Locavore-NXT.html',
       '27430b9c4a0dd35429e82e738b1c80196cf00a3e': 'https://www.tatlerasia.com/dining/night-rooster?listId=282',
       '9944e7595d79259aeefe13e8a672d37082eb54bb': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-bars-in-indonesia/',
+      'b843596706cc059cc07de1202ba7965d2ace3b11': 'https://www.top500bars.com/copie-de-451-500-2024',
       // Nusantara URLs
       '5f5d222a9f8c58798daf60761b175594567d8888': 'https://www.oadguides.com/restaurant/nusantara-by-locavore',
       '7f8aeb89fdbea91a6f73542db808950397a272b9': 'https://www.theworlds50best.com/discovery/Establishments/Indonesia/Bali/Nusantara-by-Locavore-NXT.html',
@@ -339,36 +357,62 @@ const FamilySlug = ({
                       }
                       return <PortableText key={index} value={[block]} components={serializers} />
                     })}
-                    {/* Side-by-side container with row layout */}
-                    <div className='flex flex-col gap-6 items-center max-w-4xl mx-auto'>
+                    {/* Side-by-side container with row layout, grouped by year */}
+                    <div className='flex flex-col gap-8 items-center max-w-4xl mx-auto'>
                       {(() => {
+                        const awards = getAwardsForSlug()
                         const sideBySeideImages = family.description.filter((block) => block._type === 'imageModule' && isSideBySideImage(block))
-                        const firstRowCount = Math.min(5, sideBySeideImages.length)
-                        const secondRowCount = sideBySeideImages.length - firstRowCount
-                        
-                        return (
-                          <>
-                            {/* First row */}
-                            <div className='flex justify-center gap-4 flex-wrap'>
-                              {sideBySeideImages.slice(0, firstRowCount).map((block, index) => (
-                                <div key={index} className='w-[100px] md:w-[120px]'>
-                                  <PortableText value={[block]} components={serializers} />
-                                </div>
-                              ))}
-                            </div>
-                            
-                            {/* Second row if there are more images */}
-                            {secondRowCount > 0 && (
-                              <div className='flex justify-center gap-4 flex-wrap'>
-                                {sideBySeideImages.slice(firstRowCount).map((block, index) => (
-                                  <div key={`second-${index}`} className='w-[100px] md:w-[120px]'>
+
+                        // Get image year based on its ID
+                        const getImageYear = (block) => {
+                          const id = extractId(block.image?.asset?._ref) || extractId(block.image?.url)
+                          const award = awards.find(a => a.id === id)
+                          return award?.year || 2025
+                        }
+
+                        // Group images by year
+                        const imagesByYear = sideBySeideImages.reduce((acc, block) => {
+                          const year = getImageYear(block)
+                          if (!acc[year]) acc[year] = []
+                          acc[year].push(block)
+                          return acc
+                        }, {})
+
+                        // Sort years descending (newest first)
+                        const years = Object.keys(imagesByYear).sort((a, b) => b - a)
+
+                        return years.map((year) => {
+                          const images = imagesByYear[year]
+                          const firstRowCount = Math.min(5, images.length)
+                          const secondRowCount = images.length - firstRowCount
+
+                          return (
+                            <div key={year} className='w-full flex flex-col gap-4 items-center'>
+                              {/* Year label */}
+                              <span className='text-sm font-bold tracking-widest uppercase'>{year}</span>
+
+                              {/* First row */}
+                              <div className='flex justify-center items-center gap-4 flex-wrap w-full'>
+                                {images.slice(0, firstRowCount).map((block, index) => (
+                                  <div key={index} className='w-[100px] md:w-[120px] flex justify-center'>
                                     <PortableText value={[block]} components={serializers} />
                                   </div>
                                 ))}
                               </div>
-                            )}
-                          </>
-                        )
+
+                              {/* Second row if there are more images */}
+                              {secondRowCount > 0 && (
+                                <div className='flex justify-center items-center gap-4 flex-wrap w-full'>
+                                  {images.slice(firstRowCount).map((block, index) => (
+                                    <div key={`second-${index}`} className='w-[100px] md:w-[120px] flex justify-center'>
+                                      <PortableText value={[block]} components={serializers} />
+                                    </div>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          )
+                        })
                       })()}
                     </div>
                   </div>
