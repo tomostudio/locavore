@@ -120,7 +120,7 @@ const FamilySlug = ({
       // Locavorenxt URLs
       '6aff0992c9a0ebc8a56b9844c2d3add813677ccc': 'https://www.theworlds50best.com/asia/en/awards/sustainable-restaurant-award.html',
       '602faac7df0984afe4db4182cbd207aed2ed6c81': 'https://thebestchefawards.com/chefs/eelke-plasmeijer-ray-adriansyah/',
-      '104e22761eb1e670d4b7ad91c9d72a52e5ce7dbe': 'https://www.laliste.com/es/awards2025',
+      '104e22761eb1e670d4b7ad91c9d72a52e5ce7dbe': 'https://www.laliste.com/awards/ethical-sustainability-award-awards-2025',
       '9beebc5300dcedecc33287527d7b8f319831f134': 'https://www.prestigeonline.com/id/wine-dine/prestige-gourmet-awards-2025/',
       '27680879083f1134b31e01821f1240de3859937e': 'https://www.oadguides.com/restaurant/locavore-nxt',
       'f2703e94ad106c3b08e54e982e39a0238c44f985': 'https://thesra.org/about-us/food-made-good-directory/',
