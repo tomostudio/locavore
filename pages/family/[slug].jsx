@@ -62,6 +62,8 @@ const FamilySlug = ({
     { id: 'edc5e221323934d0b2b79008c5280b54dea050f8', year: 2025 }, // Taste Makers Award
     { id: '4dd4be020a72f65fd3ec9e5a359f4086532c94ff', year: 2026 }, // Food Made Good 2026
     { id: 'd114ce1bf91edb448872938fa089de604e22cd3b', year: 2026 }, // Asia's 50 Best 2026
+    { id: '1c1758fa4e3d7098f31eaaa7a16790ab9a7f84a4', year: 2026 }, // Prestige Gourmet Awards 2026
+    { id: 'e6890e9bb2eee9816d95c24956d58a249e96bc10', year: 2026 }, // Tatler 2026
   ]
 
   const nightRoosterAwards = [
@@ -129,6 +131,8 @@ const FamilySlug = ({
       'edc5e221323934d0b2b79008c5280b54dea050f8': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-restaurants-in-indonesia/',
       '4dd4be020a72f65fd3ec9e5a359f4086532c94ff': 'https://thesra.org/about-us/food-made-good-directory/',
       'd114ce1bf91edb448872938fa089de604e22cd3b': 'https://www.theworlds50best.com/asia/en/list/1-50',
+      '1c1758fa4e3d7098f31eaaa7a16790ab9a7f84a4': 'https://www.prestigeonline.com/id/wine-dine/prestige-gourmet-awards-2026/',
+      'e6890e9bb2eee9816d95c24956d58a249e96bc10': 'https://www.tatlerasia.com/dining/food/20-restoran-terbaik-tatler-best-indonesia-2026-id',
       // Night-rooster URLs
       '3567ce9db6f96a110a3e89c885aaabc8a52117b9': 'https://www.tatlerasia.com/dining/night-rooster?listId=282',
       'd4250f7ef233482fc3a8324c4ae68689fda335e7': 'https://www.theworlds50best.com/discovery/Establishments/Indonesia/Bali/Night-Rooster-by-Locavore-NXT.html',
