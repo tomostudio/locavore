@@ -90,9 +90,11 @@ export default function Header({ className = '', header, family, footer }) {
     className = '',
     children,
     bnw = true,
+    blank = false,
   }) => (
     <FancyLink
       destination={destination}
+      blank={blank}
       className={`text-center w-full py-8 border-b flex justify-center text-4xl  ${
         bnw || menu
           ? 'border-black text-black hover:bg-black hover:text-white transition-colors duration-500'
@@ -253,6 +255,14 @@ export default function Header({ className = '', header, family, footer }) {
                 >
                   Editorial
                 </FancyLink>
+                <FancyLink
+                  destination="https://www.intothewild.id/"
+                  blank={true}
+                  a11yText="Navigate to the Into the Wild website"
+                  className={`leading-none ${transition.fade}`}
+                >
+                  Into the Wild
+                </FancyLink>
                 {/* Custom Header Insert */}
                 {header &&
                   header[0].headerLink &&
@@ -329,6 +339,13 @@ export default function Header({ className = '', header, family, footer }) {
           </MobileLink>
           <MobileLink bnw={bnw} destination="/editorial">
             Editorial
+          </MobileLink>
+          <MobileLink
+            bnw={bnw}
+            blank={true}
+            destination="https://www.intothewild.id/"
+          >
+            Into the Wild
           </MobileLink>
           {header &&
             header[0].headerLink &&
