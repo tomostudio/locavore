@@ -54,7 +54,7 @@ const FamilyMenu = ({
             onFamilyHover && familybutton_enter(familydata.slug.current)
           }
           onMouseLeave={() => onFamilyHover && familybutton_leave(0)}
-          className='group relative text-center uppercase overflow-hidden text-grayFont text-sm py-1 px-4 border border-black rounded-full'
+          className='group relative text-center uppercase overflow-hidden text-grayFont text-sm py-1 px-4 rounded-full'
           style={{
             backgroundColor: `${bgColor}`,
           }}
@@ -68,6 +68,7 @@ const FamilyMenu = ({
             }`}
             style={{ backgroundColor: familydata.bgColor.hex }}
           />
+          <div className='pointer-events-none absolute inset-0 z-3 rounded-full border border-black' />
         </FancyLink>
       ))}
 
