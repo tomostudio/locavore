@@ -35,23 +35,9 @@
     border-right: 1px solid white;
     border-bottom: 1px solid white;
 
-    &:nth-last-child(2) {
-      border-bottom: 0px;
-    }
-    &:nth-last-child(1) {
-      border-bottom: 0px;
-    }
     @media (min-width: 1536px) {
       &:nth-child(4n) {
         border-right: 0px;
-      }
-
-      &:nth-last-child(4) {
-        border-bottom: 0px;
-      }
-
-      &:nth-last-child(3) {
-        border-bottom: 0px;
       }
     }
 
@@ -59,27 +45,25 @@
       &:nth-child(3n) {
         border-right: 0px;
       }
-      &:nth-last-child(3) {
-        border-bottom: 0px;
-      }
     }
 
     @media (max-width: 849px) {
       &:nth-child(2n) {
         border-right: 0px;
       }
-      &:nth-last-child(2) {
-        border-bottom: 0px;
-      }
     }
 
     @media (max-width: 599px) {
       border-right: 0px;
       border-bottom: 0px;
-      &:last-nth-child(3) {
-        border-bottom: 0px;
-      }
     }
+  }
+
+  // Cards in the actual last row (computed in JS to account for partial rows).
+  // Their bottom border is dropped so it doesn't double up with the grid
+  // container's border-y.
+  & > .is-last-row {
+    border-bottom: 0px;
   }
 }
 
