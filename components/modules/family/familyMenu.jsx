@@ -61,7 +61,7 @@ const FamilyMenu = ({
         >
           <div className='relative z-2'>{familydata.title}</div>
           <div
-            className={`absolute top-0 left-0 w-full h-full z-0 ${
+            className={`absolute -inset-px w-[calc(100%+2px)] h-[calc(100%+2px)] z-0 ${
               touch
                 ? 'opacity-100'
                 : ' opacity-0 betterhover:group-hover:opacity-100'
