@@ -238,10 +238,7 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
               </FancyLink>
             </div> */}
 
-            <div className="text-center w-full editor-styling max-w-sm sm:max-w-none mx-auto mb-10 sm:mb-12">
-              <PortableText value={visit.content} components={serializer} />
-            </div>
-            <div className="w-full border-y border-white flex flex-col gap-y-8 py-8 sm:py-12">
+            <div className="w-full border-b border-white flex flex-col gap-y-8 py-8 sm:py-12">
               {visit.additionalInfo.map((data, id) => (
                 <div
                   key={id}
