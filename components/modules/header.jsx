@@ -366,7 +366,7 @@ export default function Header({ className = '', header, family, footer }) {
             {footerProcessed.footerLink &&
               footerProcessed.footerLink.instagram && (
                 <FancyLink
-                  destination={footerProcessed.footerLink.instagram.link}
+                  destination={footerProcessed.footerLink.instagram}
                   blank={true}
                   className={`relative w-10 h-10 setflex-center ${transition.fade}`}
                 >
@@ -378,7 +378,7 @@ export default function Header({ className = '', header, family, footer }) {
               )}
             {footerProcessed.footerLink && footerProcessed.footerLink.facebook && (
               <FancyLink
-                destination={footerProcessed.footerLink.facebook.link}
+                destination={footerProcessed.footerLink.facebook}
                 blank={true}
                 className={`relative w-10 h-10 setflex-center ${transition.fade}`}
               >
@@ -390,7 +390,7 @@ export default function Header({ className = '', header, family, footer }) {
             )}
             {footerProcessed.footerLink && footerProcessed.footerLink.youtube && (
               <FancyLink
-                destination={footerProcessed.footerLink.youtube.link}
+                destination={footerProcessed.footerLink.youtube}
                 blank={true}
                 className={`relative w-10 h-10 setflex-center ${transition.fade}`}
               >
@@ -402,7 +402,7 @@ export default function Header({ className = '', header, family, footer }) {
             )}
             {footerProcessed.footerLink && footerProcessed.footerLink.linkedin && (
               <FancyLink
-                destination={footerProcessed.footerLink.linkedin.link}
+                destination={footerProcessed.footerLink.linkedin}
                 blank={true}
                 className={`relative w-10 h-10 setflex-center ${transition.fade}`}
               >
