@@ -3,113 +3,117 @@ import { transition } from '@/helpers/preset/tailwind';
 
 import Arrow from '../utils/arrow';
 
-const SubscribeForm = ({
-  status,
-  message,
-  onValidated,
-  className = '',
-  subText,
-  ...props
-}) => {
-  const [disable, setDisable] = useState(false);
-  const [redError, setRedError] = useState(false);
-  const [email, setEmail] = useState(null);
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const RESET_DELAY = 4000;
+
+// Subscribes an email to the NXT letter via /api/subscribe (Brevo, single opt-in).
+const SubscribeForm = ({ className = '', subText, ...props }) => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | sending | success | already | error
   const [placeholder, setPlaceholder] = useState('EMAIL');
   const inputEl = useRef(null);
+  const resetTimer = useRef(null);
 
-  // PROCESS
-  const handleFormSubmit = () => {
-    inputEl.current.blur();
-    setDisable(true);
-    return email && email.indexOf('@') > -1 && onValidated({ EMAIL: email });
-  };
+  const isError = status === 'error';
+  const isBusy = status === 'sending';
+  const isDone = status === 'success' || status === 'already';
 
-  // FOR KEYBOARD ENTER
-  const handleInputKeyEvent = (event) => {
-    // Number 13 is the "Enter" key on the keyboard
-    if (event.keyCode === 13) {
-      // Cancel the default action, if needed
-      event.preventDefault();
-      // Trigger the button element with a click
-      handleFormSubmit();
-    }
-  };
-
-  let pTimeout = null;
-  const time = 4000;
-
-  const resetPlaceholderTimer = () => {
-    clearTimeout(pTimeout);
-    pTimeout = setTimeout(() => {
-      setDisable(false);
-      setRedError(false);
-      setPlaceholder('EMAIL');
-    }, time);
-  };
   useEffect(() => {
-    if (status === 'success') {
-      // Set Success Message
-      setRedError(false);
-      inputEl.current.value = '';
-      setPlaceholder('Got it!');
-      resetPlaceholderTimer();
-    } else if (status === 'error') {
-      //Set Error Message
-      inputEl.current.value = '';
+    return () => clearTimeout(resetTimer.current);
+  }, []);
 
-      //Customize the error messages accordingly
-      if (message.includes('cannot be added')) {
-        setRedError(true);
-        setPlaceholder("That's an invalid email.");
-      } else if (message.includes('is already subscribed')) {
-        setPlaceholder('You are already on the list!');
-      } else {
-        setRedError(true);
-        setPlaceholder(`Error ${message}`);
-      }
-      resetPlaceholderTimer();
-    } else if (status === 'sending') {
-      // Reset some status.
-      clearTimeout(pTimeout);
-    } else {
-      // Reset some status.
-      setRedError(false);
-      setDisable(false);
+  const scheduleReset = () => {
+    clearTimeout(resetTimer.current);
+    resetTimer.current = setTimeout(() => {
+      setStatus('idle');
+      setPlaceholder('EMAIL');
+    }, RESET_DELAY);
+  };
+
+  const handleSubmit = async () => {
+    if (isBusy || isDone) return;
+
+    if (!EMAIL_REGEX.test(email.trim())) {
+      setStatus('error');
+      setPlaceholder("That's an invalid email.");
+      if (inputEl.current) inputEl.current.value = '';
+      setEmail('');
+      scheduleReset();
+      return;
     }
-  }, [status]);
+
+    inputEl.current?.blur();
+    setStatus('sending');
+    setPlaceholder('Sending…');
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (inputEl.current) inputEl.current.value = '';
+      setEmail('');
+
+      if (data.status === 'success') {
+        setStatus('success');
+        setPlaceholder('Got it!');
+      } else if (data.status === 'already') {
+        setStatus('already');
+        setPlaceholder('You are already on the list!');
+      } else if (data.message === 'invalid') {
+        setStatus('error');
+        setPlaceholder("That's an invalid email.");
+      } else {
+        setStatus('error');
+        setPlaceholder('Something went wrong, try again.');
+      }
+    } catch (err) {
+      if (inputEl.current) inputEl.current.value = '';
+      setEmail('');
+      setStatus('error');
+      setPlaceholder('Something went wrong, try again.');
+    }
+
+    scheduleReset();
+  };
+
+  const handleKeyEvent = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleSubmit();
+    }
+  };
 
   return (
     <div
       className={`flex w-full max-w-sm max-md:max-w-lg flex-col justify-between ${className}`}
       {...props}
     >
-      <label className='text-xl font-normal'>
-        {subText}
-      </label>
+      {subText && <label className='text-xl font-normal'>{subText}</label>}
       <div
         className={`relative mt-5 w-full border-white pb-2.5 border-b flex h-10 ${
-          disable ? 'pointer-events-none' : ''
+          isBusy || isDone ? 'pointer-events-none' : ''
         }`}
       >
         <input
-          className={`w-full text-sm tracking-wide placeholder-white outline-none bg-transparent !select-all ${
-            redError ? ' placeholder-red-500' : ''
+          className={`w-full text-sm tracking-wide outline-none bg-transparent !select-all ${
+            isError ? 'placeholder-red-500' : 'placeholder-white'
           }`}
           type='email'
           placeholder={placeholder}
           onChange={(event) => setEmail(event?.target?.value ?? '')}
-          onKeyUp={(event) => handleInputKeyEvent(event)}
+          onKeyUp={handleKeyEvent}
           ref={inputEl}
         />
         <button
-          onClick={handleFormSubmit}
+          onClick={handleSubmit}
+          aria-label='Subscribe'
           className={`h-full w-10 ${transition.fade}`}
         >
-          <Arrow
-            position='right'
-            className='absolute right-0 top-2'
-            fill='white'
-          />
+          <Arrow position='right' className='absolute right-0 top-2' fill='white' />
         </button>
       </div>
     </div>

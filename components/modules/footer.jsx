@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Container from './container';
 import FancyLink from '../utils/fancyLink';
+import SubscribeModal from './subscribeModal';
 import { transition } from '@/helpers/preset/tailwind';
 import {
   Youtube,
@@ -13,6 +14,7 @@ import {
 
 const Footer = ({ className = '', footer }) => {
   const [time, setTime] = useState(new Date());
+  const [subscribeOpen, setSubscribeOpen] = useState(false);
 
   useEffect(() => {
     const timeInterval = setInterval(() => {
@@ -47,8 +49,8 @@ const Footer = ({ className = '', footer }) => {
                 {footer.subscription || 'Subscribe to the NXT letter'}
               </span>
               <FancyLink
-                destination='https://a9e18c20.sibforms.com/serve/MUIFAD2anCaaj-IDOL5775JYmjMIm6UewVNfEWGIkhtllrO3QFsDQPb1jccKw9w-2RrbJlRF2jzeg3dAnNOVdw1q2UWUGkVqyAmddPglpKDCQhHw79o5WeGChgkTzCohSRXCZrGg53WWg-dIvDivGq2wIXjVGsGBeZMF8AEggd9BrRvZvhuJKcDAIMFTT2zHV6qSgioKF6HCPDtv'
-                blank={true}
+                onClick={() => setSubscribeOpen(true)}
+                a11yText='Subscribe to the NXT letter'
                 className={`w-fit py-4 px-6 text-d-small uppercase text-white font-default tracking-widest transition-all ease-linear hover:bg-white border hover:text-black border-white rounded-xl ${transition.fade}`}
               >
                 SUBSCRIBE
@@ -110,6 +112,11 @@ const Footer = ({ className = '', footer }) => {
           </div>
         </div>
       </Container>
+      <SubscribeModal
+        open={subscribeOpen}
+        onClose={() => setSubscribeOpen(false)}
+        title={footer.subscription || "Sign up with email for what's NXT"}
+      />
     </footer>
   );
 };
