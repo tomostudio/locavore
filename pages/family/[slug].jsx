@@ -64,6 +64,7 @@ const FamilySlug = ({
     { id: 'd114ce1bf91edb448872938fa089de604e22cd3b', year: 2026 }, // Asia's 50 Best 2026
     { id: '1c1758fa4e3d7098f31eaaa7a16790ab9a7f84a4', year: 2026 }, // Prestige Gourmet Awards 2026
     { id: 'e6890e9bb2eee9816d95c24956d58a249e96bc10', year: 2026 }, // Tatler 2026
+    { id: '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07', year: 2026 }, // OAD 2026
   ]
 
   const nightRoosterAwards = [
@@ -72,6 +73,7 @@ const FamilySlug = ({
     { id: '27430b9c4a0dd35429e82e738b1c80196cf00a3e', year: 2025 }, // tatler 2025
     { id: '9944e7595d79259aeefe13e8a672d37082eb54bb', year: 2025 }, // Taste Makers Award
     { id: 'b843596706cc059cc07de1202ba7965d2ace3b11', year: 2026 }, // Top 500 Bars
+    { id: '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380', year: 2026 }, // Tatler Best 2026
   ]
 
   const nusantaraAwards = [
@@ -79,6 +81,8 @@ const FamilySlug = ({
     { id: '7f8aeb89fdbea91a6f73542db808950397a272b9', year: 2025 }, // 50s best discovery
     { id: 'c0f8daca212f83363fdbec4d5d68383d2cc12646', year: 2025 }, // tatler 2025
     { id: '72ad8a2cc47aadf5da5d688640e1da7e167132eb', year: 2025 }, // Taste Makers Award
+    { id: '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07', year: 2026 }, // OAD 2026
+    { id: '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380', year: 2026 }, // Tatler Best 2026
   ]
 
   // Helper to get awards array for current slug
@@ -114,38 +118,48 @@ const FamilySlug = ({
     )
   }
 
-  // Click-through URL mapping (optional). Keep in sync with side-by-side IDs if needed.
+  // Click-through URL mapping (optional). Keyed by slug so a shared award image
+  // (e.g. the Tatler Best badge used on both Nusantara and Night Rooster) can
+  // resolve to a different destination on each page.
   const getImageUrl = (imageBlock) => {
     if (!imageBlock?.image) return null
     const id = extractId(imageBlock.image?.asset?._ref) || extractId(imageBlock.image?.url)
     const imageUrlMapping = {
-      // Locavorenxt URLs
-      '6aff0992c9a0ebc8a56b9844c2d3add813677ccc': 'https://www.theworlds50best.com/asia/en/awards/sustainable-restaurant-award.html',
-      '602faac7df0984afe4db4182cbd207aed2ed6c81': 'https://thebestchefawards.com/chefs/eelke-plasmeijer-ray-adriansyah/',
-      '104e22761eb1e670d4b7ad91c9d72a52e5ce7dbe': 'https://www.laliste.com/awards/ethical-sustainability-award-awards-2025',
-      '9beebc5300dcedecc33287527d7b8f319831f134': 'https://www.prestigeonline.com/id/wine-dine/prestige-gourmet-awards-2025/',
-      '27680879083f1134b31e01821f1240de3859937e': 'https://www.oadguides.com/restaurant/locavore-nxt',
-      'f2703e94ad106c3b08e54e982e39a0238c44f985': 'https://thesra.org/about-us/food-made-good-directory/',
-      'c1b4a40bd80040a6a6507b2d09c36986719364ad': 'https://www.tatlerasia.com/dining/locavore-nxt-id',
-      'ac7b19c73879f83cd6e86d78aa8c107dea47f58d': 'https://www.tatlerasia.com/dining/locavore-nxt?listId=281',
-      'edc5e221323934d0b2b79008c5280b54dea050f8': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-restaurants-in-indonesia/',
-      '4dd4be020a72f65fd3ec9e5a359f4086532c94ff': 'https://thesra.org/about-us/food-made-good-directory/',
-      'd114ce1bf91edb448872938fa089de604e22cd3b': 'https://www.theworlds50best.com/asia/en/list/1-50',
-      '1c1758fa4e3d7098f31eaaa7a16790ab9a7f84a4': 'https://www.prestigeonline.com/id/wine-dine/prestige-gourmet-awards-2026/',
-      'e6890e9bb2eee9816d95c24956d58a249e96bc10': 'https://www.tatlerasia.com/dining/food/20-restoran-terbaik-tatler-best-indonesia-2026-id',
-      // Night-rooster URLs
-      '3567ce9db6f96a110a3e89c885aaabc8a52117b9': 'https://www.tatlerasia.com/dining/night-rooster?listId=282',
-      'd4250f7ef233482fc3a8324c4ae68689fda335e7': 'https://www.theworlds50best.com/discovery/Establishments/Indonesia/Bali/Night-Rooster-by-Locavore-NXT.html',
-      '27430b9c4a0dd35429e82e738b1c80196cf00a3e': 'https://www.tatlerasia.com/dining/night-rooster?listId=282',
-      '9944e7595d79259aeefe13e8a672d37082eb54bb': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-bars-in-indonesia/',
-      'b843596706cc059cc07de1202ba7965d2ace3b11': 'https://www.top500bars.com/copie-de-451-500-2024',
-      // Nusantara URLs
-      '5f5d222a9f8c58798daf60761b175594567d8888': 'https://www.oadguides.com/restaurant/nusantara-by-locavore',
-      '7f8aeb89fdbea91a6f73542db808950397a272b9': 'https://www.theworlds50best.com/discovery/Establishments/Indonesia/Bali/Nusantara-by-Locavore-NXT.html',
-      'c0f8daca212f83363fdbec4d5d68383d2cc12646': 'https://www.tatlerasia.com/dining/nusantara-by-locavore-id',
-      '72ad8a2cc47aadf5da5d688640e1da7e167132eb': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-restaurants-in-indonesia/',
+      locavorenxt: {
+        '6aff0992c9a0ebc8a56b9844c2d3add813677ccc': 'https://www.theworlds50best.com/asia/en/awards/sustainable-restaurant-award.html',
+        '602faac7df0984afe4db4182cbd207aed2ed6c81': 'https://thebestchefawards.com/chefs/eelke-plasmeijer-ray-adriansyah/',
+        '104e22761eb1e670d4b7ad91c9d72a52e5ce7dbe': 'https://www.laliste.com/awards/ethical-sustainability-award-awards-2025',
+        '9beebc5300dcedecc33287527d7b8f319831f134': 'https://www.prestigeonline.com/id/wine-dine/prestige-gourmet-awards-2025/',
+        '27680879083f1134b31e01821f1240de3859937e': 'https://www.oadguides.com/restaurant/locavore-nxt',
+        'f2703e94ad106c3b08e54e982e39a0238c44f985': 'https://thesra.org/about-us/food-made-good-directory/',
+        'c1b4a40bd80040a6a6507b2d09c36986719364ad': 'https://www.tatlerasia.com/dining/locavore-nxt-id',
+        'ac7b19c73879f83cd6e86d78aa8c107dea47f58d': 'https://www.tatlerasia.com/dining/locavore-nxt?listId=281',
+        'edc5e221323934d0b2b79008c5280b54dea050f8': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-restaurants-in-indonesia/',
+        '4dd4be020a72f65fd3ec9e5a359f4086532c94ff': 'https://thesra.org/about-us/food-made-good-directory/',
+        'd114ce1bf91edb448872938fa089de604e22cd3b': 'https://www.theworlds50best.com/asia/en/list/1-50',
+        '1c1758fa4e3d7098f31eaaa7a16790ab9a7f84a4': 'https://www.prestigeonline.com/id/wine-dine/prestige-gourmet-awards-2026/',
+        'e6890e9bb2eee9816d95c24956d58a249e96bc10': 'https://www.tatlerasia.com/dining/food/20-restoran-terbaik-tatler-best-indonesia-2026-id',
+        '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07': 'https://www.oadguides.com/lists/asia/top-restaurants/2026', // OAD 2026
+      },
+      'night-rooster': {
+        '3567ce9db6f96a110a3e89c885aaabc8a52117b9': 'https://www.tatlerasia.com/dining/night-rooster?listId=282',
+        'd4250f7ef233482fc3a8324c4ae68689fda335e7': 'https://www.theworlds50best.com/discovery/Establishments/Indonesia/Bali/Night-Rooster-by-Locavore-NXT.html',
+        '27430b9c4a0dd35429e82e738b1c80196cf00a3e': 'https://www.tatlerasia.com/dining/night-rooster?listId=282',
+        '9944e7595d79259aeefe13e8a672d37082eb54bb': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-bars-in-indonesia/',
+        'b843596706cc059cc07de1202ba7965d2ace3b11': 'https://www.top500bars.com/copie-de-451-500-2024',
+        '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380': 'https://www.tatlerasia.com/dining/drinks/20-bar-terbaik-tatler-best-indonesia-2026-id', // Tatler Best 2026 (bar)
+      },
+      nusantara: {
+        '5f5d222a9f8c58798daf60761b175594567d8888': 'https://www.oadguides.com/restaurant/nusantara-by-locavore',
+        '7f8aeb89fdbea91a6f73542db808950397a272b9': 'https://www.theworlds50best.com/discovery/Establishments/Indonesia/Bali/Nusantara-by-Locavore-NXT.html',
+        'c0f8daca212f83363fdbec4d5d68383d2cc12646': 'https://www.tatlerasia.com/dining/nusantara-by-locavore-id',
+        '72ad8a2cc47aadf5da5d688640e1da7e167132eb': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-restaurants-in-indonesia/',
+        '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07': 'https://www.oadguides.com/lists/asia/top-restaurants/2026', // OAD 2026
+        '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380': 'https://www.tatlerasia.com/dining/food/20-restoran-terbaik-tatler-best-indonesia-2026-id', // Tatler Best 2026 (food)
+      },
     }
-    return id && imageUrlMapping[id] ? imageUrlMapping[id] : null
+    const slugMapping = imageUrlMapping[slug] || {}
+    return id && slugMapping[id] ? slugMapping[id] : null
   }
 
   useEffect(() => {
