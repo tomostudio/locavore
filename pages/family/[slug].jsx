@@ -49,6 +49,11 @@ const FamilySlug = ({
   const slug = router.query?.slug || family?.slug?.current
 
   // --- Side-by-side image helpers (robust to asset _ref and plain URLs) ---
+  // Award badges that live only in code (the image is NOT placed in the Sanity
+  // page body) render directly from these CDN URLs via the plain-URL image path.
+  const OAD_2026_SRC = 'https://cdn.sanity.io/images/n3bn5042/production/5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07-790x460.png'
+  const TATLER_BEST_2026_SRC = 'https://cdn.sanity.io/images/n3bn5042/production/99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380-1080x1080.png'
+
   // Awards organized by year for each restaurant
   const locavorenxtAwards = [
     { id: '6aff0992c9a0ebc8a56b9844c2d3add813677ccc', year: 2025 }, // 50s Best
@@ -64,7 +69,7 @@ const FamilySlug = ({
     { id: 'd114ce1bf91edb448872938fa089de604e22cd3b', year: 2026 }, // Asia's 50 Best 2026
     { id: '1c1758fa4e3d7098f31eaaa7a16790ab9a7f84a4', year: 2026 }, // Prestige Gourmet Awards 2026
     { id: 'e6890e9bb2eee9816d95c24956d58a249e96bc10', year: 2026 }, // Tatler 2026
-    { id: '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07', year: 2026 }, // OAD 2026
+    { id: '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07', year: 2026, src: OAD_2026_SRC, label: 'OAD' }, // OAD 2026
   ]
 
   const nightRoosterAwards = [
@@ -73,7 +78,7 @@ const FamilySlug = ({
     { id: '27430b9c4a0dd35429e82e738b1c80196cf00a3e', year: 2025 }, // tatler 2025
     { id: '9944e7595d79259aeefe13e8a672d37082eb54bb', year: 2025 }, // Taste Makers Award
     { id: 'b843596706cc059cc07de1202ba7965d2ace3b11', year: 2026 }, // Top 500 Bars
-    { id: '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380', year: 2026 }, // Tatler Best 2026
+    { id: '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380', year: 2026, src: TATLER_BEST_2026_SRC, label: 'Tatler Best' }, // Tatler Best 2026
   ]
 
   const nusantaraAwards = [
@@ -81,8 +86,8 @@ const FamilySlug = ({
     { id: '7f8aeb89fdbea91a6f73542db808950397a272b9', year: 2025 }, // 50s best discovery
     { id: 'c0f8daca212f83363fdbec4d5d68383d2cc12646', year: 2025 }, // tatler 2025
     { id: '72ad8a2cc47aadf5da5d688640e1da7e167132eb', year: 2025 }, // Taste Makers Award
-    { id: '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07', year: 2026 }, // OAD 2026
-    { id: '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380', year: 2026 }, // Tatler Best 2026
+    { id: '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07', year: 2026, src: OAD_2026_SRC, label: 'OAD' }, // OAD 2026
+    { id: '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380', year: 2026, src: TATLER_BEST_2026_SRC, label: 'Tatler Best' }, // Tatler Best 2026
   ]
 
   // Helper to get awards array for current slug
@@ -381,7 +386,15 @@ const FamilySlug = ({
                     <div className='flex flex-col gap-8 items-center max-w-4xl mx-auto'>
                       {(() => {
                         const awards = getAwardsForSlug()
-                        const sideBySeideImages = family.description.filter((block) => block._type === 'imageModule' && isSideBySideImage(block))
+                        // Award images placed in the Sanity page body
+                        const realBlocks = family.description.filter((block) => block._type === 'imageModule' && isSideBySideImage(block))
+                        // Awards defined only in code (have a `src`) and not already in the CMS
+                        // are injected as plain-URL image blocks so they render without a Sanity edit.
+                        const presentIds = new Set(realBlocks.map((block) => extractId(block.image?.asset?._ref) || extractId(block.image?.url)))
+                        const codeOnlyBlocks = awards
+                          .filter((award) => award.src && !presentIds.has(award.id))
+                          .map((award) => ({ _type: 'imageModule', _key: `award-${award.id}`, image: { url: award.src, name: award.label || '' } }))
+                        const sideBySeideImages = [...realBlocks, ...codeOnlyBlocks]
 
                         // Get image year based on its ID
                         const getImageYear = (block) => {
