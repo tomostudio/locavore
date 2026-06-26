@@ -40,8 +40,9 @@ export const Section3ComponentInner = ({ facilitiesSection }) => {
 
   const { observe: observeSection } = useInView({
     threshold: 0,
-    onLeave: () => {
-      controls.start("hidden");
+    onLeave: ({ entry }) => {
+      const leftViaTop = entry.boundingClientRect.top < 0;
+      controls.start(leftViaTop ? "exit" : "hidden");
       controlBg.start("hidden");
     },
   });
@@ -81,6 +82,14 @@ export const Section3ComponentInner = ({ facilitiesSection }) => {
       transition: {
         ease: "easeInOut",
         duration: 2,
+      },
+    },
+    exit: {
+      y: "-200%",
+      x: "-50%",
+      transition: {
+        ease: "easeInOut",
+        duration: 1,
       },
     },
   };
