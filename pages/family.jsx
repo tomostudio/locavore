@@ -16,6 +16,7 @@ import HeadingTitle from "@/components/utils/headingTitle";
 
 // Helpers
 // import { useAppContext } from 'context/state';
+import { bp } from "@/helpers/preset/breakpoints";
 import { fade } from "@/helpers/preset/transitions";
 import client from "@/helpers/sanity/client";
 
@@ -68,9 +69,82 @@ export default function Family({
 
   const [familyImageFixed, setFamilyData] = useState([]);
 
+  let onWindow = "none";
+
+  const row_data = {
+    mobile: 5,
+    tablet: 4,
+    desktop: 5,
+  };
+  const resetData = () => {
+    let triggerChange = false;
+    let columnCount = 8;
+    let minRow = row_data.desktop;
+
+    if (window.innerWidth < bp.mobile) {
+      // Mobile
+      if (onWindow !== "mobile") {
+        onWindow = "mobile";
+        triggerChange = true;
+        columnCount = 3;
+        minRow = row_data.mobile;
+      }
+    } else if (window.innerWidth >= bp.mobile && window.innerWidth < bp.tablet) {
+      // Tablet
+      if (onWindow !== "tablet") {
+        onWindow = "tablet";
+        columnCount = 5;
+        minRow = row_data.tablet;
+        triggerChange = true;
+      }
+    } else {
+      // Desktop
+      if (onWindow !== "desktop") {
+        onWindow = "desktop";
+        columnCount = 8;
+        minRow = row_data.desktop;
+        triggerChange = true;
+      }
+    }
+
+    if (triggerChange) {
+      triggerChange = false;
+
+      let _a = [...familyImageAPI_split]; // placeholder array
+
+      let minData = columnCount * minRow; // get min data based on row and column
+
+      if (
+        _a.length <= minData || // check if is within minimum
+        _a.length % columnCount !== 0 // check data is divisable by column
+      ) {
+        // set remaining
+        let addData = minData - _a.length;
+        if (_a.length >= minData) {
+          addData =
+            Math.ceil(_a.length / columnCount) * columnCount - _a.length;
+        }
+        // add new data;
+        for (let i = 0; i <= addData - 1; i++) {
+          let dataIndex = i;
+          let multipler = Math.floor(i / familyImageAPI_split.length);
+          if (dataIndex >= familyImageAPI_split.length) {
+            dataIndex = i - familyImageAPI_split.length * multipler;
+          }
+          _a.push(familyImageAPI_split[dataIndex]);
+        }
+      }
+      setFamilyData(shuffle(_a)); // apply data and shuffle
+    }
+  };
+
   useEffect(() => {
-    setFamilyData(shuffle([...familyImageAPI_split]));
+    resetData();
+    window.addEventListener("resize", resetData);
     window.scroll(0, 0);
+    return () => {
+      window.removeEventListener("resize", resetData);
+    };
   }, []);
 
   return (
