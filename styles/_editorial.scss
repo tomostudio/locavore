@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '_utils.scss';
 
 // Editorial
@@ -28,7 +29,7 @@
 
 // Issue
 $card-width: 335px;
-$card-height: $card-width / 18 * 24;
+$card-height: math.div($card-width, 18) * 24;
 
 .article-card {
   // max-width: $card-width;
@@ -37,7 +38,7 @@ $card-height: $card-width / 18 * 24;
   aspect-ratio: 18 / 24;
   @include mobile {
     $card-width: 280px;
-    $card-height: $card-width / 18 * 25;
+    $card-height: math.div($card-width, 18) * 25;
     aspect-ratio: 18 / 25;
     height: $card-height;
     width: $card-width;
