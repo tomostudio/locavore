@@ -15,6 +15,7 @@ import FancyLink from '@/components/utils/fancyLink'
 import SEO from '@/components/utils/seo'
 import FamilyMenu from '@/components/modules/family/familyMenu'
 import FamilyMenuMobile from '@/components/modules/family/familyMenuMobile'
+import InstagramEmbed from '@/components/modules/family/instagramEmbed'
 
 // Helpers
 import { useAppContext } from 'context/state'
@@ -529,6 +530,9 @@ const FamilySlug = ({
                   {family.ctaButton.title}
                 </FancyLink>
               </div>
+            )}
+            {!family.disableInstagram && family.elfsightCode && (
+              <InstagramEmbed elfsightCode={family.elfsightCode} />
             )}
           </div>
           <FamilyMenu familyListAPI={familyListAPI} bgColor={family.bgColor.hex ? family.bgColor.hex : 'default'} className='mt-auto' />
