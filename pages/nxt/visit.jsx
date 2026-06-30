@@ -1,5 +1,6 @@
 import Layout from '@/components/modules/layout'
 import SEO from '@/components/utils/seo'
+import { LocalBusinessSchema } from '@/components/utils/structuredData'
 import client from '@/helpers/sanity/client'
 import { useAppContext } from 'context/state'
 import { useRouter } from 'next/router'
@@ -205,6 +206,16 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
         }
         defaultSEO={typeof home !== 'undefined' && home.seo}
         webTitle={typeof setting !== 'undefined' && setting.webTitle}
+      />
+      <LocalBusinessSchema
+        description={
+          home?.seo?.seo_description || setting?.seo?.seo_description || ''
+        }
+        images={
+          visit?.hero?.imageDesktop?.asset
+            ? [urlFor(visit.hero.imageDesktop).format('jpg').quality(80).width(1200).url()]
+            : []
+        }
       />
 
       <motion.main

@@ -3,6 +3,7 @@ import '@/styles/main.scss'
 import { AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
+import { BreadcrumbSchema } from '@/components/utils/structuredData'
 import { AppWrapper } from '../context/state.jsx'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -34,6 +35,7 @@ export default function App({ Component, pageProps }) {
   }, [])
   return (
     <>
+      <BreadcrumbSchema path={router.asPath} />
       {pageProps.seoAPI && pageProps.seoAPI[0].googleID && (
         <>
           <Script

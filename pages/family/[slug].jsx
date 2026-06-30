@@ -13,6 +13,8 @@ import Footer from '@/components/modules/footer'
 import Arrow from '@/components/utils/arrow'
 import FancyLink from '@/components/utils/fancyLink'
 import SEO from '@/components/utils/seo'
+import { RestaurantSchema } from '@/components/utils/structuredData'
+import { absoluteUrl } from '@/helpers/seo/siteConfig'
 import FamilyMenu from '@/components/modules/family/familyMenu'
 import FamilyMenuMobile from '@/components/modules/family/familyMenuMobile'
 
@@ -351,6 +353,17 @@ const FamilySlug = ({
         inputSEO={family.seo}
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
+      />
+      <RestaurantSchema
+        slug={family.slug.current}
+        name={family.title}
+        description={family.seo?.seo_description || ''}
+        image={
+          family.seo?.seo_image?.asset
+            ? urlFor(family.seo.seo_image).format('jpg').quality(80).width(1200).url()
+            : ''
+        }
+        url={absoluteUrl(`family/${family.slug.current}`)}
       />
       {/* Header Gap */}
       <HeaderGap />

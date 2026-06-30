@@ -1,5 +1,7 @@
 import Layout from '@/components/modules/layout'
 import SEO from '@/components/utils/seo'
+import { MenuSchema } from '@/components/utils/structuredData'
+import { absoluteUrl } from '@/helpers/seo/siteConfig'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { fade } from '@/helpers/preset/transitions'
@@ -48,6 +50,16 @@ const Menu = ({ homeAPI, menuAPI, settingAPI, footerAPI }) => {
         }
         defaultSEO={typeof home !== 'undefined' && home.seo}
         webTitle={typeof setting !== 'undefined' && setting.webTitle}
+      />
+      <MenuSchema
+        name={menu.hero.heading}
+        description={menu.seo?.seo_description || menu.menuTitle || ''}
+        url={absoluteUrl(router.pathname)}
+        image={
+          menu.hero?.imageDesktop?.asset
+            ? urlFor(menu.hero.imageDesktop).format('jpg').quality(80).width(1200).url()
+            : ''
+        }
       />
       <motion.main
         initial="initial"

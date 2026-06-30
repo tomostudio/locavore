@@ -1,14 +1,14 @@
 import React from 'react'
 import { NextSeo } from 'next-seo'
-import Head from 'next/head'
 import urlFor from '@/helpers/sanity/urlFor'
+import { absoluteUrl } from '@/helpers/seo/siteConfig'
 
 const SEO = ({
   inputSEO = '',
   defaultSEO = '',
   webTitle = '',
   title = 'Locavore',
-  pagelink = 'https://locavorenext.com',
+  pagelink = '/',
 }) => {
   const description =
     typeof inputSEO !== 'undefined' &&
@@ -45,52 +45,34 @@ const SEO = ({
       ? defaultSEO.seo_image.name
       : ''
 
-  const meta_keywords =
-    typeof inputSEO !== 'undefined' &&
-    typeof inputSEO.seo_keywords !== 'undefined' &&
-    inputSEO.seo_keywords
-      ? inputSEO.seo_keywords
-      : typeof defaultSEO !== 'undefined' &&
-        typeof defaultSEO.seo_keywords !== 'undefined' &&
-        defaultSEO.seo_keywords
-      ? defaultSEO.seo_keywords
-      : ''
-
   const pagetitle = title && webTitle ? `${title} • ${webTitle}` : `Locavore®`
-  const canonicalLink = `https://locavorenext.com${
-    pagelink ? `${pagelink.startsWith('/') ? '' : '/'}${pagelink}` : ''
-  }`
+  const canonicalLink = absoluteUrl(pagelink)
 
   return (
-    <>
-      <NextSeo
-        title={pagetitle}
-        description={description}
-        canonical={canonicalLink}
-        openGraph={{
-          url: canonicalLink,
-          title: pagetitle,
-          description: description,
-          type: 'website',
-          images: [
-            {
-              url: image,
-              alt: image_alt,
-              width: 1200,
-              height: 628,
-            },
-          ],
-          site_name: 'Locavore',
-        }}
-        twitter={{
-          site: 'Locavore',
-          cardType: 'summary_large_image',
-        }}
-      />
-      <Head>
-        <meta name="keywords" content={meta_keywords} />
-      </Head>
-    </>
+    <NextSeo
+      title={pagetitle}
+      description={description}
+      canonical={canonicalLink}
+      openGraph={{
+        url: canonicalLink,
+        title: pagetitle,
+        description: description,
+        type: 'website',
+        images: [
+          {
+            url: image,
+            alt: image_alt,
+            width: 1200,
+            height: 628,
+          },
+        ],
+        site_name: 'Locavore',
+      }}
+      twitter={{
+        site: 'Locavore',
+        cardType: 'summary_large_image',
+      }}
+    />
   )
 }
 

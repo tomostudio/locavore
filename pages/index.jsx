@@ -6,6 +6,7 @@ import 'intersection-observer' // optional polyfill
 
 import Layout from '@/components/modules/layout'
 import SEO from '@/components/utils/seo'
+import { OrganizationSchema } from '@/components/utils/structuredData'
 import Footer from '@/components/modules/footer'
 
 import { fade } from '@/helpers/preset/transitions'
@@ -127,6 +128,7 @@ export default function Nxt({
         defaultSEO={typeof seo !== 'undefined' && seo.seo}
         webTitle={typeof seo !== 'undefined' && seo.webTitle}
       />
+      <OrganizationSchema />
       <LazyMotion features={domAnimation}>
         <m.main
           className="relative p-0 m-0 bg-black"
