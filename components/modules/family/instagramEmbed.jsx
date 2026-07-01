@@ -9,7 +9,7 @@ const InstagramEmbed = ({ elfsightCode }) => {
   const widgetID = elfsightCode.replace('elfsight-app-', '')
 
   return (
-    <div className='w-full mt-16 max-md:mt-10'>
+    <div className='w-full mt-16 max-md:mt-10 border border-black rounded-2xl p-8 max-md:p-5'>
       <ElfsightWidget widgetID={widgetID} lazy />
     </div>
   )

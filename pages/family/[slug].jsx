@@ -455,6 +455,9 @@ const FamilySlug = ({
                 )}
               </div>
             </div>
+            {!family.disableInstagram && family.elfsightCode && (
+              <InstagramEmbed elfsightCode={family.elfsightCode} />
+            )}
             {/* Right column with logo */}
             <div className='w-full grid grid-cols-2 max-md:grid-cols-1'>
               <div className='flex flex-col justify-between text-base pr-14 border-r py-7 space-y-4 relative max-md:row-start-2 max-md:row-end-3 max-md:text-center max-md:justify-center max-md:py-4 max-md:px-4 max-md:border-0'>
@@ -530,9 +533,6 @@ const FamilySlug = ({
                   {family.ctaButton.title}
                 </FancyLink>
               </div>
-            )}
-            {!family.disableInstagram && family.elfsightCode && (
-              <InstagramEmbed elfsightCode={family.elfsightCode} />
             )}
           </div>
           <FamilyMenu familyListAPI={familyListAPI} bgColor={family.bgColor.hex ? family.bgColor.hex : 'default'} className='mt-auto' />
