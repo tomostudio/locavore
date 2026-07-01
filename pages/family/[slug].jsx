@@ -224,7 +224,7 @@ const FamilySlug = ({
           <div className={`image ${shouldDisplaySideBySide ? 'w-[100px]' : 'md:!px-24 max-w-[700px] mx-auto'}`}>
             <div
               className='relative w-full rounded-xl overflow-hidden mx-auto '
-              style={{ backgroundColor: `rgba(208,208,208, 1)` }}
+              style={{ backgroundColor: shouldDisplaySideBySide ? 'transparent' : `rgba(208,208,208, 1)` }}
             >
               {hasAsset ? (
                 <ImageModule
