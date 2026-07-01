@@ -256,6 +256,50 @@ const FamilySlug = ({
           imageContent
         )
       },
+      // Auto-collage: editors upload 2–6 separate images and they fill one
+      // edge-to-edge block (no Photoshop). Layout adapts to the image count.
+      imageGallery: (props) => {
+        const images = (props.value?.images || []).filter((img) => img?.asset)
+        const count = images.length
+        if (count === 0) return null
+
+        // Grid template per count. Always a 3:2 block; cells fill flush (no gaps).
+        const gridClass =
+          count === 2 ? 'grid-cols-2 grid-rows-1'
+          : count <= 4 ? 'grid-cols-2 grid-rows-2'
+          : 'grid-cols-3 grid-rows-2'
+
+        // 3 images → first is large (full height); 5 images → first spans two
+        // columns so there are no empty cells.
+        const cellSpan = (i) => {
+          if (count === 3 && i === 0) return 'row-span-2'
+          if (count === 5 && i === 0) return 'col-span-2'
+          return ''
+        }
+
+        return (
+          <div className='image md:!px-24 max-w-[700px] mx-auto'>
+            <div className={`grid ${gridClass} aspect-[3/2] w-full rounded-xl overflow-hidden`}>
+              {images.map((img, i) => (
+                <div key={img._key || i} className={`relative ${cellSpan(i)}`}>
+                  <img
+                    src={urlFor(img).width(900).format('webp').url()}
+                    alt={img.name || ''}
+                    className='absolute inset-0 w-full h-full object-cover'
+                    style={{
+                      objectPosition: img.hotspot
+                        ? `${(img.hotspot.x * 100).toFixed(2)}% ${(img.hotspot.y * 100).toFixed(2)}%`
+                        : 'center',
+                    }}
+                    loading='lazy'
+                    decoding='async'
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      },
     },
     marks: {
       add_ann: (props) =>
