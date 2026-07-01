@@ -51,6 +51,7 @@
     "react": "^19.2.7",
     "react-cool-inview": "^3.0.1",
     "react-dom": "^19.2.7",
+    "react-elfsight-widget": "^1.1.2",
     "react-fast-marquee": "^1.6.3",
     "react-indiana-drag-scroll": "^2.1.0",
     "react-infinite-scroll-hook": "^4.0.1",
