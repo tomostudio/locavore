@@ -5,8 +5,8 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/search',
-        destination: '/editorial/search',
+        source: "/search",
+        destination: "/editorial/search",
         permanent: true,
       },
     ];
@@ -14,10 +14,10 @@ module.exports = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
+        protocol: "https",
+        hostname: "cdn.sanity.io",
       },
     ],
-    unoptimized: true,
-  }
+    formats: ["image/avif", "image/webp"],
+  },
 };

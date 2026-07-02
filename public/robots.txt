@@ -1,0 +1,9 @@
+# https://locavorenxt.com robots policy
+User-agent: *
+Allow: /
+
+# Draft previews and the on-site search results page carry no SEO value
+Disallow: /editorial/preview/
+Disallow: /editorial/search
+
+Sitemap: https://locavorenxt.com/sitemap.xml
