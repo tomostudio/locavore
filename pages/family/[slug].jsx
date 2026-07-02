@@ -18,6 +18,7 @@ import { absoluteUrl } from '@/helpers/seo/siteConfig'
 import FamilyMenu from '@/components/modules/family/familyMenu'
 import FamilyMenuMobile from '@/components/modules/family/familyMenuMobile'
 import InstagramEmbed from '@/components/modules/family/instagramEmbed'
+import AwardsSection from '@/components/modules/family/awardsSection'
 
 // Helpers
 import { useAppContext } from 'context/state'
@@ -50,125 +51,6 @@ const FamilySlug = ({
 
   // Get a stable slug to avoid hydration glitches
   const slug = router.query?.slug || family?.slug?.current
-
-  // --- Side-by-side image helpers (robust to asset _ref and plain URLs) ---
-  // Award badges that live only in code (the image is NOT placed in the Sanity
-  // page body) render directly from these CDN URLs via the plain-URL image path.
-  const OAD_2026_SRC = 'https://cdn.sanity.io/images/n3bn5042/production/5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07-790x460.png'
-  const TATLER_BEST_2026_SRC = 'https://cdn.sanity.io/images/n3bn5042/production/99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380-1080x1080.png'
-
-  // Awards organized by year for each restaurant
-  const locavorenxtAwards = [
-    { id: '6aff0992c9a0ebc8a56b9844c2d3add813677ccc', year: 2025 }, // 50s Best
-    { id: '602faac7df0984afe4db4182cbd207aed2ed6c81', year: 2025 }, // The best chef
-    { id: '104e22761eb1e670d4b7ad91c9d72a52e5ce7dbe', year: 2025 }, // La Liste
-    { id: '9beebc5300dcedecc33287527d7b8f319831f134', year: 2025 }, // Prestige gourmet awards
-    { id: '27680879083f1134b31e01821f1240de3859937e', year: 2025 }, // OAD
-    { id: 'c1b4a40bd80040a6a6507b2d09c36986719364ad', year: 2025 }, // Tatler
-    { id: 'f2703e94ad106c3b08e54e982e39a0238c44f985', year: 2025 }, // Food made good
-    { id: 'ac7b19c73879f83cd6e86d78aa8c107dea47f58d', year: 2025 }, // Tatler Asia
-    { id: 'edc5e221323934d0b2b79008c5280b54dea050f8', year: 2025 }, // Taste Makers Award
-    { id: '4dd4be020a72f65fd3ec9e5a359f4086532c94ff', year: 2026 }, // Food Made Good 2026
-    { id: 'd114ce1bf91edb448872938fa089de604e22cd3b', year: 2026 }, // Asia's 50 Best 2026
-    { id: '1c1758fa4e3d7098f31eaaa7a16790ab9a7f84a4', year: 2026 }, // Prestige Gourmet Awards 2026
-    { id: 'e6890e9bb2eee9816d95c24956d58a249e96bc10', year: 2026 }, // Tatler 2026
-    { id: '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07', year: 2026, src: OAD_2026_SRC, label: 'OAD' }, // OAD 2026
-  ]
-
-  const nightRoosterAwards = [
-    { id: '3567ce9db6f96a110a3e89c885aaabc8a52117b9', year: 2025 }, // Tatler image
-    { id: 'd4250f7ef233482fc3a8324c4ae68689fda335e7', year: 2025 }, // 50s best
-    { id: '27430b9c4a0dd35429e82e738b1c80196cf00a3e', year: 2025 }, // tatler 2025
-    { id: '9944e7595d79259aeefe13e8a672d37082eb54bb', year: 2025 }, // Taste Makers Award
-    { id: 'b843596706cc059cc07de1202ba7965d2ace3b11', year: 2026 }, // Top 500 Bars
-    { id: '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380', year: 2026, src: TATLER_BEST_2026_SRC, label: 'Tatler Best' }, // Tatler Best 2026
-  ]
-
-  const nusantaraAwards = [
-    { id: '5f5d222a9f8c58798daf60761b175594567d8888', year: 2025 }, // OAD
-    { id: '7f8aeb89fdbea91a6f73542db808950397a272b9', year: 2025 }, // 50s best discovery
-    { id: 'c0f8daca212f83363fdbec4d5d68383d2cc12646', year: 2025 }, // tatler 2025
-    { id: '72ad8a2cc47aadf5da5d688640e1da7e167132eb', year: 2025 }, // Taste Makers Award
-    { id: '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07', year: 2026, src: OAD_2026_SRC, label: 'OAD' }, // OAD 2026
-    { id: '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380', year: 2026, src: TATLER_BEST_2026_SRC, label: 'Tatler Best' }, // Tatler Best 2026
-  ]
-
-  // Helper to get awards array for current slug
-  const getAwardsForSlug = () => {
-    if (slug === 'locavorenxt') return locavorenxtAwards
-    if (slug === 'night-rooster') return nightRoosterAwards
-    if (slug === 'nusantara') return nusantaraAwards
-    return []
-  }
-
-  // Create Sets for quick lookup (used by isSideBySideImage)
-  const locavorenxtSideBySideIds = new Set(locavorenxtAwards.map(a => a.id))
-  const nightRoosterSideBySideIds = new Set(nightRoosterAwards.map(a => a.id))
-  const nusantaraSideBySideIds = new Set(nusantaraAwards.map(a => a.id))
-
-  const extractId = (refOrUrl) => {
-    if (!refOrUrl) return null
-    const s = String(refOrUrl)
-    // Matches Sanity image id both in _ref (image-<id>-WxH-<fmt>) and URL path (<id>-WxH.<ext>)
-    const m = s.match(/(?:image-)?([a-f0-9]{40})-[0-9]+x[0-9]+/)
-    return m?.[1] || null
-  }
-
-  const isSideBySideImage = (imageBlock) => {
-    if (!imageBlock?.image) return false
-    const idFromRef = extractId(imageBlock.image?.asset?._ref)
-    const idFromUrl = extractId(imageBlock.image?.url)
-    const id = idFromRef || idFromUrl
-    return (
-      (slug === 'locavorenxt' && id && locavorenxtSideBySideIds.has(id)) ||
-      (slug === 'night-rooster' && id && nightRoosterSideBySideIds.has(id)) ||
-      (slug === 'nusantara' && id && nusantaraSideBySideIds.has(id))
-    )
-  }
-
-  // Click-through URL mapping (optional). Keyed by slug so a shared award image
-  // (e.g. the Tatler Best badge used on both Nusantara and Night Rooster) can
-  // resolve to a different destination on each page.
-  const getImageUrl = (imageBlock) => {
-    if (!imageBlock?.image) return null
-    const id = extractId(imageBlock.image?.asset?._ref) || extractId(imageBlock.image?.url)
-    const imageUrlMapping = {
-      locavorenxt: {
-        '6aff0992c9a0ebc8a56b9844c2d3add813677ccc': 'https://www.theworlds50best.com/asia/en/awards/sustainable-restaurant-award.html',
-        '602faac7df0984afe4db4182cbd207aed2ed6c81': 'https://thebestchefawards.com/chefs/eelke-plasmeijer-ray-adriansyah/',
-        '104e22761eb1e670d4b7ad91c9d72a52e5ce7dbe': 'https://www.laliste.com/awards/ethical-sustainability-award-awards-2025',
-        '9beebc5300dcedecc33287527d7b8f319831f134': 'https://www.prestigeonline.com/id/wine-dine/prestige-gourmet-awards-2025/',
-        '27680879083f1134b31e01821f1240de3859937e': 'https://www.oadguides.com/restaurant/locavore-nxt',
-        'f2703e94ad106c3b08e54e982e39a0238c44f985': 'https://thesra.org/about-us/food-made-good-directory/',
-        'c1b4a40bd80040a6a6507b2d09c36986719364ad': 'https://www.tatlerasia.com/dining/locavore-nxt-id',
-        'ac7b19c73879f83cd6e86d78aa8c107dea47f58d': 'https://www.tatlerasia.com/dining/locavore-nxt?listId=281',
-        'edc5e221323934d0b2b79008c5280b54dea050f8': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-restaurants-in-indonesia/',
-        '4dd4be020a72f65fd3ec9e5a359f4086532c94ff': 'https://thesra.org/about-us/food-made-good-directory/',
-        'd114ce1bf91edb448872938fa089de604e22cd3b': 'https://www.theworlds50best.com/asia/en/list/1-50',
-        '1c1758fa4e3d7098f31eaaa7a16790ab9a7f84a4': 'https://www.prestigeonline.com/id/wine-dine/prestige-gourmet-awards-2026/',
-        'e6890e9bb2eee9816d95c24956d58a249e96bc10': 'https://www.tatlerasia.com/dining/food/20-restoran-terbaik-tatler-best-indonesia-2026-id',
-        '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07': 'https://www.oadguides.com/lists/asia/top-restaurants/2026', // OAD 2026
-      },
-      'night-rooster': {
-        '3567ce9db6f96a110a3e89c885aaabc8a52117b9': 'https://www.tatlerasia.com/dining/night-rooster?listId=282',
-        'd4250f7ef233482fc3a8324c4ae68689fda335e7': 'https://www.theworlds50best.com/discovery/Establishments/Indonesia/Bali/Night-Rooster-by-Locavore-NXT.html',
-        '27430b9c4a0dd35429e82e738b1c80196cf00a3e': 'https://www.tatlerasia.com/dining/night-rooster?listId=282',
-        '9944e7595d79259aeefe13e8a672d37082eb54bb': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-bars-in-indonesia/',
-        'b843596706cc059cc07de1202ba7965d2ace3b11': 'https://www.top500bars.com/copie-de-451-500-2024',
-        '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380': 'https://www.tatlerasia.com/dining/drinks/20-bar-terbaik-tatler-best-indonesia-2026-id', // Tatler Best 2026 (bar)
-      },
-      nusantara: {
-        '5f5d222a9f8c58798daf60761b175594567d8888': 'https://www.oadguides.com/restaurant/nusantara-by-locavore',
-        '7f8aeb89fdbea91a6f73542db808950397a272b9': 'https://www.theworlds50best.com/discovery/Establishments/Indonesia/Bali/Nusantara-by-Locavore-NXT.html',
-        'c0f8daca212f83363fdbec4d5d68383d2cc12646': 'https://www.tatlerasia.com/dining/nusantara-by-locavore-id',
-        '72ad8a2cc47aadf5da5d688640e1da7e167132eb': 'https://www.travelandleisureasia.com/sea/tl-tastemakers/tl-tastemakers-2025-26-these-are-the-best-restaurants-in-indonesia/',
-        '5e8dcfaa03d0a5dacedb9aff7c4ed4cf26264b07': 'https://www.oadguides.com/lists/asia/top-restaurants/2026', // OAD 2026
-        '99c5dbf9ab7ad7b45e5b2cb2bec7df1a8e83e380': 'https://www.tatlerasia.com/dining/food/20-restoran-terbaik-tatler-best-indonesia-2026-id', // Tatler Best 2026 (food)
-      },
-    }
-    const slugMapping = imageUrlMapping[slug] || {}
-    return id && slugMapping[id] ? slugMapping[id] : null
-  }
 
   useEffect(() => {
     appContext.setHeader({ headerStyle: dark ? 'white' : 'black' })
@@ -207,54 +89,32 @@ const FamilySlug = ({
         </>
       ),
       imageModule: (props) => {
-        const hasAsset = !!props?.value?.image?.asset
-        // Call the hook unconditionally to respect Rules of Hooks
-        const imageProps = useNextSanityImage(
-          client,
-          hasAsset ? props.value.image : undefined,
-          { imageBuilder: singleIURB }
-        )
-
-        const shouldDisplaySideBySide = isSideBySideImage(props.value)
-        const imageUrl = getImageUrl(props.value)
-
-        // Plain URL fallback for images without asset (e.g., direct Sanity CDN URL)
-        const plainUrl = !hasAsset && props?.value?.image?.url ? props.value.image.url : null
-
-        const imageContent = (
-          <div className={`image ${shouldDisplaySideBySide ? 'w-[100px]' : 'md:!px-24 max-w-[700px] mx-auto'}`}>
+        const imageProps = useNextSanityImage(client, props.value.image, {
+          imageBuilder: singleIURB,
+        })
+        return (
+          <div className='image md:!px-24 max-w-[700px] mx-auto'>
             <div
-              className='relative w-full rounded-xl overflow-hidden mx-auto '
-              style={{ backgroundColor: shouldDisplaySideBySide ? 'transparent' : `rgba(208,208,208, 1)` }}
+              className='relative w-full rounded-xl overflow-hidden mx-auto'
+              style={{ backgroundColor: `rgba(208,208,208, 1)` }}
             >
-              {hasAsset ? (
-                <ImageModule
-                  {...imageProps}
-                  alt={props.value.image.name || ''}
-                  placeholder='blur'
-                  blurDataURL={urlFor(props.value.image).blur(2).format('webp').saturation(-100).width(100).url()}
-                  style={{ width: shouldDisplaySideBySide ? '100px' : '100%', height: 'auto' }}
-                />
-              ) : plainUrl ? (
-                <img
-                  src={plainUrl}
-                  alt={props.value?.name || ''}
-                  style={{ width: shouldDisplaySideBySide ? '100px' : '100%', height: 'auto', display: 'block' }}
-                  loading='lazy'
-                  decoding='async'
-                />
-              ) : null}
+              <ImageModule
+                {...imageProps}
+                alt={props.value.image.name || ''}
+                placeholder='blur'
+                blurDataURL={urlFor(props.value.image)
+                  .blur(2)
+                  .format('webp')
+                  .saturation(-100)
+                  .width(100)
+                  .url()}
+                style={{ width: '100%', height: 'auto' }}
+              />
             </div>
-            {props.value.name && <Caption option={false} caption={props.value.name} color='#000' />}
+            {props.value.name && (
+              <Caption option={false} caption={props.value.name} color='#000' />
+            )}
           </div>
-        )
-
-        return imageUrl ? (
-          <FancyLink destination={imageUrl} blank={true} className='block hover:opacity-80 transition-opacity duration-300 cursor-pointer'>
-            {imageContent}
-          </FancyLink>
-        ) : (
-          imageContent
         )
       },
       // Auto-collage: editors upload 2–6 separate images and they fill one
@@ -430,86 +290,8 @@ const FamilySlug = ({
               <span className='text-center py-3 font-bold uppercase'>{family.title}</span>
               <div className='border-b border-black h-px w-full' />
               <div className='editor-styling w-full mt-8 max-md:max-w-lg'>
-                {/* Special rendering for locavorenxt, night-rooster, and nusantara: side-by-side for selected images */}
-                {(slug === 'locavorenxt' || slug === 'night-rooster' || slug === 'nusantara') ? (
-                  <div className='space-y-4'>
-                    {/* Render all content except images selected for side-by-side */}
-                    {family.description.map((block, index) => {
-                      if (block._type === 'imageModule' && isSideBySideImage(block)) {
-                        return null
-                      }
-                      return <PortableText key={index} value={[block]} components={serializers} />
-                    })}
-                    {/* Side-by-side container with row layout, grouped by year */}
-                    <div className='flex flex-col gap-8 items-center max-w-4xl mx-auto'>
-                      {(() => {
-                        const awards = getAwardsForSlug()
-                        // Award images placed in the Sanity page body
-                        const realBlocks = family.description.filter((block) => block._type === 'imageModule' && isSideBySideImage(block))
-                        // Awards defined only in code (have a `src`) and not already in the CMS
-                        // are injected as plain-URL image blocks so they render without a Sanity edit.
-                        const presentIds = new Set(realBlocks.map((block) => extractId(block.image?.asset?._ref) || extractId(block.image?.url)))
-                        const codeOnlyBlocks = awards
-                          .filter((award) => award.src && !presentIds.has(award.id))
-                          .map((award) => ({ _type: 'imageModule', _key: `award-${award.id}`, image: { url: award.src, name: award.label || '' } }))
-                        const sideBySeideImages = [...realBlocks, ...codeOnlyBlocks]
-
-                        // Get image year based on its ID
-                        const getImageYear = (block) => {
-                          const id = extractId(block.image?.asset?._ref) || extractId(block.image?.url)
-                          const award = awards.find(a => a.id === id)
-                          return award?.year || 2025
-                        }
-
-                        // Group images by year
-                        const imagesByYear = sideBySeideImages.reduce((acc, block) => {
-                          const year = getImageYear(block)
-                          if (!acc[year]) acc[year] = []
-                          acc[year].push(block)
-                          return acc
-                        }, {})
-
-                        // Sort years descending (newest first)
-                        const years = Object.keys(imagesByYear).sort((a, b) => b - a)
-
-                        return years.map((year) => {
-                          const images = imagesByYear[year]
-                          const firstRowCount = Math.min(5, images.length)
-                          const secondRowCount = images.length - firstRowCount
-
-                          return (
-                            <div key={year} className='w-full flex flex-col gap-4 items-center'>
-                              {/* Year label */}
-                              <span className='text-sm font-bold tracking-widest uppercase'>{year}</span>
-
-                              {/* First row */}
-                              <div className='flex justify-center items-center gap-4 flex-wrap w-full'>
-                                {images.slice(0, firstRowCount).map((block, index) => (
-                                  <div key={index} className='w-[100px] md:w-[120px] flex justify-center'>
-                                    <PortableText value={[block]} components={serializers} />
-                                  </div>
-                                ))}
-                              </div>
-
-                              {/* Second row if there are more images */}
-                              {secondRowCount > 0 && (
-                                <div className='flex justify-center items-center gap-4 flex-wrap w-full'>
-                                  {images.slice(firstRowCount).map((block, index) => (
-                                    <div key={`second-${index}`} className='w-[100px] md:w-[120px] flex justify-center'>
-                                      <PortableText value={[block]} components={serializers} />
-                                    </div>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          )
-                        })
-                      })()}
-                    </div>
-                  </div>
-                ) : (
-                  <PortableText value={family.description} components={serializers} />
-                )}
+                <PortableText value={family.description} components={serializers} />
+                <AwardsSection awards={family.awards} />
               </div>
             </div>
             {!family.disableInstagram && family.elfsightCode && (
