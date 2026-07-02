@@ -13,6 +13,8 @@ const STATIC_ROUTES = [
   { path: "/nxt/visit", priority: 0.9, changefreq: "monthly" },
   { path: "/nxt/guides", priority: 0.7, changefreq: "monthly" },
   { path: "/nxt/reservation-guide", priority: 0.8, changefreq: "monthly" },
+  { path: "/nxt/tasting-menu-guide", priority: 0.8, changefreq: "monthly" },
+  { path: "/nxt/michelin-guide", priority: 0.8, changefreq: "monthly" },
   { path: "/nxt/collaborators", priority: 0.6, changefreq: "monthly" },
   { path: "/nxt/events-programs", priority: 0.7, changefreq: "weekly" },
   { path: "/nxt/features", priority: 0.6, changefreq: "monthly" },

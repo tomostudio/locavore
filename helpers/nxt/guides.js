@@ -22,8 +22,8 @@ export const NXT_GUIDES = [
     href: '/nxt/tasting-menu-guide',
     category: 'Food',
     readTime: '6 min',
-    thumbnail: '/nxt2/menu/hero.png',
-    live: false,
+    thumbnail: '/nxt2/menu/group.png',
+    live: true,
   },
   {
     title: 'Is Locavore Michelin Star? Bali & the Michelin Guide, Explained',
@@ -33,7 +33,7 @@ export const NXT_GUIDES = [
     category: 'Visiting',
     readTime: '4 min',
     thumbnail: '/nxt2/building.png',
-    live: false,
+    live: true,
   },
 ]
 

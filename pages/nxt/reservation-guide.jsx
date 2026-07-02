@@ -299,9 +299,16 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               There&rsquo;s no obligation to add a pairing, but it&rsquo;s the
               intended way to experience the menu.
             </P>
-            <P className="mt-4 opacity-60 italic">
-              → Internal link: &ldquo;Locavore NXT Tasting Menu: Courses, Price
-              &amp; What to Expect&rdquo; (piece 2, once published).
+            <P className="mt-4">
+              For the full course-by-course breakdown and current pricing, see
+              our{' '}
+              <FancyLink
+                destination="/nxt/tasting-menu-guide"
+                className="underline hover:opacity-60 transition-opacity"
+              >
+                Locavore NXT tasting menu guide
+              </FancyLink>
+              .
             </P>
 
             <H2>What to know before you arrive</H2>
