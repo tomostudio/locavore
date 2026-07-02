@@ -15,6 +15,7 @@ import FancyLink from '@/components/utils/fancyLink'
 import SEO from '@/components/utils/seo'
 import { RestaurantSchema } from '@/components/utils/structuredData'
 import { absoluteUrl } from '@/helpers/seo/siteConfig'
+import { trackEvent } from '@/helpers/analytics/trackEvent'
 import FamilyMenu from '@/components/modules/family/familyMenu'
 import FamilyMenuMobile from '@/components/modules/family/familyMenuMobile'
 import InstagramEmbed from '@/components/modules/family/instagramEmbed'
@@ -304,7 +305,17 @@ const FamilySlug = ({
                 <div>
                   {family.address}
                   {` • `}
-                  <FancyLink destination={family.mapLink} className={`whitespace-nowrap ${transition.fade} underline`} blank={true}>
+                  <FancyLink
+                    destination={family.mapLink}
+                    className={`whitespace-nowrap ${transition.fade} underline`}
+                    blank={true}
+                    onClick={() =>
+                      trackEvent('click_get_directions', {
+                        venue: family.title,
+                        location: 'family',
+                      })
+                    }
+                  >
                     Map
                     <Arrow position='right' fill='black' className=' ml-1 inline-block -translate-y-px' />
                   </FancyLink>
@@ -315,7 +326,17 @@ const FamilySlug = ({
                   </div>
                 )}
                 <div className='w-full flex flex-col underline'>
-                  <FancyLink destination={family.waLink ? family.waLink : `tel:${family.phone_number}`} className={`${transition.fade}`}>
+                  <FancyLink
+                    destination={family.waLink ? family.waLink : `tel:${family.phone_number}`}
+                    className={`${transition.fade}`}
+                    onClick={() =>
+                      family.waLink &&
+                      trackEvent('click_whatsapp', {
+                        venue: family.title,
+                        location: 'family_contact',
+                      })
+                    }
+                  >
                     {family.phone_number}
                   </FancyLink>
                   <FancyLink destination={`mailto:${family.email}`} className={`${transition.fade}`}>
@@ -335,7 +356,17 @@ const FamilySlug = ({
                     </FancyLink>
                   )}
                   {family.waLink && (
-                    <FancyLink destination={family.waLink} blank={true} className='relative w-4 h-4 hover:opacity-50 transition-opacity duration-300'>
+                    <FancyLink
+                      destination={family.waLink}
+                      blank={true}
+                      onClick={() =>
+                        trackEvent('click_whatsapp', {
+                          venue: family.title,
+                          location: 'family_social',
+                        })
+                      }
+                      className='relative w-4 h-4 hover:opacity-50 transition-opacity duration-300'
+                    >
                       <Whatsapp fill={'#000'} className='w-4 h-4' />
                     </FancyLink>
                   )}

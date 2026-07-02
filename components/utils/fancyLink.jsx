@@ -51,6 +51,7 @@ const FancyLink = forwardRef(
         target="_blank"
         href={`${destination}`}
         ref={ref}
+        onClick={onClick}
         {...others}
       >
         {children}

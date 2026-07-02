@@ -9,6 +9,7 @@ import { fade } from '@/helpers/preset/transitions'
 import Footer from '@/components/modules/footer'
 import { useEffect, useState } from 'react'
 import FancyLink from '@/components/utils/fancyLink'
+import { trackEvent } from '@/helpers/analytics/trackEvent'
 
 import hero from '@/public/nxt2/visit/hero.png'
 import map from '@/public/nxt2/visit/map.jpg'
@@ -59,6 +60,12 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
           <FancyLink
             target="_blank"
             destination={props.value.link}
+            onClick={() =>
+              trackEvent('click_get_directions', {
+                venue: 'Locavore NXT',
+                location: 'visit',
+              })
+            }
             className="relative w-full aspect-[361/243] my-6 sm:my-11"
           >
             <div className="absolute top-0 left-0 w-full h-full hidden sm:block">
@@ -134,6 +141,12 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
           <FancyLink
             destination={props.value.wa_link}
             blank={true}
+            onClick={() =>
+              trackEvent('click_whatsapp', {
+                venue: 'Locavore NXT',
+                location: 'visit',
+              })
+            }
             style={{
               color: props.value?.textColor
                 ? props.value?.textColor.hex

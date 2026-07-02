@@ -6,6 +6,8 @@ import { useAppContext } from 'context/state'
 import Image from 'next/legacy/image'
 import urlFor from '@/helpers/sanity/urlFor'
 import { transition } from '@/helpers/preset/tailwind'
+import { trackEvent } from '@/helpers/analytics/trackEvent'
+import { appendUTM, useUTMSearch } from '@/helpers/analytics/utm'
 import { motion } from 'framer-motion'
 import { Youtube, Facebook, Instagram, Linkedin } from '@/helpers/preset/svg'
 import { duration } from '@mui/material'
@@ -439,6 +441,7 @@ export default function Header({ className = '', header, family, footer }) {
 
 const PopUpMobile = forwardRef(
   ({ header, isOpenBook, setOpenBook, handleClickOutside = () => {} }, ref) => {
+    const utmSearch = useUTMSearch()
     return (
       <div
         onClick={handleClickOutside}
@@ -462,8 +465,14 @@ const PopUpMobile = forwardRef(
                 className="py-[20px] text-center border-b border-black"
               >
                 <FancyLink
-                  destination={data.link}
+                  destination={appendUTM(data.link, utmSearch)}
                   blank
+                  onClick={() =>
+                    trackEvent('click_book_table', {
+                      venue: data.name,
+                      location: 'header',
+                    })
+                  }
                   className="text-[35px] leading-[38px] transition-all duration-500 hover:opacity-50"
                 >
                   {data.name}
@@ -486,6 +495,7 @@ const PopUpMobile = forwardRef(
 
 const PopUpDesktop = forwardRef(
   ({ header, isOpenBook, setOpenBook, handleClickOutside = () => {} }, ref) => {
+    const utmSearch = useUTMSearch()
     return (
       <motion.div
         initial={{
@@ -543,8 +553,14 @@ const PopUpDesktop = forwardRef(
                 className="py-[20px] text-center border-b border-black"
               >
                 <FancyLink
-                  destination={data.link}
+                  destination={appendUTM(data.link, utmSearch)}
                   blank
+                  onClick={() =>
+                    trackEvent('click_book_table', {
+                      venue: data.name,
+                      location: 'header',
+                    })
+                  }
                   className="text-[35px] leading-[38px] transition-all duration-500 hover:opacity-50"
                 >
                   {data.name}
