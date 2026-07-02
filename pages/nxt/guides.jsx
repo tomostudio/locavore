@@ -47,9 +47,10 @@ const Guides = ({ homeAPI, settingAPI, footerAPI }) => {
       <BreadcrumbSchema path={router.asPath} />
 
       {/* /nxt routes get a black body (see _app.jsx); restore the light theme.
-          Bottom padding stops the sticky nav's margin collapsing through the
-          panel and exposing the black body behind it. */}
-      <div className="relative z-10 bg-white text-black min-h-screen pb-10">
+          flow-root makes this a block-formatting context so the sticky nav's
+          margin stays inside the panel instead of collapsing through and
+          exposing the black body behind it. */}
+      <div className="relative z-10 bg-white text-black min-h-screen flow-root">
         <HeaderGap />
 
         <section className="pt-10 w-full h-full">
