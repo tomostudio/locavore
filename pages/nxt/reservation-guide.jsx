@@ -13,6 +13,7 @@ import HeaderGap from '@/components/modules/headerGap'
 import OpeningArticle from '@/components/modules/editorial/openingArticle'
 import StickyButton from '@/components/modules/stickyButton'
 import FancyLink from '@/components/utils/fancyLink'
+import Arrow from '@/components/utils/arrow'
 import NextArticle from '@/components/modules/editorial/nextArticle'
 import Footer from '@/components/modules/footer'
 import { HUB_HREF, nextLiveGuide } from '@/helpers/nxt/guides'
@@ -178,10 +179,16 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
             {/* Key takeaways box */}
             <div className="my-12 border border-black/20 rounded-2xl p-6 sm:p-8">
-              <span className="uppercase tracking-widest text-xs opacity-50">
+              <span className="font-serif italic text-[20px] sm:text-[24px] flex items-center">
+                <Arrow
+                  position="right"
+                  fill="black"
+                  sizeLeftRight="14"
+                  className="mr-3"
+                />
                 Good to know
               </span>
-              <ul className="mt-4 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
+              <ul className="mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
                 <li>
                   <Fill>
                     Dinner is a single seating each evening for a handful of
