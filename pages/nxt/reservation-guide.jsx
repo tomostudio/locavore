@@ -179,30 +179,33 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
             {/* Key takeaways box */}
             <div className="my-12 border border-black/20 rounded-2xl p-6 sm:p-8">
               <span className="uppercase tracking-widest text-xs opacity-50">
-                Before you book
+                Good to know
               </span>
               <ul className="mt-4 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
                 <li>
                   <Fill>
-                    Locavore NXT is reservation-only — no walk-ins, and seats
-                    release [on a rolling basis / on the 1st of each month].
+                    Dinner is a single seating each evening for a handful of
+                    guests, always by reservation — we don&rsquo;t take
+                    walk-ins. Seats open [on a rolling basis / on the 1st of
+                    each month].
                   </Fill>
                 </li>
                 <li>
                   <Fill>
-                    Reserve as far ahead as you can; weekends and high season
-                    ([Jul–Sep, Dec–Jan]) fill first.
+                    Book as early as you&rsquo;re able; weekends and high season
+                    ([Jul–Sep, Dec–Jan]) are the first to go.
                   </Fill>
                 </li>
                 <li>
                   <Fill>
-                    A deposit secures your table and is [deducted from the final
+                    A deposit holds your table and is [deducted from your final
                     bill / non-refundable within X days].
                   </Fill>
                 </li>
                 <li>
-                  Tell them about dietary needs <em>when you book</em>, not on
-                  the night — the menu is planned around the whole table.
+                  Let us know how you eat <em>when you reserve</em> — each menu
+                  is written for the whole table, so the night itself is too
+                  late to change it.
                 </li>
               </ul>
             </div>
