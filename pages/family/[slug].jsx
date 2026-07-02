@@ -139,7 +139,7 @@ const FamilySlug = ({
         }
 
         return (
-          <div className='image md:!px-24 max-w-[700px] mx-auto'>
+          <div className='image md:!px-24 max-w-[700px] w-full mx-auto'>
             <div className={`grid ${gridClass} aspect-[3/2] w-full rounded-xl overflow-hidden`}>
               {images.map((img, i) => (
                 <div key={img._key || i} className={`relative ${cellSpan(i)}`}>
