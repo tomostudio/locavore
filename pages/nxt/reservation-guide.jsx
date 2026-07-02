@@ -13,7 +13,9 @@ import HeaderGap from '@/components/modules/headerGap'
 import OpeningArticle from '@/components/modules/editorial/openingArticle'
 import StickyButton from '@/components/modules/stickyButton'
 import FancyLink from '@/components/utils/fancyLink'
+import NextArticle from '@/components/modules/editorial/nextArticle'
 import Footer from '@/components/modules/footer'
+import { HUB_HREF, nextLiveGuide } from '@/helpers/nxt/guides'
 
 // DRAFT — Michelin/fine-dining SEO cluster, piece 1 of 8.
 // Styled to match the editorial article template (light theme, OpeningArticle
@@ -112,6 +114,9 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
     description: [],
     show_article: false,
   }
+
+  // "Next Guide" card — next live guide in the cluster, else the hub.
+  const next = nextLiveGuide('/nxt/reservation-guide')
 
   useEffect(() => {
     window.scroll(0, 0)
@@ -372,6 +377,18 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
           </article>
         </Container>
       </section>
+
+        {/* Next Guide marquee (editorial-style) */}
+        <NextArticle
+          articleTitle={next ? 'Next Guide' : 'More Guides'}
+          destination={next ? next.href : HUB_HREF}
+          title={next ? next.title : 'Explore all NXT guides'}
+          category={next ? next.category : 'Guides'}
+          timeRead={next ? next.readTime : 'Browse'}
+          thumbnail={next ? next.thumbnail : '/nxt2/visit/hero.png'}
+          bgColor="#CF7D57"
+          border={true}
+        />
 
         <StickyButton destination="/nxt/guides" arrow="left">
           All NXT Guides

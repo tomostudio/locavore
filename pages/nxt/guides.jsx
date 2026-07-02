@@ -11,31 +11,11 @@ import FancyLink from '@/components/utils/fancyLink'
 import Arrow from '@/components/utils/arrow'
 import NxtNavigation from '@/components/utils/nxtNavigation'
 import Footer from '@/components/modules/footer'
+import { NXT_GUIDES as GUIDES } from '@/helpers/nxt/guides'
 
-// Hub page for the Locavore NXT guides cluster (hub-and-spoke). Lists the
-// planned guide pieces; `live: true` entries link out, others show as upcoming
-// so the hub never links to a page that doesn't exist yet.
-const GUIDES = [
-  {
-    title: 'How to Get a Reservation at Locavore NXT',
-    description:
-      'Booking steps, how far ahead to reserve, deposit and cancellation policy, and what to know before you arrive.',
-    href: '/nxt/reservation-guide',
-    live: true,
-  },
-  {
-    title: 'Locavore NXT Tasting Menu: Courses, Price & What to Expect',
-    description:
-      'The full tasting-menu experience — course count, price, pairings, dress code and duration.',
-    live: false,
-  },
-  {
-    title: 'Is Locavore Michelin Star? Bali & the Michelin Guide, Explained',
-    description:
-      'Where Bali sits with the Michelin Guide, and the accolades Locavore actually holds.',
-    live: false,
-  },
-]
+// Hub page for the Locavore NXT guides cluster (hub-and-spoke). Live entries
+// link out; upcoming ones show as "Coming soon" so the hub never links to a
+// page that doesn't exist yet. Guide list lives in helpers/nxt/guides.js.
 
 const Guides = ({ homeAPI, settingAPI, footerAPI }) => {
   const router = useRouter()
