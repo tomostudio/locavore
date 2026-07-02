@@ -127,6 +127,27 @@ export const MenuSchema = ({ name, description = '', url, image = '' }) => (
   />
 )
 
+// FAQPage entity — makes an on-page Q&A block eligible for FAQ rich results
+// and gives AI answer engines a clean, extractable source. `faqs` is an array
+// of { question, answer } with plain-text answers.
+export const FAQPageSchema = ({ faqs = [] }) => {
+  const items = (faqs || []).filter((f) => f && f.question && f.answer)
+  if (!items.length) return null
+  return (
+    <JsonLd
+      data={{
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: items.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+      }}
+    />
+  )
+}
+
 // --- Sitewide breadcrumbs -------------------------------------------------
 
 // Segment overrides: `null` = non-navigable segment, skipped as a crumb but
