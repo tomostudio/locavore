@@ -22,7 +22,7 @@ export const NXT_GUIDES = [
     href: '/nxt/tasting-menu-guide',
     category: 'Food',
     readTime: '6 min',
-    thumbnail: '/nxt2/section1.png',
+    thumbnail: '/nxt2/menu/hero.png',
     live: false,
   },
   {
