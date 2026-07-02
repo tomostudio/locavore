@@ -143,8 +143,10 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
       <BreadcrumbSchema path={router.asPath} />
 
       {/* /nxt routes get a black body (see _app.jsx). This panel restores the
-          light editorial theme for the article; the footer stays dark. */}
-      <div className="relative z-10 bg-white text-black">
+          light editorial theme for the article; the footer stays dark. The
+          bottom padding keeps the sticky button's margin from collapsing
+          through the panel (which would expose the black body behind it). */}
+      <div className="relative z-10 bg-white text-black pb-10">
       <HeaderGap />
 
       {/* Editorial-style header (reused component) */}
