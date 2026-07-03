@@ -92,7 +92,7 @@ const SubscribeModal = ({
               {title}
             </h2>
 
-            <SubscribeForm className="mt-6 max-w-full" />
+            <SubscribeForm className="mt-6 max-w-full" onSuccess={onClose} />
           </motion.div>
         </motion.div>
       )}

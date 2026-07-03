@@ -5,21 +5,28 @@ import Arrow from '../utils/arrow';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESET_DELAY = 4000;
+const CLOSE_DELAY = 1200; // let the success message land before closing the modal
 
 // Subscribes an email to the NXT letter via /api/subscribe (Brevo, single opt-in).
-const SubscribeForm = ({ className = '', subText, ...props }) => {
+// onSuccess, when provided, fires shortly after a successful (or already-subscribed)
+// submission so a containing modal can close itself.
+const SubscribeForm = ({ className = '', subText, onSuccess, ...props }) => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('idle'); // idle | sending | success | already | error
   const [placeholder, setPlaceholder] = useState('EMAIL');
   const inputEl = useRef(null);
   const resetTimer = useRef(null);
+  const closeTimer = useRef(null);
 
   const isError = status === 'error';
   const isBusy = status === 'sending';
   const isDone = status === 'success' || status === 'already';
 
   useEffect(() => {
-    return () => clearTimeout(resetTimer.current);
+    return () => {
+      clearTimeout(resetTimer.current);
+      clearTimeout(closeTimer.current);
+    };
   }, []);
 
   const scheduleReset = () => {
@@ -60,9 +67,15 @@ const SubscribeForm = ({ className = '', subText, ...props }) => {
       if (data.status === 'success') {
         setStatus('success');
         setPlaceholder('Got it!');
+        if (onSuccess) {
+          closeTimer.current = setTimeout(onSuccess, CLOSE_DELAY);
+        }
       } else if (data.status === 'already') {
         setStatus('already');
         setPlaceholder('You are already on the list!');
+        if (onSuccess) {
+          closeTimer.current = setTimeout(onSuccess, CLOSE_DELAY);
+        }
       } else if (data.message === 'invalid') {
         setStatus('error');
         setPlaceholder("That's an invalid email.");
