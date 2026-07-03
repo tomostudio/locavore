@@ -36,7 +36,12 @@
     flex-grow: 1;
     min-width: calc(100% / 3);
     max-width: calc(100% - 56px);
-    margin-top: -1px;
+    // Overlap the row above by 2px (more than the 1px border) so the covering
+    // pill's opaque background ALWAYS hides the border beneath it. A -1px overlap
+    // equals the border exactly, so at fractional device-pixel positions (zoom /
+    // non-integer DPR) it rounds to 0 and the lower border peeks through — showing
+    // as a doubled line or a faint gap on some seams but not others.
+    margin-top: -2px;
     &:nth-child(1),
     &:nth-child(2),
     &:nth-child(3) {
