@@ -9,6 +9,45 @@ const BREVO_LIST_ID = Number(process.env.BREVO_LIST_ID) || 16; // default: Newsl
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const BREVO_BASE = 'https://api.brevo.com/v3';
 
+const MAX_ATTEMPTS = 3;
+const RETRY_BASE_DELAY = 300; // ms
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// A Brevo response is worth retrying when it's a transient failure: a network
+// error (no response), rate limiting (429), or a server-side error (5xx).
+// Auth/IP failures (401/403) are also retried in case Brevo's edge routed the
+// request inconsistently, but a persistent 401 usually means the API key's
+// Authorized-IPs allowlist is blocking Vercel's egress IPs — fix that in Brevo.
+const isRetryableStatus = (status) =>
+  status === 429 || status === 401 || status === 403 || status >= 500;
+
+// fetch() that retries transient failures with exponential backoff.
+async function fetchBrevo(url, options) {
+  let lastError;
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
+    try {
+      const res = await fetch(url, options);
+
+      if (res.ok || !isRetryableStatus(res.status) || attempt === MAX_ATTEMPTS) {
+        return res;
+      }
+
+      console.error('subscribe: retrying', url, res.status, `attempt ${attempt}`);
+    } catch (err) {
+      lastError = err;
+      if (attempt === MAX_ATTEMPTS) throw err;
+      console.error('subscribe: retrying after error', `attempt ${attempt}`, err?.message);
+    }
+
+    await sleep(RETRY_BASE_DELAY * 2 ** (attempt - 1));
+  }
+
+  // Unreachable in practice, but keeps the type honest.
+  throw lastError || new Error('subscribe: exhausted retries');
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -35,7 +74,7 @@ export default async function handler(req, res) {
 
   try {
     // 1. Does the contact already exist?
-    const lookup = await fetch(
+    const lookup = await fetchBrevo(
       `${BREVO_BASE}/contacts/${encodeURIComponent(email)}`,
       { headers },
     );
@@ -49,7 +88,7 @@ export default async function handler(req, res) {
       }
 
       // Existing contact, not on this list yet -> add them to it.
-      const added = await fetch(
+      const added = await fetchBrevo(
         `${BREVO_BASE}/contacts/lists/${BREVO_LIST_ID}/contacts/add`,
         {
           method: 'POST',
@@ -68,7 +107,7 @@ export default async function handler(req, res) {
 
     // 2. Unknown contact -> create them on the list.
     if (lookup.status === 404) {
-      const created = await fetch(`${BREVO_BASE}/contacts`, {
+      const created = await fetchBrevo(`${BREVO_BASE}/contacts`, {
         method: 'POST',
         headers,
         body: JSON.stringify({
