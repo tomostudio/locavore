@@ -22,7 +22,7 @@ import Footer from "@/components/modules/footer";
 import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
 
 const PUBLISH_DATE = "2026-07-09";
-const CURRENT_HREF = "/nxt/michelin-guide";
+const CURRENT_HREF = "/nxt/guides/michelin-guide";
 
 // Article hero — feeds the OG / Article-schema image and the in-body figure.
 const HERO_IMAGE = "/guides/chefs-eelke-ray.webp";
@@ -256,7 +256,7 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 For the courses, the price and what to expect on the night, see
                 our{" "}
                 <FancyLink
-                  destination="/nxt/tasting-menu-guide"
+                  destination="/nxt/guides/tasting-menu-guide"
                   className="underline hover:opacity-60 transition-opacity"
                 >
                   Locavore NXT tasting menu guide

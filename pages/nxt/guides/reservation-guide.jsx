@@ -101,7 +101,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
     show_article: false,
   };
 
-  const next = nextLiveGuide("/nxt/reservation-guide");
+  const next = nextLiveGuide("/nxt/guides/reservation-guide");
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -297,7 +297,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               <P className="mt-4">
                 For the full course-by-course breakdown, see our{" "}
                 <FancyLink
-                  destination="/nxt/tasting-menu-guide"
+                  destination="/nxt/guides/tasting-menu-guide"
                   className="underline hover:opacity-60 transition-opacity"
                 >
                   Locavore NXT tasting menu guide

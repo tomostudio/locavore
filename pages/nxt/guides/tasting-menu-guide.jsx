@@ -22,7 +22,7 @@ import Footer from "@/components/modules/footer";
 import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
 
 const PUBLISH_DATE = "2026-07-09";
-const CURRENT_HREF = "/nxt/tasting-menu-guide";
+const CURRENT_HREF = "/nxt/guides/tasting-menu-guide";
 
 // Article hero — feeds the OG / Article-schema image and the in-body figure.
 const HERO_IMAGE = "/guides/rooftop-food-forest.webp";
@@ -236,7 +236,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               <P className="mt-4">
                 For booking steps, lead times and how payment works, see our{" "}
                 <FancyLink
-                  destination="/nxt/reservation-guide"
+                  destination="/nxt/guides/reservation-guide"
                   className="underline hover:opacity-60 transition-opacity"
                 >
                   guide to getting a reservation at Locavore NXT

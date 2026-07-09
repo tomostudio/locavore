@@ -80,8 +80,7 @@ const NxtNavigationDesktop = ({transition = false }) => {
         <FancyLink
           destination="/nxt/guides"
           className={`relative z-4 ${
-            router.pathname === '/nxt/guides' ||
-            router.pathname === '/nxt/reservation-guide'
+            router.pathname.startsWith('/nxt/guides')
               ? 'bg-[#BEC29D]'
               : 'bg-white'
           } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-500 hover:bg-[#BEC29D]`}

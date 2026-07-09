@@ -303,7 +303,7 @@ const Visit = ({ homeAPI, visitAPI, settingAPI, footerAPI }) => {
             <span className="mt-8 sm:mt-10 text-center text-[14px] sm:text-[16px] opacity-80">
               New to Locavore NXT?{' '}
               <FancyLink
-                destination="/nxt/reservation-guide"
+                destination="/nxt/guides/reservation-guide"
                 className="underline hover:opacity-50 transition-opacity"
               >
                 Read our guide on how to get a reservation

@@ -9,7 +9,7 @@ export const NXT_GUIDES = [
     title: 'How to Get a Reservation at Locavore NXT',
     description:
       'Booking steps, how far ahead to reserve, deposit and cancellation policy, and what to know before you arrive.',
-    href: '/nxt/reservation-guide',
+    href: '/nxt/guides/reservation-guide',
     category: 'Visiting',
     readTime: '5 min',
     thumbnail: '/guides/nxt-dining-room.webp',
@@ -19,7 +19,7 @@ export const NXT_GUIDES = [
     title: 'Locavore NXT Tasting Menu: Courses, Price & What to Expect',
     description:
       'The full tasting-menu experience — course count, price, pairings, dress code and duration.',
-    href: '/nxt/tasting-menu-guide',
+    href: '/nxt/guides/tasting-menu-guide',
     category: 'Food',
     readTime: '6 min',
     thumbnail: '/guides/rooftop-food-forest.webp',
@@ -29,7 +29,7 @@ export const NXT_GUIDES = [
     title: 'Is Locavore Michelin Star? Bali & the Michelin Guide, Explained',
     description:
       'Where Bali sits with the Michelin Guide, and the accolades Locavore actually holds.',
-    href: '/nxt/michelin-guide',
+    href: '/nxt/guides/michelin-guide',
     category: 'Visiting',
     readTime: '4 min',
     thumbnail: '/guides/chefs-eelke-ray.webp',
