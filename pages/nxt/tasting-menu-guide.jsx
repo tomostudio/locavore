@@ -1,36 +1,31 @@
-import Layout from '@/components/modules/layout'
-import SEO from '@/components/utils/seo'
+import Layout from "@/components/modules/layout";
+import SEO from "@/components/utils/seo";
 import {
   FAQPageSchema,
   BreadcrumbSchema,
-} from '@/components/utils/structuredData'
-import client from '@/helpers/sanity/client'
-import { useAppContext } from 'context/state'
-import { useRouter } from 'next/router'
-import { Children, useEffect, useState } from 'react'
-import Container from '@/components/modules/container'
-import HeaderGap from '@/components/modules/headerGap'
-import OpeningArticle from '@/components/modules/editorial/openingArticle'
-import StickyButton from '@/components/modules/stickyButton'
-import FancyLink from '@/components/utils/fancyLink'
-import Arrow from '@/components/utils/arrow'
-import NextArticle from '@/components/modules/editorial/nextArticle'
-import Footer from '@/components/modules/footer'
-import { HUB_HREF, nextLiveGuide } from '@/helpers/nxt/guides'
+} from "@/components/utils/structuredData";
+import client from "@/helpers/sanity/client";
+import { useAppContext } from "context/state";
+import { useRouter } from "next/router";
+import { Children, useEffect, useState } from "react";
+import Container from "@/components/modules/container";
+import HeaderGap from "@/components/modules/headerGap";
+import OpeningArticle from "@/components/modules/editorial/openingArticle";
+import StickyButton from "@/components/modules/stickyButton";
+import FancyLink from "@/components/utils/fancyLink";
+import Arrow from "@/components/utils/arrow";
+import NextArticle from "@/components/modules/editorial/nextArticle";
+import Footer from "@/components/modules/footer";
+import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
 
-// Michelin/fine-dining SEO cluster, piece 2 of 8 — tasting menu / price.
-// Amber-highlighted spans mark facts to VERIFY before publishing (price, course
-// count, duration, dress code). FAQ items feed both the visible list and the
-// FAQPage JSON-LD.
-
-const PUBLISH_DATE = '2026-07-11'
-const CURRENT_HREF = '/nxt/tasting-menu-guide'
+const PUBLISH_DATE = "2026-07-11";
+const CURRENT_HREF = "/nxt/tasting-menu-guide";
 
 const highlight = (text, keyPrefix) =>
   String(text)
     .split(/(\[[^\]]+\])/g)
     .map((part, i) =>
-      part.startsWith('[') && part.endsWith(']') ? (
+      part.startsWith("[") && part.endsWith("]") ? (
         <mark
           key={`${keyPrefix}-${i}`}
           className="bg-amber-300/90 text-black px-1 rounded-sm font-medium"
@@ -40,84 +35,84 @@ const highlight = (text, keyPrefix) =>
       ) : (
         <span key={`${keyPrefix}-${i}`}>{part}</span>
       ),
-    )
+    );
 
 const Fill = ({ children }) => (
   <>
     {Children.map(children, (child, ci) =>
-      typeof child === 'string' ? highlight(child, ci) : child,
+      typeof child === "string" ? highlight(child, ci) : child,
     )}
   </>
-)
+);
 
 const FAQS = [
   {
-    question: 'How many courses is the Locavore NXT tasting menu?',
+    question: "How many courses is the Locavore NXT tasting menu?",
     answer:
-      'Locavore NXT serves a single set tasting menu of [number] courses that changes with the seasons. There is no à la carte option — every guest at the table is served the same progression on the night.',
+      "Locavore NXT serves one set tasting menu, called The Source, of 16 courses that changes with the seasons. There is no à la carte, so everyone at the table is served the same progression.",
   },
   {
-    question: 'How much does the Locavore NXT tasting menu cost?',
+    question: "How much does the Locavore NXT tasting menu cost?",
     answer:
-      'The menu is [price] per person, with an optional wine or non-alcoholic pairing from [pairing price]. Prices are confirmed at booking; service and any additional drinks are [added on the night / included].',
+      "The Source is IDR 2,200,000++ per person. A beverage pairing is optional but recommended: IDR 850,000++ with alcohol, or IDR 650,000++ for the non-alcoholic version. The ++ covers tax and service, and any extra drinks are added on the night.",
   },
   {
-    question: 'How long does dinner at Locavore NXT take?',
+    question: "How long does dinner at Locavore NXT take?",
     answer:
-      'Plan for roughly [3–4 hours]. It is a single seating built as one continuous experience, so it is best treated as the whole evening rather than a quick dinner before other plans.',
+      "Plan for three to three and a half hours. It is a single, unhurried tasting menu meant to be the evening itself, so it is best not booked before other plans.",
   },
   {
-    question: 'Is there a dress code at Locavore NXT?',
+    question: "Is there a dress code at Locavore NXT?",
     answer:
-      'The dress code is [smart casual — no jacket required]. Ubud is warm and humid year-round, so comfortable, breathable clothing is the norm; there is [no formal requirement].',
+      "There is no formal dress code. Ubud is warm and humid year-round, so comfortable, breathable clothing is the norm and smart-casual is plenty.",
   },
   {
-    question: 'Can the tasting menu be adapted for dietary needs?',
+    question: "Can the tasting menu be adapted for dietary needs?",
     answer:
-      'With notice at booking, yes. Because the menu is composed for the whole table, [vegetarian / pescatarian / specific-allergy] adaptations are arranged in advance rather than on the night.',
+      "With notice at booking, yes. NXT already cooks without imports, dairy or wheat and with little animal protein, so it is well suited to dietary needs. Because the menu is composed for the whole table, adaptations are arranged in advance rather than on the night.",
   },
-]
+];
 
 const H2 = ({ children }) => (
   <h2 className="font-default font-bold text-3xl sm:text-4xl mt-16 mb-5 first:mt-0">
     {children}
   </h2>
-)
+);
 
-const P = ({ children, className = '' }) => (
+const P = ({ children, className = "" }) => (
   <p className={`text-[1.0625rem] sm:text-lg leading-relaxed ${className}`}>
     {children}
   </p>
-)
+);
 
 const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
-  const router = useRouter()
-  const appContext = useAppContext()
-  const [home] = homeAPI
-  const [setting] = settingAPI
-  const [footer] = footerAPI
+  const router = useRouter();
+  const appContext = useAppContext();
+  const [home] = homeAPI;
+  const [setting] = settingAPI;
+  const [footer] = footerAPI;
 
-  const [baseUrl, setBaseUrl] = useState()
-  const [snackBar, setSnackBar] = useState(false)
+  const [baseUrl, setBaseUrl] = useState();
+  const [snackBar, setSnackBar] = useState(false);
 
   const article = {
-    title: 'Locavore NXT Tasting Menu: Courses, Price & What to Expect',
-    category: { title: 'Food' },
+    title: "Locavore NXT Tasting Menu: Courses, Price & What to Expect",
+    category: { title: "Food" },
     date: PUBLISH_DATE,
     description: [],
     show_article: false,
-  }
+  };
 
-  const next = nextLiveGuide(CURRENT_HREF)
+  const next = nextLiveGuide(CURRENT_HREF);
 
   useEffect(() => {
-    window.scroll(0, 0)
-    setBaseUrl(window.location.href)
-    appContext.setHeader({ headerStyle: 'default' })
+    window.scroll(0, 0);
+    setBaseUrl(window.location.href);
+    appContext.setHeader({ headerStyle: "default" });
     return () => {
-      appContext.setHeader({ headerStyle: 'default' })
-    }
-  }, [])
+      appContext.setHeader({ headerStyle: "default" });
+    };
+  }, []);
 
   return (
     <Layout>
@@ -126,10 +121,10 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
         pagelink={router.pathname}
         inputSEO={{
           seo_description:
-            'What to expect from the Locavore NXT tasting menu in Ubud, Bali — how many courses, the price, pairings, dress code and how long dinner takes.',
+            "What to expect from the Locavore NXT tasting menu in Ubud, Bali — how many courses, the price, pairings, dress code and how long dinner takes.",
         }}
-        defaultSEO={typeof home !== 'undefined' && home.seo}
-        webTitle={typeof setting !== 'undefined' && setting.webTitle}
+        defaultSEO={typeof home !== "undefined" && home.seo}
+        webTitle={typeof setting !== "undefined" && setting.webTitle}
       />
       <FAQPageSchema faqs={FAQS} />
       <BreadcrumbSchema path={router.asPath} />
@@ -149,14 +144,11 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
           <Container className="max-md:px-6">
             <article className="max-w-[800px] w-full mx-auto text-black">
               <P className="text-xl sm:text-2xl leading-snug font-serif">
-                <Fill>
-                  Locavore NXT is a single set tasting menu of [number] courses,
-                  [price] per person, that changes with what&rsquo;s growing and
-                  being foraged around Ubud.
-                </Fill>{' '}
-                There&rsquo;s no à la carte — the whole table follows the same
-                progression, over roughly [3–4 hours], as one continuous
-                experience.
+                Locavore NXT serves one set tasting menu, called The Source: 16
+                courses at IDR 2,200,000++ per person, changing with
+                what&rsquo;s growing, ripening and being foraged around Ubud.
+                There&rsquo;s no à la carte. Everyone at the table eats the same
+                progression, and it runs about three to three and a half hours.
               </P>
 
               <div className="my-12 border border-black/20 rounded-2xl p-6 sm:p-8">
@@ -171,68 +163,58 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 </span>
                 <ul className="mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
                   <li>
-                    <Fill>
-                      <strong>The menu:</strong> one set tasting menu of [number]
-                      courses, no à la carte, changing with the season.
-                    </Fill>
+                    <strong>The menu:</strong> one set tasting menu, The Source
+                    &mdash; 16 courses, no à la carte, changing with the season.
                   </li>
                   <li>
-                    <Fill>
-                      <strong>Price:</strong> [price] per person, plus an optional
-                      pairing from [pairing price].
-                    </Fill>
+                    <strong>Price:</strong> IDR 2,200,000++ per person, plus an
+                    optional pairing from IDR 650,000++.
                   </li>
                   <li>
-                    <Fill>
-                      <strong>Time:</strong> allow [3–4 hours] — it&rsquo;s the
-                      whole evening, not a quick dinner.
-                    </Fill>
+                    <strong>Time:</strong> about 3 to 3.5 hours, so keep the
+                    whole evening free.
                   </li>
                   <li>
-                    <Fill>
-                      <strong>Dress:</strong> [smart casual], comfortable for a
-                      warm, humid climate.
-                    </Fill>
+                    <strong>Dress:</strong> no formal code; comfortable for a
+                    warm, humid climate.
                   </li>
                 </ul>
               </div>
 
               <H2>What is on the Locavore NXT tasting menu?</H2>
               <P>
-                <Fill>
-                  The menu is a set progression of [number] courses built around
-                  Balinese and Indonesian ingredients — much of it grown,
-                  fermented or foraged by the team.
-                </Fill>{' '}
-                It changes regularly, so the exact dishes on your night depend on
-                the season rather than a fixed carte.
+                The Source is built almost entirely from ingredients the team
+                grows, ferments or forages: NXT&rsquo;s rooftop food forest, the
+                rice paddies next door, and the jungle around Ubud. The kitchen
+                sticks to a few firm rules &mdash; no imports, no dairy or
+                wheat, less animal protein, and as close to zero waste as they
+                can get (they&rsquo;re currently running a 98%-plus waste-free
+                kitchen). What lands on your table depends on what&rsquo;s wild
+                and ripe that week, not a fixed carte.
               </P>
               <P className="mt-4">
-                Expect a mix of small opening bites, a run of savoury courses,
-                and a sweet finish, each introduced as it&rsquo;s served. The
-                emphasis is on place and provenance — dishes are designed to show
-                where you are, not to replicate fine dining from elsewhere.
+                Expect 16 courses that start small and build, each one
+                introduced as it lands. The whole thing is about where
+                you&rsquo;re sitting: dishes are meant to taste of this patch of
+                Bali, pairing things you half-recognise with others that are
+                genuinely wild and unfamiliar.
               </P>
 
               <H2>How much does the Locavore NXT tasting menu cost?</H2>
               <P>
-                <Fill>
-                  The tasting menu is [price] per person. An optional wine
-                  pairing is [wine pairing price], and a non-alcoholic pairing —
-                  often built from house ferments and garden botanicals — is
-                  [NA pairing price].
-                </Fill>
+                The Source is IDR 2,200,000++ per person. The optional beverage
+                pairing, made with the same local, foraged and fermented
+                ingredients as the food, is IDR 850,000++ with alcohol or IDR
+                650,000++ for the non-alcoholic (or very low-ABV) version. The
+                ++ is tax and service on top.
               </P>
               <P className="mt-4">
-                <Fill>
-                  A deposit is taken at booking and is [applied to your final
-                  bill]. Service and any drinks beyond the pairing are [added on
-                  the night]. Prices are confirmed when you reserve, so check the
-                  booking page for the current menu price.
-                </Fill>
+                You pay to secure the table when you book, and any drinks beyond
+                the pairing are added on the night. Prices are confirmed at
+                checkout, so the booking page always shows the current figure.
               </P>
               <P className="mt-4">
-                For booking steps, lead times and the deposit policy, see our{' '}
+                For booking steps, lead times and how payment works, see our{" "}
                 <FancyLink
                   destination="/nxt/reservation-guide"
                   className="underline hover:opacity-60 transition-opacity"
@@ -244,33 +226,28 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>How long does dinner take?</H2>
               <P>
-                <Fill>
-                  Plan for around [3–4 hours]. Because it&rsquo;s a single
-                  seating run as one continuous experience, it&rsquo;s best to
-                  keep the evening free rather than book it before other plans.
-                </Fill>
+                Plan for three to three and a half hours at the table. Dinner
+                seatings begin between 17:30 and 20:30, with a lunch service too
+                (Thursday to Saturday from 12:00), and the 16 courses unfold at
+                an unhurried pace. It&rsquo;s best kept as the whole evening
+                rather than slotted in before other plans.
               </P>
 
               <H2>What should you wear to Locavore NXT?</H2>
               <P>
-                <Fill>
-                  The dress code is [smart casual] — [no jacket or formal wear
-                  required]. Ubud is warm and humid all year, so most guests wear
-                  something comfortable and breathable.
-                </Fill>{' '}
-                The setting is considered but relaxed; you won&rsquo;t feel out of
-                place in smart-casual attire.
+                There&rsquo;s no formal dress code and no jacket required. Ubud
+                is warm and humid all year, so most guests wear something smart
+                but breathable. The room is considered without being stiff, so
+                you won&rsquo;t feel underdressed in smart-casual.
               </P>
 
               <H2>Can the menu be adapted for dietary needs?</H2>
               <P>
-                <Fill>
-                  With advance notice, most needs can be accommodated. Flag
-                  allergies and preferences <em>when you book</em> — because the
-                  menu is composed for the whole table, [vegetarian / pescatarian
-                  / specific-allergy] versions are arranged ahead, not on the
-                  night.
-                </Fill>
+                With advance notice, most needs can be handled. Flag allergies
+                and preferences <em>when you book</em>, not on the night, since
+                the menu is composed for the whole table. The kitchen already
+                cooks without dairy or wheat and with little animal protein,
+                which gives it plenty to work with.
               </P>
 
               <div className="my-14 flex justify-center">
@@ -301,12 +278,12 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
         </section>
 
         <NextArticle
-          articleTitle={next ? 'Next Guide' : 'More Guides'}
+          articleTitle={next ? "Next Guide" : "More Guides"}
           destination={next ? next.href : HUB_HREF}
-          title={next ? next.title : 'Explore all NXT guides'}
-          category={next ? next.category : 'Guides'}
-          timeRead={next ? next.readTime : 'Browse'}
-          thumbnail={next ? next.thumbnail : '/nxt2/visit/hero.png'}
+          title={next ? next.title : "Explore all NXT guides"}
+          category={next ? next.category : "Guides"}
+          timeRead={next ? next.readTime : "Browse"}
+          thumbnail={next ? next.thumbnail : "/nxt2/visit/hero.png"}
           bgColor="#CF7D57"
           border={true}
         />
@@ -318,20 +295,20 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
       <Footer footer={footer} mailchimp={setting.mailchimpID} />
     </Layout>
-  )
-}
+  );
+};
 
 export async function getStaticProps() {
-  const homeAPI = await client.fetch(`*[_type == "homeNxt"]`)
-  const settingAPI = await client.fetch(`*[_type == "settings"]`)
-  const footerAPI = await client.fetch(`*[_type == "footer"]`)
-  const headerAPI = await client.fetch(`*[_type == "header"]`)
+  const homeAPI = await client.fetch(`*[_type == "homeNxt"]`);
+  const settingAPI = await client.fetch(`*[_type == "settings"]`);
+  const footerAPI = await client.fetch(`*[_type == "footer"]`);
+  const headerAPI = await client.fetch(`*[_type == "header"]`);
   const familyListAPI = await client.fetch(
     `*[_type == "family_list"] | order(order asc)`,
-  )
+  );
   return {
     props: { homeAPI, settingAPI, footerAPI, headerAPI, familyListAPI },
-  }
+  };
 }
 
-export default TastingMenuGuide
+export default TastingMenuGuide;
