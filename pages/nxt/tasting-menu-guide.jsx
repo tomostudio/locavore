@@ -1,13 +1,16 @@
 import Layout from "@/components/modules/layout";
 import SEO from "@/components/utils/seo";
+import Image from "next/image";
 import {
   FAQPageSchema,
   BreadcrumbSchema,
+  ArticleSchema,
 } from "@/components/utils/structuredData";
+import { absoluteUrl } from "@/helpers/seo/siteConfig";
 import client from "@/helpers/sanity/client";
 import { useAppContext } from "context/state";
 import { useRouter } from "next/router";
-import { Children, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "@/components/modules/container";
 import HeaderGap from "@/components/modules/headerGap";
 import OpeningArticle from "@/components/modules/editorial/openingArticle";
@@ -18,32 +21,11 @@ import NextArticle from "@/components/modules/editorial/nextArticle";
 import Footer from "@/components/modules/footer";
 import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
 
-const PUBLISH_DATE = "2026-07-11";
+const PUBLISH_DATE = "2026-07-09";
 const CURRENT_HREF = "/nxt/tasting-menu-guide";
 
-const highlight = (text, keyPrefix) =>
-  String(text)
-    .split(/(\[[^\]]+\])/g)
-    .map((part, i) =>
-      part.startsWith("[") && part.endsWith("]") ? (
-        <mark
-          key={`${keyPrefix}-${i}`}
-          className="bg-amber-300/90 text-black px-1 rounded-sm font-medium"
-        >
-          {part}
-        </mark>
-      ) : (
-        <span key={`${keyPrefix}-${i}`}>{part}</span>
-      ),
-    );
-
-const Fill = ({ children }) => (
-  <>
-    {Children.map(children, (child, ci) =>
-      typeof child === "string" ? highlight(child, ci) : child,
-    )}
-  </>
-);
+// Article hero — feeds the OG / Article-schema image and the in-body figure.
+const HERO_IMAGE = "/guides/rooftop-food-forest.webp";
 
 const FAQS = [
   {
@@ -83,6 +65,23 @@ const P = ({ children, className = "" }) => (
   <p className={`text-[1.0625rem] sm:text-lg leading-relaxed ${className}`}>
     {children}
   </p>
+);
+
+// Responsive article figure: full-column WebP with an optional caption.
+const Figure = ({ src, alt, width, height, caption }) => (
+  <figure className="my-10">
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      sizes="(max-width: 800px) 100vw, 800px"
+      className="w-full h-auto rounded-2xl"
+    />
+    {caption && (
+      <figcaption className="mt-3 text-sm opacity-60">{caption}</figcaption>
+    )}
+  </figure>
 );
 
 const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
@@ -128,6 +127,14 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
       />
       <FAQPageSchema faqs={FAQS} />
       <BreadcrumbSchema path={router.asPath} />
+      <ArticleSchema
+        headline={article.title}
+        description="What to expect from the Locavore NXT tasting menu in Ubud, Bali: 16 courses, the price, pairings, dress code and how long dinner takes."
+        url={absoluteUrl(router.pathname)}
+        image={absoluteUrl(HERO_IMAGE)}
+        datePublished={PUBLISH_DATE}
+        section={article.category.title}
+      />
 
       <div className="relative z-10 bg-white text-black flow-root">
         <HeaderGap />
@@ -143,6 +150,10 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
         <section className="mt-10 w-full h-full">
           <Container className="max-md:px-6">
             <article className="max-w-[800px] w-full mx-auto text-black">
+              {/* Byline — visible author for E-E-A-T */}
+              <p className="text-sm opacity-60 mb-8">
+                By the <span className="font-medium">Locavore NXT</span> team
+              </p>
               <P className="text-xl sm:text-2xl leading-snug font-serif">
                 Locavore NXT serves one set tasting menu, called The Source: 16
                 courses at IDR 2,200,000++ per person, changing with
@@ -192,6 +203,15 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 kitchen). What lands on your table depends on what&rsquo;s wild
                 and ripe that week, not a fixed carte.
               </P>
+
+              <Figure
+                src={HERO_IMAGE}
+                alt="The rooftop food forest at Locavore NXT, Ubud"
+                width={1600}
+                height={1066}
+                caption="The rooftop food forest, one of the gardens The Source is built from."
+              />
+
               <P className="mt-4">
                 Expect 16 courses that start small and build, each one
                 introduced as it lands. The whole thing is about where
@@ -268,7 +288,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                       {faq.question}
                     </h3>
                     <p className="mt-2 text-[1.0625rem] leading-relaxed opacity-80">
-                      <Fill>{faq.answer}</Fill>
+                      {faq.answer}
                     </p>
                   </div>
                 ))}

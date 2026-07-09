@@ -12,7 +12,7 @@ export const NXT_GUIDES = [
     href: '/nxt/reservation-guide',
     category: 'Visiting',
     readTime: '5 min',
-    thumbnail: '/nxt2/visit/hero.png',
+    thumbnail: '/guides/nxt-dining-room.webp',
     live: true,
   },
   {
@@ -22,7 +22,7 @@ export const NXT_GUIDES = [
     href: '/nxt/tasting-menu-guide',
     category: 'Food',
     readTime: '6 min',
-    thumbnail: '/nxt2/menu/group.png',
+    thumbnail: '/guides/rooftop-food-forest.webp',
     live: true,
   },
   {
@@ -32,7 +32,7 @@ export const NXT_GUIDES = [
     href: '/nxt/michelin-guide',
     category: 'Visiting',
     readTime: '4 min',
-    thumbnail: '/nxt2/building.png',
+    thumbnail: '/guides/chefs-eelke-ray.webp',
     live: true,
   },
 ]

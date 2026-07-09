@@ -1,13 +1,16 @@
 import Layout from "@/components/modules/layout";
 import SEO from "@/components/utils/seo";
+import Image from "next/image";
 import {
   FAQPageSchema,
   BreadcrumbSchema,
+  ArticleSchema,
 } from "@/components/utils/structuredData";
+import { absoluteUrl } from "@/helpers/seo/siteConfig";
 import client from "@/helpers/sanity/client";
 import { useAppContext } from "context/state";
 import { useRouter } from "next/router";
-import { Children, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "@/components/modules/container";
 import HeaderGap from "@/components/modules/headerGap";
 import OpeningArticle from "@/components/modules/editorial/openingArticle";
@@ -18,43 +21,22 @@ import NextArticle from "@/components/modules/editorial/nextArticle";
 import Footer from "@/components/modules/footer";
 import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
 
-const PUBLISH_DATE = "2026-07-14";
+const PUBLISH_DATE = "2026-07-09";
 const CURRENT_HREF = "/nxt/michelin-guide";
 
-const highlight = (text, keyPrefix) =>
-  String(text)
-    .split(/(\[[^\]]+\])/g)
-    .map((part, i) =>
-      part.startsWith("[") && part.endsWith("]") ? (
-        <mark
-          key={`${keyPrefix}-${i}`}
-          className="bg-amber-300/90 text-black px-1 rounded-sm font-medium"
-        >
-          {part}
-        </mark>
-      ) : (
-        <span key={`${keyPrefix}-${i}`}>{part}</span>
-      ),
-    );
-
-const Fill = ({ children }) => (
-  <>
-    {Children.map(children, (child, ci) =>
-      typeof child === "string" ? highlight(child, ci) : child,
-    )}
-  </>
-);
+// Article hero — feeds the OG / Article-schema image and the in-body figure.
+const HERO_IMAGE = "/guides/chefs-eelke-ray.webp";
 
 const FAQS = [
   {
     question: "Does Locavore have a Michelin star?",
     answer:
-      "No, and no restaurant in Indonesia does. The Michelin Guide does not cover Indonesia as of 2026, so Bali restaurants cannot be awarded stars. Locavore is recognised in other ways: it was rated the most sustainable restaurant in Asia and was the only Indonesian restaurant to rank consistently on Asia’s 50 Best.",
+      "No, and no restaurant in Indonesia does. The Michelin Guide does not rate restaurants in Indonesia as of 2026, so Bali restaurants cannot be awarded stars. Locavore is recognised in other ways: it was rated the most sustainable restaurant in Asia and was the only Indonesian restaurant to rank consistently on Asia’s 50 Best.",
   },
   {
     question: "Is there a Michelin Guide for Bali or Indonesia?",
     answer:
-      "Not at present, as of 2026. Michelin publishes guides for selected countries and cities, and Indonesia is not among them yet. Because there is no guide for the region, no Bali restaurant holds a Michelin star, however good the cooking.",
+      "Not for restaurants, as of 2026. Michelin publishes restaurant guides in selected countries, and Indonesia is not among them yet (its Michelin Keys, launched in 2025, rate hotels, not restaurants). With no restaurant guide for the region, no Bali restaurant holds a Michelin star, however good the cooking.",
   },
   {
     question: "What awards has Locavore won?",
@@ -78,6 +60,23 @@ const P = ({ children, className = "" }) => (
   <p className={`text-[1.0625rem] sm:text-lg leading-relaxed ${className}`}>
     {children}
   </p>
+);
+
+// Responsive article figure: full-column WebP with an optional caption.
+const Figure = ({ src, alt, width, height, caption }) => (
+  <figure className="my-10">
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      sizes="(max-width: 800px) 100vw, 800px"
+      className="w-full h-auto rounded-2xl"
+    />
+    {caption && (
+      <figcaption className="mt-3 text-sm opacity-60">{caption}</figcaption>
+    )}
+  </figure>
 );
 
 const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
@@ -123,6 +122,14 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
       />
       <FAQPageSchema faqs={FAQS} />
       <BreadcrumbSchema path={router.asPath} />
+      <ArticleSchema
+        headline={article.title}
+        description="Does Locavore have a Michelin star? Why there is no Michelin restaurant guide in Bali or Indonesia, and the awards Locavore actually holds."
+        url={absoluteUrl(router.pathname)}
+        image={absoluteUrl(HERO_IMAGE)}
+        datePublished={PUBLISH_DATE}
+        section={article.category.title}
+      />
 
       <div className="relative z-10 bg-white text-black flow-root">
         <HeaderGap />
@@ -138,15 +145,20 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
         <section className="mt-10 w-full h-full">
           <Container className="max-md:px-6">
             <article className="max-w-[800px] w-full mx-auto text-black">
+              {/* Byline — visible author for E-E-A-T */}
+              <p className="text-sm opacity-60 mb-8">
+                By the <span className="font-medium">Locavore NXT</span> team
+              </p>
               <P className="text-xl sm:text-2xl leading-snug font-serif">
-                No, Locavore doesn&rsquo;t have a Michelin star, and neither
-                does any restaurant in Indonesia. The Michelin Guide
-                doesn&rsquo;t cover the country as of 2026, so no Bali
-                restaurant is eligible for a star yet. That&rsquo;s down to
-                where Michelin publishes, not the cooking. Locavore&rsquo;s
-                recognition comes from elsewhere: it was named the most
-                sustainable restaurant in Asia and was the only Indonesian
-                restaurant to rank consistently on Asia&rsquo;s 50 Best.
+                No, Locavore NXT doesn&rsquo;t have a Michelin star, and neither
+                does any restaurant in Indonesia. Michelin doesn&rsquo;t run a
+                restaurant guide in Indonesia as of 2026, so no Bali restaurant
+                is eligible for a star yet. That&rsquo;s down to where Michelin
+                publishes, not the cooking. The recognition comes from
+                elsewhere: the original Locavore was the only Indonesian
+                restaurant to rank consistently on Asia&rsquo;s 50 Best and the
+                most sustainable in Asia, and Locavore NXT, the restaurant that
+                replaced it in 2023, has carried that reputation on.
               </P>
 
               <div className="my-12 border border-black/20 rounded-2xl p-6 sm:p-8">
@@ -161,8 +173,8 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 </span>
                 <ul className="mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
                   <li>
-                    There is no Michelin Guide for Indonesia as of 2026, so no
-                    Bali restaurant holds a star.
+                    There is no Michelin restaurant guide for Indonesia as of
+                    2026, so no Bali restaurant holds a star.
                   </li>
                   <li>
                     Locavore is recognised through Asia&rsquo;s 50 Best and
@@ -177,10 +189,11 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>Does Locavore have a Michelin star?</H2>
               <P>
-                No. Locavore holds no Michelin star because Michelin
-                doesn&rsquo;t rate restaurants in Indonesia as of 2026. A star
-                can only be awarded where Michelin publishes a guide, and Bali
-                isn&rsquo;t currently within that coverage.
+                No. Neither the original Locavore nor Locavore NXT holds a
+                Michelin star, because Michelin doesn&rsquo;t rate restaurants in
+                Indonesia as of 2026. A star can only be awarded where Michelin
+                publishes a guide, and Bali isn&rsquo;t currently within that
+                coverage.
               </P>
               <P className="mt-4">
                 If you&rsquo;ve seen Locavore called
@@ -191,20 +204,36 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>Is there a Michelin Guide for Bali or Indonesia?</H2>
               <P>
-                Not right now, as of 2026. Michelin runs guides in selected
-                markets and adds new countries over time, but Indonesia
-                isn&rsquo;t included yet. Until that changes, nowhere in the
-                country, Bali or Jakarta included, can hold a Michelin star.
+                Not for restaurants, as of 2026. Michelin runs its restaurant
+                guide in selected markets and keeps adding new ones (Thailand,
+                Singapore, and the Philippines from 2026), but Indonesia
+                isn&rsquo;t among them yet.
+              </P>
+              <P className="mt-4">
+                There is one wrinkle worth knowing. In October 2025 Michelin
+                brought its hotel rating, the Michelin Keys, to Indonesia, and
+                several Bali properties earned them. That is a distinction for
+                hotels, not a restaurant star, so it doesn&rsquo;t change the
+                fact that no Indonesian restaurant holds a Michelin star.
               </P>
 
               <H2>What awards has Locavore won?</H2>
               <P>
                 Locavore was founded by chefs Eelke Plasmeijer and Ray
-                Adriansyah in 2013, and its reputation was built on Asia&rsquo;s
-                50 Best Restaurants, where it was the only Indonesian restaurant
-                to rank year after year, and on being named the most sustainable
-                restaurant in Asia.
+                Adriansyah in 2013, and the original restaurant&rsquo;s
+                reputation was built on Asia&rsquo;s 50 Best Restaurants, where
+                it was the only Indonesian restaurant to rank year after year,
+                and on being named the most sustainable restaurant in Asia.
               </P>
+
+              <Figure
+                src={HERO_IMAGE}
+                alt="Locavore NXT co-founders and chefs Eelke Plasmeijer and Ray Adriansyah"
+                width={1600}
+                height={1067}
+                caption="Locavore co-founders Eelke Plasmeijer and Ray Adriansyah, who opened NXT in 2023."
+              />
+
               <P className="mt-4">
                 That thread continues at NXT, which opened in December 2023 and
                 has already won the Sustainable Restaurant Award from
@@ -253,7 +282,7 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                       {faq.question}
                     </h3>
                     <p className="mt-2 text-[1.0625rem] leading-relaxed opacity-80">
-                      <Fill>{faq.answer}</Fill>
+                      {faq.answer}
                     </p>
                   </div>
                 ))}

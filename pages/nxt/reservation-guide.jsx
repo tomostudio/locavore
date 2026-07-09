@@ -1,13 +1,16 @@
 import Layout from "@/components/modules/layout";
 import SEO from "@/components/utils/seo";
+import Image from "next/image";
 import {
   FAQPageSchema,
   BreadcrumbSchema,
+  ArticleSchema,
 } from "@/components/utils/structuredData";
+import { absoluteUrl } from "@/helpers/seo/siteConfig";
 import client from "@/helpers/sanity/client";
 import { useAppContext } from "context/state";
 import { useRouter } from "next/router";
-import { Children, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "@/components/modules/container";
 import HeaderGap from "@/components/modules/headerGap";
 import OpeningArticle from "@/components/modules/editorial/openingArticle";
@@ -20,29 +23,8 @@ import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
 
 const PUBLISH_DATE = "2026-07-07";
 
-const highlight = (text, keyPrefix) =>
-  String(text)
-    .split(/(\[[^\]]+\])/g)
-    .map((part, i) =>
-      part.startsWith("[") && part.endsWith("]") ? (
-        <mark
-          key={`${keyPrefix}-${i}`}
-          className="bg-amber-300/90 text-black px-1 rounded-sm font-medium"
-        >
-          {part}
-        </mark>
-      ) : (
-        <span key={`${keyPrefix}-${i}`}>{part}</span>
-      ),
-    );
-
-const Fill = ({ children }) => (
-  <>
-    {Children.map(children, (child, ci) =>
-      typeof child === "string" ? highlight(child, ci) : child,
-    )}
-  </>
-);
+// Article hero — feeds the OG / Article-schema image and the in-body hero.
+const HERO_IMAGE = "/guides/nxt-dining-room.webp";
 
 const FAQS = [
   {
@@ -84,6 +66,23 @@ const P = ({ children, className = "" }) => (
   </p>
 );
 
+// Responsive article figure: full-column WebP with an optional caption.
+const Figure = ({ src, alt, width, height, caption }) => (
+  <figure className="my-10">
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      sizes="(max-width: 800px) 100vw, 800px"
+      className="w-full h-auto rounded-2xl"
+    />
+    {caption && (
+      <figcaption className="mt-3 text-sm opacity-60">{caption}</figcaption>
+    )}
+  </figure>
+);
+
 const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
   const router = useRouter();
   const appContext = useAppContext();
@@ -120,13 +119,21 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
         pagelink={router.pathname}
         inputSEO={{
           seo_description:
-            "How to book Locavore NXT in Ubud, Bali — booking steps, how far ahead to reserve, deposit and cancellation policy, and what to know before you arrive.",
+            "How to book Locavore NXT in Ubud, Bali: booking steps, how far ahead to reserve, the deposit, and what to know before you arrive.",
         }}
         defaultSEO={typeof home !== "undefined" && home.seo}
         webTitle={typeof setting !== "undefined" && setting.webTitle}
       />
       <FAQPageSchema faqs={FAQS} />
       <BreadcrumbSchema path={router.asPath} />
+      <ArticleSchema
+        headline={article.title}
+        description="How to book Locavore NXT in Ubud, Bali: booking steps, lead time, the deposit, and what to know before you arrive."
+        url={absoluteUrl(router.pathname)}
+        image={absoluteUrl(HERO_IMAGE)}
+        datePublished={PUBLISH_DATE}
+        section={article.category.title}
+      />
 
       {/* /nxt routes get a black body (see _app.jsx). This panel restores the
           light editorial theme for the article; the footer stays dark.
@@ -149,6 +156,10 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
         <section className="mt-10 w-full h-full">
           <Container className="max-md:px-6">
             <article className="max-w-[800px] w-full mx-auto text-black">
+              {/* Byline — visible author for E-E-A-T */}
+              <p className="text-sm opacity-60 mb-8">
+                By the <span className="font-medium">Locavore NXT</span> team
+              </p>
               {/* Answer-first lede */}
               <P className="text-xl sm:text-2xl leading-snug font-serif">
                 To book Locavore NXT, open the reservation link on the NXT visit
@@ -158,6 +169,14 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 tables go quickly. If you&rsquo;re planning a trip around dinner
                 here, reserve as soon as your dates are firm.
               </P>
+
+              <Figure
+                src={HERO_IMAGE}
+                alt="The dining room at Locavore NXT in Lodtunduh, Ubud"
+                width={1600}
+                height={1067}
+                caption="Inside Locavore NXT, the group's flagship in Lodtunduh, Ubud."
+              />
 
               {/* Key takeaways box */}
               <div className="my-12 border border-black/20 rounded-2xl p-6 sm:p-8">
@@ -361,6 +380,14 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 reserve and the team will build it around your table.
               </P>
 
+              <Figure
+                src="/guides/nxt-aerial.webp"
+                alt="Aerial view of the Locavore NXT site and its onsite Wood Rooms cabins"
+                width={1600}
+                height={900}
+                caption="The NXT site from above. The three Wood Rooms cabins sit onsite, among replanted forest."
+              />
+
               {/* CTA */}
               <div className="my-14 flex justify-center">
                 <FancyLink
@@ -381,7 +408,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                       {faq.question}
                     </h3>
                     <p className="mt-2 text-[1.0625rem] leading-relaxed opacity-80">
-                      <Fill>{faq.answer}</Fill>
+                      {faq.answer}
                     </p>
                   </div>
                 ))}
