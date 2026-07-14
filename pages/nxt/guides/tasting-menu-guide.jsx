@@ -175,7 +175,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 <ul className="mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
                   <li>
                     <strong>The menu:</strong> one set tasting menu, The Source
-                    &mdash; 16 courses, no à la carte, changing with the season.
+                    — 16 courses, no à la carte, changing with the season.
                   </li>
                   <li>
                     <strong>Price:</strong> IDR 2,200,000++ per person, plus an
