@@ -41,12 +41,12 @@ const FAQS = [
   {
     question: "What awards has Locavore won?",
     answer:
-      "Locavore was the only Indonesian restaurant to rank consistently on Asia’s 50 Best Restaurants and was rated the most sustainable restaurant in Asia. Since opening in December 2023, NXT has won the Sustainable Restaurant Award from Asia’s 50 Best (2025) and the Ethical & Sustainability Award from La Liste. In this region, those lists are the closest thing to a Michelin benchmark.",
+      "Locavore was the only Indonesian restaurant to rank consistently on Asia’s 50 Best Restaurants and was rated the most sustainable restaurant in Asia. Since opening in December 2023, NXT has won the Sustainable Restaurant Award from Asia’s 50 Best (2025) and the Ethical & Sustainability Award from La Liste, and was ranked 50th on OAD’s Asia’s Top Restaurants list in 2026. In this region, those lists are the closest thing to a Michelin benchmark.",
   },
   {
     question: "Is Locavore NXT fine dining?",
     answer:
-      "Yes. Locavore NXT is a reservation-only tasting-menu restaurant in Ubud, built around Balinese and Indonesian ingredients the team grows and forages. The format and the standard are what you would expect from fine dining, whether or not a Michelin guide covers the country.",
+      "Yes. Locavore NXT serves one seasonal tasting menu in Ubud, built around Balinese and Indonesian ingredients the team grows and forages. Walk-ins are possible, though reservations are recommended. The format and the standard are what you would expect from fine dining, whether or not a Michelin guide covers the country.",
   },
 ];
 
@@ -150,15 +150,15 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 By the <span className="font-medium">Locavore NXT</span> team
               </p>
               <P className="text-xl sm:text-2xl leading-snug font-serif">
-                No, Locavore NXT doesn&rsquo;t have a Michelin star, and neither
-                does any restaurant in Indonesia. Michelin doesn&rsquo;t run a
-                restaurant guide in Indonesia as of 2026, so no Bali restaurant
-                is eligible for a star yet. That&rsquo;s down to where Michelin
-                publishes, not the cooking. The recognition comes from
-                elsewhere: the original Locavore was the only Indonesian
-                restaurant to rank consistently on Asia&rsquo;s 50 Best and the
-                most sustainable in Asia, and Locavore NXT, the restaurant that
-                replaced it in 2023, has carried that reputation on.
+                No, Locavore NXT doesn’t have a Michelin star, and neither does
+                any restaurant in Indonesia. Michelin doesn’t run a restaurant
+                guide in Indonesia as of 2026, so no Bali restaurant is eligible
+                for a star yet. That’s down to where Michelin publishes, not the
+                cooking. The recognition comes from elsewhere: the original
+                Locavore was the only Indonesian restaurant to rank consistently
+                on Asia’s 50 Best and the most sustainable in Asia, and Locavore
+                NXT, the restaurant that replaced it in 2023, has carried that
+                reputation on.
               </P>
 
               <div className="my-12 border border-black/20 rounded-2xl p-6 sm:p-8">
@@ -177,12 +177,12 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                     2026, so no Bali restaurant holds a star.
                   </li>
                   <li>
-                    Locavore is recognised through Asia&rsquo;s 50 Best and
-                    awards for sustainability, not Michelin.
+                    Locavore is recognised through Asia’s 50 Best and awards for
+                    sustainability, not Michelin.
                   </li>
                   <li>
-                    Locavore NXT is still a full fine-dining experience:
-                    reservation-only, one seasonal tasting menu.
+                    Locavore NXT is still a full fine-dining experience: one
+                    seasonal tasting menu, with reservations recommended.
                   </li>
                 </ul>
               </div>
@@ -190,40 +190,40 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               <H2>Does Locavore have a Michelin star?</H2>
               <P>
                 No. Neither the original Locavore nor Locavore NXT holds a
-                Michelin star, because Michelin doesn&rsquo;t rate restaurants in
+                Michelin star, because Michelin doesn’t rate restaurants in
                 Indonesia as of 2026. A star can only be awarded where Michelin
-                publishes a guide, and Bali isn&rsquo;t currently within that
+                publishes a guide, and Bali isn’t currently within that
                 coverage.
               </P>
               <P className="mt-4">
-                If you&rsquo;ve seen Locavore called
-                &ldquo;Michelin-level&rdquo; or &ldquo;Michelin-worthy,&rdquo;
-                that&rsquo;s a compliment about quality rather than an official
-                rating. There are no Michelin-starred restaurants in Bali today.
+                If you’ve seen Locavore called “Michelin-level” or
+                “Michelin-worthy,” that’s a compliment about quality rather than
+                an official rating. There are no Michelin-starred restaurants in
+                Bali today.
               </P>
 
               <H2>Is there a Michelin Guide for Bali or Indonesia?</H2>
               <P>
                 Not for restaurants, as of 2026. Michelin runs its restaurant
                 guide in selected markets and keeps adding new ones (Thailand,
-                Singapore, and the Philippines from 2026), but Indonesia
-                isn&rsquo;t among them yet.
+                Singapore, and the Philippines from 2026), but Indonesia isn’t
+                among them yet.
               </P>
               <P className="mt-4">
                 There is one wrinkle worth knowing. In October 2025 Michelin
                 brought its hotel rating, the Michelin Keys, to Indonesia, and
                 several Bali properties earned them. That is a distinction for
-                hotels, not a restaurant star, so it doesn&rsquo;t change the
-                fact that no Indonesian restaurant holds a Michelin star.
+                hotels, not a restaurant star, so it doesn’t change the fact
+                that no Indonesian restaurant holds a Michelin star.
               </P>
 
               <H2>What awards has Locavore won?</H2>
               <P>
                 Locavore was founded by chefs Eelke Plasmeijer and Ray
-                Adriansyah in 2013, and the original restaurant&rsquo;s
-                reputation was built on Asia&rsquo;s 50 Best Restaurants, where
-                it was the only Indonesian restaurant to rank year after year,
-                and on being named the most sustainable restaurant in Asia.
+                Adriansyah in 2013, and the original restaurant’s reputation was
+                built on Asia’s 50 Best Restaurants, where it was the only
+                Indonesian restaurant to rank year after year, and on being
+                named the most sustainable restaurant in Asia.
               </P>
 
               <Figure
@@ -236,20 +236,21 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <P className="mt-4">
                 That thread continues at NXT, which opened in December 2023 and
-                has already won the Sustainable Restaurant Award from
-                Asia&rsquo;s 50 Best (2025) and the Ethical &amp; Sustainability
-                Award from La Liste. For most travellers, those lists are how
-                they find the restaurant in the first place.
+                has already won the Sustainable Restaurant Award from Asia’s 50
+                Best (2025) and the Ethical & Sustainability Award from La
+                Liste, and was ranked 50th on OAD’s Asia’s Top Restaurants list
+                in 2026. For many travellers, those lists are how they find the
+                restaurant in the first place.
               </P>
 
               <H2>Is Locavore NXT still fine dining?</H2>
               <P>
-                Yes. Locavore NXT is a reservation-only restaurant serving one
-                seasonal tasting menu built around Balinese and Indonesian
-                ingredients, much of it grown and foraged by the team. The
-                format, the sourcing and the level of the cooking are what
-                you&rsquo;d expect from a destination fine-dining restaurant.
-                The lack of a star reflects the guide&rsquo;s map, not the
+                Yes. Locavore NXT serves one seasonal tasting menu built around
+                Balinese and Indonesian ingredients, much of it grown and
+                foraged by the team. Walk-ins are possible, though reservations
+                are recommended. The format, the sourcing and the level of the
+                cooking are what you’d expect from a destination fine-dining
+                restaurant. The lack of a star reflects the guide’s map, not the
                 kitchen.
               </P>
               <P className="mt-4">

@@ -30,7 +30,7 @@ const FAQS = [
   {
     question: "Do I need a reservation to eat at Locavore NXT?",
     answer:
-      "Yes. NXT serves a set tasting menu by reservation only, at lunch (Thursday to Saturday) and dinner (Monday to Saturday), with a limited number of seats. Walk-ins are not recommended, so every table starts with an online booking through the reservation link on the NXT visit page.",
+      "Reservations are strongly recommended. NXT serves a set tasting menu at lunch (Thursday to Saturday) and dinner (Monday to Saturday), with a limited number of seats. Walk-ins are possible, but a table can never be guaranteed, so it is best to book through the reservation link on the NXT visit page.",
   },
   {
     question: "How far in advance do Locavore NXT reservations open?",
@@ -197,8 +197,8 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 <ul className="mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
                   <li>
                     NXT serves a set tasting menu at lunch (Thursday to
-                    Saturday) and dinner (Monday to Saturday), always by
-                    reservation. Walk-ins are not recommended.
+                    Saturday) and dinner (Monday to Saturday). Walk-ins are
+                    possible, but reservations are recommended.
                   </li>
                   <li>
                     Book as early as you can. Weekends and Bali’s busy months
@@ -215,8 +215,9 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               <P>
                 You book online through the reservation link on the NXT visit
                 page. Getting in touch by phone or email is possible, but most
-                contact happens over WhatsApp. Walk-ins are not recommended, so
-                every table starts with an online reservation.
+                contact happens over WhatsApp. Walk-ins are possible, but with a
+                limited number of seats each service, booking ahead is the only
+                way to be sure of a table.
               </P>
               <ol className="list-decimal pl-6 mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed marker:opacity-50">
                 <li>
@@ -348,9 +349,10 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>Can you get a last-minute or walk-in table?</H2>
               <P>
-                Walk-ins are not recommended, but seats do open up when other
-                guests cancel. The best route is to message the team on WhatsApp
-                at{" "}
+                You can turn up and ask, but with a limited number of seats each
+                service there is no guarantee of a table, so reservations are
+                recommended. Seats do open up when other guests cancel, and the
+                best route is to message the team on WhatsApp at{" "}
                 <FancyLink
                   destination="https://wa.me/6282144956226"
                   blank

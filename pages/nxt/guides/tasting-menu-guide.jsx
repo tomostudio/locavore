@@ -156,10 +156,10 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               </p>
               <P className="text-xl sm:text-2xl leading-snug font-serif">
                 Locavore NXT serves one set tasting menu, called The Source: 16
-                courses at IDR 2,200,000++ per person, changing with
-                what&rsquo;s growing, ripening and being foraged around Ubud.
-                There&rsquo;s no à la carte. Everyone at the table eats the same
-                progression, and it runs about three to three and a half hours.
+                courses at IDR 2,200,000++ per person, changing with what’s
+                growing, ripening and being foraged around Ubud. There’s no à la
+                carte. Everyone at the table eats the same progression, and it
+                runs about three to three and a half hours.
               </P>
 
               <div className="my-12 border border-black/20 rounded-2xl p-6 sm:p-8">
@@ -195,13 +195,13 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               <H2>What is on the Locavore NXT tasting menu?</H2>
               <P>
                 The Source is built almost entirely from ingredients the team
-                grows, ferments or forages: NXT&rsquo;s rooftop food forest, the
-                rice paddies next door, and the jungle around Ubud. The kitchen
-                sticks to a few firm rules &mdash; no imports, no dairy or
-                wheat, less animal protein, and as close to zero waste as they
-                can get (they&rsquo;re currently running a 98%-plus waste-free
-                kitchen). What lands on your table depends on what&rsquo;s wild
-                and ripe that week, not a fixed carte.
+                grows, ferments or forages: NXT’s rooftop food forest, the rice
+                paddies next door, and the jungle around Ubud. The kitchen
+                sticks to a few firm rules — no imports, no dairy or wheat, less
+                animal protein, and as close to zero waste as they can get
+                (they’re currently running a 98%-plus waste-free kitchen). What
+                lands on your table depends on what’s wild and ripe that week,
+                not a fixed carte.
               </P>
 
               <Figure
@@ -214,10 +214,10 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <P className="mt-4">
                 Expect 16 courses that start small and build, each one
-                introduced as it lands. The whole thing is about where
-                you&rsquo;re sitting: dishes are meant to taste of this patch of
-                Bali, pairing things you half-recognise with others that are
-                genuinely wild and unfamiliar.
+                introduced as it lands. The whole thing is about where you’re
+                sitting: dishes are meant to taste of this patch of Bali,
+                pairing things you half-recognise with others that are genuinely
+                wild and unfamiliar.
               </P>
 
               <H2>How much does the Locavore NXT tasting menu cost?</H2>
@@ -249,16 +249,16 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 Plan for three to three and a half hours at the table. Dinner
                 seatings begin between 17:30 and 20:30, with a lunch service too
                 (Thursday to Saturday from 12:00), and the 16 courses unfold at
-                an unhurried pace. It&rsquo;s best kept as the whole evening
-                rather than slotted in before other plans.
+                an unhurried pace. It’s best kept as the whole evening rather
+                than slotted in before other plans.
               </P>
 
               <H2>What should you wear to Locavore NXT?</H2>
               <P>
-                There&rsquo;s no formal dress code and no jacket required. Ubud
-                is warm and humid all year, so most guests wear something smart
-                but breathable. The room is considered without being stiff, so
-                you won&rsquo;t feel underdressed in smart-casual.
+                There’s no formal dress code and no jacket required. Ubud is
+                warm and humid all year, so most guests wear something smart but
+                breathable. The room is considered without being stiff, so you
+                won’t feel underdressed in smart-casual.
               </P>
 
               <H2>Can the menu be adapted for dietary needs?</H2>
