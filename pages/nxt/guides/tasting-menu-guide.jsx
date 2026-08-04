@@ -31,12 +31,12 @@ const FAQS = [
   {
     question: "How many courses is the Locavore NXT tasting menu?",
     answer:
-      "Locavore NXT serves one set tasting menu, called The Source, of 16 courses that changes with the seasons. There is no à la carte, so everyone at the table is served the same progression.",
+      "Locavore NXT serves one set tasting menu, called The Source 2.0, of 16 courses that changes with the seasons. There is no à la carte, so everyone at the table is served the same progression.",
   },
   {
     question: "How much does the Locavore NXT tasting menu cost?",
     answer:
-      "The Source is IDR 2,200,000++ per person. A beverage pairing is optional but recommended: IDR 850,000++ with alcohol, or IDR 650,000++ for the non-alcoholic version. The ++ covers tax and service, and any extra drinks are added on the night.",
+      "The Source 2.0 is IDR 2,250,000++ per person. The Creative Beverage Pairing is optional but recommended: IDR 950,000++ with alcohol, or IDR 750,000++ for the non-alcoholic version. The ++ covers tax and service, and any extra drinks are added on the night.",
   },
   {
     question: "How long does dinner at Locavore NXT take?",
@@ -51,7 +51,7 @@ const FAQS = [
   {
     question: "Can the tasting menu be adapted for dietary needs?",
     answer:
-      "With notice at booking, yes. NXT already cooks without imports, dairy or wheat and with little animal protein, so it is well suited to dietary needs. Because the menu is composed for the whole table, adaptations are arranged in advance rather than on the night.",
+      "With notice at booking, yes. NXT already works without imports, dairy, wheat and with little animal protein, so it is well suited to dietary needs. Because the menu is composed for the whole table, adaptations are arranged in advance rather than on the night.",
   },
 ];
 
@@ -155,8 +155,8 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 By the <span className="font-medium">Locavore NXT</span> team
               </p>
               <P className="text-xl sm:text-2xl leading-snug font-serif">
-                Locavore NXT serves one set tasting menu, called The Source: 16
-                courses at IDR 2,200,000++ per person, changing with what’s
+                Locavore NXT serves one set tasting menu, called The Source 2.0:
+                16 courses at IDR 2,250,000++ per person, changing with what’s
                 growing, ripening and being foraged around Ubud. There’s no à la
                 carte. Everyone at the table eats the same progression, and it
                 runs about three to three and a half hours.
@@ -175,11 +175,11 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 <ul className="mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
                   <li>
                     <strong>The menu:</strong> one set tasting menu, The Source
-                    — 16 courses, no à la carte, changing with the season.
+                    2.0 — 16 courses, no à la carte, changing with the season.
                   </li>
                   <li>
-                    <strong>Price:</strong> IDR 2,200,000++ per person, plus an
-                    optional pairing from IDR 650,000++.
+                    <strong>Price:</strong> IDR 2,250,000++ per person, plus an
+                    optional pairing from IDR 750,000++.
                   </li>
                   <li>
                     <strong>Time:</strong> about 3 to 3.5 hours, so keep the
@@ -194,9 +194,9 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>What is on the Locavore NXT tasting menu?</H2>
               <P>
-                The Source is built almost entirely from ingredients the team
-                grows, ferments or forages: NXT’s rooftop food forest, the rice
-                paddies next door, and the jungle around Ubud. The kitchen
+                The Source 2.0 is built almost entirely from ingredients the
+                team grows, ferments or forages: NXT’s rooftop food forest, the
+                rice paddies next door, and the jungle around Ubud. The kitchen
                 sticks to a few firm rules — no imports, no dairy or wheat, less
                 animal protein, and as close to zero waste as they can get
                 (they’re currently running a 98%-plus waste-free kitchen). What
@@ -209,7 +209,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 alt="The rooftop food forest at Locavore NXT, Ubud"
                 width={1600}
                 height={1066}
-                caption="The rooftop food forest, one of the gardens The Source is built from."
+                caption="The rooftop food forest, one of the gardens The Source 2.0 is built from."
               />
 
               <P className="mt-4">
@@ -222,16 +222,17 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>How much does the Locavore NXT tasting menu cost?</H2>
               <P>
-                The Source is IDR 2,200,000++ per person. The optional beverage
-                pairing, made with the same local, foraged and fermented
-                ingredients as the food, is IDR 850,000++ with alcohol or IDR
-                650,000++ for the non-alcoholic (or very low-ABV) version. The
-                ++ is tax and service on top.
+                The Source 2.0 is IDR 2,250,000++ per person. The Creative
+                Beverage Pairing, made with the same local, foraged and
+                fermented ingredients as the food, is IDR 950,000++ with alcohol
+                or IDR 750,000++ for the non-alcoholic (or very low-ABV)
+                version. The ++ is tax and service on top.
               </P>
               <P className="mt-4">
-                You pay to secure the table when you book, and any drinks beyond
-                the pairing are added on the night. Prices are confirmed at
-                checkout, so the booking page always shows the current figure.
+                You add a credit card to secure the table when you book, and any
+                drinks beyond the pairing are added on the night. Prices are
+                confirmed at checkout, so the booking page always shows the
+                current figure.
               </P>
               <P className="mt-4">
                 For booking steps, lead times and how payment works, see our{" "}

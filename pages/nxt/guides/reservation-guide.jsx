@@ -16,7 +16,6 @@ import HeaderGap from "@/components/modules/headerGap";
 import OpeningArticle from "@/components/modules/editorial/openingArticle";
 import StickyButton from "@/components/modules/stickyButton";
 import FancyLink from "@/components/utils/fancyLink";
-import Arrow from "@/components/utils/arrow";
 import NextArticle from "@/components/modules/editorial/nextArticle";
 import Footer from "@/components/modules/footer";
 import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
@@ -30,7 +29,7 @@ const FAQS = [
   {
     question: "Do I need a reservation to eat at Locavore NXT?",
     answer:
-      "Reservations are strongly recommended. NXT serves a set tasting menu at lunch (Thursday to Saturday) and dinner (Monday to Saturday), with a limited number of seats. Walk-ins are possible, but a table can never be guaranteed, so it is best to book through the reservation link on the NXT visit page.",
+      "Reservations are strongly recommended. NXT serves a set tasting menu at lunch (Thursday to Saturday) and dinner (Monday to Saturday), with a limited number of seats. Walk-ins are welcome depending on availability, but a table can never be guaranteed, so it is best to book ahead with the Book Now button on the NXT site.",
   },
   {
     question: "How far in advance do Locavore NXT reservations open?",
@@ -50,7 +49,7 @@ const FAQS = [
   {
     question: "Can Locavore NXT accommodate dietary restrictions?",
     answer:
-      "With advance notice, yes. The kitchen already cooks without imports, dairy or wheat and leans lightly on animal protein, so it is well set up for dietary needs. Because the menu is planned for the whole table, note any allergies or restrictions when you book, not on the night.",
+      "With advance notice, yes. The kitchen already works without imports, dairy, wheat and with little animal protein, so it is well set up for dietary needs. Each menu is planned ahead for the whole table, so add any dietary requirements when you reserve rather than on the night.",
   },
   {
     question: "Where is Locavore NXT located?",
@@ -167,12 +166,12 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               </p>
               {/* Answer-first lede */}
               <P className="text-xl sm:text-2xl leading-snug font-serif">
-                To book Locavore NXT, open the reservation link on the NXT visit
-                page, pick a lunch or dinner seating, and add your credit card
-                to secure the booking. NXT serves a set tasting menu for a
-                limited number of guests each service, so tables go quickly. If
-                you’re planning a dinner or lunch here, reserve as soon as your
-                dates are firm.
+                To book Locavore NXT, click Book Now at the top of the NXT site,
+                pick a lunch or dinner seating, and add your credit card to
+                secure the booking. NXT serves a set tasting menu for a limited
+                number of guests each service, so tables go quickly. If you’re
+                planning a dinner or lunch here, reserve as soon as your dates
+                are firm.
               </P>
 
               <Figure
@@ -185,20 +184,14 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               {/* Key takeaways box */}
               <div className="my-12 border border-black/20 rounded-2xl p-6 sm:p-8">
-                <span className="font-serif italic text-[20px] sm:text-[24px] flex items-center">
-                  <Arrow
-                    position="right"
-                    fill="black"
-                    sizeLeftRight="14"
-                    className="mr-3"
-                  />
+                <span className="block font-default font-bold text-[20px] sm:text-[24px]">
                   Good to know
                 </span>
-                <ul className="mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
+                <ul className="list-disc pl-6 mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed marker:opacity-40">
                   <li>
                     NXT serves a set tasting menu at lunch (Thursday to
                     Saturday) and dinner (Monday to Saturday). Walk-ins are
-                    possible, but reservations are recommended.
+                    welcome depending on availability.
                   </li>
                   <li>
                     Book as early as you can. Weekends and Bali’s busy months
@@ -208,32 +201,38 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                     You add a credit card to secure the booking; the
                     cancellation terms are shown before you confirm.
                   </li>
+                  <li>
+                    Add any dietary requirements when you reserve. Each menu is
+                    planned ahead for the whole table, so the kitchen needs to
+                    know in advance rather than on the night.
+                  </li>
                 </ul>
               </div>
 
               <H2>How do you book a table at Locavore NXT?</H2>
               <P>
-                You book online through the reservation link on the NXT visit
-                page. Getting in touch by phone or email is possible, but most
-                contact happens over WhatsApp. Walk-ins are possible, but with a
-                limited number of seats each service, booking ahead is the only
-                way to be sure of a table.
+                You book online through the Book Now button at the top of the
+                NXT site. Getting in touch by phone or email is possible, but
+                most contact happens over WhatsApp. Walk-ins are welcome
+                depending on availability, but with a limited number of seats
+                each service, booking ahead is the only way to be sure of a
+                table.
               </P>
               <ol className="list-decimal pl-6 mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed marker:opacity-50">
                 <li>
-                  <strong>Open the booking link.</strong> Go to the{" "}
+                  <strong>Open the booking form.</strong> Go to{" "}
                   <FancyLink
                     destination="/nxt/visit"
                     className="underline hover:opacity-60 transition-opacity"
                   >
-                    Locavore NXT visit page
+                    Locavore NXT
                   </FancyLink>{" "}
-                  and select <em>Reserve</em>.
+                  and click <em>Book Now</em> on the top right.
                 </li>
                 <li>
                   <strong>Choose your date, service and party size.</strong>{" "}
                   Seats are limited, so a greyed-out slot is full. If your date
-                  won’t budge, try lunch or a weekday.
+                  is fixed, try lunch or a weekday.
                 </li>
                 <li>
                   <strong>Secure it with your credit card.</strong> Adding your
@@ -284,11 +283,10 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               <H2>How much does a reservation at Locavore NXT cost?</H2>
               <P>
                 NXT is a set tasting menu, so you pay per person for the full
-                menu rather than à la carte. The Source, the current menu, is
-                IDR 2,200,000++ per person (the ++ is tax and service on top).
-                An optional beverage pairing is IDR 850,000++ with alcohol, or
-                IDR 650,000++ for the non-alcoholic version. A wine pairing is
-                IDR 1,500,000++.
+                menu rather than à la carte. The Source 2.0, the current menu,
+                is IDR 2,250,000++ per person (the ++ is tax and service on
+                top). The Creative Beverage Pairing is IDR 950,000++ with
+                alcohol, or IDR 750,000++ for the non-alcoholic version.
               </P>
               <P className="mt-4">
                 You add a credit card to secure the table when you book, rather
@@ -319,7 +317,14 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                   <strong>Location:</strong> Jl. A.A. Gede Rai, Gang Pura Panti
                   Bija, in Lodtunduh, a short drive south of central Ubud. This
                   is NXT’s own site, not the old Locavore address, so check the
-                  map on the visit page to arrive at the right door.
+                  map on the{" "}
+                  <FancyLink
+                    destination="/nxt/visit"
+                    className="underline hover:opacity-60 transition-opacity"
+                  >
+                    visit page
+                  </FancyLink>{" "}
+                  to arrive at the right door.
                 </li>
                 <li>
                   <strong>Arrival time:</strong> Come at your booked seating
@@ -334,8 +339,8 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 </li>
                 <li>
                   <strong>Dietary needs:</strong> Flag allergies when you book.
-                  The kitchen already works without dairy or wheat and with
-                  little animal protein, and can adapt with notice, but not
+                  The kitchen already works without imports, dairy, wheat and
+                  with little animal protein, and can adapt with notice, but not
                   always on the night.
                 </li>
                 <li>
@@ -349,10 +354,11 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>Can you get a last-minute or walk-in table?</H2>
               <P>
-                You can turn up and ask, but with a limited number of seats each
-                service there is no guarantee of a table, so reservations are
-                recommended. Seats do open up when other guests cancel, and the
-                best route is to message the team on WhatsApp at{" "}
+                Walk-ins are welcome depending on availability, but with a
+                limited number of seats each service there is no guarantee of a
+                table, so reservations are recommended. Seats do open up when
+                other guests cancel, and the best route is to message the team
+                on WhatsApp at{" "}
                 <FancyLink
                   destination="https://wa.me/6282144956226"
                   blank

@@ -46,7 +46,7 @@ const FAQS = [
   {
     question: "Is Locavore NXT fine dining?",
     answer:
-      "Yes. Locavore NXT serves one seasonal tasting menu in Ubud, built around Balinese and Indonesian ingredients the team grows and forages. Walk-ins are possible, though reservations are recommended. The format and the standard are what you would expect from fine dining, whether or not a Michelin guide covers the country.",
+      "Yes. Locavore NXT serves one seasonal tasting menu in Ubud, built around Balinese and Indonesian ingredients the team grows and forages. Walk-ins are welcome depending on availability, though reservations are recommended. The format and the standard are what you would expect from fine dining, whether or not a Michelin guide covers the country.",
   },
 ];
 
@@ -247,11 +247,11 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               <P>
                 Yes. Locavore NXT serves one seasonal tasting menu built around
                 Balinese and Indonesian ingredients, much of it grown and
-                foraged by the team. Walk-ins are possible, though reservations
-                are recommended. The format, the sourcing and the level of the
-                cooking are what you’d expect from a destination fine-dining
-                restaurant. The lack of a star reflects the guide’s map, not the
-                kitchen.
+                foraged by the team. Walk-ins are welcome depending on
+                availability, though reservations are recommended. The format,
+                the sourcing and the level of the cooking are what you’d expect
+                from a destination fine-dining restaurant. The lack of a star
+                reflects the guide’s map, not the kitchen.
               </P>
               <P className="mt-4">
                 For the courses, the price and what to expect on the night, see
