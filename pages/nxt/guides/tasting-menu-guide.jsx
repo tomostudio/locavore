@@ -31,7 +31,7 @@ const FAQS = [
   {
     question: "How many courses is the Locavore NXT tasting menu?",
     answer:
-      "Locavore NXT serves one set tasting menu, called The Source 2.0, of 16 courses that changes with the seasons. There is no à la carte, so everyone at the table is served the same progression.",
+      "Locavore NXT serves one set tasting menu, called The Source 2.0, of 14 courses that changes with the seasons. There is no à la carte, so everyone at the table is served the same progression.",
   },
   {
     question: "How much does the Locavore NXT tasting menu cost?",
@@ -41,12 +41,12 @@ const FAQS = [
   {
     question: "How long does dinner at Locavore NXT take?",
     answer:
-      "Plan for three to three and a half hours. It is a single, unhurried tasting menu meant to be the evening itself, so it is best not booked before other plans.",
+      "Plan for three to three and a half hours at the table. Dinner seatings begin between 17:30 and 20:30, with a lunch service too on Thursday to Saturday from 12:00. The 14 courses unfold at an unhurried pace. You can always let our team know if you want the pace adjusted.",
   },
   {
     question: "Is there a dress code at Locavore NXT?",
     answer:
-      "There is no formal dress code. Ubud is warm and humid year-round, so comfortable, breathable clothing is the norm and smart-casual is plenty.",
+      "There’s no formal dress code and no jacket required. Ubud is warm and humid all year, so most guests wear something comfortable and breathable. You won’t feel underdressed in smart-casual.",
   },
   {
     question: "Can the tasting menu be adapted for dietary needs?",
@@ -129,7 +129,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
       <BreadcrumbSchema path={router.asPath} />
       <ArticleSchema
         headline={article.title}
-        description="What to expect from the Locavore NXT tasting menu in Ubud, Bali: 16 courses, the price, pairings, dress code and how long dinner takes."
+        description="What to expect from the Locavore NXT tasting menu in Ubud, Bali: 14 courses, the price, pairings, dress code and how long dinner takes."
         url={absoluteUrl(router.pathname)}
         image={absoluteUrl(HERO_IMAGE)}
         datePublished={PUBLISH_DATE}
@@ -156,7 +156,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               </p>
               <P className="text-xl sm:text-2xl leading-snug font-serif">
                 Locavore NXT serves one set tasting menu, called The Source 2.0:
-                16 courses at IDR 2,250,000++ per person, changing with what’s
+                14 courses at IDR 2,250,000++ per person, changing with what’s
                 growing, ripening and being foraged around Ubud. There’s no à la
                 carte. Everyone at the table eats the same progression, and it
                 runs about three to three and a half hours.
@@ -175,7 +175,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 <ul className="mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
                   <li>
                     <strong>The menu:</strong> one set tasting menu, The Source
-                    2.0 — 16 courses, no à la carte, changing with the season.
+                    2.0 — 14 courses, no à la carte, changing with the season.
                   </li>
                   <li>
                     <strong>Price:</strong> IDR 2,250,000++ per person, plus an
@@ -194,14 +194,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>What is on the Locavore NXT tasting menu?</H2>
               <P>
-                The Source 2.0 is built almost entirely from ingredients the
-                team grows, ferments or forages: NXT’s rooftop food forest, the
-                rice paddies next door, and the jungle around Ubud. The kitchen
-                sticks to a few firm rules — no imports, no dairy or wheat, less
-                animal protein, and as close to zero waste as they can get
-                (they’re currently running a 98%-plus waste-free kitchen). What
-                lands on your table depends on what’s wild and ripe that week,
-                not a fixed carte.
+                The Source 2.0 is created entirely from what the team grows, ferments or forages and what's found close to home: the Rooftop Food Forest at NXT, the jungle, farmland and coastlines around Bali and ingredients sourced from across the Indonesian islands. NXT's kitchens stick to a few firm rules, which are no imports, no dairy or wheat, less animal protein and as close to zero-waste as we can get (we’re currently running a 98%-plus waste-free kitchen).
               </P>
 
               <Figure
@@ -213,7 +206,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               />
 
               <P className="mt-4">
-                Expect 16 courses that start small and build, each one
+                Expect 14 courses that start small and build, each one
                 introduced as it lands. The whole thing is about where you’re
                 sitting: dishes are meant to taste of this patch of Bali,
                 pairing things you half-recognise with others that are genuinely
@@ -249,7 +242,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               <P>
                 Plan for three to three and a half hours at the table. Dinner
                 seatings begin between 17:30 and 20:30, with a lunch service too
-                (Thursday to Saturday from 12:00), and the 16 courses unfold at
+                (Thursday to Saturday from 12:00), and the 14 courses unfold at
                 an unhurried pace. It’s best kept as the whole evening rather
                 than slotted in before other plans.
               </P>
