@@ -29,12 +29,12 @@ const FAQS = [
   {
     question: "Do I need a reservation to eat at Locavore NXT?",
     answer:
-      "Reservations are strongly recommended. NXT serves a set tasting menu at lunch (Thursday to Saturday) and dinner (Monday to Saturday), with a limited number of seats. Walk-ins are welcome depending on availability, but a table can never be guaranteed, so it is best to book ahead with the Book Now button on the NXT site.",
+      "Reservations are strongly recommended. NXT serves a set tasting menu at lunch (Thursday to Saturday) and dinner (Monday to Saturday), with a limited number of seats each service. Walk-ins are welcome when there's space, but it's best to book ahead using the 'Book Now' button on the NXT site.",
   },
   {
     question: "How far in advance do Locavore NXT reservations open?",
     answer:
-      "Availability is published through the online reservation system, and the most-wanted nights go first. There is no fixed release date, so the safest approach is to book as soon as your dates are firm rather than waiting until you land in Bali.",
+      "Availability is published through the online reservation system, and the most-wanted nights go first. There is no fixed release date, so the safest approach is to book as soon as your dates are confirmed rather than waiting until you land in Bali.",
   },
   {
     question: "Do you need to pay a deposit to book Locavore NXT?",
@@ -49,7 +49,7 @@ const FAQS = [
   {
     question: "Can Locavore NXT accommodate dietary restrictions?",
     answer:
-      "With advance notice, yes. The kitchen already works without imports, dairy, wheat and with little animal protein, so it is well set up for dietary needs. Each menu is planned ahead for the whole table, so add any dietary requirements when you reserve rather than on the night.",
+      "With advance notice, yes. We already work without imports, dairy, wheat and with little animal protein, so it is well set up for dietary needs. Each menu is planned ahead for the whole table, so add any dietary requirements when you reserve rather than on the night.",
   },
   {
     question: "Where is Locavore NXT located?",
@@ -179,7 +179,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 alt="The dining room at Locavore NXT in Lodtunduh, Ubud"
                 width={1600}
                 height={1067}
-                caption="Inside Locavore NXT, the group's flagship in Lodtunduh, Ubud."
+                caption="Inside Locavore NXT in Lodtunduh, Ubud."
               />
 
               {/* Key takeaways box */}
@@ -189,38 +189,32 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 </span>
                 <ul className="list-disc pl-6 mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed marker:opacity-40">
                   <li>
-                    NXT serves a set tasting menu at lunch (Thursday to
-                    Saturday) and dinner (Monday to Saturday). Walk-ins are
-                    welcome depending on availability.
+                    NXT serves one set tasting menu, at lunch (Thursday to Saturday) and dinner (Monday to Saturday), by reservation.
                   </li>
                   <li>
-                    Book as early as you can. Weekends and Bali’s busy months
-                    are the first to go.
+                    Walk-ins will depend on availability.
+                  </li>
+                  <li>
+                    Book as early as you can. Weekends and Bali's busy months are the first to go.
                   </li>
                   <li>
                     You add a credit card to secure the booking; the
                     cancellation terms are shown before you confirm.
                   </li>
                   <li>
-                    Add any dietary requirements when you reserve. Each menu is
-                    planned ahead for the whole table, so the kitchen needs to
-                    know in advance rather than on the night.
+                    Add any dietary requirements when you reserve. Each menu is planned ahead for the whole table, so the kitchen needs to know in advance rather than on the night.
                   </li>
                 </ul>
               </div>
 
               <H2>How do you book a table at Locavore NXT?</H2>
               <P>
-                You book online through the Book Now button at the top of the
-                NXT site. Getting in touch by phone or email is possible, but
-                most contact happens over WhatsApp. Walk-ins are welcome
-                depending on availability, but with a limited number of seats
-                each service, booking ahead is the only way to be sure of a
-                table.
+                You book online through the <em>'Book Now'</em> button at the top right of the
+                NXT site. Walk-ins are sometimes possible if there's space, but with a limited number of seats each service, booking ahead is the only way to be sure of a table. For special requests, our team is available through email, phone call or WhatsApp for the quickest to response.
               </P>
               <ol className="list-decimal pl-6 mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed marker:opacity-50">
                 <li>
-                  <strong>Open the booking form.</strong> Go to{" "}
+                  <strong>Open the booking page.</strong> Go to{" "}
                   <FancyLink
                     destination="/nxt/visit"
                     className="underline hover:opacity-60 transition-opacity"
@@ -231,18 +225,14 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 </li>
                 <li>
                   <strong>Choose your date, service and party size.</strong>{" "}
-                  Seats are limited, so a greyed-out slot is full. If your date
-                  is fixed, try lunch or a weekday.
+                  Seats are limited, so a greyed-out slot is full.
                 </li>
                 <li>
-                  <strong>Secure it with your credit card.</strong> Adding your
-                  card details holds the table, and you’ll get an email
-                  confirmation. The cancellation terms are shown before you
-                  confirm.
+                  <strong>Secure your table with a card.</strong> Adding your card details holds the booking, and a confirmation email follows. The cancellation terms are shown before you confirm.
                 </li>
                 <li>
                   <strong>Add your details.</strong> Note any allergies, dietary
-                  needs or a celebration here so the kitchen can plan ahead.
+                  needs or a celebration here so our team can plan ahead.
                 </li>
               </ol>
               <P className="mt-5">
@@ -275,25 +265,19 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               </P>
               <P className="mt-4">
                 If you’re travelling to Ubud mainly to eat here, reserve before
-                you lock in flights and hotels rather than after. A flexible
-                date gives you much better odds than a fixed one, and the
-                most-requested nights can be gone weeks out.
+                you lock in flights and hotels rather than after.
               </P>
 
               <H2>How much does a reservation at Locavore NXT cost?</H2>
               <P>
                 NXT is a set tasting menu, so you pay per person for the full
-                menu rather than à la carte. The Source 2.0, the current menu,
-                is IDR 2,250,000++ per person (the ++ is tax and service on
-                top). The Creative Beverage Pairing is IDR 950,000++ with
-                alcohol, or IDR 750,000++ for the non-alcoholic version.
+                menu rather than à la carte. The current tasting menu is called The Source 2.0, is priced at IDR 2,250,000++ per person, with optional Creative Beverage Pairings at IDR 950,000++ with alcohol, or IDR 750,000++ for the non-alcoholic version. The '++' is tax and service on top.
               </P>
               <P className="mt-4">
                 You add a credit card to secure the table when you book, rather
                 than paying for the menu upfront. Pairings and any drinks beyond
                 them are added to your bill on the night. A pairing isn’t
-                required, but each one is built to follow the menu course by
-                course.
+                required, but each one is designed to complement the menu course by course.
               </P>
               <P className="mt-4">
                 For the full course-by-course breakdown, see our{" "}
@@ -329,19 +313,17 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 <li>
                   <strong>Arrival time:</strong> Come at your booked seating
                   time. Dinner seatings run from 17:30 to 20:30 and lunch from
-                  12:00 to 13:30. Your table is served as one flowing menu.
+                  12:00 to 13:30. The menu is served as one flowing sequence, so arriving late might mean missing the opening courses. Contact our team if you're running late.
                 </li>
                 <li>
-                  <strong>Dress code:</strong> We have a relaxed and casual
-                  dress code, but feel free to dress up the way you like. Please
+                  <strong>Dress code:</strong> Relaxed and casual. Wear what you like and dress up if you feel like it. Please
                   refrain from wearing beachwear or attire that isn’t
                   appropriate for a public space like our restaurant.
                 </li>
                 <li>
                   <strong>Dietary needs:</strong> Flag allergies when you book.
                   The kitchen already works without imports, dairy, wheat and
-                  with little animal protein, and can adapt with notice, but not
-                  always on the night.
+                  with less animal protein, and can adapt with notice.
                 </li>
                 <li>
                   <strong>Getting there:</strong> Most people come by car or
@@ -366,7 +348,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 >
                   +62 821-4495-6226
                 </FancyLink>{" "}
-                and ask to be told about cancellations for the dates you want.
+                and ask to be informed if something opens up on the dates you want.
               </P>
               <P className="mt-4">
                 Keep your dates flexible and check back close to the day. A seat
@@ -376,19 +358,14 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>Other ways to visit NXT</H2>
               <P>
-                Dinner isn’t the only way in. You can pair your booking with a
-                morning of foraging, guided by NXT’s forager through Bali’s
+                Dining isn’t the only way in. You can pair your booking with a
+                morning of <strong>Foraging Experience</strong>, guided by NXT’s forager through Bali’s
                 jungle and farmland. It runs about three hours, ends with lunch
                 cooked in nature, and costs IDR 1,250,000++ per person with
                 transport from NXT included.
               </P>
               <P className="mt-4">
-                There’s also the Full NXT Experience: dinner, a night in one of
-                three onsite Wood Room cabins, a backstage tour with the chefs,
-                and breakfast the next morning. It’s IDR 5,500,000++ for one or
-                IDR 8,000,000++ for two, and with only three cabins it books out
-                well ahead. Mention either when you reserve and the team will
-                schedule it together with your lunch or dinner reservation.
+                There's also the <strong>Full NXT Experience</strong>, which includes dinner, a night in one of three onsite Wood Room cabins, a backstage tour with the chefs and breakfast the next morning at the Canteen restaurant. Full NXT Experience is priced at IDR 5,500,000++ for one or IDR 8,000,000++ for two. With only three cabins available, it books out well ahead.
               </P>
 
               <Figure
@@ -396,7 +373,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 alt="Aerial view of the Locavore NXT site and its onsite Wood Rooms cabins"
                 width={1600}
                 height={900}
-                caption="The NXT site from above. The three Wood Rooms cabins sit onsite, among replanted forest."
+                caption="The three Wood Rooms cabins sit onsite, among replanted forest."
               />
 
               {/* CTA */}
@@ -406,7 +383,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                   destination="/nxt/visit"
                   className="w-fit p-4 text-d-small uppercase text-black font-default tracking-widest transition-all ease-linear hover:bg-black hover:text-white border border-black rounded-xl"
                 >
-                  Reserve your table at Locavore NXT
+                  Reserve your Locavore NXT experience
                 </FancyLink>
               </div>
 
