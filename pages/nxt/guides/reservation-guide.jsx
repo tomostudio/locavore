@@ -166,7 +166,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               </p>
               {/* Answer-first lede */}
               <P className="text-xl sm:text-2xl leading-snug font-serif">
-                To book Locavore NXT, click Book Now at the top of the NXT site,
+                To book Locavore NXT, click <em>'Book Now'</em> at the top right of the NXT site,
                 pick a lunch or dinner seating, and add your credit card to
                 secure the booking. NXT serves a set tasting menu for a limited
                 number of guests each service, so tables go quickly. If you’re
