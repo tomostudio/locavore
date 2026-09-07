@@ -22,11 +22,11 @@ export const NXT_GUIDES = [
     href: '/nxt/guides/tasting-menu-guide',
     category: 'Food',
     readTime: '6 min',
-    thumbnail: '/guides/rooftop-food-forest.webp',
+    thumbnail: '/guides/whole-banana-tree.webp',
     live: true,
   },
   {
-    title: 'Is Locavore Michelin Star? Bali & the Michelin Guide, Explained',
+    title: 'Is Locavore NXT a Michelin Starred Restaurant?',
     description:
       'Where Bali sits with the Michelin Guide, and the accolades Locavore actually holds.',
     href: '/nxt/guides/michelin-guide',

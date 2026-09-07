@@ -25,33 +25,33 @@ const PUBLISH_DATE = "2026-07-09";
 const CURRENT_HREF = "/nxt/guides/tasting-menu-guide";
 
 // Article hero — feeds the OG / Article-schema image and the in-body figure.
-const HERO_IMAGE = "/guides/rooftop-food-forest.webp";
+const HERO_IMAGE = "/guides/whole-banana-tree.webp";
 
 const FAQS = [
   {
-    question: "How many courses is the Locavore NXT tasting menu?",
+    question: "Is the Creative Beverage Pairing optional?",
     answer:
-      "Locavore NXT serves one set tasting menu, called The Source 2.0, of 14 courses that changes with the seasons. There is no à la carte, so everyone at the table is served the same progression.",
+      "Yes. The pairing is optional but recommended, and it is made with the same local, foraged and fermented ingredients as the food. It is IDR 950,000++ with alcohol or IDR 750,000++ for the non-alcoholic (or very low-ABV) version, and any drinks beyond the pairing are added to your bill on the night.",
   },
   {
-    question: "How much does the Locavore NXT tasting menu cost?",
+    question: "What does the ++ mean at Locavore NXT?",
     answer:
-      "The Source 2.0 is IDR 2,250,000++ per person. The Creative Beverage Pairing is optional but recommended: IDR 950,000++ with alcohol, or IDR 750,000++ for the non-alcoholic version. The ++ covers tax and service, and any extra drinks are added on the night.",
+      "It means tax and service are added on top of the listed price, so IDR 2,250,000++ is not the final figure. You add a credit card to secure the table when you book rather than paying for the menu upfront, and the bill is settled on the night.",
   },
   {
-    question: "How long does dinner at Locavore NXT take?",
+    question: "Can you have the tasting menu at lunch?",
     answer:
-      "Plan for three to three and a half hours at the table. Dinner seatings begin between 17:30 and 20:30, with a lunch service too on Thursday to Saturday from 12:00. The 14 courses unfold at an unhurried pace. You can always let our team know if you want the pace adjusted.",
+      "Yes. Lunch service runs Thursday to Saturday from 12:00 to 13:30, and dinner seatings begin between 17:30 and 20:30. Either way, plan for three to three and a half hours at Locavore NXT.",
   },
   {
-    question: "Is there a dress code at Locavore NXT?",
+    question: "How often does the Locavore NXT menu change?",
     answer:
-      "There’s no formal dress code and no jacket required. Ubud is warm and humid all year, so most guests wear something comfortable and breathable. You won’t feel underdressed in smart-casual.",
+      "The menu changes every 6 months, following a research and development cycle that brings an entirely new set of dishes and Creative Beverage Pairings each time. The current menu is The Source 2.0, with 14 courses made completely with ingredients that grow in Indonesia.",
   },
   {
-    question: "Can the tasting menu be adapted for dietary needs?",
+    question: "Can you celebrate a birthday or anniversary at Locavore NXT?",
     answer:
-      "With notice at booking, yes. NXT already works without imports, dairy, wheat and with little animal protein, so it is well suited to dietary needs. Because the menu is composed for the whole table, adaptations are arranged in advance rather than on the night.",
+      "Yes. Mention the occasion when you book, along with any allergies or dietary needs, so the team can plan ahead. Because the menu is set and planned for the whole table, anything you would like arranged is far easier to handle in advance than on the night.",
   },
 ];
 
@@ -156,10 +156,12 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               </p>
               <P className="text-xl sm:text-2xl leading-snug font-serif">
                 Locavore NXT serves one set tasting menu, called The Source 2.0:
-                14 courses at IDR 2,250,000++ per person, changing with what’s
-                growing, ripening and being foraged around Ubud. There’s no à la
-                carte. Everyone at the table eats the same progression, and it
-                runs about three to three and a half hours.
+                14 courses at IDR 2,250,000++ per person. The tasting menu
+                follows a 6-month research and development cycle, and each new
+                season presents an entirely new set of dishes and Creative
+                Beverage Pairings. There’s no à la carte. Everyone at the table
+                eats the same progression, and it runs about three to three and
+                a half hours.
               </P>
 
               <div className="my-12 border border-black/20 rounded-2xl p-6 sm:p-8">
@@ -175,15 +177,17 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 <ul className="mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed">
                   <li>
                     <strong>The menu:</strong> one set tasting menu, The Source
-                    2.0 — 14 courses, no à la carte, changing with the season.
+                    2.0 (14 courses), no à la carte options available. The menu
+                    changes every season on a 6-month cycle.
                   </li>
                   <li>
-                    <strong>Price:</strong> IDR 2,250,000++ per person, plus an
-                    optional pairing from IDR 750,000++.
+                    <strong>Price:</strong> IDR 2,250,000++ per person, plus
+                    optional Creative Beverage Pairings which start at IDR
+                    750,000++, with options for alcoholic and non-alcoholic
+                    beverages.
                   </li>
                   <li>
-                    <strong>Time:</strong> about 3 to 3.5 hours, so keep the
-                    whole evening free.
+                    <strong>Time:</strong> about 3 to 3.5 hours.
                   </li>
                   <li>
                     <strong>Dress:</strong> no formal code; comfortable for a
@@ -194,24 +198,23 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>What is on the Locavore NXT tasting menu?</H2>
               <P>
-                The Source 2.0 is created entirely from what the team grows, ferments or forages and what's found close to home: the Rooftop Food Forest at NXT, the jungle, farmland and coastlines around Bali and ingredients sourced from across the Indonesian islands. NXT's kitchens stick to a few firm rules, which are no imports, no dairy or wheat, less animal protein and as close to zero-waste as we can get (we’re currently running a 98%-plus waste-free kitchen).
+                The Source 2.0 is built entirely from ingredients found around
+                the NXT gardens and Rooftop Food Forest, with some foraged
+                across the island by our in-house foraging team, and many are
+                found across Indonesia through local farmers and foragers who
+                share the same values with us around sustainability and quality.
+                The kitchen sticks to a few firm rules: no imports, no dairy, no
+                wheat, less animal protein and as close to zero-waste as we can
+                get (currently running a 98% waste-free kitchen).
               </P>
 
               <Figure
                 src={HERO_IMAGE}
-                alt="The rooftop food forest at Locavore NXT, Ubud"
+                alt="The whole banana ‘tree’, a course from The Source 2.0 tasting menu at Locavore NXT"
                 width={1600}
-                height={1066}
-                caption="The rooftop food forest, one of the gardens The Source 2.0 is built from."
+                height={1067}
+                caption="The whole banana ‘tree’, one of the 14 courses on The Source 2.0."
               />
-
-              <P className="mt-4">
-                Expect 14 courses that start small and build, each one
-                introduced as it lands. The whole thing is about where you’re
-                sitting: dishes are meant to taste of this patch of Bali,
-                pairing things you half-recognise with others that are genuinely
-                wild and unfamiliar.
-              </P>
 
               <H2>How much does the Locavore NXT tasting menu cost?</H2>
               <P>
@@ -238,31 +241,33 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 .
               </P>
 
-              <H2>How long does dinner take?</H2>
+              <H2>How long does the dining experience take?</H2>
               <P>
-                Plan for three to three and a half hours at the table. Dinner
-                seatings begin between 17:30 and 20:30, with a lunch service too
-                (Thursday to Saturday from 12:00), and the 14 courses unfold at
-                an unhurried pace. It’s best kept as the whole evening rather
-                than slotted in before other plans.
+                Plan for three to three and a half hours at Locavore NXT. The
+                tasting menu consists of 14 courses and they arrive one at a
+                time, so the meal is meant to be the evening, not slotted in
+                before something else. We’d keep the rest of the night clear.
+              </P>
+              <P className="mt-4">
+                Dinner seatings begin between 17:30 and 20:30, with lunch
+                service available on Thursday to Saturday from 12:00 to 13:30.
               </P>
 
               <H2>What should you wear to Locavore NXT?</H2>
               <P>
                 There’s no formal dress code and no jacket required. Ubud is
                 warm and humid all year, so most guests wear something smart but
-                breathable. The room is considered without being stiff, so you
-                won’t feel underdressed in smart-casual.
+                breathable.
               </P>
 
               <H2>Can the menu be adapted for dietary needs?</H2>
               <P>
                 With advance notice, most needs can be handled. Flag allergies
                 and preferences <em>when you book</em>, not on the night, since
-                the menu is composed for the whole table. The kitchen already
-                cooks without imports, dairy, wheat and with little animal
-                protein,
-                which gives it plenty to work with.
+                each menu is planned ahead for the whole table, so the kitchen
+                needs to know in advance rather than on the night. It’s good to
+                note that our kitchen already cooks without dairy or wheat and
+                with little animal protein.
               </P>
 
               <div className="my-14 flex justify-center">
