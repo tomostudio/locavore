@@ -29,7 +29,7 @@ const FAQS = [
   {
     question: "Do I need a reservation to eat at Locavore NXT?",
     answer:
-      "Reservations are strongly recommended. NXT serves a set tasting menu at lunch (Thursday to Saturday) and dinner (Monday to Saturday), with a limited number of seats each service. Walk-ins are welcome when there's space, but it's best to book ahead using the 'Book Now' button on the NXT site.",
+      "Reservations are strongly recommended. NXT serves a set tasting menu at lunch (Thursday to Saturday) and dinner (Monday to Saturday), with a limited number of seats each service. Walk-ins are welcome depending on availability, so check with our team first via WhatsApp or email. Otherwise, the safest route is to book ahead using the 'Book Now' button on the NXT site.",
   },
   {
     question: "How far in advance do Locavore NXT reservations open?",
@@ -54,7 +54,7 @@ const FAQS = [
   {
     question: "Where is Locavore NXT located?",
     answer:
-      "NXT is at Jl. A.A. Gede Rai, Gang Pura Panti Bija, in Lodtunduh, just south of central Ubud. It replaced the original Locavore, which closed in 2023, and sits on its own purpose-built site, so check the map on the visit page before you travel.",
+      "NXT is at Jl. A.A. Gede Rai, Gang Pura Panti Bija, in Lodtunduh. It is located at a different venue than the original Locavore, which closed in 2023, and sits on its own purpose-built site. We highly recommend checking the map on the visit page prior to your arrival.",
   },
 ];
 
@@ -192,7 +192,8 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                     NXT serves one set tasting menu, at lunch (Thursday to Saturday) and dinner (Monday to Saturday), by reservation.
                   </li>
                   <li>
-                    Walk-ins will depend on availability.
+                    Walk-ins are welcome depending on availability. Check with our
+                    team first via WhatsApp or email.
                   </li>
                   <li>
                     Book as early as you can. Weekends and Bali's busy months are the first to go.
@@ -210,13 +211,14 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               <H2>How do you book a table at Locavore NXT?</H2>
               <P>
                 You book online through the <em>'Book Now'</em> button at the top right of the
-                NXT site. Walk-ins are sometimes possible if there's space, but with a limited number of seats each service, booking ahead is the only way to be sure of a table. For special requests, our team is available through email, phone call or WhatsApp for the quickest to response.
+                NXT site. Walk-ins are welcome depending on availability, so check with our team first via WhatsApp or email. With a limited number of seats each service, booking ahead is the only way to be sure of a table. For special requests, our team is available through email, phone call or WhatsApp for the quickest to response.
               </P>
               <ol className="list-decimal pl-6 mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed marker:opacity-50">
                 <li>
                   <strong>Open the booking page.</strong> Go to{" "}
                   <FancyLink
-                    destination="/nxt/visit"
+                    destination="https://locavorenxt.com"
+                    blank
                     className="underline hover:opacity-60 transition-opacity"
                   >
                     Locavore NXT
@@ -298,17 +300,18 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               </P>
               <ul className="list-disc pl-6 mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed marker:opacity-40">
                 <li>
-                  <strong>Location:</strong> Jl. A.A. Gede Rai, Gang Pura Panti
-                  Bija, in Lodtunduh, a short drive south of central Ubud. This
-                  is NXT’s own site, not the old Locavore address, so check the
-                  map on the{" "}
+                  <strong>Location:</strong> NXT is at Jl. A.A. Gede Rai, Gang
+                  Pura Panti Bija, in Lodtunduh. It is located at a different
+                  venue than the original Locavore, which closed in 2023, and
+                  sits on its own purpose-built site. We highly recommend
+                  checking the map on the{" "}
                   <FancyLink
                     destination="/nxt/visit"
                     className="underline hover:opacity-60 transition-opacity"
                   >
                     visit page
                   </FancyLink>{" "}
-                  to arrive at the right door.
+                  prior to your arrival.
                 </li>
                 <li>
                   <strong>Arrival time:</strong> Come at your booked seating
@@ -321,14 +324,17 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                   appropriate for a public space like our restaurant.
                 </li>
                 <li>
-                  <strong>Dietary needs:</strong> Flag allergies when you book.
-                  The kitchen already works without imports, dairy, wheat and
-                  with less animal protein, and can adapt with notice.
+                  <strong>Dietary needs:</strong> Add any dietary requirements
+                  when you reserve. Each menu is planned ahead for the whole
+                  table, so the kitchen needs to know in advance rather than on
+                  the night. It already works without imports, dairy, wheat and
+                  with little animal protein, and can adapt with notice.
                 </li>
                 <li>
                   <strong>Getting there:</strong> Most people come by car or
                   scooter, often with a driver. Lodtunduh is quieter than the
-                  town centre, so allow buffer time for Ubud’s evening traffic.
+                  town centre, however, we’d still recommend you to prepare
+                  buffer time for Bali’s traffic.
                   There’s a dedicated waiting area for drivers on site, with its
                   own toilet.
                 </li>
@@ -336,11 +342,12 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>Can you get a last-minute or walk-in table?</H2>
               <P>
-                Walk-ins are welcome depending on availability, but with a
-                limited number of seats each service there is no guarantee of a
-                table, so reservations are recommended. Seats do open up when
-                other guests cancel, and the best route is to message the team
-                on WhatsApp at{" "}
+                Walk-ins are welcome depending on availability. Check with our
+                team first via WhatsApp or email, because with a limited number
+                of seats each service there is no guarantee of a table, so
+                reservations are recommended. Seats do open up when other
+                guests cancel, and the best route is to message the team on
+                WhatsApp at{" "}
                 <FancyLink
                   destination="https://wa.me/6282144956226"
                   blank

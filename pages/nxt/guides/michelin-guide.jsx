@@ -46,7 +46,7 @@ const FAQS = [
   {
     question: "Is Locavore NXT fine dining?",
     answer:
-      "Yes. Locavore NXT serves one seasonal tasting menu in Ubud, built around Balinese and Indonesian ingredients the team grows and forages. Walk-ins are welcome depending on availability, though reservations are recommended. The format and the standard are what you would expect from fine dining, whether or not a Michelin guide covers the country.",
+      "Yes. Locavore NXT serves one seasonal tasting menu in Ubud, The Source 2.0, built around Balinese and Indonesian ingredients the team grows and forages. Walk-ins are welcome depending on availability, though reservations are recommended. The format and the standard are what you would expect from fine dining, whether or not a Michelin guide covers the country.",
   },
 ];
 
@@ -182,7 +182,8 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                   </li>
                   <li>
                     Locavore NXT is still a full fine-dining experience: one
-                    seasonal tasting menu, with reservations recommended.
+                    seasonal tasting menu, The Source 2.0, with reservations
+                    recommended.
                   </li>
                 </ul>
               </div>
@@ -245,13 +246,13 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>Is Locavore NXT still fine dining?</H2>
               <P>
-                Yes. Locavore NXT serves one seasonal tasting menu built around
-                Balinese and Indonesian ingredients, much of it grown and
-                foraged by the team. Walk-ins are welcome depending on
-                availability, though reservations are recommended. The format,
-                the sourcing and the level of the cooking are what you’d expect
-                from a destination fine-dining restaurant. The lack of a star
-                reflects the guide’s map, not the kitchen.
+                Yes. Locavore NXT serves one seasonal tasting menu, The Source
+                2.0, built around Balinese and Indonesian ingredients, much of
+                it grown and foraged by the team. Walk-ins are welcome depending
+                on availability, though reservations are recommended. The
+                format, the sourcing and the level of the cooking are what you’d
+                expect from a destination fine-dining restaurant. The lack of a
+                star reflects the guide’s map, not the kitchen.
               </P>
               <P className="mt-4">
                 For the courses, the price and what to expect on the night, see

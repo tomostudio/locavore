@@ -260,7 +260,8 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
                 With advance notice, most needs can be handled. Flag allergies
                 and preferences <em>when you book</em>, not on the night, since
                 the menu is composed for the whole table. The kitchen already
-                cooks without dairy or wheat and with little animal protein,
+                cooks without imports, dairy, wheat and with little animal
+                protein,
                 which gives it plenty to work with.
               </P>
 
