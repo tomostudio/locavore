@@ -214,25 +214,28 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <H2>How do you book a table at Locavore NXT?</H2>
               <P>
-                You book online through the <em>'Book Now'</em> button at the
-                top right of the NXT site. Walk-ins are welcome depending on
-                availability, so check with our team first via WhatsApp or
-                email. With a limited number of seats each service, booking
-                ahead is the only way to be sure of a table. For special
-                requests, our team is available through email, phone call or
-                WhatsApp for the quickest to response.
+                You book online, either straight from our booking page or
+                through the <em>'Book Now'</em> button at the top right of the
+                NXT site. Walk-ins are welcome depending on availability, so
+                check with our team first via WhatsApp or email. With a limited
+                number of seats each service, booking ahead is the only way to
+                be sure of a table. For special requests, our team is available
+                through email, phone call or WhatsApp for the quickest to
+                response.
               </P>
               <ol className="list-decimal pl-6 mt-5 flex flex-col gap-3 text-[1.0625rem] leading-relaxed marker:opacity-50">
                 <li>
-                  <strong>Open the booking page.</strong> Go to{" "}
+                  <strong>Open the booking page.</strong> Go straight to our{" "}
                   <FancyLink
-                    destination="https://locavorenxt.com"
+                    destination="https://revasi.net/restaurants/locavorenxt/availability?utm_source=website&utm_medium=referral&utm_campaign=how-to-get-a-reservation-at-locavore-nxt"
                     blank
                     className="underline hover:opacity-60 transition-opacity"
                   >
-                    Locavore NXT
+                    booking page
                   </FancyLink>{" "}
-                  and click <em>Book Now</em> on the top right.
+                  to see live availability. You can also reach it from
+                  locavorenxt.com by clicking <em>Book Now</em> on the top
+                  right.
                 </li>
                 <li>
                   <strong>Choose your date, service and party size.</strong>{" "}
