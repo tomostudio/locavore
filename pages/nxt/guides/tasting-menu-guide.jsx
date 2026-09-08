@@ -45,7 +45,7 @@ const FAQS = [
   {
     question: "Can you have the tasting menu at lunch?",
     answer:
-      "Yes. Lunch service runs Thursday to Saturday from 12:00 to 13:30, and dinner seatings begin between 17:30 and 20:30. Either way, plan for three to three and a half hours at Locavore NXT.",
+      "Yes. Lunch and dinner serve the same tasting menu, though the dining experience differs between the two. Lunch service runs Thursday to Saturday from 12:00 to 13:30, and dinner seatings begin between 17:30 and 20:30. Either way, plan for three to three and a half hours at Locavore NXT.",
   },
   {
     question: "How often does the Locavore NXT menu change?",
