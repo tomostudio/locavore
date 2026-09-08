@@ -4,6 +4,10 @@
 
 export const HUB_HREF = '/nxt/guides'
 
+// `published` feeds datePublished and the visible date; `updated` feeds
+// dateModified and the sitemap lastmod. Bump `updated` on a real content
+// change so the schema and sitemap can't drift from the article.
+
 export const NXT_GUIDES = [
   {
     title: 'How to Get a Reservation at Locavore NXT',
@@ -13,6 +17,8 @@ export const NXT_GUIDES = [
     category: 'Visiting',
     readTime: '5 min',
     thumbnail: '/guides/nxt-dining-room.webp',
+    published: '2026-09-08',
+    updated: '2026-09-08',
     live: true,
   },
   {
@@ -23,6 +29,8 @@ export const NXT_GUIDES = [
     category: 'Food',
     readTime: '6 min',
     thumbnail: '/guides/whole-banana-tree.webp',
+    published: '2026-09-08',
+    updated: '2026-09-08',
     live: true,
   },
   {
@@ -33,6 +41,8 @@ export const NXT_GUIDES = [
     category: 'Visiting',
     readTime: '4 min',
     thumbnail: '/guides/chefs-eelke-ray.webp',
+    published: '2026-09-08',
+    updated: '2026-09-08',
     live: true,
   },
 ]
@@ -45,3 +55,6 @@ export const nextLiveGuide = (href) => {
   const ordered = [...NXT_GUIDES.slice(idx + 1), ...NXT_GUIDES.slice(0, idx)]
   return ordered.find((g) => g.live) || null
 }
+
+// Guide metadata by route, for pages that need their own dates.
+export const guideByHref = (href) => NXT_GUIDES.find((g) => g.href === href)

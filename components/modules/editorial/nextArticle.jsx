@@ -38,9 +38,11 @@ export default function NextArticle({
           </FancyLink>
           <div className='absolute top-0 left-0 h-full w-full setflex-center z-min1'>
             <Marquee gradient={false}>
-              <h1 className='font-sans font-normal h-28'>
+              {/* .h1 keeps the heading styling; a <p> keeps the page's real
+                  <h1> unique and hides the repeated text from screen readers. */}
+              <p className='h1 font-sans font-normal h-28' aria-hidden='true'>
                 {`${articleTitle} • ${articleTitle} • ${articleTitle} • `}
-              </h1>
+              </p>
             </Marquee>
           </div>
         </div>

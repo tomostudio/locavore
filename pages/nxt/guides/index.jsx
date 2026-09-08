@@ -1,6 +1,6 @@
 import Layout from "@/components/modules/layout";
 import SEO from "@/components/utils/seo";
-import { BreadcrumbSchema } from "@/components/utils/structuredData";
+import { absoluteUrl } from "@/helpers/seo/siteConfig";
 import client from "@/helpers/sanity/client";
 import { useAppContext } from "context/state";
 import { useRouter } from "next/router";
@@ -34,6 +34,12 @@ const Guides = ({ homeAPI, settingAPI, footerAPI }) => {
       <SEO
         title="Locavore NXT Guides: Reservations, Menu & Visiting"
         pagelink={router.pathname}
+        image={{
+          url: absoluteUrl("/guides/nxt-dining-room.webp"),
+          alt: "The dining room at Locavore NXT in Lodtunduh, Ubud",
+          width: 1600,
+          height: 1067,
+        }}
         inputSEO={{
           seo_description:
             "Practical guides to visiting Locavore NXT in Ubud, Bali — how to reserve, what the tasting menu costs, and what to expect on the night.",
@@ -41,7 +47,6 @@ const Guides = ({ homeAPI, settingAPI, footerAPI }) => {
         defaultSEO={typeof home !== "undefined" && home.seo}
         webTitle={typeof setting !== "undefined" && setting.webTitle}
       />
-      <BreadcrumbSchema path={router.asPath} />
 
       <div className="relative z-10 bg-white text-black flow-root min-h-screen">
         <HeaderGap />

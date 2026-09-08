@@ -3,7 +3,6 @@ import SEO from "@/components/utils/seo";
 import Image from "next/image";
 import {
   FAQPageSchema,
-  BreadcrumbSchema,
   ArticleSchema,
 } from "@/components/utils/structuredData";
 import { absoluteUrl } from "@/helpers/seo/siteConfig";
@@ -18,11 +17,16 @@ import StickyButton from "@/components/modules/stickyButton";
 import FancyLink from "@/components/utils/fancyLink";
 import NextArticle from "@/components/modules/editorial/nextArticle";
 import Footer from "@/components/modules/footer";
-import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
+import { HUB_HREF, guideByHref, nextLiveGuide } from "@/helpers/nxt/guides";
 
-const PUBLISH_DATE = "2026-09-08";
+const CURRENT_HREF = "/nxt/guides/reservation-guide";
+// Dates live in helpers/nxt/guides.js so the hub, the sitemap lastmod and the
+// Article schema can't drift apart.
+const { published: PUBLISH_DATE, updated: UPDATED_DATE } =
+  guideByHref(CURRENT_HREF);
 
 // Article hero — feeds the OG / Article-schema image and the in-body hero.
+const HERO_ALT = "The dining room at Locavore NXT in Lodtunduh, Ubud";
 const HERO_IMAGE = "/guides/nxt-dining-room.webp";
 
 const FAQS = [
@@ -94,7 +98,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
   const [setting] = settingAPI;
   const [footer] = footerAPI;
 
-  const [baseUrl, setBaseUrl] = useState();
+  const [baseUrl, setBaseUrl] = useState(absoluteUrl(CURRENT_HREF));
   const [snackBar, setSnackBar] = useState(false);
 
   const article = {
@@ -105,7 +109,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
     show_article: false,
   };
 
-  const next = nextLiveGuide("/nxt/guides/reservation-guide");
+  const next = nextLiveGuide(CURRENT_HREF);
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -121,6 +125,13 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
       <SEO
         title="How to Get a Reservation at Locavore NXT: The Complete Booking Guide"
         pagelink={router.pathname}
+        type="article"
+        image={{
+          url: absoluteUrl(HERO_IMAGE),
+          alt: HERO_ALT,
+          width: 1600,
+          height: 1067,
+        }}
         inputSEO={{
           seo_description:
             "How to book Locavore NXT in Ubud, Bali: booking steps, how far ahead to reserve, what it costs, and what to know before you arrive.",
@@ -129,13 +140,13 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
         webTitle={typeof setting !== "undefined" && setting.webTitle}
       />
       <FAQPageSchema faqs={FAQS} />
-      <BreadcrumbSchema path={router.asPath} />
       <ArticleSchema
         headline={article.title}
         description="How to book Locavore NXT in Ubud, Bali: booking steps, lead time, what it costs, and what to know before you arrive."
         url={absoluteUrl(router.pathname)}
         image={absoluteUrl(HERO_IMAGE)}
         datePublished={PUBLISH_DATE}
+        dateModified={UPDATED_DATE}
         section={article.category.title}
       />
 
@@ -176,7 +187,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <Figure
                 src={HERO_IMAGE}
-                alt="The dining room at Locavore NXT in Lodtunduh, Ubud"
+                alt={HERO_ALT}
                 width={1600}
                 height={1067}
                 caption="Inside Locavore NXT in Lodtunduh, Ubud."
@@ -446,6 +457,7 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
           category={next ? next.category : "Guides"}
           timeRead={next ? next.readTime : "Browse"}
           thumbnail={next ? next.thumbnail : "/nxt2/visit/hero.png"}
+          alt={next ? next.title : "Explore all NXT guides"}
           bgColor="#CF7D57"
           border={true}
         />

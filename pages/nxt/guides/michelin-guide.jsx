@@ -3,7 +3,6 @@ import SEO from "@/components/utils/seo";
 import Image from "next/image";
 import {
   FAQPageSchema,
-  BreadcrumbSchema,
   ArticleSchema,
 } from "@/components/utils/structuredData";
 import { absoluteUrl } from "@/helpers/seo/siteConfig";
@@ -18,12 +17,17 @@ import StickyButton from "@/components/modules/stickyButton";
 import FancyLink from "@/components/utils/fancyLink";
 import NextArticle from "@/components/modules/editorial/nextArticle";
 import Footer from "@/components/modules/footer";
-import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
+import { HUB_HREF, guideByHref, nextLiveGuide } from "@/helpers/nxt/guides";
 
-const PUBLISH_DATE = "2026-09-08";
 const CURRENT_HREF = "/nxt/guides/michelin-guide";
+// Dates live in helpers/nxt/guides.js so the hub, the sitemap lastmod and the
+// Article schema can't drift apart.
+const { published: PUBLISH_DATE, updated: UPDATED_DATE } =
+  guideByHref(CURRENT_HREF);
 
 // Article hero — feeds the OG / Article-schema image and the in-body figure.
+const HERO_ALT =
+  "Locavore NXT co-founders and chefs Eelke Plasmeijer and Ray Adriansyah";
 const HERO_IMAGE = "/guides/chefs-eelke-ray.webp";
 
 const FAQS = [
@@ -85,7 +89,7 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
   const [setting] = settingAPI;
   const [footer] = footerAPI;
 
-  const [baseUrl, setBaseUrl] = useState();
+  const [baseUrl, setBaseUrl] = useState(absoluteUrl(CURRENT_HREF));
   const [snackBar, setSnackBar] = useState(false);
 
   const article = {
@@ -112,6 +116,13 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
       <SEO
         title="Is Locavore NXT a Michelin Starred Restaurant?"
         pagelink={router.pathname}
+        type="article"
+        image={{
+          url: absoluteUrl(HERO_IMAGE),
+          alt: HERO_ALT,
+          width: 1600,
+          height: 1067,
+        }}
         inputSEO={{
           seo_description:
             "Does Locavore have a Michelin star? Why there is no Michelin Guide in Bali or Indonesia, and the awards Locavore actually holds.",
@@ -120,13 +131,13 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
         webTitle={typeof setting !== "undefined" && setting.webTitle}
       />
       <FAQPageSchema faqs={FAQS} />
-      <BreadcrumbSchema path={router.asPath} />
       <ArticleSchema
         headline={article.title}
         description="Does Locavore have a Michelin star? Why there is no Michelin restaurant guide in Bali or Indonesia, and the awards Locavore actually holds."
         url={absoluteUrl(router.pathname)}
         image={absoluteUrl(HERO_IMAGE)}
         datePublished={PUBLISH_DATE}
+        dateModified={UPDATED_DATE}
         section={article.category.title}
       />
 
@@ -264,7 +275,7 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <Figure
                 src={HERO_IMAGE}
-                alt="Locavore NXT co-founders and chefs Eelke Plasmeijer and Ray Adriansyah"
+                alt={HERO_ALT}
                 width={1600}
                 height={1067}
                 caption="Locavore co-founders Eelke Plasmeijer and Ray Adriansyah, who opened NXT in 2023."
@@ -332,6 +343,7 @@ const MichelinGuide = ({ homeAPI, settingAPI, footerAPI }) => {
           category={next ? next.category : "Guides"}
           timeRead={next ? next.readTime : "Browse"}
           thumbnail={next ? next.thumbnail : "/nxt2/visit/hero.png"}
+          alt={next ? next.title : "Explore all NXT guides"}
           bgColor="#CF7D57"
           border={true}
         />

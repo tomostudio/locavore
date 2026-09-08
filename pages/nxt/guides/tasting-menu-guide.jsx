@@ -3,7 +3,6 @@ import SEO from "@/components/utils/seo";
 import Image from "next/image";
 import {
   FAQPageSchema,
-  BreadcrumbSchema,
   ArticleSchema,
 } from "@/components/utils/structuredData";
 import { absoluteUrl } from "@/helpers/seo/siteConfig";
@@ -19,12 +18,17 @@ import FancyLink from "@/components/utils/fancyLink";
 import Arrow from "@/components/utils/arrow";
 import NextArticle from "@/components/modules/editorial/nextArticle";
 import Footer from "@/components/modules/footer";
-import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
+import { HUB_HREF, guideByHref, nextLiveGuide } from "@/helpers/nxt/guides";
 
-const PUBLISH_DATE = "2026-09-08";
 const CURRENT_HREF = "/nxt/guides/tasting-menu-guide";
+// Dates live in helpers/nxt/guides.js so the hub, the sitemap lastmod and the
+// Article schema can't drift apart.
+const { published: PUBLISH_DATE, updated: UPDATED_DATE } =
+  guideByHref(CURRENT_HREF);
 
 // Article hero — feeds the OG / Article-schema image and the in-body figure.
+const HERO_ALT =
+  "The whole banana ‘tree’, a course from The Source 2.0 tasting menu at Locavore NXT";
 const HERO_IMAGE = "/guides/whole-banana-tree.webp";
 
 const FAQS = [
@@ -91,7 +95,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
   const [setting] = settingAPI;
   const [footer] = footerAPI;
 
-  const [baseUrl, setBaseUrl] = useState();
+  const [baseUrl, setBaseUrl] = useState(absoluteUrl(CURRENT_HREF));
   const [snackBar, setSnackBar] = useState(false);
 
   const article = {
@@ -118,6 +122,13 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
       <SEO
         title="Locavore NXT Tasting Menu: Courses, Price & What to Expect"
         pagelink={router.pathname}
+        type="article"
+        image={{
+          url: absoluteUrl(HERO_IMAGE),
+          alt: HERO_ALT,
+          width: 1600,
+          height: 1067,
+        }}
         inputSEO={{
           seo_description:
             "What to expect from the Locavore NXT tasting menu in Ubud, Bali — how many courses, the price, pairings, dress code and how long dinner takes.",
@@ -126,13 +137,13 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
         webTitle={typeof setting !== "undefined" && setting.webTitle}
       />
       <FAQPageSchema faqs={FAQS} />
-      <BreadcrumbSchema path={router.asPath} />
       <ArticleSchema
         headline={article.title}
         description="What to expect from the Locavore NXT tasting menu in Ubud, Bali: 14 courses, the price, pairings, dress code and how long dinner takes."
         url={absoluteUrl(router.pathname)}
         image={absoluteUrl(HERO_IMAGE)}
         datePublished={PUBLISH_DATE}
+        dateModified={UPDATED_DATE}
         section={article.category.title}
       />
 
@@ -210,7 +221,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <Figure
                 src={HERO_IMAGE}
-                alt="The whole banana ‘tree’, a course from The Source 2.0 tasting menu at Locavore NXT"
+                alt={HERO_ALT}
                 width={1600}
                 height={1067}
                 caption="The whole banana ‘tree’, one of the 14 courses on The Source 2.0."
@@ -304,6 +315,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
           category={next ? next.category : "Guides"}
           timeRead={next ? next.readTime : "Browse"}
           thumbnail={next ? next.thumbnail : "/nxt2/visit/hero.png"}
+          alt={next ? next.title : "Explore all NXT guides"}
           bgColor="#CF7D57"
           border={true}
         />
