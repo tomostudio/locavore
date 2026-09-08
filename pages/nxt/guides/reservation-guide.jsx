@@ -20,7 +20,7 @@ import NextArticle from "@/components/modules/editorial/nextArticle";
 import Footer from "@/components/modules/footer";
 import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
 
-const PUBLISH_DATE = "2026-07-07";
+const PUBLISH_DATE = "2026-09-08";
 
 // Article hero — feeds the OG / Article-schema image and the in-body hero.
 const HERO_IMAGE = "/guides/nxt-dining-room.webp";

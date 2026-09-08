@@ -20,7 +20,7 @@ import NextArticle from "@/components/modules/editorial/nextArticle";
 import Footer from "@/components/modules/footer";
 import { HUB_HREF, nextLiveGuide } from "@/helpers/nxt/guides";
 
-const PUBLISH_DATE = "2026-07-09";
+const PUBLISH_DATE = "2026-09-08";
 const CURRENT_HREF = "/nxt/guides/michelin-guide";
 
 // Article hero — feeds the OG / Article-schema image and the in-body figure.
