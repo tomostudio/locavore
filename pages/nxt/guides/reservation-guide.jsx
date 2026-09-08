@@ -409,8 +409,8 @@ const ReservationGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               {/* CTA */}
               <div className="my-14 flex justify-center">
                 <FancyLink
-                  target="_blank"
-                  destination="/nxt/visit"
+                  blank
+                  destination="https://revasi.net/restaurants/locavorenxt/availability?utm_source=website&utm_medium=referral&utm_campaign=how-to-get-a-reservation-at-locavore-nxt"
                   className="w-fit p-4 text-d-small uppercase text-black font-default tracking-widest transition-all ease-linear hover:bg-black hover:text-white border border-black rounded-xl"
                 >
                   Reserve your Locavore NXT experience

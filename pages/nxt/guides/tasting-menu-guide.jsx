@@ -272,8 +272,8 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
 
               <div className="my-14 flex justify-center">
                 <FancyLink
-                  target="_blank"
-                  destination="/nxt/visit"
+                  blank
+                  destination="https://revasi.net/restaurants/locavorenxt/availability?utm_source=website&utm_medium=referral&utm_campaign=locavore-nxt-tasting-menu-courses-price-what-to-expect"
                   className="w-fit p-4 text-d-small uppercase text-black font-default tracking-widest transition-all ease-linear hover:bg-black hover:text-white border border-black rounded-xl"
                 >
                   Reserve your table at Locavore NXT
