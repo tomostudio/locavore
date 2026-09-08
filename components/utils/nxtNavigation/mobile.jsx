@@ -55,6 +55,8 @@ const NxtNavigationMobile = ({ transition = false }) => {
                   ? 'VISIT'
                   : router.pathname == '/nxt/events-programs'
                   ? 'EVENTS & PROGRAMS'
+                  : router.pathname.startsWith('/nxt/guides')
+                  ? 'GUIDES'
                   : ''}
                 <div className="absolute right-6 top-1/2 -translate-y-1/2">
                   <div
@@ -111,6 +113,14 @@ const NxtNavigationMobile = ({ transition = false }) => {
                   destination="/nxt/visit"
                 >
                   VISIT
+                </FancyLink>
+              )}
+              {router.pathname !== '/nxt/guides' && (
+                <FancyLink
+                  className="w-full h-[50px] flex-shrink-0 bg-white mb-[10px] setflex-center"
+                  destination="/nxt/guides"
+                >
+                  GUIDES
                 </FancyLink>
               )}
               <div className="w-full h-[60px] flex-shrink-0 bg-white" />

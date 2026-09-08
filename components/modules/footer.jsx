@@ -33,7 +33,10 @@ const Footer = ({ className = "", footer }) => {
       <Container className="flex max-md:flex-col max-md:px-6">
         <div className="h-full w-full max-md:w-full flex flex-col">
           <div className="w-full mb-8">
-            <span className="text-sm">
+            {/* Pages are built ahead of time, so the server-rendered clock never
+                matches the visitor's; without this React throws #418 and
+                re-renders the whole page on the client. The 5s tick corrects it. */}
+            <span className="text-sm" suppressHydrationWarning>
               UBUD{" "}
               {new Intl.DateTimeFormat("sv-SE", {
                 hour: "2-digit",

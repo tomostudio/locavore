@@ -1,5 +1,6 @@
 import client from "@/helpers/sanity/client";
 import { absoluteUrl } from "@/helpers/seo/siteConfig";
+import { NXT_GUIDES } from "@/helpers/nxt/guides";
 
 // Dynamic XML sitemap served at /sitemap.xml.
 
@@ -11,10 +12,20 @@ const STATIC_ROUTES = [
   { path: "/social", priority: 0.5, changefreq: "monthly" },
   { path: "/nxt/menu", priority: 0.9, changefreq: "weekly" },
   { path: "/nxt/visit", priority: 0.9, changefreq: "monthly" },
+  { path: "/nxt/guides", priority: 0.7, changefreq: "monthly" },
   { path: "/nxt/collaborators", priority: 0.6, changefreq: "monthly" },
   { path: "/nxt/events-programs", priority: 0.7, changefreq: "weekly" },
   { path: "/nxt/features", priority: 0.6, changefreq: "monthly" },
 ];
+
+// Guide pages come from the shared guides module so lastmod tracks each
+// article's own `updated` date instead of going stale here.
+const GUIDE_ROUTES = NXT_GUIDES.filter((g) => g.live).map((g) => ({
+  path: g.href,
+  priority: 0.8,
+  changefreq: "monthly",
+  lastmod: g.updated,
+}));
 
 const CONTENT_QUERY = `{
   "families": *[_type == "family_list" && defined(slug.current)]{ "slug": slug.current, _updatedAt },
@@ -51,7 +62,7 @@ const buildSitemap = (entries) =>
 export async function getServerSideProps({ res }) {
   const data = await client.fetch(CONTENT_QUERY);
 
-  const entries = [...STATIC_ROUTES];
+  const entries = [...STATIC_ROUTES, ...GUIDE_ROUTES];
 
   for (const f of data.families || []) {
     entries.push({

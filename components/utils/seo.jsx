@@ -9,6 +9,10 @@ const SEO = ({
   webTitle = '',
   title = 'Locavore',
   pagelink = '/',
+  // Optional absolute-URL image for pages whose hero isn't a Sanity asset
+  // (e.g. the NXT guides). Shape: { url, alt, width, height }.
+  image: imageOverride,
+  type = 'website',
 }) => {
   const description =
     typeof inputSEO !== 'undefined' &&
@@ -45,6 +49,10 @@ const SEO = ({
       ? defaultSEO.seo_image.name
       : ''
 
+  const ogImage = imageOverride && imageOverride.url ? imageOverride.url : image
+  const ogImageAlt =
+    imageOverride && imageOverride.alt ? imageOverride.alt : image_alt
+
   const pagetitle = title && webTitle ? `${title} • ${webTitle}` : `Locavore®`
   const canonicalLink = absoluteUrl(pagelink)
 
@@ -57,15 +65,18 @@ const SEO = ({
         url: canonicalLink,
         title: pagetitle,
         description: description,
-        type: 'website',
-        images: [
-          {
-            url: image,
-            alt: image_alt,
-            width: 1200,
-            height: 628,
-          },
-        ],
+        type,
+        // An empty og:image is worse than none: crawlers treat it as broken.
+        images: ogImage
+          ? [
+              {
+                url: ogImage,
+                alt: ogImageAlt,
+                width: (imageOverride && imageOverride.width) || 1200,
+                height: (imageOverride && imageOverride.height) || 628,
+              },
+            ]
+          : [],
         site_name: 'Locavore',
       }}
       twitter={{

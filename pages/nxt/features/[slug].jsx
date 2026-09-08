@@ -157,7 +157,9 @@ const FeaturesAndFacilitiesDetail = ({
     <Layout>
       <SEO
         title={facilities.title}
-        pagelink={router.pathname}
+        // router.pathname is the route pattern ('/nxt/.../[slug]'), which would
+        // emit a canonical pointing at a 404. Build it from the real slug.
+        pagelink={`nxt/features/${facilities.slug.current}`}
         inputSEO={
           typeof facilities !== 'undefined' &&
           typeof facilities.seo !== 'undefined' &&

@@ -127,6 +127,73 @@ export const MenuSchema = ({ name, description = '', url, image = '' }) => (
   />
 )
 
+// FAQPage entity — makes an on-page Q&A block eligible for FAQ rich results
+// and gives AI answer engines a clean, extractable source. `faqs` is an array
+// of { question, answer } with plain-text answers.
+export const FAQPageSchema = ({ faqs = [] }) => {
+  const items = (faqs || []).filter((f) => f && f.question && f.answer)
+  if (!items.length) return null
+  return (
+    <JsonLd
+      data={{
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: items.map((f) => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+      }}
+    />
+  )
+}
+
+// Article entity for the editorial-style /nxt guide pages. Gives each guide a
+// visible author + publisher (E-E-A-T) and ties datePublished / dateModified to
+// the page. `author` is optional; when omitted the article is attributed to the
+// Locavore NXT organization (correct for first-party brand guides). Pass a
+// person's name to credit a named writer instead.
+export const ArticleSchema = ({
+  headline,
+  description = '',
+  url,
+  image = '',
+  datePublished,
+  dateModified,
+  author,
+  section = '',
+}) => (
+  <JsonLd
+    data={{
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      '@id': `${url}#article`,
+      headline,
+      description,
+      url,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      image: image || undefined,
+      datePublished,
+      dateModified: dateModified || datePublished,
+      articleSection: section || undefined,
+      inLanguage: 'en',
+      author: author
+        ? { '@type': 'Person', name: author }
+        : {
+            '@type': 'Organization',
+            name: ORGANIZATION.name,
+            url: ORGANIZATION.url,
+          },
+      publisher: {
+        '@type': 'Organization',
+        name: ORGANIZATION.name,
+        url: ORGANIZATION.url,
+        logo: { '@type': 'ImageObject', url: ORGANIZATION.logo },
+      },
+    }}
+  />
+)
+
 // --- Sitewide breadcrumbs -------------------------------------------------
 
 // Segment overrides: `null` = non-navigable segment, skipped as a crumb but
