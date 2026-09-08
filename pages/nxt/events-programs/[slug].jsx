@@ -157,7 +157,9 @@ const EventsAndProgramsDetail = ({
     <Layout>
       <SEO
         title={event.title}
-        pagelink={router.pathname}
+        // router.pathname is the route pattern ('/nxt/.../[slug]'), which would
+        // emit a canonical pointing at a 404. Build it from the real slug.
+        pagelink={`nxt/events-programs/${event.slug.current}`}
         inputSEO={
           typeof event !== 'undefined' &&
           typeof event.seo !== 'undefined' &&

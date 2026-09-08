@@ -156,7 +156,9 @@ const OurCollaboratorsDetail = ({
     <Layout>
       <SEO
         title={collaborator.title}
-        pagelink={router.pathname}
+        // router.pathname is the route pattern ('/nxt/.../[slug]'), which would
+        // emit a canonical pointing at a 404. Build it from the real slug.
+        pagelink={`nxt/collaborators/${collaborator.slug.current}`}
         inputSEO={
           typeof collaborator !== 'undefined' &&
           typeof collaborator.seo !== 'undefined' &&
