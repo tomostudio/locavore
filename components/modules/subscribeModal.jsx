@@ -29,7 +29,13 @@ const card = {
 const SubscribeModal = ({
   open,
   onClose,
-  title = "Sign up with email to receive news and updates from Locavore NXT",
+  title = (
+    <>
+      Sign up with email to receive news
+      <br />
+      and updates from Locavore NXT
+    </>
+  ),
 }) => {
   useEffect(() => {
     if (!open) return;

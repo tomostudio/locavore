@@ -116,8 +116,13 @@ const Footer = ({ className = "", footer }) => {
         open={subscribeOpen}
         onClose={() => setSubscribeOpen(false)}
         title={
-          footer.subscription ||
-          "Sign up with email to receive news and updates from Locavore NXT"
+          footer.subscription || (
+            <>
+              Sign up with email to receive news
+              <br />
+              and updates from Locavore NXT
+            </>
+          )
         }
       />
     </footer>
