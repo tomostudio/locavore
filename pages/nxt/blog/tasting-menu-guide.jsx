@@ -20,7 +20,7 @@ import NextArticle from "@/components/modules/editorial/nextArticle";
 import Footer from "@/components/modules/footer";
 import { HUB_HREF, guideByHref, nextLiveGuide } from "@/helpers/nxt/guides";
 
-const CURRENT_HREF = "/nxt/guides/tasting-menu-guide";
+const CURRENT_HREF = "/nxt/blog/tasting-menu-guide";
 // Dates live in helpers/nxt/guides.js so the hub, the sitemap lastmod and the
 // Article schema can't drift apart.
 const { published: PUBLISH_DATE, updated: UPDATED_DATE } =
@@ -244,7 +244,7 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
               <P className="mt-4">
                 For booking steps, lead times and how payment works, see our{" "}
                 <FancyLink
-                  destination="/nxt/guides/reservation-guide"
+                  destination="/nxt/blog/reservation-guide"
                   className="underline hover:opacity-60 transition-opacity"
                 >
                   guide to getting a reservation at Locavore NXT
@@ -309,19 +309,19 @@ const TastingMenuGuide = ({ homeAPI, settingAPI, footerAPI }) => {
         </section>
 
         <NextArticle
-          articleTitle={next ? "Next Guide" : "More Guides"}
+          articleTitle={next ? "Next Article" : "More Articles"}
           destination={next ? next.href : HUB_HREF}
-          title={next ? next.title : "Explore all NXT guides"}
-          category={next ? next.category : "Guides"}
+          title={next ? next.title : "Explore the NXT blog"}
+          category={next ? next.category : "Blog"}
           timeRead={next ? next.readTime : "Browse"}
           thumbnail={next ? next.thumbnail : "/nxt2/visit/hero.png"}
-          alt={next ? next.title : "Explore all NXT guides"}
+          alt={next ? next.title : "Explore the NXT blog"}
           bgColor="#CF7D57"
           border={true}
         />
 
-        <StickyButton destination="/nxt/guides" arrow="left">
-          All NXT Guides
+        <StickyButton destination="/nxt/blog" arrow="left">
+          The NXT Blog
         </StickyButton>
       </div>
 

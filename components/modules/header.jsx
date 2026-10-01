@@ -257,6 +257,13 @@ export default function Header({ className = '', header, family, footer }) {
                 >
                   Editorial
                 </FancyLink>
+                <FancyLink
+                  destination="/nxt/blog"
+                  a11yText="Navigate to the blog page"
+                  className={`leading-none ${transition.fade}`}
+                >
+                  Blog
+                </FancyLink>
                 {/* Custom Header Insert */}
                 {header &&
                   header[0].headerLink &&
@@ -341,6 +348,9 @@ export default function Header({ className = '', header, family, footer }) {
           </MobileLink>
           <MobileLink bnw={bnw} destination="/editorial">
             Editorial
+          </MobileLink>
+          <MobileLink bnw={bnw} destination="/nxt/blog">
+            Blog
           </MobileLink>
           {header &&
             header[0].headerLink &&

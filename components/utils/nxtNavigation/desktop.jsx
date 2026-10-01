@@ -78,14 +78,14 @@ const NxtNavigationDesktop = ({transition = false }) => {
           VISIT
         </FancyLink>
         <FancyLink
-          destination="/nxt/guides"
+          destination="/nxt/blog"
           className={`relative z-4 ${
-            router.pathname.startsWith('/nxt/guides')
+            router.pathname.startsWith('/nxt/blog')
               ? 'bg-[#BEC29D]'
               : 'bg-white'
           } border border-black rounded-full py-1.5 px-4 text-center transition-all duration-500 hover:bg-[#BEC29D]`}
         >
-          GUIDES
+          BLOG
         </FancyLink>
       </Container>
     </m.div>

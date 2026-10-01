@@ -12,7 +12,7 @@ const STATIC_ROUTES = [
   { path: "/social", priority: 0.5, changefreq: "monthly" },
   { path: "/nxt/menu", priority: 0.9, changefreq: "weekly" },
   { path: "/nxt/visit", priority: 0.9, changefreq: "monthly" },
-  { path: "/nxt/guides", priority: 0.7, changefreq: "monthly" },
+  { path: "/nxt/blog", priority: 0.7, changefreq: "monthly" },
   { path: "/nxt/collaborators", priority: 0.6, changefreq: "monthly" },
   { path: "/nxt/events-programs", priority: 0.7, changefreq: "weekly" },
   { path: "/nxt/features", priority: 0.6, changefreq: "monthly" },

@@ -32,7 +32,7 @@ const Guides = ({ homeAPI, settingAPI, footerAPI }) => {
   return (
     <Layout>
       <SEO
-        title="Locavore NXT Guides: Reservations, Menu & Visiting"
+        title="Locavore NXT Blog: Reservations, Menu & Visiting"
         pagelink={router.pathname}
         image={{
           url: absoluteUrl("/guides/nxt-dining-room.webp"),
@@ -55,11 +55,11 @@ const Guides = ({ homeAPI, settingAPI, footerAPI }) => {
             {/* Centered title — site convention: sans display with a
                 serif-italic accent word (see the Family page title). */}
             <HeadingTitle>
-              <span className="sub">The</span>NXT Guides
+              <span className="sub">The</span>NXT Blog
             </HeadingTitle>
 
             {/* Card grid */}
-            <div className="max-w-[1080px] mx-auto mt-12 mb-28 grid grid-cols-3 max-md:grid-cols-1 gap-x-12 gap-y-16">
+            <div className="max-w-[1080px] mx-auto mt-12 mb-28 grid grid-cols-3 max-md:grid-cols-1 max-md:justify-items-center gap-x-12 gap-y-16">
               {NXT_GUIDES.map((guide, i) => {
                 const card = (
                   <ArticleCard
